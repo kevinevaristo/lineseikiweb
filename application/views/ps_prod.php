@@ -11,72 +11,175 @@
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
   <style>
-    body {
-      background-color: white;
-      color: black;
-      line-height: 1.6;
-      font-family: Arial, Helvetica, sans-serif;
+    :root {
+      --primary-blue: #0d6efd;
+      --primary-blue-dark: #0a58ca;
+      --primary-orange: #fd7e14;
+      --primary-orange-dark: #e67300;
+      --light-blue: #e7f1ff;
+      --light-orange: #fff3e8;
+      --light-gray: #f8f9fa;
+      --dark: #212529;
+      --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
     }
 
-    /* ✅ Navbar */
+    body {
+      background-color: #fff;
+      color: #333;
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* Smooth scrolling */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* Modernized Navbar */
     .navbar {
-      background: linear-gradient(90deg, #0d1b2a, #1b263b);
+      background: rgba(255, 255, 255, 0.98);
+      backdrop-filter: blur(10px);
       padding: 0.8rem 5%;
+      transition: var(--transition);
+      box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+      border-bottom: 1px solid rgba(13, 110, 253, 0.1);
     }
+    
+    .navbar.scrolled {
+      padding: 0.6rem 5%;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+    
     .navbar-nav .nav-link {
-      color: #fff;
+      color: var(--dark);
       font-weight: 500;
-      transition: color 0.3s ease;
-    }
-    .navbar-nav .nav-link:hover {
-      color: #ffd60a;
-    }
-    .dropdown-menu {
-      background-color: #1b263b;
-      border: none;
+      transition: var(--transition);
+      position: relative;
+      padding: 0.5rem 0.8rem;
       border-radius: 8px;
+      margin: 0 0.1rem;
     }
-    .dropdown-menu a {
-      color: #fff;
+    
+    .navbar-nav .nav-link:hover,
+    .navbar-nav .nav-link.active {
+      color: var(--primary-blue);
+      background: rgba(13, 110, 253, 0.08);
     }
-    .dropdown-menu a:hover {
-      background-color: #ffd60a;
+    
+    .navbar-nav .nav-link::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: 0;
+      left: 50%;
+      background-color: var(--primary-orange);
+      transition: var(--transition);
+    }
+    
+    .navbar-nav .nav-link:hover::after {
+      width: 70%;
+      left: 15%;
+    }
+    
+    .dropdown-menu {
+      background-color: rgba(255, 255, 255, 0.98);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+      padding: 0.8rem 0;
+      margin-top: 0.8rem;
+      animation: fadeIn 0.3s ease;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .dropdown-item {
+      color: var(--dark);
+      padding: 0.6rem 1.5rem;
+      transition: var(--transition);
+      position: relative;
+    }
+    
+    .dropdown-item:hover {
+      background-color: var(--primary-orange);
       color: #000;
+      padding-left: 2rem;
     }
+    
     .navbar-brand img {
       height: 40px;
       width: auto;
+      transition: var(--transition);
     }
+    
     .dropdown-submenu {
       position: relative;
     }
+    
     .dropdown-submenu > .dropdown-menu {
       top: 0;
       left: 100%;
-      margin-top: -0.1rem;
+      margin-top: -0.8rem;
     }
 
-    /* ✅ Products Section */
+    /* Products Section */
     .products {
-      padding: 100px 10% 60px; /* extra padding for navbar offset */
+      padding: 120px 5% 80px;
       text-align: center;
     }
+    
     .products h1 {
       font-size: 2.5rem;
       margin-bottom: 40px;
+      color: var(--primary-blue);
+      font-weight: 700;
+      position: relative;
     }
+    
+    .products h1::after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      bottom: -15px;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary-orange), var(--primary-blue));
+      border-radius: 2px;
+    }
+    
     .categories {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
     }
+    
     .category {
       position: relative;
-      border-radius: 12px;
+      border-radius: 16px;
       overflow: hidden;
       cursor: pointer;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      transition: var(--transition);
     }
+    
+    .category:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+    }
+    
     .category img {
       width: 100%;
       height: 220px;
@@ -84,16 +187,18 @@
       display: block;
       transition: transform 0.5s ease;
     }
+    
     .category:hover img {
       transform: scale(1.1);
     }
+    
     .overlay {
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0,0,0,0.7);
+      background: rgba(13, 110, 253, 0.85);
       color: #fff;
       display: flex;
       flex-direction: column;
@@ -104,171 +209,274 @@
       opacity: 0;
       transition: opacity 0.4s ease;
     }
+    
     .category:hover .overlay {
       opacity: 1;
     }
+    
     .overlay h3 {
-      font-size: 1.3rem;
-      margin-bottom: 10px;
-      color: #ff6a5c;
+      font-size: 1.4rem;
+      margin-bottom: 12px;
+      color: #fff;
     }
+    
     .overlay p {
-      font-size: 0.9rem;
+      font-size: 0.95rem;
+      max-width: 250px;
     }
 
-    /* ✅ CTA Section (keeps dark navy look) */
+    /* CTA Section */
     .cta {
-      background: #0a1423;
+      background: linear-gradient(135deg, var(--primary-blue), var(--primary-blue-dark));
       color: white;
       text-align: center;
-      padding: 60px 10%;
+      padding: 80px 10%;
     }
+    
     .cta h2 {
-      font-size: 2rem;
-      margin-bottom: 15px;
+      font-size: 2.2rem;
+      margin-bottom: 20px;
+      color: #fff;
     }
+    
     .cta p {
-      margin-bottom: 20px;
-      font-size: 1rem;
+      margin-bottom: 30px;
+      font-size: 1.1rem;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
     }
 
-    /* ✅ Footer base styling */
+    /* Buttons */
+    .btn {
+      padding: 0.8rem 1.8rem;
+      border-radius: 8px;
+      font-weight: 600;
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+    }
+    
+    .btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 0%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.1);
+      transition: var(--transition);
+      z-index: -1;
+    }
+    
+    .btn:hover::before {
+      width: 100%;
+    }
+    
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary-blue), var(--primary-blue-dark));
+      border: none;
+      box-shadow: 0 5px 15px rgba(13, 110, 253, 0.3);
+    }
+    
+    .btn-primary:hover {
+      background: linear-gradient(135deg, var(--primary-blue-dark), var(--primary-blue));
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(13, 110, 253, 0.4);
+    }
+    
+    .btn-orange {
+      background: linear-gradient(135deg, var(--primary-orange), var(--primary-orange-dark));
+      border: none;
+      color: white;
+      box-shadow: 0 5px 15px rgba(253, 126, 20, 0.3);
+    }
+    
+    .btn-orange:hover {
+      background: linear-gradient(135deg, var(--primary-orange-dark), var(--primary-orange));
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(253, 126, 20, 0.4);
+      color: white;
+    }
+    
+    .btn-light {
+      background: rgba(255, 255, 255, 0.9);
+      border: none;
+      color: var(--primary-blue);
+      box-shadow: 0 5px 15px rgba(255, 255, 255, 0.2);
+    }
+    
+    .btn-light:hover {
+      background: #fff;
+      color: var(--primary-blue-dark);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(255, 255, 255, 0.3);
+    }
+
+    /* Footer */
     footer {
-      background-color: #0a1423; /* dark navy background like screenshot */
+      background: linear-gradient(135deg, var(--primary-blue), var(--primary-blue-dark));
       color: white;
-      padding: 40px 10%;
-      font-family: Arial, Helvetica, sans-serif;
+      padding: 80px 10% 40px;
+      position: relative;
+      overflow: hidden;
     }
-
+    
+    footer::before {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='50' cy='50' r='1' fill='%23FFFFFF' opacity='0.05'/%3E%3C/svg%3E");
+      pointer-events: none;
+    }
+    
     footer h2 {
-      color: #ffd60a; /* Yellow "Get in Touch with Us" */
-      margin-bottom: 15px;
-      font-size: 1.5rem;
+      color: var(--primary-orange);
+      font-weight: 700;
     }
-
-    footer p {
-      margin: 0 0 20px 0;
-      font-size: 0.95rem;
-    }
-
-    footer .top {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 20px;
-      flex-wrap: wrap;
-    }
-
-    footer .middle {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      padding: 20px 0;
-      border-top: 1px solid #333;
-      border-bottom: 1px solid #333;
-      margin-bottom: 15px;
-    }
-
-    footer .middle img {
-      height: 40px;
-      width: auto;
-    }
-
-    footer .links {
-      display: flex;
-      gap: 20px;
-      flex-wrap: wrap;
-    }
-
+    
     footer .links a {
-      color: white;
+      color: #fff;
       text-decoration: none;
-      font-size: 0.9rem;
+      margin-right: 24px;
+      position: relative;
+      font-weight: 500;
+      transition: var(--transition);
     }
+    
+    footer .links a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -4px;
+      left: 0;
+      background-color: var(--primary-orange);
+      transition: var(--transition);
+    }
+    
     footer .links a:hover {
-      text-decoration: underline;
-      color: #ffd60a;
+      color: var(--primary-orange);
     }
-
-    footer .socials {
-      display: flex;
-      gap: 15px;
-      font-size: 1.2rem;
+    
+    footer .links a:hover::after {
+      width: 100%;
     }
+    
     footer .socials a {
       color: white;
-      transition: color 0.3s ease;
+      margin-right: 18px;
+      font-size: 1.3rem;
+      transition: var(--transition);
+      display: inline-block;
     }
+    
     footer .socials a:hover {
-      color: #ffd60a;
+      color: var(--primary-orange);
+      transform: translateY(-3px);
     }
-
+    
     footer .bottom {
-      text-align: center;
-      font-size: 0.8rem;
-      margin-top: 15px;
+      margin-top: 40px;
+      font-size: 0.85rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 24px;
     }
+    
     footer .bottom a {
-      margin-left: 15px;
-      color: white;
+      color: #ccc;
       text-decoration: none;
+      transition: var(--transition);
     }
+    
     footer .bottom a:hover {
-      text-decoration: underline;
-      color: #ffd60a;
+      color: var(--primary-orange);
     }
-
-    .btn-contact{
-      display:inline-block;
-      background:#007bff;        /* solid blue */
-      border:0;
-      color:#fff;
-      border-radius:8px;
-      padding:10px 20px;
-      font-weight:600;
-      font-size:1rem;
-      box-shadow: 0 2px 0 rgba(0,0,0,0.12);
-      transition: transform .12s ease, box-shadow .12s ease, background .12s ease;
+    
+    hr {
+      background: rgba(255, 255, 255, 0.1);
+      height: 1px;
     }
-    .btn-contact:hover{
-      background:#0069d9;
-      transform: translateY(-2px);
-      box-shadow: 0 6px 18px rgba(0,0,0,0.18);
+    
+    /* Animations */
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
-
-    .btn-consult{
-      display:inline-block;
-      background:transparent;            /* transparent background */
-      border:1px solid #ffd60a;          /* yellow border */
-      color:#ffd60a;                     /* yellow text */
-      border-radius:8px;
-      padding:8px 18px;
-      font-weight:400;
-      font-size:1rem;
-      transition: background .12s ease, color .12s ease, transform .12s ease;
+    
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
     }
-    .btn-consult:hover{
-      background:#ffd60a;                /* fill yellow on hover */
-      color:#000;                        /* black text on hover */
-      transform: translateY(-2px);
+    
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
-
-    /* Slightly smaller buttons for footer area */
-    footer .btn-contact { padding:6px 14px; font-size:0.92rem; border-radius:6px; }
-    footer .btn-consult  { padding:6px 12px; font-size:0.92rem; border-radius:6px; }
-
-    /* If you want CTA buttons a bit larger for emphasis (optional) */
-    .cta .btn-contact { padding:11px 24px; font-size:1.02rem; }
-    .cta .btn-consult  { padding:10px 20px; font-size:1.02rem; }
+    
+    .delay-1 { transition-delay: 0.1s; }
+    .delay-2 { transition-delay: 0.2s; }
+    .delay-3 { transition-delay: 0.3s; }
+    .delay-4 { transition-delay: 0.4s; }
+    
+    /* Responsive adjustments */
+    @media (max-width: 992px) {
+      .products {
+        padding: 100px 5% 60px;
+      }
+      
+      .products h1 {
+        font-size: 2.2rem;
+      }
+      
+      .categories {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+      }
+      
+      footer .links a {
+        display: inline-block;
+        margin-bottom: 12px;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .products h1 {
+        font-size: 2rem;
+      }
+      
+      .categories {
+        grid-template-columns: 1fr;
+        max-width: 400px;
+        margin: 0 auto;
+      }
+      
+      footer .links a {
+        display: block;
+        margin-bottom: 12px;
+      }
+    }
   </style>
 </head>
 <body>
 
-  <!-- ✅ Bootstrap Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+  <!-- ✅ Fixed Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top">
     <div class="container-fluid">
-      <a class="navbar-brand" href="newproject.html">
+      <a class="navbar-brand" href="<?= base_url() ?>">
         <img src=<?= base_url('assets_system/images/header_logo.png') ?> alt="Line Seiki Logo">
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -276,16 +484,16 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto">
-          <li class="nav-item"><a class="nav-link active" href="<?= base_url() ?>">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="<?= base_url() ?>">Home</a></li>
           <li class="nav-item"><a class="nav-link" href="<?= base_url('index/about_us') ?>">About Us</a></li>
 
           <!-- Dropdown -->
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+            <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown">
               Product and Services
             </a>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="<?= base_url('index/ps_prod') ?>">Products</a></li>
+              <li><a class="dropdown-item active" href="<?= base_url('index/ps_prod') ?>">Products</a></li>
               <li class="dropdown-submenu">
                 <a class="dropdown-item dropdown-toggle" href="#">Services</a>
                 <ul class="dropdown-menu">
@@ -305,90 +513,91 @@
     </div>
   </nav>
 
- <!-- ✅ Products Section -->
+  <!-- Spacer for fixed navbar -->
+  <div style="height: 90px;"></div>
+
+  <!-- ✅ Products Section -->
   <section class="products">
-    <h1>Our Product Categories</h1>
+    <h1 class="fade-in">Our Product Categories</h1>
     <div class="categories">
-      <!-- (Your product cards stay the same) -->
-      <!-- Example -->
-      <div class="category">
+      <div class="category fade-in delay-1">
         <img src=<?= base_url('assets_system/images/safetyswitches.jpg')?> alt="Safety Switches">
         <div class="overlay">
           <h3>Safety Switches</h3>
           <p>Durable switches designed for industrial safety applications.</p>
         </div>
       </div>
-      <div class="category">
+      <div class="category fade-in delay-2">
         <img src=<?= base_url('assets_system/images/electroniccounter.jpg')?> alt="Electronic Counters">
         <div class="overlay">
           <h3>Electronic Counters</h3>
           <p>Reliable counters for production monitoring and automation.</p>
         </div>
       </div>
-      <div class="category">
+      <div class="category fade-in delay-3">
         <img src=<?= base_url('assets_system/images/timer.jpg')?> alt="Timers">
         <div class="overlay">
           <h3>Timers</h3>
           <p>Accurate timers for industrial and laboratory use.</p>
         </div>
       </div>
-      <div class="category">
+      <div class="category fade-in delay-4">
         <img src=<?= base_url('assets_system/images/mechanicalcounter.jpg')?> alt="Mechanical Counters">
         <div class="overlay">
           <h3>Mechanical Counters</h3>
           <p>Classic counters built for long-term mechanical reliability.</p>
         </div>
       </div>
-      <div class="category">
+      <div class="category fade-in delay-1">
         <img src=<?= base_url('assets_system/images/slidelimit.jpg')?> alt="Slide Limit Counters">
         <div class="overlay">
           <h3>Slide Limit Counters</h3>
           <p>Compact and accurate slide limit counters for varied use.</p>
         </div>
       </div>
-      <div class="category">
+      <div class="category fade-in delay-2">
         <img src=<?= base_url('assets_system/images/limitswitch.jpg')?> alt="Limit Switches">
         <div class="overlay">
           <h3>Limit Switches</h3>
           <p>Precision limit switches for position sensing and control.</p>
         </div>
       </div>
-      <div class="category">
+      <div class="category fade-in delay-3">
         <img src=<?= base_url('assets_system/images/countersensor.jpg')?> alt="Length Counters & Sensors">
         <div class="overlay">
           <h3>Length Counters & Sensors</h3>
           <p>High-precision sensors for measuring length and dimensions.</p>
         </div>
       </div>
-      <div class="category">
+      <div class="category fade-in delay-4">
         <img src=<?= base_url('assets_system/images/rotary.jpg')?> alt="Rotary Encoders">
         <div class="overlay">
           <h3>Rotary Encoders</h3>
           <p>Encoders for accurate angular position and motion detection.</p>
         </div>
       </div>
-      <div class="category">
+      <div class="category fade-in delay-1">
         <img src=<?= base_url('assets_system/images/tachometer.jpg')?> alt="Tachometers">
         <div class="overlay">
           <h3>Tachometers</h3>
           <p>Digital tachometers for RPM and speed measurements.</p>
         </div>
       </div>
-      <div class="category">
+      <div class="category fade-in delay-2">
         <img src=<?= base_url('assets_system/images/thermometers1.jpg')?> alt="Thermometers">
         <div class="overlay">
           <h3>Thermometers</h3>
           <p>Precise thermometers for industrial and lab applications.</p>
         </div>
       </div>
-      <div class="category">
+      <div class="category fade-in delay-3">
         <img src=<?= base_url('assets_system/images/measuring.jpg')?> alt="Measuring Instruments">
         <div class="overlay">
           <h3>Measuring Instruments</h3>
           <p>Instruments designed for reliable industrial measurement.</p>
         </div>
       </div>
-      <div class="category">
+      <div class="category fade-in delay-4">
         <img src=<?= base_url('assets_system/images/tallycounter.png')?> alt="Tally Counters">
         <div class="overlay">
           <h3>Tally Counters</h3>
@@ -396,38 +605,37 @@
         </div>
       </div>
     </div>
-    </div>
   </section>
 
+  <!-- CTA Section -->
+  <section class="cta">
+    <h2 class="fade-in">Looking for the Right Measuring Solution?</h2>
+    <p class="fade-in delay-1">Contact us today to discuss your requirements and find the perfect product for your needs.</p>
+    <a href="<?= base_url('index/contact_us') ?>" class="btn btn-light fade-in delay-2">INQUIRE</a>
+  </section>
 
-  <!--CTA Section (updated) -->
-<section class="cta">
-  <h2>Looking for the Right Measuring Solution?</h2>
-  <p>Contact us today to discuss your requirements and find the perfect product for your needs.</p>
-  <!-- changed Contact -> Inquire, removed Consult -->
-  <button class="btn btn-contact">INQUIRE</button>
-</section>
-
-
-  <!--Footer (buttons updated) -->
+  <!-- Footer -->
   <footer>
-    <div class="top">
+    <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap">
       <h2>Get in Touch with Us</h2>
       <div>
-        <button class="btn btn-contact">Contact</button>
-        <button class="btn btn-consult">Consult</button>
+        <a href="<?= base_url('index/contact_us') ?>" class="btn btn-orange">Contact</a>
+        <a href="<?= base_url('index/contact_us') ?>" class="btn btn-light">Consult</a>
       </div>
     </div>
-    <p>We’re here to assist with your inquiries and needs.</p>
-
-    <div class="middle">
-      <img src= <?= base_url('assets_system/images/header_logo.png') ?> alt="Line Seiki Logo">
+    <p>We're here to assist with your inquiries and needs.</p>
+    <hr class="my-4">
+    <div class="d-flex justify-content-between flex-wrap align-items-center">
+      <img src=<?= base_url('assets_system/images/header_logo.png') ?> height="40" alt="Logo">
       <div class="links">
-        <a href="#">Product Overview</a>
-        <a href="#">Engineering Services</a>
-        <a href="#">Case Studies</a>
-        <a href="#">Latest News</a>
-        <a href="#">Contact Us</a>
+        <a href="<?= base_url() ?>">Home</a>
+        <a href="<?= base_url('index/about_us') ?>">About Us</a>
+        <a href="<?= base_url('index/ps_prod') ?>">Products</a>
+        <a href="<?= base_url('index/ps_serv_simulation') ?>">Services</a>
+        <a href="<?= base_url('index/ps_iotsolution') ?>">IoT Solution</a>
+        <a href="<?= base_url('index/news_event') ?>">News and Events</a>
+        <a href="<?= base_url('index/library') ?>">Library</a>
+        <a href="<?= base_url('index/contact_us') ?>">Contact Us</a>
       </div>
       <div class="socials">
         <a href="#"><i class="fab fa-facebook-f"></i></a>
@@ -437,8 +645,7 @@
         <a href="#"><i class="fab fa-youtube"></i></a>
       </div>
     </div>
-
-    <div class="bottom">
+    <div class="bottom mt-4">
       <span>© 2025 Line Seiki Asia Pacific. All rights reserved.</span>
       <a href="#">Privacy Policy</a>
       <a href="#">Terms of Service</a>
@@ -449,17 +656,46 @@
   <!-- Bootstrap 5 JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
-  <!-- Submenu JS -->
   <script>
     document.addEventListener("DOMContentLoaded", function(){
+      // Navbar scroll effect
+      const navbar = document.querySelector('.navbar');
+      window.addEventListener('scroll', function() {
+        if (window.scrollY > 50) {
+          navbar.classList.add('scrolled');
+        } else {
+          navbar.classList.remove('scrolled');
+        }
+      });
+      
+      // Fade-in animation on scroll
+      const fadeElements = document.querySelectorAll('.fade-in');
+      
+      const fadeObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, { threshold: 0.15 });
+      
+      fadeElements.forEach(el => {
+        fadeObserver.observe(el);
+      });
+
+      // Submenu functionality
       document.querySelectorAll('.dropdown-submenu > a').forEach(function(element){
         element.addEventListener('click', function(e){
           e.preventDefault();
           e.stopPropagation();
+
           let submenu = this.nextElementSibling;
+
           if(submenu){
             submenu.classList.toggle('show');
           }
+
+          // close other open submenus
           this.closest('.dropdown-menu').querySelectorAll('.show').forEach(function(openMenu){
             if(openMenu !== submenu){
               openMenu.classList.remove('show');
@@ -467,6 +703,8 @@
           });
         });
       });
+
+      // close all on click outside
       document.addEventListener('click', function(){
         document.querySelectorAll('.dropdown-menu .show').forEach(function(openMenu){
           openMenu.classList.remove('show');

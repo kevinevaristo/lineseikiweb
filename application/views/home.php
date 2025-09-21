@@ -11,67 +11,179 @@
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
   <style>
+    :root {
+      --primary-blue: #0d6efd;
+      --primary-blue-dark: #0a58ca;
+      --primary-orange: #fd7e14;
+      --primary-orange-dark: #e67300;
+      --light-blue: #e7f1ff;
+      --light-orange: #fff3e8;
+      --light-gray: #f8f9fa;
+      --dark: #212529;
+      --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
+
     body {
       background-color: #fff;
       color: #333;
-      font-family: Arial, Helvetica, sans-serif;
+      font-family: 'Inter', sans-serif;
       line-height: 1.6;
+      overflow-x: hidden;
     }
 
-    /* Navbar */
+    /* Smooth scrolling */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* Modernized Navbar */
     .navbar {
-      background: linear-gradient(90deg, #0d1b2a, #1b263b);
+      background: rgba(255, 255, 255, 0.98);
+      backdrop-filter: blur(10px);
       padding: 0.8rem 5%;
+      transition: var(--transition);
+      box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+      border-bottom: 1px solid rgba(13, 110, 253, 0.1);
     }
+    
+    .navbar.scrolled {
+      padding: 0.6rem 5%;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+    
     .navbar-nav .nav-link {
-      color: #fff;
+      color: var(--dark);
       font-weight: 500;
-      transition: color 0.3s ease;
-    }
-    .navbar-nav .nav-link:hover {
-      color: #ffd60a;
-    }
-    .dropdown-menu {
-      background-color: #1b263b;
-      border: none;
+      transition: var(--transition);
+      position: relative;
+      padding: 0.5rem 0.8rem;
       border-radius: 8px;
+      margin: 0 0.1rem;
     }
-    .dropdown-menu a {
-      color: #fff;
+    
+    .navbar-nav .nav-link:hover,
+    .navbar-nav .nav-link.active {
+      color: var(--primary-blue);
+      background: rgba(13, 110, 253, 0.08);
     }
-    .dropdown-menu a:hover {
-      background-color: #ffd60a;
+    
+    .navbar-nav .nav-link::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: 0;
+      left: 50%;
+      background-color: var(--primary-orange);
+      transition: var(--transition);
+    }
+    
+    .navbar-nav .nav-link:hover::after {
+      width: 70%;
+      left: 15%;
+    }
+    
+    .dropdown-menu {
+      background-color: rgba(255, 255, 255, 0.98);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+      padding: 0.8rem 0;
+      margin-top: 0.8rem;
+      animation: fadeIn 0.3s ease;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .dropdown-item {
+      color: var(--dark);
+      padding: 0.6rem 1.5rem;
+      transition: var(--transition);
+      position: relative;
+    }
+    
+    .dropdown-item:hover {
+      background-color: var(--primary-orange);
       color: #000;
+      padding-left: 2rem;
     }
+    
     .navbar-brand img {
       height: 40px;
       width: auto;
+      transition: var(--transition);
     }
+    
     .dropdown-submenu {
       position: relative;
     }
+    
     .dropdown-submenu > .dropdown-menu {
       top: 0;
       left: 100%;
-      margin-top: -0.1rem;
+      margin-top: -0.8rem;
     }
 
     /* Sections */
     section {
-      padding: 80px 0;
+      padding: 100px 0;
+      position: relative;
     }
+    
     section img {
       width: 100%;
-      border-radius: 12px;
+      border-radius: 16px;
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+      transition: var(--transition);
+      transform: translateY(0);
     }
+    
+    section img:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    }
+    
     section h1, section h2 {
-      font-size: 2.5rem;
-      margin-bottom: 20px;
-      color: #ffd60a;
+      margin-bottom: 24px;
+      font-weight: 700;
+      position: relative;
     }
+    
+    section h1 {
+      font-size: 2.8rem;
+      color: var(--primary-blue);
+    }
+    
+    section h2 {
+      font-size: 2.2rem;
+      color: var(--primary-blue);
+    }
+    
+    section h1::after, section h2::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -10px;
+      width: 60px;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary-orange), var(--primary-blue));
+      border-radius: 2px;
+    }
+    
     section p {
-      margin-bottom: 20px;
+      margin-bottom: 28px;
+      font-size: 1.1rem;
+      color: #495057;
     }
 
     /* Color schemes */
@@ -79,88 +191,274 @@
       background: #fff;
       color: #333;
     }
-    .section-navy {
-      background: #0a192f;
-      color: #e0e1dd;
+    
+    .section-light-blue {
+      background: var(--light-blue);
+      color: #333;
+      position: relative;
+      overflow: hidden;
     }
-    .section-navy h1, 
-    .section-navy h2 {
-      color: #ffd60a;
+    
+    .section-light-orange {
+      background: var(--light-orange);
+      color: #333;
+      position: relative;
+      overflow: hidden;
     }
 
     /* Buttons */
+    .btn {
+      padding: 0.8rem 1.8rem;
+      border-radius: 8px;
+      font-weight: 600;
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+    }
+    
+    .btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 0%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.1);
+      transition: var(--transition);
+      z-index: -1;
+    }
+    
+    .btn:hover::before {
+      width: 100%;
+    }
+    
     .btn-primary {
-      background-color: #0077b6;
+      background: linear-gradient(135deg, var(--primary-blue), var(--primary-blue-dark));
       border: none;
-      transition: all 0.3s ease;
+      box-shadow: 0 5px 15px rgba(13, 110, 253, 0.3);
     }
+    
     .btn-primary:hover {
-      background-color: #023e8a;
-      transform: translateY(-2px);
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      background: linear-gradient(135deg, var(--primary-blue-dark), var(--primary-blue));
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(13, 110, 253, 0.4);
     }
-    .btn-secondary {
-      background: transparent;
-      border: 1px solid #ffd60a;
-      color: #ffd60a;
-      transition: all 0.3s ease;
+    
+    .btn-orange {
+      background: linear-gradient(135deg, var(--primary-orange), var(--primary-orange-dark));
+      border: none;
+      color: white;
+      box-shadow: 0 5px 15px rgba(253, 126, 20, 0.3);
     }
-    .btn-secondary:hover {
-      background: #ffd60a;
-      color: #000;
+    
+    .btn-orange:hover {
+      background: linear-gradient(135deg, var(--primary-orange-dark), var(--primary-orange));
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(253, 126, 20, 0.4);
+      color: white;
     }
+    
     .btn-explore {
       background: transparent;
-      border: 1px solid #0077b6;
-      color: #0077b6;
-      transition: all 0.3s ease;
+      border: 2px solid var(--primary-blue);
+      color: var(--primary-blue);
     }
+    
     .btn-explore:hover {
-      background: #0077b6;
+      background: var(--primary-blue);
       color: #fff;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(13, 110, 253, 0.3);
+    }
+    
+    .btn-link {
+      text-decoration: none;
+      position: relative;
+    }
+    
+    .btn-link span {
+      position: relative;
+    }
+    
+    .btn-link span::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -4px;
+      left: 0;
+      background-color: currentColor;
+      transition: var(--transition);
+    }
+    
+    .btn-link:hover span::after {
+      width: 100%;
     }
 
     /* Footer */
     footer {
-      background-color: #0d1b2a;
+      background: linear-gradient(135deg, var(--primary-blue), var(--primary-blue-dark));
       color: white;
-      padding: 60px 10%;
+      padding: 80px 10% 40px;
+      position: relative;
+      overflow: hidden;
     }
+    
+    footer::before {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='50' cy='50' r='1' fill='%23FFFFFF' opacity='0.05'/%3E%3C/svg%3E");
+      pointer-events: none;
+    }
+    
     footer h2 {
-      color: #ffd60a;
+      color: var(--primary-orange);
+      font-weight: 700;
     }
+    
     footer .links a {
       color: #fff;
       text-decoration: none;
-      margin-right: 20px;
+      margin-right: 24px;
+      position: relative;
+      font-weight: 500;
+      transition: var(--transition);
     }
+    
+    footer .links a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -4px;
+      left: 0;
+      background-color: var(--primary-orange);
+      transition: var(--transition);
+    }
+    
     footer .links a:hover {
-      text-decoration: underline;
-      color: #ffd60a;
+      color: var(--primary-orange);
     }
+    
+    footer .links a:hover::after {
+      width: 100%;
+    }
+    
     footer .socials a {
       color: white;
-      margin-right: 15px;
+      margin-right: 18px;
       font-size: 1.3rem;
-      transition: color 0.3s;
+      transition: var(--transition);
+      display: inline-block;
     }
+    
     footer .socials a:hover {
-      color: #ffd60a;
+      color: var(--primary-orange);
+      transform: translateY(-3px);
     }
+    
     footer .bottom {
-      margin-top: 20px;
+      margin-top: 40px;
       font-size: 0.85rem;
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 20px;
+      gap: 24px;
+    }
+    
+    footer .bottom a {
+      color: #ccc;
+      text-decoration: none;
+      transition: var(--transition);
+    }
+    
+    footer .bottom a:hover {
+      color: var(--primary-orange);
+    }
+    
+    hr {
+      background: rgba(255, 255, 255, 0.1);
+      height: 1px;
+    }
+    
+    /* Animations */
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .delay-1 { transition-delay: 0.1s; }
+    .delay-2 { transition-delay: 0.2s; }
+    .delay-3 { transition-delay: 0.3s; }
+    .delay-4 { transition-delay: 0.4s; }
+    
+    /* Responsive adjustments */
+    @media (max-width: 992px) {
+      section {
+        padding: 80px 0;
+      }
+      
+      section h1 {
+        font-size: 2.4rem;
+      }
+      
+      section h2 {
+        font-size: 2rem;
+      }
+      
+      .dropdown-submenu > .dropdown-menu {
+        left: 0;
+        margin-top: 0;
+      }
+      
+      footer .links a {
+        display: inline-block;
+        margin-bottom: 12px;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      section h1 {
+        font-size: 2rem;
+      }
+      
+      section h2 {
+        font-size: 1.8rem;
+      }
+      
+      footer .links a {
+        display: block;
+        margin-bottom: 12px;
+      }
     }
   </style>
 </head>
 <body>
 
  <!-- ✅ Fixed Navbar -->
-<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+<nav class="navbar navbar-expand-lg navbar-light fixed-top">
   <div class="container-fluid">
     <!-- Logo on the LEFT -->
     <a class="navbar-brand" href="#">
@@ -215,30 +513,34 @@
   <section class="section-white">
     <div class="container">
       <div class="row align-items-center">
-        <div class="col-lg-6">
+        <div class="col-lg-6 fade-in">
           <h1>Innovative Solutions for Precision Measurement</h1>
           <p>At Line Seiki Asia Pacific, we specialize in delivering high-quality measuring instruments and smart monitoring systems tailored to your needs.</p>
-          <button class="btn btn-primary">Learn More</button>
-          <button class="btn btn-secondary">Contact</button>
+          <div class="d-flex gap-3 flex-wrap">
+            <button class="btn btn-primary">Learn More</button>
+            <button class="btn btn-orange">Contact</button>
+          </div>
         </div>
-        <div class="col-lg-6">
+        <div class="col-lg-6 fade-in delay-1">
           <img src=<?= base_url('assets_system/images/home_main.jpg') ?> alt="Section 1">
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Section 2 (navy) -->
-  <section class="section-navy">
+  <!-- Section 2 (light blue) -->
+  <section class="section-light-blue">
     <div class="container">
       <div class="row align-items-center flex-row-reverse">
-        <div class="col-lg-6">
+        <div class="col-lg-6 fade-in">
           <h2>Explore Our Standard Measuring Counters</h2>
           <p>Our standard measuring counters deliver unmatched accuracy and reliability for various industrial applications.</p>
-          <button class="btn btn-primary">Learn More</button>
-          <button class="btn btn-link text-light"><span>View</span> <i class="fas fa-angle-right"></i></button>
+          <div class="d-flex gap-3 align-items-center flex-wrap">
+            <button class="btn btn-primary">Learn More</button>
+            <button class="btn btn-link text-primary"><span>View</span> <i class="fas fa-angle-right"></i></button>
+          </div>
         </div>
-        <div class="col-lg-6">
+        <div class="col-lg-6 fade-in delay-1">
           <img src=<?= base_url('assets_system/images/model.jpg') ?> alt="Section 2">
         </div>
       </div>
@@ -249,28 +551,30 @@
   <section class="section-white">
     <div class="container">
       <div class="row align-items-center">
-        <div class="col-lg-6">
+        <div class="col-lg-6 fade-in">
           <h2>Explore Our Comprehensive Engineering and Silicone Molding Services</h2>
           <p>Our engineering services are designed to optimize your projects with precision and innovation.</p>
         </div>
-        <div class="col-lg-6">
+        <div class="col-lg-6 fade-in delay-1">
           <img src=<?= base_url('assets_system/images/model2.jpg') ?> alt="Section 3">
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Section 4 (navy) -->
-  <section class="section-navy">
+  <!-- Section 4 (light orange) -->
+  <section class="section-light-orange">
     <div class="container">
       <div class="row align-items-center flex-row-reverse">
-        <div class="col-lg-6">
+        <div class="col-lg-6 fade-in">
           <h2>Transforming Industries with IoT Solutions</h2>
           <p>Our IoT solutions empower businesses to optimize operations and enhance productivity.</p>
-          <button class="btn btn-explore">Explore</button>
-          <button class="btn btn-link text-light"><span>Learn More</span> <i class="fas fa-angle-right"></i></button>
+          <div class="d-flex gap-3 align-items-center flex-wrap">
+            <button class="btn btn-explore">Explore</button>
+            <button class="btn btn-link text-primary"><span>Learn More</span> <i class="fas fa-angle-right"></i></button>
+          </div>
         </div>
-        <div class="col-lg-6">
+        <div class="col-lg-6 fade-in delay-1">
           <img src=<?= base_url('assets_system/images/model3.png') ?> alt="Section 4">
         </div>
       </div>
@@ -280,9 +584,9 @@
   <!-- Section 5 (white) -->
   <section class="section-white">
     <div class="container text-center">
-      <h2>Discover Our Latest Innovations in Industrial Measurement</h2>
-      <p class="mb-4">Explore our newest products designed to enhance efficiency and precision in your operations.</p>
-      <img src=<?= base_url('assets_system/images/model4.jpg') ?> alt="Section 5" class="img-fluid rounded">
+      <h2 class="fade-in">Discover Our Latest Innovations in Industrial Measurement</h2>
+      <p class="mb-4 fade-in delay-1">Explore our newest products designed to enhance efficiency and precision in your operations.</p>
+      <img src=<?= base_url('assets_system/images/model4.jpg') ?> alt="Section 5" class="img-fluid rounded fade-in delay-2">
     </div>
   </section>
 
@@ -291,20 +595,23 @@
     <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap">
       <h2>Get in Touch with Us</h2>
       <div>
-        <button class="btn btn-primary">Contact</button>
-        <button class="btn btn-secondary">Consult</button>
+        <button class="btn btn-orange">Contact</button>
+        <button class="btn btn-light">Consult</button>
       </div>
     </div>
-    <p>We’re here to assist with your inquiries and needs.</p>
+    <p>We're here to assist with your inquiries and needs.</p>
     <hr class="my-4">
     <div class="d-flex justify-content-between flex-wrap align-items-center">
       <img src=<?= base_url('assets_system/images/header_logo.png') ?> height="40" alt="Logo">
       <div class="links">
-        <a href="#">Product Overview</a>
-        <a href="#">Engineering Services</a>
-        <a href="#">Case Studies</a>
-        <a href="#">Latest News</a>
-        <a href="#">Contact Us</a>
+        <a href="<?= base_url() ?>">Home</a>
+        <a href="<?= base_url('index/about_us') ?>">About Us</a>
+        <a href="<?= base_url('index/ps_prod') ?>">Products</a>
+        <a href="<?= base_url('index/ps_serv_simulation') ?>">Services</a>
+        <a href="<?= base_url('index/ps_iotsolution') ?>">IoT Solution</a>
+        <a href="<?= base_url('index/news_event') ?>">News and Events</a>
+        <a href="<?= base_url('index/library') ?>">Library</a>
+        <a href="<?= base_url('index/contact_us') ?>">Contact Us</a>
       </div>
       <div class="socials">
         <a href="#"><i class="fab fa-facebook-f"></i></a>
@@ -325,9 +632,34 @@
   <!-- Bootstrap 5 JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
-  <!-- Enable Submenu JS -->
   <script>
     document.addEventListener("DOMContentLoaded", function(){
+      // Navbar scroll effect
+      const navbar = document.querySelector('.navbar');
+      window.addEventListener('scroll', function() {
+        if (window.scrollY > 50) {
+          navbar.classList.add('scrolled');
+        } else {
+          navbar.classList.remove('scrolled');
+        }
+      });
+      
+      // Fade-in animation on scroll
+      const fadeElements = document.querySelectorAll('.fade-in');
+      
+      const fadeObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, { threshold: 0.15 });
+      
+      fadeElements.forEach(el => {
+        fadeObserver.observe(el);
+      });
+
+      // Submenu functionality
       document.querySelectorAll('.dropdown-submenu > a').forEach(function(element){
         element.addEventListener('click', function(e){
           e.preventDefault();
