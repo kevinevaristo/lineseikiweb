@@ -5,284 +5,504 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Professional News & Events</title>
 
+  <!-- Bootstrap 5 CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  
+  <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
   <style>
-    /* Base Styles */
-    body {
-      background: linear-gradient(90deg, #0d1b2a, #1b263b);;
-      color: #333;
-      font-family: Arial, Helvetica, sans-serif;
-      line-height: 1.6;
+    :root {
+      --primary-blue: #0d6efd;
+      --primary-blue-dark: #0a58ca;
+      --primary-orange: #fd7e14;
+      --primary-orange-dark: #e67300;
+      --light-blue: #e7f1ff;
+      --light-orange: #fff3e8;
+      --light-gray: #f8f9fa;
+      --dark: #212529;
+      --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
     }
 
-    /* Navbar */
+    body {
+      background-color: #fff;
+      color: #333;
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* Smooth scrolling */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* Modernized Navbar */
     .navbar {
-      /* Changed from linear-gradient to a solid black background */
-      background: linear-gradient(90deg, #0d1b2a, #1b263b);
+      background: rgba(255, 255, 255, 0.98);
+      backdrop-filter: blur(10px);
       padding: 0.8rem 5%;
+      transition: var(--transition);
+      box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+      border-bottom: 1px solid rgba(13, 110, 253, 0.1);
     }
+    
+    .navbar.scrolled {
+      padding: 0.6rem 5%;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+    
     .navbar-nav .nav-link {
-      color: #fff;
+      color: var(--dark);
       font-weight: 500;
-      transition: color 0.3s ease;
-    }
-    .navbar-nav .nav-link:hover {
-      color: #ffd60a;
-    }
-    .dropdown-menu {
-      background-color: #1b263b;
-      border: none;
+      transition: var(--transition);
+      position: relative;
+      padding: 0.5rem 0.8rem;
       border-radius: 8px;
+      margin: 0 0.1rem;
     }
-    .dropdown-menu a {
-      color: #fff;
+    
+    .navbar-nav .nav-link:hover,
+    .navbar-nav .nav-link.active {
+      color: var(--primary-blue);
+      background: rgba(13, 110, 253, 0.08);
     }
-    .dropdown-menu a:hover {
-      background-color: #ffd60a;
+    
+    .navbar-nav .nav-link::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: 0;
+      left: 50%;
+      background-color: var(--primary-orange);
+      transition: var(--transition);
+    }
+    
+    .navbar-nav .nav-link:hover::after {
+      width: 70%;
+      left: 15%;
+    }
+    
+    .dropdown-menu {
+      background-color: rgba(255, 255, 255, 0.98);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+      padding: 0.8rem 0;
+      margin-top: 0.8rem;
+      animation: fadeIn 0.3s ease;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .dropdown-item {
+      color: var(--dark);
+      padding: 0.6rem 1.5rem;
+      transition: var(--transition);
+      position: relative;
+    }
+    
+    .dropdown-item:hover {
+      background-color: var(--primary-orange);
       color: #000;
+      padding-left: 2rem;
     }
+    
     .navbar-brand img {
       height: 40px;
       width: auto;
+      transition: var(--transition);
     }
+    
     .dropdown-submenu {
       position: relative;
     }
+    
     .dropdown-submenu > .dropdown-menu {
       top: 0;
       left: 100%;
-      margin-top: -0.1rem;
+      margin-top: -0.8rem;
     }
 
     /* Sections */
     section {
-      padding: 80px 0;
+      padding: 100px 0;
+      position: relative;
     }
-    section img {
-      width: 100%;
-      border-radius: 12px;
-    }
+    
     section h1, section h2 {
-      font-size: 2.5rem;
-      margin-bottom: 20px;
-      color: #ffd60a;
+      margin-bottom: 24px;
+      font-weight: 700;
+      position: relative;
     }
+    
+    section h1 {
+      font-size: 2.8rem;
+      color: var(--primary-blue);
+    }
+    
+    section h2 {
+      font-size: 2.2rem;
+      color: var(--primary-blue);
+    }
+    
+    section h2::after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      bottom: -15px;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary-orange), var(--primary-blue));
+      border-radius: 2px;
+    }
+    
     section p {
-      margin-bottom: 20px;
+      margin-bottom: 28px;
+      font-size: 1.1rem;
+      color: #495057;
     }
 
-    /* --- Section Styling --- */
-    .section {
-      padding: 80px 10%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      min-height: 80vh;
+    /* Color schemes */
+    .section-white {
+      background: #fff;
+      color: #333;
+    }
+    
+    .section-light-blue {
+      background: var(--light-blue);
+      color: #333;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .section-light-orange {
+      background: var(--light-orange);
+      color: #333;
+      position: relative;
+      overflow: hidden;
     }
 
-    .section h2 {
-      font-size: 2.5rem;
-      margin-bottom: 50px;
-      color: #ffd60a; 
-    }
-    .news-section, .events-section {
-      background-color: #ffffff;
-      color: #fff;
-    }
-    .news-section h2, .events-section h2 {
-      color: #ffd60a;
-    }
-    .webinars-section {
-      background-color: linear-gradient(90deg, #0d1b2a, #1b263b);;
-      color: #ffd60a;
-    }
-
+    /* News & Events Cards */
     .content-container {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
       gap: 30px;
       width: 100%;
       max-width: 1200px;
+      margin: 0 auto;
     }
+    
     .news-card {
       background-color: #fff;
       color: #333;
-      border-radius: 12px;
+      border-radius: 16px;
       overflow: hidden;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+      transition: var(--transition);
       display: flex;
       flex-direction: column;
+      border: 1px solid rgba(13, 110, 253, 0.1);
     }
+    
     .news-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+      transform: translateY(-8px);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
     }
+    
     .news-card img {
       width: 100%;
       height: 200px;
       object-fit: cover;
-      border-radius: 0;
-      box-shadow: none;
     }
+    
     .news-card-content {
       padding: 25px;
       text-align: left;
     }
+    
     .news-card h3 {
-      font-size: 1.5rem;
-      margin-bottom: 10px;
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 12px;
+      color: var(--primary-blue);
     }
+    
     .news-card p {
       font-size: 0.95rem;
-      color: #666;
-      margin-bottom: 15px;
-      max-width: none;
-    }
-    .news-card a {
-      color: #ff6a5c;
-      text-decoration: none;
-      font-weight: bold;
-      transition: color 0.3s ease;
-    }
-    .news-card a:hover {
-      color: #e85a4a;
-    }
-    /* --- Footer Styles --- */
-    footer {
-      background-color: linear-gradient(90deg, #0d1b2a, #1b263b);;
-      color: white;
-      padding: 40px 10%;
-      text-align: left;
-    }
-    footer .top {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 30px;
-    }
-    footer .top h2 {
-      font-size: 2rem;
-      color: #ffd60a;
-    }
-    footer .top div {
-      display: flex;
-      gap: 15px;
-    }
-    .btn {
-      padding: 10px 20px;
-      border-radius: 20px;
-      border: none;
-      cursor: pointer;
-      margin-right: 10px;
-      font-size: 0.95rem;
-    }
-    .btn-primary {
-      background-color: linear-gradient(90deg, #0d1b2a, #1b263b);;
-      color: white;
-      transition: all 0.3s ease;
-    }
-    .btn-primary:hover {
-      background-color: linear-gradient(90deg, #0d1b2a, #1b263b);;
-      transform: translateY(-2px);
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    }
-    .btn-secondary {
-      background-color: transparent;
-      border: 1px solid #ffd60a;
-      color: inherit;
-      transition: all 0.3s ease;
-    }
-    .btn-secondary:hover {
-      background-color: linear-gradient(90deg, #0d1b2a, #1b263b);;
-      color: #ffd60a;
-      transform: translateY(-2px);
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    }
-    footer .middle {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      padding: 20px 0;
-      border-top: 1px solid #333;
-      margin-top: 20px;
+      color: #495057;
       margin-bottom: 20px;
+      line-height: 1.6;
     }
-    footer .middle img {
-      height: 40px;
-      width: auto;
-      display: block;
+    
+    .news-card a {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--primary-blue);
+      text-decoration: none;
+      transition: var(--transition);
+      display: inline-flex;
+      align-items: center;
     }
-    footer .links {
-      display: flex;
-      gap: 20px;
+    
+    .news-card a:hover {
+      color: var(--primary-orange);
     }
+    
+    .news-card a::after {
+      content: '→';
+      margin-left: 5px;
+      transition: var(--transition);
+    }
+    
+    .news-card a:hover::after {
+      transform: translateX(3px);
+    }
+
+    /* Buttons */
+    .btn {
+      padding: 0.8rem 1.8rem;
+      border-radius: 8px;
+      font-weight: 600;
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+    }
+    
+    .btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 0%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.1);
+      transition: var(--transition);
+      z-index: -1;
+    }
+    
+    .btn:hover::before {
+      width: 100%;
+    }
+    
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary-blue), var(--primary-blue-dark));
+      border: none;
+      box-shadow: 0 5px 15px rgba(13, 110, 253, 0.3);
+    }
+    
+    .btn-primary:hover {
+      background: linear-gradient(135deg, var(--primary-blue-dark), var(--primary-blue));
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(13, 110, 253, 0.4);
+    }
+    
+    .btn-orange {
+      background: linear-gradient(135deg, var(--primary-orange), var(--primary-orange-dark));
+      border: none;
+      color: white;
+      box-shadow: 0 5px 15px rgba(253, 126, 20, 0.3);
+    }
+    
+    .btn-orange:hover {
+      background: linear-gradient(135deg, var(--primary-orange-dark), var(--primary-orange));
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(253, 126, 20, 0.4);
+      color: white;
+    }
+    
+    .btn-outline-blue {
+      background: transparent;
+      border: 2px solid var(--primary-blue);
+      color: var(--primary-blue);
+    }
+    
+    .btn-outline-blue:hover {
+      background: var(--primary-blue);
+      color: #fff;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(13, 110, 253, 0.3);
+    }
+
+    /* Footer */
+    footer {
+      background: linear-gradient(135deg, var(--primary-blue), var(--primary-blue-dark));
+      color: white;
+      padding: 80px 10% 40px;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    footer::before {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='50' cy='50' r='1' fill='%23FFFFFF' opacity='0.05'/%3E%3C/svg%3E");
+      pointer-events: none;
+    }
+    
+    footer h2 {
+      color: var(--primary-orange);
+      font-weight: 700;
+    }
+    
     footer .links a {
       color: #fff;
       text-decoration: none;
-      margin-right: 20px;
+      margin-right: 24px;
+      position: relative;
+      font-weight: 500;
+      transition: var(--transition);
     }
+    
+    footer .links a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -4px;
+      left: 0;
+      background-color: var(--primary-orange);
+      transition: var(--transition);
+    }
+    
     footer .links a:hover {
-      text-decoration: underline;
+      color: var(--primary-orange);
     }
-    footer .socials {
-      display: flex;
-      gap: 15px;
-      font-size: 1.3rem;
+    
+    footer .links a:hover::after {
+      width: 100%;
     }
+    
     footer .socials a {
       color: white;
-      transition: color 0.3s ease;
+      margin-right: 18px;
+      font-size: 1.3rem;
+      transition: var(--transition);
+      display: inline-block;
     }
+    
     footer .socials a:hover {
-      color: #ff6a5c;
+      color: var(--primary-orange);
+      transform: translateY(-3px);
     }
+    
     footer .bottom {
-      margin-top: 15px;
+      margin-top: 40px;
       font-size: 0.85rem;
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 20px;
+      gap: 24px;
     }
+    
     footer .bottom a {
-      color: white;
+      color: #ccc;
       text-decoration: none;
+      transition: var(--transition);
     }
+    
     footer .bottom a:hover {
-      text-decoration: underline;
+      color: var(--primary-orange);
     }
-    /* Responsive Styles */
-    @media (max-width: 768px) {
-      .section {
-        padding: 40px 5%;
+    
+    hr {
+      background: rgba(255, 255, 255, 0.1);
+      height: 1px;
+    }
+    
+    /* Animations */
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
       }
-      footer .top {
-        flex-direction: column;
-        align-items: flex-start;
+      to {
+        opacity: 1;
+        transform: translateY(0);
       }
-      footer .middle {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 20px;
+    }
+    
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .delay-1 { transition-delay: 0.1s; }
+    .delay-2 { transition-delay: 0.2s; }
+    .delay-3 { transition-delay: 0.3s; }
+    .delay-4 { transition-delay: 0.4s; }
+    
+    /* Responsive adjustments */
+    @media (max-width: 992px) {
+      section {
+        padding: 80px 0;
       }
-      footer .links {
-        flex-direction: column;
       
+      section h1 {
+        font-size: 2.4rem;
       }
-      footer .bottom {
-        justify-content: flex-start;
+      
+      section h2 {
+        font-size: 2rem;
+      }
+      
+      .dropdown-submenu > .dropdown-menu {
+        left: 0;
+        margin-top: 0;
+      }
+      
+      footer .links a {
+        display: inline-block;
+        margin-bottom: 12px;
+      }
+      
+      .content-container {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      }
+    }
+    
+    @media (max-width: 768px) {
+      section h1 {
+        font-size: 2rem;
+      }
+      
+      section h2 {
+        font-size: 1.8rem;
+      }
+      
+      footer .links a {
+        display: block;
+        margin-bottom: 12px;
       }
     }
   </style>
 </head>
 <body>
-  <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">
+      <a class="navbar-brand" href="<?= base_url() ?>">
         <img src="<?= base_url('assets_system/images/header_logo.png') ?>" alt="Line Seiki Logo">
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -291,7 +511,7 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto">
-          <li class="nav-item"><a class="nav-link active" aria-current="page" href="<?= base_url() ?>">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="<?= base_url() ?>">Home</a></li>
           <li class="nav-item"><a class="nav-link" href="<?= base_url('index/about_us') ?>">About Us</a></li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -309,7 +529,7 @@
               <li><a class="dropdown-item" href="<?= base_url('index/ps_iotsolution') ?>">IoT Solution</a></li>
             </ul>
           </li>
-          <li class="nav-item"><a class="nav-link" href="<?= base_url('index/news_event') ?>">News and Events</a></li>
+          <li class="nav-item"><a class="nav-link active" href="<?= base_url('index/news_event') ?>">News and Events</a></li>
           <li class="nav-item"><a class="nav-link" href="<?= base_url('index/library') ?>">Library</a></li>
           <li class="nav-item"><a class="nav-link" href="<?= base_url('index/contact_us') ?>">Contact Us</a></li>
         </ul>
@@ -317,10 +537,14 @@
     </div>
   </nav>
 
-  <section class="section news-section">
-   <br><br> <h2>News and Updates</h2>
-    <div class="content-container">
-      <div class="news-card">
+  <!-- Offset for fixed navbar -->
+  <div style="margin-top: 90px;"></div>
+
+  <!-- News and Updates Section -->
+  <section class="section-light-blue">
+    <h2 class="fade-in align-middle  text-center" >News and Updates</h2>
+    <div class="content-container pt-4">
+      <div class="news-card fade-in delay-1">
         <img src="https://placehold.co/400x200/cccccc/333333?text=Latest+News" alt="Latest news article.">
         <div class="news-card-content">
           <h3>Company Announcements</h3>
@@ -328,7 +552,7 @@
           <a href="#">Read more</a>
         </div>
       </div>
-      <div class="news-card">
+      <div class="news-card fade-in delay-2">
         <img src="https://placehold.co/400x200/cccccc/333333?text=Product+Launch" alt="New product launch.">
         <div class="news-card-content">
           <h3>New Product Launch</h3>
@@ -336,7 +560,7 @@
           <a href="#">Explore</a>
         </div>
       </div>
-      <div class="news-card">
+      <div class="news-card fade-in delay-3">
         <img src="https://placehold.co/400x200/cccccc/333333?text=Industry+Insights" alt="Industry insights.">
         <div class="news-card-content">
           <h3>Industry Insights</h3>
@@ -346,11 +570,12 @@
       </div>
     </div>
   </section>
-  <hr>
-  <section class="section webinars-section">
-    <h2>Upcoming Webinars</h2>
-    <div class="content-container">
-      <div class="news-card">
+
+  <!-- Webinars Section -->
+  <section class="section-light-orange">
+    <h2 class="fade-in  text-center">Upcoming Webinars</h2>
+    <div class="content-container pt-4">
+      <div class="news-card fade-in delay-1">
         <img src="https://placehold.co/400x200/cccccc/333333?text=Webinar+1" alt="Webinar on IoT solutions.">
         <div class="news-card-content">
           <h3>Smart IoT Solutions</h3>
@@ -358,7 +583,7 @@
           <a href="#">Register now</a>
         </div>
       </div>
-      <div class="news-card">
+      <div class="news-card fade-in delay-2">
         <img src="https://placehold.co/400x200/cccccc/333333?text=Webinar+2" alt="Webinar on precision tools.">
         <div class="news-card-content">
           <h3>Mastering Precision Tools</h3>
@@ -366,7 +591,7 @@
           <a href="#">Learn more</a>
         </div>
       </div>
-      <div class="news-card">
+      <div class="news-card fade-in delay-3">
         <img src="https://placehold.co/400x200/cccccc/333333?text=Webinar+3" alt="Webinar on data analytics.">
         <div class="news-card-content">
           <h3>Data-Driven Decisions</h3>
@@ -376,11 +601,12 @@
       </div>
     </div>
   </section>
-  <hr>
-  <section class="section events-section">
-    <h2>Events and Exhibitions</h2>
-    <div class="content-container">
-      <div class="news-card">
+
+  <!-- Events and Exhibitions Section -->
+  <section class="section-white">
+    <h2 class="fade-in  text-center">Events and Exhibitions</h2>
+    <div class="content-container pt-4">
+      <div class="news-card  fade-in delay-1">
         <img src="https://placehold.co/400x200/cccccc/333333?text=Event+1" alt="Industry trade show.">
         <div class="news-card-content">
           <h3>Global Tech Expo</h3>
@@ -388,7 +614,7 @@
           <a href="#">Find out more</a>
         </div>
       </div>
-      <div class="news-card">
+      <div class="news-card fade-in delay-2">
         <img src="https://placehold.co/400x200/cccccc/333333?text=Event+2" alt="Product seminar.">
         <div class="news-card-content">
           <h3>Technical Seminar</h3>
@@ -396,7 +622,7 @@
           <a href="#">View schedule</a>
         </div>
       </div>
-      <div class="news-card">
+      <div class="news-card fade-in delay-3">
         <img src="https://placehold.co/400x200/cccccc/333333?text=Event+3" alt="Client showcase event.">
         <div class="news-card-content">
           <h3>Client Showcase</h3>
@@ -406,24 +632,29 @@
       </div>
     </div>
   </section>
-  <hr>
+
+  <!-- Footer -->
   <footer>
-    <div class="top">
+    <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap">
       <h2>Get in Touch with Us</h2>
       <div>
-        <button class="btn btn-primary">Contact</button>
-        <button class="btn btn-secondary">Consult</button>
+        <a href="<?= base_url('index/contact_us') ?>" class="btn btn-orange">Contact</a>
+        <a href="<?= base_url('index/contact_us') ?>" class="btn btn-outline-blue">Consult</a>
       </div>
     </div>
-    <p>We’re here to assist with your inquiries and needs.</p>
-    <div class="middle">
-      <img src="<?= base_url('assets_system/images/header_logo.png') ?>" alt="Logo">
+    <p>We're here to assist with your inquiries and needs.</p>
+    <hr class="my-4">
+    <div class="d-flex justify-content-between flex-wrap align-items-center">
+      <img src="<?= base_url('assets_system/images/footer_logo.png') ?>" height="40" alt="Logo">
       <div class="links">
-        <a href="#">Product Overview</a>
-        <a href="#">Engineering Services</a>
-        <a href="#">Case Studies</a>
-        <a href="#">Latest News</a>
-        <a href="#">Contact Us</a>
+        <a href="<?= base_url() ?>">Home</a>
+        <a href="<?= base_url('index/about_us') ?>">About Us</a>
+        <a href="<?= base_url('index/ps_prod') ?>">Products</a>
+        <a href="<?= base_url('index/ps_serv_simulation') ?>">Services</a>
+        <a href="<?= base_url('index/ps_iotsolution') ?>">IoT Solution</a>
+        <a href="<?= base_url('index/news_event') ?>">News and Events</a>
+        <a href="<?= base_url('index/library') ?>">Library</a>
+        <a href="<?= base_url('index/contact_us') ?>">Contact Us</a>
       </div>
       <div class="socials">
         <a href="#"><i class="fab fa-facebook-f"></i></a>
@@ -433,17 +664,45 @@
         <a href="#"><i class="fab fa-youtube"></i></a>
       </div>
     </div>
-    <div class="bottom">
+    <div class="bottom mt-4">
       <span>© 2025 Line Seiki Asia Pacific. All rights reserved.</span>
       <a href="#">Privacy Policy</a>
       <a href="#">Terms of Service</a>
       <a href="#">Cookie Settings</a>
     </div>
   </footer>
+
+  <!-- Bootstrap 5 JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
   <script>
     document.addEventListener("DOMContentLoaded", function(){
+      // Navbar scroll effect
+      const navbar = document.querySelector('.navbar');
+      window.addEventListener('scroll', function() {
+        if (window.scrollY > 50) {
+          navbar.classList.add('scrolled');
+        } else {
+          navbar.classList.remove('scrolled');
+        }
+      });
+      
+      // Fade-in animation on scroll
+      const fadeElements = document.querySelectorAll('.fade-in');
+      
+      const fadeObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, { threshold: 0.15 });
+      
+      fadeElements.forEach(el => {
+        fadeObserver.observe(el);
+      });
+
+      // Submenu functionality
       document.querySelectorAll('.dropdown-submenu > a').forEach(function(element){
         element.addEventListener('click', function(e){
           e.preventDefault();

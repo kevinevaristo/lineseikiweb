@@ -626,7 +626,7 @@
     <p>We're here to assist with your inquiries and needs.</p>
     <hr class="my-4">
     <div class="d-flex justify-content-between flex-wrap align-items-center">
-      <img src=<?= base_url('assets_system/images/header_logo.png') ?> height="40" alt="Logo">
+      <img src=<?= base_url('assets_system/images/footer_logo.png') ?> height="40" alt="Logo">
       <div class="links">
         <a href="<?= base_url() ?>">Home</a>
         <a href="<?= base_url('index/about_us') ?>">About Us</a>
