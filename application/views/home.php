@@ -541,7 +541,7 @@
           </div>
         </div>
         <div class="col-lg-6 fade-in delay-1">
-          <img src=<?= base_url('assets_system/images/model.jpg') ?> alt="Section 2">
+          <img src=<?= base_url('assets_system/images/LS.jpg') ?> alt="Section 2">
         </div>
       </div>
     </div>
