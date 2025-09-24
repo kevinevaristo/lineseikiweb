@@ -554,10 +554,10 @@
     <div class="container">
       <h2 class="fade-in">Our Partners and Associations</h2>
       <div class="d-flex justify-content-center flex-wrap partner-logos">
-        <img src=<?= base_url('assets_system/images/macos.png') ?> alt="Partner 1" class="fade-in delay-1">
-        <img src=<?= base_url('assets_system/images/microsoft.jpg') ?> alt="Partner 2" class="fade-in delay-2">
-        <img src=<?= base_url('assets_system/images/burgerking.png') ?> alt="Partner 3" class="fade-in delay-3">
-        <img src=<?= base_url('assets_system/images/abscbn.png') ?> alt="Partner 4" class="fade-in delay-4">
+        <img src=<?= base_url('assets_system/images/kvc.png') ?> alt="Partner 1" class="fade-in delay-1">
+        <img src=<?= base_url('assets_system/images/jaytron.jpg') ?> alt="Partner 2" class="fade-in delay-2">
+        <img src=<?= base_url('assets_system/images/SCM.png') ?> alt="Partner 3" class="fade-in delay-3">
+        <img src=<?= base_url('assets_system/images/LSI.jpg') ?> alt="Partner 4" class="fade-in delay-4">
       </div>
     </div>
   </section>
