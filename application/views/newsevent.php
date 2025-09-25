@@ -545,7 +545,7 @@
     <h2 class="fade-in align-middle  text-center" >News and Updates</h2>
     <div class="content-container pt-4">
       <div class="news-card fade-in delay-1">
-        <img src="https://placehold.co/400x200/cccccc/333333?text=Latest+News" alt="Latest news article.">
+      <img src=<?= base_url('assets_system/images/newlaunch4.jpg') ?>  alt="Latest news article.">
         <div class="news-card-content">
           <h3>Company Announcements</h3>
           <p>Stay up-to-date with our official announcements, product releases, and company news.</p>
@@ -553,7 +553,7 @@
         </div>
       </div>
       <div class="news-card fade-in delay-2">
-        <img src="https://placehold.co/400x200/cccccc/333333?text=Product+Launch" alt="New product launch.">
+        <img src=<?= base_url('assets_system/images/newlaunch1.jpg') ?> alt="New product launch.">
         <div class="news-card-content">
           <h3>New Product Launch</h3>
           <p>Discover our latest innovation designed to enhance efficiency and precision in your operations.</p>
@@ -561,7 +561,7 @@
         </div>
       </div>
       <div class="news-card fade-in delay-3">
-        <img src="https://placehold.co/400x200/cccccc/333333?text=Industry+Insights" alt="Industry insights.">
+        <img src=<?= base_url('assets_system/images/newlaunch3.jpg') ?> alt="Industry insights.">
         <div class="news-card-content">
           <h3>Industry Insights</h3>
           <p>Read our latest articles and insights on industry trends and technological advancements.</p>
@@ -576,7 +576,7 @@
     <h2 class="fade-in  text-center">Upcoming Webinars</h2>
     <div class="content-container pt-4">
       <div class="news-card fade-in delay-1">
-        <img src="https://placehold.co/400x200/cccccc/333333?text=Webinar+1" alt="Webinar on IoT solutions.">
+        <img src=<?= base_url('assets_system/images/webinar4.jpg') ?>  alt="Webinar on IoT solutions.">
         <div class="news-card-content">
           <h3>Smart IoT Solutions</h3>
           <p>Join our expert-led webinar on integrating smart solutions for seamless operational control.</p>
@@ -584,7 +584,7 @@
         </div>
       </div>
       <div class="news-card fade-in delay-2">
-        <img src="https://placehold.co/400x200/cccccc/333333?text=Webinar+2" alt="Webinar on precision tools.">
+        <img src=<?= base_url('assets_system/images/webinar2.jpg') ?> alt="Webinar on precision tools.">
         <div class="news-card-content">
           <h3>Mastering Precision Tools</h3>
           <p>A deep dive into our new line of precision instruments and how to use them effectively.</p>
@@ -592,7 +592,7 @@
         </div>
       </div>
       <div class="news-card fade-in delay-3">
-        <img src="https://placehold.co/400x200/cccccc/333333?text=Webinar+3" alt="Webinar on data analytics.">
+        <img src=<?= base_url('assets_system/images/webinar5.jpg') ?> alt="Webinar on data analytics.">
         <div class="news-card-content">
           <h3>Data-Driven Decisions</h3>
           <p>Understand how to leverage real-time data from our systems to make smarter decisions.</p>
@@ -607,7 +607,7 @@
     <h2 class="fade-in  text-center">Events and Exhibitions</h2>
     <div class="content-container pt-4">
       <div class="news-card  fade-in delay-1">
-        <img src="https://placehold.co/400x200/cccccc/333333?text=Event+1" alt="Industry trade show.">
+        <img src=<?= base_url('assets_system/images/event1.jpg') ?> alt="Industry trade show.">
         <div class="news-card-content">
           <h3>Global Tech Expo</h3>
           <p>Join us at the largest tech expo of the year to witness our live product demonstrations.</p>
@@ -615,7 +615,7 @@
         </div>
       </div>
       <div class="news-card fade-in delay-2">
-        <img src="https://placehold.co/400x200/cccccc/333333?text=Event+2" alt="Product seminar.">
+        <img src=<?= base_url('assets_system/images/event3.jpg') ?> alt="Product seminar.">
         <div class="news-card-content">
           <h3>Technical Seminar</h3>
           <p>A series of talks by our engineers on the latest advancements in industrial measurement.</p>
@@ -623,7 +623,7 @@
         </div>
       </div>
       <div class="news-card fade-in delay-3">
-        <img src="https://placehold.co/400x200/cccccc/333333?text=Event+3" alt="Client showcase event.">
+        <img src=<?= base_url('assets_system/images/event4.jpg') ?> alt="Client showcase event.">
         <div class="news-card-content">
           <h3>Client Showcase</h3>
           <p>See how our solutions have transformed businesses and discover real-world case studies.</p>
