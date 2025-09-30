@@ -326,17 +326,18 @@
     }
     
     .btn-outline-blue {
-      background: transparent;
-      border: 2px solid var(--primary-blue);
-      color: var(--primary-blue);
+      background: white;
+      border: none;
+      color: black;
     }
     
-    .btn-outline-blue:hover {
-      background: var(--primary-blue);
-      color: #fff;
-      transform: translateY(-3px);
-      box-shadow: 0 8px 20px rgba(13, 110, 253, 0.3);
-    }
+   footer .btn.no-hover:hover {
+  background: none !important;
+  color: black !important;
+  box-shadow: none !important;
+  transform: none !important;
+}
+
 
     /* Footer */
     footer {
