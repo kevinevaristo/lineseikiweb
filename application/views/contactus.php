@@ -189,7 +189,7 @@
     }
     
     .section-light-orange {
-      background: var(--light-orange);
+      background: var(--light-blue);
       color: #333;
       position: relative;
       overflow: hidden;
