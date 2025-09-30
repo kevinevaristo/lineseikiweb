@@ -770,6 +770,18 @@
         max-width: 250px;
       }
     }
+    .cta-title::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: -15px;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 4px;
+  background: linear-gradient(90deg, var(--primary-orange), var(--primary-blue));
+  border-radius: 2px;
+}
+
   </style>
 </head>
 <body>
@@ -882,7 +894,7 @@
   <section class="section-white">
     <div class="case-studies">
       <div class="container">
-        <h2 class="fade-in">Case Studies</h2>
+        <h2 class="fade-in">Case Studies</h2><br>
         <p class="subtitle fade-in delay-1">Real-world examples from past clients</p>
 
         <div class="case-grid">
@@ -928,7 +940,7 @@
           <div class="icon-header">
             <i class="fas fa-file-upload"></i>
           </div>
-          <h2>Project Submission</h2>
+          <h2>Project Submission</h2><br>
           <p class="description">Upload your CAD models or design drawings to receive a detailed quote.</p>
           <label for="file-upload" class="custom-file-upload">
             <i class="fas fa-paperclip"></i> Select File
@@ -951,7 +963,6 @@
         </p>
         <div class="cta-buttons">
           <a href="<?= base_url('index/contact_us') ?>" class="btn btn-orange">INQUIRE</a>
-          <a href="<?= base_url('index/contact_us') ?>" class="btn btn-outline-blue">PURCHASE</a>
         </div>
       </div>
     </div>
