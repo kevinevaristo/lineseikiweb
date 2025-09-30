@@ -298,12 +298,14 @@
 
     /* Partner logos */
     .partner-logos img {
-      max-height: 80px;
-            max-width: 120px;
-      margin: 20px;
-      filter: grayscale(0%);
-      transition: var(--transition);
-    }
+    max-height: 100px;   /* increased from 80px */
+    max-width: 200px;    /* increased from 120px */
+    margin: 20px 30px;   /* little more horizontal spacing */
+    object-fit: contain; /* keeps logos from stretching */
+    filter: grayscale(0%);
+    transition: var(--transition);
+}
+
     .partner-logos img:hover {
       filter: grayscale(0%);
       transform: scale(1.05);
@@ -539,12 +541,12 @@
     <div class="container">
       <h2 class="fade-in">Mission and Vision</h2>
       <p class="mb-4 fade-in delay-1">
-        <strong>Mission:</strong> To provide innovative, reliable, and cost-effective measurement and monitoring solutions 
-        that empower businesses to operate with precision and efficiency.  
+        <strong>Mission:</strong> We will pursue happiness of all people associated with Line Seiki, including customers, colleagues, and their families, and support each individual 
+        to realize their dreams through our business activities.  
       </p>
       <p class="fade-in delay-2">
-        <strong>Vision:</strong> To be recognized as a global leader in measurement technology, trusted for excellence, 
-        innovation, and commitment to customer success.
+        <strong>Vision:</strong> We aim to be an organization that constantly creates new values by utilizing the know-how and network from our extensive experience, 
+        and by understanding the needs of society without being misled by short-term immediate changes.
       </p>
     </div>
   </section>

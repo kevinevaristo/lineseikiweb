@@ -452,6 +452,7 @@
         display: block;
         margin-bottom: 12px;
       }
+      
     }
     /* Fullscreen carousel */
 #heroCarousel .carousel-item {
