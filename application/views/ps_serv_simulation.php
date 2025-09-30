@@ -26,6 +26,8 @@
       --light-orange: #fff3e8;
       --light-gray: #f8f9fa;
       --dark: #212529;
+      --newblue: #17A2DC;
+      --newblue2: #0F467B;
       --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
     }
 
@@ -48,13 +50,13 @@
       backdrop-filter: blur(10px);
       padding: 0.8rem 5%;
       transition: var(--transition);
-      box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+      
       border-bottom: 1px solid rgba(13, 110, 253, 0.1);
     }
     
     .navbar.scrolled {
       padding: 0.6rem 5%;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      
     }
     
     .navbar-nav .nav-link {
@@ -80,7 +82,7 @@
       height: 2px;
       bottom: 0;
       left: 50%;
-      background-color: var(--primary-orange);
+      background-color: var(--newblue);
       transition: var(--transition);
     }
     
@@ -94,7 +96,7 @@
       backdrop-filter: blur(10px);
       border: 1px solid rgba(0, 0, 0, 0.1);
       border-radius: 12px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+      
       padding: 0.8rem 0;
       margin-top: 0.8rem;
       animation: fadeIn 0.3s ease;
@@ -113,7 +115,7 @@
     }
     
     .dropdown-item:hover {
-      background-color: var(--primary-orange);
+      background-color: var(--primary-blue);
       color: #000;
       padding-left: 2rem;
     }
@@ -143,14 +145,14 @@
     section img {
       width: 100%;
       border-radius: 16px;
-      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+      
       transition: var(--transition);
       transform: translateY(0);
     }
     
     section img:hover {
       transform: translateY(-5px);
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+      
     }
     
     section h1, section h2 {
@@ -176,7 +178,7 @@
       bottom: -10px;
       width: 60px;
       height: 4px;
-      background: linear-gradient(90deg, var(--primary-orange), var(--primary-blue));
+      background: linear-gradient(90deg, var(--newblue), var(--primary-blue));
       border-radius: 2px;
     }
     
@@ -205,7 +207,7 @@
     }
     
     .section-light-orange {
-      background: var(--light-orange);
+      background: var(--light-blue);
       color: #333;
       position: relative;
       overflow: hidden;
@@ -241,26 +243,26 @@
     .btn-primary {
       background: linear-gradient(135deg, var(--primary-blue), var(--primary-blue-dark));
       border: none;
-      box-shadow: 0 5px 15px rgba(13, 110, 253, 0.3);
+      
     }
     
     .btn-primary:hover {
       background: linear-gradient(135deg, var(--primary-blue-dark), var(--primary-blue));
       transform: translateY(-3px);
-      box-shadow: 0 8px 20px rgba(13, 110, 253, 0.4);
+      
     }
     
     .btn-orange {
-      background: linear-gradient(135deg, var(--primary-orange), var(--primary-orange-dark));
+      background: linear-gradient(135deg, var(--newblue2), var(--newblue));
       border: none;
       color: white;
-      box-shadow: 0 5px 15px rgba(253, 126, 20, 0.3);
+      
     }
     
     .btn-orange:hover {
-      background: linear-gradient(135deg, var(--primary-orange-dark), var(--primary-orange));
+      background: linear-gradient(135deg, var(--newblue2), var(--));
       transform: translateY(-3px);
-      box-shadow: 0 8px 20px rgba(253, 126, 20, 0.4);
+      
       color: white;
     }
     
@@ -274,7 +276,7 @@
       background: var(--primary-blue);
       color: #fff;
       transform: translateY(-3px);
-      box-shadow: 0 8px 20px rgba(13, 110, 253, 0.3);
+      
     }
     
     /* Types Grid */
@@ -300,7 +302,7 @@
       transform: translateX(-50%);
       width: 60px;
       height: 4px;
-      background: linear-gradient(90deg, var(--primary-orange), var(--primary-blue));
+      background: linear-gradient(90deg, var(--newblue), var(--primary-blue));
       border-radius: 2px;
     }
     
@@ -315,7 +317,7 @@
       background: #fff;
       padding: 30px 25px;
       border-radius: 16px;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+      
       transition: var(--transition);
       text-align: center;
       border: 1px solid rgba(13, 110, 253, 0.1);
@@ -323,7 +325,7 @@
     
     .type-card:hover {
       transform: translateY(-8px);
-      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+      
     }
     
     .type-card img {
@@ -359,7 +361,7 @@
     }
     
     .type-card .see-more:hover {
-      background: var(--primary-orange);
+      background: var(--newblue);
       transform: translateY(-2px);
     }
     
@@ -390,7 +392,7 @@
       transform: translateX(-50%);
       width: 60px;
       height: 4px;
-      background: linear-gradient(90deg, var(--primary-orange), var(--primary-blue));
+      background: linear-gradient(90deg, var(--newblue), var(--primary-blue));
       border-radius: 2px;
     }
     
@@ -414,14 +416,14 @@
       background: #fff;
       border-radius: 16px;
       overflow: hidden;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+      
       transition: var(--transition);
       border: 1px solid rgba(13, 110, 253, 0.1);
     }
     
     .case-card:hover {
       transform: translateY(-8px);
-      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+      
     }
     
     .case-card img {
@@ -460,7 +462,7 @@
     }
     
     .card-content a:hover {
-      color: var(--primary-orange);
+      color: var(--newblue);
     }
     
     .card-content a::after {
@@ -538,7 +540,7 @@
     }
     
     .submit-project-btn {
-      background: var(--primary-orange);
+      background: var(--newblue2);
       color: white;
       padding: 12px 30px;
       border: none;
@@ -551,7 +553,7 @@
     }
     
     .submit-project-btn:hover {
-      background: var(--primary-orange-dark);
+      background: var(--newblue);
       transform: translateY(-2px);
     }
     
@@ -616,7 +618,7 @@
     }
     
     footer h2 {
-      color: var(--primary-orange);
+      color: white;
       font-weight: 700;
     }
     
@@ -636,12 +638,12 @@
       height: 2px;
       bottom: -4px;
       left: 0;
-      background-color: var(--primary-orange);
+      background-color: var(--newblue2);
       transition: var(--transition);
     }
     
     footer .links a:hover {
-      color: var(--primary-orange);
+      color: white;
     }
     
     footer .links a:hover::after {
@@ -657,7 +659,7 @@
     }
     
     footer .socials a:hover {
-      color: var(--primary-orange);
+      color: var(--newblue2);
       transform: translateY(-3px);
     }
     
@@ -677,7 +679,7 @@
     }
     
     footer .bottom a:hover {
-      color: var(--primary-orange);
+      color: var(--newblue2);
     }
     
     hr {
@@ -778,7 +780,7 @@
   transform: translateX(-50%);
   width: 60px;
   height: 4px;
-  background: linear-gradient(90deg, var(--primary-orange), var(--primary-blue));
+  background: linear-gradient(90deg, var(--newblue), var(--primary-blue));
   border-radius: 2px;
 }
 

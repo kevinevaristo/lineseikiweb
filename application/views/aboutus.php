@@ -152,7 +152,7 @@
     
     section img:hover {
       transform: translateY(-5px);
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+      
     }
     
     section h1, section h2 {
@@ -202,7 +202,7 @@
     }
     
     .section-light-orange {
-      background: var(--light-orange);
+      background: var(--light-blue);
       color: #333;
       position: relative;
       overflow: hidden;
@@ -251,13 +251,13 @@
       background: linear-gradient(135deg, var(--newblue2), var(--newblue));
       border: none;
       color: white;
-      box-shadow: 0 5px 15px rgba(253, 126, 20, 0.3);
+      
     }
     
     .btn-orange:hover {
       background: linear-gradient(135deg, var(--newblue2), var(--));
       transform: translateY(-3px);
-      box-shadow: 0 8px 20px rgba(253, 126, 20, 0.4);
+      
       color: white;
     }
     
