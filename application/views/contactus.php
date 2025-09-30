@@ -554,6 +554,12 @@
 body > div[style*="margin-top: 90px"] {
   display: none !important;
 }
+/* Center align the gradient line under all h2 */
+section h2::after {
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+}
+
 
   </style>
 </head>

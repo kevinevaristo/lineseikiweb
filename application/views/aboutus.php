@@ -541,7 +541,7 @@ body > div[style*="height: 90px"] {
   <!-- Header Section -->
   <section class="section-white text-center">
     <div class="container">
-      <h1 class="fade-in">About Line Seiki Asia Pacific</h1>
+      <br><br><br><br><h1 class="fade-in">About Line Seiki Asia Pacific</h1>
       <p class="lead fade-in delay-1">
         Line Seiki Asia Pacific serves as the dedicated sales arm of Line Seiki, delivering 
         innovative measuring instruments and industrial solutions.  
