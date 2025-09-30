@@ -540,7 +540,7 @@
     }
     
     .submit-project-btn {
-      background: var(--newblue2);
+      background: var(--newblue);
       color: white;
       padding: 12px 30px;
       border: none;
@@ -553,13 +553,13 @@
     }
     
     .submit-project-btn:hover {
-      background: var(--newblue);
+      background: var(--newblue2);
       transform: translateY(-2px);
     }
     
     /* CTA Card */
     .cta-card {
-      background: linear-gradient(135deg, var(--primary-blue), var(--primary-blue-dark));
+      background: var(--newblue2);
       color: #fff;
       border-radius: 20px;
       box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
@@ -599,7 +599,7 @@
     
     /* Footer */
     footer {
-      background: linear-gradient(135deg, var(--primary-blue), var(--primary-blue-dark));
+      background: linear-gradient(135deg, var(--newblue2), var(--newblue));
       color: white;
       padding: 80px 10% 40px;
       position: relative;
