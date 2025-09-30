@@ -96,7 +96,6 @@
       backdrop-filter: blur(10px);
       border: 1px solid rgba(0, 0, 0, 0.1);
       border-radius: 12px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
       padding: 0.8rem 0;
       margin-top: 0.8rem;
       animation: fadeIn 0.3s ease;
@@ -238,13 +237,13 @@
     .btn-primary {
       background: linear-gradient(135deg, var(--primary-blue), var(--primary-blue-dark));
       border: none;
-      box-shadow: 0 5px 15px rgba(13, 110, 253, 0.3);
+      
     }
     
     .btn-primary:hover {
       background: linear-gradient(135deg, var(--primary-blue-dark), var(--primary-blue));
       transform: translateY(-3px);
-      box-shadow: 0 8px 20px rgba(13, 110, 253, 0.4);
+      
     }
     
     .btn-orange {
@@ -271,7 +270,7 @@
       background: var(--primary-blue);
       color: #fff;
       transform: translateY(-3px);
-      box-shadow: 0 8px 20px rgba(13, 110, 253, 0.3);
+      
     }
     
     .btn-link {

@@ -225,7 +225,7 @@
     .btn-primary {
       background: linear-gradient(135deg, var(--primary-blue), var(--primary-blue-dark));
       border: none;
-      box-shadow: 0 5px 15px rgba(13, 110, 253, 0.3);
+      
     }
     
     .btn-primary:hover {
@@ -238,13 +238,13 @@
       background: linear-gradient(135deg, var(--newblue2), var(--newblue));
       border: none;
       color: white;
-      box-shadow: 0 5px 15px rgba(253, 126, 20, 0.3);
+      
     }
     
     .btn-orange:hover {
       background: linear-gradient(135deg, var(--newblue2), var(--));
       transform: translateY(-3px);
-      box-shadow: 0 8px 20px rgba(253, 126, 20, 0.4);
+      box-shadow: 0 8px 20px rgba(13, 110, 253, 0.4);
       color: white;
     }
     
