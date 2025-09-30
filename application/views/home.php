@@ -255,11 +255,7 @@
     }
     
     .btn-orange:hover {
-<<<<<<< HEAD
       background: linear-gradient(135deg, var(--newblue), var(--newblue2));
-=======
-      background: linear-gradient(135deg, var(--newblue2), var(--));
->>>>>>> bc9b39f55754fb7742f80695212a10bb1e0b0e8f
       transform: translateY(-3px);
       box-shadow: 0 8px 20px rgba(253, 126, 20, 0.4);
       color: white;
@@ -535,11 +531,7 @@
   width: 60px;
   height: 4px;
   margin-top: 8px;
-<<<<<<< HEAD
   background: linear-gradient(90deg, var(--newblue), var(--primary-blue));
-=======
-  background: linear-gradient(90deg, var(--newblue), var(--primary-blue));
->>>>>>> bc9b39f55754fb7742f80695212a10bb1e0b0e8f
   border-radius: 2px;
 }
 .cta-title::after {
