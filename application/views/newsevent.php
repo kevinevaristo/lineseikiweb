@@ -499,7 +499,11 @@
         margin-bottom: 12px;
       }
     }
-    
+/* Remove the spacer div under the navbar */
+body > div[style*="margin-top: 90px"] {
+  display: none !important;
+}
+
   </style>
 </head>
 <body>

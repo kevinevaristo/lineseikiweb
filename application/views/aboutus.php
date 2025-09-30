@@ -477,6 +477,10 @@ footer h2::after {
   left: 50% !important;
   transform: translateX(-50%);
 }
+/* Remove the artificial spacer under navbar */
+body > div[style*="height: 90px"] {
+  display: none !important;
+}
 
   </style>
 </head>

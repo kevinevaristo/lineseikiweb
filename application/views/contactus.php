@@ -526,6 +526,10 @@
   transform: translateY(-3px);
   box-shadow: 0 8px 20px rgba(13, 110, 253, 0.3);
 }
+/* Remove the spacer div under navbar */
+body > div[style*="margin-top: 90px"] {
+  display: none !important;
+}
 
   </style>
 </head>
@@ -581,7 +585,7 @@
       <div class="container">
         <div class="row align-items-center">
           <div class="col-lg-8 mx-auto text-center fade-in">
-            <h1>We'd Love to Hear from You</h1>
+            <br><br><br><br><h1>We'd Love to Hear from You</h1>
             <p class="lead">Get in touch with Line Seiki Asia Pacific for inquiries, product support, or to schedule a consultation. Our team is ready to help you with precision measuring solutions tailored to your needs.</p>
           </div>
         </div>

@@ -466,10 +466,14 @@
   align-items: center;
 }
 
-/* Hide the inline images (still there for SEO/fallback) */
+/* Show carousel images beneath header */
 #heroCarousel .carousel-item img {
-  display: none;
+  display: block !important;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
 }
+
 /* 🔹 Make carousel fade smoother */
 .carousel.carousel-fade .carousel-item {
   opacity: 0;
@@ -551,6 +555,11 @@ section h2::after {
   transform: translateX(-50%);
   background: linear-gradient(90deg, var(--newblue2), var(--newblue)) !important;
 }
+/* Remove the artificial gap below navbar */
+body > div[style*="margin-top:90px"] {
+  display: none !important;
+}
+
   </style>
 </head>
 <body>
