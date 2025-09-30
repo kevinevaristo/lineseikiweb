@@ -229,16 +229,16 @@
 
     /* CTA Section */
     .cta {
-      background: linear-gradient(135deg, var(--newblue2), var(--newblue));
+      background: var(--light-blue);
       color: white;
       text-align: center;
       padding: 80px 10%;
     }
     
-    .cta h2 {
+    .cta h1 {
       font-size: 2.2rem;
       margin-bottom: 20px;
-      color: #fff;
+      color: var(--primary-blue);
     }
     
     .cta p {
@@ -247,6 +247,7 @@
       max-width: 700px;
       margin-left: auto;
       margin-right: auto;
+      color: black
     }
 
     /* Buttons */
@@ -298,8 +299,6 @@
     .btn-orange:hover {
       background: linear-gradient(135deg, var(--newblue2), var(--));
       transform: translateY(-3px);
-      
-      color: white;
     }
     
     .btn-light {
@@ -307,8 +306,8 @@
       border: none;
       color: var(--primary-blue);
       box-shadow: 0 5px 15px rgba(255, 255, 255, 0.2);
+        border-color: #000;
     }
-    
     .btn-light:hover {
       background: #fff;
       color: var(--primary-blue-dark);
@@ -472,6 +471,19 @@
         margin-bottom: 12px;
       }
     }
+    /* Make INQUIRE button match Contact button */
+.cta .btn-light {
+  background: linear-gradient(135deg, var(--newblue2), var(--newblue)) !important;
+  color: white !important;
+  border: none !important;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.cta .btn-light:hover {
+  background: linear-gradient(135deg, var(--newblue), var(--newblue2)) !important;
+  transform: translateY(-3px);
+}
+
   </style>
 </head>
 <body>
@@ -612,7 +624,7 @@
 
   <!-- CTA Section -->
   <section class="cta">
-    <h2 class="fade-in">Looking for the Right Measuring Solution?</h2>
+    <h1 class="fade-in">Looking for the Right Measuring Solution?</h2>
     <p class="fade-in delay-1">Contact us today to discuss your requirements and find the perfect product for your needs.</p>
     <a href="<?= base_url('index/contact_us') ?>" class="btn btn-light fade-in delay-2">INQUIRE</a>
   </section>
