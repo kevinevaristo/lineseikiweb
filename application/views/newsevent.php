@@ -273,7 +273,7 @@
     }
 
     /* Buttons */
-    .btn {
+  .btn {
       padding: 0.8rem 1.8rem;
       border-radius: 8px;
       font-weight: 600;
@@ -284,7 +284,7 @@
     }
     
     .btn::before {
-      content: '';
+      content: '';                            
       position: absolute;
       top: 0;
       left: 0;
@@ -312,7 +312,7 @@
     }
     
     .btn-orange {
-      background: linear-gradient(135deg, var(--newblue), var(--newblue2));
+      background: linear-gradient(135deg, var(--newblue2), var(--newblue));
       border: none;
       color: white;
       box-shadow: 0 5px 15px rgba(253, 126, 20, 0.3);
@@ -325,19 +325,42 @@
       color: white;
     }
     
-    .btn-outline-blue {
-      background: white;
-      border: none;
-      color: black;
+    .btn-explore {
+      background: transparent;
+      border: 2px solid var(--primary-blue);
+      color: var(--primary-blue);
     }
     
-   footer .btn.no-hover:hover {
-  background: none !important;
-  color: black !important;
-  box-shadow: none !important;
-  transform: none !important;
-}
-
+    .btn-explore:hover {
+      background: var(--primary-blue);
+      color: #fff;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(13, 110, 253, 0.3);
+    }
+    
+    .btn-link {
+      text-decoration: none;
+      position: relative;
+    }
+    
+    .btn-link span {
+      position: relative;
+    }
+    
+    .btn-link span::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -4px;
+      left: 0;
+      background-color: currentColor;
+      transition: var(--transition);
+    }
+    
+    .btn-link:hover span::after {
+      width: 100%;
+    }
 
     /* Footer */
     footer {
@@ -647,7 +670,7 @@ body > div[style*="margin-top: 90px"] {
       <h2>Get in Touch with Us</h2>
       <div>
         <a href="<?= base_url('index/contact_us') ?>" class="btn btn-orange">Contact</a>
-        <a href="<?= base_url('index/contact_us') ?>" class="btn btn-outline-blue">Consult</a>
+        <a href="<?= base_url('index/contact_us') ?>" class="btn btn-light">Consult</a>
       </div>
     </div>
     <p>We're here to assist with your inquiries and needs.</p>

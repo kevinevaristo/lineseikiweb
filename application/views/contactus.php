@@ -207,7 +207,7 @@
     }
     
     .btn::before {
-      content: '';
+      content: '';                            
       position: absolute;
       top: 0;
       left: 0;
@@ -248,17 +248,41 @@
       color: white;
     }
     
-    .btn-outline-blue {
+    .btn-explore {
       background: transparent;
       border: 2px solid var(--primary-blue);
       color: var(--primary-blue);
     }
     
-    .btn-outline-blue:hover {
+    .btn-explore:hover {
       background: var(--primary-blue);
       color: #fff;
       transform: translateY(-3px);
       box-shadow: 0 8px 20px rgba(13, 110, 253, 0.3);
+    }
+    
+    .btn-link {
+      text-decoration: none;
+      position: relative;
+    }
+    
+    .btn-link span {
+      position: relative;
+    }
+    
+    .btn-link span::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -4px;
+      left: 0;
+      background-color: currentColor;
+      transition: var(--transition);
+    }
+    
+    .btn-link:hover span::after {
+      width: 100%;
     }
 
     /* Image hover effect */
@@ -713,7 +737,7 @@ body > div[style*="margin-top: 90px"] {
       <h2>Get in Touch with Us</h2>
       <div>
         <a href="<?= base_url('index/contact_us') ?>" class="btn btn-orange">Contact</a>
-        <a href="<?= base_url('index/contact_us') ?>" class="btn btn-outline-light">Consult</a>
+        <a href="<?= base_url('index/contact_us') ?>" class="btn btn-light">Consult</a>
       </div>
     </div>
     <p>We're here to assist with your inquiries and needs.</p>
