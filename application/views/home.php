@@ -453,6 +453,87 @@
         margin-bottom: 12px;
       }
     }
+    /* Fullscreen carousel */
+#heroCarousel .carousel-item {
+  height: 100vh; /* full screen height */
+  min-height: 600px;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+}
+
+/* Hide the inline images (still there for SEO/fallback) */
+#heroCarousel .carousel-item img {
+  display: none;
+}
+/* 🔹 Make carousel fade smoother */
+.carousel.carousel-fade .carousel-item {
+  opacity: 0;
+  transition-property: opacity;
+  transition-duration: 1.5s; /* smoother speed */
+  transition-timing-function: ease-in-out;
+}
+
+.carousel.carousel-fade .carousel-item.active,
+.carousel.carousel-fade .carousel-item-next.carousel-item-start,
+.carousel.carousel-fade .carousel-item-prev.carousel-item-end {
+  opacity: 1;
+}
+
+.carousel.carousel-fade .active.carousel-item-start,
+.carousel.carousel-fade .active.carousel-item-end {
+  opacity: 0;
+}
+/* 🔹 Transparent overlay across the whole slide */
+#heroCarousel .carousel-item::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.55); /* adjust transparency */
+  z-index: 1; /* sits above background image */
+}
+
+/* 🔹 Keep text above overlay, aligned left */
+#heroCarousel .carousel-item .container {
+  position: relative;
+  z-index: 2; /* ensures text is above overlay */
+  max-width: 700px;
+  margin-left: 5%; /* push to left */
+  text-align: left;
+}
+
+/* 🔹 Hide carousel arrows */
+#heroCarousel .carousel-control-prev,
+#heroCarousel .carousel-control-next {
+  display: none !important;
+}
+/* 🔹 Gradient text for all carousel slide titles */
+#heroCarousel .carousel-item h1 {
+  background: linear-gradient(90deg, var(--primary-blue), #007bff);
+  -webkit-text-fill-color: transparent;
+  font-weight: 700;
+  position: relative;
+  display: inline-block;
+}
+
+/* 🔹 Gradient underline under the titles */
+#heroCarousel .carousel-item h1::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 4px;
+  margin-top: 8px;
+  background: linear-gradient(90deg, var(--primary-orange), var(--primary-blue));
+  border-radius: 2px;
+}
+
+
+
   </style>
 </head>
 <body>
@@ -509,82 +590,83 @@
   <!-- Offset for fixed navbar -->
   <div style="margin-top:90px"></div>
 
-  <!-- Section 1 (white) -->
-  <section class="section-white">
-    <div class="container">
-      <div class="row align-items-center">
-        <div class="col-lg-6 fade-in">
-          <h1>Innovative Solutions for Precision Measurement</h1>
-          <p>At Line Seiki Asia Pacific, we specialize in delivering high-quality measuring instruments and smart monitoring systems tailored to your needs.</p>
-          <div class="d-flex gap-3 flex-wrap">
-            <button class="btn btn-primary">Learn More</button>
-            <button class="btn btn-orange">Contact</button>
-          </div>
-        </div>
-        <div class="col-lg-6 fade-in delay-1">
-          <img src=<?= base_url('assets_system/images/home_main.jpg') ?> alt="Section 1">
-        </div>
-      </div>
-    </div>
-  </section>
+<!-- ✅ Carousel (fixed) -->
+<div id="heroCarousel" class="carousel slide carousel-fade fade-in" data-bs-ride="carousel" data-bs-interval="5000">
 
-  <!-- Section 2 (light blue) -->
-  <section class="section-light-blue">
-    <div class="container">
-      <div class="row align-items-center flex-row-reverse">
-        <div class="col-lg-6 fade-in">
-          <h2>Explore Our Standard Measuring Counters</h2>
-          <p>Our standard measuring counters deliver unmatched accuracy and reliability for various industrial applications.</p>
-          <div class="d-flex gap-3 align-items-center flex-wrap">
-            <button class="btn btn-primary">Learn More</button>
-            <button class="btn btn-link text-primary"><span>View</span> <i class="fas fa-angle-right"></i></button>
-          </div>
-        </div>
-        <div class="col-lg-6 fade-in delay-1">
-          <img src=<?= base_url('assets_system/images/LS.jpg') ?> alt="Section 2">
-        </div>
-      </div>
-    </div>
-  </section>
+  <!-- Indicators -->
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active"></button>
+    <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1"></button>
+    <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2"></button>
+    <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="3"></button>
+  </div>
 
-  <!-- Section 3 (white) -->
-  <section class="section-white">
-    <div class="container">
-      <div class="row align-items-center">
-        <div class="col-lg-6 fade-in">
-          <h2>Explore Our Comprehensive Engineering and Silicone Molding Services</h2>
-          <p>Our engineering services are designed to optimize your projects with precision and innovation.</p>
-        </div>
-        <div class="col-lg-6 fade-in delay-1">
-          <img src=<?= base_url('assets_system/images/model2.jpg') ?> alt="Section 3">
-        </div>
-      </div>
-    </div>
-  </section>
+  <!-- Slides -->
+  <div class="carousel-inner">
 
-  <!-- Section 4 (light orange) -->
-  <section class="section-light-orange">
-    <div class="container">
-      <div class="row align-items-center flex-row-reverse">
-        <div class="col-lg-6 fade-in">
-          <h2>Transforming Industries with IoT Solutions</h2>
-          <p>Our IoT solutions empower businesses to optimize operations and enhance productivity.</p>
-          <div class="d-flex gap-3 align-items-center flex-wrap">
-            <button class="btn btn-explore">Explore</button>
-            <button class="btn btn-link text-primary"><span>Learn More</span> <i class="fas fa-angle-right"></i></button>
-          </div>
-        </div>
-        <div class="col-lg-6 fade-in delay-1">
-          <img src=<?= base_url('assets_system/images/model3.png') ?> alt="Section 4">
+    <!-- Slide 1 -->
+    <div class="carousel-item active" style="background-image: url('<?= base_url('assets_system/images/home_main.jpg') ?>');">
+      <div class="container text-start text-white d-flex flex-column justify-content-center h-100 ">
+        <h1>Innovative Solutions for Precision Measurement</h1>
+        <p>At Line Seiki Asia Pacific, we specialize in delivering high-quality measuring instruments and smart monitoring systems tailored to your needs.</p>
+        <div class="d-flex gap-3 flex-wrap">
+          <button class="btn btn-primary">Learn More</button>
+          <button class="btn btn-orange">Contact</button>
         </div>
       </div>
     </div>
-  </section>
+
+    <!-- Slide 2 -->
+    <div class="carousel-item" style="background-image: url('<?= base_url('assets_system/images/LS.jpg') ?>');">
+      <div class="container text-start text-white d-flex flex-column justify-content-center h-100">
+        <h1>Explore Our Standard Measuring Counters</h1>
+        <p>Our standard measuring counters deliver unmatched accuracy and reliability for various industrial applications.</p>
+        <div class="d-flex gap-3 flex-wrap">
+          <button class="btn btn-primary">Learn More</button>
+          <button class="btn btn-link text-white"><span>View</span> <i class="fas fa-angle-right"></i></button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 3 -->
+    <div class="carousel-item" style="background-image: url('<?= base_url('assets_system/images/model2.jpg') ?>');">
+      <div class="container text-start text-white d-flex flex-column justify-content-center h-100">
+        
+        <h1>Explore Our Comprehensive Engineering and Silicone Molding Services</h1>
+        <p>Our engineering services are designed to optimize your projects with precision and innovation.</p>
+      </div>
+    </div>
+
+    <!-- Slide 4 -->
+    <div class="carousel-item" style="background-image: url('<?= base_url('assets_system/images/model3.png') ?>');">
+      <div class="container text-start text-white d-flex flex-column justify-content-center h-100">
+        <h1>Transforming Industries with IoT Solutions</h1>
+        <p>Our IoT solutions empower businesses to optimize operations and enhance productivity.</p>
+        <div class="d-flex gap-3 flex-wrap">
+          <button class="btn btn-explore">Explore</button>
+          <button class="btn btn-link text-white"><span>Learn More</span> <i class="fas fa-angle-right"></i></button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Controls -->
+  <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon"></span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+    <span class="carousel-control-next-icon"></span>
+  </button>
+</div>
+
+
+
 
   <!-- Section 5 (white) -->
   <section class="section-white">
     <div class="container text-center">
-      <h2 class="fade-in">Discover Our Latest Innovations in Industrial Measurement</h2>
+      <h2 class="fade-in">Discover Our Latest Innovations in Industrial Measurement</h2><br>
       <p class="mb-4 fade-in delay-1">Explore our newest products designed to enhance efficiency and precision in your operations.</p>
       <img src=<?= base_url('assets_system/images/model4.jpg') ?> alt="Section 5" class="img-fluid rounded fade-in delay-2">
     </div>
