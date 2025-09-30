@@ -470,6 +470,14 @@
         margin-bottom: 12px;
       }
     }
+    /* ✅ Center all heading underlines */
+section h1::after,
+section h2::after,
+footer h2::after {
+  left: 50% !important;
+  transform: translateX(-50%);
+}
+
   </style>
 </head>
 <body>
