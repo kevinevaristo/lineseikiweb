@@ -480,6 +480,11 @@ section h2::after {
   justify-content: center;
   text-align: center;
 }
+/* Remove the spacer under navbar */
+body > div[style*="margin-top: 90px"] {
+  display: none !important;
+}
+
 
   </style>
 </head>
@@ -536,7 +541,7 @@ section h2::after {
         <div class="row align-items-center">
           <!-- Left Content -->
           <div class="col-lg-7 fade-in">
-            <h2>GEMBA Machine Monitoring System</h2>
+            <br><br><br><br><h2>GEMBA Machine Monitoring System</h2>
             <p>
               The GEMBA Machine Monitoring System provides real-time visibility into your
               manufacturing operations. It empowers businesses to track machine performance,
@@ -547,7 +552,7 @@ section h2::after {
           <!-- Right Image Placeholder with Hover -->
           <div class="col-lg-5 text-center fade-in delay-1">
             <div class="img-hover">
-              <img src="<?= base_url('assets_system/images/gemba2.png') ?>" 
+              <br><br><br><img src="<?= base_url('assets_system/images/gemba2.png') ?>" 
                   alt="GEMBA Overview" class="img-fluid rounded">
             </div>
           </div>
