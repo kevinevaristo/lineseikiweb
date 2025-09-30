@@ -17,7 +17,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
-    :root {
+     :root {
       --primary-blue: #0d6efd;
       --primary-blue-dark: #0a58ca;
       --primary-orange: #fd7e14;
@@ -255,7 +255,11 @@
     }
     
     .btn-orange:hover {
+<<<<<<< HEAD
+      background: linear-gradient(135deg, var(--newblue), var(--newblue2));
+=======
       background: linear-gradient(135deg, var(--newblue2), var(--));
+>>>>>>> bc9b39f55754fb7742f80695212a10bb1e0b0e8f
       transform: translateY(-3px);
       box-shadow: 0 8px 20px rgba(253, 126, 20, 0.4);
       color: white;
@@ -531,12 +535,30 @@
   width: 60px;
   height: 4px;
   margin-top: 8px;
+<<<<<<< HEAD
   background: linear-gradient(90deg, var(--newblue), var(--primary-blue));
+=======
+  background: linear-gradient(90deg, var(--newblue), var(--primary-blue));
+>>>>>>> bc9b39f55754fb7742f80695212a10bb1e0b0e8f
   border-radius: 2px;
 }
-
-
-
+.cta-title::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: -15px;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 4px;
+  background:linear-gradient(90deg, var(--newblue2), var(--newblue));
+  border-radius: 2px;
+}
+/* ✅ Center all heading lines and update to new blue gradient */
+section h2::after {
+  left: 50% !important;
+  transform: translateX(-50%);
+  background: linear-gradient(90deg, var(--newblue2), var(--newblue)) !important;
+}
   </style>
 </head>
 <body>
