@@ -26,6 +26,8 @@
       --light-orange: #fff3e8;
       --light-gray: #f8f9fa;
       --dark: #212529;
+      --newblue: #17A2DC;
+      --newblue2: #0F467B;
       --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
     }
 
@@ -80,7 +82,7 @@
       height: 2px;
       bottom: 0;
       left: 50%;
-      background-color: var(--primary-orange);
+      background-color: var(--newblue);
       transition: var(--transition);
     }
     
@@ -113,7 +115,7 @@
     }
     
     .dropdown-item:hover {
-      background-color: var(--primary-orange);
+      background-color: var(--primary-blue);
       color: #000;
       padding-left: 2rem;
     }
@@ -156,7 +158,7 @@
       transform: translateX(-50%);
       width: 60px;
       height: 4px;
-      background: linear-gradient(90deg, var(--primary-orange), var(--primary-blue));
+      background: linear-gradient(90deg, var(--newblue), var(--primary-blue));
       border-radius: 2px;
     }
     
@@ -171,13 +173,13 @@
       border-radius: 16px;
       overflow: hidden;
       cursor: pointer;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      
       transition: var(--transition);
     }
     
     .category:hover {
       transform: translateY(-8px);
-      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+      
     }
     
     .category img {
@@ -277,26 +279,26 @@
     .btn-primary {
       background: linear-gradient(135deg, var(--primary-blue), var(--primary-blue-dark));
       border: none;
-      box-shadow: 0 5px 15px rgba(13, 110, 253, 0.3);
+      
     }
     
     .btn-primary:hover {
       background: linear-gradient(135deg, var(--primary-blue-dark), var(--primary-blue));
       transform: translateY(-3px);
-      box-shadow: 0 8px 20px rgba(13, 110, 253, 0.4);
+      
     }
     
     .btn-orange {
-      background: linear-gradient(135deg, var(--primary-orange), var(--primary-orange-dark));
+      background: linear-gradient(135deg, var(--newblue2), var(--newblue));
       border: none;
       color: white;
-      box-shadow: 0 5px 15px rgba(253, 126, 20, 0.3);
+      
     }
     
     .btn-orange:hover {
-      background: linear-gradient(135deg, var(--primary-orange-dark), var(--primary-orange));
+      background: linear-gradient(135deg, var(--newblue2), var(--));
       transform: translateY(-3px);
-      box-shadow: 0 8px 20px rgba(253, 126, 20, 0.4);
+      
       color: white;
     }
     
@@ -316,7 +318,7 @@
 
     /* Footer */
     footer {
-      background: linear-gradient(135deg, var(--primary-blue), var(--primary-blue-dark));
+      background: linear-gradient(135deg, var(--newblue2), var(--newblue));
       color: white;
       padding: 80px 10% 40px;
       position: relative;
@@ -335,7 +337,7 @@
     }
     
     footer h2 {
-      color: var(--primary-orange);
+      color: white;
       font-weight: 700;
     }
     
@@ -355,12 +357,12 @@
       height: 2px;
       bottom: -4px;
       left: 0;
-      background-color: var(--primary-orange);
+      background-color: var(--newblue2);
       transition: var(--transition);
     }
     
     footer .links a:hover {
-      color: var(--primary-orange);
+      color: white;
     }
     
     footer .links a:hover::after {
@@ -376,9 +378,10 @@
     }
     
     footer .socials a:hover {
-      color: var(--primary-orange);
+      color: var(--newblue2);
       transform: translateY(-3px);
     }
+
     
     footer .bottom {
       margin-top: 40px;
@@ -396,7 +399,7 @@
     }
     
     footer .bottom a:hover {
-      color: var(--primary-orange);
+      color: var(--newblue2);
     }
     
     hr {
@@ -549,14 +552,14 @@
         </div>
       </div>
       <div class="category fade-in delay-1">
-        <img src=<?= base_url('assets_system/images/slidelimit.jpg')?> alt="Slide Limit Counters">
+        <img src=<?= base_url('assets_system/images/slidelimitnobg.png')?> alt="Slide Limit Counters">
         <div class="overlay">
           <h3>Slide Limit Counters</h3>
           <p>Compact and accurate slide limit counters for varied use.</p>
         </div>
       </div>
       <div class="category fade-in delay-2">
-        <img src=<?= base_url('assets_system/images/limitswitch.jpg')?> alt="Limit Switches">
+        <img src=<?= base_url('assets_system/images/limitswitches.jpg')?> alt="Limit Switches">
         <div class="overlay">
           <h3>Limit Switches</h3>
           <p>Precision limit switches for position sensing and control.</p>
