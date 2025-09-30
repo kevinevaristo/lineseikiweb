@@ -229,7 +229,7 @@
 
     /* CTA Section */
     .cta {
-      background: linear-gradient(135deg, var(--primary-blue), var(--primary-blue-dark));
+      background: linear-gradient(135deg, var(--newblue2), var(--newblue));
       color: white;
       text-align: center;
       padding: 80px 10%;
