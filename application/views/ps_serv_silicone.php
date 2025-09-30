@@ -17,7 +17,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
-    :root {
+     :root {
       --primary-blue: #0d6efd;
       --primary-blue-dark: #0a58ca;
       --primary-orange: #fd7e14;
@@ -26,9 +26,10 @@
       --light-orange: #fff3e8;
       --light-gray: #f8f9fa;
       --dark: #212529;
+      --newblue: #17A2DC;
+      --newblue2: #0F467B;
       --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
     }
-
     body {
       background-color: #fff;
       color: #333;
@@ -80,7 +81,7 @@
       height: 2px;
       bottom: 0;
       left: 50%;
-      background-color: var(--primary-orange);
+      background-color: var(--newblue);
       transition: var(--transition);
     }
     
@@ -113,7 +114,7 @@
     }
     
     .dropdown-item:hover {
-      background-color: var(--primary-orange);
+      background-color: var(--newblue);
       color: #000;
       padding-left: 2rem;
     }
@@ -175,7 +176,7 @@
     }
     
     .slider-indicators span.active {
-      background: var(--primary-orange);
+      background: var(--newblue);
     }
     
     .hero-content {
@@ -214,7 +215,7 @@
     }
     
     .btn::before {
-      content: '';
+      content: '';                            
       position: absolute;
       top: 0;
       left: 0;
@@ -241,17 +242,57 @@
       box-shadow: 0 8px 20px rgba(13, 110, 253, 0.4);
     }
     
-    .btn-outline-light {
-      background: transparent;
-      border: 2px solid rgba(255, 255, 255, 0.8);
+    .btn-orange {
+      background: linear-gradient(135deg, var(--newblue2), var(--newblue));
+      border: none;
+      color: white;
+      box-shadow: 0 5px 15px rgba(253, 126, 20, 0.3);
+    }
+    
+    .btn-orange:hover {
+      background: linear-gradient(135deg, var(--newblue2), var(--));
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(253, 126, 20, 0.4);
       color: white;
     }
     
-    .btn-outline-light:hover {
-      background: white;
+    .btn-explore {
+      background: transparent;
+      border: 2px solid var(--primary-blue);
       color: var(--primary-blue);
-      transform: translateY(-3px);
     }
+    
+    .btn-explore:hover {
+      background: var(--primary-blue);
+      color: #fff;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(13, 110, 253, 0.3);
+    }
+    
+    .btn-link {
+      text-decoration: none;
+      position: relative;
+    }
+    
+    .btn-link span {
+      position: relative;
+    }
+    
+    .btn-link span::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -4px;
+      left: 0;
+      background-color: currentColor;
+      transition: var(--transition);
+    }
+    
+    .btn-link:hover span::after {
+      width: 100%;
+    }
+
     
     /* Sections */
     section {
@@ -282,7 +323,7 @@
       bottom: -10px;
       width: 60px;
       height: 4px;
-      background: linear-gradient(90deg, var(--primary-orange), var(--primary-blue));
+      background: linear-gradient(135deg, var(--newblue2), var(--newblue));
       border-radius: 2px;
     }
     
@@ -334,7 +375,7 @@
       transform: translateX(-50%);
       width: 60px;
       height: 4px;
-      background: linear-gradient(90deg, var(--primary-orange), var(--primary-blue));
+      background: linear-gradient(135deg, var(--newblue2), var(--newblue));
       border-radius: 2px;
     }
     
@@ -430,7 +471,7 @@
       transform: translateX(-50%);
       width: 60px;
       height: 4px;
-      background: linear-gradient(90deg, var(--primary-orange), var(--primary-blue));
+      background: linear-gradient(135deg, var(--newblue2), var(--newblue));
       border-radius: 2px;
     }
     
@@ -534,7 +575,7 @@
       transform: translateX(-50%);
       width: 60px;
       height: 4px;
-      background: linear-gradient(90deg, var(--primary-orange), var(--primary-blue));
+      background: linear-gradient(135deg, var(--newblue2), var(--newblue));
       border-radius: 2px;
     }
     
@@ -668,7 +709,7 @@
     }
     
     .project-card .btn-success {
-      background: var(--primary-orange);
+      background: var(--newblue);
       border: none;
       padding: 12px 30px;
       border-radius: 8px;
@@ -678,13 +719,13 @@
     }
     
     .project-card .btn-success:hover {
-      background: var(--primary-orange-dark);
+      background: var(--newblue2);
       transform: translateY(-2px);
     }
 
     /* Footer */
     footer {
-      background: linear-gradient(135deg, var(--primary-blue), var(--primary-blue-dark));
+      background: linear-gradient(135deg, var(--newblue2), var(--newblue));
       color: white;
       padding: 80px 10% 40px;
       position: relative;
@@ -703,7 +744,7 @@
     }
     
     footer h2 {
-      color: var(--primary-orange);
+      color: white;
       font-weight: 700;
     }
     
@@ -723,12 +764,12 @@
       height: 2px;
       bottom: -4px;
       left: 0;
-      background-color: var(--primary-orange);
+      background-color: var(--newblue2);
       transition: var(--transition);
     }
     
     footer .links a:hover {
-      color: var(--primary-orange);
+      color: white;
     }
     
     footer .links a:hover::after {
@@ -744,7 +785,7 @@
     }
     
     footer .socials a:hover {
-      color: var(--primary-orange);
+      color: var(--newblue2);
       transform: translateY(-3px);
     }
     
@@ -764,7 +805,7 @@
     }
     
     footer .bottom a:hover {
-      color: var(--primary-orange);
+      color: var(--newblue2);
     }
     
     hr {
@@ -1026,7 +1067,7 @@
 <!-- ✅ Technical Specs Section -->
 <section class="case-studies section-white">
   <div class="container">
-    <h2 class="fade-in">Technical Specs</h2>
+    <h2 class="fade-in">Technical Specs</h2><br>
     <div class="case-grid">
       <div class="case-card fade-in delay-1">
         <img src="<?= base_url('assets_system/images/simulation6.png') ?>" alt="Silicone">
