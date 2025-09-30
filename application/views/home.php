@@ -452,7 +452,6 @@
         display: block;
         margin-bottom: 12px;
       }
-      
     }
     /* Fullscreen carousel */
 #heroCarousel .carousel-item {
@@ -516,6 +515,7 @@
 /* 🔹 Gradient text for all carousel slide titles */
 #heroCarousel .carousel-item h1 {
   background: linear-gradient(90deg, var(--primary-blue), #007bff);
+  -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   font-weight: 700;
   position: relative;
