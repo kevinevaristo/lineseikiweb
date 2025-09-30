@@ -408,7 +408,7 @@
     }
     
     footer .links a:hover {
-      color: var(--primary-orange);
+      color: white;
     }
     
     footer .links a:hover::after {
@@ -573,7 +573,7 @@ body > div[style*="margin-top: 90px"] {
 
   <!-- News and Updates Section -->
   <section class="section-light-blue">
-    <h2 class="fade-in align-middle  text-center" >News and Updates</h2>
+    <br><br><br><br><h2 class="fade-in align-middle  text-center" >News and Updates</h2>
     <div class="content-container pt-4">
       <div class="news-card fade-in delay-1">
       <img src=<?= base_url('assets_system/images/newlaunch4.jpg') ?>  alt="Latest news article.">
