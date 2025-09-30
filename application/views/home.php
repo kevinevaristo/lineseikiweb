@@ -115,7 +115,7 @@
     }
     
     .dropdown-item:hover {
-      background-color: var(--primary-orange);
+      background-color: var(--primary-blue);
       color: #000;
       padding-left: 2rem;
     }
@@ -178,7 +178,7 @@
       bottom: -10px;
       width: 60px;
       height: 4px;
-      background: linear-gradient(90deg, var(--primary-orange), var(--primary-blue));
+      background: linear-gradient(90deg, var(--newblue), var(--primary-blue));
       border-radius: 2px;
     }
     
@@ -255,7 +255,11 @@
     }
     
     .btn-orange:hover {
+<<<<<<< HEAD
       background: linear-gradient(135deg, var(--newblue), var(--newblue2));
+=======
+      background: linear-gradient(135deg, var(--newblue2), var(--));
+>>>>>>> bc9b39f55754fb7742f80695212a10bb1e0b0e8f
       transform: translateY(-3px);
       box-shadow: 0 8px 20px rgba(253, 126, 20, 0.4);
       color: white;
@@ -531,7 +535,11 @@
   width: 60px;
   height: 4px;
   margin-top: 8px;
-  background: linear-gradient(90deg, var(--newblue2), var(--newblue));
+<<<<<<< HEAD
+  background: linear-gradient(90deg, var(--newblue), var(--primary-blue));
+=======
+  background: linear-gradient(90deg, var(--newblue), var(--primary-blue));
+>>>>>>> bc9b39f55754fb7742f80695212a10bb1e0b0e8f
   border-radius: 2px;
 }
 .cta-title::after {
