@@ -491,7 +491,26 @@
         display: block;
         margin-bottom: 12px;
       }
+
+      .cta-buttons {
+      display: flex;
+    flex-direction: column;
+    gap: 15px; /* spacing between the buttons */
     }
+    }
+
+    /* CTA buttons responsive styling */
+.cta-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px; /* spacing between buttons */
+}
+
+.cta-buttons .btn {
+  flex: 1;              /* make buttons equal width */
+  min-width: 180px;     /* prevents them from shrinking too small */
+  text-align: center;   /* keep text centered */
+}
   </style>
 </head>
 <body>
@@ -562,21 +581,21 @@
             <div class="contact-info-card text-center">
               <i class="fas fa-map-marker-alt"></i>
               <h5>Office Address</h5>
-              <p>123 LSA Tower, Makati City, Philippines</p>
+              <p>Lot 3&5, Block 22, Phase 4 Cavite Economic Zone Dr, Rosario, 4107</p>
             </div>
           </div>
           <div class="col-md-6 col-lg-3 mb-4">
             <div class="contact-info-card text-center">
               <i class="fas fa-phone"></i>
               <h5>Phone</h5>
-              <p>+63 2 1234 5678</p>
+              <p>(046) 437 2001</p>
             </div>
           </div>
           <div class="col-md-6 col-lg-3 mb-4">
             <div class="contact-info-card text-center">
               <i class="fas fa-envelope"></i>
               <h5>Email</h5>
-              <p>support@lineseiki.com</p>
+              <p>info@sales.line.com.ph</p>
             </div>
           </div>
           <div class="col-md-6 col-lg-3 mb-4">
@@ -624,33 +643,47 @@
       </div>
     </section>
 
-    <!-- 4. Location / Map -->
-    <section class="section-white">
-      <div class="container fade-in">
-        <h2 class="text-center mb-4">Our Location</h2>
-        <p class="text-center mb-5">Visit our offices in Southeast Asia and nearby regions. Find us easily using the map below:</p>
-        <div class="map-container">
-          <div class="ratio ratio-16x9">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3854.751028040799!2d121.02144431537982!3d14.554729889830985!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397c90d6c7a3e05%3A0xbad89ec5fb84ef5f!2sMakati%20City%2C%20Metro%20Manila!5e0!3m2!1sen!2sph!4v1709876543210" 
-              width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-          </div>
-        </div>
+  <!-- 4. Location / Map -->
+<section class="section-white">
+  <div class="container fade-in">
+    <h2 class="text-center mb-4">Our Location</h2>
+    <p class="text-center mb-5">
+      Visit our office in Cavite Economic Zone. Find us easily using the map below:
+    </p>
+    <div class="map-container">
+      <div class="ratio ratio-16x9">
+        <!-- Corrected Google Maps Embed with Red Pin -->
+        <iframe 
+          src="https://www.google.com/maps?q=Line+Seiki+Philippines+Inc+Cavite+Economic+Zone&hl=en&z=18&output=embed"
+          width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy">
+        </iframe>
       </div>
-    </section>
+    </div>
+  </div>
+</section>
+
+
+
 
     <!-- 5. CTA Section -->
-    <section class="section-light-blue">
-      <div class="container fade-in">
-        <div class="row justify-content-center">
-          <div class="col-lg-8 text-center">
-            <h2>Ready to Take the Next Step?</h2>
-            <p class="mb-4">Schedule a consultation or request a product demo directly through our website today.</p>
-            <a href="#" class="btn btn-primary me-3">Schedule Consultation</a>
-            <a href="#" class="btn btn-orange">Request Demo</a>
-          </div>
+   <section class="section-light-blue">
+  <div class="container fade-in">
+    <div class="row justify-content-center">
+      <div class="col-lg-8 text-center">
+        <h2>Ready to Take the Next Step?</h2>
+        <p class="mb-4">Schedule a consultation or request a product demo directly through our website today.</p>
+        
+        <!-- CTA Buttons -->
+        <div class="cta-buttons">
+          <a href="#" class="btn btn-primary">Schedule Consultation</a>
+          <a href="#" class="btn btn-orange">Request Demo</a>
         </div>
       </div>
-    </section>
+    </div>
+  </div>
+</section>
+
+
   </main>
 
   <!-- ✅ Footer -->
