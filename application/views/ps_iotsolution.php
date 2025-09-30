@@ -17,7 +17,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
-    :root {
+   :root {
       --primary-blue: #0d6efd;
       --primary-blue-dark: #0a58ca;
       --primary-orange: #fd7e14;
@@ -26,6 +26,8 @@
       --light-orange: #fff3e8;
       --light-gray: #f8f9fa;
       --dark: #212529;
+      --newblue: #17A2DC;
+      --newblue2: #0F467B;
       --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
     }
 
@@ -80,7 +82,7 @@
       height: 2px;
       bottom: 0;
       left: 50%;
-      background-color: var(--primary-orange);
+      background-color: var(--newblue);
       transition: var(--transition);
     }
     
@@ -113,7 +115,7 @@
     }
     
     .dropdown-item:hover {
-      background-color: var(--primary-orange);
+      background-color: var(--primary-blue);
       color: #000;
       padding-left: 2rem;
     }
@@ -163,7 +165,7 @@
       bottom: -10px;
       width: 60px;
       height: 4px;
-      background: linear-gradient(90deg, var(--primary-orange), var(--primary-blue));
+      background: linear-gradient(90deg, var(--newblue), var(--primary-blue));
       border-radius: 2px;
     }
     
@@ -233,14 +235,14 @@
     }
     
     .btn-orange {
-      background: linear-gradient(135deg, var(--primary-orange), var(--primary-orange-dark));
+      background: linear-gradient(135deg, var(--newblue2), var(--newblue));
       border: none;
       color: white;
       box-shadow: 0 5px 15px rgba(253, 126, 20, 0.3);
     }
     
     .btn-orange:hover {
-      background: linear-gradient(135deg, var(--primary-orange-dark), var(--primary-orange));
+      background: linear-gradient(135deg, var(--newblue2), var(--));
       transform: translateY(-3px);
       box-shadow: 0 8px 20px rgba(253, 126, 20, 0.4);
       color: white;
@@ -298,7 +300,7 @@
 
     /* Footer */
     footer {
-      background: linear-gradient(135deg, var(--primary-blue), var(--primary-blue-dark));
+      background: linear-gradient(135deg, var(--newblue2), var(--newblue));
       color: white;
       padding: 80px 10% 40px;
       position: relative;
@@ -317,7 +319,7 @@
     }
     
     footer h2 {
-      color: var(--primary-orange);
+      color: white;
       font-weight: 700;
     }
     
@@ -337,12 +339,12 @@
       height: 2px;
       bottom: -4px;
       left: 0;
-      background-color: var(--primary-orange);
+      background-color: var(--newblue2);
       transition: var(--transition);
     }
     
     footer .links a:hover {
-      color: var(--primary-orange);
+      color: var(--newblue2);
     }
     
     footer .links a:hover::after {
@@ -358,7 +360,7 @@
     }
     
     footer .socials a:hover {
-      color: var(--primary-orange);
+      color: var(--newblue2);
       transform: translateY(-3px);
     }
     
@@ -378,7 +380,7 @@
     }
     
     footer .bottom a:hover {
-      color: var(--primary-orange);
+      color: var(--newblue2);
     }
     
     hr {
@@ -453,6 +455,32 @@
         margin-bottom: 12px;
       }
     }
+    /* Center gradient line under all h2 */
+section h2::after {
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+}
+/* Center align System Components section */
+.section-light-orange h2 {
+  text-align: center;
+}
+
+.section-light-orange .row {
+  justify-content: center;
+  text-align: center;
+}
+
+/* Center align Production Data section */
+.section-white h2,
+.section-white p {
+  text-align: center;
+}
+
+.section-white .row {
+  justify-content: center;
+  text-align: center;
+}
+
   </style>
 </head>
 <body>
@@ -530,7 +558,7 @@
     <!-- 2. System Components -->
     <section class="section-light-orange">
       <div class="container fade-in">
-        <h2>System Components</h2>
+        <h2>System Components</h2><br>
         <div class="row mt-4">
           <div class="col-md-4 mb-4">
             <div class="card h-100 border-0 shadow-sm">
@@ -566,7 +594,7 @@
     <!-- 3. Production Data -->
     <section class="section-white">
       <div class="container fade-in">
-        <h2>Production Data</h2>
+        <h2>Production Data</h2><br>
         <p>GEMBA collects critical production information to enhance decision-making:</p>
         <div class="row mt-4">
           <div class="col-md-6">
