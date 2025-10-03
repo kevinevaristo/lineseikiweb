@@ -173,7 +173,7 @@
     section h1::after, section h2::after {
       content: '';
       position: absolute;
-      left: 0;
+      left: ;
       bottom: -10px;
       width: 60px;
       height: 4px;
