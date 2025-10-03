@@ -612,10 +612,10 @@ body > div[style*="height: 90px"] {
         <a href="<?= base_url('index/contact_us') ?>">Contact Us</a>
       </div>
       <div class="socials">
-        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://www.facebook.com/lineseikiofficial"><i class="fab fa-facebook-f"></i></a>
         <a href="#"><i class="fab fa-instagram"></i></a>
         <a href="#"><i class="fab fa-x-twitter"></i></a>
-        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        <a href="www.linkedin.com/company/line-seiki-co.-ltd./"><i class="fab fa-linkedin-in"></i></a>
         <a href="#"><i class="fab fa-youtube"></i></a>
       </div>
     </div>
