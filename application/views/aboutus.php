@@ -541,16 +541,74 @@ body > div[style*="height: 90px"] {
   <section class="section-white text-center">
     <div class="container">
       <br><br><br><br><h1 class="fade-in">About Line Seiki Asia Pacific</h1>
-      <p class="lead fade-in delay-1">
-        Line Seiki Asia Pacific serves as the dedicated sales arm of Line Seiki, delivering 
-        innovative measuring instruments and industrial solutions.  
-        We proudly support industries across the region with precision technology and trusted expertise.
-      </p>
+    </div>
+  </section>
+
+  <!-- Concept -->
+    <!-- New Businesses Challenge -->
+  <section class="section-light-blue">
+    <div class="container">
+      <div class="row align-items-center">
+        <!-- Text -->
+        <div class="col-lg-6 text-center text-lg-start">
+          <h1 class="fade-in">New Businesses Challenge</h1>
+          <p class="lead fade-in delay-1">
+            In addition to manufacturing counters over the decades, we also pursue to provide solutions on 
+            “visualization” of factories through numerical information.
+              Without being bound by past practices, we will always endeavor to take on the challenge to enter new markets. expertise.
+          </p>
+        </div>
+        <!-- Image -->
+        <div class="col-lg-6 text-center">
+          <img src=<?= base_url('assets_system/images/newb.jpg') ?> alt="New Businesses Challenge" class="fade-in delay-2 img-fluid rounded shadow">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Integrated Production -->
+  <section class="section-white">
+    <div class="container">
+      <div class="row align-items-center flex-lg-row-reverse">
+        <!-- Text -->
+        <div class="col-lg-6 text-center text-lg-start">
+          <h1 class="fade-in">Integrated Production</h1>
+          <p class="lead fade-in delay-1">
+            We offer integrated production from design to development and manufacturing. 
+            We are proud of our reliable production system unique to a specialized counting manufacturer.
+          </p>
+        </div>
+        <!-- Image -->
+        <div class="col-lg-6 text-center">
+          <img src=<?= base_url('assets_system/images/integrated.jpg') ?> alt="Integrated Production" class="fade-in delay-2 img-fluid rounded shadow">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Strict Inspection for Quality -->
+  <section class="section-light-blue">
+    <div class="container">
+      <div class="row align-items-center">
+        <!-- Text -->
+        <div class="col-lg-6 text-center text-lg-start">
+          <h1 class="fade-in">Strict Inspection for Quality</h1>
+          <p class="lead fade-in delay-1">
+            Mass production of a product begins when a prototype is received from the development department. Line Seiki’s 
+            products are subjected to repeated testing, and only those which passed the tests are released. 
+            The strict testing procedures of Line Seiki allowed our products to earn the trust of users around the world.
+          </p>
+        </div>
+        <!-- Image -->
+        <div class="col-lg-6 text-center">
+          <img src=<?= base_url('assets_system/images/strict.jpg') ?> alt="Strict Inspection for Quality" class="fade-in delay-2 img-fluid rounded shadow">
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- Mission and Vision -->
-  <section class="section-light-blue text-center">
+  <section class="section-white text-center">
     <div class="container">
       <h2 class="fade-in">Mission and Vision</h2>
       <p class="mb-4 fade-in delay-1">
@@ -573,6 +631,8 @@ body > div[style*="height: 90px"] {
         <img src=<?= base_url('assets_system/images/jaytron.jpg') ?> alt="Partner 2" class="fade-in delay-2">
         <img src=<?= base_url('assets_system/images/SCM.png') ?> alt="Partner 3" class="fade-in delay-3">
         <img src=<?= base_url('assets_system/images/LSI.jpg') ?> alt="Partner 4" class="fade-in delay-4">
+        <img src=<?= base_url('assets_system/images/MIAP.png') ?> alt="Partner 5" class="fade-in delay-4">
+        <img src=<?= base_url('assets_system/images/PDMA.png') ?> alt="Partner 6" class="fade-in delay-4">
       </div>
     </div>
   </section>
