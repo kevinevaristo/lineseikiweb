@@ -115,7 +115,7 @@
     
     .dropdown-item:hover {
       background-color: var(--primary-blue);
-      color: #000;
+      color: white;
       padding-left: 2rem;
     }
     
