@@ -58,4 +58,9 @@ class index extends CI_Controller
   {
    $this->load->view('ps_serv_simulation');
   }
+
+   function products_details()
+  {
+   $this->load->view('products_details');
+  }
 }
