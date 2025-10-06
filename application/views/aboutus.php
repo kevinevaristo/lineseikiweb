@@ -480,6 +480,10 @@ footer h2::after {
 body > div[style*="height: 90px"] {
   display: none !important;
 }
+/* Only target the Integrated Production heading */
+.section-white h1 {
+  text-align: center !important;
+}
 
   </style>
 </head>

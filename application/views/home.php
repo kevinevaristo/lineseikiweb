@@ -655,7 +655,7 @@ body > div[style*="margin-top:90px"] {
     </div>
 
     <!-- Slide 3 -->
-    <div class="carousel-item" style="background-image: url('<?= base_url('assets_system/images/model2.jpg') ?>');">
+    <div class="carousel-item" style="background-image: url('<?= base_url('assets_system/images/new2.jpg') ?>');">
       <div class="container text-start text-white d-flex flex-column justify-content-center h-100">
         
         <h1>Explore Our Comprehensive Engineering and Silicone Molding Services</h1>
@@ -664,7 +664,7 @@ body > div[style*="margin-top:90px"] {
     </div>
 
     <!-- Slide 4 -->
-    <div class="carousel-item" style="background-image: url('<?= base_url('assets_system/images/model3.png') ?>');">
+    <div class="carousel-item" style="background-image: url('<?= base_url('assets_system/images/new3.jpg') ?>');">
       <div class="container text-start text-white d-flex flex-column justify-content-center h-100">
         <h1>Transforming Industries with IoT Solutions</h1>
         <p>Our IoT solutions empower businesses to optimize operations and enhance productivity.</p>
@@ -694,7 +694,7 @@ body > div[style*="margin-top:90px"] {
     <div class="container text-center">
       <h2 class="fade-in">Discover Our Latest Innovations in Industrial Measurement</h2><br>
       <p class="mb-4 fade-in delay-1">Explore our newest products designed to enhance efficiency and precision in your operations.</p>
-      <img src=<?= base_url('assets_system/images/model4.jpg') ?> alt="Section 5" class="img-fluid rounded fade-in delay-2">
+      <img src=<?= base_url('assets_system/images/new4.jpg') ?> alt="Section 5" class="img-fluid rounded fade-in delay-2">
     </div>
   </section>
 
