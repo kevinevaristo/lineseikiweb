@@ -614,13 +614,19 @@ body > div[style*="height: 90px"] {
   <!-- Mission and Vision -->
   <section class="section-white text-center">
     <div class="container">
-      <h2 class="fade-in">Mission and Vision</h2>
+      <h2 class="fade-in">Mission</h2>
       <p class="mb-4 fade-in delay-1">
-        <strong>Mission:</strong> We will pursue happiness of all people associated with Line Seiki, including customers, colleagues, and their families, and support each individual 
+        We will pursue happiness of all people associated with Line Seiki, including customers, colleagues, and their families, and support each individual 
         to realize their dreams through our business activities.  
       </p>
+    </div>
+  </section>
+
+  <section class="section-light-blue text-center">
+    <div class="container">
+      <h2 class="fade-in">Vision</h2>
       <p class="fade-in delay-2">
-        <strong>Vision:</strong> We aim to be an organization that constantly creates new values by utilizing the know-how and network from our extensive experience, 
+         We aim to be an organization that constantly creates new values by utilizing the know-how and network from our extensive experience, 
         and by understanding the needs of society without being misled by short-term immediate changes.
       </p>
     </div>
