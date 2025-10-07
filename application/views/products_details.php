@@ -145,7 +145,6 @@
     section img {
       width: 100%;
       border-radius: 16px;
-      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
       transition: var(--transition);
       transform: translateY(0);
     }
@@ -257,7 +256,6 @@
       background: rgba(255, 255, 255, 0.9);
       border: none;
       color: var(--primary-blue);
-      box-shadow: 0 5px 15px rgba(255, 255, 255, 0.2);
         border-color: #000;
     }
     .btn-light:hover {
@@ -428,7 +426,7 @@
   background: linear-gradient(135deg, var(--newblue2), var(--newblue)) !important;
   color: white !important;
   border: none !important;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  
 }
 
 .cta .btn-light:hover {

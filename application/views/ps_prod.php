@@ -175,7 +175,6 @@
   cursor: pointer;
   background: #fff;
   transition: var(--transition);
-  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
 }
 
 .category:hover {
@@ -294,7 +293,6 @@
       background: rgba(255, 255, 255, 0.9);
       border: none;
       color: var(--primary-blue);
-      box-shadow: 0 5px 15px rgba(255, 255, 255, 0.2);
         border-color: #000;
     }
     .btn-light:hover {
@@ -465,7 +463,6 @@
   background: linear-gradient(135deg, var(--newblue2), var(--newblue)) !important;
   color: white !important;
   border: none !important;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
 .cta .btn-light:hover {
