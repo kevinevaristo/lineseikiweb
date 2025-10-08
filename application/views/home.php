@@ -635,10 +635,6 @@ body > div[style*="margin-top:90px"] {
       <div class="container text-start text-white d-flex flex-column justify-content-center h-100 ">
         <h1>Innovative Solutions for Precision Measurement</h1>
         <p>At Line Seiki Asia Pacific, we specialize in delivering high-quality measuring instruments and smart monitoring systems tailored to your needs.</p>
-        <div class="d-flex gap-3 flex-wrap">
-          <button class="btn btn-primary">Learn More</button>
-          <button class="btn btn-orange">Contact</button>
-        </div>
       </div>
     </div>
 
@@ -647,10 +643,6 @@ body > div[style*="margin-top:90px"] {
       <div class="container text-start text-white d-flex flex-column justify-content-center h-100">
         <h1>Explore Our Standard Measuring Counters</h1>
         <p>Our standard measuring counters deliver unmatched accuracy and reliability for various industrial applications.</p>
-        <div class="d-flex gap-3 flex-wrap">
-          <button class="btn btn-primary">Learn More</button>
-          <button class="btn btn-link text-white"><span>View</span> <i class="fas fa-angle-right"></i></button>
-        </div>
       </div>
     </div>
 
@@ -668,13 +660,8 @@ body > div[style*="margin-top:90px"] {
       <div class="container text-start text-white d-flex flex-column justify-content-center h-100">
         <h1>Transforming Industries with IoT Solutions</h1>
         <p>Our IoT solutions empower businesses to optimize operations and enhance productivity.</p>
-        <div class="d-flex gap-3 flex-wrap">
-          <button class="btn btn-explore">Explore</button>
-          <button class="btn btn-link text-white"><span>Learn More</span> <i class="fas fa-angle-right"></i></button>
-        </div>
       </div>
     </div>
-
   </div>
 
   <!-- Controls -->
@@ -694,7 +681,7 @@ body > div[style*="margin-top:90px"] {
     <div class="container text-center">
       <h2 class="fade-in">Discover Our Latest Innovations in Industrial Measurement</h2><br>
       <p class="mb-4 fade-in delay-1">Explore our newest products designed to enhance efficiency and precision in your operations.</p>
-      <img src=<?= base_url('assets_system/images/new4.jpg') ?> alt="Section 5" class="img-fluid rounded fade-in delay-2">
+      <img src=<?= base_url('assets_system/images/new5.jpg') ?> alt="Section 5" class="img-fluid rounded fade-in delay-2">
     </div>
   </section>
 
