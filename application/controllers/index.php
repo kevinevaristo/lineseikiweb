@@ -63,4 +63,8 @@ class index extends CI_Controller
   {
    $this->load->view('products_details');
   }
+  function termsof_service()
+  {
+   $this->load->view('termsof_service');
+  }
 }
