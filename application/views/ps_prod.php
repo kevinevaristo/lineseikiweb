@@ -640,10 +640,10 @@
         <a href="<?= base_url('index/contact_us') ?>">Contact Us</a>
       </div>
       <div class="socials">
-        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://www.facebook.com/lineseikiofficial"><i class="fab fa-facebook-f"></i></a>
         <a href="#"><i class="fab fa-instagram"></i></a>
         <a href="#"><i class="fab fa-x-twitter"></i></a>
-        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://www.linkedin.com/company/line-seiki-co.-ltd./about/"><i class="fab fa-linkedin-in"></i></a>
         <a href="#"><i class="fab fa-youtube"></i></a>
       </div>
     </div>
@@ -651,7 +651,7 @@
       <span>© 2025 Line Seiki Asia Pacific. All rights reserved.</span>
       <a href="#">Privacy Policy</a>
       <a href="<?= base_url('index/termsof_service') ?>">Terms of Service</a>
-      <a href="#">Cookie Settings</a>
+      <a href="<?= base_url('index/cookies_setting')?>">Cookie Settings</a>
     </div>
   </footer>
 

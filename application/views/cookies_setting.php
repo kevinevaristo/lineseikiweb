@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Library - Line Seiki Asia Pacific</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cookies Settings - Line Seiki Asia Pacific</title>
 
   <!-- Bootstrap 5 CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -37,7 +37,6 @@
       font-family: 'Inter', sans-serif;
       line-height: 1.6;
       overflow-x: hidden;
-      padding-top: 90px; /* space for fixed navbar */
     }
 
     /* Smooth scrolling */
@@ -97,7 +96,6 @@
       backdrop-filter: blur(10px);
       border: 1px solid rgba(0, 0, 0, 0.1);
       border-radius: 12px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
       padding: 0.8rem 0;
       margin-top: 0.8rem;
       animation: fadeIn 0.3s ease;
@@ -137,120 +135,78 @@
       margin-top: -0.8rem;
     }
 
-    /* Library Sections */
-    .library {
-      padding: 80px 5%;
+    /* Sections */
+    section {
+      padding: 100px 0;
+      position: relative;
     }
     
-    .library h1 {
-      text-align: center;
-      font-size: 2.8rem;
-      margin-bottom: 50px;
-      color: var(--primary-blue);
+    section img {
+      width: 100%;
+      border-radius: 16px;
+      transition: var(--transition);
+      transform: translateY(0);
+    }
+    
+    section img:hover {
+      transform: translateY(-5px);
+      
+    }
+    
+    section h1, section h2 {
+      margin-bottom: 24px;
       font-weight: 700;
       position: relative;
     }
     
-    .library h1::after {
-      content: '';
-      position: absolute;
-      left: 50%;
-      bottom: -15px;
-      transform: translateX(-50%);
-      width: 60px;
-      height: 4px;
-      background: linear-gradient(90deg, var(--newblue), var(--primary-blue));
-      border-radius: 2px;
+    section h1 {
+      font-size: 2.8rem;
+      color: var(--primary-blue);
     }
     
-    .library-section {
-      margin-bottom: 80px;
-    }
-    
-    .library-section h2 {
+    section h2 {
       font-size: 2.2rem;
       color: var(--primary-blue);
-      margin-bottom: 15px;
-      text-align: center;
-      position: relative;
-      font-weight: 700;
     }
     
-    .library-section h2::after {
+    section h1::after, section h2::after {
       content: '';
       position: absolute;
-      left: 50%;
+      left: ;
       bottom: -10px;
-      transform: translateX(-50%);
       width: 60px;
       height: 4px;
       background: linear-gradient(90deg, var(--newblue), var(--primary-blue));
       border-radius: 2px;
     }
     
-    .library-section p {
-      text-align: center;
-      color: #495057;
-      margin-bottom: 40px;
+    section p {
+      margin-bottom: 28px;
       font-size: 1.1rem;
+      color: #495057;
     }
-    
-    .download-card {
+
+    /* Color schemes */
+    .section-white {
       background: #fff;
-      border-radius: 16px;
-      padding: 30px;
-      text-align: center;
-      transition: var(--transition);
-      border: 1px solid rgba(13, 110, 253, 0.1);
-      height: 100%;
+      color: #333;
     }
     
-    .download-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
-    }
-    
-    .download-card h5 {
-      margin-bottom: 20px;
-      font-weight: 600;
-      color: var(--primary-blue);
-      font-size: 1.3rem;
-    }
-    
-    .btn-download {
-      background: linear-gradient(90deg, var(--newblue), var(--primary-blue));
-      color: #fff;
-      border: none;
-      padding: 10px 20px;
-      border-radius: 8px;
-      font-weight: 600;
-      transition: var(--transition);
+    .section-light-blue {
+      background: var(--light-blue);
+      color: #333;
       position: relative;
       overflow: hidden;
-      z-index: 1;
     }
     
-    .btn-download::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 0%;
-      height: 100%;
-      background: rgba(255, 255, 255, 0.1);
-      transition: var(--transition);
-      z-index: -1;
+    .section-light-orange {
+      background: var(--light-blue);
+      color: #333;
+      position: relative;
+      overflow: hidden;
     }
-    
-    .btn-download:hover::before {
-      width: 100%;
-    }
-    
-    .btn-download:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 20px rgba(100, 117, 255, 0.8);
-    }
-    /* BTN */
+
+    /* Buttons */
     .btn {
       padding: 0.8rem 1.8rem;
       border-radius: 8px;
@@ -260,8 +216,9 @@
       overflow: hidden;
       z-index: 1;
     }
+    
     .btn::before {
-      content: '';
+      content: '';                            
       position: absolute;
       top: 0;
       left: 0;
@@ -279,99 +236,65 @@
     .btn-primary {
       background: linear-gradient(135deg, var(--primary-blue), var(--primary-blue-dark));
       border: none;
+      
     }
     
     .btn-primary:hover {
       background: linear-gradient(135deg, var(--primary-blue-dark), var(--primary-blue));
       transform: translateY(-3px);
-      box-shadow: 0 8px 20px rgba(13, 110, 253, 0.4);
+      
     }
     
     .btn-orange {
       background: linear-gradient(135deg, var(--newblue2), var(--newblue));
       border: none;
       color: white;
+      
     }
     
     .btn-orange:hover {
-      background: linear-gradient(135deg, var(--newblue), var(--newblue2));
+      background: linear-gradient(135deg, var(--newblue2), var(--));
       transform: translateY(-3px);
-      box-shadow: 0 8px 20px rgba(13, 110, 253, 0.4);
+      
       color: white;
     }
     
-
-    /* Modal form */
-    .modal-header {
-      background: linear-gradient(135deg, var(--primary-blue), var(--primary-blue-dark));
+    .btn-explore {
+      background: transparent;
+      border: 2px solid var(--primary-blue);
+      color: var(--primary-blue);
+    }
+    
+    .btn-explore:hover {
+      background: var(--primary-blue);
       color: #fff;
-      border-top-left-radius: 16px;
-      border-top-right-radius: 16px;
+      transform: translateY(-3px);
+      
     }
     
-    .modal-content {
-      border-radius: 16px;
-      border: none;
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    .btn-link {
+      text-decoration: none;
+      position: relative;
     }
     
-    .modal-footer .btn {
-      min-width: 120px;
-      border-radius: 8px;
-      font-weight: 600;
-      padding: 10px 20px;
+    .btn-link span {
+      position: relative;
     }
     
-    .btn-success {
-      background: linear-gradient(90deg, var(--newblue), var(--primary-blue));
-      border: none;
+    .btn-link span::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -4px;
+      left: 0;
+      background-color: currentColor;
       transition: var(--transition);
     }
     
-    .btn-success:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 20px rgba(173, 216, 230, 1);
+    .btn-link:hover span::after {
+      width: 100%;
     }
-    
-    .form-control {
-      border-radius: 8px;
-      padding: 10px 15px;
-      border: 1px solid #ced4da;
-      transition: var(--transition);
-    }
-    
-    .form-control:focus {
-      border-color: var(--primary-blue);
-      box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
-    }
-
-    /* Animations */
-    @keyframes fadeUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-    
-    .fade-in {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 0.8s ease, transform 0.8s ease;
-    }
-    
-    .fade-in.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    
-    .delay-1 { transition-delay: 0.1s; }
-    .delay-2 { transition-delay: 0.2s; }
-    .delay-3 { transition-delay: 0.3s; }
-    .delay-4 { transition-delay: 0.4s; }
 
     /* Footer */
     footer {
@@ -462,18 +385,46 @@
       background: rgba(255, 255, 255, 0.1);
       height: 1px;
     }
-
+    
+    /* Animations */
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .delay-1 { transition-delay: 0.1s; }
+    .delay-2 { transition-delay: 0.2s; }
+    .delay-3 { transition-delay: 0.3s; }
+    .delay-4 { transition-delay: 0.4s; }
+    
     /* Responsive adjustments */
     @media (max-width: 992px) {
-      .library {
-        padding: 60px 5%;
+      section {
+        padding: 80px 0;
       }
       
-      .library h1 {
+      section h1 {
         font-size: 2.4rem;
       }
       
-      .library-section h2 {
+      section h2 {
         font-size: 2rem;
       }
       
@@ -481,14 +432,19 @@
         left: 0;
         margin-top: 0;
       }
+      
+      footer .links a {
+        display: inline-block;
+        margin-bottom: 12px;
+      }
     }
     
     @media (max-width: 768px) {
-      .library h1 {
+      section h1 {
         font-size: 2rem;
       }
       
-      .library-section h2 {
+      section h2 {
         font-size: 1.8rem;
       }
       
@@ -496,21 +452,44 @@
         display: block;
         margin-bottom: 12px;
       }
+
     }
+    /*Center all heading underlines */
+    section h1::after,
+    section h2::after,
+    footer h2::after {
+    left: 50% !important;
+    transform: translateX(-50%);
+    }
+/* Remove the artificial spacer under navbar */
+body > div[style*="height: 90px"] {
+  display: none !important;
+}
+/* Only target the Integrated Production heading */
+.section-white h1 {
+  text-align: center !important;
+}
+
+
   </style>
 </head>
 <body>
 
-  <!-- ✅ Navbar -->
+  <!-- ✅ Fixed Navbar -->
   <nav class="navbar navbar-expand-lg navbar-light fixed-top">
     <div class="container-fluid">
-      <a class="navbar-brand" href="<?= base_url() ?>">
-        <img src="<?= base_url('assets_system/images/header_logo.png') ?>" alt="Line Seiki Logo">
+      <!-- Logo on the LEFT -->
+      <a class="navbar-brand" href="#">
+        <img src=<?= base_url('assets_system/images/header_logo.png') ?> alt="Line Seiki Logo">
       </a>
+
+      <!-- Toggler for mobile -->
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
+
+      <!-- Navigation items -->
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto">
           <li class="nav-item"><a class="nav-link" href="<?= base_url() ?>">Home</a></li>
@@ -518,7 +497,7 @@
 
           <!-- Dropdown -->
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
+            <a class="nav-link dropdown-toggle" href=" " id="navbarDropdown" role="button" data-bs-toggle="dropdown">
               Product and Services
             </a>
             <ul class="dropdown-menu">
@@ -538,93 +517,45 @@
           </li>
 
           <li class="nav-item"><a class="nav-link" href="<?= base_url('index/news_event') ?>">News and Events</a></li>
-          <li class="nav-item"><a class="nav-link active" href="<?= base_url('index/library') ?>">Library</a></li>
+          <li class="nav-item"><a class="nav-link" href="<?= base_url('index/library') ?>">Library</a></li>
           <li class="nav-item"><a class="nav-link" href="<?= base_url('index/contact_us') ?>">Contact Us</a></li>
         </ul>
       </div>
     </div>
   </nav>
 
-  <!-- ✅ Library Section -->
-  <section class="library">
-    <h1 class="fade-in">Library</h1>
+  <!-- Spacer for fixed navbar -->
+  <div style="height: 90px;"></div>
 
-    <!-- Case Studies -->
-    <div class="library-section fade-in delay-1">
-      <h2>Case Studies</h2>
-      <p>Download our case studies after filling up the form.</p>
-      <div class="row g-4 justify-content-center">
-        <div class="col-md-4">
-          <div class="download-card">
-            <h5>Case Study 1</h5>
-            <button class="btn-download" data-bs-toggle="modal" data-bs-target="#downloadModal" data-file="case-study-1.pdf">Download</button>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="download-card">
-            <h5>Case Study 2</h5>
-            <button class="btn-download" data-bs-toggle="modal" data-bs-target="#downloadModal" data-file="case-study-2.pdf">Download</button>
-          </div>
-        </div>
-      </div>
+  <!-- Header Section -->
+  <section class="section-white text-center">
+    <div class="container">
+      <br><br><br><br>
+      <h1 class="fade-in">Cookies Settings</h1>
     </div>
 
-    <!-- Brochures -->
-    <div class="library-section fade-in delay-2">
-      <h2>Brochures</h2>
-      <p>Download our brochures after filling up the form.</p>
-      <div class="row g-4 justify-content-center">
-        <div class="col-md-4">
-          <div class="download-card">
-            <h5>Company Profile</h5>
-            <button class="btn-download" data-bs-toggle="modal" data-bs-target="#downloadModal" data-file="company-profile.pdf">Download</button>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="download-card">
-            <h5>Products & Services</h5>
-            <button class="btn-download" data-bs-toggle="modal" data-bs-target="#downloadModal" data-file="products-services.pdf">Download</button>
-          </div>
-        </div>
-      </div>
+    <div class="container text-start mt-5">
+      <p><strong>Cookies Policy</strong></p>
+
+      <p>It is possible that so-called “cookies” are used on some of Line Seiki’s web pages. A cookie is a small text file that is stored from a Website to your hard disk.
+        All cookies stored from our Website are delated from your hard disk automatically once you close your browser.</p>
+
+      <p><strong>Copyright Information</strong><br>
+      Copyright © 2023 Line Seiki Co., Ltd.. All rights reserved.<br><br>
+     This website uses Google Analytics as an access analysis tool.
+    Google Analytics uses cookies to collect traffic data.
+    The traffic data collected is anonymous so that it does not identify individuals.
+    You can refuse providing the traffic data by invalidating cookie.
+    Please confirm the setting of your browser.
+    For more information, please check Google Analytics Terms of Service.</p>
+    <hr>
+    <a href="https://policies.google.com/terms?hl=en">https://policies.google.com/terms?hl=en</a>
+
     </div>
   </section>
 
-  <!-- ✅ Modal Form -->
-  <div class="modal fade" id="downloadModal" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog">
-      <form class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">Fill out the form to download</h5>
-          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
-        </div>
-        <div class="modal-body">
-          <input type="hidden" id="fileToDownload">
-          <div class="mb-3">
-            <label class="form-label">Full Name</label>
-            <input type="text" class="form-control" required>
-          </div>
-          <div class="mb-3">
-            <label class="form-label">Email Address</label>
-            <input type="email" class="form-control" required>
-          </div>
-          <div class="mb-3">
-            <label class="form-label">Company</label>
-            <input type="text" class="form-control" required>
-          </div>
-          <div class="mb-3">
-            <label class="form-label">Position</label>
-            <input type="text" class="form-control" required>
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button type="submit" class="btn btn-success">Submit & Download</button>
-        </div>
-      </form>
-    </div>
-  </div>
 
-  <!-- ✅ Footer -->
+  <!-- Footer -->
   <footer>
     <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap">
       <h2>Get in Touch with Us</h2>
@@ -636,7 +567,7 @@
     <p>We're here to assist with your inquiries and needs.</p>
     <hr class="my-4">
     <div class="d-flex justify-content-between flex-wrap align-items-center">
-      <img src="<?= base_url('assets_system/images/footer_logo.png') ?>" height="40" alt="Logo">
+      <img src=<?= base_url('assets_system/images/footer_logo.png') ?> height="40" alt="Logo">
       <div class="links">
         <a href="<?= base_url() ?>">Home</a>
         <a href="<?= base_url('index/about_us') ?>">About Us</a>
@@ -648,10 +579,10 @@
         <a href="<?= base_url('index/contact_us') ?>">Contact Us</a>
       </div>
       <div class="socials">
-        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://www.facebook.com/lineseikiofficial"><i class="fab fa-facebook-f"></i></a>
         <a href="#"><i class="fab fa-instagram"></i></a>
         <a href="#"><i class="fab fa-x-twitter"></i></a>
-        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://www.linkedin.com/company/line-seiki-co.-ltd./about/"><i class="fab fa-linkedin-in"></i></a>
         <a href="#"><i class="fab fa-youtube"></i></a>
       </div>
     </div>
@@ -663,11 +594,11 @@
     </div>
   </footer>
 
-  <!-- Bootstrap 5 JS -->
+  <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
   <script>
-    document.addEventListener('DOMContentLoaded', () => {
+    document.addEventListener("DOMContentLoaded", function(){
       // Navbar scroll effect
       const navbar = document.querySelector('.navbar');
       window.addEventListener('scroll', function() {
@@ -720,27 +651,8 @@
           openMenu.classList.remove('show');
         });
       });
-      
-      // Capture which file to download
-      let selectedFile = "";
-      const modal = document.getElementById("downloadModal");
-      modal.addEventListener("show.bs.modal", function (event) {
-        const button = event.relatedTarget;
-        selectedFile = button.getAttribute("data-file");
-        document.getElementById("fileToDownload").value = selectedFile;
-      });
-
-      // Handle form submission
-      document.querySelector("#downloadModal form").addEventListener("submit", function(e){
-        e.preventDefault();
-        const file = document.getElementById("fileToDownload").value;
-        // ✅ trigger file download
-        window.location.href = "downloads/" + file; // <-- adjust folder path
-        const modalInstance = bootstrap.Modal.getInstance(modal);
-        modalInstance.hide();
-        this.reset();
-      });
     });
   </script>
+
 </body>
 </html>

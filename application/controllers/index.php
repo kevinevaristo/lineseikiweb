@@ -67,4 +67,9 @@ class index extends CI_Controller
   {
    $this->load->view('termsof_service');
   }
+  function cookies_setting()
+  {
+   $this->load->view('cookies_setting');
+  }
+
 }

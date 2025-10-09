@@ -705,7 +705,7 @@ body > div[style*="margin-top: 90px"] {
       <span>© 2025 Line Seiki Asia Pacific. All rights reserved.</span>
       <a href="#">Privacy Policy</a>
       <a href="<?= base_url('index/termsof_service') ?>">Terms of Service</a>
-      <a href="#">Cookie Settings</a>
+      <a href="<?= base_url('index/cookies_setting')?>">Cookie Settings</a>
     </div>
   </footer>
 
