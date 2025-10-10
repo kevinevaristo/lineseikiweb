@@ -75,5 +75,9 @@ class index extends CI_Controller
   {
    $this->load->view('privacy_policy');
   }
+  function news_events_extension()
+  {
+   $this->load->view('news_events_extension');
+  }
 
 }

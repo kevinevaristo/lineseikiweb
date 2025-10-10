@@ -580,7 +580,7 @@ body > div[style*="margin-top: 90px"] {
         <div class="news-card-content">
           <h3>Company Announcements</h3>
           <p>Stay up-to-date with our official announcements, product releases, and company news.</p>
-          <a href="#">Read more</a>
+          <a href="<?= base_url('index/news_events_extension') ?>">Read more</a>
         </div>
       </div>
       <div class="news-card fade-in delay-2">
