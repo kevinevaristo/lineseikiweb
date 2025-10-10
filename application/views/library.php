@@ -657,7 +657,7 @@
     </div>
     <div class="bottom mt-4">
       <span>© 2025 Line Seiki Asia Pacific. All rights reserved.</span>
-      <a href="#">Privacy Policy</a>
+      <a href="<?= base_url('index/privacy_policy') ?>">Privacy Policy</a>
       <a href="<?= base_url('index/termsof_service') ?>">Terms of Service</a>
       <a href="<?= base_url('index/cookies_setting')?>">Cookie Settings</a>
     </div>

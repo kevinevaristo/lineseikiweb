@@ -71,5 +71,9 @@ class index extends CI_Controller
   {
    $this->load->view('cookies_setting');
   }
+   function privacy_policy()
+  {
+   $this->load->view('privacy_policy');
+  }
 
 }
