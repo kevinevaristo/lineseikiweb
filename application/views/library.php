@@ -16,6 +16,24 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Library - Line Seiki Asia Pacific</title>
+
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
   <style>
     :root {
       --primary-blue: #0d6efd;
@@ -37,29 +55,25 @@
       font-family: 'Inter', sans-serif;
       line-height: 1.6;
       overflow-x: hidden;
-      padding-top: 90px; /* space for fixed navbar */
+      padding-top: 90px;
     }
 
-    /* Smooth scrolling */
     html {
       scroll-behavior: smooth;
     }
 
-    /* Modernized Navbar */
     .navbar {
       background: rgba(255, 255, 255, 0.98);
       backdrop-filter: blur(10px);
       padding: 0.8rem 5%;
       transition: var(--transition);
-      box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
       border-bottom: 1px solid rgba(13, 110, 253, 0.1);
     }
-    
+
     .navbar.scrolled {
       padding: 0.6rem 5%;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
     }
-    
+
     .navbar-nav .nav-link {
       color: var(--dark);
       font-weight: 500;
@@ -69,13 +83,13 @@
       border-radius: 8px;
       margin: 0 0.1rem;
     }
-    
+
     .navbar-nav .nav-link:hover,
     .navbar-nav .nav-link.active {
       color: var(--primary-blue);
       background: rgba(13, 110, 253, 0.08);
     }
-    
+
     .navbar-nav .nav-link::after {
       content: '';
       position: absolute;
@@ -86,62 +100,60 @@
       background-color: var(--newblue);
       transition: var(--transition);
     }
-    
+
     .navbar-nav .nav-link:hover::after {
       width: 70%;
       left: 15%;
     }
-    
+
     .dropdown-menu {
       background-color: rgba(255, 255, 255, 0.98);
       backdrop-filter: blur(10px);
       border: 1px solid rgba(0, 0, 0, 0.1);
       border-radius: 12px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
       padding: 0.8rem 0;
       margin-top: 0.8rem;
       animation: fadeIn 0.3s ease;
     }
-    
+
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(10px); }
       to { opacity: 1; transform: translateY(0); }
     }
-    
+
     .dropdown-item {
       color: var(--dark);
       padding: 0.6rem 1.5rem;
       transition: var(--transition);
       position: relative;
     }
-    
+
     .dropdown-item:hover {
       background-color: var(--primary-blue);
       color: white;
       padding-left: 2rem;
     }
-    
+
     .navbar-brand img {
       height: 40px;
       width: auto;
       transition: var(--transition);
     }
-    
+
     .dropdown-submenu {
       position: relative;
     }
-    
+
     .dropdown-submenu > .dropdown-menu {
       top: 0;
       left: 100%;
       margin-top: -0.8rem;
     }
 
-    /* Library Sections */
     .library {
       padding: 80px 5%;
     }
-    
+
     .library h1 {
       text-align: center;
       font-size: 2.8rem;
@@ -150,7 +162,7 @@
       font-weight: 700;
       position: relative;
     }
-    
+
     .library h1::after {
       content: '';
       position: absolute;
@@ -162,11 +174,11 @@
       background: linear-gradient(90deg, var(--newblue), var(--primary-blue));
       border-radius: 2px;
     }
-    
+
     .library-section {
       margin-bottom: 80px;
     }
-    
+
     .library-section h2 {
       font-size: 2.2rem;
       color: var(--primary-blue);
@@ -175,7 +187,7 @@
       position: relative;
       font-weight: 700;
     }
-    
+
     .library-section h2::after {
       content: '';
       position: absolute;
@@ -187,14 +199,14 @@
       background: linear-gradient(90deg, var(--newblue), var(--primary-blue));
       border-radius: 2px;
     }
-    
+
     .library-section p {
       text-align: center;
       color: #495057;
       margin-bottom: 40px;
       font-size: 1.1rem;
     }
-    
+
     .download-card {
       background: #fff;
       border-radius: 16px;
@@ -204,19 +216,18 @@
       border: 1px solid rgba(13, 110, 253, 0.1);
       height: 100%;
     }
-    
+
     .download-card:hover {
       transform: translateY(-8px);
-      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
     }
-    
+
     .download-card h5 {
       margin-bottom: 20px;
       font-weight: 600;
       color: var(--primary-blue);
       font-size: 1.3rem;
     }
-    
+
     .btn-download {
       background: linear-gradient(90deg, var(--newblue), var(--primary-blue));
       color: #fff;
@@ -229,7 +240,7 @@
       overflow: hidden;
       z-index: 1;
     }
-    
+
     .btn-download::before {
       content: '';
       position: absolute;
@@ -241,16 +252,15 @@
       transition: var(--transition);
       z-index: -1;
     }
-    
+
     .btn-download:hover::before {
       width: 100%;
     }
-    
+
     .btn-download:hover {
       transform: translateY(-3px);
-      box-shadow: 0 8px 20px rgba(100, 117, 255, 0.8);
     }
-    /* BTN */
+
     .btn {
       padding: 0.8rem 1.8rem;
       border-radius: 8px;
@@ -260,6 +270,7 @@
       overflow: hidden;
       z-index: 1;
     }
+
     .btn::before {
       content: '';
       position: absolute;
@@ -271,109 +282,94 @@
       transition: var(--transition);
       z-index: -1;
     }
-    
+
     .btn:hover::before {
       width: 100%;
     }
-    
+
     .btn-primary {
       background: linear-gradient(135deg, var(--primary-blue), var(--primary-blue-dark));
       border: none;
     }
-    
+
     .btn-primary:hover {
       background: linear-gradient(135deg, var(--primary-blue-dark), var(--primary-blue));
       transform: translateY(-3px);
-      box-shadow: 0 8px 20px rgba(13, 110, 253, 0.4);
     }
-    
+
     .btn-orange {
       background: linear-gradient(135deg, var(--newblue2), var(--newblue));
       border: none;
       color: white;
     }
-    
+
     .btn-orange:hover {
       background: linear-gradient(135deg, var(--newblue), var(--newblue2));
       transform: translateY(-3px);
-      box-shadow: 0 8px 20px rgba(13, 110, 253, 0.4);
       color: white;
     }
-    
 
-    /* Modal form */
     .modal-header {
       background: linear-gradient(135deg, var(--primary-blue), var(--primary-blue-dark));
       color: #fff;
       border-top-left-radius: 16px;
       border-top-right-radius: 16px;
     }
-    
+
     .modal-content {
       border-radius: 16px;
       border: none;
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
     }
-    
+
     .modal-footer .btn {
       min-width: 120px;
       border-radius: 8px;
       font-weight: 600;
       padding: 10px 20px;
     }
-    
+
     .btn-success {
       background: linear-gradient(90deg, var(--newblue), var(--primary-blue));
       border: none;
       transition: var(--transition);
     }
-    
+
     .btn-success:hover {
       transform: translateY(-2px);
-      box-shadow: 0 8px 20px rgba(173, 216, 230, 1);
     }
-    
+
     .form-control {
       border-radius: 8px;
       padding: 10px 15px;
       border: 1px solid #ced4da;
       transition: var(--transition);
     }
-    
+
     .form-control:focus {
       border-color: var(--primary-blue);
-      box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
     }
 
-    /* Animations */
     @keyframes fadeUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
     }
-    
+
     .fade-in {
       opacity: 0;
       transform: translateY(30px);
       transition: opacity 0.8s ease, transform 0.8s ease;
     }
-    
+
     .fade-in.visible {
       opacity: 1;
       transform: translateY(0);
     }
-    
+
     .delay-1 { transition-delay: 0.1s; }
     .delay-2 { transition-delay: 0.2s; }
     .delay-3 { transition-delay: 0.3s; }
     .delay-4 { transition-delay: 0.4s; }
 
-    /* Footer */
     footer {
       background: linear-gradient(135deg, var(--newblue2), var(--newblue));
       color: white;
@@ -381,7 +377,7 @@
       position: relative;
       overflow: hidden;
     }
-    
+
     footer::before {
       content: '';
       position: absolute;
@@ -392,12 +388,12 @@
       background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='50' cy='50' r='1' fill='%23FFFFFF' opacity='0.05'/%3E%3C/svg%3E");
       pointer-events: none;
     }
-    
+
     footer h2 {
       color: white;
       font-weight: 700;
     }
-    
+
     footer .links a {
       color: #fff;
       text-decoration: none;
@@ -406,7 +402,7 @@
       font-weight: 500;
       transition: var(--transition);
     }
-    
+
     footer .links a::after {
       content: '';
       position: absolute;
@@ -417,15 +413,15 @@
       background-color: var(--newblue2);
       transition: var(--transition);
     }
-    
+
     footer .links a:hover {
       color: white;
     }
-    
+
     footer .links a:hover::after {
       width: 100%;
     }
-    
+
     footer .socials a {
       color: white;
       margin-right: 18px;
@@ -433,12 +429,12 @@
       transition: var(--transition);
       display: inline-block;
     }
-    
+
     footer .socials a:hover {
       color: var(--newblue2);
       transform: translateY(-3px);
     }
-    
+
     footer .bottom {
       margin-top: 40px;
       font-size: 0.85rem;
@@ -447,51 +443,50 @@
       justify-content: center;
       gap: 24px;
     }
-    
+
     footer .bottom a {
       color: #ccc;
       text-decoration: none;
       transition: var(--transition);
     }
-    
+
     footer .bottom a:hover {
       color: var(--newblue2);
     }
-    
+
     hr {
       background: rgba(255, 255, 255, 0.1);
       height: 1px;
     }
 
-    /* Responsive adjustments */
     @media (max-width: 992px) {
       .library {
         padding: 60px 5%;
       }
-      
+
       .library h1 {
         font-size: 2.4rem;
       }
-      
+
       .library-section h2 {
         font-size: 2rem;
       }
-      
+
       .dropdown-submenu > .dropdown-menu {
         left: 0;
         margin-top: 0;
       }
     }
-    
+
     @media (max-width: 768px) {
       .library h1 {
         font-size: 2rem;
       }
-      
+
       .library-section h2 {
         font-size: 1.8rem;
       }
-      
+
       footer .links a {
         display: block;
         margin-bottom: 12px;

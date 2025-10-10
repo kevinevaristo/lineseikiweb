@@ -15,6 +15,23 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Line Seiki Asia Pacific</title>
+
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
      :root {
@@ -39,26 +56,23 @@
       overflow-x: hidden;
     }
 
-    /* Smooth scrolling */
     html {
       scroll-behavior: smooth;
     }
 
-    /* Modernized Navbar */
+    /* Navbar */
     .navbar {
       background: rgba(255, 255, 255, 0.98);
       backdrop-filter: blur(10px);
       padding: 0.8rem 5%;
       transition: var(--transition);
-      box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
       border-bottom: 1px solid rgba(13, 110, 253, 0.1);
     }
     
     .navbar.scrolled {
       padding: 0.6rem 5%;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
     }
-    
+
     .navbar-nav .nav-link {
       color: var(--dark);
       font-weight: 500;
@@ -96,17 +110,16 @@
       backdrop-filter: blur(10px);
       border: 1px solid rgba(0, 0, 0, 0.1);
       border-radius: 12px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
       padding: 0.8rem 0;
       margin-top: 0.8rem;
       animation: fadeIn 0.3s ease;
     }
-    
+
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(10px); }
       to { opacity: 1; transform: translateY(0); }
     }
-    
+
     .dropdown-item {
       color: var(--dark);
       padding: 0.6rem 1.5rem;
@@ -119,17 +132,17 @@
       color: white;
       padding-left: 2rem;
     }
-    
+
     .navbar-brand img {
       height: 40px;
       width: auto;
       transition: var(--transition);
     }
-    
+
     .dropdown-submenu {
       position: relative;
     }
-    
+
     .dropdown-submenu > .dropdown-menu {
       top: 0;
       left: 100%;
@@ -145,14 +158,12 @@
     section img {
       width: 100%;
       border-radius: 16px;
-      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
       transition: var(--transition);
       transform: translateY(0);
     }
-    
+
     section img:hover {
       transform: translateY(-5px);
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
     }
     
     section h1, section h2 {
@@ -181,7 +192,7 @@
       background: linear-gradient(90deg, var(--newblue), var(--primary-blue));
       border-radius: 2px;
     }
-    
+
     section p {
       margin-bottom: 28px;
       font-size: 1.1rem;
@@ -193,19 +204,15 @@
       background: #fff;
       color: #333;
     }
-    
+
     .section-light-blue {
       background: var(--light-blue);
       color: #333;
-      position: relative;
-      overflow: hidden;
     }
-    
+
     .section-light-orange {
       background: var(--light-orange);
       color: #333;
-      position: relative;
-      overflow: hidden;
     }
 
     /* Buttons */
@@ -218,7 +225,7 @@
       overflow: hidden;
       z-index: 1;
     }
-    
+
     .btn::before {
       content: '';
       position: absolute;
@@ -230,59 +237,54 @@
       transition: var(--transition);
       z-index: -1;
     }
-    
+
     .btn:hover::before {
       width: 100%;
     }
-    
+
     .btn-primary {
       background: linear-gradient(135deg, var(--primary-blue), var(--primary-blue-dark));
       border: none;
-      box-shadow: 0 5px 15px rgba(13, 110, 253, 0.3);
     }
-    
+
     .btn-primary:hover {
       background: linear-gradient(135deg, var(--primary-blue-dark), var(--primary-blue));
       transform: translateY(-3px);
-      box-shadow: 0 8px 20px rgba(13, 110, 253, 0.4);
     }
-    
+
     .btn-orange {
       background: linear-gradient(135deg, var(--newblue2), var(--newblue));
       border: none;
       color: white;
-      box-shadow: 0 5px 15px rgba(253, 126, 20, 0.3);
     }
-    
+
     .btn-orange:hover {
       background: linear-gradient(135deg, var(--newblue), var(--newblue2));
       transform: translateY(-3px);
-      box-shadow: 0 8px 20px rgba(253, 126, 20, 0.4);
       color: white;
     }
-    
+
     .btn-explore {
       background: transparent;
       border: 2px solid var(--primary-blue);
       color: var(--primary-blue);
     }
-    
+
     .btn-explore:hover {
       background: var(--primary-blue);
       color: #fff;
       transform: translateY(-3px);
-      box-shadow: 0 8px 20px rgba(13, 110, 253, 0.3);
     }
-    
+
     .btn-link {
       text-decoration: none;
       position: relative;
     }
-    
+
     .btn-link span {
       position: relative;
     }
-    
+
     .btn-link span::after {
       content: '';
       position: absolute;
@@ -293,7 +295,7 @@
       background-color: currentColor;
       transition: var(--transition);
     }
-    
+
     .btn-link:hover span::after {
       width: 100%;
     }
@@ -306,7 +308,7 @@
       position: relative;
       overflow: hidden;
     }
-    
+
     footer::before {
       content: '';
       position: absolute;
@@ -317,12 +319,12 @@
       background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='50' cy='50' r='1' fill='%23FFFFFF' opacity='0.05'/%3E%3C/svg%3E");
       pointer-events: none;
     }
-    
+
     footer h2 {
       color: white;
       font-weight: 700;
     }
-    
+
     footer .links a {
       color: #fff;
       text-decoration: none;
@@ -331,7 +333,7 @@
       font-weight: 500;
       transition: var(--transition);
     }
-    
+
     footer .links a::after {
       content: '';
       position: absolute;
@@ -342,15 +344,15 @@
       background-color: var(--newblue2);
       transition: var(--transition);
     }
-    
+
     footer .links a:hover {
       color: white;
     }
-    
+
     footer .links a:hover::after {
       width: 100%;
     }
-    
+
     footer .socials a {
       color: white;
       margin-right: 18px;
@@ -358,12 +360,12 @@
       transition: var(--transition);
       display: inline-block;
     }
-    
+
     footer .socials a:hover {
       color: var(--newblue2);
       transform: translateY(-3px);
     }
-    
+
     footer .bottom {
       margin-top: 40px;
       font-size: 0.85rem;
@@ -372,196 +374,160 @@
       justify-content: center;
       gap: 24px;
     }
-    
+
     footer .bottom a {
       color: #ccc;
       text-decoration: none;
       transition: var(--transition);
     }
-    
+
     footer .bottom a:hover {
       color: var(--newblue2);
     }
-    
+
     hr {
       background: rgba(255, 255, 255, 0.1);
       height: 1px;
     }
-    
-    /* Animations */
+
     @keyframes fadeUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
     }
-    
+
     .fade-in {
       opacity: 0;
       transform: translateY(30px);
       transition: opacity 0.8s ease, transform 0.8s ease;
     }
-    
+
     .fade-in.visible {
       opacity: 1;
       transform: translateY(0);
     }
-    
+
     .delay-1 { transition-delay: 0.1s; }
     .delay-2 { transition-delay: 0.2s; }
     .delay-3 { transition-delay: 0.3s; }
     .delay-4 { transition-delay: 0.4s; }
-    
-    /* Responsive adjustments */
+
     @media (max-width: 992px) {
-      section {
-        padding: 80px 0;
-      }
-      
-      section h1 {
-        font-size: 2.4rem;
-      }
-      
-      section h2 {
-        font-size: 2rem;
-      }
-      
-      .dropdown-submenu > .dropdown-menu {
-        left: 0;
-        margin-top: 0;
-      }
-      
-      footer .links a {
-        display: inline-block;
-        margin-bottom: 12px;
-      }
+      section { padding: 80px 0; }
+      section h1 { font-size: 2.4rem; }
+      section h2 { font-size: 2rem; }
+      .dropdown-submenu > .dropdown-menu { left: 0; margin-top: 0; }
+      footer .links a { display: inline-block; margin-bottom: 12px; }
     }
-    
+
     @media (max-width: 768px) {
-      section h1 {
-        font-size: 2rem;
-      }
-      
-      section h2 {
-        font-size: 1.8rem;
-      }
-      
-      footer .links a {
-        display: block;
-        margin-bottom: 12px;
-      }
+      section h1 { font-size: 2rem; }
+      section h2 { font-size: 1.8rem; }
+      footer .links a { display: block; margin-bottom: 12px; }
     }
-    /* Fullscreen carousel */
-#heroCarousel .carousel-item {
-  height: 100vh; /* full screen height */
-  min-height: 600px;
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  display: flex;
-  align-items: center;
-}
 
-/* Show carousel images beneath header */
-#heroCarousel .carousel-item img {
-  display: block !important;
-  width: 100%;
-  height: auto;
-  object-fit: cover;
-}
+    /* Carousel */
+    #heroCarousel .carousel-item {
+      height: 100vh;
+      min-height: 600px;
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+      display: flex;
+      align-items: center;
+    }
 
-/* 🔹 Make carousel fade smoother */
-.carousel.carousel-fade .carousel-item {
-  opacity: 0;
-  transition-property: opacity;
-  transition-duration: 1.5s; /* smoother speed */
-  transition-timing-function: ease-in-out;
-}
+    #heroCarousel .carousel-item img {
+      display: block !important;
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+    }
 
-.carousel.carousel-fade .carousel-item.active,
-.carousel.carousel-fade .carousel-item-next.carousel-item-start,
-.carousel.carousel-fade .carousel-item-prev.carousel-item-end {
-  opacity: 1;
-}
+    .carousel.carousel-fade .carousel-item {
+      opacity: 0;
+      transition-property: opacity;
+      transition-duration: 1.5s;
+      transition-timing-function: ease-in-out;
+    }
 
-.carousel.carousel-fade .active.carousel-item-start,
-.carousel.carousel-fade .active.carousel-item-end {
-  opacity: 0;
-}
-/* 🔹 Transparent overlay across the whole slide */
-#heroCarousel .carousel-item::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.55); /* adjust transparency */
-  z-index: 1; /* sits above background image */
-}
+    .carousel.carousel-fade .carousel-item.active,
+    .carousel.carousel-fade .carousel-item-next.carousel-item-start,
+    .carousel.carousel-fade .carousel-item-prev.carousel-item-end {
+      opacity: 1;
+    }
 
-/* 🔹 Keep text above overlay, aligned left */
-#heroCarousel .carousel-item .container {
-  position: relative;
-  z-index: 2; /* ensures text is above overlay */
-  max-width: 700px;
-  margin-left: 5%; /* push to left */
-  text-align: left;
-}
+    .carousel.carousel-fade .active.carousel-item-start,
+    .carousel.carousel-fade .active.carousel-item-end {
+      opacity: 0;
+    }
 
-/* 🔹 Hide carousel arrows */
-#heroCarousel .carousel-control-prev,
-#heroCarousel .carousel-control-next {
-  display: none !important;
-}
-/* 🔹 Gradient text for all carousel slide titles */
-#heroCarousel .carousel-item h1 {
-  background: linear-gradient(90deg, var(--primary-blue), #007bff);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  font-weight: 700;
-  position: relative;
-  display: inline-block;
-}
+    #heroCarousel .carousel-item::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.55);
+      z-index: 1;
+    }
 
-/* 🔹 Gradient underline under the titles */
-#heroCarousel .carousel-item h1::after {
-  content: "";
-  display: block;
-  width: 60px;
-  height: 4px;
-  margin-top: 8px;
-  background: linear-gradient(90deg, var(--newblue), var(--primary-blue));
-  border-radius: 2px;
-}
-.cta-title::after {
-  content: '';
-  position: absolute;
-  left: 50%;
-  bottom: -15px;
-  transform: translateX(-50%);
-  width: 60px;
-  height: 4px;
-  background:linear-gradient(90deg, var(--newblue2), var(--newblue));
-  border-radius: 2px;
-}
-/* ✅ Center all heading lines and update to new blue gradient */
-section h2::after {
-  left: 50% !important;
-  transform: translateX(-50%);
-  background: linear-gradient(90deg, var(--newblue2), var(--newblue)) !important;
-}
-/* Remove the artificial gap below navbar */
-body > div[style*="margin-top:90px"] {
-  display: none !important;
-}
+    #heroCarousel .carousel-item .container {
+      position: relative;
+      z-index: 2;
+      max-width: 700px;
+      margin-left: 5%;
+      text-align: left;
+    }
 
+    #heroCarousel .carousel-control-prev,
+    #heroCarousel .carousel-control-next {
+      display: none !important;
+    }
+
+    #heroCarousel .carousel-item h1 {
+      background: linear-gradient(90deg, var(--primary-blue), #007bff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-weight: 700;
+      position: relative;
+      display: inline-block;
+    }
+
+    #heroCarousel .carousel-item h1::after {
+      content: "";
+      display: block;
+      width: 60px;
+      height: 4px;
+      margin-top: 8px;
+      background: linear-gradient(90deg, var(--newblue), var(--primary-blue));
+      border-radius: 2px;
+    }
+
+    .cta-title::after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      bottom: -15px;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 4px;
+      background: linear-gradient(90deg, var(--newblue2), var(--newblue));
+      border-radius: 2px;
+    }
+
+    section h2::after {
+      left: 50% !important;
+      transform: translateX(-50%);
+      background: linear-gradient(90deg, var(--newblue2), var(--newblue)) !important;
+    }
+
+    body > div[style*="margin-top:90px"] {
+      display: none !important;
+    }
   </style>
 </head>
+
 <body>
 
  <!-- ✅ Fixed Navbar -->

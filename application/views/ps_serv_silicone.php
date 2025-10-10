@@ -902,6 +902,11 @@
         margin-bottom: 12px;
       }
     }
+    /* Remove all shadows globally */
+* {
+  box-shadow: none !important;
+  text-shadow: none !important;
+}
   </style>
 </head>
 <body>
