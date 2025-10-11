@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Contact Us - Line Seiki Asia Pacific</title>
+  <title>News and Events - Line Seiki Asia Pacific</title>
   
   <!-- Bootstrap 5 CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -423,10 +423,6 @@ table td:first-child {
   text-decoration: none;
 }
 
-.links a:hover {
-  text-decoration: underline;
-}
-
 .back-btn {
   display: inline-block;
   margin-top: 40px;
@@ -515,6 +511,21 @@ hr {
   background: rgba(255, 255, 255, 0.1);
   height: 1px;
 }
+footer .links a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -4px;
+  left: 0;
+  background-color: var(--newblue2);  /* ← This is the blue line */
+  transition: var(--transition);
+}
+
+footer .links a:hover::after {
+  width: 100%;
+}
+
 
 /* =========================================================
    ✨ ANIMATIONS

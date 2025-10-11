@@ -79,5 +79,4 @@ class index extends CI_Controller
   {
    $this->load->view('news_events_extension');
   }
-
 }
