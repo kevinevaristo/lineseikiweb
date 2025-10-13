@@ -588,7 +588,7 @@ body > div[style*="margin-top: 90px"] {
         <div class="news-card-content">
           <h3>New Product Launch</h3>
           <p>Discover our latest innovation designed to enhance efficiency and precision in your operations.</p>
-          <a href="#">Explore</a>
+          <a href="<?= base_url('index/news_events_extension') ?>">Explore</a>
         </div>
       </div>
       <div class="news-card fade-in delay-3">
@@ -596,7 +596,7 @@ body > div[style*="margin-top: 90px"] {
         <div class="news-card-content">
           <h3>Industry Insights</h3>
           <p>Read our latest articles and insights on industry trends and technological advancements.</p>
-          <a href="#">Learn more</a>
+          <a href="<?= base_url('index/news_events_extension') ?>">Learn more</a>
         </div>
       </div>
     </div>
@@ -611,7 +611,7 @@ body > div[style*="margin-top: 90px"] {
         <div class="news-card-content">
           <h3>Smart IoT Solutions</h3>
           <p>Join our expert-led webinar on integrating smart solutions for seamless operational control.</p>
-          <a href="#">Register now</a>
+          <a href="<?= base_url('index/news_events_extension') ?>">Register now</a>
         </div>
       </div>
       <div class="news-card fade-in delay-2">
@@ -619,7 +619,7 @@ body > div[style*="margin-top: 90px"] {
         <div class="news-card-content">
           <h3>Mastering Precision Tools</h3>
           <p>A deep dive into our new line of precision instruments and how to use them effectively.</p>
-          <a href="#">Learn more</a>
+          <a href="<?= base_url('index/news_events_extension') ?>">Learn more</a>
         </div>
       </div>
       <div class="news-card fade-in delay-3">
@@ -627,7 +627,7 @@ body > div[style*="margin-top: 90px"] {
         <div class="news-card-content">
           <h3>Data-Driven Decisions</h3>
           <p>Understand how to leverage real-time data from our systems to make smarter decisions.</p>
-          <a href="#">View details</a>
+          <a href="<?= base_url('index/news_events_extension') ?>">View details</a>
         </div>
       </div>
     </div>
@@ -642,7 +642,7 @@ body > div[style*="margin-top: 90px"] {
         <div class="news-card-content">
           <h3>Global Tech Expo</h3>
           <p>Join us at the largest tech expo of the year to witness our live product demonstrations.</p>
-          <a href="#">Find out more</a>
+          <a href="<?= base_url('index/news_events_extension') ?>">Find out more</a>
         </div>
       </div>
       <div class="news-card fade-in delay-2">
@@ -650,7 +650,7 @@ body > div[style*="margin-top: 90px"] {
         <div class="news-card-content">
           <h3>Technical Seminar</h3>
           <p>A series of talks by our engineers on the latest advancements in industrial measurement.</p>
-          <a href="#">View schedule</a>
+          <a href="<?= base_url('index/news_events_extension') ?>">View schedule</a>
         </div>
       </div>
       <div class="news-card fade-in delay-3">
@@ -658,7 +658,7 @@ body > div[style*="margin-top: 90px"] {
         <div class="news-card-content">
           <h3>Client Showcase</h3>
           <p>See how our solutions have transformed businesses and discover real-world case studies.</p>
-          <a href="#">Explore projects</a>
+          <a href="<?= base_url('index/news_events_extension') ?>">Explore projects</a>
         </div>
       </div>
     </div>

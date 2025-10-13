@@ -347,7 +347,7 @@
     }
     
     .section-light-orange {
-      background: var(--light-orange);
+      background: var(--newblue);
       color: #333;
       position: relative;
       overflow: hidden;
@@ -541,7 +541,7 @@
     }
     
     .card-content a:hover {
-      color: var(--primary-orange);
+      color: var(--newblue);
     }
     
     .card-content a::after {
@@ -640,13 +640,13 @@
     }
     
     .news-card-content a:hover {
-      color: var(--primary-orange);
+      color: var(--newblue);
     }
 
     /* Project Submission */
     .project-submission {
       padding: 100px 5%;
-      background: var(--light-orange);
+      background: var(--newblue);
       display: flex;
       justify-content: center;
       align-items: center;
