@@ -79,4 +79,10 @@ class index extends CI_Controller
   {
    $this->load->view('news_events_extension');
   }
+  function electronic_counter_details()
+  {
+   $this->load->view('electronic_counter_details');
+  }
+  
+  
 }
