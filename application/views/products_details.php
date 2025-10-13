@@ -477,6 +477,20 @@
   letter-spacing: 1px;
 }
 
+.product-image {
+  max-width: 50%;   /* shrink image */
+  height: auto;
+  border-radius: 16px; /* keep rounded corners */
+  transition: none; /* remove hover transition */
+  box-shadow: none; /* remove shadow */
+}
+
+/* Removed hover effect entirely */
+section img:hover {
+  transform: none;
+}
+
+
 
 
 
@@ -569,9 +583,10 @@
       
       <!-- Right: Image -->
       <div class="col-md-6 order-1 order-md-2 text-center mb-4 mb-md-0">
-        <img src="<?= base_url('assets_system/images/safetyswitches.jpg')?>" 
-        alt="Product Image" 
-        class="img-fluid rounded shadow product-image">
+        <img src="<?= base_url('assets_system/images/safetyswitches.jpg')?>"
+          alt="Product Image"
+            class="img-fluid rounded product-image">
+      </div>
 
       </div>
     </div>

@@ -136,83 +136,46 @@
       margin-top: -0.8rem;
     }
 
-/* Products Section */
-.products {
-  padding: 120px 5% 80px;
-  text-align: center;
-}
+       /* Sections */
+    section {
+      padding: 100px 0;
+      position: relative;
+    }
+    
+    section img {
+      width: 100%;
+      border-radius: 16px;
+      transition: var(--transition);
+      transform: translateY(0);
+    }
+    
+    section img:hover {
+      transform: translateY(-5px);
+      
+    }
+    
+    section h1, section h2 {
+      margin-bottom: 24px;
+      font-weight: 700;
+      position: relative;
+    }
+    
+    section h1 {
+      font-size: 2.8rem;
+      color: var(--primary-blue);
+    }
+    
+    section h2 {
+      font-size: 2.2rem;
+      color: var(--primary-blue);
+    }
+    
+    section p {
+      margin-bottom: 28px;
+      font-size: 1.1rem;
+      color: #495057;
+    }
 
-.products h1 {
-  font-size: 2.5rem;
-  margin-bottom: 40px;
-  color: var(--primary-blue);
-  font-weight: 700;
-  position: relative;
-}
-
-.products h1::after {
-  content: '';
-  position: absolute;
-  left: 50%;
-  bottom: -15px;
-  transform: translateX(-50%);
-  width: 60px;
-  height: 4px;
-  background: linear-gradient(90deg, var(--newblue), var(--primary-blue));
-  border-radius: 2px;
-}
-
-.categories {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 25px;
-}
-
-/* Individual Product Cards */
-.category {
-  border-radius: 16px;
-  overflow: hidden;
-  cursor: pointer;
-  background: #fff;
-  transition: var(--transition);
-}
-
-.category:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 6px 20px rgba(0,0,0,0.12);
-}
-
-.category img {
-  width: 100%;
-  height: 220px;
-  object-fit: cover;
-  display: block;
-  transition: transform 0.5s ease;
-}
-
-.category:hover img {
-  transform: scale(1.05);
-}
-
-/* Remove overlay completely */
-.overlay {
-  display: none;
-}
-
-/* Add product title below image */
-.category-title {
-  padding: 15px 10px;
-  background: transparent;
-  color: var(--dark);
-  font-size: 1.1rem;
-  font-weight: 600;
-  text-align: center;
-  transition: color 0.3s ease;
-}
-
-.category:hover .category-title {
-  color: var(--primary-blue);
-}
 
 
     /* CTA Section */
@@ -463,12 +426,73 @@
   background: linear-gradient(135deg, var(--newblue2), var(--newblue)) !important;
   color: white !important;
   border: none !important;
+  
 }
 
 .cta .btn-light:hover {
   background: linear-gradient(135deg, var(--newblue), var(--newblue2)) !important;
   transform: translateY(-3px);
 }
+/* Smaller Top Details section */
+.top-details {
+  padding: 40px 0;  /* smaller than default 100px */
+  background-color: #fff;
+}
+
+.top-details h1 {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--primary-blue);
+}
+
+.product-image {
+  max-width: 50%;   /* shrink image */
+  height: auto;
+}
+
+/* Top Details section with large background image */
+.top-details {
+  position: relative;
+  padding: 180px 0;  /* make section taller */
+  background: url("<?= base_url('assets_system/images/stockroom2.jpg') ?>") center/cover no-repeat;
+  color: white;
+}
+
+/* Dark overlay for contrast */
+.top-details::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.5);  /* darken the image */
+  z-index: 1;
+}
+
+.top-details h1 {
+  position: relative;
+  z-index: 2;
+  color: white;
+  font-size: 3rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.product-image {
+  max-width: 50%;   /* shrink image */
+  height: auto;
+  border-radius: 16px; /* keep rounded corners */
+  transition: none; /* remove hover transition */
+  box-shadow: none; /* remove shadow */
+}
+
+/* Removed hover effect entirely */
+section img:hover {
+  transform: none;
+}
+
+
+
+
 
   </style>
 </head>
@@ -517,97 +541,57 @@
   <!-- Spacer for fixed navbar -->
   <div style="height: 90px;"></div>
 
-  <!-- ✅ Products Section -->
-  <section class="products">
-    <h1 class="fade-in">Our Product Categories</h1>
-    <div class="categories">
-  <div class="category fade-in delay-1">
-    <a href="<?= base_url('index/products_details') ?>">
-    <img src=<?= base_url('assets_system/images/safetyswitches.jpg')?> alt="Safety Switches">
-    </a>
-    <div class="category-title">Safety Switches</div>
+    <!-- Top Details -->
+<section class="section-white text-center top-details">
+  <div class="container">
+    <h1 class="fade-in">Product Details</h1>
   </div>
+</section>
 
-  <div class="category fade-in delay-2">
-    <a href="<?= base_url('index/electronic_counter_details') ?>">
-    <img src=<?= base_url('assets_system/images/electroniccounter.jpg')?> alt="Electronic Counters">
-    </a>
-    <div class="category-title">Electronic Counters</div>
-  </div>
+   <!-- Product Details -->
+<section class="section-white">
+  <div class="container">
+    <div class="row align-items-center">
+      
+      <!-- Left: Text -->
+      <div class="col-md-6 order-2 order-md-1">
+        <h2 class="mb-3">Electronic Counter</h2>
 
-  <div class="category fade-in delay-3">
-    <a href="<?= base_url('index/products_details') ?>">
-    <img src=<?= base_url('assets_system/images/timer.jpg')?> alt="Timers">
-    </a>
-    <div class="category-title">Timers</div>
-  </div>
+        
+        <hr>
 
-  <div class="category fade-in delay-4">
-    <a href="<?= base_url('index/products_details') ?>">
-    <img src=<?= base_url('assets_system/images/mechanicalcounter.jpg')?> alt="Mechanical Counters">
-    </a>
-    <div class="category-title">Mechanical Counters</div>
-  </div>
+        <!-- Product Description -->
+        <p>
+          <!--<strong>Features:</strong><br>-->
+         Available in various sizes and functions:
+        small type with a built-in battery, LED type with high functionality and visibility,
+        and large display type for production control purposes, to name a few.
 
-  <div class="category fade-in delay-1">
-    <a href="<?= base_url('index/products_details') ?>">
-    <img src=<?= base_url('assets_system/images/slidelimitnobg.png')?> alt="Slide Limit Counters">
-    </a>
-    <div class="category-title">Slide Limit Counters</div>
-  </div>
+         <br>
+        <br>
+        </p>
 
-  <div class="category fade-in delay-2">
-    <a href="<?= base_url('index/products_details') ?>">
-    <img src=<?= base_url('assets_system/images/limitswitches.jpg')?> alt="Limit Switches">
-    </a>
-    <div class="category-title">Limit Switches</div>
-  </div>
+       
+        <hr>
 
-  <div class="category fade-in delay-3">
-    <a href="<?= base_url('index/products_details') ?>">
-    <img src=<?= base_url('assets_system/images/countersensor.jpg')?> alt="Length Counters & Sensors">
-    </a>
-    <div class="category-title">Length Counters & Sensors</div>
-  </div>
+        <!-- Buttons -->
+        <div class="mt-4">
+          <a href="#" class="btn btn-primary me-2"><i class="fas fa-envelope"></i> Send Inquiry</a>
+        </div>
+      </div>
+      
+      <!-- Right: Image -->
+      <div class="col-md-6 order-1 order-md-2 text-center mb-4 mb-md-0">
+        <img src="<?= base_url('assets_system/images/electroniccounter.jpg')?>"
+          alt="Product Image"
+            class="img-fluid rounded product-image">
+      </div>
 
-  <div class="category fade-in delay-4">
-    <a href="<?= base_url('index/products_details') ?>">
-    <img src=<?= base_url('assets_system/images/rotary.jpg')?> alt="Rotary Encoders">
-    </a>
-    <div class="category-title">Rotary Encoders</div>
-  </div>
-
-  <div class="category fade-in delay-1">
-    <a href="<?= base_url('index/products_details') ?>">
-    <img src=<?= base_url('assets_system/images/tachometer.jpg')?> alt="Tachometers">
-    </a>
-    <div class="category-title">Tachometers</div>
-  </div>
-
-  <div class="category fade-in delay-2">
-    <a href="<?= base_url('index/products_details') ?>">
-    <img src=<?= base_url('assets_system/images/thermometers1.jpg')?> alt="Thermometers">
-    </a>
-    <div class="category-title">Thermometers</div>
-  </div>
-
-  <div class="category fade-in delay-3">
-    <a href="<?= base_url('index/products_details') ?>">
-    <img src=<?= base_url('assets_system/images/measuring.jpg')?> alt="Measuring Instruments">
-    </a>
-    <div class="category-title">Measuring Instruments</div>
-  </div>
-
-  <div class="category fade-in delay-4">
-    <a href="<?= base_url('index/products_details') ?>">
-    <img src=<?= base_url('assets_system/images/tallycounter.png')?> alt="Tally Counters">
-    </a>
-    <div class="category-title">Tally Counters</div>
-  </div>
-</div>
-
+      </div>
     </div>
-  </section>
+  </div>
+</section>
+
 
   <!-- CTA Section -->
   <section class="cta">
@@ -640,10 +624,10 @@
         <a href="<?= base_url('index/contact_us') ?>">Contact Us</a>
       </div>
       <div class="socials">
-        <a href="https://www.facebook.com/lineseikiofficial"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
         <a href="#"><i class="fab fa-instagram"></i></a>
         <a href="#"><i class="fab fa-x-twitter"></i></a>
-        <a href="https://www.linkedin.com/company/line-seiki-co.-ltd./about/"><i class="fab fa-linkedin-in"></i></a>
+        <a href="#"><i class="fab fa-linkedin-in"></i></a>
         <a href="#"><i class="fab fa-youtube"></i></a>
       </div>
     </div>
