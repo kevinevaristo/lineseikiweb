@@ -385,54 +385,48 @@
       gap: 25px;
     }
     
-    .category {
-      position: relative;
-      border-radius: 16px;
-      overflow: hidden;
-      cursor: pointer;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-      transition: var(--transition);
-    }
-    
-    .category:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
-    }
-    
-    .category img {
-      width: 100%;
-      height: 220px;
-      object-fit: cover;
-      display: block;
-      transition: transform 0.5s ease;
-    }
-    
-    .category:hover img {
-      transform: scale(1.1);
-    }
-    
-    .overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(13, 110, 253, 0.85);
-      color: #fff;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 20px;
-      opacity: 0;
-      transition: opacity 0.4s ease;
-    }
-    
-    .category:hover .overlay {
-      opacity: 1;
-    }
-    
+    /* Individual Product Cards */
+.category {
+  border-radius: 16px;
+  overflow: hidden;
+  cursor: pointer;
+  background: #fff;
+  transition: var(--transition);
+  position: relative;
+}
+
+.category:hover {
+  transform: translateY(-8px);
+}
+
+/* Product image styling */
+.category img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  display: block;
+  transition: opacity 0.4s ease;
+}
+
+/* Slight transparent effect on hover */
+.category:hover img {
+  opacity: 0.7;
+}
+
+/* Category title below image (no hover color) */
+.category-title {
+  padding: 15px 10px;
+  background: transparent;
+  color: var(--dark);
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-align: center;
+  transition: none;
+}
+
+.category:hover .category-title {
+  color: none;
+}
     .overlay h3 {
       font-size: 1.4rem;
       margin-bottom: 12px;
@@ -979,93 +973,93 @@
 </div>
 
 <!-- ✅ Materials Section -->
-<section class="products section-light-blue">
+<section class="products">
   <h1 class="fade-in">List of Materials</h1>
-  <div class="categories">
-    <div class="category fade-in delay-1">
-      <img src="<?= base_url('assets_system/images/safetyswitches.jpg')?>" alt="Safety Switches">
-      <div class="overlay">
-        <h3>Safety Switches</h3>
-        <p>Durable switches designed for industrial safety applications.</p>
-      </div>
-    </div>
-    <div class="category fade-in delay-2">
-      <img src="<?= base_url('assets_system/images/electroniccounter.jpg')?>" alt="Electronic Counters">
-      <div class="overlay">
-        <h3>Electronic Counters</h3>
-        <p>Reliable counters for production monitoring and automation.</p>
-      </div>
-    </div>
-    <div class="category fade-in delay-3">
-      <img src="<?= base_url('assets_system/images/timer.jpg')?>" alt="Timers">
-      <div class="overlay">
-        <h3>Timers</h3>
-        <p>Accurate timers for industrial and laboratory use.</p>
-      </div>
-    </div>
-    <div class="category fade-in delay-4">
-      <img src="<?= base_url('assets_system/images/mechanicalcounter.jpg')?>" alt="Mechanical Counters">
-      <div class="overlay">
-        <h3>Mechanical Counters</h3>
-        <p>Classic counters built for long-term mechanical reliability.</p>
-      </div>
-    </div>
-    <div class="category fade-in delay-1">
-      <img src="<?= base_url('assets_system/images/slidelimit.jpg')?>" alt="Slide Limit Counters">
-      <div class="overlay">
-        <h3>Slide Limit Counters</h3>
-        <p>Compact and accurate slide limit counters for varied use.</p>
-      </div>
-    </div>
-    <div class="category fade-in delay-2">
-      <img src="<?= base_url('assets_system/images/limitswitch.jpg')?>" alt="Limit Switches">
-      <div class="overlay">
-        <h3>Limit Switches</h3>
-        <p>Precision limit switches for position sensing and control.</p>
-      </div>
-    </div>
-    <div class="category fade-in delay-3">
-      <img src="<?= base_url('assets_system/images/countersensor.jpg')?>" alt="Length Counters & Sensors">
-      <div class="overlay">
-        <h3>Length Counters & Sensors</h3>
-        <p>High-precision sensors for measuring length and dimensions.</p>
-      </div>
-    </div>
-    <div class="category fade-in delay-4">
-      <img src="<?= base_url('assets_system/images/rotary.jpg')?>" alt="Rotary Encoders">
-      <div class="overlay">
-        <h3>Rotary Encoders</h3>
-        <p>Encoders for accurate angular position and motion detection.</p>
-      </div>
-    </div>
-    <div class="category fade-in delay-1">
-      <img src="<?= base_url('assets_system/images/tachometer.jpg')?>" alt="Tachometers">
-      <div class="overlay">
-        <h3>Tachometers</h3>
-        <p>Digital tachometers for RPM and speed measurements.</p>
-      </div>
-    </div>
-    <div class="category fade-in delay-2">
-      <img src="<?= base_url('assets_system/images/thermometers1.jpg')?>" alt="Thermometers">
-      <div class="overlay">
-        <h3>Thermometers</h3>
-        <p>Precise thermometers for industrial and lab applications.</p>
-      </div>
-    </div>
-    <div class="category fade-in delay-3">
-      <img src="<?= base_url('assets_system/images/measuring.jpg')?>" alt="Measuring Instruments">
-      <div class="overlay">
-        <h3>Measuring Instruments</h3>
-        <p>Instruments designed for reliable industrial measurement.</p>
-      </div>
-    </div>
-    <div class="category fade-in delay-4">
-      <img src="<?= base_url('assets_system/images/tallycounter.png')?>" alt="Tally Counters">
-      <div class="overlay">
-        <h3>Tally Counters</h3>
-        <p>Portable tally counters for manual counting needs.</p>
-      </div>
-    </div>
+    <div class="categories">
+  <div class="category fade-in delay-1">
+    <a href="<?= base_url('index/products_details') ?>">
+    <img src=<?= base_url('assets_system/images/safetyswitches.jpg')?> alt="Safety Switches">
+    </a>
+    <div class="category-title">Safety Switches</div>
+  </div>
+
+  <div class="category fade-in delay-2">
+    <a href="<?= base_url('index/electronic_counter_details') ?>">
+    <img src=<?= base_url('assets_system/images/electroniccounter.jpg')?> alt="Electronic Counters">
+    </a>
+    <div class="category-title">Electronic Counters</div>
+  </div>
+
+  <div class="category fade-in delay-3">
+    <a href="<?= base_url('index/products_details') ?>">
+    <img src=<?= base_url('assets_system/images/timer.jpg')?> alt="Timers">
+    </a>
+    <div class="category-title">Timers</div>
+  </div>
+
+  <div class="category fade-in delay-4">
+    <a href="<?= base_url('index/products_details') ?>">
+    <img src=<?= base_url('assets_system/images/mechanicalcounter.jpg')?> alt="Mechanical Counters">
+    </a>
+    <div class="category-title">Mechanical Counters</div>
+  </div>
+
+  <div class="category fade-in delay-1">
+    <a href="<?= base_url('index/products_details') ?>">
+    <img src=<?= base_url('assets_system/images/slidelimitnobg.png')?> alt="Slide Limit Counters">
+    </a>
+    <div class="category-title">Slide Limit Counters</div>
+  </div>
+
+  <div class="category fade-in delay-2">
+    <a href="<?= base_url('index/products_details') ?>">
+    <img src=<?= base_url('assets_system/images/limitswitches.jpg')?> alt="Limit Switches">
+    </a>
+    <div class="category-title">Limit Switches</div>
+  </div>
+
+  <div class="category fade-in delay-3">
+    <a href="<?= base_url('index/products_details') ?>">
+    <img src=<?= base_url('assets_system/images/countersensor.jpg')?> alt="Length Counters & Sensors">
+    </a>
+    <div class="category-title">Length Counters & Sensors</div>
+  </div>
+
+  <div class="category fade-in delay-4">
+    <a href="<?= base_url('index/products_details') ?>">
+    <img src=<?= base_url('assets_system/images/rotary.jpg')?> alt="Rotary Encoders">
+    </a>
+    <div class="category-title">Rotary Encoders</div>
+  </div>
+
+  <div class="category fade-in delay-1">
+    <a href="<?= base_url('index/products_details') ?>">
+    <img src=<?= base_url('assets_system/images/tachometer.jpg')?> alt="Tachometers">
+    </a>
+    <div class="category-title">Tachometers</div>
+  </div>
+
+  <div class="category fade-in delay-2">
+    <a href="<?= base_url('index/products_details') ?>">
+    <img src=<?= base_url('assets_system/images/thermometers1.jpg')?> alt="Thermometers">
+    </a>
+    <div class="category-title">Thermometers</div>
+  </div>
+
+  <div class="category fade-in delay-3">
+    <a href="<?= base_url('index/products_details') ?>">
+    <img src=<?= base_url('assets_system/images/measuring.jpg')?> alt="Measuring Instruments">
+    </a>
+    <div class="category-title">Measuring Instruments</div>
+  </div>
+
+  <div class="category fade-in delay-4">
+    <a href="<?= base_url('index/products_details') ?>">
+    <img src=<?= base_url('assets_system/images/tallycounter.png')?> alt="Tally Counters">
+    </a>
+    <div class="category-title">Tally Counters</div>
+  </div>
+</div>
   </div>
 </section>
 
