@@ -180,7 +180,6 @@
 
 .category:hover {
   transform: translateY(-8px);
-  box-shadow: 0 6px 20px rgba(0,0,0,0.12);
 }
 
 /* Product image styling */
