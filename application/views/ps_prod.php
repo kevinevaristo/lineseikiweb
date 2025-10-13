@@ -175,6 +175,7 @@
   cursor: pointer;
   background: #fff;
   transition: var(--transition);
+  position: relative;
 }
 
 .category:hover {
@@ -182,24 +183,21 @@
   box-shadow: 0 6px 20px rgba(0,0,0,0.12);
 }
 
+/* Product image styling */
 .category img {
   width: 100%;
   height: 220px;
   object-fit: cover;
   display: block;
-  transition: transform 0.5s ease;
+  transition: opacity 0.4s ease;
 }
 
+/* Slight transparent effect on hover */
 .category:hover img {
-  transform: scale(1.05);
+  opacity: 0.7;
 }
 
-/* Remove overlay completely */
-.overlay {
-  display: none;
-}
-
-/* Add product title below image */
+/* Category title below image (no hover color) */
 .category-title {
   padding: 15px 10px;
   background: transparent;
@@ -207,11 +205,11 @@
   font-size: 1.1rem;
   font-weight: 600;
   text-align: center;
-  transition: color 0.3s ease;
+  transition: none;
 }
 
 .category:hover .category-title {
-  color: var(--primary-blue);
+  color: none;
 }
 
 
