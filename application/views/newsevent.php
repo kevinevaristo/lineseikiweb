@@ -692,7 +692,7 @@ body > div[style*="margin-top: 90px"] {
         <a href="#"><i class="fab fa-instagram"></i></a>
         <a href="#"><i class="fab fa-x-twitter"></i></a>
         <a href="#"><i class="fab fa-linkedin-in"></i></a>
-        <a href="#"><i class="fab fa-youtube"></i></a>
+        <a href="https://www.youtube.com/@lineseikichannel7777"><i class="fab fa-youtube"></i></a>
       </div>
     </div>
     <div class="bottom mt-4">
