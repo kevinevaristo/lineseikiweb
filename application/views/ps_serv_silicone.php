@@ -335,7 +335,7 @@
 
     /* Color schemes */
     .section-white {
-      background: #fff;
+      background: var(--light-blue);
       color: #333;
     }
     
@@ -551,7 +551,7 @@
     /* News Section */
     .news-section {
       padding: 80px 5%;
-      background: var(--light-blue);
+      background: white;
     }
     
     .news-section h2 {
@@ -640,7 +640,7 @@
     /* Project Submission */
     .project-submission {
       padding: 100px 5%;
-      background: var(--newblue);
+      background: var(--light-blue);
       display: flex;
       justify-content: center;
       align-items: center;
@@ -963,10 +963,6 @@
     <div class="hero-content fade-in">
       <h1>Silicone Molding and Urethane Casting</h1>
       <p>Overview of our low-volume prototyping service using silicone molds and urethane casting.</p>
-      <div class="mt-4">
-        <a href="#" class="btn btn-primary me-3">Learn More</a>
-        <a href="#" class="btn btn-outline-light">View <i class="fa fa-arrow-right ms-1"></i></a>
-      </div>
     </div>
     <div class="slider-indicators"></div>
   </div>
