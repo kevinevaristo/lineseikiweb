@@ -83,6 +83,9 @@ class index extends CI_Controller
   {
    $this->load->view('electronic_counter_details');
   }
-  
+  function technical_specs()
+  {
+   $this->load->view('technical_specs');
+  }
   
 }

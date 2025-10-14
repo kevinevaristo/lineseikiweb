@@ -1069,7 +1069,7 @@
         <div class="card-content">
           <h3>Silicone</h3>
           <p>Provides technical details such as maximum part size, minimum wall thickness, tolerances, and available post-processing options like over-molding and painting</p>
-          <a href="#">Read More</a>
+          <a href="<?= base_url('index/technical_specs') ?>">Read More</a>
         </div>
       </div>
       <div class="case-card fade-in delay-2">
@@ -1077,7 +1077,7 @@
         <div class="card-content">
           <h3>Urethane</h3>
           <p>Provides technical details such as maximum part size, minimum wall thickness, tolerances, and available post-processing options like over-molding and painting</p>
-          <a href="#">Read More</a>
+          <a href="<?= base_url('index/technical_specs') ?>">Read More</a>
         </div>
       </div>
       <div class="case-card fade-in delay-3">
@@ -1085,7 +1085,7 @@
         <div class="card-content">
           <h3>Specialty Materials</h3>
           <p>Provides technical details such as maximum part size, minimum wall thickness, tolerances, and available post-processing options like over-molding and painting</p>
-          <a href="#">Read More</a>
+          <a href="<?= base_url('index/technical_specs') ?>">Read More</a>
         </div>
       </div>
     </div>
@@ -1101,7 +1101,7 @@
       <div class="news-card-content">
         <h3>Company Announcements</h3>
         <p>Stay up-to-date with our official announcements, product releases, and company news.</p>
-        <a href="#">Read more</a>
+        <a href="<?= base_url('index/technical_specs') ?>">Read more</a>
       </div>
     </div>
     <div class="news-card fade-in delay-2">
@@ -1109,7 +1109,7 @@
       <div class="news-card-content">
         <h3>New Product Launch</h3>
         <p>Discover our latest innovation designed to enhance efficiency and precision in your operations.</p>
-        <a href="#">Explore</a>
+        <a href="<?= base_url('index/technical_specs') ?>">Explore</a>
       </div>
     </div>
     <div class="news-card fade-in delay-3">
@@ -1117,7 +1117,7 @@
       <div class="news-card-content">
         <h3>Industry Insights</h3>
         <p>Read our latest articles and insights on industry trends and technological advancements.</p>
-        <a href="#">Learn more</a>
+        <a href="<?= base_url('index/technical_specs') ?>">Learn more</a>
       </div>
     </div>
   </div>
