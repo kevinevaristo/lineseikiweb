@@ -695,10 +695,8 @@ body > div[style*="height: 90px"] {
       </div>
       <div class="socials">
         <a href="https://www.facebook.com/lineseikiofficial"><i class="fab fa-facebook-f"></i></a>
-        <a href="#"><i class="fab fa-instagram"></i></a>
-        <a href="#"><i class="fab fa-x-twitter"></i></a>
         <a href="https://www.linkedin.com/company/line-seiki-co.-ltd./about/"><i class="fab fa-linkedin-in"></i></a>
-        <a href="#"><i class="fab fa-youtube"></i></a>
+        <a href="https://www.youtube.com/@lineseikichannel7777"><i class="fab fa-youtube"></i></a>
       </div>
     </div>
     <div class="bottom mt-4">
