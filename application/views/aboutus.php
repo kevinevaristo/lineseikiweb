@@ -425,6 +425,187 @@ body > div[style*="height: 90px"] {
     margin-bottom: 12px;
   }
 }
+  /*HERO*/
+.hero-section {
+  position: relative;
+  height: 70vh;
+  background: url("<?= base_url('assets_system/images/Hero.jpg') ?>") center center/cover no-repeat;
+  display: flex;
+  align-items: center;      /* vertically center */
+  justify-content: flex-start;  /* move content to the left */
+  padding: 100px 80px;
+  color: white;
+}
+
+.hero-overlay {
+  padding: 30px 40px;
+  border-radius: 10px;
+  margin-left: 325px; /* ✅ moves text slightly more to the left */
+}
+
+.hero-section h1 {
+  font-size: 3.5rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin: 0;
+}
+
+/* Make it responsive */
+@media (max-width: 768px) {
+  .hero-section {
+    padding: 80px 30px;
+    height: 50vh;
+  }
+
+  .hero-overlay {
+    margin-left: 20px; 
+    padding: 20px 25px;
+  }
+
+  .hero-section h1 {
+    font-size: 2.2rem;
+  }
+}
+
+  /* Delete the after line in the hero section*/
+  .hero-section h1::before,
+  .hero-section h1::after,
+  .hero-section .no-after::before,
+  .hero-section .no-after::after {
+  content: none !important;
+  display: none !important;
+  background: none !important;
+  border: none !important;
+  height: 0 !important;
+  width: 0 !important;
+}
+
+
+/* ===============================
+   CONCEPT SECTION
+=================================*/
+.section-white {
+  background: #fff;
+  padding: 100px 0;
+}
+
+.section-white h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: var(--primary-blue);
+}
+
+.section-white p.lead {
+  color: #555;
+  max-width: 800px;
+  margin: 0 auto 50px auto;
+  font-size: 1.1rem;
+  line-height: 1.7;
+}
+
+/* Concept Boxes */
+.concept-boxes {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  gap: 20px;
+  flex-wrap: wrap; 
+}
+
+.concept-box {
+  background-color: #E3F2FD; /* section-light-blue */
+  border-radius: 15px;
+  padding: 30px 25px;
+  width: 280px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+
+.concept-box h4 {
+  color: var(--primary-blue);
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.concept-box p {
+  color: var(--primary-blue);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+/* Responsive layout */
+@media (max-width: 768px) {
+  .concept-box {
+    width: 100%;
+  }
+}
+  /* Delete the after line in concept boxes */
+   .concept-box h1::before,
+  .concept-box h1::after,
+  .concept-box .no-after::before,
+  .concept-box .no-after::after {
+  content: none !important;
+  display: none !important;
+  background: none !important;
+  border: none !important;
+  height: 0 !important;
+  width: 0 !important;
+}
+
+
+  .mission-vision-section {
+  position: relative;
+  background: url("<?= base_url('assets_system/images/m-and-v.jpg') ?>") center center/cover no-repeat;
+  color: #333;
+  padding: 120px 0;
+  overflow: hidden;
+}
+
+.mission-vision-section::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(1px);
+  z-index: 0;
+}
+
+.mission-vision-overlay {
+  position: relative;
+  z-index: 1;
+}
+
+.mission-vision-section h2 {
+  color: black;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+.mission-vision-section p {
+  color: black;
+  font-size: 1.1rem;
+  max-width: 700px;
+}
+
+/* REMOVE the underline effect */
+.mission-vision-section h2::after {
+  content: none !important;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .mission-vision-section {
+    text-align: center;
+    background-attachment: scroll;
+  }
+  .mission-vision-section p {
+    max-width: 100%;
+  }
+}
+  
 
   </style>
 </head>
@@ -483,13 +664,45 @@ body > div[style*="height: 90px"] {
   <div style="height: 90px;"></div>
 
   <!-- Header Section -->
-  <section class="section-white text-center">
-    <div class="container">
-      <br><br><br><br><h1 class="fade-in">About Line Seiki Asia Pacific</h1>
+  <section class="hero-section">
+  <div class="hero-overlay">
+    <h1>ABOUT US</h1>
+  </div>
+</section>
+
+
+  <!-- Concept -->
+  <section class="section-white">
+    <div class="container text-center">
+      <h2 class="fade-in"> Line Seiki Asia Pacific Inc. </h2>
+          <p class="lead fade-in delay-1">
+             At Line Seiki Asia Pacific, Inc. (LSA), we bridge innovation from Japan to industries across the
+            Asia-Pacific region. As the official sales arm of Line Seiki Co., Ltd., we bring decades of
+            expertise in measurement technology, automation, and smart manufacturing solutions closer to
+            our partners and customers.
+          </p>
+        <!-- ✅ New Boxes Section -->
+    <div class="concept-boxes">
+      <div class="concept-box">
+        <h1>1999</h1>
+        <p>Year Established</p>
+      </div>
+      <div class="concept-box">
+        <h1>+40</h1>
+        <p>Year Established</p>
+      </div>
+      <div class="concept-box">
+        <h1>4</h1>
+        <p>Year Established</p>
+      </div>
+       <div class="concept-box">
+        <h1>70+</h1>
+        <p>Year Established</p>
+      </div>
+    </div>
     </div>
   </section>
 
-  <!-- Concept -->
     <!-- New Businesses Challenge -->
   <section class="section-light-blue">
     <div class="container">
@@ -553,37 +766,34 @@ body > div[style*="height: 90px"] {
   </section>
 
   <!-- Mission and Vision -->
-  <section class="section-white text-center">
-    <div class="container">
+  <section class="mission-vision-section">
+  <div class="mission-vision-overlay">
+    <div class="container text-start">
       <h2 class="fade-in">Mission</h2>
-      <p class="mb-4 fade-in delay-1">
-        We will pursue happiness of all people associated with Line Seiki, including customers, colleagues, and their families, and support each individual 
-        to realize their dreams through our business activities.  
+      <p class="mb-5 fade-in delay-1">
+        To deliver accurate, reliable, and innovative measurement and monitoring
+        solutions that empower manufacturers to achieve operational excellence and
+        sustainable growth.
       </p>
-    </div>
-  </section>
-
-  <section class="section-light-blue text-center">
-    <div class="container">
       <h2 class="fade-in">Vision</h2>
       <p class="fade-in delay-2">
-         We aim to be an organization that constantly creates new values by utilizing the know-how and network from our extensive experience, 
-        and by understanding the needs of society without being misled by short-term immediate changes.
+        To be the preferred partner in Southeast Asia for industrial process monitoring,
+        enabling smarter, more connected, and more efficient manufacturing
+        environments
       </p>
     </div>
-  </section>
+  </div>
+</section>
 
   <!-- Partner / Association Logos -->
   <section class="section-white text-center">
     <div class="container">
       <h2 class="fade-in">Our Partners and Associations</h2>
       <div class="d-flex justify-content-center flex-wrap partner-logos">
-        <img src=<?= base_url('assets_system/images/kvc.png') ?> alt="Partner 1" class="fade-in delay-1">
-        <img src=<?= base_url('assets_system/images/jaytron.jpg') ?> alt="Partner 2" class="fade-in delay-2">
-        <img src=<?= base_url('assets_system/images/SCM.png') ?> alt="Partner 3" class="fade-in delay-3">
-        <img src=<?= base_url('assets_system/images/LSI.jpg') ?> alt="Partner 4" class="fade-in delay-4">
-        <img src=<?= base_url('assets_system/images/MIAP.png') ?> alt="Partner 5" class="fade-in delay-4">
-        <img src=<?= base_url('assets_system/images/PDMA.png') ?> alt="Partner 6" class="fade-in delay-4">
+        <img src=<?= base_url('assets_system/images/MIAP.png') ?> alt="Partner 5" class="fade-in delay-5">
+        <img src=<?= base_url('assets_system/images/PDMA.png') ?> alt="Partner 6" class="fade-in delay-6">
+        <img src=<?= base_url('assets_system/images/AIAP.jpg') ?> alt="Partner 6" class="fade-in delay-7">
+        <img src=<?= base_url('assets_system/images/Violet-White.png') ?> alt="Partner 6" class="fade-in delay-8">
       </div>
     </div>
   </section>
