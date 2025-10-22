@@ -689,15 +689,16 @@ body > div[style*="height: 90px"] {
       </div>
       <div class="concept-box">
         <h1>+40</h1>
-        <p>Year Established</p>
+        <p>Global Distributor</p>
       </div>
       <div class="concept-box">
         <h1>4</h1>
-        <p>Year Established</p>
+        <p>Regional Offices</p>
       </div>
        <div class="concept-box">
         <h1>70+</h1>
-        <p>Year Established</p>
+        <p>Expertise in Measuring 
+          & Industrial Solutions</p>
       </div>
     </div>
     </div>
