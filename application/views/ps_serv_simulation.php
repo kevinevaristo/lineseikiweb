@@ -783,7 +783,123 @@
   background: linear-gradient(90deg, var(--newblue), var(--primary-blue));
   border-radius: 2px;
 }
+/* Add this to your existing CSS */
+.section-white {
+  position: relative;
+  overflow: hidden;
+}
 
+.section-white::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    linear-gradient(135deg, rgba(15, 70, 123, 0.85) 50%, rgba(23, 162, 220, 0.75) 100%),
+    url('<?= base_url('assets_system/images/simulation3.jpg') ?>');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 0;
+}
+
+.section-white > .container {
+  position: relative;
+  z-index: 1;
+}
+
+.section-white h1,
+.section-white h4,
+.section-white h5,
+.section-white p {
+  color: white;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.section-white h1::after {
+  background: linear-gradient(90deg, #ffffff, #e7f1ff);
+}
+
+/* Ensure the GIF image stands out against the background */
+.section-white img {
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  border: 3px solid rgba(255, 255, 255, 0.2);
+}
+.section-white .col-lg-6:last-child img[src*="simulation9.png"] {
+    box-shadow: none !important;
+    border: none !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+}
+
+/* Optional: If you want to make it look more natural */
+.section-white .col-lg-6:last-child img[src*="simulation9.png"] {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+<style>
+/* Adjust simulation8.png size and positioning */
+.section-white .col-lg-6:last-child img[src*="simulation9.png"] {
+    box-shadow: none !important;
+    border: none !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+    max-width: 85% !important;
+    height: auto !important;
+    display: block;
+    margin-left: auto;
+    transform: none !important;
+}
+
+/* Remove hover effects for this specific image */
+.section-white .col-lg-6:last-child img[src*="simulation9.png"]:hover {
+    transform: none !important;
+    box-shadow: none !important;
+}
+
+/* Adjust text alignment and spacing */
+.section-white .col-lg-6:first-child {
+    padding-right: 40px;
+}
+
+.section-white .col-lg-6:first-child h1 {
+    font-size: 3.5rem;
+    margin-bottom: 30px;
+    line-height: 1.1;
+}
+
+.section-white .col-lg-6:first-child p {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    margin-bottom: 40px;
+}
+
+/* Add consultation button styling */
+.consultation-btn {
+    display: inline-block;
+    background: var(--newblue);
+    color: white;
+    padding: 15px 35px;
+    border-radius: 15px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: var(--transition);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.consultation-btn:hover {
+    background: linear-gradient(135deg, var(--newblue2), var(--newblue));
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+    color: white;
+}
+
+
+</style>
   </style>
 </head>
 <body>
@@ -840,30 +956,21 @@
   <!-- Offset for fixed navbar -->
   <div style="margin-top:90px"></div>
 
-  <!-- Section 1 (white) -->
-  <section class="section-white">
+ <!-- Section 1 (white) -->
+<section class="section-white">
     <div class="container">
-      <div class="row align-items-center">
-        <div class="col-lg-6 fade-in">
-          <h1>Simulation Analysis Service</h1>
-          <h4>Features</h4>
-          <h5>
-            <p>Advanced simulation technology<br>
-            Utilizing the latest analysis algorithms and high-speed processing capabilities.</p>
-            <p>High-precision analysis<br>
-            Detailed and meticulous analysis for product design and process improvement</p>
-            <p>Applicability across various industries<br>
-            Usable in a wide range of fields, including automotive, aerospace, and electronics.</p>
-            <p>Customizable analysis options<br>
-            Analysis settings that can be adjusted to meet the needs of customers.</p>
-          </h5>                                                       
+        <div class="row align-items-center">
+            <div class="col-lg-6 fade-in">
+                <h1>Validate. Optimize. Innovate.</h1>
+                <p>We help engineers and manufacturers reduce design <br> errors, speed up development, and bring better products <br> to market—through virtual testing and engineering<br> simulation.</p>
+                <a href="#consultation" class="consultation-btn">Schedule a Consultation</a>
+            </div>
+            <div class="col-lg-6 fade-in delay-1">
+                <img src="<?= base_url('assets_system/images/simulation9.png') ?>" alt="Simulation Analysis">
+            </div>
         </div>
-        <div class="col-lg-6 fade-in delay-1">
-          <img src="<?= base_url('assets_system/images/simulation gif.gif') ?>" alt="Simulation Analysis">
-        </div>
-      </div>
     </div>
-  </section>  
+</section>
 
   <!-- Section 2 (light blue) -->
   <section class="section-light-blue">
