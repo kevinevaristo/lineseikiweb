@@ -425,22 +425,48 @@ body > div[style*="height: 90px"] {
     margin-bottom: 12px;
   }
 }
-  /*HERO*/
+/* HERO SECTION */
 .hero-section {
   position: relative;
   height: 70vh;
   background: url("<?= base_url('assets_system/images/Hero.jpg') ?>") center center/cover no-repeat;
   display: flex;
-  align-items: center;      /* vertically center */
-  justify-content: flex-start;  /* move content to the left */
+  align-items: center;
+  justify-content: flex-start;
   padding: 100px 80px;
   color: white;
+  opacity: 0;
+  animation: heroFadeIn 1.5s ease-in-out forwards;
+}
+
+@keyframes heroFadeIn {
+  0% {
+    opacity: 0;
+    transform: scale(1.03);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 .hero-overlay {
   padding: 30px 40px;
   border-radius: 10px;
-  margin-left: 325px; /* ✅ moves text slightly more to the left */
+  margin-left: 325px;
+  animation: fadeUpHero 0.4s ease forwards 0.4s;
+  opacity: 0;
+}
+
+@keyframes fadeUpHero {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .hero-section h1 {
@@ -457,29 +483,24 @@ body > div[style*="height: 90px"] {
     padding: 80px 30px;
     height: 50vh;
   }
-
   .hero-overlay {
-    margin-left: 20px; 
+    margin-left: 20px;
     padding: 20px 25px;
   }
-
   .hero-section h1 {
     font-size: 2.2rem;
   }
 }
 
-  /* Delete the after line in the hero section*/
-  .hero-section h1::before,
-  .hero-section h1::after,
-  .hero-section .no-after::before,
-  .hero-section .no-after::after {
+/* Remove hero after lines */
+.hero-section h1::before,
+.hero-section h1::after,
+.hero-section .no-after::before,
+.hero-section .no-after::after {
   content: none !important;
   display: none !important;
-  background: none !important;
-  border: none !important;
-  height: 0 !important;
-  width: 0 !important;
 }
+
 
 
 /* ===============================
