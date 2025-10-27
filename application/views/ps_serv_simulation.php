@@ -17,18 +17,20 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
+    /* ===== CSS VARIABLES ===== */
     :root {
       --primary-blue: #0d6efd;
       --primary-blue-dark: #0a58ca;
-      --primary-orange: #fd7e14;
-      --primary-orange-dark: #e67300;
       --light-blue: #e7f1ff;
-      --light-orange: #fff3e8;
-      --light-gray: #f8f9fa;
       --dark: #212529;
       --newblue: #17A2DC;
       --newblue2: #0F467B;
       --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
+
+    /* ===== BASE STYLES ===== */
+    html {
+      scroll-behavior: smooth;
     }
 
     body {
@@ -39,24 +41,23 @@
       overflow-x: hidden;
     }
 
-    /* Smooth scrolling */
-    html {
-      scroll-behavior: smooth;
-    }
-
-    /* Modernized Navbar */
+    /* ===== NAVBAR STYLES ===== */
     .navbar {
       background: rgba(255, 255, 255, 0.98);
       backdrop-filter: blur(10px);
       padding: 0.8rem 5%;
       transition: var(--transition);
-      
       border-bottom: 1px solid rgba(13, 110, 253, 0.1);
     }
     
     .navbar.scrolled {
       padding: 0.6rem 5%;
-      
+    }
+    
+    .navbar-brand img {
+      height: 40px;
+      width: auto;
+      transition: var(--transition);
     }
     
     .navbar-nav .nav-link {
@@ -91,12 +92,12 @@
       left: 15%;
     }
     
+    /* ===== DROPDOWN STYLES ===== */
     .dropdown-menu {
       background-color: rgba(255, 255, 255, 0.98);
       backdrop-filter: blur(10px);
       border: 1px solid rgba(0, 0, 0, 0.1);
       border-radius: 12px;
-      
       padding: 0.8rem 0;
       margin-top: 0.8rem;
       animation: fadeIn 0.3s ease;
@@ -120,12 +121,6 @@
       padding-left: 2rem;
     }
     
-    .navbar-brand img {
-      height: 40px;
-      width: auto;
-      transition: var(--transition);
-    }
-    
     .dropdown-submenu {
       position: relative;
     }
@@ -136,23 +131,10 @@
       margin-top: -0.8rem;
     }
 
-    /* Sections */
+    /* ===== SECTION STYLES ===== */
     section {
       padding: 100px 0;
       position: relative;
-    }
-    
-    section img {
-      width: 100%;
-      border-radius: 16px;
-      
-      transition: var(--transition);
-      transform: translateY(0);
-    }
-    
-    section img:hover {
-      transform: translateY(-5px);
-      
     }
     
     section h1, section h2 {
@@ -182,18 +164,24 @@
       border-radius: 2px;
     }
     
-    section h4, section h5 {
-      color: var(--dark);
-      margin-bottom: 15px;
-    }
-    
     section p {
       margin-bottom: 28px;
       font-size: 1.1rem;
       color: #495057;
     }
+    
+    section img {
+      width: 100%;
+      border-radius: 16px;
+      transition: var(--transition);
+      transform: translateY(0);
+    }
+    
+    section img:hover {
+      transform: translateY(-5px);
+    }
 
-    /* Color schemes */
+    /* ===== SECTION COLOR SCHEMES ===== */
     .section-white {
       background: #fff;
       color: #333;
@@ -213,7 +201,7 @@
       overflow: hidden;
     }
 
-    /* Buttons */
+    /* ===== BUTTON STYLES ===== */
     .btn {
       padding: 0.8rem 1.8rem;
       border-radius: 8px;
@@ -243,26 +231,22 @@
     .btn-primary {
       background: linear-gradient(135deg, var(--primary-blue), var(--primary-blue-dark));
       border: none;
-      
     }
     
     .btn-primary:hover {
       background: linear-gradient(135deg, var(--primary-blue-dark), var(--primary-blue));
       transform: translateY(-3px);
-      
     }
     
     .btn-orange {
       background: linear-gradient(135deg, var(--newblue2), var(--newblue));
       border: none;
       color: white;
-      
     }
     
     .btn-orange:hover {
-      background: linear-gradient(135deg, var(--newblue2), var(--));
+      background: linear-gradient(135deg, var(--newblue2), var(--newblue));
       transform: translateY(-3px);
-      
       color: white;
     }
     
@@ -276,10 +260,9 @@
       background: var(--primary-blue);
       color: #fff;
       transform: translateY(-3px);
-      
     }
-    
-    /* Types Grid */
+
+    /* ===== TYPES GRID STYLES ===== */
     .container-one {
       max-width: 1200px;
       margin: 0 auto;
@@ -317,7 +300,6 @@
       background: #fff;
       padding: 30px 25px;
       border-radius: 16px;
-      
       transition: var(--transition);
       text-align: center;
       border: 1px solid rgba(13, 110, 253, 0.1);
@@ -325,7 +307,6 @@
     
     .type-card:hover {
       transform: translateY(-8px);
-      
     }
     
     .type-card img {
@@ -364,8 +345,8 @@
       background: var(--newblue);
       transform: translateY(-2px);
     }
-    
-    /* Case Studies */
+
+    /* ===== CASE STUDIES STYLES ===== */
     .case-studies {
       padding: 80px 0;
     }
@@ -416,14 +397,12 @@
       background: #fff;
       border-radius: 16px;
       overflow: hidden;
-      
       transition: var(--transition);
       border: 1px solid rgba(13, 110, 253, 0.1);
     }
     
     .case-card:hover {
       transform: translateY(-8px);
-      
     }
     
     .case-card img {
@@ -474,8 +453,8 @@
     .card-content a:hover::after {
       transform: translateX(3px);
     }
-    
-    /* Upload Section */
+
+    /* ===== UPLOAD SECTION STYLES ===== */
     .portal-wrapper {
       display: flex;
       justify-content: center;
@@ -556,8 +535,8 @@
       background: var(--newblue2);
       transform: translateY(-2px);
     }
-    
-    /* CTA Card */
+
+    /* ===== CTA CARD STYLES ===== */
     .cta-card {
       background: var(--newblue2);
       color: #fff;
@@ -597,7 +576,19 @@
       flex-wrap: wrap;
     }
     
-    /* Footer */
+    .cta-title::after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      bottom: -15px;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 4px;
+      background: linear-gradient(90deg, var(--newblue), var(--primary-blue));
+      border-radius: 2px;
+    }
+
+    /* ===== FOOTER STYLES ===== */
     footer {
       background: linear-gradient(135deg, var(--newblue2), var(--newblue));
       color: white;
@@ -686,19 +677,179 @@
       background: rgba(255, 255, 255, 0.1);
       height: 1px;
     }
-    
-    /* Animations */
-    @keyframes fadeUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+
+    /* ===== CAPABILITIES SECTION STYLES ===== */
+    .capabilities-section {
+      padding: 100px 0;
+      background: linear-gradient(135deg, rgba(15, 70, 123, 0.85) 50%, rgba(23, 162, 220, 0.75) 100%), url('<?= base_url('assets_system/images/simulation10.jpg') ?>');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      position: relative;
+      overflow: hidden;
     }
     
+    .capabilities-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: inherit;
+      z-index: 0;
+    }
+    
+    .capabilities-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .capabilities-title {
+      text-align: center;
+      margin-bottom: 60px;
+      color: white;
+      font-weight: 700;
+      position: relative;
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    }
+    
+    .capabilities-title::after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      bottom: -15px;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 4px;
+      background: linear-gradient(90deg, #ffffff, #e7f1ff);
+      border-radius: 2px;
+    }
+    
+    .capabilities-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 40px;
+    }
+    
+    .capability-category {
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 16px;
+      padding: 30px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+      transition: var(--transition);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(10px);
+    }
+    
+    .capability-category:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+      background: rgba(255, 255, 255, 0.98);
+    }
+    
+    .capability-category h3 {
+      color: var(--primary-blue);
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid var(--light-blue);
+    }
+    
+    .capability-items {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    
+    .capability-item {
+      background: var(--light-blue);
+      color: var(--primary-blue);
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: var(--transition);
+    }
+    
+    .capability-item:hover {
+      background: var(--primary-blue);
+      color: white;
+      transform: translateY(-2px);
+    }
+
+    /* ===== BENEFITS SECTION STYLES ===== */
+    .benefits-section {
+      padding: 100px 0;
+      background: #fff;
+    }
+    
+    .benefits-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    .benefits-title {
+      text-align: center;
+      margin-bottom: 60px;
+      color: var(--primary-blue);
+      font-weight: 700;
+      position: relative;
+    }
+    
+    .benefits-title::after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      bottom: -15px;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 4px;
+      background: linear-gradient(90deg, var(--newblue), var(--primary-blue));
+      border-radius: 2px;
+    }
+    
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 40px;
+    }
+    
+    .benefit-card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 40px 30px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      transition: var(--transition);
+      border: 1px solid rgba(13, 110, 253, 0.1);
+      text-align: center;
+    }
+    
+    .benefit-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+    }
+    
+    .benefit-card h3 {
+      color: var(--primary-blue);
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+    
+    .benefit-card p {
+      color: #495057;
+      font-size: 1rem;
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    /* ===== ANIMATIONS ===== */
     .fade-in {
       opacity: 0;
       transform: translateY(30px);
@@ -713,9 +864,157 @@
     .delay-1 { transition-delay: 0.1s; }
     .delay-2 { transition-delay: 0.2s; }
     .delay-3 { transition-delay: 0.3s; }
-    .delay-4 { transition-delay: 0.4s; }
+
+    /* ===== SPECIAL SECTION WHITE STYLES ===== */
+    .section-white {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .section-white::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: 
+        linear-gradient(135deg, rgba(15, 70, 123, 0.85) 50%, rgba(23, 162, 220, 0.75) 100%),
+        url('<?= base_url('assets_system/images/simulation3.jpg') ?>');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      z-index: 0;
+    }
+
+    .section-white > .container {
+      position: relative;
+      z-index: 1;
+    }
+
+    .section-white h1,
+    .section-white h4,
+    .section-white h5,
+    .section-white p {
+      color: white;
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    }
+
+    .section-white h1::after {
+      background: linear-gradient(90deg, #ffffff, #e7f1ff);
+    }
+
+    /* Ensure the GIF image stands out against the background */
+    .section-white img {
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      border: 3px solid rgba(255, 255, 255, 0.2);
+    }
     
-    /* Responsive adjustments */
+    .section-white .col-lg-6:last-child img[src*="simulation9.png"] {
+        box-shadow: none !important;
+        border: none !important;
+        border-radius: 0 !important;
+        background: transparent !important;
+        max-width: 85% !important;
+        height: auto !important;
+        display: block;
+        margin-left: auto;
+        transform: none !important;
+    }
+
+    /* Remove hover effects for this specific image */
+    .section-white .col-lg-6:last-child img[src*="simulation9.png"]:hover {
+        transform: none !important;
+        box-shadow: none !important;
+    }
+
+    /* Adjust text alignment and spacing */
+    .section-white .col-lg-6:first-child {
+        padding-right: 40px;
+    }
+
+    .section-white .col-lg-6:first-child h1 {
+        font-size: 3.5rem;
+        margin-bottom: 30px;
+        line-height: 1.1;
+    }
+
+    .section-white .col-lg-6:first-child p {
+        font-size: 1.2rem;
+        line-height: 1.8;
+        margin-bottom: 40px;
+    }
+
+    /* Add consultation button styling */
+    .consultation-btn {
+        display: inline-block;
+        background: var(--newblue);
+        color: white;
+        padding: 15px 35px;
+        border-radius: 15px;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 1.1rem;
+        transition: var(--transition);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .consultation-btn:hover {
+        background: linear-gradient(135deg, var(--newblue2), var(--newblue));
+        transform: translateY(-3px);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+        color: white;
+    }
+
+    /* Remove background from Section 3 and Section 5 only */
+    section.section-white:nth-of-type(3),
+    section.section-white:nth-of-type(5) {
+      background: none !important;
+    }
+
+    section.section-white:nth-of-type(3)::before,
+    section.section-white:nth-of-type(5)::before {
+      background: none !important;
+    }
+
+    /* ===== WHAT WE DO SECTION STYLES ===== */
+    .what-we-do-section {
+      padding: 100px 0;
+      background: #fff;
+    }
+    
+    .what-we-do-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    .what-we-do-title {
+      margin-bottom: 40px;
+      color: var(--primary-blue);
+      font-weight: 700;
+      position: relative;
+    }
+    
+    .what-we-do-title::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -10px;
+      width: 60px;
+      height: 4px;
+      background: linear-gradient(90deg, var(--newblue), var(--primary-blue));
+      border-radius: 2px;
+    }
+    
+    .what-we-do-text {
+      font-size: 1.1rem;
+      color: #495057;
+      line-height: 1.7;
+      max-width: 100%;
+    }
+
+    /* ===== RESPONSIVE STYLES ===== */
     @media (max-width: 992px) {
       section {
         padding: 80px 0;
@@ -746,6 +1045,18 @@
       .case-grid {
         grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       }
+      
+      .capabilities-grid {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      }
+      
+      .benefits-grid {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      }
+      
+      .section-white .col-lg-6:first-child {
+        padding-right: 0;
+      }
     }
     
     @media (max-width: 768px) {
@@ -770,6 +1081,18 @@
       .cta-buttons .btn {
         width: 100%;
         max-width: 250px;
+      }
+      
+      .capabilities-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .benefits-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .section-white .col-lg-6:first-child h1 {
+        font-size: 2.5rem;
       }
     }
     .cta-title::after {
@@ -821,11 +1144,6 @@
 .section-white h1::after {
   background: linear-gradient(90deg, #ffffff, #e7f1ff);
 }
-
-/* Ensure the GIF image stands out against the background */
-.section-white img {
-
-}
 .section-white .col-lg-6:last-child img[src*="simulation9.png"] {
     box-shadow: none !important;
     border: none !important;
@@ -839,7 +1157,7 @@
     height: auto;
     display: block;
 }
-<style>
+
 /* Adjust simulation8.png size and positioning */
 .section-white .col-lg-6:last-child img[src*="simulation9.png"] {
     box-shadow: none !important;
@@ -971,110 +1289,54 @@
     </div>
 </section>
 
-  <!-- Section 2 (light blue) -->
-  <section class="section-light-blue">
-    <div class="container-one">
-      <h2 class="fade-in">Types of Simulation</h2>
-      <div class="types-grid">
-        <div class="type-card fade-in delay-1">
-          <img src="<?= base_url('assets_system/images/simulation2.png') ?>" alt="Structural Simulation">
-          <h3>Structural/Static Simulation (Nastran/Patran/Apex)</h3>
-          <p>Evaluate the strength, stiffness, and stability of a component under various loads.</p>
-          <a href="#" class="see-more">Learn more</a>
+ <!-- What We Do Section -->
+<section class="what-we-do-section">
+  <div class="what-we-do-container">
+    <h1 class="what-we-do-title fade-in">What We Do</h1>
+    <div class="what-we-do-text fade-in">
+      <p>Line Seiki offers Computer-Aided Engineering (CAE) Simulation Analysis services that help manufacturers and product designers evaluate performance, reliability, and safety—before physical prototyping begins.</p>
+      <p>Through advanced simulation and virtual testing, our engineers analyze factors such as stress, heat, vibration, and fatigue to predict how a design will behave under real-world conditions. Backed by decades of engineering experience and a strong foundation in manufacturing, Line Seiki supports industries such as automotive, semiconductor, consumer electronics, and general manufacturing in achieving smarter, data-driven product development.</p>
+    </div>
+  </div>
+</section>
+
+ <!-- Capabilities Section -->
+<section class="capabilities-section">
+  <div class="capabilities-container">
+    <h1 class="capabilities-title fade-in">Our Capabilities</h1>
+    
+    <div class="capabilities-grid">
+      <!-- Structural and Durability -->
+      <div class="capability-category fade-in">
+        <h3>Structural and Durability</h3>
+        <div class="capability-items">
+          <span class="capability-item">Static</span>
+          <span class="capability-item">Composites</span>
+          <span class="capability-item">Vibration</span>
         </div>
-        <div class="type-card fade-in delay-2">
-          <img src="<?= base_url('assets_system/images/simulation3.png') ?>" alt="Fatigue Simulation">
-          <h3>Fatigue Simulation (Nastran/Patran/Apex)</h3>
-          <p>Analyze fluid flow, heat transfer, and related phenomena for optimal design.</p>
-          <a href="#" class="see-more">Learn more</a>
+      </div>
+      
+      <!-- Manufacturing -->
+      <div class="capability-category fade-in delay-1">
+        <h3>Manufacturing</h3>
+        <div class="capability-items">
+          <span class="capability-item">Machining</span>
+          <span class="capability-item">Thermomechanical</span>
         </div>
-        <div class="type-card fade-in delay-3">
-          <img src="<?= base_url('assets_system/images/simulation4.png') ?>" alt="Vibration Simulation">
-          <h3>Vibration & Dynamics Simulation (Nastran/Patran/Apex)</h3>
-          <p>Predict heat flow and temperature distribution to prevent thermal issues.</p>
-          <a href="#" class="see-more">Learn more</a>
+      </div>
+      
+      <!-- Electronics, Electromagnetics, Optimization & Oil and Gas -->
+      <div class="capability-category fade-in delay-2">
+        <h3>Electronics, Electromagnetics, Optimization & Oil and Gas</h3>
+        <div class="capability-items">
+          <span class="capability-item">PCB</span>
+          <span class="capability-item">Low Frequency</span>
+          <span class="capability-item">Induction</span>
         </div>
       </div>
     </div>
-  </section>
-
-  <!-- Section 3 (white) -->
-  <section class="section-white">
-    <div class="case-studies">
-      <div class="container">
-        <h2 class="fade-in">Case Studies</h2><br>
-        <p class="subtitle fade-in delay-1">Real-world examples from past clients</p>
-
-        <div class="case-grid">
-          <!-- Case Study 1 -->
-          <div class="case-card fade-in delay-1">
-            <img src="<?= base_url('assets_system/images/simulation6.png') ?>" alt="Case Study 1">
-            <div class="card-content">
-              <h3>Cover Thermal Buckling Analysis</h3>
-              <p>We helped an automotive company reduce drag by 12% using advanced CFD simulations.</p>
-              <a href="#">Read More</a>
-            </div>
-          </div>
-
-          <!-- Case Study 2 -->
-          <div class="case-card fade-in delay-2">
-            <img src="<?= base_url('assets_system/images/simulation5.png') ?>" alt="Case Study 2">
-            <div class="card-content">
-              <h3>Pinion Failure Analysis</h3>
-              <p>FEA simulations helped reduce material costs while maintaining durability and strength.</p>
-              <a href="#">Read More</a>
-            </div>
-          </div>
-
-          <!-- Case Study 3 -->
-          <div class="case-card fade-in delay-3">
-            <img src="<?= base_url('assets_system/images/simulation7.png') ?>" alt="Case Study 3">
-            <div class="card-content">
-              <h3>Screw Boss Failure Analysis</h3>
-              <p>Enhanced blade design increased energy output by 15% through simulation analysis.</p>
-              <a href="#">Read More</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Section 4 (light orange) -->
-  <section class="section-light-orange">
-    <div class="container-one">
-      <div class="portal-wrapper">
-        <div class="upload-section fade-in">
-          <div class="icon-header">
-            <i class="fas fa-file-upload"></i>
-          </div>
-          <h2>Project Submission</h2><br>
-          <p class="description">Upload your CAD models or design drawings to receive a detailed quote.</p>
-          <label for="file-upload" class="custom-file-upload">
-            <i class="fas fa-paperclip"></i> Select File
-          </label>
-          <input id="file-upload" type="file" style="display: none;">
-          <span id="file-name" class="selected-file-name">No file selected</span>
-          <button class="submit-project-btn">Request Quote</button>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Section 5 (white) -->
-  <section class="section-white">
-    <div class="container d-flex justify-content-center">
-      <div class="cta-card fade-in">
-        <h2 class="cta-title">Your Next Project Awaits</h2>
-        <p class="cta-subtitle">
-          Let's collaborate to create something truly exceptional.<br> Our team is ready to help you bring your vision to life.
-        </p>
-        <div class="cta-buttons">
-          <a href="<?= base_url('index/contact_us') ?>" class="btn btn-orange">INQUIRE</a>
-        </div>
-      </div>
-    </div>
-  </section>
+  </div>
+</section>
 
   <!-- Footer -->
   <footer>
