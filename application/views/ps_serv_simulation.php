@@ -824,8 +824,7 @@
 
 /* Ensure the GIF image stands out against the background */
 .section-white img {
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-  border: 3px solid rgba(255, 255, 255, 0.2);
+
 }
 .section-white .col-lg-6:last-child img[src*="simulation9.png"] {
     box-shadow: none !important;
@@ -966,7 +965,7 @@
                 <a href="#consultation" class="consultation-btn">Schedule a Consultation</a>
             </div>
             <div class="col-lg-6 fade-in delay-1">
-                <img src="<?= base_url('assets_system/images/simulation9.png') ?>" alt="Simulation Analysis">
+                <img src="<?= base_url('assets_system/images/simul1bg.png') ?>" alt="Simulation Analysis">
             </div>
         </div>
     </div>

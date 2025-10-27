@@ -463,6 +463,11 @@ section h2::after {
   background: linear-gradient(90deg, var(--newblue2), var(--newblue)) !important;
 }
 body > div[style*="margin-top:90px"] { display: none !important; }
+
+  .section-white .btn-orange {
+  margin-top: 20px;
+}
+
 </style>
 
 </head>
@@ -578,9 +583,6 @@ body > div[style*="margin-top:90px"] { display: none !important; }
   </button>
 </div>
 
-
-
-
   <!-- Section 5 (white) -->
   <section class="section-white">
     <div class="container text-center">
@@ -590,6 +592,21 @@ body > div[style*="margin-top:90px"] { display: none !important; }
     </div>
   </section>
 
+    <!-- Legacy Product -->
+    <section class="section-white">
+  <div class="container text-center">
+    <h2 class="fade-in">Our Proven Line of Counting and Measuring Instruments</h2>
+    <p class="mb-4 fade-in delay-1">
+      For over 70 years, Line Seiki has been a trusted name in mechanical, electronic, and electromagnetic counters,
+      tachometers, timers, and other precision measuring tools. Built for consistency, accuracy, and durability — these
+      products remain the foundation of our customers’ success in industries around the world.
+    </p>
+
+    <!-- Centered Learn More Button -->
+    <a href="<?= base_url('index/ps_prod') ?>" class="btn btn-orange fade-in delay-2">Learn More</a>
+  </div>
+</section>
+  
   <!-- Footer -->
   <footer>
     <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap">
