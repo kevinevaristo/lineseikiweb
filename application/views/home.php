@@ -468,6 +468,113 @@ body > div[style*="margin-top:90px"] { display: none !important; }
   margin-top: 20px;
 }
 
+
+.service-card {
+  background: #fff;
+  border-radius: 16px;
+  transition: all 0.3s ease;
+  border: 1px solid #e9ecef;
+}
+.service-icon-img img {
+  width: 60px;
+  height: 60px;
+  border-radius: 12px;
+  background: rgba(13, 110, 253, 0.08);
+  object-fit: cover;
+}
+.btn-link {
+  color: var(--primary-blue);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+  /* ===============================
+   NEW PRODUCTS SECTION
+==================================*/
+.new-products h2 {
+  position: relative;
+  display: inline-block; 
+}
+
+.new-products h2::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 0; 
+  width: 80px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--newblue2), var(--newblue));
+  border-radius: 2px;
+}
+
+.new-products h2::after {
+  left: 0 !important;
+  transform: none !important;
+  background: linear-gradient(90deg, var(--newblue2), var(--newblue));
+}
+
+.new-products p {
+  font-size: 1.1rem;
+  color: black;
+  max-width: 500px;
+}
+.new-prod-feature img {
+  width: 90px;
+  height: 90px;
+  object-fit: cover;
+  border-radius: 12px;
+  background: #f8f9fa;
+  padding: 10px;
+  transition: transform 0.3s ease;
+}
+.new-prod-feature img:hover {
+  transform: scale(1.05);
+}
+.new-prod-feature h6 {
+  font-size: 1rem;
+  color: var(--newblue2);
+}
+
+/* Reduce gap between Our Services and New Products sections */
+.section-white + .new-products {
+  margin-top: -50px; /* adjust value as needed */
+}
+
+  /* ✅ Align Learn More buttons horizontally in Our Services */
+.service-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.service-card p {
+  flex-grow: 1; /* pushes the button to the bottom */
+}
+
+.service-card .btn-link {
+  display: inline-block;
+  margin-top: auto;
+  color: var(--primary-blue);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.service-card .btn-link span::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -4px;
+  left: 0;
+  background-color: currentColor;
+  transition: var(--transition);
+}
+
+.service-card .btn-link:hover span::after {
+  width: 100%;
+}
+
+
 </style>
 
 </head>
@@ -596,17 +703,126 @@ body > div[style*="margin-top:90px"] { display: none !important; }
     <section class="section-white">
   <div class="container text-center">
     <h2 class="fade-in">Our Proven Line of Counting and Measuring Instruments</h2>
-    <p class="mb-4 fade-in delay-1">
+    <p class="mb-4 fade-in delay-1" style="color:black;">
       For over 70 years, Line Seiki has been a trusted name in mechanical, electronic, and electromagnetic counters,
       tachometers, timers, and other precision measuring tools. Built for consistency, accuracy, and durability — these
       products remain the foundation of our customers’ success in industries around the world.
     </p>
-
-    <!-- Centered Learn More Button -->
     <a href="<?= base_url('index/ps_prod') ?>" class="btn btn-orange fade-in delay-2">Learn More</a>
   </div>
 </section>
+      <!-- Our Services-->
+     <section class="section-white">
+  <div class="container text-center">
+    <h2 class="fade-in">Our Services</h2>
+    <p class="mb-5 fade-in delay-1" style="color:black;">Beyond Measurement — We Engineer Possibilities</p>
+
+    <div class="row justify-content-center g-4 fade-in delay-2">
+      <!-- Card 1 -->
+      <div class="col-md-4">
+        <div class="service-card p-4 h-100 shadow-sm text-start">
+          <div class="d-flex align-items-center mb-3">
+            <div class="service-icon-img me-3">
+              <img src=<?= base_url('assets_system/images/icon_simul.png') ?> alt="Simulation Icon" />
+            </div>
+            <h5 class="fw-bold mb-0">Simulation Analysis Service</h5>
+          </div>
+          <p style="color: black;">
+            Backed by our expertise in research and development, we provide engineering simulation analysis to validate product designs before physical testing.
+          </p>
+          <a href="<?= base_url('index/ps_serv_simulation') ?>" class="btn-link"><span>Learn more</span></a>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="col-md-4">
+        <div class="service-card p-4 h-100 shadow-sm text-start">
+          <div class="d-flex align-items-center mb-3">
+            <div class="service-icon-img me-3">
+              <img src=<?= base_url('assets_system/images/icon_sili.png') ?> alt="Molding Icon" />
+            </div>
+            <h5 class="fw-bold mb-0">Silicone Molding & Urethane Casting</h5>
+          </div>
+          <p style="color: black;">
+            Rapid prototyping and low-volume production for faster market validation.
+          </p>
+          <a href="<?= base_url('index/ps_serv_silicone') ?>" class="btn-link"><span>Learn more</span></a>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="col-md-4">
+        <div class="service-card p-4 h-100 shadow-sm text-start">
+          <div class="d-flex align-items-center mb-3">
+            <div class="service-icon-img me-3">
+              <img src=<?= base_url('assets_system/images/icon_gemba.png') ?> alt="GEMBA Icon" />
+            </div>
+            <h5 class="fw-bold mb-0">GEMBA Machine Monitoring System</h5>
+          </div>
+          <p style="color: black;">
+            Track machine status, downtime, and productivity in real time — all from a single dashboard.
+          </p>
+          <a href="<?= base_url('index/ps_iotsolution') ?>" class="btn-link"><span>Learn more</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+    <!-- New Products-->
+      <section class="section-white new-products">
+  <div class="container">
+    <div class="row align-items-center">
+      <!-- Left text content -->
+      <div class="col-lg-6 fade-in">
+        <h2 class="fw-bold text-primary">New Products</h2>
+        <p>
+          Our newest addition, <strong>Safety Switches and Relays</strong>, reinforces our commitment
+          to smarter and safer manufacturing environments.
+        </p>
+      </div>
+      <div class="col-lg-6 text-center fade-in delay-1">
+        <img src=<?= base_url('assets_system/images/new_prod.png') ?> alt="New Product" class="img-fluid rounded shadow">
+      </div>
+    </div>
+
+    <!-- Four bottom feature boxes -->
+    <div class="row text-center mt-5 fade-in delay-2">
+      <div class="col-md-3 col-6 mb-4">
+        <div class="new-prod-feature">
+          <img src=<?= base_url('assets_system/images/high-dura.png') ?> alt="Durability" class="img-fluid mb-3">
+          <h6 class="fw-semibold text-primary">High Durability</h6>
+        </div>
+      </div>
+
+      <div class="col-md-3 col-6 mb-4">
+        <div class="new-prod-feature">
+          <img src=<?= base_url('assets_system/images/high-relia.png') ?> alt="Reliability" class="img-fluid mb-3">
+          <h6 class="fw-semibold text-primary">High Reliability</h6>
+        </div>
+      </div>
+
+      <div class="col-md-3 col-6 mb-4">
+        <div class="new-prod-feature">
+          <img src=<?= base_url('assets_system/images/prevent.png') ?> alt="Prevention" class="img-fluid mb-3">
+          <h6 class="fw-semibold text-primary">Prevent Invalidation</h6>
+        </div>
+      </div>
+
+      <div class="col-md-3 col-6 mb-4">
+        <div class="new-prod-feature">
+          <img src=<?= base_url('assets_system/images/excellent.png') ?> alt="Performance" class="img-fluid mb-3">
+          <h6 class="fw-semibold text-primary">Excellent Dust & Waterproof Performance</h6>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
   
+
+
   <!-- Footer -->
   <footer>
     <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap">
