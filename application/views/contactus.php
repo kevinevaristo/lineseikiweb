@@ -329,12 +329,10 @@ section p {
 .img-hover img {
   transition: var(--transition);
   border-radius: 16px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
 }
 
 .img-hover:hover img {
   transform: scale(1.05);
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
 }
 
 /* =========================
@@ -365,14 +363,14 @@ section p {
   background: white;
   border-radius: 16px;
   padding: 30px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  
   transition: var(--transition);
   height: 100%;
 }
 
 .contact-info-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+  
 }
 
 .contact-info-card i {
