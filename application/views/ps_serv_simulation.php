@@ -7,6 +7,9 @@
 
   <!-- Bootstrap 5 CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+  
+
 
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -887,14 +890,10 @@
       z-index: 0;
     }
 
-    .section-white > .container {
-      position: relative;
-      z-index: 1;
-    }
 
     .section-white h1,
     .section-white h4,
-    .section-white h5,
+    .section-white h5,                                                      
     .section-white p {
       color: white;
       text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
@@ -903,13 +902,6 @@
     .section-white h1::after {
       background: linear-gradient(90deg, #ffffff, #e7f1ff);
     }
-
-    /* Ensure the GIF image stands out against the background */
-    .section-white img {
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-      border: 3px solid rgba(255, 255, 255, 0.2);
-    }
-    
     .section-white .col-lg-6:last-child img[src*="simulation9.png"] {
         box-shadow: none !important;
         border: none !important;
@@ -1214,8 +1206,249 @@
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
     color: white;
 }
+.reduced-cost-section {
+  background-color: #fff;
+}
 
+.reduced-cost-section .main-gif {
+  width: 100%;
+  border-radius: 10px;
+}
 
+.benefit-item i {
+  color: #0d6efd; /* Bootstrap primary blue */
+}
+
+.benefit-item h5 {
+  color: #000;
+}
+
+.benefit-item p {
+  color: #444;
+  font-size: 0.95rem;
+}
+
+@media (max-width: 768px) {
+  .reduced-cost-section .col-md-7 {
+    margin-bottom: 2rem;
+  }
+}
+.simulation-section {
+  background-color: #fff;
+}
+
+.simulation-section h2 {
+  font-size: 2rem;
+}
+
+.simulation-section .underline {
+  width: 50px;
+  height: 3px;
+  background-color: #0d6efd;
+  border: none;
+  margin: 10px 0 20px;
+}
+
+.simulation-section .btn-primary {
+  background-color: #0d6efd;
+  border: none;
+}
+
+.simulation-card {
+  background-color: #004c91;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.simulation-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.simulation-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.simulation-card .card-body {
+  padding: 20px;
+}
+
+.simulation-card h5 {
+  color: #fff;
+  margin-bottom: 10px;
+}
+
+.simulation-card p {
+  color: #d9e4f5;
+  margin-bottom: 10px;
+}
+
+.simulation-card .read-more {
+  text-decoration: none;
+}
+
+.simulation-card .read-more:hover {
+  text-decoration: underline;
+}
+
+.simulation-section {
+  background-color: #fff;
+  position: relative;
+}
+
+.simulation-section h2 {
+  font-size: 2rem;
+}
+
+.simulation-section .underline {
+  width: 50px;
+  height: 3px;
+  background-color: #0d6efd;
+  border: none;
+  margin: 10px 0 20px;
+}
+
+.simulation-section .btn-primary {
+  background-color: #0d6efd;
+  border: none;
+}
+
+.simulation-card {
+  background-color: #004c91;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.simulation-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.simulation-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.simulation-card .card-body {
+  padding: 20px;
+}
+
+.simulation-card h5 {
+  color: #fff;
+  margin-bottom: 10px;
+}
+
+.simulation-card p {
+  color: #d9e4f5;
+  margin-bottom: 10px;
+}
+
+.simulation-card .read-more {
+  text-decoration: none;
+}
+
+.simulation-card .read-more:hover {
+  text-decoration: underline;
+}
+
+/* --- Carousel Control Buttons (Outside version) --- */
+.carousel-controls-outside {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  display: flex;
+  gap: 8px;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+  position: static;
+  background-color: #0d6efd;
+  border: none;
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.9;
+  transition: background-color 0.3s ease, opacity 0.3s ease;
+}
+
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
+  background-color: #0a58ca;
+  opacity: 1;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-size: 50% 50%;
+  filter: invert(1);
+}
+.process-section {
+  background-color: #fff;
+}
+
+.process-section .underline {
+  width: 50px;
+  height: 3px;
+  background-color: #0d6efd;
+  border: none;
+  margin-bottom: 30px;
+}
+
+.process-icon {
+  width: 80px;
+  height: 80px;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.process-section i {
+  font-size: 2rem;
+}
+
+@media (max-width: 768px) {
+  .process-section .col-md-1 {
+    display: none;
+  }
+}
+
+/* Remove gridlines from Section 5 and 6 */
+.simulation-section .row,
+.process-section .row {
+    border: none !important;
+    outline: none !important;
+}
+
+.simulation-section [class*="col-"],
+.process-section [class*="col-"] {
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+/* Remove any potential borders from carousel items */
+.simulation-section .carousel-item .row,
+.simulation-section .carousel-item [class*="col-"] {
+    border: none !important;
+    outline: none !important;
+}
+
+/* Remove borders from process section arrows and icons */
+.process-section .col-md-1,
+.process-section .process-icon {
+    border: none !important;
+    outline: none !important;
+}
 </style>
   </style>
 </head>
@@ -1313,6 +1546,11 @@
           <span class="capability-item">Static</span>
           <span class="capability-item">Composites</span>
           <span class="capability-item">Vibration</span>
+          <span class="capability-item">Explicit</span>
+          <span class="capability-item">Buckling</span>
+          <span class="capability-item">Fatigue</span>
+          <span class="capability-item">Heat Transfer</span>
+          <span class="capability-item">Dynamics</span>
         </div>
       </div>
       
@@ -1322,6 +1560,8 @@
         <div class="capability-items">
           <span class="capability-item">Machining</span>
           <span class="capability-item">Thermomechanical</span>
+          <span class="capability-item">Elastomers</span>
+          <span class="capability-item">Metal</span>
         </div>
       </div>
       
@@ -1332,11 +1572,209 @@
           <span class="capability-item">PCB</span>
           <span class="capability-item">Low Frequency</span>
           <span class="capability-item">Induction</span>
+          <span class="capability-item">Circuit</span>
+          <span class="capability-item">Piping</span>
+          <span class="capability-item">Parametic</span>
+          <span class="capability-item">Non-Parametric</span>
+          <span class="capability-item">Pressure vessels</span>
         </div>
       </div>
     </div>
   </div>
 </section>
+<section class="reduced-cost-section container py-5">
+  <div class="row align-items-center">
+    <!-- Left side (GIF + 2 images) -->
+    <div class="col-md-7 text-center"><br><br><br><br>
+      <img src="<?= base_url('assets_system/images/newsimgif.gif') ?>" alt="Simulation GIF" class="img-fluid rounded shadow main-gif mb-3">
+      <div class="row">
+        <div class="col-6">
+          <img src="<?= base_url('assets_system/images/newsim1.png') ?>" alt="Model Image 1" class="img-fluid rounded shadow">
+        </div>
+        <div class="col-6">
+          <img src="<?= base_url('assets_system/images/newsim2.png') ?>" alt="Model Image 2" class="img-fluid rounded shadow"><br><br><br><br>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right side (Text + icons) -->
+    <div class="col-md-5 text-start ps-md-4">
+      <div class="benefit-item d-flex align-items-start mb-4">
+        <div class="icon me-3 text-primary">
+          <i class="bi bi-clock-history fs-1"></i>
+        </div>
+        <div>
+          <h5 class="fw-bold">Reduced Cost and Time</h5>
+          <p class="mb-0">Minimize physical prototyping and rework through accurate virtual testing.</p>
+        </div>
+      </div>
+
+      <div class="benefit-item d-flex align-items-start mb-4">
+        <div class="icon me-3 text-primary">
+          <i class="bi bi-shield-check fs-1"></i>
+        </div>
+        <div>
+          <h5 class="fw-bold">Enhanced Reliability</h5>
+          <p class="mb-0">Predict real-world performance and prevent failures before production.</p>
+        </div>
+      </div>
+
+      <div class="benefit-item d-flex align-items-start">
+        <div class="icon me-3 text-primary">
+          <i class="bi bi-cash-coin fs-1"></i>
+        </div>
+        <div>
+          <h5 class="fw-bold">Cost Savings</h5>
+          <p class="mb-0">Lower material waste, shorten testing cycles, and reduce overall development expenses through efficient design validation.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="simulation-section container py-5 position-relative">
+  <div class="row align-items-center">
+    <!-- Left Text Section -->
+    <div class="col-md-4 mb-4 mb-md-0">
+      <h1 class="fw-bold text-primary">Simulation <br> in Action</h1>
+      <hr class="underline">
+      <p class="text-muted">
+        A showcase of simulation-driven insights demonstrating how Line Seiki applies 
+        Computer-Aided Engineering to solve complex design and manufacturing problems.
+      </p>
+      <button class="btn btn-primary px-4 py-2 rounded-pill">Talk to Experts</button>
+    </div>
+
+    <!-- Right Carousel Section -->
+    <div class="col-md-8">
+      <div id="simulationCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          
+          <!-- Slide 1 -->
+          <div class="carousel-item active">
+            <div class="row g-4">
+              <div class="col-md-6">
+                <div class="simulation-card h-100 shadow-sm"><br>
+                  <img src="<?= base_url('assets_system/images/cs1.png') ?>" 
+                       class="card-img-top" alt="Simulation 1">
+                  <div class="card-body">
+                    <h5 class="fw-bold">Structural Analysis of a Gear Jig During Process Setup</h5>
+                    <p class="text-light small">
+                      This study presents a structural contact stress analysis to investigate part deformation 
+                      and gear-jig interaction during process setup...
+                    </p>
+                    <a href="#" class="read-more text-light fw-semibold">Read more</a>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="simulation-card h-100 shadow-sm"><br>
+                  <img src="<?= base_url('assets_system/images/cs2.png') ?>" 
+                       class="card-img-top" alt="Simulation 2">
+                  <div class="card-body">
+                    <h5 class="fw-bold">Buckling Analysis of a Consumer Electronics Enclosure</h5>
+                    <p class="text-light small">
+                      This analysis evaluates the stability of an enclosure cover under elevated temperature. 
+                      Simulation predicted deformation and...
+                    </p>
+                    <a href="#" class="read-more text-light fw-semibold">Read more</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 2 -->
+          <div class="carousel-item">
+            <div class="row g-4">
+              <div class="col-md-6">
+                <div class="simulation-card h-100 shadow-sm"><br>
+                  <img src="<?= base_url('assets_system/images/cs3.png') ?>" 
+                       class="card-img-top" alt="Simulation 3">
+                  <div class="card-body">
+                    <h5 class="fw-bold">Thermal Simulation of Metal Components</h5>
+                    <p class="text-light small">
+                      A finite element thermal analysis evaluating heat distribution across machined steel 
+                      parts during sustained operation...
+                    </p>
+                    <a href="#" class="read-more text-light fw-semibold">Read more</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+<br>
+      <!-- Carousel Controls (Now outside the card area) -->
+      <div class="carousel-controls-outside">
+        <button class="carousel-control-prev" type="button" data-bs-target="#simulationCarousel" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#simulationCarousel" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+<br><br><br>
+<section class="process-section py-5 text-center">
+  <div class="container">
+    <h1 class="fw-bold text-primary mb-2">Process & Requirements</h1>
+    <hr class="underline mx-auto">
+    <p class="text-muted mb-5">
+      Each project includes a comprehensive report with visual results, data, and recommendations.
+    </p>
+
+    <div class="row justify-content-center align-items-center text-center g-4">
+      <!-- Step 1 -->
+      <div class="col-md-3">
+        <div class="process-icon bg-primary text-white mx-auto mb-3">
+          <i class="bi-diagram-3 fs-1"></i>
+        </div>
+        <h5 class="fw-bold">Model Development</h5>
+        <p class="text-muted small">
+          Provide us with some information necessary for analysis (CAD, Materials, Boundary Condition, etc.)
+        </p>
+      </div>
+
+      <!-- Arrow -->
+      <div class="col-md-1 d-none d-md-block">
+        <i class="bi-arrow-right fs-2 text-secondary opacity-50"></i>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="col-md-3">
+        <div class="process-icon bg-primary text-white mx-auto mb-3">
+          <i class="bi-graph-up fs-1"></i>
+        </div>
+        <h5 class="fw-bold">Solving (Simulation)</h5>
+        <p class="text-muted small">
+          Analysis is performed from various aspects.
+        </p>
+      </div>
+
+      <!-- Arrow -->
+      <div class="col-md-1 d-none d-md-block">
+        <i class="bi-arrow-right fs-2 text-secondary opacity-50"></i>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="col-md-3">
+        <div class="process-icon bg-primary text-white mx-auto mb-3">
+          <i class="bi-person-check fs-1"></i>
+        </div>
+        <h5 class="fw-bold">Results</h5>
+        <p class="text-muted small">
+          The report of analysis will be submitted to you.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
 
   <!-- Footer -->
   <footer>
