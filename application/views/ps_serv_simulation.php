@@ -1811,6 +1811,20 @@ section img:hover {
           <!-- Slide 2 -->
           <div class="carousel-item">
             <div class="row g-4">
+               <div class="col-md-6">
+                <div class="simulation-card h-100 shadow-sm"><br>
+                  <img src="<?= base_url('assets_system/images/cs2.png') ?>" 
+                       class="card-img-top" alt="Simulation 2">
+                  <div class="card-body">
+                    <h5 class="fw-bold">Buckling Analysis of a Consumer Electronics Enclosure</h5>
+                    <p class="text-light small">
+                      This analysis evaluates the stability of an enclosure cover under elevated temperature. 
+                      Simulation predicted deformation and...
+                    </p>
+                    <a href="#" class="read-more text-light fw-semibold">Read more</a>
+                  </div>
+                </div>
+              </div>
               <div class="col-md-6">
                 <div class="simulation-card h-100 shadow-sm"><br>
                   <img src="<?= base_url('assets_system/images/cs3.png') ?>" 
@@ -1825,6 +1839,7 @@ section img:hover {
                   </div>
                 </div>
               </div>
+              
             </div>
           </div>
 
