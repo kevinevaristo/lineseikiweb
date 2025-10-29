@@ -265,21 +265,99 @@ section p {
 /* ===============================
    CAROUSEL
 ==================================*/
+#heroCarousel {
+  background-color: #fff !important;
+}
+
 #heroCarousel .carousel-item {
   height: 100vh;
   min-height: 600px;
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
   display: flex;
   align-items: center;
+  justify-content: center;
+  background: #fff; /* white background */
+  position: relative;
 }
-#heroCarousel .carousel-item img {
-  display: block !important;
-  width: 100%;
+
+#heroCarousel .carousel-item::before {
+  display: none; /* remove dark overlay */
+}
+
+.hero-slide {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 50px;
+  color: #000; /* black text for white bg */
+}
+
+.hero-text {
+  flex: 1;
+  max-width: 50%;
+}
+
+.hero-text h1 {
+  background: linear-gradient(90deg, var(--primary-blue), #007bff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 700;
+  font-size: 2.8rem;
+}
+
+.hero-text h1::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 4px;
+  margin-top: 8px;
+  background: linear-gradient(90deg, var(--newblue), var(--primary-blue));
+  border-radius: 2px;
+}
+
+.hero-text p {
+  color: #333;
+  font-size: 1.1rem;
+  margin-top: 15px;
+  line-height: 1.6;
+}
+
+.hero-image {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.hero-image img {
+  max-width: 100%; /* ⬅️ Make image larger than its container */
   height: auto;
+  border-radius: 12px;
+  transform: scale(1.1); 
   object-fit: cover;
+  transition: transform 0.5s ease;
 }
+
+
+/* ===============================
+   CAROUSEL INDICATORS (BLUE)
+==================================*/
+#heroCarousel .carousel-indicators [data-bs-target] {
+  background-color: #0d6efd; /* Blue color */
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  opacity: 0.5;
+  transition: 0.3s ease;
+  border: none;
+}
+
+#heroCarousel .carousel-indicators .active {
+  opacity: 1;
+  background-color: #084298; /* Darker blue for active */
+  transform: scale(1.2);
+}
+
+
+/* Fade effect */
 .carousel.carousel-fade .carousel-item {
   opacity: 0;
   transition-property: opacity;
@@ -291,47 +369,35 @@ section p {
 .carousel.carousel-fade .carousel-item-prev.carousel-item-end {
   opacity: 1;
 }
-.carousel.carousel-fade .active.carousel-item-start,
-.carousel.carousel-fade .active.carousel-item-end {
-  opacity: 0;
-}
-#heroCarousel .carousel-item::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.55);
-  z-index: 1;
-}
-#heroCarousel .carousel-item .container {
-  position: relative;
-  z-index: 2;
-  max-width: 700px;
-  margin-left: 5%;
-  text-align: left;
-}
-#heroCarousel .carousel-control-prev,
-#heroCarousel .carousel-control-next { display: none !important; }
 
-#heroCarousel .carousel-item h1 {
-  background: linear-gradient(90deg, var(--primary-blue), #007bff);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  font-weight: 700;
-  position: relative;
-  display: inline-block;
+/* Hide controls (optional) */
+#heroCarousel .carousel-control-prev,
+#heroCarousel .carousel-control-next {
+  display: none !important;
 }
-#heroCarousel .carousel-item h1::after {
-  content: "";
-  display: block;
-  width: 60px;
-  height: 4px;
-  margin-top: 8px;
-  background: linear-gradient(90deg, var(--newblue), var(--primary-blue));
-  border-radius: 2px;
+
+/* Responsive layout */
+@media (max-width: 992px) {
+  .hero-slide {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .hero-text,
+  .hero-image {
+    max-width: 100%;
+  }
+
+  .hero-image {
+    justify-content: center;
+    margin-top: 30px;
+  }
+
+  .hero-text h1 {
+    font-size: 2rem;
+  }
 }
+
 
 /* ===============================
    FOOTER
@@ -648,35 +714,74 @@ body > div[style*="margin-top:90px"] { display: none !important; }
   <div class="carousel-inner">
 
     <!-- Slide 1 -->
-    <div class="carousel-item active" style="background-image: url('<?= base_url('assets_system/images/home_main.jpg') ?>');">
-      <div class="container text-start text-white d-flex flex-column justify-content-center h-100 ">
-        <h1>Innovative Solutions for Precision Measurement</h1>
-        <p>At Line Seiki Asia Pacific, we specialize in delivering high-quality measuring instruments and smart monitoring systems tailored to your needs.</p>
+    <div class="carousel-item active">
+      <div class="container hero-slide d-flex align-items-center justify-content-between">
+        <div class="hero-text">
+          <h1>Precision You Can Trust</h1>
+          <p>
+             From counting devices to digital manufacturing
+            solutions, we continue to deliver reliable instruments and
+            technologies that help industries move with accuracy
+            and efficiency
+          </p>
+        </div>
+        <div class="hero-image">
+          <img src=<?= base_url('assets_system/images/Legacy2.png') ?> alt="Slide 1">
+        </div>
       </div>
     </div>
 
     <!-- Slide 2 -->
-    <div class="carousel-item" style="background-image: url('<?= base_url('assets_system/images/LS.jpg') ?>');">
-      <div class="container text-start text-white d-flex flex-column justify-content-center h-100">
-        <h1>Explore Our Standard Measuring Counters</h1>
-        <p>Our standard measuring counters deliver unmatched accuracy and reliability for various industrial applications.</p>
+    <div class="carousel-item">
+      <div class="container hero-slide d-flex align-items-center justify-content-between">
+        <div class="hero-text">
+          <h1>Precision You Can Trust</h1>
+          <p>
+            From counting devices to digital manufacturing
+              solutions, we continue to deliver reliable instruments and
+            technologies that help industries move with accuracy
+            and efficiency
+          </p>
+        </div>
+        <div class="hero-image">
+          <img src=<?= base_url('assets_system/images/simul1bg.png') ?> alt="Slide 2">
+        </div>
       </div>
     </div>
 
     <!-- Slide 3 -->
-    <div class="carousel-item" style="background-image: url('<?= base_url('assets_system/images/new2.jpg') ?>');">
-      <div class="container text-start text-white d-flex flex-column justify-content-center h-100">
-        
-        <h1>Explore Our Comprehensive Engineering and Silicone Molding Services</h1>
-        <p>Our engineering services are designed to optimize your projects with precision and innovation.</p>
+    <div class="carousel-item">
+      <div class="container hero-slide d-flex align-items-center justify-content-between">
+        <div class="hero-text">
+          <h1>Precision You Can Trust</h1>
+          <p>
+             From counting devices to digital manufacturing
+            solutions, we continue to deliver reliable instruments and
+            technologies that help industries move with accuracy
+            and efficiency
+          </p>
+        </div>
+        <div class="hero-image">
+          <img src=<?= base_url('assets_system/images/Gemba-hero2.png') ?> alt="Slide 3">
+        </div>
       </div>
     </div>
 
     <!-- Slide 4 -->
-    <div class="carousel-item" style="background-image: url('<?= base_url('assets_system/images/new3.jpg') ?>');">
-      <div class="container text-start text-white d-flex flex-column justify-content-center h-100">
-        <h1>Transforming Industries with IoT Solutions</h1>
-        <p>Our IoT solutions empower businesses to optimize operations and enhance productivity.</p>
+    <div class="carousel-item">
+      <div class="container hero-slide d-flex align-items-center justify-content-between">
+        <div class="hero-text">
+          <h1>Precision You Can Trust</h1>
+          <p>
+             From counting devices to digital manufacturing
+            solutions, we continue to deliver reliable instruments and
+            technologies that help industries move with accuracy
+            and efficiency
+          </p>
+        </div>
+        <div class="hero-image">
+          <img src=<?= base_url('assets_system/images/Asc-hero.png') ?> alt="Slide 4">
+        </div>
       </div>
     </div>
   </div>
@@ -689,6 +794,7 @@ body > div[style*="margin-top:90px"] { display: none !important; }
     <span class="carousel-control-next-icon"></span>
   </button>
 </div>
+
 
   <!-- Section 5 (white) -->
   <section class="section-white">
