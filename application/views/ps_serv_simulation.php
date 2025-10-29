@@ -1575,7 +1575,148 @@ section img:hover {
 .simulation-section h1::after {
   background: linear-gradient(90deg, var(--newblue), var(--primary-blue));
 }
-</style>
+ /* === Header Layout === */
+    .webinar-section {
+      padding: 50px 0 0;
+    }
+
+    .webinar-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: flex-start;
+      gap: 50px;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+
+    .webinar-header-left small {
+      display: block;
+      color: var(--primary-blue);
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 5px;
+    }
+
+    .webinar-header-left h1 {
+      color: var(--primary-blue);
+      font-weight: 700;
+      font-size: 3rem;
+      line-height: 1.1;
+      margin: 0;
+    }
+
+    .webinar-header-right {
+      flex: 1;
+      max-width: 700px;
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+
+    .webinar-header-right p {
+      margin-bottom: 8px;
+    }
+
+    .webinar-header-right strong {
+      font-weight: 600;
+    }
+
+    /* === Banner Section === */
+    .webinar-banner {
+      background: linear-gradient(90deg, #0072ce 0%, #44a8f3 100%);
+      border-radius: 6px;
+      overflow: hidden;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 40px 60px;
+      height: 260px;
+      color: #fff;
+    }
+
+    /* Free Webinar Ribbon */
+    .ribbon {
+      position: absolute;
+      top: 0;
+      left: 0;
+      background: #fd7e14;
+      color: #fff;
+      font-size: 0.9rem;
+      font-weight: 600;
+      padding: 10px 60px;
+      transform: rotate(-45deg);
+      transform-origin: top left;
+      top: 22px;
+      left: -40px;
+      text-align: center;
+    }
+
+    /* Left Text */
+    .banner-left {
+      flex: 1;
+      padding-right: 40px;
+    }
+
+    .banner-left h2 {
+      font-size: 2.4rem;
+      font-weight: 800;
+      line-height: 1.15;
+      text-transform: uppercase;
+      margin-bottom: 15px;
+    }
+
+    .banner-left h2 span {
+      display: block;
+    }
+
+    /* Right Text */
+    .banner-right {
+      flex: 1;
+      text-align: left;
+      position: relative;
+    }
+
+    .banner-right p {
+      font-size: 1.1rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 25px;
+    }
+
+    .banner-right .btn {
+      background-color: #fd7e14;
+      border: none;
+      color: #fff;
+      font-weight: 600;
+      border-radius: 3px;
+      padding: 6px 14px;
+      font-size: 0.95rem;
+    }
+
+    .banner-right img {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      max-width: 280px;
+      height: auto;
+    }
+
+    @media (max-width: 992px) {
+      .webinar-banner {
+        flex-direction: column;
+        height: auto;
+        text-align: center;
+        padding: 30px 20px;
+      }
+
+      .banner-right img {
+        position: static;
+        margin-top: 20px;
+        width: 70%;
+      }
+    }
+    
   </style>
 </head>
 <body>
@@ -1911,8 +2052,23 @@ section img:hover {
         </p>
       </div>
     </div>
-  </div><br><br><br><br><br><br><br><br>
+  </div><br><br><br><br><br><br>
 </section>
+ <section class="container webinar-section">
+    <!-- HEADER TEXT -->
+    <div class="webinar-header">
+      <div class="webinar-header-left">
+        <small>LATEST</small>
+        <h1>Webinar<br>Series</h1>
+      </div>
+      <div class="webinar-header-right">
+        <p><strong>Line Seiki</strong> hosts a regular webinar series featuring real-world engineering topics in <strong>Computer-Aided Design, Simulation, and Manufacturing.</strong></p>
+        <p>These sessions aim to help professionals and students understand how virtual testing improves reliability, reduces prototyping cost, and accelerates product development.</p>
+      </div>
+    </div>
+<img src="<?= base_url('assets_system/images/newsim4.png') ?>" alt="Webinar Image">
+  </section>
+<br><br><br><br><br>
 
 
   <!-- Footer -->
