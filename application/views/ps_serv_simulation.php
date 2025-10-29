@@ -163,7 +163,6 @@
       bottom: -10px;
       width: 60px;
       height: 4px;
-      background: linear-gradient(90deg, var(--newblue), var(--primary-blue));
       border-radius: 2px;
     }
     
@@ -728,7 +727,6 @@
       transform: translateX(-50%);
       width: 60px;
       height: 4px;
-      background: linear-gradient(90deg, #ffffff, #e7f1ff);
       border-radius: 2px;
     }
     
@@ -755,12 +753,13 @@
     }
     
     .capability-category h3 {
-      color: var(--primary-blue);
+      color: black;
       font-size: 1.5rem;
       font-weight: 600;
       margin-bottom: 20px;
       padding-bottom: 10px;
-      border-bottom: 2px solid var(--light-blue);
+      text-align: center;
+      
     }
     
     .capability-items {
@@ -770,8 +769,8 @@
     }
     
     .capability-item {
-      background: var(--light-blue);
-      color: var(--primary-blue);
+      background: var(--newblue);
+      color: white;
       padding: 8px 16px;
       border-radius: 20px;
       font-size: 0.9rem;
@@ -890,18 +889,6 @@
       z-index: 0;
     }
 
-
-    .section-white h1,
-    .section-white h4,
-    .section-white h5,                                                      
-    .section-white p {
-      color: white;
-      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
-    }
-
-    .section-white h1::after {
-      background: linear-gradient(90deg, #ffffff, #e7f1ff);
-    }
     .section-white .col-lg-6:last-child img[src*="simulation9.png"] {
         box-shadow: none !important;
         border: none !important;
@@ -982,22 +969,24 @@
     }
     
     .what-we-do-title {
-      margin-bottom: 40px;
-      color: var(--primary-blue);
-      font-weight: 700;
-      position: relative;
-    }
-    
-    .what-we-do-title::after {
-      content: '';
-      position: absolute;
-      left: 0;
-      bottom: -10px;
-      width: 60px;
-      height: 4px;
-      background: linear-gradient(90deg, var(--newblue), var(--primary-blue));
-      border-radius: 2px;
-    }
+  margin-bottom: 40px;
+  color: var(--primary-blue);
+  font-weight: 700;
+  position: relative;
+  text-align: center; /* Add this line to center the text */
+}
+
+.what-we-do-title::after {
+  content: '';
+  position: absolute;
+  left: 50%; /* Change from left: 0 to center the underline */
+  bottom: -10px;
+  width: 60px;
+  height: 4px;
+  background: linear-gradient(90deg, var(--newblue), var(--primary-blue));
+  border-radius: 2px;
+  transform: translateX(-50%); /* Add this to properly center the underline */
+}
     
     .what-we-do-text {
       font-size: 1.1rem;
@@ -1134,7 +1123,7 @@
 }
 
 .section-white h1::after {
-  background: linear-gradient(90deg, #ffffff, #e7f1ff);
+  background: linear-gradient(90deg, var(--newblue), var(--primary-blue));
 }
 .section-white .col-lg-6:last-child img[src*="simulation9.png"] {
     box-shadow: none !important;
@@ -1244,7 +1233,7 @@
 .simulation-section .underline {
   width: 50px;
   height: 3px;
-  background-color: #0d6efd;
+  background-color: #fff;
   border: none;
   margin: 10px 0 20px;
 }
@@ -1306,7 +1295,7 @@
 .simulation-section .underline {
   width: 50px;
   height: 3px;
-  background-color: #0d6efd;
+  background-color: var(--newblue2);
   border: none;
   margin: 10px 0 20px;
 }
@@ -1391,16 +1380,14 @@
   background-size: 50% 50%;
   filter: invert(1);
 }
+/* ===== PROCESS SECTION STYLES ===== */
 .process-section {
-  background-color: #fff;
+  text-align: center; /* Ensure everything is centered */
 }
 
 .process-section .underline {
-  width: 50px;
-  height: 3px;
-  background-color: #0d6efd;
   border: none;
-  margin-bottom: 30px;
+
 }
 
 .process-icon {
@@ -1410,10 +1397,58 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  margin: 0 auto; /* Center the icons */
 }
 
 .process-section i {
   font-size: 2rem;
+}
+
+/* Center the process steps grid */
+.process-section .row.justify-content-center {
+  justify-content: center !important;
+}
+
+/* Ensure all process step content is centered */
+.process-section .col-md-3 {
+  text-align: center;
+}
+
+.process-section .col-md-3 h5,
+.process-section .col-md-3 p {
+  text-align: center;
+}
+
+/* Center the arrows between steps */
+.process-section .col-md-1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (max-width: 768px) {
+  .process-section .col-md-1 {
+    display: none;
+  }
+  
+  /* Ensure proper spacing on mobile */
+  .process-section .col-md-3 {
+    margin-bottom: 2rem;
+  }
+}
+
+/* Remove any potential borders from process section */
+.process-section .row,
+.process-section [class*="col-"] {
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.process-section .col-md-1,
+.process-section .process-icon {
+  border: none !important;
+  outline: none !important;
 }
 
 @media (max-width: 768px) {
@@ -1448,6 +1483,97 @@
 .process-section .process-icon {
     border: none !important;
     outline: none !important;
+}
+/* Remove shadow and hover effects from section images */
+section img {
+    width: 100%;
+    border-radius: 16px;
+    transition: none; /* Remove transition */
+    transform: none; /* Remove transform */
+}
+section img:hover {
+    transform: none; /* Remove hover transform */
+}
+
+/* Remove shadow from images in reduced-cost-section */
+.reduced-cost-section img {
+    box-shadow: none !important; /* Remove shadow */
+}
+
+/* Remove hover effect from type cards */
+.type-card {
+    background: #fff;
+    padding: 30px 25px;
+    border-radius: 16px;
+    transition: none; /* Remove transition */
+    text-align: center;
+    border: 1px solid rgba(13, 110, 253, 0.1);
+}
+.type-card:hover {
+    transform: none; /* Remove hover transform */
+}
+
+/* Remove hover effect from case cards */
+.case-card {
+    background: #fff;
+    border-radius: 16px;
+    overflow: hidden;
+    transition: none; /* Remove transition */
+    border: 1px solid rgba(13, 110, 253, 0.1);
+}
+.case-card:hover {
+    transform: none; /* Remove hover transform */
+}
+
+/* Remove hover effect from capability categories */
+.capability-category {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 16px;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    transition: none; /* Remove transition */
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+}
+.capability-category:hover {
+    transform: none; /* Remove hover transform */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15); /* Keep original shadow */
+    background: rgba(255, 255, 255, 0.95); /* Keep original background */
+}
+
+/* Remove hover effect from benefit cards */
+.benefit-card {
+    background: #fff;
+    border-radius: 16px;
+    padding: 40px 30px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    transition: none; /* Remove transition */
+    border: 1px solid rgba(13, 110, 253, 0.1);
+    text-align: center;
+}
+.benefit-card:hover {
+    transform: none; /* Remove hover transform */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08); /* Keep original shadow */
+}
+
+/* Remove hover effect from CTA card */
+.cta-card {
+    background: var(--newblue2);
+    color: #fff;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    max-width: 600px;
+    width: 100%;
+    padding: 50px 40px;
+    text-align: center;
+    transition: none; /* Remove transition */
+}
+.cta-card:hover {
+    transform: none; /* Remove hover transform */
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15); /* Keep original shadow */
+}
+.simulation-section h1::after {
+  background: linear-gradient(90deg, var(--newblue), var(--primary-blue));
 }
 </style>
   </style>
@@ -1584,19 +1710,18 @@
 </section>
 <section class="reduced-cost-section container py-5">
   <div class="row align-items-center">
-    <!-- Left side (GIF + 2 images) -->
-    <div class="col-md-7 text-center"><br><br><br><br>
-      <img src="<?= base_url('assets_system/images/newsimgif.gif') ?>" alt="Simulation GIF" class="img-fluid rounded shadow main-gif mb-3">
-      <div class="row">
+    <!-- In the reduced-cost-section, remove the shadow class from images -->
+<div class="col-md-7 text-center"><br><br><br><br>
+    <img src="<?= base_url('assets_system/images/newsimgif.gif') ?>" alt="Simulation GIF" class="img-fluid rounded main-gif mb-3">
+    <div class="row">
         <div class="col-6">
-          <img src="<?= base_url('assets_system/images/newsim1.png') ?>" alt="Model Image 1" class="img-fluid rounded shadow">
+            <img src="<?= base_url('assets_system/images/newsim1.png') ?>" alt="Model Image 1" class="img-fluid rounded">
         </div>
         <div class="col-6">
-          <img src="<?= base_url('assets_system/images/newsim2.png') ?>" alt="Model Image 2" class="img-fluid rounded shadow"><br><br><br><br>
+            <img src="<?= base_url('assets_system/images/newsim2.png') ?>" alt="Model Image 2" class="img-fluid rounded"><br><br><br><br>
         </div>
-      </div>
     </div>
-
+</div>
     <!-- Right side (Text + icons) -->
     <div class="col-md-5 text-start ps-md-4">
       <div class="benefit-item d-flex align-items-start mb-4">
@@ -1631,13 +1756,12 @@
     </div>
   </div>
 </section>
-
+<br><br><br><br><br><br>
 <section class="simulation-section container py-5 position-relative">
   <div class="row align-items-center">
     <!-- Left Text Section -->
     <div class="col-md-4 mb-4 mb-md-0">
-      <h1 class="fw-bold text-primary">Simulation <br> in Action</h1>
-      <hr class="underline">
+      <h1>Simulation <br> in Action</h1>
       <p class="text-muted">
         A showcase of simulation-driven insights demonstrating how Line Seiki applies 
         Computer-Aided Engineering to solve complex design and manufacturing problems.
@@ -1719,10 +1843,10 @@
     </div>
   </div>
 </section>
-<br><br><br>
+<br><br><br><br><br><br><br><br><br>
 <section class="process-section py-5 text-center">
   <div class="container">
-    <h1 class="fw-bold text-primary mb-2">Process & Requirements</h1>
+    <h1 class="fw-bold text-primary mb-2 capabilities-title">Process & Requirements</h1>
     <hr class="underline mx-auto">
     <p class="text-muted mb-5">
       Each project includes a comprehensive report with visual results, data, and recommendations.
@@ -1772,7 +1896,7 @@
         </p>
       </div>
     </div>
-  </div>
+  </div><br><br><br><br><br><br><br><br>
 </section>
 
 
