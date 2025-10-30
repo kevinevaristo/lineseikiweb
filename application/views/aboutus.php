@@ -428,7 +428,7 @@ body > div[style*="height: 90px"] {
 /* HERO SECTION */
 .hero-section {
   position: relative;
-  height: 70vh;
+  height: 50vh;
   background: url("<?= base_url('assets_system/images/Hero.jpg') ?>") center center/cover no-repeat;
   display: flex;
   align-items: center;
@@ -473,8 +473,16 @@ body > div[style*="height: 90px"] {
   font-size: 3.5rem;
   font-weight: 800;
   text-transform: uppercase;
-  letter-spacing: 2px;
   margin: 0;
+  margin-top: 100px;
+}
+
+  .hero-overlay {
+  margin-left: 0;
+}
+
+.hero-section {
+  padding-left: 250px; /* Adjust this to control how far from the left the H1 starts */
 }
 
 /* Make it responsive */
