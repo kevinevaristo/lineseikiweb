@@ -1973,7 +1973,7 @@ section img:hover {
                       This study presents a structural contact stress analysis to investigate part deformation 
                       and gear-jig interaction during process setup...
                     </p>
-                    <a href="#" class="read-more text-light fw-semibold">Read more</a>
+                    <a href="<?= base_url('index/ps_contents') ?>" class="read-more text-light fw-semibold">Read more</a>
                   </div>
                 </div>
               </div>

@@ -87,5 +87,8 @@ class index extends CI_Controller
   {
    $this->load->view('technical_specs');
   }
-  
+  function ps_contents()
+  {
+   $this->load->view('ps_contents');
+  }
 }
