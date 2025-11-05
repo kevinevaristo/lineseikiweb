@@ -570,8 +570,9 @@ body > div[style*="height: 90px"] {
     width: 100%;
   }
 }
+
   /* Delete the after line in concept boxes */
-   .concept-box h1::before,
+  .concept-box h1::before,
   .concept-box h1::after,
   .concept-box .no-after::before,
   .concept-box .no-after::after {
@@ -619,7 +620,7 @@ body > div[style*="height: 90px"] {
   max-width: 700px;
 }
 
-/* REMOVE the underline effect */
+
 .mission-vision-section h2::after {
   content: none !important;
 }
@@ -635,6 +636,26 @@ body > div[style*="height: 90px"] {
   }
 }
   
+.section-light-blue h1,
+.section-white h1 {
+  text-align: left !important;
+}
+
+.section-light-blue h1::after,
+.section-white h1::after {
+  left: 0 !important;
+  transform: none !important;
+}
+
+
+.concept-box h1 {
+  text-align: center !important;
+  margin: 0 auto;
+  display: block;
+}
+
+
+
 
   </style>
 </head>
@@ -739,11 +760,13 @@ body > div[style*="height: 90px"] {
       <div class="row align-items-center">
         <!-- Text -->
         <div class="col-lg-6 text-center text-lg-start">
-          <h1 class="fade-in">New Businesses Challenge</h1>
+          <h1 class="fade-in"> Our Regional Commitment</h1>
           <p class="lead fade-in delay-1">
-            In addition to manufacturing counters over the decades, we also pursue to provide solutions on 
-            “visualization” of factories through numerical information.
-              Without being bound by past practices, we will always endeavor to take on the challenge to enter new markets. expertise.
+            Connecting Customers and Solutions. We serve as the direct link
+            between Line Seiki Japan and industries across Asia Pacific. From
+            inquiry to delivery, our team ensures that customers receive the
+            right products, technical support, and guidance tailored to their
+            specific applications.
           </p>
         </div>
         <!-- Image -->
@@ -760,10 +783,12 @@ body > div[style*="height: 90px"] {
       <div class="row align-items-center flex-lg-row-reverse">
         <!-- Text -->
         <div class="col-lg-6 text-center text-lg-start">
-          <h1 class="fade-in">Integrated Production</h1>
+          <h1 class="fade-in"> Collaboration Across Borders</h1>
           <p class="lead fade-in delay-1">
-            We offer integrated production from design to development and manufacturing. 
-            We are proud of our reliable production system unique to a specialized counting manufacturer.
+             Working closely with our headquarters and distributors, we help
+            expand the reach of Line Seiki’s technologies throughout the region.
+            Through partnerships, training, and joint initiatives, we strengthen
+            communication between engineers, manufacturers, and end users.
           </p>
         </div>
         <!-- Image -->
@@ -780,11 +805,13 @@ body > div[style*="height: 90px"] {
       <div class="row align-items-center">
         <!-- Text -->
         <div class="col-lg-6 text-center text-lg-start">
-          <h1 class="fade-in">Strict Inspection for Quality</h1>
+          <h1 class="fade-in"> Delivering Reliable Support</h1>
           <p class="lead fade-in delay-1">
-            Mass production of a product begins when a prototype is received from the development department. Line Seiki’s 
-            products are subjected to repeated testing, and only those which passed the tests are released. 
-            The strict testing procedures of Line Seiki allowed our products to earn the trust of users around the world.
+            Our role goes beyond sales — we provide after-sales assistance,
+            technical coordination, and product demonstrations to ensure our
+            customers get lasting value from every Line Seiki solution. By
+            maintaining close collaboration with Japan, we ensure consistent
+            quality and service wherever our customers are.
           </p>
         </div>
         <!-- Image -->
