@@ -938,9 +938,9 @@
               <a class="dropdown-item dropdown-toggle active" href="#">Services</a>
               <ul class="dropdown-menu">
                 <li><a class="dropdown-item" href="<?= base_url('index/ps_serv_simulation') ?>">Simulation Analysis</a></li>
-                <li><a class="dropdown-item active" href="<?= base_url('index/ps_serv_silicone') ?>">Silicone Molding & Urethane Casting</a></li>
+                <li><a class="dropdown-item active" href="<?= base_url('index/ps_serv') ?>">Silicone Molding & Urethane Casting</a></li>
               </ul>
-            </li>
+            </li>               
 
             <li><a class="dropdown-item" href="<?= base_url('index/ps_iotsolution') ?>">IoT Solution</a></li>
           </ul>

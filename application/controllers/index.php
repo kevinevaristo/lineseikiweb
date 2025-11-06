@@ -91,4 +91,8 @@ class index extends CI_Controller
   {
    $this->load->view('ps_contents');
   }
+  function ps_serv()
+  {
+   $this->load->view('ps_serv');
+  }
 }
