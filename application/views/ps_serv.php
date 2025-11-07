@@ -27,28 +27,6 @@
             max-width: 80rem; /* max-w-5xl (approx) */
             margin: 0 auto; /* mx-auto */
         }
-
-        /* 2. Header Styles */
-        .header-section {
-            text-align: center;
-            margin-bottom: 4rem; /* mb-16 */
-            border-bottom: 1px solid var(--light-blue);
-            padding-bottom: 2rem; /* pb-8 */
-        }
-
-        .main-heading {
-            font-size: 2.25rem; /* text-3xl */
-            font-weight: 800; /* font-extrabold */
-            letter-spacing: -0.025em; /* tracking-tight */
-            color: var(--primary-blue);
-            margin-bottom: 0.5rem; /* mb-2 */
-        }
-        
-        .sub-heading {
-            color: var(--gray-600);
-            font-size: 1.125rem; /* text-lg */
-        }
-
         /* 3. Callout Row (Mobile-first: Column Layout) */
         .callout-row {
             position: relative;
@@ -198,14 +176,13 @@
     <div class="main-wrapper">
  <section id="our-process-section">
         <!-- Header Section -->
-        <header class="header-section">
+
             <h1 class="main-heading">
                 WHAT DO WE DO
             </h1>
             <p class="sub-heading">
                 Precision-crafted parts through Silicone Molding and Urethane Casting.
             </p>
-        </header>
 
         <!-- Main Illustration and Callout Container -->
         <div class="callout-row">
