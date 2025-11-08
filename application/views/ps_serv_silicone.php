@@ -992,7 +992,6 @@
             .callout-row {
                 flex-direction: row; /* md:flex-row */
                 gap: 3rem; /* md:space-x-12 (approx) */
-                gap-y: 0; /* md:space-y-0 */
             }
 
             .left-callout-box {
@@ -1068,6 +1067,411 @@
         .main-heading::after {
             display: none;
         }
+        
+        /* Add this CSS to make the callout headings match the main heading style */
+#callout-left h3, 
+#callout-right h3 {
+    font-size: 2rem !important;
+    font-weight: 800 !important;
+    color: var(--primary-blue) !important;
+    text-align: center;
+    margin-bottom: 0.5rem;
+}
+.section-white {
+    background: #fff;
+    color: #333;
+    position: relative;
+    overflow: hidden;
+}
+
+.section-white::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        linear-gradient(135deg, rgba(15, 70, 123, 0.85) 50%, rgba(23, 162, 220, 0.75) 100%),
+        url('<?= base_url('assets_system/images/sm5.png') ?>');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 0;
+}
+.section-white h1,
+.section-white p {
+    color: white;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.section-white .col-lg-6:first-child {
+    padding-right: 40px;
+}
+
+.section-white .col-lg-6:first-child h1 {
+    font-size: 3.5rem;
+    margin-bottom: 30px;
+    line-height: 1.1;
+}
+
+.section-white .col-lg-6:first-child p {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    margin-bottom: 40px;
+}
+.consultation-btn {
+    display: inline-block;
+    background: var(--newblue);
+    color: white;
+    padding: 15px 35px;
+    border-radius: 15px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: var(--transition);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.consultation-btn:hover {
+    background: linear-gradient(135deg, var(--newblue2), var(--newblue));
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+    color: white;
+}
+.section-white .col-lg-6:last-child img[src*="sm4.png"] {
+    box-shadow: none !important;
+    border: none !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+    max-width: 50rem !important;
+    height: auto !important;
+    display: block;
+    margin-left: auto;
+    transform: none !important;
+}
+
+.section-white .col-lg-6:last-child img[src*="sm4.png"]:hover {
+    transform: none !important;
+    box-shadow: none !important;
+}
+.fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.delay-1 { transition-delay: 0.1s; }
+/* Make Section 3 background match Section 5 */
+.case-studies.section-white {
+    background: var(--light-blue) !important;
+}
+
+.case-studies.section-white::before {
+    display: none !important;
+}
+/* ===== Molding & Casting Section ===== */
+#molding-casting-section {
+  background-color: #f2f7fc;
+  padding: 5rem 0;
+  font-family: 'Poppins', sans-serif;
+}
+
+.molding-casting {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 4rem;
+  max-width: 80rem;
+  margin: 0 auto;
+}
+
+.process-box {
+  color: var(--gray-700);
+  background: transparent;
+}
+
+/* ===== Title (Silicone / Urethane) ===== */
+.process-box h2 {
+  font-size: 2.5rem;          /* same as image */
+  color: var(--primary-blue);
+  margin-bottom: 1.25rem;
+}
+
+/* ===== Paragraph ===== */
+.process-box p {
+  font-size: 1.2rem;          /* matches image text */
+  color: var(--gray-700);
+  line-height: 1.75;
+  margin-bottom: 1.75rem;
+  max-width: 95%;
+}
+
+/* ===== Subheading ===== */
+.process-box h3 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--gray-700);
+  margin-bottom: 0.75rem;
+}
+
+/* ===== Bullet List ===== */
+.process-box ul {
+  list-style-type: disc;
+  padding-left: 1.5rem;
+  margin: 0;
+}
+
+.process-box li {
+  font-size: 1.15rem;
+  color: var(--gray-700);
+  margin-bottom: 0.5rem;
+  line-height: 1.7;
+}
+
+/* ===== Responsive Layout ===== */
+@media (min-width: 992px) {
+  .molding-casting {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 4rem;
+  }
+
+  #molding-casting-section {
+    padding: 6rem 0;
+  }
+
+  .process-box p {
+    max-width: 100%;
+  }
+}
+.process-box h2::after {
+  content: none !important;
+  display: none !important;
+  border: none !important;
+}
+#process-section {
+  background-color: #f7fbff;
+  padding: 5rem 0;
+  font-family: 'Poppins', sans-serif;
+}
+
+.process-flow {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  text-align: center;
+  position: relative;
+  max-width: 2000px;
+  margin: 0 auto;
+}
+
+.process-step {
+  flex: 1 1 20%;
+  max-width: 240px;
+  margin: 0 auto;
+  color: var(--gray-700);
+}
+
+.process-step img {
+  width: 200px;
+  height: auto;
+  margin-bottom: 1.25rem;
+}
+
+.process-step h3 {
+  font-size: 1.50rem;
+  font-weight: 700;
+  color: black;
+  margin-bottom: 0.75rem;
+}
+
+.process-step p {
+  font-size: 1.1rem;
+  color: var(--gray-700);
+  line-height: 1.6;
+  margin: 0 auto;
+  max-width: 90%;
+}
+
+/* Connector line between steps */
+.process-line {
+  flex: 0 0 60px;
+  height: 3px;
+  background-color: #3fb4f9;
+  align-self: center;
+  margin: 2.5rem 0;
+}
+
+/* Responsive layout */
+@media (max-width: 992px) {
+  .process-flow {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .process-line {
+    width: 60px;
+    height: 2px;
+    margin: 1.5rem 0;
+  }
+
+  .process-step {
+    max-width: 300px;
+  }
+}
+.project-gallery {
+  background-color: #0b3a67;
+  color: white;
+  text-align: center;
+  padding: 60px 20px;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+
+.project-gallery h1 {
+  font-size: 3rem;
+  margin-bottom: 10px;
+  font-weight: bold;
+  color: white;
+}
+
+.project-gallery p {
+  max-width: 700px;
+  margin: 0 auto 40px;
+  line-height: 1.6;
+  color: #d8e3f0;
+}
+
+.gallery-section {
+  margin-bottom: 50px;
+}
+
+.gallery-title {
+  text-align: center !important;
+  font-size: 1.5rem !important;
+  margin-bottom: 25px !important;
+  color: white !important;
+  font-weight: 600 !important;
+  width: 100%;
+}
+
+/* Carousel Styles */
+.carousel-container {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.carousel-wrapper {
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.carousel-track {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  will-change: transform;
+}
+
+.carousel-slide {
+  flex: 0 0 33.333%;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.carousel-slide img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 8px;
+  background-color: white;
+  transition: transform 0.3s ease;
+}
+
+.carousel-slide img:hover {
+  transform: scale(1.03);
+}
+
+/* Carousel Navigation Buttons */
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.9);
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 10;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.carousel-btn:hover {
+  background: white;
+  transform: translateY(-50%) scale(1.1);
+}
+
+.carousel-btn:active {
+  transform: translateY(-50%) scale(0.95);
+}
+
+.carousel-prev {
+  left: 15px;
+}
+
+.carousel-next {
+  right: 15px;
+}
+
+.carousel-btn i {
+  font-size: 1.2rem;
+  color: #0b3a67;
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+  .carousel-slide {
+    flex: 0 0 50%;
+  }
+  
+  .carousel-slide img {
+    height: 250px;
+  }
+}
+
+@media (max-width: 768px) {
+  .carousel-slide {
+    flex: 0 0 100%;
+  }
+  
+  .carousel-slide img {
+    height: 200px;
+  }
+  
+  .carousel-btn {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .gallery-title {
+    font-size: 1.3rem !important;
+  }
+  
+  .project-gallery h1 {
+    font-size: 2.5rem;
+  }
+}
   </style>
 </head>
 <body>
@@ -1120,20 +1524,26 @@
     </div>
   </div>
 </nav>
-
-<!-- Offset for fixed navbar -->
-<div style="margin-top:90px"></div>
-
-<!-- ✅ Hero Slider Section -->
-<div class="section-one"> 
-  <div class="slider-container">
-    <div class="hero-content fade-in">
-      <h1>Silicone Molding and Urethane Casting</h1>
-      <p>Overview of our low-volume prototyping service using silicone molds and urethane casting.</p>
+<br><br><br><section class="section-white">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 fade-in">
+                <h1>Production Quality <br>at Low Volumes</h1>
+                <p>Get full-scale aesthetics and performance without fullscale tooling. Silicone Molding and Urethane Casting
+deliver production-grade parts for concept, validation and
+low-volume runs.
+</p>
+                <a href="#consultation" class="consultation-btn">Request a Quote</a>
+            </div>
+            <div class="col-lg-6 fade-in delay-1">
+                <img src="<?= base_url('assets_system/images/sm4.png') ?>" alt="Simulation Analysis">
+            </div>
+        </div>
     </div>
-    <div class="slider-indicators"></div>
-  </div>
-</div>
+</section>
+
+
+
 <div class="main-wrapper">
  <section id="our-process-section">
         <!-- Header Section -->
@@ -1204,66 +1614,148 @@
      </section>
     </div>
 <br><br><br><br>
-<!-- ✅ Technical Specs Section -->
-<section class="case-studies section-white">
+<section id="molding-casting-section">
+  <div class="container molding-casting">
+    <div class="process-box">
+      <h2>Silicone Molding</h2>
+      <p>
+        Silicone molding—also known as Room Temperature Vulcanizing (RTV) molding—uses a flexible silicone mold
+        to reproduce parts with exceptional surface detail and accuracy. It’s the ideal process for creating
+        small-batch or low-volume parts without the high investment cost of injection molding or press dies.
+      </p>
+      <h3>Key Features:</h3>
+      <ul>
+        <li>Produces up to 10–50 parts per mold, depending on design and material.</li>
+        <li>Captures fine surface textures — even details as small as fingerprint marks.</li>
+        <li>Supports insert molding and over-molding applications.</li>
+        <li>Maximum casting size: 450 × 450 × 450 mm.</li>
+        <li>Minimum guaranteed wall thickness: 1.5 mm.</li>
+      </ul>
+    </div>
+
+    <div class="process-box">
+      <h2>Urethane Casting</h2>
+      <p>
+        Urethane casting uses thermosetting polyurethane resins—similar to epoxy—to produce multiple copies of
+        your master model. Combined with silicone molds, this process delivers high-detail prototypes and
+        functional parts that can match the look, feel, and performance of injection-molded products.
+      </p>
+      <h3>Key Features:</h3>
+      <ul>
+        <li>Tight dimensional tolerance of ±0.15 mm per 100 mm.</li>
+        <li>Fine feature replication down to 0.5 mm width and depth.</li>
+        <li>Cast-in color options (blue, green, yellow, red) to reduce post-painting time.</li>
+        <li>Supports post-processing such as machining, painting, and assembly.</li>
+        <li>UL- and RoHS-compliant materials available.</li>
+        <li>Suitable for final product components and functional testing.</li>
+        <li>More cost-efficient than 3D printing for quantities above 10 pcs.</li>
+        <li>Ideal alternative to injection molding for runs under 1,000 pcs.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="process-section">
   <div class="container">
-    <h2 class="fade-in">Technical Specs</h2><br>
-    <div class="case-grid">
-      <div class="case-card fade-in delay-1">
-        <img src="<?= base_url('assets_system/images/simulation6.png') ?>" alt="Silicone">
-        <div class="card-content">
-          <h3>Silicone</h3>
-          <p>Provides technical details such as maximum part size, minimum wall thickness, tolerances, and available post-processing options like over-molding and painting</p>
-          <a href="<?= base_url('index/technical_specs') ?>">Read More</a>
-        </div>
+    <div class="process-flow">
+      <div class="process-step">
+        <img src="<?= base_url('assets_system/images/sm9.png') ?>" alt="Silicone Molding">
+        <h3>Silicone Molding</h3>
+        <p>Liquid silicone is poured around the master pattern to form a flexible mold.</p>
       </div>
-      <div class="case-card fade-in delay-2">
-        <img src="<?= base_url('assets_system/images/simulation5.png') ?>" alt="Urethane">
-        <div class="card-content">
-          <h3>Urethane</h3>
-          <p>Provides technical details such as maximum part size, minimum wall thickness, tolerances, and available post-processing options like over-molding and painting</p>
-          <a href="<?= base_url('index/technical_specs') ?>">Read More</a>
-        </div>
+
+      <div class="process-line"></div>
+
+      <div class="process-step">
+        <img src="<?= base_url('assets_system/images/sm6.png') ?>" alt="Mold Removal">
+        <h3>Mold Removal</h3>
+        <p>The cured silicone mold is carefully cut and separated from the master pattern.</p>
       </div>
-      <div class="case-card fade-in delay-3">
-        <img src="<?= base_url('assets_system/images/simulation7.png') ?>" alt="Materials">
-        <div class="card-content">
-          <h3>Specialty Materials</h3>
-          <p>Provides technical details such as maximum part size, minimum wall thickness, tolerances, and available post-processing options like over-molding and painting</p>
-          <a href="<?= base_url('index/technical_specs') ?>">Read More</a>
-        </div>
+
+      <div class="process-line"></div>
+
+      <div class="process-step">
+        <img src="<?= base_url('assets_system/images/sm7.png') ?>" alt="Urethane Casting">
+        <h3>Urethane Casting</h3>
+        <p>Urethane resin is poured into the silicone mold to replicate the master part.</p>
+      </div>
+
+      <div class="process-line"></div>
+
+      <div class="process-step">
+        <img src="<?= base_url('assets_system/images/sm8.png') ?>" alt="Copies of Prototype">
+        <h3>Copies of Prototype</h3>
+        <p>Multiple casted parts are produced with high accuracy and surface detail.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ✅ Industry Section -->
-<section class="news-section">
-  <h2 class="fade-in">Industry</h2>
-  <div class="content-container">
-    <div class="news-card fade-in delay-1">
-      <img src="https://placehold.co/400x200/cccccc/333333?text=Latest+News" alt="Latest news article.">
-      <div class="news-card-content">
-        <h3>Company Announcements</h3>
-        <p>Stay up-to-date with our official announcements, product releases, and company news.</p>
-        <a href="<?= base_url('index/technical_specs') ?>">Read more</a>
+<section class="project-gallery">
+  <h1>Project Gallery</h1>
+  <p>See how we've applied silicone molding and urethane casting across a wide variety of product types—from prototype enclosures to functional end-use parts.</p>
+
+  <div class="gallery-section">
+    <h3 class="gallery-title">Urethane Parts</h3>
+    <div class="carousel-container">
+      <div class="carousel-wrapper">
+        <div class="carousel-track" id="carousel-track-1">
+          <div class="carousel-slide">
+            <img src="<?= base_url('assets_system/images/wheel3.jpg') ?>" alt="Urethane Casted Part">
+          </div>
+          <div class="carousel-slide">
+            <img src="<?= base_url('assets_system/images/wheel2.jpg') ?>" alt="Urethane Casted Part">
+          </div>
+          <div class="carousel-slide">
+            <img src="<?= base_url('assets_system/images/wheel1.jpg') ?>" alt="Urethane Casted Part">
+          </div>
+          <!-- Duplicate slides for seamless looping -->
+          <div class="carousel-slide">
+            <img src="<?= base_url('assets_system/images/wheel3.jpg') ?>" alt="Urethane Casted Part">
+          </div>
+          <div class="carousel-slide">
+            <img src="<?= base_url('assets_system/images/wheel2.jpg') ?>" alt="Urethane Casted Part">
+          </div>
+        </div>
       </div>
+      <button class="carousel-btn carousel-prev" onclick="moveSlide('carousel-track-1', -1)">
+        <i class="fas fa-chevron-left"></i>
+      </button>
+      <button class="carousel-btn carousel-next" onclick="moveSlide('carousel-track-1', 1)">
+        <i class="fas fa-chevron-right"></i>
+      </button>
     </div>
-    <div class="news-card fade-in delay-2">
-      <img src="https://placehold.co/400x200/cccccc/333333?text=Product+Launch" alt="New product launch.">
-      <div class="news-card-content">
-        <h3>New Product Launch</h3>
-        <p>Discover our latest innovation designed to enhance efficiency and precision in your operations.</p>
-        <a href="<?= base_url('index/technical_specs') ?>">Explore</a>
+  </div>
+
+  <div class="gallery-section">
+    <h3 class="gallery-title">Urethane Casted Overmolding</h3>
+    <div class="carousel-container">
+      <div class="carousel-wrapper">
+        <div class="carousel-track" id="carousel-track-2">
+          <div class="carousel-slide">
+            <img src="<?= base_url('assets_system/images/wheel3.jpg') ?>" alt="Urethane Casted Overmolding">
+          </div>
+          <div class="carousel-slide">
+            <img src="<?= base_url('assets_system/images/wheel3.jpg') ?>" alt="Urethane Casted Overmolding">
+          </div>
+          <div class="carousel-slide">
+            <img src="<?= base_url('assets_system/images/wheel3.jpg') ?>" alt="Urethane Casted Overmolding">
+          </div>
+          <!-- Duplicate slides for seamless looping -->
+          <div class="carousel-slide">
+            <img src="<?= base_url('assets_system/images/wheel3.jpg') ?>" alt="Urethane Casted Overmolding">
+          </div>
+          <div class="carousel-slide">
+            <img src="<?= base_url('assets_system/images/wheel3.jpg') ?>" alt="Urethane Casted Overmolding">
+          </div>
+        </div>
       </div>
-    </div>
-    <div class="news-card fade-in delay-3">
-      <img src="https://placehold.co/400x200/cccccc/333333?text=Industry+Insights" alt="Industry insights.">
-      <div class="news-card-content">
-        <h3>Industry Insights</h3>
-        <p>Read our latest articles and insights on industry trends and technological advancements.</p>
-        <a href="<?= base_url('index/technical_specs') ?>">Learn more</a>
-      </div>
+      <button class="carousel-btn carousel-prev" onclick="moveSlide('carousel-track-2', -1)">
+        <i class="fas fa-chevron-left"></i>
+      </button>
+      <button class="carousel-btn carousel-next" onclick="moveSlide('carousel-track-2', 1)">
+        <i class="fas fa-chevron-right"></i>
+      </button>
     </div>
   </div>
 </section>
@@ -1326,48 +1818,6 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
 <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const sliderContainer = document.querySelector('.slider-container');
-    const indicatorsContainer = document.querySelector('.slider-indicators');
-
-    const images = [
-        '<?= base_url('assets_system/images/siliconemolding7.jpg') ?>',
-        '<?= base_url('assets_system/images/siliconemolding8.jpg') ?>',
-        '<?= base_url('assets_system/images/siliconemolding9.jpg') ?>',
-        '<?= base_url('assets_system/images/siliconemolding10.jpg') ?>',
-    ];
-
-    let currentIndex = 0;
-
-    // Create dots dynamically
-    images.forEach((_, index) => {
-        const dot = document.createElement('span');
-        if (index === 0) dot.classList.add('active');
-        dot.addEventListener('click', () => {
-            currentIndex = index;
-            updateSlide();
-        });
-        indicatorsContainer.appendChild(dot);
-    });
-
-    function updateSlide() {
-        sliderContainer.style.backgroundImage = `url('${images[currentIndex]}')`;
-        document.querySelectorAll('.slider-indicators span').forEach((dot, idx) => {
-            dot.classList.toggle('active', idx === currentIndex);
-        });
-    }
-
-    function changeBackground() {
-        currentIndex = (currentIndex + 1) % images.length;
-        updateSlide();
-    }
-
-    // Initial setup
-    updateSlide();
-
-    // Auto change every 5 seconds
-    setInterval(changeBackground, 5000);
-
     // Navbar scroll effect
     const navbar = document.querySelector('.navbar');
     window.addEventListener('scroll', function() {
@@ -1426,7 +1876,56 @@
       const fileName = this.files.length > 0 ? this.files[0].name : 'No file selected';
       document.getElementById('file-name').textContent = fileName;
     });
-  });
+
+    // Carousel functionality
+let currentIndex = {
+  'carousel-track-1': 0,
+  'carousel-track-2': 0
+};
+
+function moveSlide(trackId, direction) {
+  const track = document.getElementById(trackId);
+  const slides = track.querySelectorAll('.carousel-slide');
+  const totalSlides = slides.length / 2; // Original slides (excluding duplicates)
+  
+  currentIndex[trackId] += direction;
+  
+  // Handle looping
+  if (currentIndex[trackId] >= totalSlides) {
+    currentIndex[trackId] = 0;
+    // Reset position instantly without animation
+    track.style.transition = 'none';
+    track.style.transform = `translateX(0)`;
+    // Force reflow
+    track.offsetHeight;
+    // Re-enable transition
+    track.style.transition = 'transform 0.5s ease-in-out';
+  } else if (currentIndex[trackId] < 0) {
+    currentIndex[trackId] = totalSlides - 1;
+    track.style.transition = 'none';
+    track.style.transform = `translateX(-${(totalSlides - 1) * 100}%)`;
+    track.offsetHeight;
+    track.style.transition = 'transform 0.5s ease-in-out';
+  }
+  
+  // Move the track
+  const slideWidth = 100 / (slides.length / 2); // Calculate percentage based on original slides
+  track.style.transform = `translateX(-${currentIndex[trackId] * slideWidth}%)`;
+}
+
+// Auto-advance carousels
+function startAutoCarousel() {
+  setInterval(() => {
+    moveSlide('carousel-track-1', 1);
+  }, 4000);
+  
+  setInterval(() => {
+    moveSlide('carousel-track-2', 1);
+  }, 4500);
+}
+
+// Start auto-advance when page loads
+document.addEventListener('DOMContentLoaded', startAutoCarousel);
 </script>
 </body>
 </html>
