@@ -654,6 +654,86 @@ body > div[style*="height: 90px"] {
   display: block;
 }
 
+/* margin */
+.row {
+  margin-bottom: 150px !important; 
+}
+
+.row:last-of-type { 
+  margin-bottom: 0 !important;
+}
+
+
+/* === Combined Section (Enhanced Gradient Design) === */
+#combined-section {
+  position: relative;
+  color: #fff;
+  padding: 120px 0;
+  border-radius: 15px;
+  overflow: hidden;
+
+  /* === Gradient Background (Updated Colors) === */
+  background: 
+    radial-gradient(circle at top right, rgba(66, 134, 244, 0.3), transparent 40%), /* soft glow */
+    linear-gradient(135deg, #0F467B 40%, #4286f4 100%), /* main gradient */
+    linear-gradient(0deg, rgba(255,255,255,0.05) 1px, transparent 1px), /* subtle grid lines */
+    linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px); /* subtle grid lines */
+  
+  background-size: 
+    cover, 
+    cover, 
+    40px 40px, 
+    40px 40px;
+
+  background-blend-mode: overlay;
+}
+
+#combined-section::after {
+  content: "";
+  position: absolute;
+  inset: 10px;
+  border: 2px solid rgba(255,255,255,0.2);
+  border-radius: 15px;
+  z-index: 1;
+}
+
+#combined-section h1,
+#combined-section p {
+  color: white !important;
+  position: relative;
+  z-index: 2;
+}
+
+#combined-section h1::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 4px;
+  margin-top: 8px;
+  background: #00b3ff !important; 
+  border-radius: 2px;
+  position: relative;
+  z-index: 2;
+}
+
+/* === Optional subtle animation (glow pulse) === */
+#combined-section::before {
+  content: "";
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  top: -100px;
+  right: -100px;
+  background: radial-gradient(circle, rgba(255,255,255,0.15), transparent 70%);
+  animation: glow 8s ease-in-out infinite alternate;
+  z-index: 0;
+}
+
+@keyframes glow {
+  from { opacity: 0.2; transform: scale(1); }
+  to { opacity: 0.4; transform: scale(1.1); }
+}
+
 
 
 
@@ -754,73 +834,55 @@ body > div[style*="height: 90px"] {
     </div>
   </section>
 
-    <!-- New Businesses Challenge -->
-  <section class="section-light-blue">
-    <div class="container">
-      <div class="row align-items-center">
-        <!-- Text -->
-        <div class="col-lg-6 text-center text-lg-start">
-          <h1 class="fade-in"> Our Regional Commitment</h1>
-          <p class="lead fade-in delay-1">
-            Connecting Customers and Solutions. We serve as the direct link
-            between Line Seiki Japan and industries across Asia Pacific. From
-            inquiry to delivery, our team ensures that customers receive the
-            right products, technical support, and guidance tailored to their
-            specific applications.
-          </p>
-        </div>
-        <!-- Image -->
-        <div class="col-lg-6 text-center">
-          <img src=<?= base_url('assets_system/images/newb.jpg') ?> alt="New Businesses Challenge" class="fade-in delay-2 img-fluid rounded shadow">
-        </div>
-      </div>
-    </div>
-  </section>
+    <!-- Combined Section: New Businesses Challenge + Integrated Production + Strict Inspection for Quality -->
+<section id="combined-section" class="section-light-blue">
+  <div class="container">
 
-  <!-- Integrated Production -->
-  <section class="section-white">
-    <div class="container">
-      <div class="row align-items-center flex-lg-row-reverse">
-        <!-- Text -->
-        <div class="col-lg-6 text-center text-lg-start">
-          <h1 class="fade-in"> Collaboration Across Borders</h1>
-          <p class="lead fade-in delay-1">
-             Working closely with our headquarters and distributors, we help
-            expand the reach of Line Seiki’s technologies throughout the region.
-            Through partnerships, training, and joint initiatives, we strengthen
-            communication between engineers, manufacturers, and end users.
-          </p>
-        </div>
-        <!-- Image -->
-        <div class="col-lg-6 text-center">
-          <img src=<?= base_url('assets_system/images/integrated.jpg') ?> alt="Integrated Production" class="fade-in delay-2 img-fluid rounded shadow">
-        </div>
+    <!-- First Row -->
+    <div class="row align-items-center mb-5">
+      <div class="col-lg-6 text-center text-lg-start">
+        <h1 class="fade-in">Our Regional Commitment</h1>
+        <p class="lead fade-in delay-1">
+          Connecting Customers and Solutions. We serve as the direct link between Line Seiki Japan and industries across Asia Pacific. From inquiry to delivery, our team ensures that customers receive the right products, technical support, and guidance tailored to their specific applications.
+        </p>
+      </div>
+      <div class="col-lg-6 text-center">
+        <img src=<?= base_url('assets_system/images/newb.jpg') ?> alt="New Businesses Challenge" class="fade-in delay-2 img-fluid rounded shadow">
       </div>
     </div>
-  </section>
 
-  <!-- Strict Inspection for Quality -->
-  <section class="section-light-blue">
-    <div class="container">
-      <div class="row align-items-center">
-        <!-- Text -->
-        <div class="col-lg-6 text-center text-lg-start">
-          <h1 class="fade-in"> Delivering Reliable Support</h1>
-          <p class="lead fade-in delay-1">
-            Our role goes beyond sales — we provide after-sales assistance,
-            technical coordination, and product demonstrations to ensure our
-            customers get lasting value from every Line Seiki solution. By
-            maintaining close collaboration with Japan, we ensure consistent
-            quality and service wherever our customers are.
-          </p>
-        </div>
-        <!-- Image -->
-        <div class="col-lg-6 text-center">
-          <img src=<?= base_url('assets_system/images/strict.jpg') ?> alt="Strict Inspection for Quality" class="fade-in delay-2 img-fluid rounded shadow">
-        </div>
+    
+
+    <!-- Second Row -->
+    <div class="row align-items-center flex-lg-row-reverse mb-5">
+      <div class="col-lg-6 text-center text-lg-start">
+        <h1 class="fade-in">Collaboration Across Borders</h1>
+        <p class="lead fade-in delay-1">
+          Working closely with our headquarters and distributors, we help expand the reach of Line Seiki’s technologies throughout the region. Through partnerships, training, and joint initiatives, we strengthen communication between engineers, manufacturers, and end users.
+        </p>
+      </div>
+      <div class="col-lg-6 text-center">
+        <img src=<?= base_url('assets_system/images/integrated.jpg') ?> alt="Integrated Production" class="fade-in delay-2 img-fluid rounded shadow">
       </div>
     </div>
-  </section>
+
+   
+
+    <!-- Third Row -->
+    <div class="row align-items-center">
+      <div class="col-lg-6 text-center text-lg-start">
+        <h1 class="fade-in">Delivering Reliable Support</h1>
+        <p class="lead fade-in delay-1">
+          Our role goes beyond sales — we provide after-sales assistance, technical coordination, and product demonstrations to ensure our customers get lasting value from every Line Seiki solution. By maintaining close collaboration with Japan, we ensure consistent quality and service wherever our customers are.
+        </p>
+      </div>
+      <div class="col-lg-6 text-center">
+        <img src=<?= base_url('assets_system/images/strict.jpg') ?> alt="Strict Inspection for Quality" class="fade-in delay-2 img-fluid rounded shadow">
+      </div>
+    </div>
+
+  </div>
+</section>
 
   <!-- Mission and Vision -->
   <section class="mission-vision-section">
