@@ -191,7 +191,7 @@ section p {
 }
 
 /* Color Schemes */
-.section-white { background: #fff; color: #333; }
+.section-white { background: #f2f7fc }
 .section-light-blue { background: var(--light-blue); color: #333; }
 .section-light-orange { background: var(--light-orange); color: #333; }
 
@@ -263,10 +263,11 @@ section p {
 .btn-link:hover span::after { width: 100%; }
 
 /* ===============================
-   CAROUSEL
+   CAROUSEL BACKGROUND WITH OVERLAY
 ==================================*/
 #heroCarousel {
   background-color: #fff !important;
+  position: relative;
 }
 
 #heroCarousel .carousel-item {
@@ -275,20 +276,50 @@ section p {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #fff; /* white background */
   position: relative;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
+/* Add blue overlay to each carousel item */
 #heroCarousel .carousel-item::before {
-  display: none; /* remove dark overlay */
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(15, 70, 123, 0.85) 50%, rgba(23, 162, 220, 0.75) 100%);
+  z-index: 1;
 }
 
+/* Individual slide backgrounds */
+#heroCarousel .carousel-item:nth-child(1) {
+  background-image: url('<?= base_url('assets_system/images/m-and-v.jpg') ?>');
+}
+
+#heroCarousel .carousel-item:nth-child(2) {
+  background-image: url('<?= base_url('assets_system/images/Hero.jpg') ?>');
+}
+
+#heroCarousel .carousel-item:nth-child(3) {
+  background-image: url('<?= base_url('assets_system/images/simulation2.jpg') ?>');
+}
+
+#heroCarousel .carousel-item:nth-child(4) {
+  background-image: url('<?= base_url('assets_system/images/strict.jpg') ?>');
+}
+
+/* Ensure content stays above overlay */
 .hero-slide {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 50px;
-  color: #000; /* black text for white bg */
+  color: white; /* Change text to white for better contrast */
+  position: relative;
+  z-index: 2;
 }
 
 .hero-text {
@@ -297,11 +328,11 @@ section p {
 }
 
 .hero-text h1 {
-  background: linear-gradient(90deg, var(--primary-blue), #007bff);
+  background: white; /* Light gradient for white text */
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   font-weight: 700;
-  font-size: 2.8rem;
+  font-size: 3.2rem;
 }
 
 .hero-text h1::after {
@@ -310,15 +341,16 @@ section p {
   width: 60px;
   height: 4px;
   margin-top: 8px;
-  background: linear-gradient(90deg, var(--newblue), var(--primary-blue));
+   background: linear-gradient(90deg, var(--newblue), var(--primary-blue));
   border-radius: 2px;
 }
 
 .hero-text p {
-  color: #333;
+  color: #f0f8ff; /* Light blue-white for better readability */
   font-size: 1.1rem;
   margin-top: 15px;
   line-height: 1.6;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
 }
 
 .hero-image {
@@ -328,7 +360,7 @@ section p {
 }
 
 .hero-image img {
-  max-width: 100%; /* ⬅️ Make image larger than its container */
+  max-width: 100%;
   height: auto;
   border-radius: 12px;
   transform: scale(1.1); 
@@ -336,25 +368,48 @@ section p {
   transition: transform 0.5s ease;
 }
 
-
-/* ===============================
-   CAROUSEL INDICATORS (BLUE)
-==================================*/
+/* Make carousel indicators more visible against dark background */
 #heroCarousel .carousel-indicators [data-bs-target] {
-  background-color: #0d6efd; /* Blue color */
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  opacity: 0.5;
+  background-color: #ffffff;
+  width: 25px;
+  height: 5px;
+  border-radius: 10%;
+  opacity: 0.6;
   transition: 0.3s ease;
   border: none;
 }
 
 #heroCarousel .carousel-indicators .active {
   opacity: 1;
-  background-color: #084298; /* Darker blue for active */
+  background-color: var(--newblue);
   transform: scale(1.2);
 }
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+  .hero-slide {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .hero-text,
+  .hero-image {
+    max-width: 100%;
+  }
+
+  .hero-image {
+    justify-content: center;
+    margin-top: 30px;
+  }
+
+  .hero-text h1 {
+    font-size: 2rem;
+  }
+}
+
+/* ===============================
+   CAROUSEL INDICATORS (BLUE)
+==================================*
 
 
 /* Fade effect */
@@ -557,55 +612,254 @@ body > div[style*="margin-top:90px"] { display: none !important; }
   /* ===============================
    NEW PRODUCTS SECTION
 ==================================*/
+/* ===============================
+   UPGRADED NEW PRODUCTS SECTION
+==================================*/
+.new-products {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, #f8faff 0%, #ffffff 100%);
+}
+
+.new-products::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(circle at 20% 80%, rgba(23, 162, 220, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(15, 70, 123, 0.03) 0%, transparent 50%);
+  z-index: 0;
+}
+
+.new-products > .container {
+  position: relative;
+  z-index: 1;
+}
+
+/* Main Content Styling */
+.new-products .row.align-items-center {
+  margin-bottom: 60px;
+}
+
 .new-products h2 {
   position: relative;
-  display: inline-block; 
+  display: inline-block;
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  background: linear-gradient(135deg, var(--newblue2), var(--newblue));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .new-products h2::after {
   content: "";
   position: absolute;
-  bottom: -10px;
-  left: 0; 
+  bottom: -15px;
+  left: 0;
   width: 80px;
-  height: 3px;
+  height: 4px;
   background: linear-gradient(90deg, var(--newblue2), var(--newblue));
   border-radius: 2px;
 }
 
-.new-products h2::after {
-  left: 0 !important;
-  transform: none !important;
-  background: linear-gradient(90deg, var(--newblue2), var(--newblue));
-}
-
 .new-products p {
-  font-size: 1.1rem;
-  color: black;
+  font-size: 1.2rem;
+  line-height: 1.7;
+  color: #495057;
+  margin-bottom: 2rem;
   max-width: 500px;
 }
+
+/* Product Image Enhancement */
+.new-products .img-fluid {
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(15, 70, 123, 0.15);
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  border: 1px solid rgba(23, 162, 220, 0.1);
+}
+
+.new-products .img-fluid:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 30px 60px rgba(15, 70, 123, 0.25);
+}
+
+/* Feature Boxes Enhancement */
+.new-prod-feature {
+  background: white;
+  border-radius: 16px;
+  padding: 2rem 1.5rem;
+  text-align: center;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(23, 162, 220, 0.1);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+  position: relative;
+  overflow: hidden;
+}
+
+.new-prod-feature::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(23, 162, 220, 0.05), transparent);
+  transition: left 0.6s ease;
+}
+
+.new-prod-feature:hover::before {
+  left: 100%;
+}
+
+.new-prod-feature:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 35px rgba(15, 70, 123, 0.15);
+  border-color: rgba(23, 162, 220, 0.3);
+}
+
 .new-prod-feature img {
-  width: 90px;
-  height: 90px;
-  object-fit: cover;
-  border-radius: 12px;
-  background: #f8f9fa;
-  padding: 10px;
-  transition: transform 0.3s ease;
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  border-radius: 16px;
+  background: linear-gradient(135deg, var(--light-blue), #ffffff);
+  padding: 15px;
+  margin-bottom: 1.5rem;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
 }
-.new-prod-feature img:hover {
-  transform: scale(1.05);
+
+.new-prod-feature:hover img {
+  transform: scale(1.1) rotate(5deg);
+  background: linear-gradient(135deg, var(--newblue), var(--newblue2));
+  border-color: rgba(23, 162, 220, 0.2);
 }
+
 .new-prod-feature h6 {
-  font-size: 1rem;
+  font-size: 1.1rem;
+  font-weight: 600;
   color: var(--newblue2);
+  margin-bottom: 0.5rem;
+  transition: color 0.3s ease;
 }
 
-/* Reduce gap between Our Services and New Products sections */
-.section-white + .new-products {
-  margin-top: -50px; /* adjust value as needed */
+.new-prod-feature:hover h6 {
+  color: var(--newblue);
 }
 
+.new-prod-feature p {
+  font-size: 0.9rem;
+  color: #6c757d;
+  margin-bottom: 0;
+  line-height: 1.5;
+}
+
+/* Add decorative elements */
+.feature-decoration {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(23, 162, 220, 0.1), rgba(15, 70, 123, 0.05));
+  filter: blur(40px);
+  z-index: 0;
+}
+
+.feature-decoration-1 {
+  top: 10%;
+  left: 5%;
+}
+
+.feature-decoration-2 {
+  bottom: 10%;
+  right: 5%;
+}
+
+/* Call to Action Button */
+.new-products-cta {
+  text-align: center;
+  margin-top: 3rem;
+}
+
+.cta-btn {
+  background: linear-gradient(135deg, var(--newblue2), var(--newblue));
+  color: white;
+  border: none;
+  padding: 1rem 2.5rem;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 25px rgba(15, 70, 123, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.6s ease;
+}
+
+.cta-btn:hover::before {
+  left: 100%;
+}
+
+.cta-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 35px rgba(15, 70, 123, 0.4);
+}
+
+/* Badge for "New" */
+.new-badge {
+  background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+  color: white;
+  padding: 0.3rem 1rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  display: inline-block;
+  margin-bottom: 1rem;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .new-products h2 {
+    font-size: 2rem;
+    text-align: center;
+  }
+  
+  .new-products h2::after {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  .new-prod-feature {
+    padding: 1.5rem 1rem;
+    margin-bottom: 1rem;
+  }
+  
+  .new-prod-feature img {
+    width: 60px;
+    height: 60px;
+  }
+}
   /* ✅ Align Learn More buttons horizontally in Our Services */
 .service-card {
   display: flex;
@@ -639,8 +893,842 @@ body > div[style*="margin-top:90px"] { display: none !important; }
 .service-card .btn-link:hover span::after {
   width: 100%;
 }
+/* ===============================
+   UPGRADED LEGACY PRODUCTS SECTION
+==================================*/
+.legacy-products {
+  position: relative;
+  background: linear-gradient(135deg, #ffffff 0%, #f8fbff 50%, #eef5ff 100%);
+  overflow: hidden;
+}
 
+.legacy-products::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(circle at 10% 20%, rgba(15, 70, 123, 0.03) 0%, transparent 50%),
+    radial-gradient(circle at 90% 80%, rgba(23, 162, 220, 0.02) 0%, transparent 50%);
+  z-index: 0;
+}
 
+.legacy-products > .container {
+  position: relative;
+  z-index: 1;
+}
+
+/* Main Content Styling */
+.legacy-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.legacy-badge {
+  background: linear-gradient(135deg, var(--newblue2), var(--newblue));
+  color: white;
+  padding: 0.5rem 1.5rem;
+  border-radius: 25px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  display: inline-block;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 5px 15px rgba(15, 70, 123, 0.3);
+}
+
+.legacy-products h2 {
+  font-size: 2.8rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  background: linear-gradient(135deg, var(--newblue2), var(--primary-blue));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  position: relative;
+  display: inline-block;
+}
+
+.legacy-products h2::after {
+  content: "";
+  position: absolute;
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 4px;
+  background: linear-gradient(90deg, var(--newblue2), var(--newblue));
+  border-radius: 2px;
+}
+
+.legacy-intro {
+  font-size: 1.3rem;
+  line-height: 1.8;
+  color: #495057;
+  max-width: 800px;
+  margin: 0 auto 3rem;
+  text-align: center;
+}
+
+/* Timeline/History Element */
+.legacy-timeline {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 3rem auto;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(23, 162, 220, 0.1);
+  max-width: 400px;
+}
+
+.timeline-content {
+  text-align: center;
+}
+
+.timeline-years {
+  font-size: 3rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--newblue2), var(--newblue));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+
+.timeline-label {
+  font-size: 1.1rem;
+  color: var(--newblue2);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Product Categories Grid */
+.product-categories {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin: 4rem 0;
+}
+
+.category-card {
+  background: white;
+  padding: 2.5rem 2rem;
+  border-radius: 16px;
+  text-align: center;
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  border: 1px solid rgba(23, 162, 220, 0.1);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
+  position: relative;
+  overflow: hidden;
+}
+
+.category-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(23, 162, 220, 0.05), transparent);
+  transition: left 0.6s ease;
+}
+
+.category-card:hover::before {
+  left: 100%;
+}
+
+.category-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(15, 70, 123, 0.15);
+  border-color: rgba(23, 162, 220, 0.3);
+}
+
+.category-icon {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 1.5rem;
+  background: linear-gradient(135deg, var(--light-blue), #ffffff);
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+}
+
+.category-card:hover .category-icon {
+  background: linear-gradient(135deg, var(--newblue), var(--newblue2));
+  transform: scale(1.1) rotate(5deg);
+}
+
+.category-icon i {
+  font-size: 2rem;
+  color: var(--newblue2);
+  transition: all 0.3s ease;
+}
+
+.category-card:hover .category-icon i {
+  color: white;
+}
+
+.category-card h4 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--newblue2);
+  margin-bottom: 1rem;
+  transition: color 0.3s ease;
+}
+
+.category-card:hover h4 {
+  color: var(--newblue);
+}
+
+.category-card p {
+  color: #6c757d;
+  line-height: 1.6;
+  margin-bottom: 0;
+}
+
+/* Stats Section */
+.legacy-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+  margin: 4rem 0;
+  padding: 3rem;
+  background: linear-gradient(135deg, rgba(15, 70, 123, 0.05), rgba(23, 162, 220, 0.03));
+  border-radius: 20px;
+  border: 1px solid rgba(23, 162, 220, 0.1);
+}
+
+.stat-item {
+  text-align: center;
+  padding: 1.5rem;
+}
+
+.stat-number {
+  font-size: 3rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--newblue2), var(--newblue));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+
+.stat-label {
+  font-size: 1rem;
+  color: var(--newblue2);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Enhanced CTA Button */
+.legacy-cta {
+  text-align: center;
+  margin-top: 3rem;
+}
+
+.legacy-btn {
+  background: linear-gradient(135deg, var(--newblue2), var(--newblue));
+  color: white;
+  border: none;
+  padding: 1.2rem 3rem;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 1.2rem;
+  transition: all 0.4s ease;
+  box-shadow: 0 10px 30px rgba(15, 70, 123, 0.3);
+  position: relative;
+  overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.legacy-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.6s ease;
+}
+
+.legacy-btn:hover::before {
+  left: 100%;
+}
+
+.legacy-btn:hover {
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 0 20px 40px rgba(15, 70, 123, 0.4);
+}
+
+/* Trust Badges */
+.trust-badges {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  margin-top: 3rem;
+  flex-wrap: wrap;
+}
+
+.trust-badge {
+  text-align: center;
+  opacity: 0.8;
+  transition: all 0.3s ease;
+}
+
+.trust-badge:hover {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+.trust-badge i {
+  font-size: 2.5rem;
+  color: var(--newblue);
+  margin-bottom: 0.5rem;
+}
+
+.trust-badge span {
+  display: block;
+  font-size: 0.9rem;
+  color: var(--newblue2);
+  font-weight: 600;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .legacy-products h2 {
+    font-size: 2.2rem;
+  }
+  
+  .legacy-intro {
+    font-size: 1.1rem;
+  }
+  
+  .timeline-years {
+    font-size: 2.5rem;
+  }
+  
+  .product-categories {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .category-card {
+    padding: 2rem 1.5rem;
+  }
+  
+  .legacy-stats {
+    grid-template-columns: repeat(2, 1fr);
+    padding: 2rem;
+    gap: 1.5rem;
+  }
+  
+  .stat-number {
+    font-size: 2.5rem;
+  }
+  
+  .trust-badges {
+    gap: 2rem;
+  }
+}
+/* ===============================
+   UPGRADED OUR SERVICES SECTION
+==================================*/
+.services-section {
+  position: relative;
+  background: linear-gradient(135deg, #f8fbff 0%, #ffffff 50%, #f0f7ff 100%);
+  overflow: hidden;
+}
+
+.services-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(circle at 20% 30%, rgba(23, 162, 220, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 80% 70%, rgba(15, 70, 123, 0.03) 0%, transparent 50%);
+  z-index: 0;
+}
+
+.services-section > .container {
+  position: relative;
+  z-index: 1;
+}
+
+/* Header Styling */
+.services-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.services-tagline {
+  background: linear-gradient(135deg, var(--newblue2), var(--newblue));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.services-section h2 {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  background: linear-gradient(135deg, var(--newblue2), var(--primary-blue));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  position: relative;
+  display: inline-block;
+}
+
+.services-section h2::after {
+  content: "";
+  position: absolute;
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120px;
+  height: 4px;
+  background: linear-gradient(90deg, var(--newblue2), var(--newblue));
+  border-radius: 2px;
+}
+
+/* Enhanced Service Cards */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2.5rem;
+  margin: 3rem 0;
+}
+
+.service-card-enhanced {
+  background: white;
+  border-radius: 20px;
+  padding: 3rem 2.5rem;
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  border: 1px solid rgba(23, 162, 220, 0.1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.service-card-enhanced::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(23, 162, 220, 0.05), transparent);
+  transition: left 0.6s ease;
+}
+
+.service-card-enhanced:hover::before {
+  left: 100%;
+}
+
+.service-card-enhanced:hover {
+  transform: translateY(-12px);
+  box-shadow: 0 25px 50px rgba(15, 70, 123, 0.15);
+  border-color: rgba(23, 162, 220, 0.3);
+}
+
+/* Service Header with Icon */
+.service-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.service-icon-wrapper {
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(135deg, var(--light-blue), #ffffff);
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+  position: relative;
+  overflow: hidden;
+}
+
+.service-card-enhanced:hover .service-icon-wrapper {
+  background: linear-gradient(135deg, var(--newblue), var(--newblue2));
+  transform: scale(1.1) rotate(5deg);
+}
+
+.service-icon-wrapper img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  transition: all 0.3s ease;
+}
+
+.service-card-enhanced:hover .service-icon-wrapper img {
+  filter: brightness(0) invert(1);
+}
+
+.service-title-wrapper {
+  flex: 1;
+}
+
+.service-card-enhanced h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--newblue2);
+  margin-bottom: 0.5rem;
+  transition: color 0.3s ease;
+}
+
+.service-card-enhanced:hover h3 {
+  color: var(--newblue);
+}
+
+.service-badge {
+  background: linear-gradient(135deg, var(--newblue), var(--newblue2));
+  color: white;
+  padding: 0.3rem 1rem;
+  border-radius: 15px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  display: inline-block;
+  margin-bottom: 0.5rem;
+}
+
+/* Service Content */
+.service-content {
+  flex: 1;
+  margin-bottom: 2rem;
+}
+
+.service-description {
+  color: #495057;
+  line-height: 1.7;
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+}
+
+.service-features {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.service-features li {
+  padding: 0.5rem 0;
+  color: #6c757d;
+  position: relative;
+  padding-left: 1.5rem;
+}
+
+.service-features li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: var(--newblue);
+  font-weight: bold;
+}
+
+/* Enhanced CTA Button */
+.service-cta {
+  margin-top: auto;
+}
+
+.service-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  color: var(--newblue2);
+  font-weight: 600;
+  text-decoration: none;
+  padding: 0.8rem 1.5rem;
+  border: 2px solid var(--newblue);
+  border-radius: 50px;
+  transition: all 0.3s ease;
+  background: transparent;
+  position: relative;
+  overflow: hidden;
+}
+
+.service-link::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(23, 162, 220, 0.1), transparent);
+  transition: left 0.6s ease;
+}
+
+.service-link:hover::before {
+  left: 100%;
+}
+
+.service-link:hover {
+  background: var(--newblue);
+  color: white;
+  transform: translateX(8px);
+  box-shadow: 0 8px 20px rgba(23, 162, 220, 0.3);
+}
+
+.service-link i {
+  transition: transform 0.3s ease;
+}
+
+.service-link:hover i {
+  transform: translateX(4px);
+}
+
+/* Special Highlights */
+.service-card-enhanced.featured {
+  border: 2px solid var(--newblue);
+  background: linear-gradient(135deg, #ffffff, #f8fbff);
+}
+
+.featured-badge {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+/* CTA Section */
+.services-cta-section {
+  text-align: center;
+  margin-top: 4rem;
+  padding: 3rem;
+  background: linear-gradient(135deg, rgba(15, 70, 123, 0.85) 50%, rgba(23, 162, 220, 0.75) 100%);
+  border-radius: 20px;
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+.services-cta-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='50' cy='50' r='1' fill='%23FFFFFF' opacity='0.1'/%3E%3C/svg%3E");
+}
+
+.services-cta-section h3 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  position: relative;
+  z-index: 1;
+}
+
+.services-cta-section p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  opacity: 0.9;
+  position: relative;
+  z-index: 1;
+  color: white;
+}
+
+.cta-button-group {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 1;
+}
+
+.cta-btn-primary {
+  background: white;
+  color: var(--newblue2);
+  border: none;
+  padding: 1rem 2.5rem;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+.cta-btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+}
+
+.cta-btn-secondary {
+  background: transparent;
+  color: white;
+  border: 2px solid white;
+  padding: 1rem 2.5rem;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+}
+
+.cta-btn-secondary:hover {
+  background: white;
+  color: var(--newblue2);
+  transform: translateY(-3px);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .services-section h2 {
+    font-size: 2.2rem;
+  }
+  
+  .services-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .service-card-enhanced {
+    padding: 2rem 1.5rem;
+  }
+  
+  .service-header {
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+  }
+  
+  .service-icon-wrapper {
+    margin: 0 auto;
+  }
+  
+  .cta-button-group {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .cta-btn-primary,
+  .cta-btn-secondary {
+    width: 100%;
+    max-width: 300px;
+  }
+}
+/* ===============================
+   UPGRADED OUR SERVICES SECTION
+==================================*/
+.services-section {
+  position: relative;
+  background-color: #fff !important;
+  overflow: hidden;
+  color: white;
+}
+
+/* Add background image and overlay like the hero section */
+.services-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    /* Background image - you can change this URL */
+    url('<?= base_url('assets_system/images/simulation2.jpg') ?>'),
+    /* Blue overlay */
+    linear-gradient(135deg, rgba(15, 70, 123, 0.85) 50%, rgba(23, 162, 220, 0.75) 100%);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-blend-mode: overlay;
+  z-index: 0;
+}
+
+/* Alternative: If you want multiple background images like the carousel */
+.services-section.alternative-bg::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    linear-gradient(135deg, rgba(15, 70, 123, 0.85) 50%, rgba(23, 162, 220, 0.75) 100%);
+  z-index: 0;
+}
+
+.services-section > .container {
+  position: relative;
+  z-index: 1;
+}
+
+/* Update text colors for better contrast on blue background */
+.services-section .services-tagline {
+  color: rgba(255, 255, 255, 0.9);
+  -webkit-text-fill-color: rgba(255, 255, 255, 0.9);
+}
+
+.services-section h2 {
+  color: white;
+  -webkit-text-fill-color: white;
+}
+
+.services-section h2::after {
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.4)) !important;
+}
+
+/* Update service cards for better visibility on blue background */
+.service-card-enhanced {
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.service-card-enhanced:hover {
+  background: white;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+}
+
+/* Update CTA section for better contrast */
+.services-cta-section {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.services-cta-section::before {
+  background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='50' cy='50' r='1' fill='%23FFFFFF' opacity='0.2'/%3E%3C/svg%3E");
+}
 </style>
 
 </head>
@@ -726,7 +1814,7 @@ body > div[style*="margin-top:90px"] { display: none !important; }
           </p>
         </div>
         <div class="hero-image">
-          <img src=<?= base_url('assets_system/images/Legacy2.png') ?> alt="Slide 1">
+          <img src=<?= base_url('assets_system/images/Legacy2new.png') ?> alt="Slide 1">
         </div>
       </div>
     </div>
@@ -762,7 +1850,7 @@ body > div[style*="margin-top:90px"] { display: none !important; }
           </p>
         </div>
         <div class="hero-image">
-          <img src=<?= base_url('assets_system/images/Gemba-hero2.png') ?> alt="Slide 3">
+          <img src=<?= base_url('assets_system/images/Gemba-hero2new.png') ?> alt="Slide 3">
         </div>
       </div>
     </div>
@@ -796,129 +1884,295 @@ body > div[style*="margin-top:90px"] { display: none !important; }
 </div>
 
 
-  <!-- Section 5 (white) -->
-  <section class="section-white">
-    <div class="container text-center">
-      <h2 class="fade-in">Discover Our Latest Innovations in Industrial Measurement</h2><br>
-      <p class="mb-4 fade-in delay-1">Explore our newest products designed to enhance efficiency and precision in your operations.</p>
-      <img src=<?= base_url('assets_system/images/new5.jpg') ?> alt="Section 5" class="img-fluid rounded fade-in delay-2">
-    </div>
-  </section>
 
-    <!-- Legacy Product -->
-    <section class="section-white">
-  <div class="container text-center">
-    <h2 class="fade-in">Our Proven Line of Counting and Measuring Instruments</h2>
-    <p class="mb-4 fade-in delay-1" style="color:black;">
-      For over 70 years, Line Seiki has been a trusted name in mechanical, electronic, and electromagnetic counters,
-      tachometers, timers, and other precision measuring tools. Built for consistency, accuracy, and durability — these
-      products remain the foundation of our customers’ success in industries around the world.
-    </p>
-    <a href="<?= base_url('index/ps_prod') ?>" class="btn btn-orange fade-in delay-2">Learn More</a>
-  </div>
-</section>
-      <!-- Our Services-->
-     <section class="section-white">
-  <div class="container text-center">
-    <h2 class="fade-in">Our Services</h2>
-    <p class="mb-5 fade-in delay-1" style="color:black;">Beyond Measurement — We Engineer Possibilities</p>
-
-    <div class="row justify-content-center g-4 fade-in delay-2">
-      <!-- Card 1 -->
-      <div class="col-md-4">
-        <div class="service-card p-4 h-100 shadow-sm text-start">
-          <div class="d-flex align-items-center mb-3">
-            <div class="service-icon-img me-3">
-              <img src=<?= base_url('assets_system/images/icon_simul.png') ?> alt="Simulation Icon" />
-            </div>
-            <h5 class="fw-bold mb-0">Simulation Analysis Service</h5>
-          </div>
-          <p style="color: black;">
-            Backed by our expertise in research and development, we provide engineering simulation analysis to validate product designs before physical testing.
-          </p>
-          <a href="<?= base_url('index/ps_serv_simulation') ?>" class="btn-link"><span>Learn more</span></a>
-        </div>
-      </div>
-
-      <!-- Card 2 -->
-      <div class="col-md-4">
-        <div class="service-card p-4 h-100 shadow-sm text-start">
-          <div class="d-flex align-items-center mb-3">
-            <div class="service-icon-img me-3">
-              <img src=<?= base_url('assets_system/images/icon_sili.png') ?> alt="Molding Icon" />
-            </div>
-            <h5 class="fw-bold mb-0">Silicone Molding & Urethane Casting</h5>
-          </div>
-          <p style="color: black;">
-            Rapid prototyping and low-volume production for faster market validation.
-          </p>
-          <a href="<?= base_url('index/ps_serv_silicone') ?>" class="btn-link"><span>Learn more</span></a>
-        </div>
-      </div>
-
-      <!-- Card 3 -->
-      <div class="col-md-4">
-        <div class="service-card p-4 h-100 shadow-sm text-start">
-          <div class="d-flex align-items-center mb-3">
-            <div class="service-icon-img me-3">
-              <img src=<?= base_url('assets_system/images/icon_gemba.png') ?> alt="GEMBA Icon" />
-            </div>
-            <h5 class="fw-bold mb-0">GEMBA Machine Monitoring System</h5>
-          </div>
-          <p style="color: black;">
-            Track machine status, downtime, and productivity in real time — all from a single dashboard.
-          </p>
-          <a href="<?= base_url('index/ps_iotsolution') ?>" class="btn-link"><span>Learn more</span></a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-    <!-- New Products-->
-      <section class="section-white new-products">
+   <!-- Enhanced Legacy Products Section -->
+<section class="section-white legacy-products">
   <div class="container">
+    <!-- Header Section -->
+    <div class="legacy-header fade-in">
+      <div class="legacy-badge">Trusted Since 1953</div>
+      <h2 class="fw-bold">Our Proven Line of Counting and Measuring Instruments</h2>
+      <p class="legacy-intro fade-in delay-1">
+        For over 70 years, Line Seiki has been a trusted name in mechanical, electronic, and electromagnetic counters, 
+        tachometers, timers, and other precision measuring tools. Built for consistency, accuracy, and durability — 
+        these products remain the foundation of our customers' success in industries around the world.
+      </p>
+    </div>
+
+    <!-- Timeline Element -->
+    <div class="legacy-timeline fade-in delay-2">
+      <div class="timeline-content">
+        <div class="timeline-years">70+</div>
+        <div class="timeline-label">Years of Excellence</div>
+      </div>
+    </div>
+
+    <!-- Product Categories -->
+    <div class="product-categories fade-in delay-3">
+      <div class="category-card">
+        <div class="category-icon">
+          <i class="fas fa-cogs"></i>
+        </div>
+        <h4>Mechanical Counters</h4>
+        <p>Robust mechanical counting solutions for industrial applications requiring reliability and precision.</p>
+      </div>
+
+      <div class="category-card">
+        <div class="category-icon">
+          <i class="fas fa-bolt"></i>
+        </div>
+        <h4>Electronic Counters</h4>
+        <p>Advanced electronic counting systems with digital displays and programmable features.</p>
+      </div>
+
+      <div class="category-card">
+        <div class="category-icon">
+          <i class="fas fa-tachometer-alt"></i>
+        </div>
+        <h4>Tachometers</h4>
+        <p>Precision speed measurement instruments for rotational and linear motion applications.</p>
+      </div>
+
+      <div class="category-card">
+        <div class="category-icon">
+          <i class="fas fa-clock"></i>
+        </div>
+        <h4>Timers & Controllers</h4>
+        <p>Accurate timing devices and control systems for automated industrial processes.</p>
+      </div>
+    </div>
+
+    <!-- Statistics -->
+    <div class="legacy-stats fade-in delay-4">
+      <div class="stat-item">
+        <div class="stat-number">50K+</div>
+        <div class="stat-label">Products Installed</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">100+</div>
+        <div class="stat-label">Countries Served</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">99.7%</div>
+        <div class="stat-label">Customer Satisfaction</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">24/7</div>
+        <div class="stat-label">Global Support</div>
+      </div>
+    </div>
+
+    <!-- Trust Badges -->
+    <div class="trust-badges fade-in delay-4">
+      <div class="trust-badge">
+        <i class="fas fa-award"></i>
+        <span>ISO Certified</span>
+      </div>
+      <div class="trust-badge">
+        <i class="fas fa-shield-alt"></i>
+        <span>Quality Assured</span>
+      </div>
+      <div class="trust-badge">
+        <i class="fas fa-globe"></i>
+        <span>Global Reach</span>
+      </div>
+      <div class="trust-badge">
+        <i class="fas fa-history"></i>
+        <span>Proven Track Record</span>
+      </div>
+    </div>
+
+    <!-- Call to Action -->
+    <div class="legacy-cta fade-in delay-5">
+      <a href="<?= base_url('index/ps_prod') ?>" class="legacy-btn">
+        <i class="fas fa-chart-line"></i>
+        Explore Our Product Line
+      </a>
+    </div>
+  </div>
+</section>
+     <!-- Enhanced Our Services Section -->
+<section class="section-white services-section">
+  <div class="container">
+    <!-- Header -->
+    <div class="services-header fade-in">
+      <h2 class="fw-bold">Our Services</h2>
+       <span class="services-tagline">Beyond Measurement — We Engineer Possibilities</span>
+    </div>
+
+    <!-- Services Grid -->
+    <div class="services-grid">
+      <!-- Simulation Analysis Service -->
+      <div class="service-card-enhanced fade-in delay-1 featured">
+        <div class="featured-badge">Most Popular</div>
+        <div class="service-header">
+          <div class="service-icon-wrapper">
+            <img src="<?= base_url('assets_system/images/icon_simul.png') ?>" alt="Simulation Analysis" />
+          </div>
+          <div class="service-title-wrapper">
+            <span class="service-badge">Advanced Engineering</span>
+            <h3>Simulation Analysis Service</h3>
+          </div>
+        </div>
+        <div class="service-content">
+          <p class="service-description">
+            Backed by our expertise in research and development, we provide engineering simulation analysis 
+            to validate product designs before physical testing, reducing development time and costs.
+          </p>
+          <ul class="service-features">
+            <li>Finite Element Analysis (FEA)</li>
+            <li>Computational Fluid Dynamics (CFD)</li>
+            <li>Thermal Analysis</li>
+            <li>Structural Optimization</li>
+          </ul>
+        </div>
+        <div class="service-cta">
+          <a href="<?= base_url('index/ps_serv_simulation') ?>" class="service-link">
+            <span>Explore Simulation Services</span>
+            <i class="fas fa-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Silicone Molding Service -->
+      <div class="service-card-enhanced fade-in delay-2">
+        <div class="service-header">
+          <div class="service-icon-wrapper">
+            <img src="<?= base_url('assets_system/images/icon_sili.png') ?>" alt="Silicone Molding" />
+          </div>
+          <div class="service-title-wrapper">
+            <span class="service-badge">Rapid Prototyping</span>
+            <h3>Silicone Molding & Urethane Casting</h3>
+          </div>
+        </div>
+        <div class="service-content">
+          <p class="service-description">
+            Rapid prototyping and low-volume production solutions that accelerate your product development 
+            cycle and help you reach market validation faster.
+          </p>
+          <ul class="service-features">
+            <li>Quick Turnaround Times</li>
+            <li>High-Quality Surface Finish</li>
+            <li>Material Variety</li>
+            <li>Cost-Effective for Small Batches</li>
+          </ul>
+        </div>
+        <div class="service-cta">
+          <a href="<?= base_url('index/ps_serv_silicone') ?>" class="service-link">
+            <span>Learn About Molding</span>
+            <i class="fas fa-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- GEMBA Monitoring System -->
+      <div class="service-card-enhanced fade-in delay-3">
+        <div class="service-header">
+          <div class="service-icon-wrapper">
+            <img src="<?= base_url('assets_system/images/icon_gemba.png') ?>" alt="GEMBA Monitoring" />
+          </div>
+          <div class="service-title-wrapper">
+            <span class="service-badge">IoT Solution</span>
+            <h3>GEMBA Machine Monitoring System</h3>
+          </div>
+        </div>
+        <div class="service-content">
+          <p class="service-description">
+            Track machine status, downtime, and productivity in real time through a comprehensive dashboard 
+            that provides actionable insights for operational excellence.
+          </p>
+          <ul class="service-features">
+            <li>Real-Time Monitoring</li>
+            <li>Downtime Analysis</li>
+            <li>Performance Metrics</li>
+            <li>Predictive Maintenance</li>
+          </ul>
+        </div>
+        <div class="service-cta">
+          <a href="<?= base_url('index/ps_iotsolution') ?>" class="service-link">
+            <span>Discover GEMBA</span>
+            <i class="fas fa-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+    </div>  
+
+    <!-- CTA Section -->
+    <div class="services-cta-section fade-in delay-5">
+      <h3>Ready to Transform Your Operations?</h3>
+      <p>Let's discuss how our services can drive efficiency and innovation in your business</p>
+      <div class="cta-button-group">
+        <a href="<?= base_url('index/contact_us') ?>" class="cta-btn-primary">
+          <i class="fas fa-calendar-check me-2"></i>Schedule Consultation
+        </a>
+        <a href="<?= base_url('index/ps_prod') ?>" class="cta-btn-secondary">
+          <i class="fas fa-download me-2"></i>Download Brochure
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Enhanced New Products Section -->
+<section class="section-white new-products">
+  <div class="container">
+    <!-- Decorative Elements -->
+    <div class="feature-decoration feature-decoration-1"></div>
+    <div class="feature-decoration feature-decoration-2"></div>
+    
     <div class="row align-items-center">
       <!-- Left text content -->
       <div class="col-lg-6 fade-in">
-        <h2 class="fw-bold text-primary">New Products</h2>
-        <p>
+        <span class="new-badge">NEW ARRIVAL</span>
+        <h2 class="fw-bold">New Products</h2>
+        <p class="lead">
           Our newest addition, <strong>Safety Switches and Relays</strong>, reinforces our commitment
-          to smarter and safer manufacturing environments.
+          to smarter and safer manufacturing environments with cutting-edge technology and uncompromising reliability.
         </p>
+        <div class="new-products-cta">
+          <button class="cta-btn">
+            <i class="fas fa-bolt me-2"></i>Explore Safety Solutions
+          </button>
+        </div>
       </div>
+      
+      <!-- Right image content -->
       <div class="col-lg-6 text-center fade-in delay-1">
-        <img src=<?= base_url('assets_system/images/new_prod.png') ?> alt="New Product" class="img-fluid rounded shadow">
+        <img src="<?= base_url('assets_system/images/new_prod.png') ?>" alt="Safety Switches and Relays" class="img-fluid rounded shadow">
       </div>
     </div>
 
-    <!-- Four bottom feature boxes -->
+    <!-- Enhanced Feature Boxes -->
     <div class="row text-center mt-5 fade-in delay-2">
       <div class="col-md-3 col-6 mb-4">
         <div class="new-prod-feature">
-          <img src=<?= base_url('assets_system/images/high-dura.png') ?> alt="Durability" class="img-fluid mb-3">
-          <h6 class="fw-semibold text-primary">High Durability</h6>
+          <img src="<?= base_url('assets_system/images/high-dura.png') ?>" alt="High Durability" class="img-fluid mb-3">
+          <h6 class="fw-semibold">High Durability</h6>
+          
         </div>
       </div>
 
       <div class="col-md-3 col-6 mb-4">
         <div class="new-prod-feature">
-          <img src=<?= base_url('assets_system/images/high-relia.png') ?> alt="Reliability" class="img-fluid mb-3">
-          <h6 class="fw-semibold text-primary">High Reliability</h6>
+          <img src="<?= base_url('assets_system/images/high-relia.png') ?>" alt="High Reliability" class="img-fluid mb-3">
+          <h6 class="fw-semibold">High Reliability</h6>
+          
         </div>
       </div>
 
       <div class="col-md-3 col-6 mb-4">
         <div class="new-prod-feature">
-          <img src=<?= base_url('assets_system/images/prevent.png') ?> alt="Prevention" class="img-fluid mb-3">
-          <h6 class="fw-semibold text-primary">Prevent Invalidation</h6>
+          <img src="<?= base_url('assets_system/images/prevent.png') ?>" alt="Prevent Invalidation" class="img-fluid mb-3">
+          <h6 class="fw-semibold">Prevent Invalidation</h6>
+        
         </div>
       </div>
 
       <div class="col-md-3 col-6 mb-4">
         <div class="new-prod-feature">
-          <img src=<?= base_url('assets_system/images/excellent.png') ?> alt="Performance" class="img-fluid mb-3">
-          <h6 class="fw-semibold text-primary">Excellent Dust & Waterproof Performance</h6>
+          <img src="<?= base_url('assets_system/images/excellent.png') ?>" alt="Dust & Waterproof" class="img-fluid mb-3">
+          <h6 class="fw-semibold">Excellent Dust & Waterproof</h6>
+      
         </div>
       </div>
     </div>
