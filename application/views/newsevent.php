@@ -319,7 +319,7 @@
     }
     
     .btn-orange:hover {
-      background: linear-gradient(135deg, var(--newblue2), var(--));
+      background: linear-gradient(135deg, var(--newblue2), var(--newblue));
       transform: translateY(-3px);
       box-shadow: 0 8px 20px rgba(13, 110, 253, 0.4);
       color: white;
@@ -528,6 +528,313 @@ body > div[style*="margin-top: 90px"] {
   display: none !important;
 }
 
+/* =========================================================
+   📰 ENHANCED NEWS & EVENTS STYLES
+========================================================= */
+
+/* Hero Section */
+.news-hero {
+  background: linear-gradient(135deg, rgba(15, 70, 123, 0.9) 50%, rgba(23, 162, 220, 0.8) 100%);
+  color: white;
+  padding: 150px 0 80px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.news-hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 20% 80%, rgba(23, 162, 220, 0.2) 0%, transparent 50%),
+              radial-gradient(circle at 80% 20%, rgba(15, 70, 123, 0.15) 0%, transparent 50%);
+  z-index: 0;
+}
+
+.news-hero .container {
+  position: relative;
+  z-index: 1;
+}
+
+.news-hero h1 {
+  font-size: 3.5rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+  color: white;
+  -webkit-text-fill-color: white;
+}
+
+.news-hero p {
+  font-size: 1.3rem;
+  max-width: 600px;
+  margin: 0 auto;
+  opacity: 0.9;
+}
+
+/* Filter Section */
+.news-filter {
+  background: white;
+  padding: 2rem 0;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+  position: sticky;
+  top: 80px;
+  z-index: 100;
+}
+
+.filter-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.filter-btn {
+  background: transparent;
+  border: 2px solid var(--newblue);
+  color: var(--newblue);
+  padding: 0.7rem 1.5rem;
+  border-radius: 50px;
+  font-weight: 600;
+  transition: var(--transition);
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+  background: var(--newblue);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(23, 162, 220, 0.3);
+}
+
+/* Enhanced News Cards */
+.news-card {
+  position: relative;
+}
+
+.news-badge {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  background: var(--newblue);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 50px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  z-index: 2;
+}
+
+.news-badge.event {
+  background: var(--primary-orange);
+}
+
+.news-badge.featured {
+  background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+}
+
+.news-date {
+  color: var(--newblue);
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.news-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.news-category {
+  background: var(--light-blue);
+  color: var(--newblue2);
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.news-read-more {
+  color: var(--newblue);
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: var(--transition);
+}
+
+.news-read-more:hover {
+  color: var(--newblue2);
+  gap: 0.8rem;
+}
+
+/* Featured News Card */
+.featured-news {
+  grid-column: span 2;
+  display: flex;
+}
+
+.featured-news .news-image {
+  flex: 1;
+  min-height: 300px;
+}
+
+.featured-news .news-card-content {
+  flex: 1;
+  padding: 2.5rem;
+}
+
+/* Event Countdown */
+.event-countdown {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-top: 1.5rem;
+  backdrop-filter: blur(10px);
+}
+
+.countdown-title {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  opacity: 0.9;
+}
+
+.countdown-timer {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.countdown-item {
+  text-align: center;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  padding: 0.8rem;
+  min-width: 60px;
+}
+
+.countdown-number {
+  font-size: 1.5rem;
+  font-weight: 700;
+  display: block;
+}
+
+.countdown-label {
+  font-size: 0.7rem;
+  opacity: 0.8;
+  text-transform: uppercase;
+}
+
+/* Newsletter Section */
+.newsletter-section {
+  background: linear-gradient(135deg, var(--newblue2), var(--newblue));
+  color: white;
+  padding: 4rem 0;
+  text-align: center;
+  border-radius: 20px;
+  margin: 4rem 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.newsletter-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='50' cy='50' r='1' fill='%23FFFFFF' opacity='0.1'/%3E%3C/svg%3E");
+}
+
+.newsletter-section .container {
+  position: relative;
+  z-index: 1;
+}
+
+.newsletter-form {
+  max-width: 500px;
+  margin: 2rem auto 0;
+  display: flex;
+  gap: 1rem;
+}
+
+.newsletter-form .form-control {
+  flex: 1;
+  border: none;
+  border-radius: 50px;
+  padding: 1rem 1.5rem;
+}
+
+.newsletter-form .btn {
+  border-radius: 50px;
+  padding: 1rem 2rem;
+  white-space: nowrap;
+}
+
+/* Pagination */
+.news-pagination {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin: 3rem 0;
+}
+
+.page-link {
+  border: 2px solid var(--light-blue);
+  color: var(--newblue2);
+  padding: 0.7rem 1.2rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: var(--transition);
+}
+
+.page-link:hover,
+.page-link.active {
+  background: var(--newblue);
+  color: white;
+  border-color: var(--newblue);
+}
+
+/* Responsive adjustments for news page */
+@media (max-width: 992px) {
+  .featured-news {
+    grid-column: span 1;
+    flex-direction: column;
+  }
+  
+  .news-hero h1 {
+    font-size: 2.8rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .news-hero h1 {
+    font-size: 2.2rem;
+  }
+  
+  .newsletter-form {
+    flex-direction: column;
+  }
+  
+  .filter-buttons {
+    justify-content: flex-start;
+    overflow-x: auto;
+    padding-bottom: 0.5rem;
+  }
+  
+  .filter-btn {
+    white-space: nowrap;
+  }
+}
+
   </style>
 </head>
 <body>
@@ -571,95 +878,182 @@ body > div[style*="margin-top: 90px"] {
   <!-- Offset for fixed navbar -->
   <div style="margin-top: 90px;"></div>
 
+  <!-- Hero Section -->
+  <section class="news-hero fade-in">
+    <div class="container">
+      <h1>News & Events</h1>
+      <p>Stay updated with the latest developments, exhibitions, and innovations from Line Seiki</p>
+    </div>
+  </section>
+
+  <!-- Filter Section -->
+  <div class="news-filter fade-in delay-1">
+    <div class="container">
+      <div class="filter-buttons">
+        <button class="filter-btn active" data-filter="all">All Updates</button>
+        <button class="filter-btn" data-filter="news">Company News</button>
+        <button class="filter-btn" data-filter="events">Events & Exhibitions</button>
+        <button class="filter-btn" data-filter="product">Product Updates</button>
+        <button class="filter-btn" data-filter="webinars">Webinars</button>
+      </div>
+    </div>
+  </div>
+
   <!-- News and Updates Section -->
   <section class="section-light-blue">
-    <br><br><br><br><h2 class="fade-in align-middle  text-center" >News and Updates</h2>
-    <div class="content-container pt-4">
-      <div class="news-card fade-in delay-1">
-      <img src=<?= base_url('assets_system/images/newlaunch4.jpg') ?>  alt="Latest news article.">
-        <div class="news-card-content">
-          <h3>Company Announcements</h3>
-          <p>Stay up-to-date with our official announcements, product releases, and company news.</p>
-          <a href="<?= base_url('index/news_events_extension') ?>">Read more</a>
+    <div class="container">
+      <h2 class="fade-in text-center">Latest News & Updates</h2>
+      <div class="content-container pt-4">
+        <!-- Featured News -->
+        <div class="news-card featured-news fade-in delay-1" data-category="events">
+          <div class="news-image">
+            <img src="<?= base_url('assets_system/images/event1.jpg') ?>" alt="Japan Pack 2025">
+            <span class="news-badge featured">Featured Event</span>
+          </div>
+          <div class="news-card-content">
+            <span class="news-date">October 7-10, 2025</span>
+            <h3>Line Seiki to Exhibit at JAPAN PACK 2025</h3>
+            <p>Join us at Tokyo Big Sight as we showcase our latest measuring instruments, sensors, and IoT solutions. Visit booth 5-122 to see live demonstrations and meet our technical experts.</p>
+            
+            <div class="event-countdown">
+              <div class="countdown-title">Event Starts In:</div>
+              <div class="countdown-timer">
+                <div class="countdown-item">
+                  <span class="countdown-number" id="days">00</span>
+                  <span class="countdown-label">Days</span>
+                </div>
+                <div class="countdown-item">
+                  <span class="countdown-number" id="hours">00</span>
+                  <span class="countdown-label">Hours</span>
+                </div>
+                <div class="countdown-item">
+                  <span class="countdown-number" id="minutes">00</span>
+                  <span class="countdown-label">Minutes</span>
+                </div>
+              </div>
+            </div>
+            
+            <div class="news-meta">
+              <span class="news-category">Exhibition</span>
+              <a href="<?= base_url('index/news_events_extension') ?>" class="news-read-more">
+                Learn More <i class="fas fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Regular News Cards -->
+        <div class="news-card fade-in delay-2" data-category="product">
+          <div class="news-image">
+            <img src="<?= base_url('assets_system/images/newlaunch1.jpg') ?>" alt="New Product Launch">
+            <span class="news-badge">New Release</span>
+          </div>
+          <div class="news-card-content">
+            <span class="news-date">August 15, 2025</span>
+            <h3>Introducing Our Next-Gen Safety Switches</h3>
+            <p>Discover our latest safety switches and relays designed for smarter, safer manufacturing environments with enhanced durability and reliability.</p>
+            <div class="news-meta">
+              <span class="news-category">Product Update</span>
+              <a href="<?= base_url('index/news_events_extension') ?>" class="news-read-more">
+                Read More <i class="fas fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="news-card fade-in delay-3" data-category="news">
+          <div class="news-image">
+            <img src="<?= base_url('assets_system/images/newlaunch4.jpg') ?>" alt="Strategic Partnership">
+            <span class="news-badge">Announcement</span>
+          </div>
+          <div class="news-card-content">
+            <span class="news-date">July 28, 2025</span>
+            <h3>Line Seiki Announces Strategic Partnership</h3>
+            <p>We're excited to announce our new partnership with leading automation companies to expand our IoT solutions portfolio across Asia Pacific.</p>
+            <div class="news-meta">
+              <span class="news-category">Company News</span>
+              <a href="<?= base_url('index/news_events_extension') ?>" class="news-read-more">
+                Read More <i class="fas fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="news-card fade-in delay-2" data-category="webinars">
+          <div class="news-image">
+            <img src="<?= base_url('assets_system/images/webinar4.jpg') ?>" alt="Webinar on IoT solutions">
+            <span class="news-badge event">Webinar</span>
+          </div>
+          <div class="news-card-content">
+            <span class="news-date">September 5, 2025</span>
+            <h3>Smart IoT Solutions for Modern Manufacturing</h3>
+            <p>Join our expert-led webinar on integrating smart solutions for seamless operational control and data-driven decision making.</p>
+            <div class="news-meta">
+              <span class="news-category">Online Event</span>
+              <a href="<?= base_url('index/news_events_extension') ?>" class="news-read-more">
+                Register Now <i class="fas fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="news-card fade-in delay-3" data-category="news">
+          <div class="news-image">
+            <img src="<?= base_url('assets_system/images/newlaunch3.jpg') ?>" alt="Industry Report">
+            <span class="news-badge">Insight</span>
+          </div>
+          <div class="news-card-content">
+            <span class="news-date">June 12, 2025</span>
+            <h3>2025 Manufacturing Technology Trends</h3>
+            <p>Our latest industry report analyzes emerging trends in precision measurement and automation technologies shaping the future of manufacturing.</p>
+            <div class="news-meta">
+              <span class="news-category">Industry Insight</span>
+              <a href="<?= base_url('index/news_events_extension') ?>" class="news-read-more">
+                Read More <i class="fas fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="news-card fade-in delay-4" data-category="events">
+          <div class="news-image">
+            <img src="<?= base_url('assets_system/images/event3.jpg') ?>" alt="Technical Seminar">
+            <span class="news-badge event">Seminar</span>
+          </div>
+          <div class="news-card-content">
+            <span class="news-date">November 15, 2025</span>
+            <h3>Technical Seminar: Advanced Measurement Techniques</h3>
+            <p>A series of talks by our engineers on the latest advancements in industrial measurement and precision instruments.</p>
+            <div class="news-meta">
+              <span class="news-category">Live Event</span>
+              <a href="<?= base_url('index/news_events_extension') ?>" class="news-read-more">
+                View Schedule <i class="fas fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="news-card fade-in delay-2">
-        <img src=<?= base_url('assets_system/images/newlaunch1.jpg') ?> alt="New product launch.">
-        <div class="news-card-content">
-          <h3>New Product Launch</h3>
-          <p>Discover our latest innovation designed to enhance efficiency and precision in your operations.</p>
-          <a href="<?= base_url('index/news_events_extension') ?>">Explore</a>
-        </div>
-      </div>
-      <div class="news-card fade-in delay-3">
-        <img src=<?= base_url('assets_system/images/newlaunch3.jpg') ?> alt="Industry insights.">
-        <div class="news-card-content">
-          <h3>Industry Insights</h3>
-          <p>Read our latest articles and insights on industry trends and technological advancements.</p>
-          <a href="<?= base_url('index/news_events_extension') ?>">Learn more</a>
-        </div>
+
+      <!-- Pagination -->
+      <div class="news-pagination fade-in delay-5">
+        <a href="#" class="page-link active">1</a>
+        <a href="#" class="page-link">2</a>
+        <a href="#" class="page-link">3</a>
+        <a href="#" class="page-link">Next <i class="fas fa-chevron-right"></i></a>
       </div>
     </div>
   </section>
 
-  <!-- Webinars Section -->
+  <!-- Newsletter Section -->
   <section class="section-light-orange">
-    <h2 class="fade-in  text-center">Upcoming Webinars</h2>
-    <div class="content-container pt-4">
-      <div class="news-card fade-in delay-1">
-        <img src=<?= base_url('assets_system/images/webinar4.jpg') ?>  alt="Webinar on IoT solutions.">
-        <div class="news-card-content">
-          <h3>Smart IoT Solutions</h3>
-          <p>Join our expert-led webinar on integrating smart solutions for seamless operational control.</p>
-          <a href="<?= base_url('index/news_events_extension') ?>">Register now</a>
-        </div>
-      </div>
-      <div class="news-card fade-in delay-2">
-        <img src=<?= base_url('assets_system/images/webinar2.jpg') ?> alt="Webinar on precision tools.">
-        <div class="news-card-content">
-          <h3>Mastering Precision Tools</h3>
-          <p>A deep dive into our new line of precision instruments and how to use them effectively.</p>
-          <a href="<?= base_url('index/news_events_extension') ?>">Learn more</a>
-        </div>
-      </div>
-      <div class="news-card fade-in delay-3">
-        <img src=<?= base_url('assets_system/images/webinar5.jpg') ?> alt="Webinar on data analytics.">
-        <div class="news-card-content">
-          <h3>Data-Driven Decisions</h3>
-          <p>Understand how to leverage real-time data from our systems to make smarter decisions.</p>
-          <a href="<?= base_url('index/news_events_extension') ?>">View details</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Events and Exhibitions Section -->
-  <section class="section-white">
-    <h2 class="fade-in  text-center">Events and Exhibitions</h2>
-    <div class="content-container pt-4">
-      <div class="news-card  fade-in delay-1">
-        <img src=<?= base_url('assets_system/images/event1.jpg') ?> alt="Industry trade show.">
-        <div class="news-card-content">
-          <h3>Global Tech Expo</h3>
-          <p>Join us at the largest tech expo of the year to witness our live product demonstrations.</p>
-          <a href="<?= base_url('index/news_events_extension') ?>">Find out more</a>
-        </div>
-      </div>
-      <div class="news-card fade-in delay-2">
-        <img src=<?= base_url('assets_system/images/event3.jpg') ?> alt="Product seminar.">
-        <div class="news-card-content">
-          <h3>Technical Seminar</h3>
-          <p>A series of talks by our engineers on the latest advancements in industrial measurement.</p>
-          <a href="<?= base_url('index/news_events_extension') ?>">View schedule</a>
-        </div>
-      </div>
-      <div class="news-card fade-in delay-3">
-        <img src=<?= base_url('assets_system/images/event4.jpg') ?> alt="Client showcase event.">
-        <div class="news-card-content">
-          <h3>Client Showcase</h3>
-          <p>See how our solutions have transformed businesses and discover real-world case studies.</p>
-          <a href="<?= base_url('index/news_events_extension') ?>">Explore projects</a>
-        </div>
+    <div class="container">
+      <div class="newsletter-section">
+        <h2>Stay Updated</h2>
+        <p>Subscribe to our newsletter for the latest news, events, and product updates</p>
+        <form class="newsletter-form">
+          <input type="email" class="form-control" placeholder="Enter your email address" required>
+          <button type="submit" class="btn btn-orange">Subscribe</button>
+        </form>
       </div>
     </div>
   </section>
@@ -758,6 +1152,50 @@ body > div[style*="margin-top: 90px"] {
           openMenu.classList.remove('show');
         });
       });
+
+      // News filtering functionality
+      const filterButtons = document.querySelectorAll('.filter-btn');
+      const newsCards = document.querySelectorAll('.news-card');
+      
+      filterButtons.forEach(button => {
+        button.addEventListener('click', function() {
+          // Remove active class from all buttons
+          filterButtons.forEach(btn => btn.classList.remove('active'));
+          // Add active class to clicked button
+          this.classList.add('active');
+          
+          const filterValue = this.getAttribute('data-filter');
+          
+          newsCards.forEach(card => {
+            if (filterValue === 'all' || card.getAttribute('data-category') === filterValue) {
+              card.style.display = 'block';
+            } else {
+              card.style.display = 'none';
+            }
+          });
+        });
+      });
+
+      // Countdown timer for featured event
+      function updateCountdown() {
+        const eventDate = new Date('October 7, 2025 09:00:00').getTime();
+        const now = new Date().getTime();
+        const distance = eventDate - now;
+        
+        if (distance > 0) {
+          const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+          const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+          const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+          
+          document.getElementById('days').textContent = days.toString().padStart(2, '0');
+          document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+          document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+        }
+      }
+      
+      // Update countdown immediately and then every minute
+      updateCountdown();
+      setInterval(updateCountdown, 60000);
     });
   </script>
 </body>
