@@ -136,69 +136,324 @@
       margin-top: -0.8rem;
     }
 
-    /* Sections */
-    section {
-      padding: 100px 0;
+    /* =========================
+       🎯 MODERN IOT SECTIONS
+    ========================= */
+
+    /* Modern GEMBA Overview Section */
+    .iot-hero {
+      background: linear-gradient(135deg, var(--newblue2) 0%, var(--newblue) 100%);
+      color: white;
+      padding: 150px 0 100px;
       position: relative;
+      overflow: hidden;
     }
-    
-    section h1, section h2 {
-      margin-bottom: 24px;
-      font-weight: 700;
-      position: relative;
-    }
-    
-    section h1 {
-      font-size: 2.8rem;
-      color: var(--primary-blue);
-    }
-    
-    section h2 {
-      font-size: 2.2rem;
-      color: var(--primary-blue);
-    }
-    
-    section h2::after {
+
+    .iot-hero::before {
       content: '';
       position: absolute;
+      top: 0;
       left: 0;
-      bottom: -10px;
-      width: 60px;
+      width: 100%;
+      height: 100%;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23FFFFFF' fill-opacity='0.05'%3E%3Ccircle cx='30' cy='30' r='4'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      z-index: 1;
+    }
+
+    .iot-hero-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .iot-hero h2 {
+      font-size: 3.5rem;
+      font-weight: 800;
+      margin-bottom: 30px;
+      color: white;
+      text-transform: uppercase;
+      letter-spacing: -0.5px;
+    }
+
+    .iot-hero p {
+      font-size: 1.3rem;
+      opacity: 0.9;
+      margin-bottom: 30px;
+    }
+
+    /* Modern Image Hover */
+    .img-hover {
+      transition: var(--transition);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    }
+    
+    .img-hover img {
+      transition: var(--transition);
+      border-radius: 20px;
+      width: 100%;
+    }
+    
+    .img-hover:hover img {
+      transform: scale(1.05);
+    }
+
+    /* Modern System Components Section */
+    .components-section {
+      background: linear-gradient(135deg, var(--light-blue) 0%, #fff 100%);
+      padding: 100px 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .components-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2317A2DC' fill-opacity='0.03'%3E%3Ccircle cx='30' cy='30' r='4'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      z-index: 0;
+    }
+
+    .components-container {
+      position: relative;
+      z-index: 1;
+    }
+
+    .components-section h2 {
+      font-size: 3rem;
+      color: var(--newblue2);
+      font-weight: 800;
+      margin-bottom: 60px;
+      text-align: center;
+      position: relative;
+    }
+
+    .components-section h2::after {
+      content: '';
+      position: absolute;
+      bottom: -20px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
       height: 4px;
       background: linear-gradient(90deg, var(--newblue), var(--primary-blue));
       border-radius: 2px;
     }
-    
-    section p {
-      margin-bottom: 28px;
+
+    /* Modern Component Cards */
+    .component-card {
+      background: white;
+      border-radius: 20px;
+      padding: 40px 30px;
+      text-align: center;
+      transition: var(--transition);
+      height: 100%;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      border: none;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .component-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: linear-gradient(90deg, var(--newblue), var(--primary-blue));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.4s ease;
+    }
+
+    .component-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+    }
+
+    .component-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .component-card i {
+      font-size: 3.5rem;
+      color: var(--newblue);
+      margin-bottom: 25px;
+      transition: var(--transition);
+    }
+
+    .component-card:hover i {
+      transform: scale(1.1);
+      color: var(--primary-blue);
+    }
+
+    .component-card h5 {
+      color: var(--newblue2);
+      font-weight: 700;
+      margin-bottom: 20px;
+      font-size: 1.4rem;
+    }
+
+    .component-card p {
+      color: #495057;
+      margin-bottom: 0;
       font-size: 1.1rem;
+      line-height: 1.6;
+    }
+
+    /* Modern Production Data Section */
+    .production-section {
+      background: #fff;
+      padding: 100px 0;
+      position: relative;
+    }
+
+    .production-section h2 {
+      font-size: 3rem;
+      color: var(--newblue2);
+      font-weight: 800;
+      margin-bottom: 50px;
+      text-align: center;
+      position: relative;
+    }
+
+    .production-section h2::after {
+      content: '';
+      position: absolute;
+      bottom: -20px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background: linear-gradient(90deg, var(--newblue), var(--primary-blue));
+      border-radius: 2px;
+    }
+
+    .production-section p {
+      text-align: center;
+      font-size: 1.2rem;
+      margin-bottom: 50px;
       color: #495057;
     }
 
-    /* Color schemes */
-    .section-white {
-      background: #fff;
-      color: #333;
+    /* Modern Data List */
+    .data-list {
+      background: white;
+      border-radius: 20px;
+      padding: 40px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
     }
-    
-    .section-light-blue {
-      background: var(--light-blue);
-      color: #333;
+
+    .data-item {
+      padding: 15px 0;
+      border-bottom: 1px solid rgba(13, 110, 253, 0.1);
+      display: flex;
+      align-items: center;
+      transition: var(--transition);
+    }
+
+    .data-item:last-child {
+      border-bottom: none;
+    }
+
+    .data-item:hover {
+      transform: translateX(10px);
+    }
+
+    .data-item i {
+      color: var(--newblue);
+      font-size: 1.3rem;
+      margin-right: 15px;
+      transition: var(--transition);
+    }
+
+    .data-item:hover i {
+      color: var(--primary-blue);
+      transform: scale(1.2);
+    }
+
+    .data-item span {
+      color: var(--newblue2);
+      font-weight: 600;
+      font-size: 1.1rem;
+    }
+
+    /* Modern Demo Section */
+    .demo-section {
+      background: linear-gradient(135deg, var(--newblue2) 0%, var(--newblue) 100%);
+      color: white;
+      padding: 100px 0;
       position: relative;
       overflow: hidden;
     }
-    
-    .section-light-orange {
-      background: var(--light-blue);
-      color: #333;
+
+    .demo-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23FFFFFF' fill-opacity='0.05'%3E%3Ccircle cx='30' cy='30' r='4'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      z-index: 1;
+    }
+
+    .demo-container {
       position: relative;
-      overflow: hidden;
+      z-index: 2;
+    }
+
+    .demo-section h2 {
+      font-size: 3rem;
+      font-weight: 800;
+      margin-bottom: 25px;
+      color: white;
+      text-align: center;
+    }
+
+    .demo-section p {
+      font-size: 1.2rem;
+      opacity: 0.9;
+      margin-bottom: 40px;
+      text-align: center;
+    }
+
+    /* Modern Form Styling */
+    .demo-form {
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 20px;
+      padding: 50px 40px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    }
+
+    .form-control {
+      border-radius: 12px;
+      padding: 15px 20px;
+      border: 1px solid #e0e0e0;
+      transition: var(--transition);
+      font-size: 1rem;
+    }
+
+    .form-control:focus {
+      border-color: var(--primary-blue);
+      box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.15);
+    }
+
+    .form-label {
+      font-weight: 600;
+      margin-bottom: 10px;
+      color: var(--newblue2);
+      font-size: 1rem;
     }
 
     /* Buttons */
     .btn {
       padding: 0.8rem 1.8rem;
-      border-radius: 8px;
+      border-radius: 12px;
       font-weight: 600;
       transition: var(--transition);
       position: relative;
@@ -225,7 +480,6 @@
     .btn-primary {
       background: linear-gradient(135deg, var(--primary-blue), var(--primary-blue-dark));
       border: none;
-      
     }
     
     .btn-primary:hover {
@@ -238,11 +492,10 @@
       background: linear-gradient(135deg, var(--newblue2), var(--newblue));
       border: none;
       color: white;
-      
     }
     
     .btn-orange:hover {
-      background: linear-gradient(135deg, var(--newblue2), var(--));
+      background: linear-gradient(135deg, var(--newblue), var(--newblue2));
       transform: translateY(-3px);
       box-shadow: 0 8px 20px rgba(13, 110, 253, 0.4);
       color: white;
@@ -259,43 +512,6 @@
       color: #fff;
       transform: translateY(-3px);
       box-shadow: 0 8px 20px rgba(13, 110, 253, 0.3);
-    }
-
-    /* Image hover effect */
-    .img-hover {
-      transition: var(--transition);
-      border-radius: 16px;
-      overflow: hidden;
-    }
-    
-    .img-hover img {
-      transition: var(--transition);
-      border-radius: 16px;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-    }
-    
-    .img-hover:hover img {
-      transform: scale(1.05);
-      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
-    }
-
-    /* Form styling */
-    .form-control {
-      border-radius: 8px;
-      padding: 12px 16px;
-      border: 1px solid #ced4da;
-      transition: var(--transition);
-    }
-    
-    .form-control:focus {
-      border-color: var(--primary-blue);
-      box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
-    }
-    
-    .form-label {
-      font-weight: 500;
-      margin-bottom: 8px;
-      color: var(--dark);
     }
 
     /* Footer */
@@ -415,76 +631,51 @@
     .delay-2 { transition-delay: 0.2s; }
     .delay-3 { transition-delay: 0.3s; }
     .delay-4 { transition-delay: 0.4s; }
-    
+
+    /* Card Animation */
+    @keyframes cardFadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px) scale(0.95);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    .component-card {
+      animation: cardFadeIn 0.6s ease forwards;
+    }
+
+    .component-card:nth-child(1) { animation-delay: 0.1s; }
+    .component-card:nth-child(2) { animation-delay: 0.2s; }
+    .component-card:nth-child(3) { animation-delay: 0.3s; }
+
     /* Responsive adjustments */
     @media (max-width: 992px) {
-      section {
-        padding: 80px 0;
-      }
-      
-      section h1 {
-        font-size: 2.4rem;
-      }
-      
-      section h2 {
-        font-size: 2rem;
-      }
-      
-      .dropdown-submenu > .dropdown-menu {
-        left: 0;
-        margin-top: 0;
-      }
-      
-      footer .links a {
-        display: inline-block;
-        margin-bottom: 12px;
-      }
+      .iot-hero { padding: 120px 0 80px; }
+      .iot-hero h2 { font-size: 2.8rem; }
+      .components-section h2,
+      .production-section h2,
+      .demo-section h2 { font-size: 2.4rem; }
+      .dropdown-submenu > .dropdown-menu { left: 0; margin-top: 0; }
+      footer .links a { display: inline-block; margin-bottom: 12px; }
     }
     
     @media (max-width: 768px) {
-      section h1 {
-        font-size: 2rem;
-      }
-      
-      section h2 {
-        font-size: 1.8rem;
-      }
-      
-      footer .links a {
-        display: block;
-        margin-bottom: 12px;
-      }
+      .iot-hero h2 { font-size: 2.2rem; }
+      .components-section h2,
+      .production-section h2,
+      .demo-section h2 { font-size: 2rem; }
+      footer .links a { display: block; margin-bottom: 12px; }
+      .component-card { padding: 30px 20px; }
+      .demo-form { padding: 30px 25px; }
+      .data-list { padding: 30px 25px; }
     }
-    /* Center gradient line under all h2 */
-section h2::after {
-  left: 50% !important;
-  transform: translateX(-50%) !important;
-}
-/* Center align System Components section */
-.section-light-orange h2 {
-  text-align: center;
-}
 
-.section-light-orange .row {
-  justify-content: center;
-  text-align: center;
-}
-
-/* Center align Production Data section */
-.section-white h2,
-.section-white p {
-  text-align: center;
-}
-
-.section-white .row {
-  justify-content: center;
-  text-align: center;
-}
-/* Remove the spacer under navbar */
-body > div[style*="margin-top: 90px"] {
-  display: none !important;
-}
-
+    /* Fixes */
+    body > div[style*="margin-top: 90px"] { display: none !important; }
 
   </style>
 </head>
@@ -533,15 +724,15 @@ body > div[style*="margin-top: 90px"] {
   <!-- Offset for fixed navbar -->
   <div style="margin-top: 90px;"></div>
 
-  <!-- ✅ Sections -->
+  <!-- ✅ Modern IoT Sections -->
   <main>
-    <!-- 1. GEMBA Overview -->
-    <section class="section-light-blue">
+    <!-- 1. Modern GEMBA Overview -->
+    <section class="iot-hero">
       <div class="container">
         <div class="row align-items-center">
           <!-- Left Content -->
-          <div class="col-lg-7 fade-in">
-            <br><br><br><br><h2>GEMBA Machine Monitoring System</h2>
+          <div class="col-lg-7 fade-in iot-hero-content">
+            <h2>GEMBA Machine Monitoring System</h2>
             <p>
               The GEMBA Machine Monitoring System provides real-time visibility into your
               manufacturing operations. It empowers businesses to track machine performance,
@@ -549,46 +740,42 @@ body > div[style*="margin-top: 90px"] {
             </p>
           </div>
 
-          <!-- Right Image Placeholder with Hover -->
+          <!-- Right Image -->
           <div class="col-lg-5 text-center fade-in delay-1">
             <div class="img-hover">
-              <br><br><br><img src="<?= base_url('assets_system/images/gemba2.png') ?>" 
-                  alt="GEMBA Overview" class="img-fluid rounded">
+              <img src="<?= base_url('assets_system/images/gemba2.png') ?>" 
+                  alt="GEMBA Overview" class="img-fluid">
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- 2. System Components -->
-    <section class="section-light-orange">
-      <div class="container fade-in">
-        <h2>System Components</h2><br>
-        <div class="row mt-4">
-          <div class="col-md-4 mb-4">
-            <div class="card h-100 border-0 shadow-sm">
-              <div class="card-body text-center">
-                <i class="fas fa-microchip fa-3x text-primary mb-3"></i>
-                <h5 class="card-title">Smart Counter</h5>
-                <p class="card-text">Input device that collects machine data.</p>
+    <!-- 2. Modern System Components -->
+    <section class="components-section">
+      <div class="components-container">
+        <div class="container fade-in">
+          <h2>System Components</h2>
+          <div class="row mt-4">
+            <div class="col-md-4 mb-4">
+              <div class="component-card">
+                <i class="fas fa-microchip"></i>
+                <h5>Smart Counter</h5>
+                <p>Input device that collects machine data.</p>
               </div>
             </div>
-          </div>
-          <div class="col-md-4 mb-4">
-            <div class="card h-100 border-0 shadow-sm">
-              <div class="card-body text-center">
-                <i class="fas fa-server fa-3x text-primary mb-3"></i>
-                <h5 class="card-title">Base Station</h5>
-                <p class="card-text">Data receiver that aggregates information from counters.</p>
+            <div class="col-md-4 mb-4">
+              <div class="component-card">
+                <i class="fas fa-server"></i>
+                <h5>Base Station</h5>
+                <p>Data receiver that aggregates information from counters.</p>
               </div>
             </div>
-          </div>
-          <div class="col-md-4 mb-4">
-            <div class="card h-100 border-0 shadow-sm">
-              <div class="card-body text-center">
-                <i class="fas fa-chart-line fa-3x text-primary mb-3"></i>
-                <h5 class="card-title">Gemba Reporter</h5>
-                <p class="card-text">Software platform to analyze and view production data.</p>
+            <div class="col-md-4 mb-4">
+              <div class="component-card">
+                <i class="fas fa-chart-line"></i>
+                <h5>Gemba Reporter</h5>
+                <p>Software platform to analyze and view production data.</p>
               </div>
             </div>
           </div>
@@ -596,74 +783,80 @@ body > div[style*="margin-top: 90px"] {
       </div>
     </section>
 
-    <!-- 3. Production Data -->
-    <section class="section-white">
+    <!-- 3. Modern Production Data -->
+    <section class="production-section">
       <div class="container fade-in">
-        <h2>Production Data</h2><br>
+        <h2>Production Data</h2>
         <p>GEMBA collects critical production information to enhance decision-making:</p>
-        <div class="row mt-4">
-          <div class="col-md-6">
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item border-0">
-                <i class="fas fa-check-circle text-success me-2"></i>
-                Machine status (running, idle, stopped)
-              </li>
-              <li class="list-group-item border-0">
-                <i class="fas fa-check-circle text-success me-2"></i>
-                Downtime causes and frequency
-              </li>
-              <li class="list-group-item border-0">
-                <i class="fas fa-check-circle text-success me-2"></i>
-                Production efficiency analysis
-              </li>
-            </ul>
-          </div>
-          <div class="col-md-6">
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item border-0">
-                <i class="fas fa-check-circle text-success me-2"></i>
-                Throughput analysis
-              </li>
-              <li class="list-group-item border-0">
-                <i class="fas fa-check-circle text-success me-2"></i>
-                Real-time performance metrics
-              </li>
-              <li class="list-group-item border-0">
-                <i class="fas fa-check-circle text-success me-2"></i>
-                Historical data trends
-              </li>
-            </ul>
+        <div class="row mt-4 justify-content-center">
+          <div class="col-lg-8">
+            <div class="data-list">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="data-item">
+                    <i class="fas fa-check-circle"></i>
+                    <span>Machine status (running, idle, stopped)</span>
+                  </div>
+                  <div class="data-item">
+                    <i class="fas fa-check-circle"></i>
+                    <span>Downtime causes and frequency</span>
+                  </div>
+                  <div class="data-item">
+                    <i class="fas fa-check-circle"></i>
+                    <span>Production efficiency analysis</span>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="data-item">
+                    <i class="fas fa-check-circle"></i>
+                    <span>Throughput analysis</span>
+                  </div>
+                  <div class="data-item">
+                    <i class="fas fa-check-circle"></i>
+                    <span>Real-time performance metrics</span>
+                  </div>
+                  <div class="data-item">
+                    <i class="fas fa-check-circle"></i>
+                    <span>Historical data trends</span>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- 4. Request Demo CTA -->
-    <section class="section-light-blue">
-      <div class="container fade-in">
-        <div class="row justify-content-center">
-          <div class="col-lg-8">
-            <h2 class="text-center">Request a Demo</h2>
-            <p class="text-center mb-4">Interested in experiencing GEMBA in action? Request a demo or inquire about testing GEMBA on your machines.</p>
-            <form>
-              <div class="row">
-                <div class="col-md-6 mb-3">
-                  <label class="form-label">Name</label>
-                  <input type="text" class="form-control" placeholder="Your Name">
-                </div>
-                <div class="col-md-6 mb-3">
-                  <label class="form-label">Email</label>
-                  <input type="email" class="form-control" placeholder="Your Email">
-                </div>
+    <!-- 4. Modern Request Demo -->
+    <section class="demo-section">
+      <div class="demo-container">
+        <div class="container fade-in">
+          <div class="row justify-content-center">
+            <div class="col-lg-8">
+              <h2>Request a Demo</h2>
+              <p>Interested in experiencing GEMBA in action? Request a demo or inquire about testing GEMBA on your machines.</p>
+              <div class="demo-form">
+                <form>
+                  <div class="row">
+                    <div class="col-md-6 mb-4">
+                      <label class="form-label">Name</label>
+                      <input type="text" class="form-control" placeholder="Your Name">
+                    </div>
+                    <div class="col-md-6 mb-4">
+                      <label class="form-label">Email</label>
+                      <input type="email" class="form-control" placeholder="Your Email">
+                    </div>
+                  </div>
+                  <div class="mb-4">
+                    <label class="form-label">Message</label>
+                    <textarea class="form-control" rows="4" placeholder="Your Inquiry"></textarea>
+                  </div>
+                  <div class="text-center">
+                    <button type="submit" class="btn btn-primary btn-lg">Submit Request</button>
+                  </div>
+                </form>
               </div>
-              <div class="mb-3">
-                <label class="form-label">Message</label>
-                <textarea class="form-control" rows="4" placeholder="Your Inquiry"></textarea>
-              </div>
-              <div class="text-center">
-                <button type="submit" class="btn btn-primary">Submit Request</button>
-              </div>
-            </form>
+            </div>
           </div>
         </div>
       </div>
