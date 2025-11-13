@@ -602,7 +602,7 @@
 
   <div class="category fade-in delay-4">
     <a href="<?= base_url('index/products_details') ?>">
-    <img src=<?= base_url('assets_system/images/tallycounter.png')?> alt="Tally Counters">
+    <img src=<?= base_url('assets_system/images/tallycounter-nobg.png')?> alt="Tally Counters">
     </a>
     <div class="category-title">Tally Counters</div>
   </div>
