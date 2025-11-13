@@ -922,72 +922,140 @@ body > div[style*="height: 90px"] {
 
 
 /* ===============================
-   CTA FIX (Folder Corner Style)
+   CTA SECTION WITH IOT DEMO STYLE WAVY GRADIENT
 =================================*/
 .cta-wavenet-style {
-  /* Use your dark blue variable */
-  background-color: var(--newblue2) !important; 
+  background: linear-gradient(135deg, var(--newblue2) 0%, var(--newblue) 100%);
   color: white;
-  padding: 80px 0; /* Adjusted padding for better fit */
+  padding: 100px 0;
   position: relative;
   overflow: hidden;
-  /* Key: Creates the folder/tucked shape */
-  clip-path: polygon(
-    0 15%,     /* Top-Left Corner Tuck */
-    10% 0, 
-    100% 0, 
-    100% 85%,  /* Bottom-Right Corner Tuck */
-    90% 100%, 
-    0 100%
-  );
-  transition: clip-path 0.3s ease;
 }
 
-/* Fix text and button colors inside the new CTA style */
+.cta-wavenet-style::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    /* Wavy pattern overlay - same as IoT demo */
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120' preserveAspectRatio='none'%3E%3Cpath d='M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z' fill='%23ffffff' fill-opacity='0.1'%3E%3C/path%3E%3C/svg%3E"),
+    /* Second wavy layer - same as IoT demo */
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120' preserveAspectRatio='none'%3E%3Cpath d='M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z' fill='%23ffffff' fill-opacity='0.05'%3E%3C/path%3E%3C/svg%3E");
+
+  background-repeat: no-repeat;
+  z-index: 1;
+  animation: waveMove 15s ease-in-out infinite alternate;
+}
+
+.cta-wavenet-style::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+  
+}
+
+.cta-container {
+  position: relative;
+  z-index: 2;
+}
+
+.cta-wavenet-style h2 {
+  font-size: 3rem;
+  font-weight: 800;
+  margin-bottom: 25px;
+  color: white;
+  text-align: center;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.cta-wavenet-style p {
+  font-size: 1.2rem;
+  opacity: 0.9;
+  margin-bottom: 40px;
+  text-align: center;
+  text-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Animations - exactly same as IoT demo */
+@keyframes waveMove {
+  0% {
+    background-position: 
+      bottom center,
+      top center;
+  }
+  100% {
+    background-position: 
+      bottom 10px center,
+      top -10px center;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-20px) rotate(180deg);
+  }
+}
+
+/* Fix text and button colors */
 .cta-wavenet-style h2,
 .cta-wavenet-style p {
-  color: white !important; /* Ensure text is white for contrast */
+  color: white !important;
 }
 
-/* Styling the button to match the yellow/orange style */
+/* Button styling - keeping your original button colors */
 .btn-wavenet-cta {
   background-color: var(--newblue) !important; 
-  
   color: white !important;
   font-weight: 700 !important;
   transition: transform 0.3s ease;
+  position: relative;
+  z-index: 2;
   
-  /* --- CENTERING FIX --- */
-  display: block; /* Important: Treat the button as a block element */
-  margin: 20px auto 0 auto; /* Center the block element horizontally */
-  max-width: 250px; /* Optional: Constrain the button width for better appearance */
-  /* --- END FIX --- */
+  /* Centering */
+  display: block;
+  margin: 20px auto 0 auto;
+  max-width: 250px;
 }
 
 .btn-wavenet-cta:hover {
   background-color: var(--newblue) !important;
-  border-color: white !important;
   transform: translateY(-2px);
 }
 
-/* Adjusting the clip-path for smaller screens */
+/* Responsive adjustments */
 @media (max-width: 768px) {
   .cta-wavenet-style {
-    /* Slightly smaller tuck on mobile */
-    clip-path: polygon(
-      0 10%, 
-      5% 0, 
-      100% 0, 
-      100% 90%, 
-      95% 100%, 
-      0 100%
-    );
-    padding: 60px 0;
+    padding: 80px 0;
+  }
+  
+  .cta-wavenet-style h2 {
+    font-size: 2.4rem;
+  }
+  
+  .cta-wavenet-style p {
+    font-size: 1.1rem;
   }
 }
 
+@media (max-width: 480px) {
+  .cta-wavenet-style {
+    padding: 60px 0;
+  }
   
-
+  .cta-wavenet-style h2 {
+    font-size: 2rem;
+  }
+}
   </style>
 </head>
 <body>
@@ -1189,17 +1257,18 @@ body > div[style*="height: 90px"] {
   </section>
 
   <!-- CTA Section -->
-  <section class="cta-wavenet-style text-center">
-    <div class="container">
-            <h2 class="fade-in" style="font-size: 2.5rem; font-weight: 700; margin-bottom: 20px;">
-         Interested in our products or services? Connect with us today and let's build solutions together.  
-      </h2>
-                        <a href="<?= base_url('index/contact_us') ?>" class="btn btn-lg btn-wavenet-cta fade-in delay-2">
-        Get in Touch 
-      </a>
-    </div>
-  </section>
-
+<section class="cta-wavenet-style text-center">
+  <div class="cta-container">
+    <div class="container">
+      <h2 class="fade-in" style="font-size: 2.5rem; font-weight: 700; margin-bottom: 20px;">
+        Interested in our products or services? Connect with us today and let's build solutions together.  
+      </h2>
+      <a href="<?= base_url('index/contact_us') ?>" class="btn btn-lg btn-wavenet-cta fade-in delay-2">
+        Get in Touch 
+      </a>
+    </div>
+  </div>
+</section>
   <!-- Footer -->
   <footer>
     <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap">
