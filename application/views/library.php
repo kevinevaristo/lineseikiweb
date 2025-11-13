@@ -16,24 +16,6 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
- <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Library - Line Seiki Asia Pacific</title>
-
-  <!-- Bootstrap 5 CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
   <style>
     /* =========================
    🎨 Variables
@@ -163,19 +145,40 @@ hr {
 }
 
 /* =========================
-   📚 Library Section
+   📚 Modern Library Section
 ========================= */
 .library {
   padding: 80px 5%;
+  background: linear-gradient(135deg, var(--light-blue) 0%, #fff 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.library::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2317A2DC' fill-opacity='0.05'%3E%3Ccircle cx='30' cy='30' r='4'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  z-index: 0;
+}
+
+.library-container {
+  position: relative;
+  z-index: 1;
 }
 
 .library h1 {
   text-align: center;
-  font-size: 2.8rem;
+  font-size: 3rem;
   margin-bottom: 50px;
-  color: var(--primary-blue);
-  font-weight: 700;
+  color: var(--newblue2);
+  font-weight: 800;
   position: relative;
+  text-transform: uppercase;
+  letter-spacing: -0.5px;
 }
 
 .library h1::after {
@@ -184,20 +187,21 @@ hr {
   left: 50%;
   bottom: -15px;
   transform: translateX(-50%);
-  width: 60px;
+  width: 80px;
   height: 4px;
   background: linear-gradient(90deg, var(--newblue), var(--primary-blue));
   border-radius: 2px;
 }
 
 .library-section {
-  margin-bottom: 80px;
+  margin-bottom: 100px;
+  position: relative;
 }
 
 .library-section h2 {
   font-size: 2.2rem;
-  color: var(--primary-blue);
-  margin-bottom: 15px;
+  color: var(--newblue2);
+  margin-bottom: 25px;
   text-align: center;
   position: relative;
   font-weight: 700;
@@ -218,37 +222,79 @@ hr {
 .library-section p {
   text-align: center;
   color: #495057;
-  margin-bottom: 40px;
+  margin-bottom: 50px;
   font-size: 1.1rem;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
+/* Modern Download Cards */
 .download-card {
   background: #fff;
-  border-radius: 16px;
-  padding: 30px;
+  border-radius: 20px;
+  padding: 40px 30px;
   text-align: center;
   transition: var(--transition);
-  border: 1px solid rgba(13, 110, 253, 0.1);
+  border: none;
   height: 100%;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.download-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background: linear-gradient(90deg, var(--newblue), var(--primary-blue));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s ease;
 }
 
 .download-card:hover {
-  transform: translateY(-8px);
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.download-card:hover::before {
+  transform: scaleX(1);
 }
 
 .download-card h5 {
   margin-bottom: 20px;
-  font-weight: 600;
+  font-weight: 700;
+  color: var(--newblue2);
+  font-size: 1.4rem;
+  position: relative;
+}
+
+.download-icon {
+  font-size: 3rem;
+  color: var(--newblue);
+  margin-bottom: 25px;
+  transition: var(--transition);
+}
+
+.download-card:hover .download-icon {
+  transform: scale(1.1);
   color: var(--primary-blue);
-  font-size: 1.3rem;
 }
 
 /* =========================
-   🔘 Buttons
+   🔘 Modern Buttons
 ========================= */
 .btn {
   padding: 0.8rem 1.8rem;
-  border-radius: 8px;
+  border-radius: 10px;
   font-weight: 600;
   transition: var(--transition);
   position: relative;
@@ -298,13 +344,14 @@ hr {
   background: linear-gradient(90deg, var(--newblue), var(--primary-blue));
   color: #fff;
   border: none;
-  padding: 10px 20px;
-  border-radius: 8px;
+  padding: 12px 25px;
+  border-radius: 10px;
   font-weight: 600;
   transition: var(--transition);
   position: relative;
   overflow: hidden;
   z-index: 1;
+  box-shadow: 0 5px 15px rgba(23, 162, 220, 0.3);
 }
 
 .btn-download::before {
@@ -325,52 +372,73 @@ hr {
 
 .btn-download:hover {
   transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(23, 162, 220, 0.4);
 }
 
 .btn-success {
   background: linear-gradient(90deg, var(--newblue), var(--primary-blue));
   border: none;
   transition: var(--transition);
+  border-radius: 10px;
+  padding: 12px 25px;
+  font-weight: 600;
 }
 
 .btn-success:hover {
   transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(23, 162, 220, 0.3);
 }
 
 /* =========================
-   🪟 Modal
+   🪟 Modern Modal
 ========================= */
 .modal-header {
   background: linear-gradient(135deg, var(--primary-blue), var(--primary-blue-dark));
   color: #fff;
   border-top-left-radius: 16px;
   border-top-right-radius: 16px;
+  padding: 20px 25px;
+}
+
+.modal-title {
+  font-weight: 700;
+  font-size: 1.4rem;
 }
 
 .modal-content {
   border-radius: 16px;
   border: none;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
 }
 
 .modal-footer .btn {
   min-width: 120px;
-  border-radius: 8px;
+  border-radius: 10px;
   font-weight: 600;
-  padding: 10px 20px;
+  padding: 12px 25px;
 }
 
 /* =========================
    📝 Forms
 ========================= */
 .form-control {
-  border-radius: 8px;
-  padding: 10px 15px;
-  border: 1px solid #ced4da;
+  border-radius: 10px;
+  padding: 12px 15px;
+  border: 1px solid #e0e0e0;
   transition: var(--transition);
+  font-size: 1rem;
 }
 
 .form-control:focus {
   border-color: var(--primary-blue);
+  box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.15);
+}
+
+.form-label {
+  font-weight: 600;
+  color: var(--newblue2);
+  margin-bottom: 8px;
 }
 
 /* =========================
@@ -401,6 +469,27 @@ hr {
 .delay-2 { transition-delay: 0.2s; }
 .delay-3 { transition-delay: 0.3s; }
 .delay-4 { transition-delay: 0.4s; }
+
+/* Card animation */
+@keyframes cardFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.download-card {
+  animation: cardFadeIn 0.6s ease forwards;
+}
+
+.download-card:nth-child(1) { animation-delay: 0.1s; }
+.download-card:nth-child(2) { animation-delay: 0.2s; }
+.download-card:nth-child(3) { animation-delay: 0.3s; }
+.download-card:nth-child(4) { animation-delay: 0.4s; }
 
 /* =========================
    ⬇️ Footer
@@ -524,6 +613,14 @@ footer .bottom a:hover {
     display: block;
     margin-bottom: 12px;
   }
+  
+  .download-card {
+    padding: 30px 20px;
+  }
+  
+  .download-icon {
+    font-size: 2.5rem;
+  }
 }
 
   </style>
@@ -574,45 +671,59 @@ footer .bottom a:hover {
     </div>
   </nav>
 
-  <!-- ✅ Library Section -->
+  <!-- ✅ Modern Library Section -->
   <section class="library">
-    <h1 class="fade-in">Library</h1>
+    <div class="library-container">
+      <h1 class="fade-in">Resource Library</h1>
 
-    <!-- Case Studies -->
-    <div class="library-section fade-in delay-1">
-      <h2>Case Studies</h2>
-      <p>Download our case studies after filling up the form.</p>
-      <div class="row g-4 justify-content-center">
-        <div class="col-md-4">
-          <div class="download-card">
-            <h5>Case Study 1</h5>
-            <button class="btn-download" data-bs-toggle="modal" data-bs-target="#downloadModal" data-file="case-study-1.pdf">Download</button>
+      <!-- Case Studies -->
+      <div class="library-section fade-in delay-1">
+        <h2>Case Studies</h2>
+        <p>Explore our detailed case studies showcasing successful implementations and measurable results.</p>
+        <div class="row g-4 justify-content-center">
+          <div class="col-md-4">
+            <div class="download-card">
+              <div class="download-icon">
+                <i class="fas fa-chart-line"></i>
+              </div>
+              <h5>Case Study 1</h5>
+              <button class="btn-download" data-bs-toggle="modal" data-bs-target="#downloadModal" data-file="case-study-1.pdf">Download</button>
+            </div>
           </div>
-        </div>
-        <div class="col-md-4">
-          <div class="download-card">
-            <h5>Case Study 2</h5>
-            <button class="btn-download" data-bs-toggle="modal" data-bs-target="#downloadModal" data-file="case-study-2.pdf">Download</button>
+          <div class="col-md-4">
+            <div class="download-card">
+              <div class="download-icon">
+                <i class="fas fa-industry"></i>
+              </div>
+              <h5>Case Study 2</h5>
+              <button class="btn-download" data-bs-toggle="modal" data-bs-target="#downloadModal" data-file="case-study-2.pdf">Download</button>
+            </div>
           </div>
         </div>
       </div>
-    </div>
 
-    <!-- Brochures -->
-    <div class="library-section fade-in delay-2">
-      <h2>Brochures</h2>
-      <p>Download our brochures after filling up the form.</p>
-      <div class="row g-4 justify-content-center">
-        <div class="col-md-4">
-          <div class="download-card">
-            <h5>Company Profile</h5>
-            <button class="btn-download" data-bs-toggle="modal" data-bs-target="#downloadModal" data-file="company-profile.pdf">Download</button>
+      <!-- Brochures -->
+      <div class="library-section fade-in delay-2">
+        <h2>Brochures</h2>
+        <p>Download our comprehensive brochures to learn more about our products and services.</p>
+        <div class="row g-4 justify-content-center">
+          <div class="col-md-4">
+            <div class="download-card">
+              <div class="download-icon">
+                <i class="fas fa-building"></i>
+              </div>
+              <h5>Company Profile</h5>
+              <button class="btn-download" data-bs-toggle="modal" data-bs-target="#downloadModal" data-file="company-profile.pdf">Download</button>
+            </div>
           </div>
-        </div>
-        <div class="col-md-4">
-          <div class="download-card">
-            <h5>Products & Services</h5>
-            <button class="btn-download" data-bs-toggle="modal" data-bs-target="#downloadModal" data-file="products-services.pdf">Download</button>
+          <div class="col-md-4">
+            <div class="download-card">
+              <div class="download-icon">
+                <i class="fas fa-cogs"></i>
+              </div>
+              <h5>Products & Services</h5>
+              <button class="btn-download" data-bs-toggle="modal" data-bs-target="#downloadModal" data-file="products-services.pdf">Download</button>
+            </div>
           </div>
         </div>
       </div>

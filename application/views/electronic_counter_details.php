@@ -136,7 +136,7 @@
       margin-top: -0.8rem;
     }
 
-       /* Sections */
+    /* Sections */
     section {
       padding: 100px 0;
       position: relative;
@@ -151,7 +151,6 @@
     
     section img:hover {
       transform: translateY(-5px);
-      
     }
     
     section h1, section h2 {
@@ -175,8 +174,6 @@
       font-size: 1.1rem;
       color: #495057;
     }
-
-
 
     /* CTA Section */
     .cta {
@@ -231,33 +228,32 @@
     .btn-primary {
       background: linear-gradient(135deg, var(--primary-blue), var(--primary-blue-dark));
       border: none;
-      
     }
     
     .btn-primary:hover {
       background: linear-gradient(135deg, var(--primary-blue-dark), var(--primary-blue));
       transform: translateY(-3px);
-      
     }
     
     .btn-orange {
       background: linear-gradient(135deg, var(--newblue2), var(--newblue));
       border: none;
       color: white;
-      
     }
     
     .btn-orange:hover {
-      background: linear-gradient(135deg, var(--newblue2), var(--));
+      background: linear-gradient(135deg, var(--newblue), var(--newblue2));
       transform: translateY(-3px);
+      color: white;
     }
     
     .btn-light {
       background: rgba(255, 255, 255, 0.9);
       border: none;
       color: var(--primary-blue);
-        border-color: #000;
+      border-color: #000;
     }
+    
     .btn-light:hover {
       background: #fff;
       color: var(--primary-blue-dark);
@@ -331,7 +327,6 @@
       transform: translateY(-3px);
     }
 
-    
     footer .bottom {
       margin-top: 40px;
       font-size: 0.85rem;
@@ -421,79 +416,244 @@
         margin-bottom: 12px;
       }
     }
+
     /* Make INQUIRE button match Contact button */
-.cta .btn-light {
-  background: linear-gradient(135deg, var(--newblue2), var(--newblue)) !important;
-  color: white !important;
-  border: none !important;
-  
+    .cta .btn-light {
+      background: linear-gradient(135deg, var(--newblue2), var(--newblue)) !important;
+      color: white !important;
+      border: none !important;
+    }
+
+    .cta .btn-light:hover {
+      background: linear-gradient(135deg, var(--newblue), var(--newblue2)) !important;
+      transform: translateY(-3px);
+    }
+
+    /* =========================
+       🎯 MODERN PRODUCT DETAILS
+    ========================= */
+    
+    /* Modern Top Details Section */
+    .top-details {
+    position: relative;
+    padding: 180px 0;
+    color: white;
+    overflow: hidden;
+    
+    /* 1. Add Background Image */
+    background: url("<?= base_url('assets_system/images/home_main.jpg') ?>") center center/cover no-repeat;
 }
+    .top-details::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23FFFFFF' fill-opacity='0.05'%3E%3Ccircle cx='30' cy='30' r='4'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      z-index: 1;
+    }
 
-.cta .btn-light:hover {
-  background: linear-gradient(135deg, var(--newblue), var(--newblue2)) !important;
-  transform: translateY(-3px);
-}
-/* Smaller Top Details section */
-.top-details {
-  padding: 40px 0;  /* smaller than default 100px */
-  background-color: #fff;
-}
+    .top-details h1 {
+      position: relative;
+      z-index: 2;
+      color: white;
+      font-size: 3.5rem;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      text-transform: uppercase;
+      text-align: center;
+    }
 
-.top-details h1 {
-  font-size: 2.2rem;
-  font-weight: 700;
-  color: var(--primary-blue);
-}
+    /* Modern Product Details Section */
+    .product-details {
+      background: linear-gradient(135deg, var(--light-blue) 0%, #fff 100%);
+      padding: 100px 0;
+      position: relative;
+      overflow: hidden;
+    }
 
-.product-image {
-  max-width: 50%;   /* shrink image */
-  height: auto;
-}
+    .product-details::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2317A2DC' fill-opacity='0.03'%3E%3Ccircle cx='30' cy='30' r='4'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      z-index: 0;
+    }
 
-/* Top Details section with large background image */
-.top-details {
-  position: relative;
-  padding: 180px 0;  /* make section taller */
-  background: url("<?= base_url('assets_system/images/stockroom2.jpg') ?>") center/cover no-repeat;
-  color: white;
-}
+    .product-details-container {
+      position: relative;
+      z-index: 1;
+    }
 
-/* Dark overlay for contrast */
-.top-details::before {
-  content: "";
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: rgba(0, 0, 0, 0.5);  /* darken the image */
-  z-index: 1;
-}
+    /* Modern Product Card */
+    .product-card {
+      background: #fff;
+      border-radius: 20px;
+      padding: 50px 40px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+      transition: var(--transition);
+      border: none;
+      position: relative;
+      overflow: hidden;
+    }
 
-.top-details h1 {
-  position: relative;
-  z-index: 2;
-  color: white;
-  font-size: 3rem;
-  font-weight: 700;
-  letter-spacing: 1px;
-}
+    .product-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: linear-gradient(90deg, var(--newblue), var(--primary-blue));
+    }
 
-.product-image {
-  max-width: 50%;   /* shrink image */
-  height: auto;
-  border-radius: 16px; /* keep rounded corners */
-  transition: none; /* remove hover transition */
-  box-shadow: none; /* remove shadow */
-}
+    .product-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.12);
+    }
 
-/* Removed hover effect entirely */
-section img:hover {
-  transform: none;
-}
+    .product-title {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: var(--newblue2);
+      margin-bottom: 20px;
+      position: relative;
+    }
 
+    .product-title::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 60px;
+      height: 4px;
+      background: linear-gradient(90deg, var(--newblue), var(--primary-blue));
+      border-radius: 2px;
+    }
 
+    .product-description {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #495057;
+      margin-bottom: 30px;
+    }
 
+    .product-features {
+      background: var(--light-blue);
+      border-radius: 15px;
+      padding: 30px;
+      margin: 30px 0;
+    }
 
+    .feature-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
 
+    .feature-list li {
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(13, 110, 253, 0.1);
+      position: relative;
+      padding-left: 30px;
+      font-weight: 500;
+      color: var(--newblue2);
+    }
+
+    .feature-list li:last-child {
+      border-bottom: none;
+    }
+
+    .feature-list li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--newblue);
+      font-weight: bold;
+    }
+
+    /* Modern Product Image */
+    .product-image-container {
+      position: relative;
+      text-align: center;
+    }
+
+    .product-image {
+      max-width: 100%;
+      height: auto;
+      border-radius: 20px;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+      transition: var(--transition);
+    }
+
+    .product-image:hover {
+      transform: scale(1.02);
+    }
+
+    .image-caption {
+      margin-top: 20px;
+      font-style: italic;
+      color: #666;
+      font-size: 0.9rem;
+    }
+
+    /* Modern Action Buttons */
+    .action-buttons {
+      margin-top: 40px;
+    }
+
+    .btn-inquiry {
+      background: linear-gradient(135deg, var(--newblue), var(--primary-blue));
+      color: white;
+      border: none;
+      padding: 15px 30px;
+      border-radius: 10px;
+      font-weight: 600;
+      transition: var(--transition);
+      box-shadow: 0 5px 15px rgba(23, 162, 220, 0.3);
+    }
+
+    .btn-inquiry:hover {
+      background: linear-gradient(135deg, var(--primary-blue), var(--newblue));
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(23, 162, 220, 0.4);
+      color: white;
+    }
+
+    .btn-inquiry i {
+      margin-right: 8px;
+    }
+
+    /* Modern Divider */
+    .modern-divider {
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--newblue), transparent);
+      margin: 40px 0;
+      border: none;
+    }
+
+    /* Responsive adjustments for product details */
+    @media (max-width: 768px) {
+      .top-details {
+        padding: 120px 0;
+      }
+      
+      .top-details h1 {
+        font-size: 2.5rem;
+      }
+      
+      .product-card {
+        padding: 30px 25px;
+      }
+      
+      .product-title {
+        font-size: 2rem;
+      }
+    }
   </style>
 </head>
 <body>
@@ -541,61 +701,73 @@ section img:hover {
   <!-- Spacer for fixed navbar -->
   <div style="height: 90px;"></div>
 
-    <!-- Top Details -->
-<section class="section-white text-center top-details">
-  <div class="container">
-    <h1 class="fade-in">Product Details</h1>
-  </div>
-</section>
+  <!-- Modern Top Details Section -->
+  <section class="top-details">
+    <div class="container">
+      <h1 class="fade-in">Product Details</h1>
+    </div>
+  </section>
 
-   <!-- Product Details -->
-<section class="section-white">
-  <div class="container">
-    <div class="row align-items-center">
-      
-      <!-- Left: Text -->
-      <div class="col-md-6 order-2 order-md-1">
-        <h2 class="mb-3">Electronic Counter</h2>
+  <!-- Modern Product Details Section -->
+  <section class="product-details">
+    <div class="container product-details-container">
+      <div class="product-card fade-in">
+        <div class="row align-items-center">
+          
+          <!-- Left: Text Content -->
+          <div class="col-lg-6 order-2 order-lg-1">
+            <h2 class="product-title">Electronic Counters</h2>
+            
+            <hr class="modern-divider">
 
-        
-        <hr>
+            <!-- Product Description -->
+            <div class="product-description">
+              <p>
+                Mounted on opening/closing parts, safety switches detect the position of safety guards or doors as a mean of safeguarding. It's a sensor whose safety function cannot be disabled. All switches are of non-contact type.
+              </p>
+              
+              <div class="product-features">
+                <h5 class="mb-3" style="color: var(--newblue2); font-weight: 600;">Key Features:</h5>
+                <ul class="feature-list">
+                  <li>Non-contact safety switches</li>
+                  <li>Safety function cannot be disabled</li>
+                  <li>Detects position of safety guards or doors</li>
+                  <li>Reliable safeguarding solution</li>
+                </ul>
+              </div>
 
-        <!-- Product Description -->
-        <p>
-          <!--<strong>Features:</strong><br>-->
-         Available in various sizes and functions:
-        small type with a built-in battery, LED type with high functionality and visibility,
-        and large display type for production control purposes, to name a few.
+              <div class="note-box p-3 rounded" style="background: rgba(253, 126, 20, 0.1); border-left: 4px solid var(--primary-orange);">
+                <p class="mb-0" style="color: var(--primary-orange-dark); font-weight: 500;">
+                  <strong>Note:</strong> We kindly ask our valued customers to evaluate Performance Level of entire system for the use of safety relay unit of third party.
+                </p>
+              </div>
+            </div>
 
-         <br>
-        <br>
-        </p>
-
-       
-        <hr>
-
-        <!-- Buttons -->
-        <div class="mt-4">
-          <a href="#" class="btn btn-primary me-2"><i class="fas fa-envelope"></i> Send Inquiry</a>
+            <!-- Action Buttons -->
+            <div class="action-buttons">
+              <a href="#" class="btn btn-inquiry">
+                <i class="fas fa-envelope"></i> Send Inquiry
+              </a>
+            </div>
+          </div>
+          
+          <!-- Right: Product Image -->
+          <div class="col-lg-6 order-1 order-lg-2">
+            <div class="product-image-container">
+              <img src="<?= base_url('assets_system/images/safetyswitches.jpg')?>"
+                alt="Safety Switches Product Image"
+                class="product-image">
+              <p class="image-caption">Advanced Safety Switches for Industrial Applications</p>
+            </div>
+          </div>
         </div>
       </div>
-      
-      <!-- Right: Image -->
-      <div class="col-md-6 order-1 order-md-2 text-center mb-4 mb-md-0">
-        <img src="<?= base_url('assets_system/images/electroniccounter.jpg')?>"
-          alt="Product Image"
-            class="img-fluid rounded product-image">
-      </div>
-
-      </div>
     </div>
-  </div>
-</section>
-
+  </section>
 
   <!-- CTA Section -->
   <section class="cta">
-    <h1 class="fade-in">Looking for the Right Measuring Solution?</h2>
+    <h1 class="fade-in">Looking for the Right Measuring Solution?</h1>
     <p class="fade-in delay-1">Contact us today to discuss your requirements and find the perfect product for your needs.</p>
     <a href="<?= base_url('index/contact_us') ?>" class="btn btn-light fade-in delay-2">INQUIRE</a>
   </section>

@@ -230,7 +230,7 @@ section p {
   color: white;
 }
 .btn-orange:hover {
-  background: linear-gradient(135deg, var(--newblue2), var(--));
+  background: linear-gradient(135deg, var(--newblue2), var(--newblue));
   transform: translateY(-3px);
   color: white;
 }
@@ -266,20 +266,187 @@ section p {
 }
 
 /* ===============================
-   PARTNER LOGOS
+   MODERN PARTNER LOGOS SECTION
 =================================*/
-.partner-logos img {
-  max-height: 100px;
-  max-width: 200px;
-  margin: 20px 30px;
+.partners-section {
+  background: linear-gradient(135deg, var(--light-blue) 0%, #fff 100%);
+  padding: 100px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.partners-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2317A2DC' fill-opacity='0.05'%3E%3Ccircle cx='30' cy='30' r='4'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  z-index: 0;
+}
+
+.partners-container {
+  position: relative;
+  z-index: 1;
+}
+
+.partners-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.partners-header h2 {
+  font-size: 2.5rem;
+  color: var(--newblue2);
+  margin-bottom: 15px;
+  position: relative;
+  display: inline-block;
+}
+
+.partners-header h2::after {
+  content: '';
+  position: absolute;
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(90deg, var(--newblue), var(--primary-blue));
+  border-radius: 2px;
+}
+
+.partners-header p {
+  color: #666;
+  max-width: 600px;
+  margin: 30px auto 0;
+  font-size: 1.1rem;
+}
+
+.partners-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 30px;
+  margin-top: 50px;
+}
+
+.partner-card {
+  background: white;
+  border-radius: 16px;
+  padding: 30px 20px;
+  text-align: center;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 180px;
+}
+
+.partner-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, var(--newblue), var(--primary-blue));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s ease;
+}
+
+.partner-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+.partner-card:hover::before {
+  transform: scaleX(1);
+}
+
+.partner-logo {
+  max-height: 80px;
+  max-width: 160px;
   object-fit: contain;
-  filter: grayscale(0%);
+  
+  opacity: 0.8;
   transition: var(--transition);
 }
-.partner-logos img:hover {
+
+.partner-card:hover .partner-logo {
   filter: grayscale(0%);
+  opacity: 1;
   transform: scale(1.05);
 }
+
+.partner-name {
+  margin-top: 15px;
+  font-weight: 600;
+  color: var(--newblue2);
+  font-size: 0.9rem;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: var(--transition);
+}
+
+.partner-card:hover .partner-name {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Partner categories */
+.partner-categories {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-bottom: 40px;
+}
+
+.category-btn {
+  background: white;
+  border: 1px solid #e0e0e0;
+  color: #666;
+  padding: 8px 20px;
+  border-radius: 30px;
+  font-weight: 500;
+  transition: var(--transition);
+  cursor: pointer;
+}
+
+.category-btn.active,
+.category-btn:hover {
+  background: var(--newblue);
+  color: white;
+  border-color: var(--newblue);
+}
+
+/* Animation for logos */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.partner-card {
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+.partner-card:nth-child(1) { animation-delay: 0.1s; }
+.partner-card:nth-child(2) { animation-delay: 0.2s; }
+.partner-card:nth-child(3) { animation-delay: 0.3s; }
+.partner-card:nth-child(4) { animation-delay: 0.4s; }
+.partner-card:nth-child(5) { animation-delay: 0.5s; }
+.partner-card:nth-child(6) { animation-delay: 0.6s; }
 
 /* ===============================
    FOOTER
@@ -416,6 +583,11 @@ body > div[style*="height: 90px"] {
     display: inline-block;
     margin-bottom: 12px;
   }
+  
+  .partners-grid {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 20px;
+  }
 }
 @media (max-width: 768px) {
   section h1 { font-size: 2rem; }
@@ -423,6 +595,20 @@ body > div[style*="height: 90px"] {
   footer .links a {
     display: block;
     margin-bottom: 12px;
+  }
+  
+  .partners-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
+  
+  .partner-card {
+    height: 150px;
+    padding: 20px 15px;
+  }
+  
+  .partner-logo {
+    max-height: 60px;
   }
 }
 /* HERO SECTION */
@@ -735,7 +921,72 @@ body > div[style*="height: 90px"] {
 }
 
 
+/* ===============================
+   CTA FIX (Folder Corner Style)
+=================================*/
+.cta-wavenet-style {
+  /* Use your dark blue variable */
+  background-color: var(--newblue2) !important; 
+  color: white;
+  padding: 80px 0; /* Adjusted padding for better fit */
+  position: relative;
+  overflow: hidden;
+  /* Key: Creates the folder/tucked shape */
+  clip-path: polygon(
+    0 15%,     /* Top-Left Corner Tuck */
+    10% 0, 
+    100% 0, 
+    100% 85%,  /* Bottom-Right Corner Tuck */
+    90% 100%, 
+    0 100%
+  );
+  transition: clip-path 0.3s ease;
+}
 
+/* Fix text and button colors inside the new CTA style */
+.cta-wavenet-style h2,
+.cta-wavenet-style p {
+  color: white !important; /* Ensure text is white for contrast */
+}
+
+/* Styling the button to match the yellow/orange style */
+.btn-wavenet-cta {
+  background-color: var(--newblue) !important; 
+  
+  color: white !important;
+  font-weight: 700 !important;
+  transition: transform 0.3s ease;
+  
+  /* --- CENTERING FIX --- */
+  display: block; /* Important: Treat the button as a block element */
+  margin: 20px auto 0 auto; /* Center the block element horizontally */
+  max-width: 250px; /* Optional: Constrain the button width for better appearance */
+  /* --- END FIX --- */
+}
+
+.btn-wavenet-cta:hover {
+  background-color: var(--newblue) !important;
+  border-color: white !important;
+  transform: translateY(-2px);
+}
+
+/* Adjusting the clip-path for smaller screens */
+@media (max-width: 768px) {
+  .cta-wavenet-style {
+    /* Slightly smaller tuck on mobile */
+    clip-path: polygon(
+      0 10%, 
+      5% 0, 
+      100% 0, 
+      100% 90%, 
+      95% 100%, 
+      0 100%
+    );
+    padding: 60px 0;
+  }
+}
+
+  
 
   </style>
 </head>
@@ -858,7 +1109,7 @@ body > div[style*="height: 90px"] {
       <div class="col-lg-6 text-center text-lg-start">
         <h1 class="fade-in">Collaboration Across Borders</h1>
         <p class="lead fade-in delay-1">
-          Working closely with our headquarters and distributors, we help expand the reach of Line Seiki’s technologies throughout the region. Through partnerships, training, and joint initiatives, we strengthen communication between engineers, manufacturers, and end users.
+          Working closely with our headquarters and distributors, we help expand the reach of Line Seiki's technologies throughout the region. Through partnerships, training, and joint initiatives, we strengthen communication between engineers, manufacturers, and end users.
         </p>
       </div>
       <div class="col-lg-6 text-center">
@@ -904,29 +1155,50 @@ body > div[style*="height: 90px"] {
   </div>
 </section>
 
-  <!-- Partner / Association Logos -->
-  <section class="section-white text-center">
-    <div class="container">
-      <h2 class="fade-in">Our Partners and Associations</h2>
-      <div class="d-flex justify-content-center flex-wrap partner-logos">
-        <img src=<?= base_url('assets_system/images/MIAP.png') ?> alt="Partner 5" class="fade-in delay-5">
-        <img src=<?= base_url('assets_system/images/PDMA.png') ?> alt="Partner 6" class="fade-in delay-6">
-        <img src=<?= base_url('assets_system/images/AIAP.jpg') ?> alt="Partner 6" class="fade-in delay-7">
-        <img src=<?= base_url('assets_system/images/Violet-White.png') ?> alt="Partner 6" class="fade-in delay-8">
+  <!-- Partner / Association Logos - MODERN DESIGN -->
+  <section class="partners-section">
+    <div class="container partners-container">
+      <div class="partners-header">
+        <h2 class="fade-in">Our Valued Partners & Associations</h2>
+        <p class="fade-in delay-1">
+          We're proud to collaborate with industry leaders and organizations that share our commitment 
+          to innovation, quality, and excellence in manufacturing technology.
+        </p>
       </div>
+      
+      
+      <div class="partners-grid">
+        <div class="partner-card fade-in">
+          <img src=<?= base_url('assets_system/images/MIAP.png') ?> alt="MIAP" class="partner-logo">
+          <div class="partner-name">Manufacturing Industry Association</div>
+        </div>
+        <div class="partner-card fade-in">
+          <img src=<?= base_url('assets_system/images/PDMA.png') ?> alt="PDMA" class="partner-logo">
+          <div class="partner-name">Product Development Association</div>
+        </div>
+        <div class="partner-card fade-in">
+          <img src=<?= base_url('assets_system/images/AIAP.jpg') ?> alt="AIAP" class="partner-logo">
+          <div class="partner-name">Asian Industrial Automation Partnership</div>
+        </div>
+        <div class="partner-card fade-in">
+          <img src=<?= base_url('assets_system/images/Violet-White.png') ?> alt="Violet Technologies" class="partner-logo">
+          <div class="partner-name">Violet Technologies</div>
+        </div>
+       
     </div>
   </section>
 
   <!-- CTA Section -->
-  <section class="section-light-orange text-center">
-    <div class="container">
-      <h2 class="fade-in">Get in Touch</h2>
-      <p class="mb-4 fade-in delay-1">
-        Interested in our products or services? Connect with us today and let's build solutions together.  
-      </p>
-      <a href="<?= base_url('index/contact_us') ?>" class="btn btn-primary btn-lg fade-in delay-2">Contact Us</a>
-    </div>
-  </section>
+  <section class="cta-wavenet-style text-center">
+    <div class="container">
+            <h2 class="fade-in" style="font-size: 2.5rem; font-weight: 700; margin-bottom: 20px;">
+         Interested in our products or services? Connect with us today and let's build solutions together.  
+      </h2>
+                        <a href="<?= base_url('index/contact_us') ?>" class="btn btn-lg btn-wavenet-cta fade-in delay-2">
+        Get in Touch 
+      </a>
+    </div>
+  </section>
 
   <!-- Footer -->
   <footer>
@@ -1020,6 +1292,22 @@ body > div[style*="height: 90px"] {
       document.addEventListener('click', function(){
         document.querySelectorAll('.dropdown-menu .show').forEach(function(openMenu){
           openMenu.classList.remove('show');
+        });
+      });
+      
+      // Partner category filter functionality
+      const categoryBtns = document.querySelectorAll('.category-btn');
+      const partnerCards = document.querySelectorAll('.partner-card');
+      
+      categoryBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+          // Remove active class from all buttons
+          categoryBtns.forEach(b => b.classList.remove('active'));
+          // Add active class to clicked button
+          this.classList.add('active');
+          
+          // In a real implementation, you would filter the partner cards here
+          // based on the selected category
         });
       });
     });
