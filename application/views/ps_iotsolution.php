@@ -751,7 +751,7 @@
           <!-- Right Image -->
           <div class="col-lg-5 text-center fade-in delay-1">
             <div class="img-hover">
-              <img src="<?= base_url('assets_system/images/Gemba-hero2new.png') ?>" 
+              <img src="<?= base_url('assets_system/images/new-gemba.png') ?>" 
                   alt="GEMBA Overview" class="img-fluid">
             </div>
           </div>
