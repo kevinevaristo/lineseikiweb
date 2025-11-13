@@ -145,64 +145,317 @@ hr {
 }
 
 /* =========================
-   Sections
+   MODERN CONTACT SECTIONS
 ========================= */
-section {
-  padding: 100px 0;
+
+/* Modern Header Section with Background Image */
+.contact-hero {
+  background: 
+    /* Blue overlay */
+    linear-gradient(135deg, rgba(15, 70, 123, 0.85) 50%, rgba(23, 162, 220, 0.75) 100%),
+    /* Background image */
+    url('<?= base_url('assets_system/images/newlaunch4.jpg') ?>') center/cover no-repeat;
+  color: white;
+  padding: 150px 0 100px;
   position: relative;
+  overflow: hidden;
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
 }
 
-section h1, section h2 {
-  margin-bottom: 24px;
-  font-weight: 700;
-  position: relative;
-}
-
-section h1 {
-  font-size: 2.8rem;
-  color: var(--primary-blue);
-}
-
-section h2 {
-  font-size: 2.2rem;
-  color: var(--primary-blue);
-}
-
-section h2::after {
+.contact-hero::before {
   content: '';
   position: absolute;
-  bottom: -10px;
+  top: 0;
   left: 0;
-  width: 60px;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.contact-hero-content {
+  position: relative;
+  z-index: 2;
+}
+
+.contact-hero h1 {
+  font-size: 3.5rem;
+  font-weight: 800;
+  margin-bottom: 25px;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: -0.5px;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.contact-hero .lead {
+  font-size: 1.3rem;
+  opacity: 0.95;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Modern Contact Information Section */
+.contact-info-section {
+  background: linear-gradient(135deg, var(--light-blue) 0%, #fff 100%);
+  padding: 100px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.contact-info-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2317A2DC' fill-opacity='0.03'%3E%3Ccircle cx='30' cy='30' r='4'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  z-index: 0;
+}
+
+.contact-info-container {
+  position: relative;
+  z-index: 1;
+}
+
+.contact-info-section h2 {
+  font-size: 3rem;
+  color: var(--newblue2);
+  font-weight: 800;
+  margin-bottom: 60px;
+  text-align: center;
+  position: relative;
+}
+
+.contact-info-section h2::after {
+  content: '';
+  position: absolute;
+  bottom: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
   height: 4px;
   background: linear-gradient(90deg, var(--newblue), var(--primary-blue));
   border-radius: 2px;
 }
 
-section p {
-  margin-bottom: 28px;
-  font-size: 1.1rem;
+/* Modern Contact Cards */
+.contact-info-card {
+  background: white;
+  border-radius: 20px;
+  padding: 40px 30px;
+  text-align: center;
+  transition: var(--transition);
+  height: 100%;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  border: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.contact-info-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background: linear-gradient(90deg, var(--newblue), var(--primary-blue));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s ease;
+}
+
+.contact-info-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+}
+
+.contact-info-card:hover::before {
+  transform: scaleX(1);
+}
+
+.contact-info-card i {
+  font-size: 3rem;
+  color: var(--newblue);
+  margin-bottom: 25px;
+  transition: var(--transition);
+}
+
+.contact-info-card:hover i {
+  transform: scale(1.1);
+  color: var(--primary-blue);
+}
+
+.contact-info-card h5 {
+  color: var(--newblue2);
+  font-weight: 700;
+  margin-bottom: 20px;
+  font-size: 1.4rem;
+}
+
+.contact-info-card p {
   color: #495057;
+  margin-bottom: 0;
+  font-size: 1.1rem;
+  line-height: 1.6;
 }
 
-/* Color variations */
-.section-white {
+/* Modern Contact Form Section */
+.contact-form-section {
   background: #fff;
-  color: #333;
+  padding: 100px 0;
+  position: relative;
 }
 
-.section-light-blue {
-  background: var(--light-blue);
-  color: #333;
+.contact-form-section h2 {
+  font-size: 3rem;
+  color: var(--newblue2);
+  font-weight: 800;
+  margin-bottom: 50px;
+  text-align: center;
+  position: relative;
+}
+
+.contact-form-section h2::after {
+  content: '';
+  position: absolute;
+  bottom: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(90deg, var(--newblue), var(--primary-blue));
+  border-radius: 2px;
+}
+
+/* Modern Form Styling */
+.contact-form {
+  background: white;
+  border-radius: 20px;
+  padding: 50px 40px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+  border: none;
+}
+
+.form-control {
+  border-radius: 12px;
+  padding: 15px 20px;
+  border: 1px solid #e0e0e0;
+  transition: var(--transition);
+  font-size: 1rem;
+}
+
+.form-control:focus {
+  border-color: var(--primary-blue);
+  box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.15);
+}
+
+.form-label {
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: var(--newblue2);
+  font-size: 1rem;
+}
+
+/* Modern Map Section */
+.map-section {
+  background: linear-gradient(135deg, var(--light-blue) 0%, #fff 100%);
+  padding: 100px 0;
   position: relative;
   overflow: hidden;
 }
 
-.section-light-orange {
-  background: var(--light-blue);
-  color: #333;
+.map-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2317A2DC' fill-opacity='0.03'%3E%3Ccircle cx='30' cy='30' r='4'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  z-index: 0;
+}
+
+.map-container {
+  position: relative;
+  z-index: 1;
+}
+
+.map-section h2 {
+  font-size: 3rem;
+  color: var(--newblue2);
+  font-weight: 800;
+  margin-bottom: 50px;
+  text-align: center;
+  position: relative;
+}
+
+.map-section h2::after {
+  content: '';
+  position: absolute;
+  bottom: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(90deg, var(--newblue), var(--primary-blue));
+  border-radius: 2px;
+}
+
+.map-wrapper {
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  border: none;
+}
+
+.map-wrapper iframe {
+  display: block;
+  width: 100%;
+  border: none;
+}
+
+/* Modern CTA Section */
+.cta-section {
+  background: linear-gradient(135deg, var(--newblue2) 0%, var(--newblue) 100%);
+  color: white;
+  padding: 100px 0;
   position: relative;
   overflow: hidden;
+}
+
+.cta-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.cta-content {
+  position: relative;
+  z-index: 2;
+}
+
+.cta-section h2 {
+  font-size: 3rem;
+  font-weight: 800;
+  margin-bottom: 25px;
+  color: white;
+  text-align: center;
+}
+
+.cta-section p {
+  font-size: 1.2rem;
+  opacity: 0.9;
+  margin-bottom: 40px;
+  text-align: center;
 }
 
 /* =========================
@@ -210,7 +463,7 @@ section p {
 ========================= */
 .btn {
   padding: 0.8rem 1.8rem;
-  border-radius: 8px;
+  border-radius: 12px;
   font-weight: 600;
   transition: var(--transition);
   position: relative;
@@ -252,152 +505,104 @@ section p {
 }
 
 .btn-orange:hover {
-  background: linear-gradient(135deg, var(--newblue2), var(--));
+  background: linear-gradient(135deg, var(--newblue), var(--newblue2));
   transform: translateY(-3px);
   box-shadow: 0 8px 20px rgba(13, 110, 253, 0.4);
   color: white;
 }
 
-.btn-explore {
-  background: transparent;
-  border: 2px solid var(--primary-blue);
+.btn-light {
+  background: rgba(255, 255, 255, 0.9);
+  border: none;
   color: var(--primary-blue);
+  border-color: #000;
 }
 
-.btn-explore:hover {
-  background: var(--primary-blue);
-  color: #fff;
+.btn-light:hover {
+  background: #fff;
+  color: var(--primary-blue-dark);
   transform: translateY(-3px);
-  box-shadow: 0 8px 20px rgba(13, 110, 253, 0.3);
-}
-
-.btn-link {
-  text-decoration: none;
-  position: relative;
-}
-
-.btn-link span::after {
-  content: '';
-  position: absolute;
-  width: 0;
-  height: 2px;
-  bottom: -4px;
-  left: 0;
-  background-color: currentColor;
-  transition: var(--transition);
-}
-
-.btn-link:hover span::after {
-  width: 100%;
+  box-shadow: 0 8px 20px rgba(255, 255, 255, 0.3);
 }
 
 /* CTA Buttons */
 .cta-buttons {
   display: flex;
   justify-content: center;
-  gap: 15px;
+  gap: 20px;
 }
 
 .cta-buttons .btn {
   flex: 1;
-  min-width: 180px;
+  min-width: 200px;
   text-align: center;
+  padding: 15px 25px;
+  font-size: 1.1rem;
+  font-weight: 700;
 }
 
 .cta-buttons .btn-request-demo {
   background: transparent;
-  border: 2px solid var(--primary-blue);
-  color: var(--primary-blue);
+  border: 2px solid white;
+  color: white;
 }
 
 .cta-buttons .btn-request-demo:hover {
-  background: var(--primary-blue);
-  color: #fff;
-  transform: translateY(-3px);
-  box-shadow: 0 8px 20px rgba(13, 110, 253, 0.3);
-}
-
-/* =========================
-   Images
-========================= */
-.img-hover {
-  transition: var(--transition);
-  border-radius: 16px;
-  overflow: hidden;
-}
-
-.img-hover img {
-  transition: var(--transition);
-  border-radius: 16px;
-}
-
-.img-hover:hover img {
-  transform: scale(1.05);
-}
-
-/* =========================
-   Forms
-========================= */
-.form-control {
-  border-radius: 8px;
-  padding: 12px 16px;
-  border: 1px solid #ced4da;
-  transition: var(--transition);
-}
-
-.form-control:focus {
-  border-color: var(--primary-blue);
-  box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
-}
-
-.form-label {
-  font-weight: 500;
-  margin-bottom: 8px;
-  color: var(--dark);
-}
-
-/* =========================
-   Cards
-========================= */
-.contact-info-card {
   background: white;
-  border-radius: 16px;
-  padding: 30px;
-  
-  transition: var(--transition);
-  height: 100%;
-}
-
-.contact-info-card:hover {
-  transform: translateY(-5px);
-  
-}
-
-.contact-info-card i {
-  font-size: 2.5rem;
-  color: var(--primary-blue);
-  margin-bottom: 20px;
-}
-
-.contact-info-card h5 {
-  color: var(--primary-blue);
-  font-weight: 600;
-  margin-bottom: 15px;
-}
-
-.contact-info-card p {
-  color: #495057;
-  margin-bottom: 0;
+  color: var(--newblue2);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(255, 255, 255, 0.3);
 }
 
 /* =========================
-   Map
+   Animations
 ========================= */
-.map-container {
-  border-radius: 16px;
-  overflow: hidden;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
 }
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.delay-1 { transition-delay: 0.1s; }
+.delay-2 { transition-delay: 0.2s; }
+.delay-3 { transition-delay: 0.3s; }
+.delay-4 { transition-delay: 0.4s; }
+
+/* Card Animation */
+@keyframes cardFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.contact-info-card {
+  animation: cardFadeIn 0.6s ease forwards;
+}
+
+.contact-info-card:nth-child(1) { animation-delay: 0.1s; }
+.contact-info-card:nth-child(2) { animation-delay: 0.2s; }
+.contact-info-card:nth-child(3) { animation-delay: 0.3s; }
+.contact-info-card:nth-child(4) { animation-delay: 0.4s; }
 
 /* =========================
    Footer
@@ -487,57 +692,36 @@ footer .bottom a:hover {
 }
 
 /* =========================
-   Animations
-========================= */
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(30px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-.fade-in {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
-}
-
-.fade-in.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.delay-1 { transition-delay: 0.1s; }
-.delay-2 { transition-delay: 0.2s; }
-.delay-3 { transition-delay: 0.3s; }
-.delay-4 { transition-delay: 0.4s; }
-
-/* =========================
    Responsive
 ========================= */
 @media (max-width: 992px) {
-  section { padding: 80px 0; }
-  section h1 { font-size: 2.4rem; }
-  section h2 { font-size: 2rem; }
+  .contact-hero { padding: 120px 0 80px; min-height: 60vh; }
+  .contact-hero h1 { font-size: 2.8rem; }
+  .contact-info-section h2,
+  .contact-form-section h2,
+  .map-section h2,
+  .cta-section h2 { font-size: 2.4rem; }
   .dropdown-submenu > .dropdown-menu { left: 0; margin-top: 0; }
   footer .links a { display: inline-block; margin-bottom: 12px; }
 }
 
 @media (max-width: 768px) {
-  section h1 { font-size: 2rem; }
-  section h2 { font-size: 1.8rem; }
+  .contact-hero { min-height: 50vh; }
+  .contact-hero h1 { font-size: 2.2rem; }
+  .contact-info-section h2,
+  .contact-form-section h2,
+  .map-section h2,
+  .cta-section h2 { font-size: 2rem; }
   footer .links a { display: block; margin-bottom: 12px; }
   .cta-buttons { flex-direction: column; gap: 15px; }
+  .contact-form { padding: 30px 25px; }
+  .contact-info-card { padding: 30px 20px; }
 }
 
 /* =========================
    Fixes
 ========================= */
 body > div[style*="margin-top: 90px"] { display: none !important; }
-section h2::after { left: 50% !important; transform: translateX(-50%) !important; }
 
   </style>
 </head>
@@ -586,75 +770,77 @@ section h2::after { left: 50% !important; transform: translateX(-50%) !important
   <!-- Offset for fixed navbar -->
   <div style="margin-top: 90px;"></div>
 
-  <!-- ✅ Sections -->
+  <!-- ✅ Modern Contact Sections -->
   <main>
-    <!-- 1. Header / Intro -->
-    <section class="section-light-blue">
+    <!-- 1. Modern Header with Background Image -->
+    <section class="contact-hero">
       <div class="container">
         <div class="row align-items-center">
-          <div class="col-lg-8 mx-auto text-center fade-in">
-            <br><br><br><br><h1>We'd Love to Hear from You</h1>
+          <div class="col-lg-8 mx-auto text-center fade-in contact-hero-content">
+            <h1>We'd Love to Hear from You</h1>
             <p class="lead">Get in touch with Line Seiki Asia Pacific for inquiries, product support, or to schedule a consultation. Our team is ready to help you with precision measuring solutions tailored to your needs.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- 2. Contact Information -->
-    <section class="section-white">
-      <div class="container fade-in">
-        <h2 class="text-center mb-5">Contact Information</h2>
-        <div class="row">
-          <div class="col-md-6 col-lg-3 mb-4">
-            <div class="contact-info-card text-center">
-              <i class="fas fa-map-marker-alt"></i>
-              <h5>Office Address</h5>
-              <p>Lot 3&5, Block 22, Phase 4 Cavite Economic Zone Dr, Rosario, 4107</p>
+    <!-- 2. Modern Contact Information -->
+    <section class="contact-info-section">
+      <div class="contact-info-container">
+        <div class="container fade-in">
+          <h2>Contact Information</h2>
+          <div class="row">
+            <div class="col-md-6 col-lg-3 mb-4">
+              <div class="contact-info-card">
+                <i class="fas fa-map-marker-alt"></i>
+                <h5>Office Address</h5>
+                <p>Lot 3&5, Block 22, Phase 4 Cavite Economic Zone Dr, Rosario, 4107</p>
+              </div>
             </div>
-          </div>
-          <div class="col-md-6 col-lg-3 mb-4">
-            <div class="contact-info-card text-center">
-              <i class="fas fa-phone"></i>
-              <h5>Phone</h5>
-              <p>(046) 437 2001</p>
+            <div class="col-md-6 col-lg-3 mb-4">
+              <div class="contact-info-card">
+                <i class="fas fa-phone"></i>
+                <h5>Phone</h5>
+                <p>(046) 437 2001</p>
+              </div>
             </div>
-          </div>
-          <div class="col-md-6 col-lg-3 mb-4">
-            <div class="contact-info-card text-center">
-              <i class="fas fa-envelope"></i>
-              <h5>Email</h5>
-              <p>info@sales.line.com.ph</p>
+            <div class="col-md-6 col-lg-3 mb-4">
+              <div class="contact-info-card">
+                <i class="fas fa-envelope"></i>
+                <h5>Email</h5>
+                <p>info@sales.line.com.ph</p>
+              </div>
             </div>
-          </div>
-          <div class="col-md-6 col-lg-3 mb-4">
-            <div class="contact-info-card text-center">
-              <i class="fas fa-clock"></i>
-              <h5>Operating Hours</h5>
-              <p>Mon - Fri, 9:00 AM - 6:00 PM</p>
+            <div class="col-md-6 col-lg-3 mb-4">
+              <div class="contact-info-card">
+                <i class="fas fa-clock"></i>
+                <h5>Operating Hours</h5>
+                <p>Mon - Fri, 9:00 AM - 6:00 PM</p>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- 3. Contact Form -->
-    <section class="section-light-orange">
+    <!-- 3. Modern Contact Form -->
+    <section class="contact-form-section">
       <div class="container fade-in">
         <div class="row">
           <div class="col-lg-8 mx-auto">
-            <h2 class="text-center mb-4">Send Us a Message</h2>
+            <h2>Send Us a Message</h2>
             <form class="contact-form">
               <div class="row">
-                <div class="col-md-6 mb-3">
+                <div class="col-md-6 mb-4">
                   <label class="form-label">Name</label>
                   <input type="text" class="form-control" placeholder="Your Name" required>
                 </div>
-                <div class="col-md-6 mb-3">
+                <div class="col-md-6 mb-4">
                   <label class="form-label">Email</label>
                   <input type="email" class="form-control" placeholder="Your Email" required>
                 </div>
               </div>
-              <div class="mb-3">
+              <div class="mb-4">
                 <label class="form-label">Subject</label>
                 <input type="text" class="form-control" placeholder="Subject" required>
               </div>
@@ -663,7 +849,7 @@ section h2::after { left: 50% !important; transform: translateX(-50%) !important
                 <textarea class="form-control" rows="5" placeholder="Your Message" required></textarea>
               </div>
               <div class="text-center">
-                <button type="submit" class="btn btn-primary">Submit Message</button>
+                <button type="submit" class="btn btn-primary btn-lg">Submit Message</button>
               </div>
             </form>
           </div>
@@ -671,48 +857,41 @@ section h2::after { left: 50% !important; transform: translateX(-50%) !important
       </div>
     </section>
 
-  <!-- 4. Location / Map -->
-<section class="section-white">
-  <div class="container fade-in">
-    <h2 class="text-center mb-4">Our Location</h2>
-    <p class="text-center mb-5">
-      Visit our office in Cavite Economic Zone. Find us easily using the map below:
-    </p>
-    <div class="map-container">
-      <div class="ratio ratio-16x9">
-        <!-- Corrected Google Maps Embed with Red Pin -->
-        <iframe 
-          src="https://www.google.com/maps?q=Line+Seiki+Philippines+Inc+Cavite+Economic+Zone&hl=en&z=18&output=embed"
-          width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy">
-        </iframe>
+    <!-- 4. Modern Location / Map -->
+    <section class="map-section">
+      <div class="map-container">
+        <div class="container fade-in">
+          <h2>Our Location</h2>
+          <p class="text-center mb-5">
+            Visit our office in Cavite Economic Zone. Find us easily using the map below:
+          </p>
+          <div class="map-wrapper">
+            <div class="ratio ratio-16x9">
+              <iframe 
+                src="https://www.google.com/maps?q=Line+Seiki+Philippines+Inc+Cavite+Economic+Zone&hl=en&z=18&output=embed"
+                width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy">
+              </iframe>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-
-
-
-    <!-- 5. CTA Section -->
-   <section class="section-light-blue">
-  <div class="container fade-in">
-    <div class="row justify-content-center">
-      <div class="col-lg-8 text-center">
-        <h2>Ready to Take the Next Step?</h2>
-        <p class="mb-4">Schedule a consultation or request a product demo directly through our website today.</p>
-        
-        <!-- CTA Buttons -->
-        <div class="cta-buttons">
-  <a href="#" class="btn btn-primary">Schedule Consultation</a>
-  <a href="#" class="btn btn-request-demo">Request Demo</a>
-</div>
-
+    <!-- 5. Modern CTA Section -->
+    <section class="cta-section">
+      <div class="container">
+        <div class="cta-content text-center fade-in">
+          <h2>Ready to Take the Next Step?</h2>
+          <p>Schedule a consultation or request a product demo directly through our website today.</p>
+          
+          <!-- CTA Buttons -->
+          <div class="cta-buttons">
+            <a href="#" class="btn btn-primary">Schedule Consultation</a>
+            <a href="#" class="btn btn-request-demo">Request Demo</a>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
-</section>
-
-
+    </section>
   </main>
 
   <!-- ✅ Footer -->

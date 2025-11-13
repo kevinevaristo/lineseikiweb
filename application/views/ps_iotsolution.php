@@ -140,13 +140,20 @@
        🎯 MODERN IOT SECTIONS
     ========================= */
 
-    /* Modern GEMBA Overview Section */
+    /* Modern GEMBA Overview Section with Background Image */
     .iot-hero {
-      background: linear-gradient(135deg, var(--newblue2) 0%, var(--newblue) 100%);
+      background: 
+        /* Blue overlay */
+        linear-gradient(135deg, rgba(15, 70, 123, 0.85) 50%, rgba(23, 162, 220, 0.75) 100%),
+        /* Background image */
+        url('<?= base_url('assets_system/images/new3.jpg') ?>') center/cover no-repeat;
       color: white;
       padding: 150px 0 100px;
       position: relative;
       overflow: hidden;
+      min-height: 70vh;
+      display: flex;
+      align-items: center;
     }
 
     .iot-hero::before {
@@ -156,7 +163,6 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23FFFFFF' fill-opacity='0.05'%3E%3Ccircle cx='30' cy='30' r='4'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
       z-index: 1;
     }
 
@@ -172,12 +178,14 @@
       color: white;
       text-transform: uppercase;
       letter-spacing: -0.5px;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
     }
 
     .iot-hero p {
       font-size: 1.3rem;
-      opacity: 0.9;
+      opacity: 0.95;
       margin-bottom: 30px;
+      text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     }
 
     /* Modern Image Hover */
@@ -398,7 +406,6 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23FFFFFF' fill-opacity='0.05'%3E%3Ccircle cx='30' cy='30' r='4'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
       z-index: 1;
     }
 
@@ -654,7 +661,7 @@
 
     /* Responsive adjustments */
     @media (max-width: 992px) {
-      .iot-hero { padding: 120px 0 80px; }
+      .iot-hero { padding: 120px 0 80px; min-height: 60vh; }
       .iot-hero h2 { font-size: 2.8rem; }
       .components-section h2,
       .production-section h2,
@@ -664,6 +671,7 @@
     }
     
     @media (max-width: 768px) {
+      .iot-hero { min-height: 50vh; }
       .iot-hero h2 { font-size: 2.2rem; }
       .components-section h2,
       .production-section h2,
@@ -726,7 +734,7 @@
 
   <!-- ✅ Modern IoT Sections -->
   <main>
-    <!-- 1. Modern GEMBA Overview -->
+    <!-- 1. Modern GEMBA Overview with Background Image -->
     <section class="iot-hero">
       <div class="container">
         <div class="row align-items-center">
@@ -743,7 +751,7 @@
           <!-- Right Image -->
           <div class="col-lg-5 text-center fade-in delay-1">
             <div class="img-hover">
-              <img src="<?= base_url('assets_system/images/gemba2.png') ?>" 
+              <img src="<?= base_url('assets_system/images/Gemba-hero2new.png') ?>" 
                   alt="GEMBA Overview" class="img-fluid">
             </div>
           </div>
