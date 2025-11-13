@@ -95,4 +95,8 @@ class index extends CI_Controller
   {
    $this->load->view('ps_serv');
   }
+  function timer_details()
+  {
+   $this->load->view('timer_details');
+  }
 }

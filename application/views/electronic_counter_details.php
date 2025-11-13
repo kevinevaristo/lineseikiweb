@@ -723,16 +723,17 @@
             <!-- Product Description -->
             <div class="product-description">
               <p>
-                Mounted on opening/closing parts, safety switches detect the position of safety guards or doors as a mean of safeguarding. It's a sensor whose safety function cannot be disabled. All switches are of non-contact type.
+               Small type with a built-in battery, LED type with high functionality and visibility,
+and large display type for production control purposes, to name a few.
               </p>
               
               <div class="product-features">
                 <h5 class="mb-3" style="color: var(--newblue2); font-weight: 600;">Key Features:</h5>
                 <ul class="feature-list">
-                  <li>Non-contact safety switches</li>
-                  <li>Safety function cannot be disabled</li>
-                  <li>Detects position of safety guards or doors</li>
-                  <li>Reliable safeguarding solution</li>
+                  <li>Built-in Battery Models</li>
+                  <li>High-Visibility LED Displays</li>
+                  <li>Large Display Options</li>
+                  <li>Multi-Functional Capabilities</li>
                 </ul>
               </div>
 
@@ -754,10 +755,10 @@
           <!-- Right: Product Image -->
           <div class="col-lg-6 order-1 order-lg-2">
             <div class="product-image-container">
-              <img src="<?= base_url('assets_system/images/safetyswitches.jpg')?>"
+              <img src="<?= base_url('assets_system/images/electroniccounter.png')?>"
                 alt="Safety Switches Product Image"
                 class="product-image">
-              <p class="image-caption">Advanced Safety Switches for Industrial Applications</p>
+              <p class="image-caption">Advanced Electronic Counter for Industrial Applications</p>
             </div>
           </div>
         </div>

@@ -754,7 +754,7 @@
           <!-- Right: Product Image -->
           <div class="col-lg-6 order-1 order-lg-2">
             <div class="product-image-container">
-              <img src="<?= base_url('assets_system/images/safetyswitches.jpg')?>"
+              <img src="<?= base_url('assets_system/images/safetyswitches.png')?>"
                 alt="Safety Switches Product Image"
                 class="product-image">
               <p class="image-caption">Advanced Safety Switches for Industrial Applications</p>

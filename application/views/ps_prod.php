@@ -32,12 +32,19 @@
     }
 
     body {
-      background-color: #fff;
-      color: #333;
-      font-family: 'Inter', sans-serif;
-      line-height: 1.6;
-      overflow-x: hidden;
-    }
+  background-color: #fff;
+  color: #333;
+  font-family: 'Inter', sans-serif;
+  line-height: 1.6;
+  overflow-x: hidden;
+  background: 
+    /* Blue overlay */
+    linear-gradient(135deg, rgba(15, 70, 123, 0.85) 50%, rgba(23, 162, 220, 0.75) 100%),
+    /* Background image */
+    url('<?= base_url('assets_system/images/stockroom.jpg') ?>') center/cover no-repeat;
+  background-size: cover;
+  background-position: center;
+}
 
     /* Smooth scrolling */
     html {
@@ -145,21 +152,21 @@
 .products h1 {
   font-size: 2.5rem;
   margin-bottom: 40px;
-  color: var(--primary-blue);
+  color: white;
   font-weight: 700;
   position: relative;
 }
 
 .products h1::after {
-  content: '';
-  position: absolute;
-  left: 50%;
-  bottom: -15px;
-  transform: translateX(-50%);
-  width: 60px;
-  height: 4px;
-  background: linear-gradient(90deg, var(--newblue), var(--primary-blue));
-  border-radius: 2px;
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: -15px;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 4px;
+    background: white;
+    border-radius: 2px;
 }
 
 .categories {
@@ -173,7 +180,6 @@
   border-radius: 16px;
   overflow: hidden;
   cursor: pointer;
-  background: #fff;
   transition: var(--transition);
   position: relative;
 }
@@ -186,7 +192,6 @@
 .category img {
   width: 100%;
   height: 220px;
-  object-fit: cover;
   display: block;
   transition: opacity 0.4s ease;
 }
@@ -200,7 +205,7 @@
 .category-title {
   padding: 15px 10px;
   background: transparent;
-  color: var(--dark);
+  color: white;
   font-size: 1.1rem;
   font-weight: 600;
   text-align: center;
@@ -520,28 +525,28 @@
     <div class="categories">
   <div class="category fade-in delay-1">
     <a href="<?= base_url('index/products_details') ?>">
-    <img src=<?= base_url('assets_system/images/safetyswitches.jpg')?> alt="Safety Switches">
+    <img src=<?= base_url('assets_system/images/safetyswitches.png')?> alt="Safety Switches">
     </a>
     <div class="category-title">Safety Switches</div>
   </div>
 
   <div class="category fade-in delay-2">
     <a href="<?= base_url('index/electronic_counter_details') ?>">
-    <img src=<?= base_url('assets_system/images/electroniccounter.jpg')?> alt="Electronic Counters">
+    <img src=<?= base_url('assets_system/images/electroniccounter.png')?> alt="Electronic Counters">
     </a>
     <div class="category-title">Electronic Counters</div>
   </div>
 
   <div class="category fade-in delay-3">
-    <a href="<?= base_url('index/products_details') ?>">
-    <img src=<?= base_url('assets_system/images/timer.jpg')?> alt="Timers">
+    <a href="<?= base_url('index/timer_details') ?>">
+    <img src=<?= base_url('assets_system/images/timer.png')?> alt="Timers">
     </a>
     <div class="category-title">Timers</div>
   </div>
 
   <div class="category fade-in delay-4">
     <a href="<?= base_url('index/products_details') ?>">
-    <img src=<?= base_url('assets_system/images/mechanicalcounter.jpg')?> alt="Mechanical Counters">
+    <img src=<?= base_url('assets_system/images/mechanicalcounter.png')?> alt="Mechanical Counters">
     </a>
     <div class="category-title">Mechanical Counters</div>
   </div>
@@ -555,42 +560,42 @@
 
   <div class="category fade-in delay-2">
     <a href="<?= base_url('index/products_details') ?>">
-    <img src=<?= base_url('assets_system/images/limitswitches.jpg')?> alt="Limit Switches">
+    <img src=<?= base_url('assets_system/images/limitswitches.png')?> alt="Limit Switches">
     </a>
     <div class="category-title">Limit Switches</div>
   </div>
 
   <div class="category fade-in delay-3">
     <a href="<?= base_url('index/products_details') ?>">
-    <img src=<?= base_url('assets_system/images/countersensor.jpg')?> alt="Length Counters & Sensors">
+    <img src=<?= base_url('assets_system/images/countersensor.png')?> alt="Length Counters & Sensors">
     </a>
     <div class="category-title">Length Counters & Sensors</div>
   </div>
 
   <div class="category fade-in delay-4">
     <a href="<?= base_url('index/products_details') ?>">
-    <img src=<?= base_url('assets_system/images/rotary.jpg')?> alt="Rotary Encoders">
+    <img src=<?= base_url('assets_system/images/rotary.png')?> alt="Rotary Encoders">
     </a>
     <div class="category-title">Rotary Encoders</div>
   </div>
 
   <div class="category fade-in delay-1">
     <a href="<?= base_url('index/products_details') ?>">
-    <img src=<?= base_url('assets_system/images/tachometer.jpg')?> alt="Tachometers">
+    <img src=<?= base_url('assets_system/images/tachometer.png')?> alt="Tachometers">
     </a>
     <div class="category-title">Tachometers</div>
   </div>
 
   <div class="category fade-in delay-2">
     <a href="<?= base_url('index/products_details') ?>">
-    <img src=<?= base_url('assets_system/images/thermometers1.jpg')?> alt="Thermometers">
+    <img src=<?= base_url('assets_system/images/thermometers1.png')?> alt="Thermometers">
     </a>
     <div class="category-title">Thermometers</div>
   </div>
 
   <div class="category fade-in delay-3">
     <a href="<?= base_url('index/products_details') ?>">
-    <img src=<?= base_url('assets_system/images/measuring.jpg')?> alt="Measuring Instruments">
+    <img src=<?= base_url('assets_system/images/measuring.png')?> alt="Measuring Instruments">
     </a>
     <div class="category-title">Measuring Instruments</div>
   </div>
