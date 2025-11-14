@@ -545,64 +545,69 @@
   </div>
 
   <div class="category fade-in delay-4">
-    <a href="<?= base_url('index/products_details') ?>">
+    <a href="<?= base_url('index/mechanical_counter_details') ?>">
     <img src=<?= base_url('assets_system/images/mechanicalcounter.png')?> alt="Mechanical Counters">
     </a>
     <div class="category-title">Mechanical Counters</div>
   </div>
 
   <div class="category fade-in delay-1">
-    <a href="<?= base_url('index/products_details') ?>">
+    <a href="<?= base_url('index/slide_limit_counter_details') ?>">
     <img src=<?= base_url('assets_system/images/slidelimitnobg.png')?> alt="Slide Limit Counters">
     </a>
     <div class="category-title">Slide Limit Counters</div>
   </div>
 
   <div class="category fade-in delay-2">
-    <a href="<?= base_url('index/products_details') ?>">
+    <a href="<?= base_url('index/limit_switches_details') ?>">
     <img src=<?= base_url('assets_system/images/limitswitches.png')?> alt="Limit Switches">
     </a>
     <div class="category-title">Limit Switches</div>
   </div>
 
   <div class="category fade-in delay-3">
-    <a href="<?= base_url('index/products_details') ?>">
+    <a href="<?= base_url('index/length_counter_sensor_details') ?>">
     <img src=<?= base_url('assets_system/images/countersensor.png')?> alt="Length Counters & Sensors">
     </a>
     <div class="category-title">Length Counters & Sensors</div>
   </div>
 
   <div class="category fade-in delay-4">
-    <a href="<?= base_url('index/products_details') ?>">
+    <a href="<?= base_url('index/rotary_encoders_details') ?>">
     <img src=<?= base_url('assets_system/images/rotary.png')?> alt="Rotary Encoders">
     </a>
     <div class="category-title">Rotary Encoders</div>
   </div>
 
   <div class="category fade-in delay-1">
-    <a href="<?= base_url('index/products_details') ?>">
+    <a href="<?= base_url('index/tachometers_details') ?>">
     <img src=<?= base_url('assets_system/images/tachometer.png')?> alt="Tachometers">
     </a>
     <div class="category-title">Tachometers</div>
   </div>
 
   <div class="category fade-in delay-2">
-    <a href="<?= base_url('index/products_details') ?>">
+    <a href="<?= base_url('index/thermometers_details') ?>">
     <img src=<?= base_url('assets_system/images/thermometers1.png')?> alt="Thermometers">
     </a>
     <div class="category-title">Thermometers</div>
   </div>
 
   <div class="category fade-in delay-3">
-    <a href="<?= base_url('index/products_details') ?>">
+    <a href="<?= base_url('index/measuring_instruments_details') ?>">
     <img src=<?= base_url('assets_system/images/measuring.png')?> alt="Measuring Instruments">
     </a>
     <div class="category-title">Measuring Instruments</div>
   </div>
 
   <div class="category fade-in delay-4">
+<<<<<<< Updated upstream
     <a href="<?= base_url('index/products_details') ?>">
     <img src=<?= base_url('assets_system/images/tallycounter-nobg.png')?> alt="Tally Counters">
+=======
+    <a href="<?= base_url('index/tally_counters_details') ?>">
+    <img src=<?= base_url('assets_system/images/tallycounter.png')?> alt="Tally Counters">
+>>>>>>> Stashed changes
     </a>
     <div class="category-title">Tally Counters</div>
   </div>
