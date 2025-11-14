@@ -99,4 +99,41 @@ class index extends CI_Controller
   {
    $this->load->view('timer_details');
   }
+  function mechanical_counter_details()
+  {
+   $this->load->view('mechanical_counter_details');
+  }
+  function slide_limit_counter_details()
+  {
+   $this->load->view('slide_limit_counter_details');
+  }
+  function limit_switches_details()
+  {
+   $this->load->view('limit_switches_details');
+  }
+  function length_counter_sensor_details()
+  {
+   $this->load->view('length_counter_sensor_details');
+  }
+  function rotary_encoders_details()
+  {
+   $this->load->view('rotary_encoders_details');
+  }
+  function tachometers_details()
+  {
+   $this->load->view('tachometers_details');
+  }
+  function thermometers_details()
+  {
+   $this->load->view('thermometers_details');
+  }
+  function measuring_instruments_details()
+  {
+   $this->load->view('measuring_instruments_details');
+  }
+  function tally_counters_details()
+  {
+   $this->load->view('tally_counters_details');
+  }
+
 }
