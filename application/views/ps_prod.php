@@ -601,13 +601,9 @@
   </div>
 
   <div class="category fade-in delay-4">
-<<<<<<< Updated upstream
+
     <a href="<?= base_url('index/products_details') ?>">
     <img src=<?= base_url('assets_system/images/tallycounter-nobg.png')?> alt="Tally Counters">
-=======
-    <a href="<?= base_url('index/tally_counters_details') ?>">
-    <img src=<?= base_url('assets_system/images/tallycounter.png')?> alt="Tally Counters">
->>>>>>> Stashed changes
     </a>
     <div class="category-title">Tally Counters</div>
   </div>
