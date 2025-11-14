@@ -189,12 +189,49 @@
       overflow: hidden;
     }
     
-    .section-light-orange {
-      background: var(--light-blue);
-      color: #333;
-      position: relative;
-      overflow: hidden;
-    }
+    /* Section Light Orange with Wavy Gradient */
+.section-light-orange {
+  background: linear-gradient(135deg, var(--newblue2) 0%, var(--newblue) 100%);
+  color: white;
+  padding: 100px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.section-light-orange::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    /* Wavy pattern overlay */
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120' preserveAspectRatio='none'%3E%3Cpath d='M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z' fill='%23ffffff' fill-opacity='0.1'%3E%3C/path%3E%3C/svg%3E"),
+    /* Second wavy layer */
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120' preserveAspectRatio='none'%3E%3Cpath d='M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z' fill='%23ffffff' fill-opacity='0.05'%3E%3C/path%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  z-index: 1;
+  animation: waveMove 15s ease-in-out infinite alternate;
+}
+
+/* Floating circles for section light orange */
+.section-light-orange::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  animation: float 20s ease-in-out infinite;
+}
+
+.section-light-orange .container {
+  position: relative;
+  z-index: 2;
+}
+
 
     /* News & Events Cards */
     .content-container {
@@ -532,14 +569,21 @@ body > div[style*="margin-top: 90px"] {
    📰 ENHANCED NEWS & EVENTS STYLES
 ========================================================= */
 
-/* Hero Section */
+/* Hero Section with Background Image & Blue Overlay */
 .news-hero {
-  background: linear-gradient(135deg, rgba(15, 70, 123, 0.9) 50%, rgba(23, 162, 220, 0.8) 100%);
+  background: 
+    /* Blue overlay */
+    linear-gradient(135deg, rgba(15, 70, 123, 0.85) 50%, rgba(23, 162, 220, 0.75) 100%),
+    /* Background image */
+    url('<?= base_url('assets_system/images/new4.jpg') ?>') center/cover no-repeat;
   color: white;
   padding: 150px 0 80px;
   text-align: center;
   position: relative;
   overflow: hidden;
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
 }
 
 .news-hero::before {
@@ -549,14 +593,15 @@ body > div[style*="margin-top: 90px"] {
   left: 0;
   width: 100%;
   height: 100%;
-  background: radial-gradient(circle at 20% 80%, rgba(23, 162, 220, 0.2) 0%, transparent 50%),
-              radial-gradient(circle at 80% 20%, rgba(15, 70, 123, 0.15) 0%, transparent 50%);
-  z-index: 0;
+  background: 
+    radial-gradient(circle at 20% 80%, rgba(23, 162, 220, 0.2) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(15, 70, 123, 0.15) 0%, transparent 50%);
+  z-index: 1;
 }
 
 .news-hero .container {
   position: relative;
-  z-index: 1;
+  z-index: 2;
 }
 
 .news-hero h1 {
@@ -564,16 +609,65 @@ body > div[style*="margin-top: 90px"] {
   font-weight: 800;
   margin-bottom: 1rem;
   color: white;
-  -webkit-text-fill-color: white;
+  text-transform: uppercase;
+  letter-spacing: -0.5px;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 }
 
 .news-hero p {
   font-size: 1.3rem;
   max-width: 600px;
   margin: 0 auto;
-  opacity: 0.9;
+  opacity: 0.95;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  color: white;
 }
 
+/* Responsive adjustments for hero */
+@media (max-width: 992px) {
+  .news-hero {
+    padding: 120px 0 60px;
+    min-height: 60vh;
+  }
+  
+  .news-hero h1 {
+    font-size: 2.8rem;
+  }
+  
+  .news-hero p {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .news-hero {
+    padding: 100px 0 50px;
+    min-height: 50vh;
+  }
+  
+  .news-hero h1 {
+    font-size: 2.2rem;
+  }
+  
+  .news-hero p {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .news-hero {
+    padding: 80px 0 40px;
+    min-height: 40vh;
+  }
+  
+  .news-hero h1 {
+    font-size: 2rem;
+  }
+  
+  .news-hero p {
+    font-size: 1rem;
+  }
+}
 /* Filter Section */
 .news-filter {
   background: white;
@@ -731,14 +825,18 @@ body > div[style*="margin-top: 90px"] {
   text-transform: uppercase;
 }
 
-/* Newsletter Section */
+/* Newsletter Section with Background Image */
 .newsletter-section {
-  background: linear-gradient(135deg, var(--newblue2), var(--newblue));
+  background: 
+    /* Blue overlay */
+    linear-gradient(135deg, rgba(255, 255, 255, 0.4) 50%, rgba(255, 255, 255, 0.3) 100%)
+,
+    /* Background image */
+    url('<?= base_url('assets_system/images/.jpg') ?>') center/cover no-repeat;
   color: white;
-  padding: 4rem 0;
+  padding: 100px 0;
   text-align: center;
   border-radius: 20px;
-  margin: 4rem 0;
   position: relative;
   overflow: hidden;
 }
@@ -750,12 +848,36 @@ body > div[style*="margin-top: 90px"] {
   left: 0;
   width: 100%;
   height: 100%;
-  background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='50' cy='50' r='1' fill='%23FFFFFF' opacity='0.1'/%3E%3C/svg%3E");
+  background: rgba(15, 70, 123, 0.1);
+  z-index: 1;
 }
 
 .newsletter-section .container {
   position: relative;
-  z-index: 1;
+  z-index: 2;
+}
+
+.newsletter-section h2 {
+  font-size: 3rem;
+  font-weight: 800;
+  margin-bottom: 25px;
+  text-align: center;
+  text-shadow: none; /* Remove shadow (optional, but makes gradient cleaner) */
+
+  /* Gradient text */
+  background: linear-gradient(95deg, var(--newblue2) 0%, var(--newblue2) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+
+.newsletter-section p {
+  font-size: 1.2rem;
+  opacity: 0.9;
+  margin-bottom: 40px;
+  text-align: center;
+  text-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
+  color: var(--newblue2)
 }
 
 .newsletter-form {
@@ -763,6 +885,8 @@ body > div[style*="margin-top: 90px"] {
   margin: 2rem auto 0;
   display: flex;
   gap: 1rem;
+  position: relative;
+  z-index: 2;
 }
 
 .newsletter-form .form-control {
@@ -770,14 +894,104 @@ body > div[style*="margin-top: 90px"] {
   border: none;
   border-radius: 50px;
   padding: 1rem 1.5rem;
+  font-size: 1rem;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  background: rgba(255, 255, 255, 0.95);
+}
+
+.newsletter-form .form-control:focus {
+  border-color: var(--primary-blue);
+  box-shadow: 0 0 0 0.2rem rgba(255, 255, 255, 0.3);
+  background: white;
 }
 
 .newsletter-form .btn {
   border-radius: 50px;
   padding: 1rem 2rem;
   white-space: nowrap;
+  background: linear-gradient(135deg, var(--newblue), var(--newblue2));
+  border: none;
+  font-weight: 700;
+  
+  transition: var(--transition);
 }
 
+.newsletter-form .btn:hover {
+  background: linear-gradient(135deg, var(--newblue), var(--newblue2));
+  transform: translateY(-2px);
+}
+
+/* Wave animation */
+@keyframes waveMove {
+  0% {
+    background-position: 
+      bottom center,
+      top center;
+  }
+  100% {
+    background-position: 
+      bottom 10px center,
+      top -10px center;
+  }
+}
+
+/* Floating animation */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-20px) rotate(180deg);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .section-light-orange,
+  .newsletter-section {
+    padding: 80px 0;
+  }
+  
+  .section-light-orange h2,
+  .newsletter-section h2 {
+    font-size: 2.4rem;
+  }
+  
+  .section-light-orange p,
+  .newsletter-section p {
+    font-size: 1.1rem;
+  }
+  
+  .newsletter-form {
+    flex-direction: column;
+    max-width: 400px;
+  }
+  
+  .newsletter-form .btn {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .section-light-orange,
+  .newsletter-section {
+    padding: 60px 0;
+  }
+  
+  .section-light-orange h2,
+  .newsletter-section h2 {
+    font-size: 2rem;
+  }
+  
+  .section-light-orange p,
+  .newsletter-section p {
+    font-size: 1rem;
+  }
+  
+  .newsletter-form {
+    max-width: 300px;
+  }
+}
 /* Pagination */
 .news-pagination {
   display: flex;
@@ -834,6 +1048,7 @@ body > div[style*="margin-top: 90px"] {
     white-space: nowrap;
   }
 }
+
 
   </style>
 </head>
@@ -1045,18 +1260,18 @@ body > div[style*="margin-top: 90px"] {
   </section>
 
   <!-- Newsletter Section -->
-  <section class="section-light-orange">
-    <div class="container">
-      <div class="newsletter-section">
-        <h2>Stay Updated</h2>
-        <p>Subscribe to our newsletter for the latest news, events, and product updates</p>
-        <form class="newsletter-form">
-          <input type="email" class="form-control" placeholder="Enter your email address" required>
-          <button type="submit" class="btn btn-orange">Subscribe</button>
-        </form>
-      </div>
+<section class="section-light-orange">
+  <div class="container">
+    <div class="newsletter-section">
+      <h2>Stay Updated</h2>
+      <p>Subscribe to our newsletter for the latest news, events, and product updates</p>
+      <form class="newsletter-form">
+        <input type="email" class="form-control" placeholder="Enter your email address" required>
+        <button type="submit" class="btn btn-orange">Subscribe</button>
+      </form>
     </div>
-  </section>
+  </div>
+</section>
 
   <!-- Footer -->
   <footer>
