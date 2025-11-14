@@ -1238,19 +1238,19 @@ body > div[style*="height: 90px"] {
       <div class="partners-grid">
         <div class="partner-card fade-in">
           <img src=<?= base_url('assets_system/images/MIAP.png') ?> alt="MIAP" class="partner-logo">
-          <div class="partner-name">Manufacturing Industry Association</div>
+          <div class="partner-name">Metalworking Industries Association of the Philippines</div>
         </div>
         <div class="partner-card fade-in">
           <img src=<?= base_url('assets_system/images/PDMA.png') ?> alt="PDMA" class="partner-logo">
-          <div class="partner-name">Product Development Association</div>
+          <div class="partner-name">Philippine Die & Mold Association, Inc.</div>
         </div>
         <div class="partner-card fade-in">
           <img src=<?= base_url('assets_system/images/AIAP.jpg') ?> alt="AIAP" class="partner-logo">
-          <div class="partner-name">Asian Industrial Automation Partnership</div>
+          <div class="partner-name">AeroSpace Industries Association of the Phillipines</div>
         </div>
         <div class="partner-card fade-in">
           <img src=<?= base_url('assets_system/images/Violet-White.png') ?> alt="Violet Technologies" class="partner-logo">
-          <div class="partner-name">Violet Technologies</div>
+          <div class="partner-name">Animo Labs PH</div>
         </div>
        
     </div>
@@ -1261,7 +1261,7 @@ body > div[style*="height: 90px"] {
   <div class="cta-container">
     <div class="container">
       <h2 class="fade-in" style="font-size: 2.5rem; font-weight: 700; margin-bottom: 20px;">
-        Interested in our products or services? Connect with us today and let's build solutions together.  
+        Interested in our products or services?<br> Connect with us today and let's build solutions together.  
       </h2>
       <a href="<?= base_url('index/contact_us') ?>" class="btn btn-lg btn-wavenet-cta fade-in delay-2">
         Get in Touch 
