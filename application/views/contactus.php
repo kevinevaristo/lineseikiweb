@@ -304,20 +304,65 @@ hr {
   line-height: 1.6;
 }
 
-/* Modern Contact Form Section */
+
+
+
+/* Modern Contact Form Section with Wavy Gradient */
 .contact-form-section {
-  background: #fff;
+  background: linear-gradient(135deg, var(--newblue2) 0%, var(--newblue) 100%);
+  color: white;
   padding: 100px 0;
   position: relative;
+  overflow: hidden;
+}
+
+.contact-form-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    /* Wavy pattern overlay */
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120' preserveAspectRatio='none'%3E%3Cpath d='M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z' fill='%23ffffff' fill-opacity='0.1'%3E%3C/path%3E%3C/svg%3E"),
+    /* Second wavy layer */
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120' preserveAspectRatio='none'%3E%3Cpath d='M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z' fill='%23ffffff' fill-opacity='0.05'%3E%3C/path%3E%3C/svg%3E");
+    
+  background-repeat: no-repeat;
+  z-index: 1;
+  animation: waveMove 15s ease-in-out infinite alternate;
+}
+
+.contact-form-section::after{
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    /* Floating circles */
+    radial-gradient(circle at 20% 80%, rgba(255,255,255,0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(255,255,255,0.05) 0%, transparent 50%),
+    radial-gradient(circle at 40% 40%, rgba(255,255,255,0.08) 0%, transparent 50%);
+  z-index: 1;
+  animation: float 20s ease-in-out infinite;
+}
+
+.contact-form-container {
+  position: relative;
+  z-index: 2;
 }
 
 .contact-form-section h2 {
   font-size: 3rem;
-  color: var(--newblue2);
   font-weight: 800;
   margin-bottom: 50px;
+  color: white;
   text-align: center;
   position: relative;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 }
 
 .contact-form-section h2::after {
@@ -328,17 +373,20 @@ hr {
   transform: translateX(-50%);
   width: 80px;
   height: 4px;
-  background: linear-gradient(90deg, var(--newblue), var(--primary-blue));
+  background: white;
   border-radius: 2px;
 }
 
 /* Modern Form Styling */
 .contact-form {
-  background: white;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
   border-radius: 20px;
   padding: 50px 40px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
-  border: none;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  position: relative;
+  z-index: 2;
 }
 
 .form-control {
@@ -347,11 +395,13 @@ hr {
   border: 1px solid #e0e0e0;
   transition: var(--transition);
   font-size: 1rem;
+  background: rgba(255, 255, 255, 0.9);
 }
 
 .form-control:focus {
   border-color: var(--primary-blue);
   box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.15);
+  background: white;
 }
 
 .form-label {
@@ -359,6 +409,44 @@ hr {
   margin-bottom: 10px;
   color: var(--newblue2);
   font-size: 1rem;
+}
+
+/* Update button to stand out on white form */
+.contact-form .btn-primary {
+  background: linear-gradient(135deg, var(--primary-blue), var(--primary-blue-dark));
+  border: none;
+  color: white;
+}
+
+.contact-form .btn-primary:hover {
+  background: linear-gradient(135deg, var(--primary-blue-dark), var(--primary-blue));
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(13, 110, 253, 0.4);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .contact-form-section {
+    padding: 80px 0;
+  }
+  
+  .contact-form-section h2 {
+    font-size: 2.4rem;
+  }
+  
+  .contact-form {
+    padding: 30px 25px;
+  }
+}
+
+@media (max-width: 480px) {
+  .contact-form-section {
+    padding: 60px 0;
+  }
+  
+  .contact-form-section h2 {
+    font-size: 2rem;
+  }
 }
 
 /* Modern Map Section */
@@ -964,38 +1052,40 @@ body > div[style*="margin-top: 90px"] { display: none !important; }
     </section>
 
     <!-- 3. Modern Contact Form -->
-    <section class="contact-form-section">
-      <div class="container fade-in">
-        <div class="row">
-          <div class="col-lg-8 mx-auto">
-            <h2>Send Us a Message</h2>
-            <form class="contact-form">
-              <div class="row">
-                <div class="col-md-6 mb-4">
-                  <label class="form-label">Name</label>
-                  <input type="text" class="form-control" placeholder="Your Name" required>
-                </div>
-                <div class="col-md-6 mb-4">
-                  <label class="form-label">Email</label>
-                  <input type="email" class="form-control" placeholder="Your Email" required>
-                </div>
+<section class="contact-form-section">
+  <div class="contact-form-container">
+    <div class="container fade-in">
+      <div class="row">
+        <div class="col-lg-8 mx-auto">
+          <h2>Send Us a Message</h2>
+          <form class="contact-form">
+            <div class="row">
+              <div class="col-md-6 mb-4">
+                <label class="form-label">Name</label>
+                <input type="text" class="form-control" placeholder="Your Name" required>
               </div>
-              <div class="mb-4">
-                <label class="form-label">Subject</label>
-                <input type="text" class="form-control" placeholder="Subject" required>
+              <div class="col-md-6 mb-4">
+                <label class="form-label">Email</label>
+                <input type="email" class="form-control" placeholder="Your Email" required>
               </div>
-              <div class="mb-4">
-                <label class="form-label">Message</label>
-                <textarea class="form-control" rows="5" placeholder="Your Message" required></textarea>
-              </div>
-              <div class="text-center">
-                <button type="submit" class="btn btn-primary btn-lg">Submit Message</button>
-              </div>
-            </form>
-          </div>
+            </div>
+            <div class="mb-4">
+              <label class="form-label">Subject</label>
+              <input type="text" class="form-control" placeholder="Subject" required>
+            </div>
+            <div class="mb-4">
+              <label class="form-label">Message</label>
+              <textarea class="form-control" rows="5" placeholder="Your Message" required></textarea>
+            </div>
+            <div class="text-center">
+              <button type="submit" class="btn btn-primary btn-lg">Submit Message</button>
+            </div>
+          </form>
         </div>
       </div>
-    </section>
+    </div>
+  </div>
+</section>
 
     <!-- 4. Modern Location / Map -->
     <section class="map-section">

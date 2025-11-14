@@ -726,7 +726,7 @@
     radial-gradient(circle at 80% 20%, rgba(255,255,255,0.05) 0%, transparent 50%),
     radial-gradient(circle at 40% 40%, rgba(255,255,255,0.08) 0%, transparent 50%);
   z-index: 1;
-  animation: float 20s ease-in-out infinite;
+  animation: float 13s ease-in-out infinite;
 }
 
 .demo-container {
