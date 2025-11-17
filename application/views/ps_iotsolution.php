@@ -141,57 +141,78 @@
     ========================= */
 
     /* Modern GEMBA Overview Section with Background Image */
-    .iot-hero {
-      background: 
-        /* Blue overlay */
-        linear-gradient(135deg, rgba(15, 70, 123, 0.85) 50%, rgba(23, 162, 220, 0.75) 100%),
-        /* Background image */
-        url('<?= base_url('assets_system/images/new3.jpg') ?>') center/cover no-repeat;
-      color: white;
-      padding: 150px 0 100px;
-      position: relative;
-      overflow: hidden;
-      min-height: 70vh;
-      display: flex;
-      align-items: center;
-    }
+.iot-hero {
+  background:
+    linear-gradient(135deg, rgba(15, 70, 123, 0.85) 50%, rgba(23, 162, 220, 0.75) 100%),
+    url('<?= base_url('assets_system/images/Hero-gemba.jpg') ?>') center/cover no-repeat;
+  color: white;
+  padding: 200px 0 120px;
+  position: relative;
+  overflow: hidden;
+  min-height: 85vh;
+  display: flex;
+  align-items: center;
+}
 
-    .iot-hero::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 1;
-    }
+/* Keeps overlay ready for future animations */
+.iot-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
 
-    .iot-hero-content {
-      position: relative;
-      z-index: 2;
-    }
+.iot-hero-content {
+  position: relative;
+  z-index: 2;
+}
 
-    .iot-hero h2 {
-      font-size: 3.5rem;
-      font-weight: 800;
-      margin-bottom: 30px;
-      color: white;
-      text-transform: uppercase;
-      letter-spacing: -0.5px;
-      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-    }
+/* MAIN TITLE */
+.iot-hero h2 {
+  font-size: 3.2rem;
+  font-weight: 800;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  margin-bottom: 40px;
+  position: relative;
+  line-height: 1.2;
+  text-shadow: 0 3px 15px rgba(0,0,0,0.35);
+}
 
-    .iot-hero p {
-      font-size: 1.3rem;
-      opacity: 0.95;
-      margin-bottom: 30px;
-      text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    }
+/* TITLE UNDERLINE (AFTER LINE) */
+.iot-hero h2::after {
+  content: "";
+  display: block;
+  width: 120px;
+  height: 3px;
+  background: #42B9FF; /* Modern blue accent */
+  margin-top: 18px;
+  border-radius: 5px;
+}
+
+/* SUBTEXT */
+.iot-hero p {
+  font-size: 1.25rem;
+  opacity: 0.95;
+  max-width: 580px;
+  text-shadow: 0 2px 6px rgba(0,0,0,0.25);
+  margin-bottom: 30px;
+}
+
+.iot-demo-btn {
+  padding: 12px 28px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: 50px;
+  margin-top: 20px;
+  display: inline-block;
+}
 
     /* Modern Image Hover */
     .img-hover {
       transition: var(--transition);
-      border-radius: 20px;
+      
       overflow: hidden;
       box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
     }
@@ -205,6 +226,23 @@
     .img-hover:hover img {
       transform: scale(1.05);
     }
+
+    /* =========================================
+   OVERRIDE — Make Hero Image Bigger
+   ========================================= */
+.iot-hero .img-hover img {
+  width: 143%;          
+  max-width: none;      
+  
+}
+
+@media (max-width: 992px) {
+  .iot-hero .img-hover img {
+    width: 100%;
+    transform: none;
+  }
+}
+
 
     /* Modern System Components Section */
     .components-section {
@@ -807,6 +845,246 @@
   color: var(--newblue2);
   font-size: 1rem;
 }
+
+.our-solution {
+  padding: 80px 0;
+}
+
+.solution-title {
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: #1f2a37;
+}
+
+.solution-underline {
+  width: 70px;
+  height: 4px;
+  background-color: #00a6e8; /* blue line like image */
+  margin-top: 8px;
+  border-radius: 3px;
+}
+
+.solution-img {
+  max-width: 100%;
+  height: auto;
+  margin-top: 20px;
+}
+
+/* Our Products Showcase with Wavy Gradient */
+.our-products-showcase {
+  background: linear-gradient(135deg, var(--newblue2) 50%, var(--newblue) 100%);
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+  /* Make the product showcase section smaller */
+.our-products-showcase {
+  padding: 40px 0 !important; /* was very tall before */
+  overflow: visible !important; /* allow image to overflow outside */
+}
+
+/* Lift the image higher so it overlaps background */
+.products-image-column {
+  margin-top: -150px; /* adjust to your liking */
+  margin-bottom: -150px;
+}
+
+.our-products-showcase::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    /* Wavy pattern overlay */
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120' preserveAspectRatio='none'%3E%3Cpath d='M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z' fill='%23ffffff' fill-opacity='0.1'%3E%3C/path%3E%3C/svg%3E"),
+    /* Second wavy layer */
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120' preserveAspectRatio='none'%3E%3Cpath d='M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z' fill='%23ffffff' fill-opacity='0.05'%3E%3C/path%3E%3C/svg%3E");
+ 
+  background-repeat: no-repeat;
+  z-index: 1;
+  animation: waveMove 15s ease-in-out infinite alternate;
+}
+
+/* Floating circles for products showcase */
+.our-products-showcase::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  animation: float 20s ease-in-out infinite;
+}
+
+.our-products-showcase .container {
+  position: relative;
+  z-index: 2;
+}
+
+/* Product Items Styling */
+
+.product-item-title {
+  color: white;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.product-item-title::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 50px;
+  height: 3px;
+  background: white;
+  border-radius: 2px;
+}
+
+.product-item p {
+  color: white;
+  font-size: 1.1rem;
+  line-height: 1.7;
+  margin-bottom: 0;
+}
+
+/* Products Image Styling */
+.products-image-column {
+  position: relative;
+}
+
+.products-main-img {
+  border-radius: 20px;
+  position: relative;
+  z-index: 2;
+  transition: var(--transition);
+}
+
+.products-main-img:hover {
+  transform: scale(1.02);
+}
+
+.blue-background-effect {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  height: 80%;
+  background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+  border-radius: 20px;
+  z-index: 1;
+  animation: pulse 4s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 0.5;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: translate(-50%, -50%) scale(1.05);
+  }
+}
+
+/* Wave animation */
+@keyframes waveMove {
+  0% {
+    background-position: 
+      bottom center,
+      top center;
+  }
+  100% {
+    background-position: 
+      bottom 10px center,
+      top -10px center;
+  }
+}
+
+/* Floating animation */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-20px) rotate(180deg);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+  .our-products-showcase {
+    padding: 80px 0;
+  }
+  
+  .product-item {
+    padding: 30px 25px;
+  }
+  
+  .product-item-title {
+    font-size: 1.6rem;
+  }
+}
+
+/* FIX: Mobile view — reduce height and remove extreme margins */
+@media (max-width: 768px) {
+
+  .our-products-showcase {
+    padding: 20px 0 !important; /* much smaller */
+  }
+
+  .products-image-column {
+    margin-top: -40px !important;   /* was -150px */
+    margin-bottom: -20px !important; 
+  }
+
+  .products-main-img {
+    max-width: 80%;  /* optional: prevents image from being too large */
+  }
+
+  .product-item {
+    padding: 15px 10px !important; /* smaller spacing */
+  }
+
+  .product-item-title {
+    font-size: 1.2rem !important;
+  }
+
+  .product-item p {
+    font-size: 0.95rem !important;
+    line-height: 1.4;
+  }
+}
+
+/* Extra small screens */
+@media (max-width: 480px) {
+  .products-image-column {
+    margin-top: -20px !important;
+    margin-bottom: -10px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .our-products-showcase {
+    padding: 50px 0;
+  }
+  
+  .product-item {
+    padding: 20px 15px;
+  }
+  
+  .product-item-title {
+    font-size: 1.3rem;
+  }
+}
+
+
   </style>
 </head>
 <body>
@@ -857,29 +1135,103 @@
   <!-- ✅ Modern IoT Sections -->
   <main>
     <!-- 1. Modern GEMBA Overview with Background Image -->
-    <section class="iot-hero">
-      <div class="container">
-        <div class="row align-items-center">
-          <!-- Left Content -->
-          <div class="col-lg-7 fade-in iot-hero-content">
-            <h2>GEMBA Machine Monitoring System</h2>
-            <p>
-              The GEMBA Machine Monitoring System provides real-time visibility into your
-              manufacturing operations. It empowers businesses to track machine performance,
-              identify downtime causes, and improve efficiency.
-            </p>
-          </div>
+<section class="iot-hero">
+  <div class="container">
+    <div class="row align-items-center">
 
-          <!-- Right Image -->
-          <div class="col-lg-5 text-center fade-in delay-1">
-            <div class="img-hover">
-              <img src="<?= base_url('assets_system/images/new-gemba.png') ?>" 
-                  alt="GEMBA Overview" class="img-fluid">
-            </div>
-          </div>
+      <!-- Left Content -->
+      <div class="col-lg-7 fade-in iot-hero-content">
+        <h2> Real-Time Machine
+          Monitoring That Keeps
+          You in Control </h2>
+
+        <p>
+          No subscription. No fixed cost. Just one setup that keeps
+          you connected.
+        </p>
+
+        <!-- ✅ Request Demo Button -->
+        <a href="#contact" class="btn btn-primary iot-demo-btn">
+          Request Demo
+        </a>
+      </div>
+
+      <!-- Right Image -->
+      <div class="col-lg-5 text-center fade-in delay-1">
+        <div class="img-hover">
+          <img src="<?= base_url('assets_system/images/new-herogemba.png') ?>" 
+              alt="GEMBA Overview" class="img-fluid">
         </div>
       </div>
-    </section>
+
+    </div>
+  </div>
+</section>
+
+
+<section class="section-white our-solution">
+  <div class="container">
+    <div class="row align-items-center">
+
+      <div class="col-lg-6 fade-in">
+        <h2 class="solution-title">Our Solution</h2>
+        <div class="solution-underline"></div>
+
+        <p class="mt-4">
+          Manual recording and delayed updates make it difficult
+          to see what’s really happening on the shop floor.
+        </p>
+
+        <p>
+          The GEMBA Reporter Machine Monitoring System helps
+          eliminate blind spots by capturing machine data automatically —
+          so you can identify downtime causes, improve efficiency,
+          and make data-driven decisions faster.
+        </p>
+      </div>
+
+      <div class="col-lg-6 text-center fade-in delay-1">
+        <img src="<?= base_url('assets_system/images/Machine1.png') ?>" 
+             alt="GEMBA Overview" class="img-fluid solution-img-original">
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<section class="our-products-showcase">
+  <div class="container">
+    <div class="row align-items-center">
+
+      <div class="col-lg-6 products-image-column text-center fade-in">
+        <img src="<?= base_url('assets_system/images/Gemba-repo.png') ?>" 
+             alt="Base Station and Smart Counter" class="img-fluid products-main-img">
+        <div class="blue-background-effect"></div>
+      </div>
+
+      <div class="col-lg-6 products-description-column fade-in delay-1">
+        <div class="product-item">
+          <h3 class="product-item-title"> Base Station</h3>
+          <p> Acts as the control hub, receiving and storing data from up to 10
+ Smart Counters simultaneously. Loaded with Line Seiki’s in-house
+ software, it organizes the data and performs real-time analysis.</p>
+        </div>
+
+        <div class="product-item mt-5">
+          <h3 class="product-item-title">Smart Counter</h3>
+          <p>Smart Counter- Mounted directly on your machine, it collects
+ essential data such as production quantity, cycle time, and
+ operating status. It wirelessly transmits all data to the Base Station
+ — no need for complex wiring</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
 
     <!-- 2. Modern System Components -->
     <section class="components-section">
