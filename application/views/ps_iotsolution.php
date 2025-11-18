@@ -1203,6 +1203,166 @@
   }
 }
 
+/* Custom Styles for Production Data Section */
+.production-data-section {
+    /* Set overall background to white and remove default padding */
+    background-color: white; 
+    padding: 0; 
+}
+
+/* --- New: Styling for the full-width alternating strips --- */
+.production-strip {
+    /* Use padding to separate the items vertically */
+    padding: 80px 0; 
+}
+
+.production-strip.light-blue-strip {
+    /* Light blue background for Control Page and Duration Dashboard */
+    background-color: var(--light-blue, #e7f1ff); 
+}
+
+.production-strip.white-strip {
+    /* White background for Count Dashboard and Overview */
+    background-color: white;
+}
+
+/* --- Existing Header and Text Styles --- */
+.production-data-section h2.display-4 {
+    color: var(--newblue2);
+    font-weight: 800;
+    position: relative;
+    padding-bottom: 20px;
+}
+
+.production-data-section h2.display-4::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--newblue), var(--primary-blue));
+    border-radius: 2px;
+}
+
+.production-data-section p.lead {
+    color: #555;
+    font-size: 1.15rem;
+}
+
+/* --- Unified Button Styles (Per Request) --- */
+.production-data-section .btn {
+    padding: 0.75rem 1.5rem;
+    border-radius: 30px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+/* Unified Button Style */
+.production-data-section .btn-info,
+.production-data-section .btn-secondary,
+.production-data-section .btn {
+    /* Base color: #495057 (Dark Gray) */
+    background-color: #495057; 
+    border-color: #495057;
+    color: white;
+    box-shadow: none !important; 
+}
+
+/* Unified Hover Style */
+.production-data-section .btn-info:hover,
+.production-data-section .btn-secondary:hover,
+.production-data-section .btn:hover {
+    /* Hover color: var(--primary-blue-dark) */
+    background-color: var(--primary-blue-dark);
+    border-color: var(--primary-blue-dark);
+    color: white;
+}
+
+/* Ensure no 'active' styling changes the color */
+.production-data-section .btn.active {
+    background-color: #495057 !important;
+    border-color: #495057 !important;
+    color: white !important;
+}
+
+/* --- Individual Data Item Styling --- */
+.production-data-item {
+    margin-bottom: 0; 
+}
+
+.production-data-item h3 {
+    color: var(--newblue2);
+    font-weight: 700;
+    font-size: 2.2rem;
+}
+
+.production-data-item p {
+    color: #6c757d;
+    font-size: 1.1rem;
+    line-height: 1.8;
+}
+
+
+
+/* --- Responsive adjustments for ordering --- */
+@media (max-width: 991.98px) {
+    .production-data-item .col-lg-6 {
+        order: unset !important;
+        text-align: center;
+    }
+    .production-data-item .col-lg-6:first-child {
+        margin-bottom: 20px;
+    }
+    .production-data-item h3 {
+        font-size: 1.8rem;
+    }
+    .production-data-item p {
+        font-size: 1rem;
+    }
+    .production-strip {
+        padding: 40px 0;
+    }
+    .production-data-section h2.display-4 {
+        font-size: 2.5rem;
+    }
+    .production-data-section p.lead {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .production-data-section h2.display-4 {
+        font-size: 2rem;
+    }
+    .production-data-section .btn {
+        font-size: 0.9rem;
+        padding: 0.6rem 1.2rem;
+    }
+}
+
+/* --- Fade-in animation for elements --- */
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* --- NEW Image Styling for all Dashboard Images --- */
+.dashboard-image, 
+.production-data-item img { 
+    /* Ensures image is responsive and fits the column width (equivalent to img-fluid) */
+    max-width: 100%; 
+    height: auto;
+    display: block;
+    }
+
   </style>
 </head>
 <body>
@@ -1423,7 +1583,7 @@
             <div id="collapseFour" class="accordion-collapse collapse" data-bs-parent="#systemSetupAccordion">
               <div class="accordion-body">
                <ul>
-                  <li> Saves all production data</li>
+                  <li>Saves all production data</li>
                   <li>Shows real-time dashboards</li>
                   <li>Runs the GEMBA Reporter software</li>
                   <li> Supports up to 12 Base Stations (120 machines)</li>
@@ -1462,11 +1622,96 @@
   </div>
 </section>
 
+    <section id="production-data" class="production-data-section">
+    <div class="container pt-5">
+        <div class="row text-center mb-5 fade-in">
+            <div class="col-12">
+                <h2 class="display-4 fw-bold text-primary mb-3">Production Data</h2>
+                <p class="lead text-muted mx-auto" style="max-width: 700px;">
+                    The GEMBA dashboard gives you a comprehensive view of your machine status.
+                </p>
+                <div class="d-flex justify-content-center flex-wrap gap-2 mb-4">
+                    <a href="#" class="btn btn-info">Control Page</a>
+                    <a href="#" class="btn btn-secondary">Count Dashboard</a>
+                    <a href="#" class="btn btn-secondary">Duration Dashboard</a>
+                    <a href="#" class="btn btn-secondary">Overview</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="production-strip light-blue-strip">
+    <div class="container">
+        <div class="row align-items-center production-data-item fade-in">
+            <div class="col-lg-6 order-lg-1">
+                <h3 class="h2 fw-bold text-dark mb-3">Control Page</h3>
+                <p class="lead text-muted">
+                    Input and monitor essential machine job details in one place.
+                </p>
+            </div>
+            <div class="col-lg-6 order-lg-2 text-center mt-4 mt-lg-0">
+                <img src="<?= base_url('assets_system/images/2xpage-nobg.png') ?>" alt="Control Page Dashboard" class="dashboard-image">
+            </div>
+        </div>
+    </div>
+</div>
+
+    <div class="production-strip white-strip">
+        <div class="container">
+            <div class="row align-items-center production-data-item fade-in">
+                <div class="col-lg-6 order-lg-2">
+                    <h3 class="h2 fw-bold text-dark mb-3">Count Dashboard</h3>
+                    <p class="lead text-muted">
+                        Track actual output versus target quantity for every machine. Easily visualize progress percentages and ensure production goals are being met in real time.
+                    </p>
+                </div>
+                <div class="col-lg-6 order-lg-1 text-center mt-4 mt-lg-0">
+                    <img src="<?= base_url('assets_system/images/2xpage-nobg.png') ?>" alt="Count Dashboard" class="dashboard-image">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="production-strip light-blue-strip">
+        <div class="container">
+            <div class="row align-items-center production-data-item fade-in">
+                <div class="col-lg-6 order-lg-1">
+                    <h3 class="h2 fw-bold text-dark mb-3">Duration Dashboard</h3>
+                    <p class="lead text-muted">
+                        This page shows the running time and downtime of multiple machines. You can easily see how long each machine has been working or idle.
+                    </p>
+                </div>
+                <div class="col-lg-6 order-lg-2 text-center mt-4 mt-lg-0">
+                    <img src="<?= base_url('assets_system/images/2xpage-nobg.png') ?>" alt="Duration Dashboard" class="dashboard-image">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="production-strip white-strip">
+        <div class="container">
+            <div class="row align-items-center production-data-item fade-in">
+                <div class="col-lg-6 order-lg-2">
+                    <h3 class="h2 fw-bold text-dark mb-3">Overview</h3>
+                    <p class="lead text-muted">
+                        Gives you a quick snapshot of all machines in one view — making it easy to check the overall production status at a glance.
+                    </p>
+                </div>
+                <div class="col-lg-6 order-lg-1 text-center mt-4 mt-lg-0">
+                    <img src="<?= base_url('assets_system/images/2xpage-nobg.png') ?>" alt="Overview Dashboard" class="dashboard-image">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+</section>
+
     <!-- 2. Modern System Components -->
     <section class="components-section">
       <div class="components-container">
         <div class="container fade-in">
-          <h2>Production Data</h2>
+          <h2>MODERN</h2>
           <div class="row mt-4">
             <div class="col-md-4 mb-4">
               <div class="component-card">
@@ -1494,10 +1739,10 @@
       </div>
     </section>
 
-    <!-- 3. Modern Production Data -->
+    <!-- 3. Modern  -->
     <section class="production-section">
       <div class="container fade-in">
-        <h2>Production Data</h2>
+        <h2>GEMBA</h2>
         <p>GEMBA collects critical production information to enhance decision-making:</p>
         <div class="row mt-4 justify-content-center">
           <div class="col-lg-8">
