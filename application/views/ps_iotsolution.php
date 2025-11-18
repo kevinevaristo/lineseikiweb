@@ -1084,6 +1084,124 @@
   }
 }
 
+/* --- System Setup Section --- */
+.system-setup-section {
+  background-color: #f8f9fa; /* Light background for contrast */
+  padding: 80px 0;
+}
+
+.setup-title {
+  font-size: 3rem;
+  color: var(--newblue2);
+  font-weight: 800;
+  margin-bottom: 60px;
+  text-align: center;
+  position: relative;
+}
+
+.setup-title::after {
+  content: '';
+  position: absolute;
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(90deg, var(--newblue), var(--primary-blue));
+  border-radius: 2px;
+}
+
+/* Accordion Styling */
+.setup-accordion {
+  border: none;
+}
+
+.setup-item {
+  border: none;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.accordion-header .accordion-button {
+  background-color: white;
+  color: var(--newblue2);
+  font-size: 1.5rem;
+  font-weight: 600;
+  padding: 1.2rem 1.5rem;
+  border-radius: 10px;
+  transition: var(--transition);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.accordion-header .accordion-button:not(.collapsed) {
+  color: var(--primary-blue);
+  background-color: var(--light-blue);
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  border-color: var(--primary-blue);
+}
+
+.accordion-header .accordion-button:focus {
+  box-shadow: none;
+}
+
+.accordion-body {
+  padding: 1rem 1.5rem;
+  background-color: white;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border: 1px solid var(--primary-blue);
+  border-top: none;
+  color: #555;
+  font-size: 1rem;
+}
+
+.accordion-body ul, 
+.accordion-body p {
+  margin-bottom: 0;
+  padding-left: 20px;
+}
+
+.step-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  background-color: var(--primary-blue);
+  color: white;
+  border-radius: 50%;
+  font-size: 1rem;
+  font-weight: 700;
+  margin-right: 15px;
+  flex-shrink: 0;
+}
+
+.accordion-button.collapsed .step-number {
+  background-color: var(--newblue2);
+}
+
+/* Diagram Image Styling */
+.setup-diagram {
+  max-width: 90%;
+  height: auto;
+  padding: 20px;
+  border-radius: 15px;
+  background-color: white;
+  margin-top: 50px; /* Space from title on desktop */
+}
+
+/* Responsive adjustment for image on smaller screens */
+@media (max-width: 991.98px) {
+  .setup-diagram {
+    max-width: 100%;
+    margin-top: 30px;
+  }
+  .setup-title {
+    margin-bottom: 30px;
+  }
+}
 
   </style>
 </head>
@@ -1232,12 +1350,123 @@
 </section>
 
 
+<section class="system-setup-section">
+  <div class="container">
+    <div class="row align-items-center">
+
+      <div class="col-12 text-center fade-in">
+        <h2 class="setup-title">System Set-Up</h2>
+      </div>
+
+      <div class="col-lg-6 col-md-12 fade-in delay-1">
+        <div class="accordion setup-accordion" id="systemSetupAccordion">
+
+          <div class="accordion-item setup-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                <span class="step-number">1</span> Smart Counter
+              </button>
+            </h2>
+            <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#systemSetupAccordion">
+              <div class="accordion-body">
+                <ul>
+                  <li>Counts production</li>
+                  <li>Detects machine up/down status</li>
+                  <li>Sends data wirelessly</li>
+                  <li>One Smart Counter per machine</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item setup-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                <span class="step-number">2</span> Base Station
+              </button>
+            </h2>
+            <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#systemSetupAccordion">
+              <div class="accordion-body">
+                <ul>
+                  <li> Connects with up to 10 machines</li>
+                  <li> Receives data wirelessly</li>
+                  <li>Sends data to the Data Server through LAN</li>
+                  <li> Acts as the “hub” for a group of machines</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item setup-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                <span class="step-number">3</span> Factory Network
+              </button>
+            </h2>
+            <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#systemSetupAccordion">
+              <div class="accordion-body">
+               <ul>
+                  <li> Router/switch connects everything</li>
+                  <li>Data Server + Base Stations must use LAN cables</li>
+                  <li>Your PC or tablet just needs to be on the same network as GEMBA system (access via network) OR in the wifi range of Dataserver (if accessing wirelessly).</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          
+          <div class="accordion-item setup-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                <span class="step-number">4</span> Data Server
+              </button>
+            </h2>
+            <div id="collapseFour" class="accordion-collapse collapse" data-bs-parent="#systemSetupAccordion">
+              <div class="accordion-body">
+               <ul>
+                  <li> Saves all production data</li>
+                  <li>Shows real-time dashboards</li>
+                  <li>Runs the GEMBA Reporter software</li>
+                  <li> Supports up to 12 Base Stations (120 machines)</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          
+          <div class="accordion-item setup-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                <span class="step-number">5</span> User Device
+              </button>
+            </h2>
+            <div id="collapseFive" class="accordion-collapse collapse" data-bs-parent="#systemSetupAccordion">
+              <div class="accordion-body">
+                <ul>
+                  <li> No software installation</li>
+                  <li>Works on PC, laptop, or tablet</li>
+                  <li> View machine status, downtime, records, and reports</li>
+                  <li> Export data to Excel with one click</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="col-lg-6 col-md-12 text-center fade-in delay-2">
+        <img src="<?= base_url('assets_system/images/system-setupnobg.png') ?>" 
+             alt="GEMBA System Setup Diagram" class="img-fluid setup-diagram">
+      </div>
+
+    </div>
+  </div>
+</section>
 
     <!-- 2. Modern System Components -->
     <section class="components-section">
       <div class="components-container">
         <div class="container fade-in">
-          <h2>System Components</h2>
+          <h2>Production Data</h2>
           <div class="row mt-4">
             <div class="col-md-4 mb-4">
               <div class="component-card">
