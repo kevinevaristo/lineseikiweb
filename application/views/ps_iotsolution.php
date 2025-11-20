@@ -244,113 +244,7 @@
 }
 
 
-    /* Modern System Components Section */
-    .components-section {
-      background: linear-gradient(135deg, var(--light-blue) 0%, #fff 100%);
-      padding: 100px 0;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .components-section::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2317A2DC' fill-opacity='0.03'%3E%3Ccircle cx='30' cy='30' r='4'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-      z-index: 0;
-    }
-
-    .components-container {
-      position: relative;
-      z-index: 1;
-    }
-
-    .components-section h2 {
-      font-size: 3rem;
-      color: var(--newblue2);
-      font-weight: 800;
-      margin-bottom: 60px;
-      text-align: center;
-      position: relative;
-    }
-
-    .components-section h2::after {
-      content: '';
-      position: absolute;
-      bottom: -20px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 80px;
-      height: 4px;
-      background: linear-gradient(90deg, var(--newblue), var(--primary-blue));
-      border-radius: 2px;
-    }
-
-    /* Modern Component Cards */
-    .component-card {
-      background: white;
-      border-radius: 20px;
-      padding: 40px 30px;
-      text-align: center;
-      transition: var(--transition);
-      height: 100%;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-      border: none;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .component-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 5px;
-      background: linear-gradient(90deg, var(--newblue), var(--primary-blue));
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform 0.4s ease;
-    }
-
-    .component-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
-    }
-
-    .component-card:hover::before {
-      transform: scaleX(1);
-    }
-
-    .component-card i {
-      font-size: 3.5rem;
-      color: var(--newblue);
-      margin-bottom: 25px;
-      transition: var(--transition);
-    }
-
-    .component-card:hover i {
-      transform: scale(1.1);
-      color: var(--primary-blue);
-    }
-
-    .component-card h5 {
-      color: var(--newblue2);
-      font-weight: 700;
-      margin-bottom: 20px;
-      font-size: 1.4rem;
-    }
-
-    .component-card p {
-      color: #495057;
-      margin-bottom: 0;
-      font-size: 1.1rem;
-      line-height: 1.6;
-    }
-
+    
     /* Modern Production Data Section */
     .production-section {
       background: #fff;
@@ -386,94 +280,7 @@
       color: #495057;
     }
 
-    /* Modern Data List */
-    .data-list {
-      background: white;
-      border-radius: 20px;
-      padding: 40px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-    }
-
-    .data-item {
-      padding: 15px 0;
-      border-bottom: 1px solid rgba(13, 110, 253, 0.1);
-      display: flex;
-      align-items: center;
-      transition: var(--transition);
-    }
-
-    .data-item:last-child {
-      border-bottom: none;
-    }
-
-    .data-item:hover {
-      transform: translateX(10px);
-    }
-
-    .data-item i {
-      color: var(--newblue);
-      font-size: 1.3rem;
-      margin-right: 15px;
-      transition: var(--transition);
-    }
-
-    .data-item:hover i {
-      color: var(--primary-blue);
-      transform: scale(1.2);
-    }
-
-    .data-item span {
-      color: var(--newblue2);
-      font-weight: 600;
-      font-size: 1.1rem;
-    }
-
-    /* Modern Demo Section */
-    .demo-section {
-      background: linear-gradient(135deg, var(--newblue2) 0%, var(--newblue) 100%);
-      color: white;
-      padding: 100px 0;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .demo-section::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 1;
-    }
-
-    .demo-container {
-      position: relative;
-      z-index: 2;
-    }
-
-    .demo-section h2 {
-      font-size: 3rem;
-      font-weight: 800;
-      margin-bottom: 25px;
-      color: white;
-      text-align: center;
-    }
-
-    .demo-section p {
-      font-size: 1.2rem;
-      opacity: 0.9;
-      margin-bottom: 40px;
-      text-align: center;
-    }
-
-    /* Modern Form Styling */
-    .demo-form {
-      background: rgba(255, 255, 255, 0.95);
-      border-radius: 20px;
-      padding: 50px 40px;
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-    }
+    
 
     .form-control {
       border-radius: 12px;
@@ -689,162 +496,6 @@
       }
     }
 
-    .component-card {
-      animation: cardFadeIn 0.6s ease forwards;
-    }
-
-    .component-card:nth-child(1) { animation-delay: 0.1s; }
-    .component-card:nth-child(2) { animation-delay: 0.2s; }
-    .component-card:nth-child(3) { animation-delay: 0.3s; }
-
-    /* Responsive adjustments */
-    @media (max-width: 992px) {
-      .iot-hero { padding: 120px 0 80px; min-height: 60vh; }
-      .iot-hero h2 { font-size: 2.8rem; }
-      .components-section h2,
-      .production-section h2,
-      .demo-section h2 { font-size: 2.4rem; }
-      .dropdown-submenu > .dropdown-menu { left: 0; margin-top: 0; }
-      footer .links a { display: inline-block; margin-bottom: 12px; }
-    }
-    
-    @media (max-width: 768px) {
-      .iot-hero { min-height: 50vh; }
-      .iot-hero h2 { font-size: 2.2rem; }
-      .components-section h2,
-      .production-section h2,
-      .demo-section h2 { font-size: 2rem; }
-      footer .links a { display: block; margin-bottom: 12px; }
-      .component-card { padding: 30px 20px; }
-      .demo-form { padding: 30px 25px; }
-      .data-list { padding: 30px 25px; }
-    }
-
-    /* Fixes */
-    body > div[style*="margin-top: 90px"] { display: none !important; }
-
-
-    /* Modern Demo Section with Wavy Gradient */
-.demo-section {
-  background: linear-gradient(135deg, var(--newblue2) 0%, var(--newblue) 100%);
-  color: white;
-  padding: 100px 0;
-  position: relative;
-  overflow: hidden;
-}
-
-.demo-section::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: 
-    /* Wavy pattern overlay */
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120' preserveAspectRatio='none'%3E%3Cpath d='M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z' fill='%23ffffff' fill-opacity='0.1'%3E%3C/path%3E%3C/svg%3E"),
-    /* Second wavy layer */
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120' preserveAspectRatio='none'%3E%3Cpath d='M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z' fill='%23ffffff' fill-opacity='0.05'%3E%3C/path%3E%3C/svg%3E");
-  
-  background-repeat: no-repeat;
-  z-index: 1;
-  animation: waveMove 15s ease-in-out infinite alternate;
-}
-
-.demo-section::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: 
-    /* Floating circles */
-    radial-gradient(circle at 20% 80%, rgba(255,255,255,0.1) 0%, transparent 50%),
-    radial-gradient(circle at 80% 20%, rgba(255,255,255,0.05) 0%, transparent 50%),
-    radial-gradient(circle at 40% 40%, rgba(255,255,255,0.08) 0%, transparent 50%);
-  z-index: 1;
-  animation: float 13s ease-in-out infinite;
-}
-
-.demo-container {
-  position: relative;
-  z-index: 2;
-}
-
-.demo-section h2 {
-  font-size: 3rem;
-  font-weight: 800;
-  margin-bottom: 25px;
-  color: white;
-  text-align: center;
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-}
-
-.demo-section p {
-  font-size: 1.2rem;
-  opacity: 0.9;
-  margin-bottom: 40px;
-  text-align: center;
-  text-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
-}
-
-/* Animations */
-@keyframes waveMove {
-  0% {
-    background-position: 
-      bottom center,
-      top center;
-  }
-  100% {
-    background-position: 
-      bottom 10px center,
-      top -10px center;
-  }
-}
-
-@keyframes float {
-  0%, 100% {
-    transform: translateY(0px) rotate(0deg);
-  }
-  50% {
-    transform: translateY(-20px) rotate(180deg);
-  }
-}
-
-/* Modern Form Styling */
-.demo-form {
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(10px);
-  border-radius: 20px;
-  padding: 50px 40px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  position: relative;
-  z-index: 2;
-}
-
-.form-control {
-  border-radius: 12px;
-  padding: 15px 20px;
-  border: 1px solid #e0e0e0;
-  transition: var(--transition);
-  font-size: 1rem;
-  background: rgba(255, 255, 255, 0.8);
-}
-
-.form-control:focus {
-  border-color: var(--primary-blue);
-  box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.15);
-  background: white;
-}
-
-.form-label {
-  font-weight: 600;
-  margin-bottom: 10px;
-  color: var(--newblue2);
-  font-size: 1rem;
-}
 
 .our-solution {
   padding: 80px 0;
@@ -1363,6 +1014,144 @@
     display: block;
     }
 
+
+
+/* Make Informed Decisions Section */
+.make-informed-section {
+    background: 
+        linear-gradient(135deg, rgba(15, 70, 123, 0.85) 0%, rgba(23, 162, 220, 0.75) 100%),
+        url('<?= base_url('assets_system/images/decisionsbg.jpg') ?>') center/cover no-repeat;
+    padding: 100px 0;
+    color: white;
+    position: relative;
+    overflow: hidden;
+}
+
+.section-title {
+    font-size: 2.8rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    text-align: center;
+    color: white;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.title-underline {
+    width: 80px;
+    height: 4px;
+    background: #42B9FF;
+    border-radius: 2px;
+    margin: 0 auto 40px;
+}
+
+/* Feature items without cards */
+.feature-item {
+    text-align: center;
+    padding: 25px 15px;
+    transition: var(--transition);
+    border-radius: 8px;
+}
+
+.feature-item:hover {
+    transform: translateY(-5px);
+}
+
+.feature-icon {
+    width: 60px;
+    height: 60px;
+    margin: 0 auto 20px;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.5rem;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    transition: var(--transition);
+}
+
+.feature-item:hover .feature-icon {
+   
+    transform: scale(1.1);
+}
+
+.feature-title {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: white;
+}
+
+.feature-text {
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.6;
+    font-size: 1rem;
+}
+
+/* Divider between rows */
+.feature-divider {
+    height: 1px;
+    background: rgba(255, 255, 255, 0.3);
+    width: 100%;
+    margin: 40px 0;
+}
+
+
+.circle-1 {
+    width: 80px;
+    height: 80px;
+    top: 10%;
+    left: 5%;
+    animation-delay: 0s;
+}
+
+.circle-2 {
+    width: 120px;
+    height: 120px;
+    bottom: 15%;
+    right: 8%;
+    animation-delay: 2s;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .make-informed-section {
+        padding: 60px 0;
+    }
+    
+    .section-title {
+        font-size: 2.2rem;
+    }
+    
+    .feature-item {
+        padding: 20px 10px;
+        margin-bottom: 15px;
+    }
+    
+    .feature-icon {
+        width: 50px;
+        height: 50px;
+        font-size: 1.3rem;
+    }
+    
+    .feature-title {
+        font-size: 1.2rem;
+    }
+    
+    .feature-divider {
+        margin: 30px 0;
+    }
+}
   </style>
 </head>
 <body>
@@ -1666,7 +1455,7 @@
                     </p>
                 </div>
                 <div class="col-lg-6 order-lg-1 text-center mt-4 mt-lg-0">
-                    <img src="<?= base_url('assets_system/images/2xpage-nobg.png') ?>" alt="Count Dashboard" class="dashboard-image">
+                    <img src="<?= base_url('assets_system/images/countdash.png') ?>" alt="Count Dashboard" class="dashboard-image">
                 </div>
             </div>
         </div>
@@ -1682,7 +1471,7 @@
                     </p>
                 </div>
                 <div class="col-lg-6 order-lg-2 text-center mt-4 mt-lg-0">
-                    <img src="<?= base_url('assets_system/images/2xpage-nobg.png') ?>" alt="Duration Dashboard" class="dashboard-image">
+                    <img src="<?= base_url('assets_system/images/duration.png') ?>" alt="Duration Dashboard" class="dashboard-image">
                 </div>
             </div>
         </div>
@@ -1698,126 +1487,92 @@
                     </p>
                 </div>
                 <div class="col-lg-6 order-lg-1 text-center mt-4 mt-lg-0">
-                    <img src="<?= base_url('assets_system/images/2xpage-nobg.png') ?>" alt="Overview Dashboard" class="dashboard-image">
+                    <img src="<?= base_url('assets_system/images/overview.png') ?>" alt="Overview Dashboard" class="dashboard-image">
                 </div>
             </div>
         </div>
     </div>
-
-    
 </section>
 
-    <!-- 2. Modern System Components -->
-    <section class="components-section">
-      <div class="components-container">
-        <div class="container fade-in">
-          <h2>MODERN</h2>
-          <div class="row mt-4">
-            <div class="col-md-4 mb-4">
-              <div class="component-card">
-                <i class="fas fa-microchip"></i>
-                <h5>Smart Counter</h5>
-                <p>Input device that collects machine data.</p>
-              </div>
+  <!-- Make Informed Decisions Section -->
+<section class="make-informed-section py-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 text-center mb-5">
+                <h2 class="section-title">Make Informed Decisions</h2>
+                <div class="title-underline mx-auto"></div>
             </div>
-            <div class="col-md-4 mb-4">
-              <div class="component-card">
-                <i class="fas fa-server"></i>
-                <h5>Base Station</h5>
-                <p>Data receiver that aggregates information from counters.</p>
-              </div>
-            </div>
-            <div class="col-md-4 mb-4">
-              <div class="component-card">
-                <i class="fas fa-chart-line"></i>
-                <h5>Gemba Reporter</h5>
-                <p>Software platform to analyze and view production data.</p>
-              </div>
-            </div>
-          </div>
         </div>
-      </div>
-    </section>
-
-    <!-- 3. Modern  -->
-    <section class="production-section">
-      <div class="container fade-in">
-        <h2>GEMBA</h2>
-        <p>GEMBA collects critical production information to enhance decision-making:</p>
-        <div class="row mt-4 justify-content-center">
-          <div class="col-lg-8">
-            <div class="data-list">
-              <div class="row">
-                <div class="col-md-6">
-                  <div class="data-item">
-                    <i class="fas fa-check-circle"></i>
-                    <span>Machine status (running, idle, stopped)</span>
-                  </div>
-                  <div class="data-item">
-                    <i class="fas fa-check-circle"></i>
-                    <span>Downtime causes and frequency</span>
-                  </div>
-                  <div class="data-item">
-                    <i class="fas fa-check-circle"></i>
-                    <span>Production efficiency analysis</span>
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <div class="data-item">
-                    <i class="fas fa-check-circle"></i>
-                    <span>Throughput analysis</span>
-                  </div>
-                  <div class="data-item">
-                    <i class="fas fa-check-circle"></i>
-                    <span>Real-time performance metrics</span>
-                  </div>
-                  <div class="data-item">
-                    <i class="fas fa-check-circle"></i>
-                    <span>Historical data trends</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 4. Modern Request Demo -->
-    <section class="demo-section">
-      <div class="demo-container">
-        <div class="container fade-in">
-          <div class="row justify-content-center">
-            <div class="col-lg-8">
-              <h2>Request a Demo</h2>
-              <p>Interested in experiencing GEMBA in action? Request a demo or inquire about testing GEMBA on your machines.</p>
-              <div class="demo-form">
-                <form>
-                  <div class="row">
-                    <div class="col-md-6 mb-4">
-                      <label class="form-label">Name</label>
-                      <input type="text" class="form-control" placeholder="Your Name">
+        
+        <div class="row g-4">
+            <!-- First Row -->
+            <div class="col-md-4">
+                <div class="feature-item h-100">
+                    <div class="feature-icon mb-3">
+                        <i class="fas fa-eye"></i>
                     </div>
-                    <div class="col-md-6 mb-4">
-                      <label class="form-label">Email</label>
-                      <input type="email" class="form-control" placeholder="Your Email">
-                    </div>
-                  </div>
-                  <div class="mb-4">
-                    <label class="form-label">Message</label>
-                    <textarea class="form-control" rows="4" placeholder="Your Inquiry"></textarea>
-                  </div>
-                  <div class="text-center">
-                    <button type="submit" class="btn btn-primary btn-lg">Submit Request</button>
-                  </div>
-                </form>
-              </div>
+                    <h4 class="feature-title">Real-Time Visibility</h4>
+                    <p class="feature-text">Instantly know which machines are running or idle.</p>
+                </div>
             </div>
-          </div>
+            
+            <div class="col-md-4">
+                <div class="feature-item h-100">
+                    <div class="feature-icon mb-3">
+                        <i class="fas fa-wifi"></i>
+                    </div>
+                    <h4 class="feature-title">Wireless Installation</h4>
+                    <p class="feature-text">Quick setup, minimal disruption to existing machines.</p>
+                </div>
+            </div>
+            
+            <div class="col-md-4">
+                <div class="feature-item h-100">
+                    <div class="feature-icon mb-3">
+                        <i class="fas fa-expand-arrows-alt"></i>
+                    </div>
+                    <h4 class="feature-title">Scalable</h4>
+                    <p class="feature-text">Easily expand your setup by connecting up to 10 Smart Counters per Base Station.</p>
+                </div>
+            </div>
         </div>
-      </div>
-    </section>
-  </main>
+        
+        
+        
+        <!-- Second Row -->
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="feature-item h-100">
+                    <div class="feature-icon mb-3">
+                        <i class="fas fa-file-alt"></i>
+                    </div>
+                    <h4 class="feature-title">Automated Records</h4>
+                    <p class="feature-text">Eliminate paper logs and manual counting.</p>
+                </div>
+            </div>
+            
+            <div class="col-md-4">
+                <div class="feature-item h-100">
+                    <div class="feature-icon mb-3">
+                        <i class="fas fa-dollar-sign"></i>
+                    </div>
+                    <h4 class="feature-title">Cost-Effective</h4>
+                    <p class="feature-text">One-time setup cost — no monthly fees or subscriptions.</p>
+                </div>
+            </div>
+            
+            <div class="col-md-4">
+                <div class="feature-item h-100">
+                    <div class="feature-icon mb-3">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h4 class="feature-title">Reliable</h4>
+                    <p class="feature-text">Line Seiki, a trusted name in precision measurement.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
   <!-- ✅ Footer -->
   <footer>
