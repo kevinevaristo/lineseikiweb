@@ -734,20 +734,38 @@ body > div[style*="height: 90px"] {
   border-radius: 15px;
   padding: 30px 25px;
   width: 280px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); /* Smoother transition */
+  cursor: default;
 }
 
+/* HOVER EFFECT ADDED HERE */
+.concept-box:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(13, 110, 253, 0.2);
+  background-color: var(--primary-blue);
+}
 
-.concept-box h4 {
-  color: var(--primary-blue);
-  font-weight: 700;
-  margin-bottom: 10px;
+.concept-box h1 {
+  text-align: center !important;
+  margin: 0 auto 10px auto;
+  display: block;
+  color: var(--primary-blue); /* Default color */
+  font-weight: 800;
+  transition: color 0.3s ease;
 }
 
 .concept-box p {
-  color: var(--primary-blue);
+  color: var(--primary-blue); /* Default color */
   font-size: 0.95rem;
   line-height: 1.5;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+/* Change text to white on hover */
+.concept-box:hover h1, 
+.concept-box:hover p {
+  color: #ffffff !important;
 }
 
 /* Responsive layout */
