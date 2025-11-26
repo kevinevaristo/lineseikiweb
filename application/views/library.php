@@ -5,629 +5,340 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Library - Line Seiki Asia Pacific</title>
 
-  <!-- Bootstrap 5 CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-
-  <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
-  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
     /* =========================
-   🎨 Variables
-========================= */
-:root {
-  --primary-blue: #0d6efd;
-  --primary-blue-dark: #0a58ca;
-  --primary-orange: #fd7e14;
-  --primary-orange-dark: #e67300;
-  --light-blue: #e7f1ff;
-  --light-orange: #fff3e8;
-  --light-gray: #f8f9fa;
-  --dark: #212529;
-  --newblue: #17A2DC;
-  --newblue2: #0F467B;
-  --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-}
-
-/* =========================
-   📌 Base Styles
-========================= */
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  background-color: #fff;
-  color: #333;
-  font-family: 'Inter', sans-serif;
-  line-height: 1.6;
-  overflow-x: hidden;
-  padding-top: 90px;
-}
-
-hr {
-  background: rgba(255, 255, 255, 0.1);
-  height: 1px;
-}
-
-/* =========================
-   🟦 Navbar
-========================= */
-.navbar {
-  background: rgba(255, 255, 255, 0.98);
-  backdrop-filter: blur(10px);
-  padding: 0.8rem 5%;
-  transition: var(--transition);
-  border-bottom: 1px solid rgba(13, 110, 253, 0.1);
-}
-
-.navbar.scrolled {
-  padding: 0.6rem 5%;
-}
-
-.navbar-brand img {
-  height: 40px;
-  width: auto;
-  transition: var(--transition);
-}
-
-.navbar-nav .nav-link {
-  color: var(--dark);
-  font-weight: 500;
-  transition: var(--transition);
-  position: relative;
-  padding: 0.5rem 0.8rem;
-  border-radius: 8px;
-  margin: 0 0.1rem;
-}
-
-.navbar-nav .nav-link:hover,
-.navbar-nav .nav-link.active {
-  color: var(--primary-blue);
-  background: rgba(13, 110, 253, 0.08);
-}
-
-.navbar-nav .nav-link::after {
-  content: '';
-  position: absolute;
-  width: 0;
-  height: 2px;
-  bottom: 0;
-  left: 50%;
-  background-color: var(--newblue);
-  transition: var(--transition);
-}
-
-.navbar-nav .nav-link:hover::after {
-  width: 70%;
-  left: 15%;
-}
-
-/* =========================
-   🔽 Dropdown
-========================= */
-.dropdown-menu {
-  background-color: rgba(255, 255, 255, 0.98);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  border-radius: 12px;
-  padding: 0.8rem 0;
-  margin-top: 0.8rem;
-  animation: fadeIn 0.3s ease;
-}
-
-.dropdown-item {
-  color: var(--dark);
-  padding: 0.6rem 1.5rem;
-  transition: var(--transition);
-  position: relative;
-}
-
-.dropdown-item:hover {
-  background-color: var(--primary-blue);
-  color: white;
-  padding-left: 2rem;
-}
-
-.dropdown-submenu {
-  position: relative;
-}
-
-.dropdown-submenu > .dropdown-menu {
-  top: 0;
-  left: 100%;
-  margin-top: -0.8rem;
-}
-
-/* =========================
-   📚 Modern Library Section
-========================= */
-.library {
-  padding: 80px 5%;
-  background: linear-gradient(135deg, var(--light-blue) 0%, #fff 100%);
-  position: relative;
-  overflow: hidden;
-}
-
-.library::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2317A2DC' fill-opacity='0.05'%3E%3Ccircle cx='30' cy='30' r='4'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-  z-index: 0;
-}
-
-.library-container {
-  position: relative;
-  z-index: 1;
-}
-
-.library h1 {
-  text-align: center;
-  font-size: 3rem;
-  margin-bottom: 50px;
-  color: var(--newblue2);
-  font-weight: 800;
-  position: relative;
-  text-transform: uppercase;
-  letter-spacing: -0.5px;
-}
-
-.library h1::after {
-  content: '';
-  position: absolute;
-  left: 50%;
-  bottom: -15px;
-  transform: translateX(-50%);
-  width: 80px;
-  height: 4px;
-  background: linear-gradient(90deg, var(--newblue), var(--primary-blue));
-  border-radius: 2px;
-}
-
-.library-section {
-  margin-bottom: 100px;
-  position: relative;
-}
-
-.library-section h2 {
-  font-size: 2.2rem;
-  color: var(--newblue2);
-  margin-bottom: 25px;
-  text-align: center;
-  position: relative;
-  font-weight: 700;
-}
-
-.library-section h2::after {
-  content: '';
-  position: absolute;
-  left: 50%;
-  bottom: -10px;
-  transform: translateX(-50%);
-  width: 60px;
-  height: 4px;
-  background: linear-gradient(90deg, var(--newblue), var(--primary-blue));
-  border-radius: 2px;
-}
-
-.library-section p {
-  text-align: center;
-  color: #495057;
-  margin-bottom: 50px;
-  font-size: 1.1rem;
-  max-width: 700px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-/* Modern Download Cards */
-.download-card {
-  background: #fff;
-  border-radius: 20px;
-  padding: 40px 30px;
-  text-align: center;
-  transition: var(--transition);
-  border: none;
-  height: 100%;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-  position: relative;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.download-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 5px;
-  background: linear-gradient(90deg, var(--newblue), var(--primary-blue));
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.4s ease;
-}
-
-.download-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-}
-
-.download-card:hover::before {
-  transform: scaleX(1);
-}
-
-.download-card h5 {
-  margin-bottom: 20px;
-  font-weight: 700;
-  color: var(--newblue2);
-  font-size: 1.4rem;
-  position: relative;
-}
-
-.download-icon {
-  font-size: 3rem;
-  color: var(--newblue);
-  margin-bottom: 25px;
-  transition: var(--transition);
-}
-
-.download-card:hover .download-icon {
-  transform: scale(1.1);
-  color: var(--primary-blue);
-}
-
-/* =========================
-   🔘 Modern Buttons
-========================= */
-.btn {
-  padding: 0.8rem 1.8rem;
-  border-radius: 10px;
-  font-weight: 600;
-  transition: var(--transition);
-  position: relative;
-  overflow: hidden;
-  z-index: 1;
-}
-
-.btn::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 0%;
-  height: 100%;
-  background: rgba(255, 255, 255, 0.1);
-  transition: var(--transition);
-  z-index: -1;
-}
-
-.btn:hover::before {
-  width: 100%;
-}
-
-.btn-primary {
-  background: linear-gradient(135deg, var(--primary-blue), var(--primary-blue-dark));
-  border: none;
-}
-
-.btn-primary:hover {
-  background: linear-gradient(135deg, var(--primary-blue-dark), var(--primary-blue));
-  transform: translateY(-3px);
-}
-
-.btn-orange {
-  background: linear-gradient(135deg, var(--newblue2), var(--newblue));
-  border: none;
-  color: white;
-}
-
-.btn-orange:hover {
-  background: linear-gradient(135deg, var(--newblue), var(--newblue2));
-  transform: translateY(-3px);
-  color: white;
-}
-
-.btn-download {
-  background: linear-gradient(90deg, var(--newblue), var(--primary-blue));
-  color: #fff;
-  border: none;
-  padding: 12px 25px;
-  border-radius: 10px;
-  font-weight: 600;
-  transition: var(--transition);
-  position: relative;
-  overflow: hidden;
-  z-index: 1;
-  box-shadow: 0 5px 15px rgba(23, 162, 220, 0.3);
-}
-
-.btn-download::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 0%;
-  height: 100%;
-  background: rgba(255, 255, 255, 0.1);
-  transition: var(--transition);
-  z-index: -1;
-}
-
-.btn-download:hover::before {
-  width: 100%;
-}
-
-.btn-download:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 20px rgba(23, 162, 220, 0.4);
-}
-
-.btn-success {
-  background: linear-gradient(90deg, var(--newblue), var(--primary-blue));
-  border: none;
-  transition: var(--transition);
-  border-radius: 10px;
-  padding: 12px 25px;
-  font-weight: 600;
-}
-
-.btn-success:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(23, 162, 220, 0.3);
-}
-
-/* =========================
-   🪟 Modern Modal
-========================= */
-.modal-header {
-  background: linear-gradient(135deg, var(--primary-blue), var(--primary-blue-dark));
-  color: #fff;
-  border-top-left-radius: 16px;
-  border-top-right-radius: 16px;
-  padding: 20px 25px;
-}
-
-.modal-title {
-  font-weight: 700;
-  font-size: 1.4rem;
-}
-
-.modal-content {
-  border-radius: 16px;
-  border: none;
-  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
-  overflow: hidden;
-}
-
-.modal-footer .btn {
-  min-width: 120px;
-  border-radius: 10px;
-  font-weight: 600;
-  padding: 12px 25px;
-}
-
-/* =========================
-   📝 Forms
-========================= */
-.form-control {
-  border-radius: 10px;
-  padding: 12px 15px;
-  border: 1px solid #e0e0e0;
-  transition: var(--transition);
-  font-size: 1rem;
-}
-
-.form-control:focus {
-  border-color: var(--primary-blue);
-  box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.15);
-}
-
-.form-label {
-  font-weight: 600;
-  color: var(--newblue2);
-  margin-bottom: 8px;
-}
-
-/* =========================
-   ✨ Animations
-========================= */
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(30px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-.fade-in {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
-}
-
-.fade-in.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.delay-1 { transition-delay: 0.1s; }
-.delay-2 { transition-delay: 0.2s; }
-.delay-3 { transition-delay: 0.3s; }
-.delay-4 { transition-delay: 0.4s; }
-
-/* Card animation */
-@keyframes cardFadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px) scale(0.95);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-}
-
-.download-card {
-  animation: cardFadeIn 0.6s ease forwards;
-}
-
-.download-card:nth-child(1) { animation-delay: 0.1s; }
-.download-card:nth-child(2) { animation-delay: 0.2s; }
-.download-card:nth-child(3) { animation-delay: 0.3s; }
-.download-card:nth-child(4) { animation-delay: 0.4s; }
-
-/* =========================
-   ⬇️ Footer
-========================= */
-footer {
-  background: linear-gradient(135deg, var(--newblue2), var(--newblue));
-  color: white;
-  padding: 80px 10% 40px;
-  position: relative;
-  overflow: hidden;
-}
-
-footer::before {
-  content: '';
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='50' cy='50' r='1' fill='%23FFFFFF' opacity='0.05'/%3E%3C/svg%3E");
-  pointer-events: none;
-}
-
-footer h2 {
-  color: white;
-  font-weight: 700;
-}
-
-footer .links a {
-  color: #fff;
-  text-decoration: none;
-  margin-right: 24px;
-  position: relative;
-  font-weight: 500;
-  transition: var(--transition);
-}
-
-footer .links a::after {
-  content: '';
-  position: absolute;
-  width: 0;
-  height: 2px;
-  bottom: -4px;
-  left: 0;
-  background-color: var(--newblue2);
-  transition: var(--transition);
-}
-
-footer .links a:hover {
-  color: white;
-}
-
-footer .links a:hover::after {
-  width: 100%;
-}
-
-footer .socials a {
-  color: white;
-  margin-right: 18px;
-  font-size: 1.3rem;
-  transition: var(--transition);
-  display: inline-block;
-}
-
-footer .socials a:hover {
-  color: var(--newblue2);
-  transform: translateY(-3px);
-}
-
-footer .bottom {
-  margin-top: 40px;
-  font-size: 0.85rem;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 24px;
-}
-
-footer .bottom a {
-  color: #ccc;
-  text-decoration: none;
-  transition: var(--transition);
-}
-
-footer .bottom a:hover {
-  color: var(--newblue2);
-}
-
-/* =========================
-   📱 Responsive
-========================= */
-@media (max-width: 992px) {
-  .library {
-    padding: 60px 5%;
-  }
-
-  .library h1 {
-    font-size: 2.4rem;
-  }
-
-  .library-section h2 {
-    font-size: 2rem;
-  }
-
-  .dropdown-submenu > .dropdown-menu {
-    left: 0;
-    margin-top: 0;
-  }
-}
-
-@media (max-width: 768px) {
-  .library h1 {
-    font-size: 2rem;
-  }
-
-  .library-section h2 {
-    font-size: 1.8rem;
-  }
-
-  footer .links a {
-    display: block;
-    margin-bottom: 12px;
-  }
-  
-  .download-card {
-    padding: 30px 20px;
-  }
-  
-  .download-icon {
-    font-size: 2.5rem;
-  }
-}
+       🎨 Variables
+    ========================= */
+    :root {
+      /* Orange variables kept for reference but unused in this version */
+      --primary-orange: #fd7e14;
+      --primary-orange-dark: #e67300;
+      
+      --primary-blue: #0d6efd;
+      --primary-blue-dark: #0a58ca;
+      --light-blue: #e7f1ff;
+      --light-orange: #fff3e8;
+      --light-gray: #f8f9fa;
+      --dark: #212529;
+      /* Target Blues */
+      --newblue: #17A2DC; /* RGB: 23, 162, 220 */
+      --newblue2: #0F467B;
+      --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
+
+    /* =========================
+       📌 Base Styles
+    ========================= */
+    html { scroll-behavior: smooth; }
+    body {
+      background-color: #fff;
+      color: #333;
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden;
+      padding-top: 90px;
+    }
+    hr { background: rgba(255, 255, 255, 0.1); height: 1px; }
+
+    /* =========================
+       🟦 Navbar
+    ========================= */
+    .navbar {
+      background: rgba(255, 255, 255, 0.98);
+      backdrop-filter: blur(10px);
+      padding: 0.8rem 5%;
+      transition: var(--transition);
+      border-bottom: 1px solid rgba(13, 110, 253, 0.1);
+    }
+    .navbar.scrolled { padding: 0.6rem 5%; }
+    .navbar-brand img { height: 40px; width: auto; transition: var(--transition); }
+    .navbar-nav .nav-link {
+      color: var(--dark);
+      font-weight: 500;
+      transition: var(--transition);
+      position: relative;
+      padding: 0.5rem 0.8rem;
+      border-radius: 8px;
+      margin: 0 0.1rem;
+    }
+    .navbar-nav .nav-link:hover, .navbar-nav .nav-link.active {
+      color: var(--primary-blue);
+      background: rgba(13, 110, 253, 0.08);
+    }
+    .navbar-nav .nav-link::after {
+      content: ''; position: absolute; width: 0; height: 2px;
+      bottom: 0; left: 50%; background-color: var(--newblue); transition: var(--transition);
+    }
+    .navbar-nav .nav-link:hover::after { width: 70%; left: 15%; }
+    
+    /* Dropdown */
+    .dropdown-menu {
+      background-color: rgba(255, 255, 255, 0.98);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      border-radius: 12px;
+      padding: 0.8rem 0;
+      margin-top: 0.8rem;
+      animation: fadeIn 0.3s ease;
+    }
+    .dropdown-item { color: var(--dark); padding: 0.6rem 1.5rem; transition: var(--transition); }
+    .dropdown-item:hover { background-color: var(--primary-blue); color: white; padding-left: 2rem; }
+    .dropdown-submenu { position: relative; }
+    .dropdown-submenu > .dropdown-menu { top: 0; left: 100%; margin-top: -0.8rem; }
+
+    /* =========================
+       🔘 Buttons
+    ========================= */
+    .btn {
+      padding: 0.8rem 1.8rem;
+      border-radius: 10px;
+      font-weight: 600;
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+    }
+    .btn::before {
+      content: ''; position: absolute; top: 0; left: 0; width: 0%; height: 100%;
+      background: rgba(255, 255, 255, 0.1); transition: var(--transition); z-index: -1;
+    }
+    .btn:hover::before { width: 100%; }
+    .btn-orange {
+      background: linear-gradient(135deg, var(--newblue2), var(--newblue));
+      border: none; color: white;
+    }
+    .btn-orange:hover {
+      background: linear-gradient(135deg, var(--newblue), var(--newblue2));
+      transform: translateY(-3px); color: white;
+    }
+    .btn-light {
+      background: #f8f9fa; border: 1px solid #ddd; color: #333;
+    }
+    .btn-light:hover {
+      background: #e2e6ea; transform: translateY(-3px);
+    }
+
+    /* =========================
+       ⬇️ Footer
+    ========================= */
+    footer {
+      background: linear-gradient(135deg, var(--newblue2), var(--newblue));
+      color: white;
+      padding: 80px 10% 40px;
+      position: relative;
+      overflow: hidden;
+    }
+    footer::before {
+      content: ''; position: absolute; width: 100%; height: 100%; top: 0; left: 0;
+      background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='50' cy='50' r='1' fill='%23FFFFFF' opacity='0.05'/%3E%3C/svg%3E");
+      pointer-events: none;
+    }
+    footer h2 { color: white; font-weight: 700; }
+    footer .links a {
+      color: #fff; text-decoration: none; margin-right: 24px; position: relative;
+      font-weight: 500; transition: var(--transition);
+    }
+    footer .links a::after {
+      content: ''; position: absolute; width: 0; height: 2px;
+      bottom: -4px; left: 0; background-color: var(--newblue2); transition: var(--transition);
+    }
+    footer .links a:hover { color: white; }
+    footer .links a:hover::after { width: 100%; }
+    footer .socials a {
+      color: white; margin-right: 18px; font-size: 1.3rem;
+      transition: var(--transition); display: inline-block;
+    }
+    footer .socials a:hover { color: var(--newblue2); transform: translateY(-3px); }
+    footer .bottom {
+      margin-top: 40px; font-size: 0.85rem; display: flex; flex-wrap: wrap;
+      justify-content: center; gap: 24px;
+    }
+    footer .bottom a { color: #ccc; text-decoration: none; transition: var(--transition); }
+    footer .bottom a:hover { color: var(--newblue2); }
+
+    /* =======================================================
+       🚀 ADVANCED LIBRARY STYLES
+    ======================================================= */
+    
+    .tech-bg {
+      background-color: #f8faff;
+      background-image: 
+        linear-gradient(rgba(23, 162, 220, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(23, 162, 220, 0.05) 1px, transparent 1px);
+      background-size: 40px 40px;
+      padding: 80px 5%;
+      position: relative;
+    }
+
+    .tech-bg::after {
+      content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 500px;
+      background: radial-gradient(circle at 50% 0%, rgba(23, 162, 220, 0.1), transparent 70%);
+      pointer-events: none;
+    }
+
+    /* Advanced Tab Navigation (Pills) */
+    .lib-nav-pills {
+      background: #fff;
+      display: inline-flex;
+      padding: 5px;
+      border-radius: 50px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+      margin-bottom: 50px;
+      border: 1px solid rgba(0,0,0,0.05);
+      position: relative;
+      z-index: 2;
+    }
+    
+    .lib-nav-pills .nav-link {
+      color: #666;
+      border-radius: 40px;
+      padding: 10px 30px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      background: transparent;
+      border: none;
+    }
+
+    .lib-nav-pills .nav-link.active {
+      background: linear-gradient(90deg, var(--newblue2), var(--newblue));
+      color: #fff;
+      box-shadow: 0 4px 15px rgba(23, 162, 220, 0.3);
+    }
+
+    /* Advanced Glassmorphism Cards */
+    .adv-card {
+      background: #fff;
+      border-radius: 20px;
+      border: 1px solid #eef2f6;
+      overflow: hidden;
+      height: 100%;
+      position: relative;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .adv-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(23, 162, 220, 0.15);
+      border-color: rgba(23, 162, 220, 0.3);
+    }
+
+    .adv-card-body {
+      padding: 40px 30px;
+      text-align: center;
+      flex-grow: 1;
+      position: relative;
+      z-index: 1;
+    }
+
+    .adv-icon {
+      width: 70px; height: 70px;
+      background: rgba(23, 162, 220, 0.05);
+      color: var(--newblue);
+      border-radius: 50%;
+      display: flex;
+      align-items: center; justify-content: center;
+      font-size: 1.8rem;
+      margin: 0 auto 25px;
+      transition: var(--transition);
+    }
+
+    .adv-card:hover .adv-icon {
+      background: var(--newblue);
+      color: #fff;
+      transform: scale(1.1) rotate(10deg);
+    }
+
+    .adv-card h5 {
+      color: var(--newblue2);
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .adv-card p {
+      color: #777;
+      font-size: 0.95rem;
+    }
+
+    .adv-card-footer {
+      padding: 20px;
+      border-top: 1px solid #f0f0f0;
+      background: #fafbfc;
+    }
+
+    /* Library specific buttons */
+    .btn-lib-action {
+      width: 100%;
+      padding: 10px;
+      border-radius: 12px;
+      border: 2px solid transparent;
+      font-weight: 600;
+      background: rgba(23, 162, 220, 0.1);
+      color: var(--newblue2);
+      transition: var(--transition);
+    }
+
+    .btn-lib-action:hover {
+      background: var(--newblue);
+      color: #fff;
+      box-shadow: 0 5px 15px rgba(23, 162, 220, 0.25);
+    }
+    
+    /* UPDATED: Video button now uses newblue */
+    .btn-lib-video {
+      background: rgba(23, 162, 220, 0.1); /* newblue with opacity */
+      color: var(--newblue);
+      width: 100%;
+      padding: 10px;
+      border-radius: 12px;
+      border: 2px solid transparent;
+      font-weight: 600;
+      transition: var(--transition);
+    }
+    
+    .btn-lib-video:hover {
+      background: var(--newblue);
+      color: #fff;
+      box-shadow: 0 5px 15px rgba(23, 162, 220, 0.25);
+    }
+
+    /* Modal Form Styling */
+    .adv-modal-header {
+      background: linear-gradient(135deg, var(--newblue2), var(--newblue));
+      color: white;
+    }
+    .adv-form-control {
+      background: #f9f9f9;
+      border: 1px solid #eee;
+      padding: 12px;
+      border-radius: 8px;
+    }
+    .adv-form-control:focus {
+      background: #fff;
+      border-color: var(--newblue);
+      box-shadow: 0 0 0 3px rgba(23, 162, 220, 0.1);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .fade-in-up { animation: fadeIn 0.8s ease forwards; opacity: 0; }
+    .delay-1 { animation-delay: 0.1s; }
+    .delay-2 { animation-delay: 0.3s; }
 
   </style>
 </head>
 <body>
 
-  <!-- ✅ Navbar -->
   <nav class="navbar navbar-expand-lg navbar-light fixed-top">
     <div class="container-fluid">
       <a class="navbar-brand" href="<?= base_url() ?>">
@@ -642,7 +353,6 @@ footer .bottom a:hover {
           <li class="nav-item"><a class="nav-link" href="<?= base_url() ?>">Home</a></li>
           <li class="nav-item"><a class="nav-link" href="<?= base_url('index/about_us') ?>">About Us</a></li>
 
-          <!-- Dropdown -->
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
               Product and Services
@@ -650,7 +360,6 @@ footer .bottom a:hover {
             <ul class="dropdown-menu">
               <li><a class="dropdown-item" href="<?= base_url('index/ps_prod') ?>">Products</a></li>
 
-              <!-- Submenu -->
               <li class="dropdown-submenu">
                 <a class="dropdown-item dropdown-toggle" href="#">Services</a>
                 <ul class="dropdown-menu">
@@ -671,100 +380,340 @@ footer .bottom a:hover {
     </div>
   </nav>
 
-  <!-- ✅ Modern Library Section -->
-  <section class="library">
-    <div class="library-container">
-      <h1 class="fade-in">Resource Library</h1>
+  <section class="tech-bg">
+    <div class="container">
+      
+      <div class="text-center mb-5 fade-in-up">
+        <h1 style="color: var(--newblue2); font-weight: 800; font-size: 3rem;">Resource Library</h1>
+        <p class="text-muted" style="max-width: 700px; margin: 0 auto;">Access technical documentation, case studies, and video tutorials designed to empower your engineering solutions.</p>
+      </div>
 
-      <!-- Case Studies -->
-      <div class="library-section fade-in delay-1">
-        <h2>Case Studies</h2>
-        <p>Explore our detailed case studies showcasing successful implementations and measurable results.</p>
-        <div class="row g-4 justify-content-center">
-          <div class="col-md-4">
-            <div class="download-card">
-              <div class="download-icon">
-                <i class="fas fa-chart-line"></i>
-              </div>
-              <h5>Case Study 1</h5>
-              <button class="btn-download" data-bs-toggle="modal" data-bs-target="#downloadModal" data-file="case-study-1.pdf">Download</button>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="download-card">
-              <div class="download-icon">
-                <i class="fas fa-industry"></i>
-              </div>
-              <h5>Case Study 2</h5>
-              <button class="btn-download" data-bs-toggle="modal" data-bs-target="#downloadModal" data-file="case-study-2.pdf">Download</button>
-            </div>
-          </div>
+      <div class="text-center mb-5 fade-in-up delay-1">
+        <div class="lib-nav-pills" role="tablist">
+          <button class="nav-link active" id="tab-case" data-bs-toggle="pill" data-bs-target="#content-case" type="button" role="tab">Case Studies</button>
+          <button class="nav-link" id="tab-brochure" data-bs-toggle="pill" data-bs-target="#content-brochure" type="button" role="tab">Brochures</button>
+          <button class="nav-link" id="tab-video" data-bs-toggle="pill" data-bs-target="#content-video" type="button" role="tab">Videos</button>
         </div>
       </div>
 
-      <!-- Brochures -->
-      <div class="library-section fade-in delay-2">
-        <h2>Brochures</h2>
-        <p>Download our comprehensive brochures to learn more about our products and services.</p>
-        <div class="row g-4 justify-content-center">
-          <div class="col-md-4">
-            <div class="download-card">
-              <div class="download-icon">
-                <i class="fas fa-building"></i>
+      <div class="tab-content fade-in-up delay-2">
+        
+        <div class="tab-pane fade show active" id="content-case" role="tabpanel">
+          <div class="row g-4 justify-content-center">
+            <div class="col-md-6 col-lg-4">
+              <div class="adv-card">
+                <div class="adv-card-body">
+                  <div class="adv-icon"><i class="fas fa-chart-line"></i></div>
+                  <h5>Case Study 1</h5>
+                  <p>Efficiency improvement analysis and results.</p>
+                </div>
+                <div class="adv-card-footer">
+                  <button class="btn btn-lib-action" data-bs-toggle="modal" data-bs-target="#downloadModal" data-file="case-study-1.pdf">
+                    <i class="fas fa-download me-2"></i> Download PDF
+                  </button>
+                </div>
               </div>
-              <h5>Company Profile</h5>
-              <button class="btn-download" data-bs-toggle="modal" data-bs-target="#downloadModal" data-file="company-profile.pdf">Download</button>
             </div>
-          </div>
-          <div class="col-md-4">
-            <div class="download-card">
-              <div class="download-icon">
-                <i class="fas fa-cogs"></i>
+            <div class="col-md-6 col-lg-4">
+              <div class="adv-card">
+                <div class="adv-card-body">
+                  <div class="adv-icon"><i class="fas fa-industry"></i></div>
+                  <h5>Case Study 2</h5>
+                  <p>Implementation in heavy industry sectors.</p>
+                </div>
+                <div class="adv-card-footer">
+                  <button class="btn btn-lib-action" data-bs-toggle="modal" data-bs-target="#downloadModal" data-file="case-study-2.pdf">
+                    <i class="fas fa-download me-2"></i> Download PDF
+                  </button>
+                </div>
               </div>
-              <h5>Products & Services</h5>
-              <button class="btn-download" data-bs-toggle="modal" data-bs-target="#downloadModal" data-file="products-services.pdf">Download</button>
             </div>
           </div>
         </div>
+
+        <div class="tab-pane fade" id="content-brochure" role="tabpanel">
+          <div class="row g-4 justify-content-center">
+            <div class="col-md-6 col-lg-4">
+              <div class="adv-card">
+                <div class="adv-card-body">
+                  <div class="adv-icon"><i class="fas fa-building"></i></div>
+                  <h5>Company Profile</h5>
+                  <p>Learn about Line Seiki's history and mission.</p>
+                </div>
+                <div class="adv-card-footer">
+                  <button class="btn btn-lib-action" data-bs-toggle="modal" data-bs-target="#downloadModal" data-file="company-profile.pdf">
+                    <i class="fas fa-download me-2"></i> Download PDF
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+              <div class="adv-card">
+                <div class="adv-card-body">
+                  <div class="adv-icon"><i class="fas fa-cogs"></i></div>
+                  <h5>Products & Services</h5>
+                  <p>Comprehensive catalog of our offerings.</p>
+                </div>
+                <div class="adv-card-footer">
+                  <button class="btn btn-lib-action" data-bs-toggle="modal" data-bs-target="#downloadModal" data-file="products-services.pdf">
+                    <i class="fas fa-download me-2"></i> Download PDF
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tab-pane fade" id="content-video" role="tabpanel">
+          <div class="row g-4 justify-content-center">
+
+            <div class="col-md-6 col-lg-4">
+              <div class="adv-card">
+                <div class="adv-card-body">
+                  <div class="adv-icon" style="color: var(--newblue); background: rgba(23, 162, 220, 0.05);">
+                    <i class="fas fa-play-circle"></i>
+                  </div>
+                  <h5>Electronic Counters</h5>
+                  <p>Setup guide for G20 Series electronic counters.</p>
+                </div>
+                <div class="adv-card-footer">
+                  <button class="btn btn-lib-video" data-bs-toggle="modal" data-bs-target="#videoModal" data-video-url="https://www.youtube.com/@lineseikichannel7777">
+                    <i class="fas fa-play me-2"></i> Watch Now
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+              <div class="adv-card">
+                <div class="adv-card-body">
+                  <div class="adv-icon" style="color: var(--newblue); background: rgba(23, 162, 220, 0.05);">
+                    <i class="fas fa-video"></i>
+                  </div>
+                  <h5>Mechanical Series</h5>
+                  <p>Installation tutorial for heavy-duty counters.</p>
+                </div>
+                <div class="adv-card-footer">
+                  <button class="btn btn-lib-video" data-bs-toggle="modal" data-bs-target="#videoModal" data-video-url="https://www.youtube.com/@lineseikichannel7777">
+                    <i class="fas fa-play me-2"></i> Watch Now
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+              <div class="adv-card">
+                <div class="adv-card-body">
+                  <div class="adv-icon" style="color: var(--newblue); background: rgba(23, 162, 220, 0.05);">
+                    <i class="fas fa-tachometer-alt"></i>
+                  </div>
+                  <h5>Tachometer Usage</h5>
+                  <p>How to use handheld tachometers accurately.</p>
+                </div>
+                <div class="adv-card-footer">
+                  <button class="btn btn-lib-video" data-bs-toggle="modal" data-bs-target="#videoModal" data-video-url="https://www.youtube.com/@lineseikichannel7777">
+                    <i class="fas fa-play me-2"></i> Watch Now
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+              <div class="adv-card">
+                <div class="adv-card-body">
+                  <div class="adv-icon" style="color: var(--newblue); background: rgba(23, 162, 220, 0.05);">
+                    <i class="fas fa-wifi"></i>
+                  </div>
+                  <h5>IoT Solution Setup</h5>
+                  <p>Connecting your counters to the IoT network.</p>
+                </div>
+                <div class="adv-card-footer">
+                  <button class="btn btn-lib-video" data-bs-toggle="modal" data-bs-target="#videoModal" data-video-url="https://www.youtube.com/@lineseikichannel7777">
+                    <i class="fas fa-play me-2"></i> Watch Now
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+              <div class="adv-card">
+                <div class="adv-card-body">
+                  <div class="adv-icon" style="color: var(--newblue); background: rgba(23, 162, 220, 0.05);">
+                    <i class="fas fa-ruler-combined"></i>
+                  </div>
+                  <h5>Length Measuring</h5>
+                  <p>Calibration guide for length measuring counters.</p>
+                </div>
+                <div class="adv-card-footer">
+                  <button class="btn btn-lib-video" data-bs-toggle="modal" data-bs-target="#videoModal" data-video-url="https://www.youtube.com/@lineseikichannel7777">
+                    <i class="fas fa-play me-2"></i> Watch Now
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+              <div class="adv-card">
+                <div class="adv-card-body">
+                  <div class="adv-icon" style="color: var(--newblue); background: rgba(23, 162, 220, 0.05);">
+                    <i class="fas fa-tools"></i>
+                  </div>
+                  <h5>Maintenance Tips</h5>
+                  <p>Routine maintenance for long-lasting devices.</p>
+                </div>
+                <div class="adv-card-footer">
+                  <button class="btn btn-lib-video" data-bs-toggle="modal" data-bs-target="#videoModal" data-video-url="https://www.youtube.com/@lineseikichannel7777">
+                    <i class="fas fa-play me-2"></i> Watch Now
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+              <div class="adv-card">
+                <div class="adv-card-body">
+                  <div class="adv-icon" style="color: var(--newblue); background: rgba(23, 162, 220, 0.05);">
+                    <i class="fas fa-laptop-code"></i>
+                  </div>
+                  <h5>Software Integration</h5>
+                  <p>Using the data logging software features.</p>
+                </div>
+                <div class="adv-card-footer">
+                  <button class="btn btn-lib-video" data-bs-toggle="modal" data-bs-target="#videoModal" data-video-url="https://www.youtube.com/@lineseikichannel7777">
+                    <i class="fas fa-play me-2"></i> Watch Now
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+              <div class="adv-card">
+                <div class="adv-card-body">
+                  <div class="adv-icon" style="color: var(--newblue); background: rgba(23, 162, 220, 0.05);">
+                    <i class="fas fa-industry"></i>
+                  </div>
+                  <h5>Factory Automation</h5>
+                  <p>Case study: Improving assembly line speed.</p>
+                </div>
+                <div class="adv-card-footer">
+                  <button class="btn btn-lib-video" data-bs-toggle="modal" data-bs-target="#videoModal" data-video-url="https://www.youtube.com/@lineseikichannel7777">
+                    <i class="fas fa-play me-2"></i> Watch Now
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+              <div class="adv-card">
+                <div class="adv-card-body">
+                  <div class="adv-icon" style="color: var(--newblue); background: rgba(23, 162, 220, 0.05);">
+                    <i class="fas fa-thermometer-half"></i>
+                  </div>
+                  <h5>Thermometers</h5>
+                  <p>Precision temperature measurement demo.</p>
+                </div>
+                <div class="adv-card-footer">
+                  <button class="btn btn-lib-video" data-bs-toggle="modal" data-bs-target="#videoModal" data-video-url="https://www.youtube.com/@lineseikichannel7777">
+                    <i class="fas fa-play me-2"></i> Watch Now
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+              <div class="adv-card">
+                <div class="adv-card-body">
+                  <div class="adv-icon" style="color: var(--newblue); background: rgba(23, 162, 220, 0.05);">
+                    <i class="fas fa-check-circle"></i>
+                  </div>
+                  <h5>Quality Control</h5>
+                  <p>Ensuring accuracy in high-speed counting.</p>
+                </div>
+                <div class="adv-card-footer">
+                  <button class="btn btn-lib-video" data-bs-toggle="modal" data-bs-target="#videoModal" data-video-url="https://www.youtube.com/@lineseikichannel7777">
+                    <i class="fas fa-play me-2"></i> Watch Now
+                  </button>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
 
-  <!-- ✅ Modal Form -->
   <div class="modal fade" id="downloadModal" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog">
-      <form class="modal-content">
-        <div class="modal-header">
+    <div class="modal-dialog modal-dialog-centered">
+      <form class="modal-content" style="border-radius: 20px; border: none; overflow: hidden;">
+        <div class="modal-header adv-modal-header">
           <h5 class="modal-title">Fill out the form to download</h5>
           <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
         </div>
-        <div class="modal-body">
+        <div class="modal-body p-4">
           <input type="hidden" id="fileToDownload">
           <div class="mb-3">
             <label class="form-label">Full Name</label>
-            <input type="text" class="form-control" required>
+            <input type="text" class="form-control adv-form-control" required>
           </div>
           <div class="mb-3">
             <label class="form-label">Email Address</label>
-            <input type="email" class="form-control" required>
+            <input type="email" class="form-control adv-form-control" required>
           </div>
-          <div class="mb-3">
-            <label class="form-label">Company</label>
-            <input type="text" class="form-control" required>
+          <div class="row">
+            <div class="col-6 mb-3">
+              <label class="form-label">Company</label>
+              <input type="text" class="form-control adv-form-control" required>
+            </div>
+            <div class="col-6 mb-3">
+              <label class="form-label">Position</label>
+              <input type="text" class="form-control adv-form-control" required>
+            </div>
           </div>
-          <div class="mb-3">
-            <label class="form-label">Position</label>
-            <input type="text" class="form-control" required>
+          <div class="d-grid mt-2">
+            <button type="submit" class="btn btn-success" style="background: var(--newblue2); border: none; padding: 12px;">Submit & Download</button>
           </div>
-        </div>
-        <div class="modal-footer">
-          <button type="submit" class="btn btn-success">Submit & Download</button>
         </div>
       </form>
     </div>
   </div>
 
-  <!-- ✅ Footer -->
+  <div class="modal fade" id="videoModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <form class="modal-content" style="border-radius: 20px; border: none; overflow: hidden;">
+        <div class="modal-header adv-modal-header">
+          <h5 class="modal-title">Fill out the form to watch</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body p-4">
+          <input type="hidden" id="videoUrlToWatch">
+          <div class="mb-3">
+            <label class="form-label">Full Name</label>
+            <input type="text" class="form-control adv-form-control" required>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Email Address</label>
+            <input type="email" class="form-control adv-form-control" required>
+          </div>
+          <div class="row">
+            <div class="col-6 mb-3">
+               <label class="form-label">Company</label>
+               <input type="text" class="form-control adv-form-control" required>
+            </div>
+            <div class="col-6 mb-3">
+               <label class="form-label">Position</label>
+               <input type="text" class="form-control adv-form-control" required>
+            </div>
+          </div>
+          <div class="d-grid mt-2">
+            <button type="submit" class="btn btn-success" style="background: var(--newblue2); border: none; padding: 12px;">Submit & Watch</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
   <footer>
     <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap">
       <h2>Get in Touch with Us</h2>
@@ -801,7 +750,6 @@ footer .bottom a:hover {
     </div>
   </footer>
 
-  <!-- Bootstrap 5 JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
   <script>
@@ -816,34 +764,15 @@ footer .bottom a:hover {
         }
       });
       
-      // Fade-in animation on scroll
-      const fadeElements = document.querySelectorAll('.fade-in');
-      
-      const fadeObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-          }
-        });
-      }, { threshold: 0.15 });
-      
-      fadeElements.forEach(el => {
-        fadeObserver.observe(el);
-      });
-
       // Submenu functionality
       document.querySelectorAll('.dropdown-submenu > a').forEach(function(element){
         element.addEventListener('click', function(e){
           e.preventDefault();
           e.stopPropagation();
-
           let submenu = this.nextElementSibling;
-
           if(submenu){
             submenu.classList.toggle('show');
           }
-
-          // close other open submenus
           this.closest('.dropdown-menu').querySelectorAll('.show').forEach(function(openMenu){
             if(openMenu !== submenu){
               openMenu.classList.remove('show');
@@ -852,32 +781,48 @@ footer .bottom a:hover {
         });
       });
 
-      // close all on click outside
       document.addEventListener('click', function(){
         document.querySelectorAll('.dropdown-menu .show').forEach(function(openMenu){
           openMenu.classList.remove('show');
         });
       });
       
-      // Capture which file to download
-      let selectedFile = "";
-      const modal = document.getElementById("downloadModal");
-      modal.addEventListener("show.bs.modal", function (event) {
-        const button = event.relatedTarget;
-        selectedFile = button.getAttribute("data-file");
-        document.getElementById("fileToDownload").value = selectedFile;
-      });
+      // Download Modal Logic
+      const downloadModal = document.getElementById("downloadModal");
+      if(downloadModal) {
+        downloadModal.addEventListener("show.bs.modal", function (event) {
+          const button = event.relatedTarget;
+          const file = button.getAttribute("data-file");
+          document.getElementById("fileToDownload").value = file;
+        });
 
-      // Handle form submission
-      document.querySelector("#downloadModal form").addEventListener("submit", function(e){
-        e.preventDefault();
-        const file = document.getElementById("fileToDownload").value;
-        // ✅ trigger file download
-        window.location.href = "downloads/" + file; // <-- adjust folder path
-        const modalInstance = bootstrap.Modal.getInstance(modal);
-        modalInstance.hide();
-        this.reset();
-      });
+        document.querySelector("#downloadModal form").addEventListener("submit", function(e){
+          e.preventDefault();
+          const file = document.getElementById("fileToDownload").value;
+          // Simulate download
+          window.location.href = "downloads/" + file; 
+          bootstrap.Modal.getInstance(downloadModal).hide();
+          this.reset();
+        });
+      }
+
+      // Video Modal Logic
+      const videoModal = document.getElementById("videoModal");
+      if(videoModal) {
+        videoModal.addEventListener("show.bs.modal", function (event) {
+          const button = event.relatedTarget;
+          const url = button.getAttribute("data-video-url");
+          document.getElementById("videoUrlToWatch").value = url;
+        });
+
+        document.querySelector("#videoModal form").addEventListener("submit", function(e){
+          e.preventDefault();
+          const url = document.getElementById("videoUrlToWatch").value;
+          window.open(url, '_blank');
+          bootstrap.Modal.getInstance(videoModal).hide();
+          this.reset();
+        });
+      }
     });
   </script>
 </body>

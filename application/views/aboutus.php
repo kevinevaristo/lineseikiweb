@@ -958,7 +958,6 @@ body > div[style*="height: 90px"] {
   width: 100%;
   height: 100%;
   background: 
-  
 }
 
 .cta-container {
@@ -1261,7 +1260,7 @@ body > div[style*="height: 90px"] {
   <div class="cta-container">
     <div class="container">
       <h2 class="fade-in" style="font-size: 2.5rem; font-weight: 700; margin-bottom: 20px;">
-        Interested in our products or services?<br> Connect with us today and let's build solutions together.  
+        Interested in our products or services?<br>   Connect with us today and let's build solutions together.  
       </h2>
       <a href="<?= base_url('index/contact_us') ?>" class="btn btn-lg btn-wavenet-cta fade-in delay-2">
         Get in Touch 
