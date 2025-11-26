@@ -1152,6 +1152,40 @@
         margin: 30px 0;
     }
 }
+
+/* Hover every images */
+.setup-diagram:hover{
+	transform: scale(1.02);
+}
+
+.setup-diagram {
+  border-radius: 20px;
+  position: relative;
+  z-index: 2;
+  transition: var(--transition);
+}
+
+.img-fluid:hover{
+	transform: scale(1.02);
+}
+
+.img-fluid {
+  border-radius: 20px;
+  position: relative;
+  z-index: 2;
+  transition: var(--transition);
+}
+
+.dashboard-image:hover{
+	transform: scale(1.02);
+}
+
+.dashboard-image {
+  border-radius: 20px;
+  position: relative;
+  z-index: 2;
+  transition: var(--transition);
+}
   </style>
 </head>
 <body>

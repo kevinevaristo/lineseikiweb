@@ -307,15 +307,24 @@ hr {
 
 
 
-/* Modern Contact Form Section with Wavy Gradient */
+/* =========================
+   WAVY BACKGROUND + GLASS FORM MIX
+========================= */
+
+/* --- 1. RESTORED WAVY BACKGROUND STYLES --- */
 .contact-form-section {
+  /* Original Blue Gradient */
   background: linear-gradient(135deg, var(--newblue2) 0%, var(--newblue) 100%);
   color: white;
   padding: 100px 0;
   position: relative;
   overflow: hidden;
+  min-height: 700px;
+  display: flex;
+  align-items: center;
 }
 
+/* The Wavy SVGs */
 .contact-form-section::before {
   content: '';
   position: absolute;
@@ -324,16 +333,14 @@ hr {
   width: 100%;
   height: 100%;
   background: 
-    /* Wavy pattern overlay */
     url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120' preserveAspectRatio='none'%3E%3Cpath d='M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z' fill='%23ffffff' fill-opacity='0.1'%3E%3C/path%3E%3C/svg%3E"),
-    /* Second wavy layer */
     url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120' preserveAspectRatio='none'%3E%3Cpath d='M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z' fill='%23ffffff' fill-opacity='0.05'%3E%3C/path%3E%3C/svg%3E");
-    
   background-repeat: no-repeat;
   z-index: 1;
   animation: waveMove 15s ease-in-out infinite alternate;
 }
 
+/* The Floating Circles */
 .contact-form-section::after{
   content: '';
   position: absolute;
@@ -342,73 +349,149 @@ hr {
   width: 100%;
   height: 100%;
   background: 
-    /* Floating circles */
     radial-gradient(circle at 20% 80%, rgba(255,255,255,0.1) 0%, transparent 50%),
     radial-gradient(circle at 80% 20%, rgba(255,255,255,0.05) 0%, transparent 50%),
     radial-gradient(circle at 40% 40%, rgba(255,255,255,0.08) 0%, transparent 50%);
   z-index: 1;
-  animation: float 20s ease-in-out infinite;
+  /* Ensure float animation is defined elsewhere in your CSS, or re-add it here */
 }
 
 .contact-form-container {
   position: relative;
-  z-index: 2;
+  z-index: 2; /* Ensures form sits above the waves */
+  width: 100%;
 }
 
+/* Title Styling */
 .contact-form-section h2 {
-  font-size: 3rem;
-  font-weight: 800;
-  margin-bottom: 50px;
-  color: white;
+  font-size: 2.8rem;
+  font-weight: 700;
+  margin-bottom: 40px;
+  color: #fff;
   text-align: center;
-  position: relative;
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 }
 
+/* --- 2. NEW GLASS CARD STYLES (From Target Image) --- */
+.contact-form {
+  /* Highly transparent white */
+  background: rgba(255, 255, 255, 0.1);
+  /* The blur effect */
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 20px;
+  padding: 50px 40px;
+  /* Subtle borders to look like glass edges */
+  border-top: 1px solid rgba(255, 255, 255, 0.5);
+  border-left: 1px solid rgba(255, 255, 255, 0.2);
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Top shiny light effect on the card */
+.contact-form::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.8), transparent);
+  z-index: 3;
+}
+
+/* LABELS */
+.form-label {
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: rgba(255, 255, 255, 0.9); /* White text for labels */
+  font-size: 0.95rem;
+  letter-spacing: 0.5px;
+}
+
+/* INPUT FIELDS (Solid White) */
+.form-control {
+  background: #ffffff;
+  border: 2px solid transparent;
+  border-radius: 10px;
+  padding: 12px 20px;
+  font-size: 1rem;
+  color: #333;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.form-control::placeholder {
+  color: #aaa;
+}
+
+/* THE GLOWING FOCUS EFFECT (Cyan/Teal from target image) */
+.form-control:focus {
+  background: #fff;
+  border-color: #00f2ff; /* Cyan border */
+  box-shadow: 0 0 15px rgba(0, 242, 255, 0.5); /* Cyan Glow */
+  outline: none;
+}
+
+/* SUBMIT BUTTON (Purple/Blue Gradient from target image) */
+.btn-submit-custom {
+  background: linear-gradient(135deg, var(--newblue), var(--newblue2)); /* Blue to Purple */
+  border: none;
+  color: white;
+  padding: 12px 60px;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 1.1rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 20px rgba(43, 87, 245, 0.3);
+  margin-top: 20px;
+}
+
+/* Title Styling with Underline */
+.contact-form-section h2 {
+  font-size: 2.8rem;
+  font-weight: 700;
+  margin-bottom: 60px; /* Increased margin to make room for the line */
+  color: #fff;
+  text-align: center;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  position: relative; /* Required for the line to stick to the title */
+}
+
+/* The "After" Line */
 .contact-form-section h2::after {
   content: '';
   position: absolute;
-  bottom: -20px;
+  bottom: -20px; /* Distance from text */
   left: 50%;
-  transform: translateX(-50%);
-  width: 80px;
-  height: 4px;
-  background: white;
+  transform: translateX(-50%); /* Centers the line */
+  width: 80px; /* Length of the line */
+  height: 4px; /* Thickness */
+  
+  /* White color to contrast with the blue background */
+  background: #ffffff; 
   border-radius: 2px;
+  
+  /* Optional: Adds a subtle glow to match the glass effect */
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5); 
 }
 
-/* Modern Form Styling */
-.contact-form {
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(10px);
-  border-radius: 20px;
-  padding: 50px 40px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  position: relative;
-  z-index: 2;
+.btn-submit-custom:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 15px 30px rgba(163, 78, 247, 0.4);
+  background: linear-gradient(90deg, var(--newblue), var(--newblue2));
 }
 
-.form-control {
-  border-radius: 12px;
-  padding: 15px 20px;
-  border: 1px solid #e0e0e0;
-  transition: var(--transition);
-  font-size: 1rem;
-  background: rgba(255, 255, 255, 0.9);
-}
-
-.form-control:focus {
-  border-color: var(--primary-blue);
-  box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.15);
-  background: white;
-}
-
-.form-label {
-  font-weight: 600;
-  margin-bottom: 10px;
-  color: var(--newblue2);
-  font-size: 1rem;
+.privacy-text {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.85rem;
+  margin-top: 15px;
+  text-align: center;
 }
 
 /* Update button to stand out on white form */
@@ -1057,30 +1140,39 @@ body > div[style*="margin-top: 90px"] { display: none !important; }
     <div class="container fade-in">
       <div class="row">
         <div class="col-lg-8 mx-auto">
+          
           <h2>Send Us a Message</h2>
-          <form class="contact-form">
-            <div class="row">
-              <div class="col-md-6 mb-4">
-                <label class="form-label">Name</label>
-                <input type="text" class="form-control" placeholder="Your Name" required>
+          
+          <div class="contact-form">
+            <form>
+              <div class="row">
+                <div class="col-md-6 mb-4">
+                  <label class="form-label">Name</label>
+                  <input type="text" class="form-control" placeholder="Full Name" required>
+                </div>
+                <div class="col-md-6 mb-4">
+                  <label class="form-label">Email</label>
+                  <input type="email" class="form-control" placeholder="Your Email" required>
+                </div>
               </div>
-              <div class="col-md-6 mb-4">
-                <label class="form-label">Email</label>
-                <input type="email" class="form-control" placeholder="Your Email" required>
+              
+              <div class="mb-4">
+                <label class="form-label">Subject</label>
+                <input type="text" class="form-control" placeholder="Subject" required>
               </div>
-            </div>
-            <div class="mb-4">
-              <label class="form-label">Subject</label>
-              <input type="text" class="form-control" placeholder="Subject" required>
-            </div>
-            <div class="mb-4">
-              <label class="form-label">Message</label>
-              <textarea class="form-control" rows="5" placeholder="Your Message" required></textarea>
-            </div>
-            <div class="text-center">
-              <button type="submit" class="btn btn-primary btn-lg">Submit Message</button>
-            </div>
-          </form>
+              
+              <div class="mb-4">
+                <label class="form-label">Message</label>
+                <textarea class="form-control" rows="5" placeholder="Your Message" required></textarea>
+              </div>
+              
+              <div class="text-center">
+                <button type="submit" class="btn btn-submit-custom">SUBMIT</button>
+                <p class="privacy-text">We value your privacy</p>
+              </div>
+            </form>
+          </div>
+
         </div>
       </div>
     </div>
