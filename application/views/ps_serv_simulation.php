@@ -680,27 +680,25 @@
       height: 1px;
     }
 
-    /* ===== CAPABILITIES SECTION STYLES ===== */
-/* ===== CAPABILITIES SECTION STYLES ===== */
+/* ===== DARK NEON CAPABILITIES STYLES ===== */
 .capabilities-section {
   padding: 100px 0;
-  background: linear-gradient(135deg, rgba(35, 105, 171, 0.85) 50%, rgba(23, 162, 220, 0.75) 100%), url('<?= base_url('assets_system/images/simulation10.jpg') ?>');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
   position: relative;
   overflow: hidden;
-}
-
-.capabilities-section::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: inherit;
-  z-index: 0;
+  
+  /* Fallback color if image doesn't load */
+  background-color: #0b1121;
+  
+  /* Blue Overlay + Background Image */
+  /* We use a linear gradient with semi-transparent blue colors placed OVER the image URL */
+  background-image: 
+    linear-gradient(135deg, rgba(15, 70, 123, 0.85) 100%, rgba(23, 162, 220, 0.75) 100%),
+    url('<?= base_url('assets_system/images/newb.jpg') ?>'); /* <-- REPLACE THIS PATH */
+    
+  background-size: cover;
+  background-position: center;
+  /* Optional: Makes the background stay still while scrolling for a premium feel */
+  background-attachment: fixed; 
 }
 
 .capabilities-container {
@@ -708,125 +706,206 @@
   margin: 0 auto;
   padding: 0 20px;
   position: relative;
-  z-index: 1;
+  z-index: 2;
 }
 
+/* Title Styling */
 .capabilities-title {
   text-align: center;
-  margin-bottom: 60px;
-  color: white;
+  margin-bottom: 70px;
+  color: #ffffff;
+  font-family: 'Inter', sans-serif;
   font-weight: 700;
-  position: relative;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  font-size: 3.5rem;
+  position: relative; /* Required for the line to stick to the title */
+  padding-bottom: 20px; /* Space between text and line */
 }
 
+/* The "After Line" */
 .capabilities-title::after {
   content: '';
   position: absolute;
   left: 50%;
-  bottom: -15px;
-  transform: translateX(-50%);
-  width: 60px;
-  height: 4px;
+  bottom: 0;
+  transform: translateX(-50%); /* Centers the line perfectly */
+  width: 80px; /* Length of the line */
+  height: 4px; /* Thickness */
+  
+  /* Gradient Blue to match the theme */
+  background: linear-gradient(90deg, #42b9ff, #0d6efd); 
   border-radius: 2px;
+  
+  /* Optional: Adds a neon glow effect to the line */
+  box-shadow: 0 0 10px rgba(66, 185, 255, 0.6); 
 }
 
-/* 3-COLUMN GRID LAYOUT */
+.capabilities-title {
+  text-align: center;
+  margin-bottom: 70px;
+  color: #ffffff;
+  font-family: 'Inter', serif; /* Or your preferred serif font for the title */
+  font-size: 3.5rem;
+}
+
+/* GRID LAYOUT */
 .capabilities-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* Force 3 equal columns */
-  gap: 30px; /* Reduced gap for better fit */
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
 }
 
-.capability-category {
-  background: rgba(255, 255, 255, 0.95);
-  border-radius: 16px;
-  padding: 25px 20px; /* Adjusted padding */
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-  transition: var(--transition);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+/* BASE CARD STYLE (Glassmorphism) */
+.capability-card {
+  background: rgba(255, 255, 255, 0.03);
   backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 24px;
+  padding: 40px 25px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.1);
   display: flex;
   flex-direction: column;
-  min-height: 280px; /* Consistent height */
+  align-items: center;
 }
 
-.capability-category:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
-  background: rgba(255, 255, 255, 0.98);
+.capability-card:hover {
+  transform: translateY(-10px);
 }
 
-.capability-category h3 {
-  color: black;
-  font-size: 1.3rem; /* Slightly smaller for better fit */
-  font-weight: 600;
-  margin-bottom: 20px;
-  padding-bottom: 10px;
-  text-align: center;
+/* SPECIFIC COLOR THEMES (Blue, Green, Purple) */
+
+/* Blue Card */
+.card-blue {
+  border-top: 1px solid rgba(66, 185, 255, 0.5);
+  border-bottom: 1px solid rgba(66, 185, 255, 0.2);
+  box-shadow: 0 0 20px rgba(66, 185, 255, 0.1), inset 0 0 20px rgba(66, 185, 255, 0.05);
+}
+.card-blue .card-icon-top, 
+.card-blue .list-icon {
+  color: #42b9ff;
+  border-color: #42b9ff;
+}
+.card-blue:hover {
+  box-shadow: 0 0 30px rgba(66, 185, 255, 0.3), inset 0 0 20px rgba(66, 185, 255, 0.1);
 }
 
-.capability-items {
+/* Green Card */
+.card-green {
+  border-top: 1px solid rgba(100, 255, 150, 0.5);
+  border-bottom: 1px solid rgba(100, 255, 150, 0.2);
+  box-shadow: 0 0 20px rgba(100, 255, 150, 0.1), inset 0 0 20px rgba(100, 255, 150, 0.05);
+}
+.card-green .card-icon-top, 
+.card-green .list-icon {
+  color: #64ff96;
+  border-color: #64ff96;
+}
+.card-green:hover {
+  box-shadow: 0 0 30px rgba(100, 255, 150, 0.3), inset 0 0 20px rgba(100, 255, 150, 0.1);
+}
+
+/* Purple Card */
+.card-purple {
+  border-top: 1px solid rgba(180, 100, 255, 0.5);
+  border-bottom: 1px solid rgba(180, 100, 255, 0.2);
+  box-shadow: 0 0 20px rgba(180, 100, 255, 0.1), inset 0 0 20px rgba(180, 100, 255, 0.05);
+}
+.card-purple .card-icon-top, 
+.card-purple .list-icon {
+  color: #b464ff;
+  border-color: #b464ff;
+}
+.card-purple:hover {
+  box-shadow: 0 0 30px rgba(180, 100, 255, 0.3), inset 0 0 20px rgba(180, 100, 255, 0.1);
+}
+
+/* TOP ICON STYLE */
+.card-icon-top {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 2px solid currentColor;
   display: flex;
-  flex-wrap: wrap;
-  gap: 8px; /* Reduced gap */
+  align-items: center;
   justify-content: center;
-  flex: 1; /* Allow items to fill available space */
-  align-content: flex-start;
+  font-size: 1.8rem;
+  margin-bottom: 25px;
+  background: rgba(255, 255, 255, 0.05);
 }
 
-.capability-item {
-  background: var(--newblue);
+.capability-card h3 {
   color: white;
-  padding: 6px 12px; /* Slightly smaller padding */
-  border-radius: 15px;
-  font-size: 0.85rem; /* Slightly smaller font */
-  font-weight: 500;
-  transition: var(--transition);
-  white-space: nowrap; /* Prevent text wrapping */
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 30px;
+  line-height: 1.3;
 }
 
-.capability-item:hover {
-  background: var(--primary-blue);
-  color: white;
-  transform: translateY(-2px);
+/* LIST STYLES */
+.cap-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  text-align: left;
 }
 
-/* Responsive adjustments */
+.cap-list li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  color: #e0e0e0;
+  font-size: 1rem;
+  font-weight: 300;
+}
+
+.list-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1); /* Slight bg for small icon */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 15px;
+  font-size: 0.9rem;
+  flex-shrink: 0; /* Prevents icon squishing */
+}
+
+/* RESPONSIVE */
 @media (max-width: 992px) {
   .capabilities-grid {
-    grid-template-columns: repeat(2, 1fr); /* 2 columns on medium screens */
-    gap: 25px;
-  }
-  
-  .capability-category {
-    min-height: 250px;
-    padding: 20px 15px;
-  }
-  
-  .capability-category h3 {
-    font-size: 1.2rem;
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media (max-width: 768px) {
   .capabilities-grid {
-    grid-template-columns: 1fr; /* 1 column on small screens */
-    gap: 20px;
+    grid-template-columns: 1fr;
+  }
+  .capabilities-title {
+    font-size: 2.5rem;
+  }
+}
+
+
+@media (max-width: 480px) {
+  .capabilities-title {
+    font-size: 2rem;
   }
   
   .capability-category {
-    min-height: auto;
-    padding: 20px;
+    padding: 20px 15px;
   }
   
-  .capability-items {
-    gap: 6px;
+  .capability-category h3 {
+    font-size: 1.3rem;
   }
   
   .capability-item {
     font-size: 0.8rem;
-    padding: 5px 10px;
+    padding: 6px 12px;
   }
 }
     /* ===== BENEFITS SECTION STYLES ===== */
@@ -1121,6 +1200,7 @@
         font-size: 2.5rem;
       }
     }
+
     .cta-title::after {
   content: '';
   position: absolute;
@@ -1845,55 +1925,105 @@ section img:hover {
   </div>
 </section>
 
- <!-- Capabilities Section -->
-<section class="capabilities-section">
+ <section class="capabilities-section">
   <div class="capabilities-container">
     <h1 class="capabilities-title fade-in">Our Capabilities</h1>
     
     <div class="capabilities-grid">
-      <!-- Structural and Durability -->
-      <div class="capability-category fade-in">
-        <h3>Structural and Durability</h3>
-        <div class="capability-items">
-          <span class="capability-item">Static</span>
-          <span class="capability-item">Composites</span>
-          <span class="capability-item">Vibration</span>
-          <span class="capability-item">Explicit</span>
-          <span class="capability-item">Buckling</span>
-          <span class="capability-item">Fatigue</span>
-          <span class="capability-item">Heat Transfer</span>
-          <span class="capability-item">Dynamics</span>
-        </div>
+      
+      <div class="capability-card card-blue fade-in">
+        <div class="card-icon-top">
+          <i class="bi bi-diagram-3"></i> </div>
+        <h3>Structural &<br>Durability</h3>
+        
+        <ul class="cap-list">
+          <li>
+            <div class="list-icon"><i class="bi bi-shield-check"></i></div>
+            <span>Composites</span>
+          </li>
+          <li>
+            <div class="list-icon"><i class="bi bi-soundwave"></i></div>
+            <span>Vibration</span>
+          </li>
+          <li>
+            <div class="list-icon"><i class="bi bi-layers"></i></div>
+            <span>Buckling Fatigue</span>
+          </li>
+          <li>
+            <div class="list-icon"><i class="bi bi-thermometer-half"></i></div>
+            <span>Heat Transfer</span>
+          </li>
+          <li>
+            <div class="list-icon"><i class="bi bi-cone-striped"></i></div>
+            <span>Dynamics</span>
+          </li>
+        </ul>
       </div>
       
-      <!-- Manufacturing -->
-      <div class="capability-category fade-in delay-1">
+      <div class="capability-card card-green fade-in delay-1">
+        <div class="card-icon-top">
+          <i class="bi bi-gear-wide-connected"></i> </div>
         <h3>Manufacturing</h3>
-        <div class="capability-items">
-          <span class="capability-item">Machining</span>
-          <span class="capability-item">Thermomechanical</span>
-          <span class="capability-item">Elastomers</span>
-          <span class="capability-item">Metal</span>
-        </div>
+        
+        <ul class="cap-list">
+          <li>
+            <div class="list-icon"><i class="bi bi-tools"></i></div>
+            <span>Thermomechanical</span>
+          </li>
+          <li>
+            <div class="list-icon"><i class="bi bi-droplet"></i></div>
+            <span>Elastomers</span>
+          </li>
+          <li>
+            <div class="list-icon"><i class="bi bi-hexagon"></i></div>
+            <span>Polymers</span>
+          </li>
+          <li>
+            <div class="list-icon"><i class="bi bi-box-seam"></i></div>
+            <span>Rapid Prototyping</span>
+          </li>
+          <li>
+            <div class="list-icon"><i class="bi bi-arrow-repeat"></i></div>
+            <span>Circulating</span>
+          </li>
+        </ul>
       </div>
       
-      <!-- Electronics, Electromagnetics, Optimization & Oil and Gas -->
-      <div class="capability-category fade-in delay-2">
-        <h3>Electronics, Electromagnetics, Optimization & Oil and Gas</h3>
-        <div class="capability-items">
-          <span class="capability-item">PCB</span>
-          <span class="capability-item">Low Frequency</span>
-          <span class="capability-item">Induction</span>
-          <span class="capability-item">Circuit</span>
-          <span class="capability-item">Piping</span>
-          <span class="capability-item">Parametic</span>
-          <span class="capability-item">Non-Parametric</span>
-          <span class="capability-item">Pressure vessels</span>
-        </div>
+      <div class="capability-card card-purple fade-in delay-2">
+        <div class="card-icon-top">
+          <i class="bi bi-cpu"></i> </div>
+        <h3>Electronics & Electromagnetics,<br>Optimization & Oil and Gas</h3>
+        
+        <ul class="cap-list">
+          <li>
+            <div class="list-icon"><i class="bi bi-motherboard"></i></div>
+            <span>PCB Low Frequency</span>
+          </li>
+          <li>
+            <div class="list-icon"><i class="bi bi-activity"></i></div>
+            <span>Circuit Simulation</span>
+          </li>
+          <li>
+            <div class="list-icon"><i class="bi bi-wifi"></i></div>
+            <span>EMC/EMI</span>
+          </li>
+          <li>
+            <div class="list-icon"><i class="bi bi-broadcast"></i></div>
+            <span>Antenna Design</span>
+          </li>
+          <li>
+            <div class="list-icon"><i class="bi bi-hammer"></i></div>
+            <span>Pressure Vessels</span>
+          </li>
+          
+        </ul>
       </div>
+
     </div>
   </div>
 </section>
+
+
 <section class="reduced-cost-section container py-5">
   <div class="row align-items-center">
     <!-- In the reduced-cost-section, remove the shadow class from images -->
