@@ -16,18 +16,13 @@
        🎨 Variables
     ========================= */
     :root {
-      /* Orange variables kept for reference but unused in this version */
-      --primary-orange: #fd7e14;
-      --primary-orange-dark: #e67300;
-      
       --primary-blue: #0d6efd;
       --primary-blue-dark: #0a58ca;
       --light-blue: #e7f1ff;
       --light-orange: #fff3e8;
       --light-gray: #f8f9fa;
       --dark: #212529;
-      /* Target Blues */
-      --newblue: #17A2DC; /* RGB: 23, 162, 220 */
+      --newblue: #17A2DC;
       --newblue2: #0F467B;
       --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
     }
@@ -182,108 +177,17 @@
       pointer-events: none;
     }
 
-    /* Advanced Tab Navigation (Pills) */
-    .lib-nav-pills {
-      background: #fff;
-      display: inline-flex;
-      padding: 5px;
-      border-radius: 50px;
-      box-shadow: 0 5px 20px rgba(0,0,0,0.05);
-      margin-bottom: 50px;
-      border: 1px solid rgba(0,0,0,0.05);
-      position: relative;
-      z-index: 2;
-    }
-    
-    .lib-nav-pills .nav-link {
-      color: #666;
-      border-radius: 40px;
-      padding: 10px 30px;
-      font-weight: 600;
-      transition: all 0.3s ease;
-      background: transparent;
-      border: none;
-    }
-
-    .lib-nav-pills .nav-link.active {
-      background: linear-gradient(90deg, var(--newblue2), var(--newblue));
-      color: #fff;
-      box-shadow: 0 4px 15px rgba(23, 162, 220, 0.3);
-    }
-
-    /* Advanced Glassmorphism Cards */
-    .adv-card {
-      background: #fff;
-      border-radius: 20px;
-      border: 1px solid #eef2f6;
-      overflow: hidden;
-      height: 100%;
-      position: relative;
-      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.03);
-      display: flex;
-      flex-direction: column;
-    }
-
-    .adv-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 20px 40px rgba(23, 162, 220, 0.15);
-      border-color: rgba(23, 162, 220, 0.3);
-    }
-
-    .adv-card-body {
-      padding: 40px 30px;
-      text-align: center;
-      flex-grow: 1;
-      position: relative;
-      z-index: 1;
-    }
-
-    .adv-icon {
-      width: 70px; height: 70px;
-      background: rgba(23, 162, 220, 0.05);
-      color: var(--newblue);
-      border-radius: 50%;
-      display: flex;
-      align-items: center; justify-content: center;
-      font-size: 1.8rem;
-      margin: 0 auto 25px;
-      transition: var(--transition);
-    }
-
-    .adv-card:hover .adv-icon {
-      background: var(--newblue);
-      color: #fff;
-      transform: scale(1.1) rotate(10deg);
-    }
-
-    .adv-card h5 {
-      color: var(--newblue2);
-      font-weight: 700;
-      margin-bottom: 10px;
-    }
-
-    .adv-card p {
-      color: #777;
-      font-size: 0.95rem;
-    }
-
-    .adv-card-footer {
-      padding: 20px;
-      border-top: 1px solid #f0f0f0;
-      background: #fafbfc;
-    }
-
     /* Library specific buttons */
     .btn-lib-action {
       width: 100%;
-      padding: 10px;
-      border-radius: 12px;
+      padding: 8px 12px;
+      border-radius: 8px;
       border: 2px solid transparent;
       font-weight: 600;
       background: rgba(23, 162, 220, 0.1);
       color: var(--newblue2);
       transition: var(--transition);
+      font-size: 0.9rem;
     }
 
     .btn-lib-action:hover {
@@ -292,22 +196,166 @@
       box-shadow: 0 5px 15px rgba(23, 162, 220, 0.25);
     }
     
-    /* UPDATED: Video button now uses newblue */
     .btn-lib-video {
-      background: rgba(23, 162, 220, 0.1); /* newblue with opacity */
+      background: rgba(23, 162, 220, 0.1); 
       color: var(--newblue);
       width: 100%;
-      padding: 10px;
-      border-radius: 12px;
+      padding: 8px 12px;
+      border-radius: 8px;
       border: 2px solid transparent;
       font-weight: 600;
       transition: var(--transition);
+      font-size: 0.9rem;
     }
     
     .btn-lib-video:hover {
       background: var(--newblue);
       color: #fff;
       box-shadow: 0 5px 15px rgba(23, 162, 220, 0.25);
+    }
+
+    /* =======================================================
+       ✨ STYLES FOR UNIFIED LAYOUT
+    ======================================================= */
+    
+    /* Search Bar Styling */
+    .vid-search-wrapper {
+      position: relative;
+    }
+    .vid-search-input {
+      border-radius: 50px;
+      padding: 12px 25px 12px 50px;
+      border: 1px solid #eee;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.02);
+    }
+    .vid-search-input:focus {
+      border-color: var(--newblue);
+      box-shadow: 0 0 0 3px rgba(23, 162, 220, 0.1);
+    }
+    .vid-search-icon {
+      position: absolute;
+      left: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #aaa;
+    }
+
+    /* Filter Pills */
+    .vid-filter-btn {
+      border: none;
+      background: #f0f2f5;
+      color: #666;
+      border-radius: 20px;
+      padding: 6px 16px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: var(--transition);
+      margin-right: 5px;
+      margin-bottom: 5px;
+    }
+    /* Active state uses blue background */
+    .vid-filter-btn.active {
+      background: var(--newblue2);
+      color: #fff;
+    }
+    .vid-filter-btn:hover {
+      background: var(--newblue2);
+      color: #fff;
+    }
+
+    /* Featured Video Card (FIXED HEIGHT) */
+    .featured-vid-card {
+      background: linear-gradient(145deg, var(--newblue2), #0a3d6b);
+      border-radius: 20px;
+      color: white;
+      height: 340px; /* Fixed height */
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 30px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(15, 70, 123, 0.2);
+    }
+    .featured-vid-card::before {
+      content: ''; position: absolute; top:0; right:0; width: 100%; height: 100%;
+      background: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='%23FFFFFF' fill-opacity='0.05' d='M44.7,-76.4C58.9,-69.2,71.8,-59.1,81.6,-46.6C91.4,-34.1,98.1,-19.2,95.8,-4.9C93.5,9.3,82.2,22.9,71,34.3C59.8,45.7,48.7,54.9,36.6,63.1C24.5,71.3,11.4,78.5,-0.8,79.9C-13,81.3,-24.8,76.9,-36.2,70.1C-47.6,63.3,-58.6,54.1,-67.2,42.8C-75.8,31.5,-82,18.1,-83.4,4.2C-84.9,-9.7,-81.6,-24.1,-73.4,-36.4C-65.2,-48.7,-52.1,-58.9,-38.6,-66.4C-25.1,-73.9,-11.2,-78.7,1.9,-82C15,-85.3,29.9,-87.1,44.7,-76.4Z' transform='translate(100 100)' /%3E%3C/svg%3E") no-repeat center center;
+      background-size: cover;
+      opacity: 0.5;
+    }
+    .featured-play-btn {
+      font-size: 3.5rem;
+      color: white;
+      margin-bottom: 15px;
+      transition: transform 0.3s;
+      cursor: pointer;
+      text-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    }
+    .featured-play-btn:hover {
+      transform: scale(1.1);
+      color: var(--newblue);
+    }
+    
+    /* Compact Grid Card (Used for All Resources) */
+    .compact-card {
+      background: #fff;
+      border-radius: 15px;
+      border: 1px solid #f0f0f0;
+      overflow: hidden;
+      transition: var(--transition);
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+    .compact-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+      border-color: rgba(23, 162, 220, 0.3);
+    }
+    .compact-thumb {
+      height: 120px;
+      background: #f8f9fa;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--newblue);
+      font-size: 2rem;
+      position: relative;
+      flex-shrink: 0;
+    }
+    
+    /* Tag style for duration or type */
+    .compact-thumb::after {
+      content: attr(data-tag);
+      position: absolute;
+      bottom: 10px; right: 10px;
+      background: rgba(0,0,0,0.7);
+      color: white;
+      font-size: 0.75rem;
+      padding: 2px 8px;
+      border-radius: 4px;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+
+    .compact-body {
+      padding: 15px;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    .compact-body h6 {
+      font-weight: 700;
+      color: var(--newblue2);
+      margin-bottom: 5px;
+      font-size: 1rem;
+    }
+    .compact-body p {
+      font-size: 0.8rem;
+      color: #666;
+      margin-bottom: 15px;
+      line-height: 1.4;
+      flex-grow: 1;
     }
 
     /* Modal Form Styling */
@@ -333,7 +381,6 @@
     }
     .fade-in-up { animation: fadeIn 0.8s ease forwards; opacity: 0; }
     .delay-1 { animation-delay: 0.1s; }
-    .delay-2 { animation-delay: 0.3s; }
 
   </style>
 </head>
@@ -352,14 +399,10 @@
         <ul class="navbar-nav ms-auto">
           <li class="nav-item"><a class="nav-link" href="<?= base_url() ?>">Home</a></li>
           <li class="nav-item"><a class="nav-link" href="<?= base_url('index/about_us') ?>">About Us</a></li>
-
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
-              Product and Services
-            </a>
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">Product and Services</a>
             <ul class="dropdown-menu">
               <li><a class="dropdown-item" href="<?= base_url('index/ps_prod') ?>">Products</a></li>
-
               <li class="dropdown-submenu">
                 <a class="dropdown-item dropdown-toggle" href="#">Services</a>
                 <ul class="dropdown-menu">
@@ -367,11 +410,9 @@
                   <li><a class="dropdown-item" href="<?= base_url('index/ps_serv_silicone') ?>">Silicone Molding & Urethane Casting</a></li>
                 </ul>
               </li>
-
               <li><a class="dropdown-item" href="<?= base_url('index/ps_iotsolution') ?>">IoT Solution</a></li>
             </ul>
           </li>
-
           <li class="nav-item"><a class="nav-link" href="<?= base_url('index/news_event') ?>">News and Events</a></li>
           <li class="nav-item"><a class="nav-link active" href="<?= base_url('index/library') ?>">Library</a></li>
           <li class="nav-item"><a class="nav-link" href="<?= base_url('index/contact_us') ?>">Contact Us</a></li>
@@ -385,183 +426,199 @@
       
       <div class="text-center mb-5 fade-in-up">
         <h1 style="color: var(--newblue2); font-weight: 800; font-size: 3rem;">Resource Library</h1>
-        <p class="text-muted" style="max-width: 700px; margin: 0 auto;">Access technical documentation, case studies, and video tutorials designed to empower your engineering solutions.</p>
+        <p class="text-muted" style="max-width: 700px; margin: 0 auto;">Access technical documentation, case studies, and video tutorials.</p>
       </div>
 
-      <div class="text-center mb-5 fade-in-up delay-1">
-        <div class="lib-nav-pills" role="tablist">
-          <button class="nav-link active" id="tab-case" data-bs-toggle="pill" data-bs-target="#content-case" type="button" role="tab">Case Studies</button>
-          <button class="nav-link" id="tab-brochure" data-bs-toggle="pill" data-bs-target="#content-brochure" type="button" role="tab">Brochures</button>
-          <button class="nav-link" id="tab-video" data-bs-toggle="pill" data-bs-target="#content-video" type="button" role="tab">Videos</button>
-        </div>
-      </div>
-
-      <div class="tab-content fade-in-up delay-2">
+      <div class="row g-4 fade-in-up delay-1">
         
-        <div class="tab-pane fade show active" id="content-case" role="tabpanel">
-          <div class="row g-4 justify-content-center">
-            <div class="col-md-6 col-lg-4">
-              <div class="adv-card">
-                <div class="adv-card-body">
-                  <div class="adv-icon"><i class="fas fa-chart-line"></i></div>
-                  <h5>Case Study 1</h5>
-                  <p>Efficiency improvement analysis and results.</p>
+        <div class="col-lg-5">
+          <div class="featured-vid-card mb-4">
+             <div class="position-relative z-2">
+               <h6 class="text-uppercase mb-2" style="opacity: 0.8; letter-spacing: 1px; font-size: 0.85rem;">Featured Video</h6>
+               <h2 class="mb-3" style="font-weight: 800; line-height: 1.2; font-size: 1.8rem;">Getting Started with G20 Series</h2>
+               <div class="featured-play-btn" data-bs-toggle="modal" data-bs-target="#videoModal" data-video-url="https://www.youtube.com/@lineseikichannel7777">
+                 <i class="fas fa-play-circle"></i>
+               </div>
+               <button class="btn btn-primary rounded-pill px-4 mt-2" style="background: var(--newblue); border:none;" data-bs-toggle="modal" data-bs-target="#videoModal" data-video-url="https://www.youtube.com/@lineseikichannel7777">
+                 <i class="fas fa-play me-2"></i> Watch Now
+               </button>
+             </div>
+          </div>
+
+          <h5 class="mb-3 text-secondary" style="font-weight:700; border-left: 4px solid var(--newblue); padding-left:12px;">Up Next</h5>
+          <div class="d-flex flex-column gap-3">
+            
+            <div class="compact-card" style="flex-direction: row; height: auto;">
+              <div class="compact-thumb" data-tag="4:15" style="width: 120px; height: auto; min-height: 90px;">
+                <i class="fas fa-sliders-h" style="font-size: 1.5rem;"></i>
+              </div>
+              <div class="compact-body d-flex flex-column justify-content-center p-3">
+                <h6 class="mb-1" style="font-size: 0.95rem;">Advanced Settings</h6>
+                <p class="small text-muted mb-2" style="font-size: 0.8rem;">Deep dive into configuration.</p>
+                <button class="btn btn-sm btn-lib-video py-1 px-2" style="width: fit-content;" data-bs-toggle="modal" data-bs-target="#videoModal" data-video-url="https://www.youtube.com/@lineseikichannel7777">
+                  <i class="fas fa-play me-1"></i> Watch
+                </button>
+              </div>
+            </div>
+
+            <div class="compact-card" style="flex-direction: row; height: auto;">
+              <div class="compact-thumb" data-tag="6:30" style="width: 120px; height: auto; min-height: 90px;">
+                <i class="fas fa-microchip" style="font-size: 1.5rem;"></i>
+              </div>
+              <div class="compact-body d-flex flex-column justify-content-center p-3">
+                <h6 class="mb-1" style="font-size: 0.95rem;">Sensor Integration</h6>
+                <p class="small text-muted mb-2" style="font-size: 0.8rem;">Connecting external sensors.</p>
+                <button class="btn btn-sm btn-lib-video py-1 px-2" style="width: fit-content;" data-bs-toggle="modal" data-bs-target="#videoModal" data-video-url="https://www.youtube.com/@lineseikichannel7777">
+                  <i class="fas fa-play me-1"></i> Watch
+                </button>
+              </div>
+            </div>
+
+            <div class="compact-card" style="flex-direction: row; height: auto;">
+              <div class="compact-thumb" data-tag="3:45" style="width: 120px; height: auto; min-height: 90px;">
+                <i class="fas fa-database" style="font-size: 1.5rem;"></i>
+              </div>
+              <div class="compact-body d-flex flex-column justify-content-center p-3">
+                <h6 class="mb-1" style="font-size: 0.95rem;">Data Logging</h6>
+                <p class="small text-muted mb-2" style="font-size: 0.8rem;">Exporting counts to PC.</p>
+                <button class="btn btn-sm btn-lib-video py-1 px-2" style="width: fit-content;" data-bs-toggle="modal" data-bs-target="#videoModal" data-video-url="https://www.youtube.com/@lineseikichannel7777">
+                  <i class="fas fa-play me-1"></i> Watch
+                </button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="col-lg-7">
+          
+          <div class="mb-4">
+            <div class="vid-search-wrapper mb-3">
+              <i class="fas fa-search vid-search-icon"></i>
+              <input type="text" class="form-control vid-search-input" id="resourceSearch" placeholder="Search resources...">
+            </div>
+            <div class="d-flex flex-wrap" id="filter-buttons">
+              <button class="vid-filter-btn active" data-filter="video">Videos</button>
+              <button class="vid-filter-btn" data-filter="case">Case Studies</button>
+              <button class="vid-filter-btn" data-filter="brochure">Brochures</button>
+            </div>
+          </div>
+
+          <div class="row g-3" id="resource-grid">
+            
+            <div class="col-md-6 mix-item" data-category="video">
+              <div class="compact-card">
+                <div class="compact-thumb" data-tag="5:32">
+                  <i class="fas fa-video"></i>
                 </div>
-                <div class="adv-card-footer">
+                <div class="compact-body">
+                  <h6>Electronic Counters Setup</h6>
+                  <p>Setup guide for G20 Series electronic counters.</p>
+                  <button class="btn btn-lib-video" data-bs-toggle="modal" data-bs-target="#videoModal" data-video-url="https://www.youtube.com/@lineseikichannel7777">
+                    <i class="fas fa-play me-2"></i> Watch Now
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6 mix-item" data-category="video">
+              <div class="compact-card">
+                <div class="compact-thumb" data-tag="5:38">
+                  <i class="fas fa-cogs"></i>
+                </div>
+                <div class="compact-body">
+                  <h6>Mechanical Installation</h6>
+                  <p>Installation tutorial for heavy-duty counters.</p>
+                  <button class="btn btn-lib-video" data-bs-toggle="modal" data-bs-target="#videoModal" data-video-url="https://www.youtube.com/@lineseikichannel7777">
+                    <i class="fas fa-play me-2"></i> Watch Now
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6 mix-item" data-category="video">
+              <div class="compact-card">
+                <div class="compact-thumb" data-tag="5:32">
+                  <i class="fas fa-tachometer-alt"></i>
+                </div>
+                <div class="compact-body">
+                  <h6>Tachometer Usage Guide</h6>
+                  <p>How to use handheld tachometers accurately.</p>
+                  <button class="btn btn-lib-video" data-bs-toggle="modal" data-bs-target="#videoModal" data-video-url="https://www.youtube.com/@lineseikichannel7777">
+                    <i class="fas fa-play me-2"></i> Watch Now
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6 mix-item" data-category="case">
+              <div class="compact-card">
+                <div class="compact-thumb" data-tag="PDF">
+                  <i class="fas fa-chart-line"></i>
+                </div>
+                <div class="compact-body">
+                  <h6>Case Study 1</h6>
+                  <p>Efficiency improvement analysis and results.</p>
                   <button class="btn btn-lib-action" data-bs-toggle="modal" data-bs-target="#downloadModal" data-file="case-study-1.pdf">
                     <i class="fas fa-download me-2"></i> Download PDF
                   </button>
                 </div>
               </div>
             </div>
-            <div class="col-md-6 col-lg-4">
-              <div class="adv-card">
-                <div class="adv-card-body">
-                  <div class="adv-icon"><i class="fas fa-industry"></i></div>
-                  <h5>Case Study 2</h5>
-                  <p>Implementation in heavy industry sectors.</p>
+
+            <div class="col-md-6 mix-item" data-category="case">
+              <div class="compact-card">
+                <div class="compact-thumb" data-tag="PDF">
+                  <i class="fas fa-industry"></i>
                 </div>
-                <div class="adv-card-footer">
+                <div class="compact-body">
+                  <h6>Case Study 2</h6>
+                  <p>Implementation in heavy industry sectors.</p>
                   <button class="btn btn-lib-action" data-bs-toggle="modal" data-bs-target="#downloadModal" data-file="case-study-2.pdf">
                     <i class="fas fa-download me-2"></i> Download PDF
                   </button>
                 </div>
               </div>
             </div>
-          </div>
-        </div>
 
-        <div class="tab-pane fade" id="content-brochure" role="tabpanel">
-          <div class="row g-4 justify-content-center">
-            <div class="col-md-6 col-lg-4">
-              <div class="adv-card">
-                <div class="adv-card-body">
-                  <div class="adv-icon"><i class="fas fa-building"></i></div>
-                  <h5>Company Profile</h5>
-                  <p>Learn about Line Seiki's history and mission.</p>
+            <div class="col-md-6 mix-item" data-category="brochure">
+              <div class="compact-card">
+                <div class="compact-thumb" data-tag="Brochure">
+                  <i class="fas fa-building"></i>
                 </div>
-                <div class="adv-card-footer">
+                <div class="compact-body">
+                  <h6>Company Profile</h6>
+                  <p>Learn about Line Seiki's history and mission.</p>
                   <button class="btn btn-lib-action" data-bs-toggle="modal" data-bs-target="#downloadModal" data-file="company-profile.pdf">
                     <i class="fas fa-download me-2"></i> Download PDF
                   </button>
                 </div>
               </div>
             </div>
-            <div class="col-md-6 col-lg-4">
-              <div class="adv-card">
-                <div class="adv-card-body">
-                  <div class="adv-icon"><i class="fas fa-cogs"></i></div>
-                  <h5>Products & Services</h5>
-                  <p>Comprehensive catalog of our offerings.</p>
+
+            <div class="col-md-6 mix-item" data-category="brochure">
+              <div class="compact-card">
+                <div class="compact-thumb" data-tag="Catalog">
+                  <i class="fas fa-book-open"></i>
                 </div>
-                <div class="adv-card-footer">
+                <div class="compact-body">
+                  <h6>Products & Services</h6>
+                  <p>Comprehensive catalog of our offerings.</p>
                   <button class="btn btn-lib-action" data-bs-toggle="modal" data-bs-target="#downloadModal" data-file="products-services.pdf">
                     <i class="fas fa-download me-2"></i> Download PDF
                   </button>
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-
-        <div class="tab-pane fade" id="content-video" role="tabpanel">
-          <div class="row g-4 justify-content-center">
-
-            <div class="col-md-6 col-lg-4">
-              <div class="adv-card">
-                <div class="adv-card-body">
-                  <div class="adv-icon" style="color: var(--newblue); background: rgba(23, 162, 220, 0.05);">
-                    <i class="fas fa-play-circle"></i>
-                  </div>
-                  <h5>Electronic Counters</h5>
-                  <p>Setup guide for G20 Series electronic counters.</p>
+            
+            <div class="col-md-6 mix-item" data-category="video">
+              <div class="compact-card">
+                <div class="compact-thumb" data-tag="5:30">
+                  <i class="fas fa-tools"></i>
                 </div>
-                <div class="adv-card-footer">
-                  <button class="btn btn-lib-video" data-bs-toggle="modal" data-bs-target="#videoModal" data-video-url="https://www.youtube.com/@lineseikichannel7777">
-                    <i class="fas fa-play me-2"></i> Watch Now
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-md-6 col-lg-4">
-              <div class="adv-card">
-                <div class="adv-card-body">
-                  <div class="adv-icon" style="color: var(--newblue); background: rgba(23, 162, 220, 0.05);">
-                    <i class="fas fa-video"></i>
-                  </div>
-                  <h5>Mechanical Series</h5>
-                  <p>Installation tutorial for heavy-duty counters.</p>
-                </div>
-                <div class="adv-card-footer">
-                  <button class="btn btn-lib-video" data-bs-toggle="modal" data-bs-target="#videoModal" data-video-url="https://www.youtube.com/@lineseikichannel7777">
-                    <i class="fas fa-play me-2"></i> Watch Now
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-md-6 col-lg-4">
-              <div class="adv-card">
-                <div class="adv-card-body">
-                  <div class="adv-icon" style="color: var(--newblue); background: rgba(23, 162, 220, 0.05);">
-                    <i class="fas fa-tachometer-alt"></i>
-                  </div>
-                  <h5>Tachometer Usage</h5>
-                  <p>How to use handheld tachometers accurately.</p>
-                </div>
-                <div class="adv-card-footer">
-                  <button class="btn btn-lib-video" data-bs-toggle="modal" data-bs-target="#videoModal" data-video-url="https://www.youtube.com/@lineseikichannel7777">
-                    <i class="fas fa-play me-2"></i> Watch Now
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-md-6 col-lg-4">
-              <div class="adv-card">
-                <div class="adv-card-body">
-                  <div class="adv-icon" style="color: var(--newblue); background: rgba(23, 162, 220, 0.05);">
-                    <i class="fas fa-wifi"></i>
-                  </div>
-                  <h5>IoT Solution Setup</h5>
-                  <p>Connecting your counters to the IoT network.</p>
-                </div>
-                <div class="adv-card-footer">
-                  <button class="btn btn-lib-video" data-bs-toggle="modal" data-bs-target="#videoModal" data-video-url="https://www.youtube.com/@lineseikichannel7777">
-                    <i class="fas fa-play me-2"></i> Watch Now
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-md-6 col-lg-4">
-              <div class="adv-card">
-                <div class="adv-card-body">
-                  <div class="adv-icon" style="color: var(--newblue); background: rgba(23, 162, 220, 0.05);">
-                    <i class="fas fa-ruler-combined"></i>
-                  </div>
-                  <h5>Length Measuring</h5>
-                  <p>Calibration guide for length measuring counters.</p>
-                </div>
-                <div class="adv-card-footer">
-                  <button class="btn btn-lib-video" data-bs-toggle="modal" data-bs-target="#videoModal" data-video-url="https://www.youtube.com/@lineseikichannel7777">
-                    <i class="fas fa-play me-2"></i> Watch Now
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-md-6 col-lg-4">
-              <div class="adv-card">
-                <div class="adv-card-body">
-                  <div class="adv-icon" style="color: var(--newblue); background: rgba(23, 162, 220, 0.05);">
-                    <i class="fas fa-tools"></i>
-                  </div>
-                  <h5>Maintenance Tips</h5>
+                <div class="compact-body">
+                  <h6>Maintenance Tips</h6>
                   <p>Routine maintenance for long-lasting devices.</p>
-                </div>
-                <div class="adv-card-footer">
                   <button class="btn btn-lib-video" data-bs-toggle="modal" data-bs-target="#videoModal" data-video-url="https://www.youtube.com/@lineseikichannel7777">
                     <i class="fas fa-play me-2"></i> Watch Now
                   </button>
@@ -569,16 +626,14 @@
               </div>
             </div>
 
-            <div class="col-md-6 col-lg-4">
-              <div class="adv-card">
-                <div class="adv-card-body">
-                  <div class="adv-icon" style="color: var(--newblue); background: rgba(23, 162, 220, 0.05);">
-                    <i class="fas fa-laptop-code"></i>
-                  </div>
-                  <h5>Software Integration</h5>
-                  <p>Using the data logging software features.</p>
+            <div class="col-md-6 mix-item" data-category="video">
+              <div class="compact-card">
+                <div class="compact-thumb" data-tag="4:45">
+                  <i class="fas fa-broadcast-tower"></i>
                 </div>
-                <div class="adv-card-footer">
+                <div class="compact-body">
+                  <h6>Remote Monitoring</h6>
+                  <p>Monitoring production lines from anywhere.</p>
                   <button class="btn btn-lib-video" data-bs-toggle="modal" data-bs-target="#videoModal" data-video-url="https://www.youtube.com/@lineseikichannel7777">
                     <i class="fas fa-play me-2"></i> Watch Now
                   </button>
@@ -586,16 +641,14 @@
               </div>
             </div>
 
-            <div class="col-md-6 col-lg-4">
-              <div class="adv-card">
-                <div class="adv-card-body">
-                  <div class="adv-icon" style="color: var(--newblue); background: rgba(23, 162, 220, 0.05);">
-                    <i class="fas fa-industry"></i>
-                  </div>
-                  <h5>Factory Automation</h5>
-                  <p>Case study: Improving assembly line speed.</p>
+            <div class="col-md-6 mix-item" data-category="video">
+              <div class="compact-card">
+                <div class="compact-thumb" data-tag="6:10">
+                  <i class="fas fa-bolt"></i>
                 </div>
-                <div class="adv-card-footer">
+                <div class="compact-body">
+                  <h6>Power Efficiency</h6>
+                  <p>Optimizing power consumption in counters.</p>
                   <button class="btn btn-lib-video" data-bs-toggle="modal" data-bs-target="#videoModal" data-video-url="https://www.youtube.com/@lineseikichannel7777">
                     <i class="fas fa-play me-2"></i> Watch Now
                   </button>
@@ -603,33 +656,14 @@
               </div>
             </div>
 
-            <div class="col-md-6 col-lg-4">
-              <div class="adv-card">
-                <div class="adv-card-body">
-                  <div class="adv-icon" style="color: var(--newblue); background: rgba(23, 162, 220, 0.05);">
-                    <i class="fas fa-thermometer-half"></i>
-                  </div>
-                  <h5>Thermometers</h5>
-                  <p>Precision temperature measurement demo.</p>
+            <div class="col-md-6 mix-item" data-category="video">
+              <div class="compact-card">
+                <div class="compact-thumb" data-tag="3:20">
+                  <i class="fas fa-sync-alt"></i>
                 </div>
-                <div class="adv-card-footer">
-                  <button class="btn btn-lib-video" data-bs-toggle="modal" data-bs-target="#videoModal" data-video-url="https://www.youtube.com/@lineseikichannel7777">
-                    <i class="fas fa-play me-2"></i> Watch Now
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-md-6 col-lg-4">
-              <div class="adv-card">
-                <div class="adv-card-body">
-                  <div class="adv-icon" style="color: var(--newblue); background: rgba(23, 162, 220, 0.05);">
-                    <i class="fas fa-check-circle"></i>
-                  </div>
-                  <h5>Quality Control</h5>
-                  <p>Ensuring accuracy in high-speed counting.</p>
-                </div>
-                <div class="adv-card-footer">
+                <div class="compact-body">
+                  <h6>Firmware Update</h6>
+                  <p>How to safely update your device firmware.</p>
                   <button class="btn btn-lib-video" data-bs-toggle="modal" data-bs-target="#videoModal" data-video-url="https://www.youtube.com/@lineseikichannel7777">
                     <i class="fas fa-play me-2"></i> Watch Now
                   </button>
@@ -786,6 +820,61 @@
           openMenu.classList.remove('show');
         });
       });
+      
+      // === FILTERING LOGIC (Connects Video, Cases, Brochures) ===
+      const filterBtns = document.querySelectorAll('.vid-filter-btn');
+      const gridItems = document.querySelectorAll('.mix-item');
+
+      filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          // Remove active class from all buttons
+          filterBtns.forEach(b => b.classList.remove('active'));
+          // Add active class to clicked button
+          btn.classList.add('active');
+
+          const filterValue = btn.getAttribute('data-filter');
+
+          gridItems.forEach(item => {
+            if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
+              item.classList.remove('d-none');
+              // Add a small fade animation class if desired
+              item.classList.add('fade-in-up');
+            } else {
+              item.classList.add('d-none');
+            }
+          });
+        });
+      });
+
+      // === INITIALIZE FILTER (Show "video" by default) ===
+      const activeBtn = document.querySelector('.vid-filter-btn.active');
+      if(activeBtn) {
+        // Trigger the click logic to hide non-video items on load
+        const filterValue = activeBtn.getAttribute('data-filter');
+        gridItems.forEach(item => {
+            if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
+              item.classList.remove('d-none');
+            } else {
+              item.classList.add('d-none');
+            }
+        });
+      }
+
+      // === SEARCH LOGIC ===
+      const searchInput = document.getElementById('resourceSearch');
+      if(searchInput){
+        searchInput.addEventListener('keyup', function(){
+          const value = this.value.toLowerCase();
+          gridItems.forEach(item => {
+            const text = item.textContent.toLowerCase();
+            if(text.indexOf(value) > -1){
+              item.classList.remove('d-none');
+            } else {
+              item.classList.add('d-none');
+            }
+          });
+        });
+      }
       
       // Download Modal Logic
       const downloadModal = document.getElementById("downloadModal");
