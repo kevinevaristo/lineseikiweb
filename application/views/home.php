@@ -1788,7 +1788,7 @@ body > div[style*="margin-top:90px"] { display: none !important; }
   <div style="margin-top:90px"></div>
 
 <!-- ✅ Carousel (fixed) -->
-<div id="heroCarousel" class="carousel slide carousel-fade fade-in" data-bs-ride="carousel" data-bs-interval="5000">
+<div id="heroCarousel" class="carousel slide carousel-fade fade-in" data-bs-ride="carousel" data-bs-interval="3000">
 
   <!-- Indicators -->
   <div class="carousel-indicators">
