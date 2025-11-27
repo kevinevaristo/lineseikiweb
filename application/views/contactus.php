@@ -438,7 +438,7 @@ hr {
 
 /* SUBMIT BUTTON (Purple/Blue Gradient from target image) */
 .btn-submit-custom {
-  background: linear-gradient(135deg, var(--newblue), var(--newblue2)); /* Blue to Purple */
+  background: linear-gradient(135deg, #2b57f5, #a34ef7); /* Blue to Purple */
   border: none;
   color: white;
   padding: 12px 60px;
@@ -484,25 +484,17 @@ hr {
 .btn-submit-custom:hover {
   transform: translateY(-2px);
   box-shadow: 0 15px 30px rgba(163, 78, 247, 0.4);
-  background: linear-gradient(90deg, var(--newblue), var(--newblue2));
+  background: linear-gradient(90deg, #2b57f5, #a34ef7);
 }
-
-.privacy-text {
-  color: rgba(255, 255, 255, 0.6);
-  font-size: 0.85rem;
-  margin-top: 15px;
-  text-align: center;
-}
-
 /* Update button to stand out on white form */
 .contact-form .btn-primary {
-  background: linear-gradient(135deg, var(--primary-blue), var(--primary-blue-dark));
+  background: linear-gradient(90deg, #2b57f5, #a34ef7);
   border: none;
   color: white;
 }
 
 .contact-form .btn-primary:hover {
-  background: linear-gradient(135deg, var(--primary-blue-dark), var(--primary-blue));
+  background: linear-gradient(90deg, #2b57f5, #a34ef7);
   transform: translateY(-3px);
   box-shadow: 0 8px 20px rgba(13, 110, 253, 0.4);
 }
@@ -1168,7 +1160,6 @@ body > div[style*="margin-top: 90px"] { display: none !important; }
               
               <div class="text-center">
                 <button type="submit" class="btn btn-submit-custom">SUBMIT</button>
-                <p class="privacy-text">We value your privacy</p>
               </div>
             </form>
           </div>

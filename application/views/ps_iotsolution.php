@@ -242,66 +242,6 @@
     transform: none;
   }
 }
-
-
-    
-    /* Modern Production Data Section */
-    .production-section {
-      background: #fff;
-      padding: 100px 0;
-      position: relative;
-    }
-
-    .production-section h2 {
-      font-size: 3rem;
-      color: var(--newblue2);
-      font-weight: 800;
-      margin-bottom: 50px;
-      text-align: center;
-      position: relative;
-    }
-
-    .production-section h2::after {
-      content: '';
-      position: absolute;
-      bottom: -20px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 80px;
-      height: 4px;
-      background: linear-gradient(90deg, var(--newblue), var(--primary-blue));
-      border-radius: 2px;
-    }
-
-    .production-section p {
-      text-align: center;
-      font-size: 1.2rem;
-      margin-bottom: 50px;
-      color: #495057;
-    }
-
-    
-
-    .form-control {
-      border-radius: 12px;
-      padding: 15px 20px;
-      border: 1px solid #e0e0e0;
-      transition: var(--transition);
-      font-size: 1rem;
-    }
-
-    .form-control:focus {
-      border-color: var(--primary-blue);
-      box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.15);
-    }
-
-    .form-label {
-      font-weight: 600;
-      margin-bottom: 10px;
-      color: var(--newblue2);
-      font-size: 1rem;
-    }
-
     /* Buttons */
     .btn {
       padding: 0.8rem 1.8rem;
@@ -353,18 +293,8 @@
       color: white;
     }
     
-    .btn-outline-blue {
-      background: transparent;
-      border: 2px solid var(--primary-blue);
-      color: var(--primary-blue);
-    }
     
-    .btn-outline-blue:hover {
-      background: var(--primary-blue);
-      color: #fff;
-      transform: translateY(-3px);
-      box-shadow: 0 8px 20px rgba(13, 110, 253, 0.3);
-    }
+  
 
     /* Footer */
     footer {
@@ -497,28 +427,125 @@
     }
 
 
+/* MODERN "OUR SOLUTION" SECTION */
 .our-solution {
-  padding: 80px 0;
+  padding: 100px 0;
+  background-color: #f8fbff; 
+  position: relative;
+  overflow: hidden;
+}
+
+
+.our-solution::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: -5%;
+  transform: translateY(-50%);
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(23, 162, 220, 0.1) 0%, transparent 70%);
+  z-index: 0;
+}
+
+.solution-container {
+  position: relative;
+  z-index: 2;
+}
+
+.solution-header {
+  margin-bottom: 40px;
 }
 
 .solution-title {
-  font-size: 2.8rem;
-  font-weight: 700;
-  color: #1f2a37;
+  font-size: 3rem;
+  font-weight: 800;
+  color: var(--newblue2);
+  margin-bottom: 15px;
+}
+
+.solution-title span {
+  color: var(--newblue);
 }
 
 .solution-underline {
-  width: 70px;
-  height: 4px;
-  background-color: #00a6e8; /* blue line like image */
-  margin-top: 8px;
-  border-radius: 3px;
+  width: 80px;
+  height: 5px;
+  background: linear-gradient(90deg, var(--newblue), var(--primary-blue));
+  border-radius: 5px;
 }
 
-.solution-img {
-  max-width: 100%;
-  height: auto;
-  margin-top: 20px;
+/* --- The Text Cards --- */
+
+/* The "Problem" Text */
+.problem-box {
+  border-left: 4px solid #adb5bd;
+  padding-left: 25px;
+  margin-bottom: 30px;
+}
+
+.problem-box p {
+  font-size: 1.15rem;
+  color: #6c757d; /* Muted text for the 'problem' */
+  font-style: italic;
+  line-height: 1.8;
+}
+
+/* The "Solution" Text (Highlight) */
+.solution-box {
+  background: white;
+  border-radius: 20px;
+  padding: 35px;
+  box-shadow: 0 15px 40px rgba(23, 162, 220, 0.15); 
+  border: 1px solid rgba(23, 162, 220, 0.2);
+  position: relative;
+  transition: transform 0.3s ease;
+}
+
+.solution-box:hover {
+  transform: translateY(-5px);
+}
+
+.solution-box::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 20px;
+  bottom: 20px;
+  width: 6px;
+  background: var(--newblue);
+  border-radius: 0 5px 5px 0;
+}
+
+.solution-box p {
+  font-size: 1.2rem;
+  color: var(--dark);
+  font-weight: 500;
+  margin: 0;
+  line-height: 1.7;
+}
+
+/* Image Styling */
+.solution-img-wrapper {
+  position: relative;
+  padding: 20px;
+}
+
+
+.solution-img-wrapper:hover .solution-img-original {
+  transform: scale(1.02);
+ 
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .solution-box {
+    padding: 25px;
+    margin-bottom: 40px;
+  }
+  .solution-img-wrapper {
+    padding: 0;
+  }
 }
 
 /* Our Products Showcase with Wavy Gradient */
@@ -854,155 +881,88 @@
   }
 }
 
-/* Custom Styles for Production Data Section */
+/* =========================================
+   MODERN PRODUCTION DATA STYLES
+========================================= */
+
+/* Section Header */
 .production-data-section {
-    /* Set overall background to white and remove default padding */
-    background-color: white; 
-    padding: 0; 
+  background-color: #fff;
+  padding-bottom: 0;
 }
 
-/* --- New: Styling for the full-width alternating strips --- */
+/* THE STRIPS - Modernized Backgrounds */
 .production-strip {
-    /* Use padding to separate the items vertically */
-    padding: 80px 0; 
+  padding: 100px 0;
+  position: relative;
+  transition: background 0.3s ease;
 }
 
-.production-strip.light-blue-strip {
-    /* Light blue background for Control Page and Duration Dashboard */
-    background-color: var(--light-blue, #e7f1ff); 
+/* Strip 1 & 3: Premium Soft Gradient instead of flat blue */
+.light-blue-strip {
+  background: linear-gradient(to top, #dff0ff, #bfe0ff);
+  border-top: 1px solid rgba(255, 255, 255, 0.5);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
 }
 
-.production-strip.white-strip {
-    /* White background for Count Dashboard and Overview */
-    background-color: white;
+.light-blue-strip1 {
+  background: linear-gradient(to bottom, #dff0ff, #bfe0ff);
+  border-top: 1px solid rgba(255, 255, 255, 0.5);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
 }
 
-/* --- Existing Header and Text Styles --- */
-.production-data-section h2.display-4 {
-    color: var(--newblue2);
-    font-weight: 800;
-    position: relative;
-    padding-bottom: 20px;
+/* Strip 2 & 4: Pure White */
+.white-strip {
+  background-color: #ffffff;
 }
 
-.production-data-section h2.display-4::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 80px;
-    height: 4px;
-    background: linear-gradient(90deg, var(--newblue), var(--primary-blue));
-    border-radius: 2px;
-}
-
-.production-data-section p.lead {
-    color: #555;
-    font-size: 1.15rem;
-}
-
-/* --- Unified Button Styles (Per Request) --- */
-.production-data-section .btn {
-    padding: 0.75rem 1.5rem;
-    border-radius: 30px;
-    font-weight: 600;
-    transition: all 0.3s ease;
-}
-
-/* Unified Button Style */
-.production-data-section .btn-info,
-.production-data-section .btn-secondary,
-.production-data-section .btn {
-    /* Base color: #495057 (Dark Gray) */
-    background-color: #495057; 
-    border-color: #495057;
-    color: white;
-    box-shadow: none !important; 
-}
-
-/* Unified Hover Style */
-.production-data-section .btn-info:hover,
-.production-data-section .btn-secondary:hover,
-.production-data-section .btn:hover {
-    /* Hover color: var(--primary-blue-dark) */
-    background-color: var(--primary-blue-dark);
-    border-color: var(--primary-blue-dark);
-    color: white;
-}
-
-/* Ensure no 'active' styling changes the color */
-.production-data-section .btn.active {
-    background-color: #495057 !important;
-    border-color: #495057 !important;
-    color: white !important;
-}
-
-/* --- Individual Data Item Styling --- */
-.production-data-item {
-    margin-bottom: 0; 
-}
-
+/* Typography: Modern Gradient Headings */
 .production-data-item h3 {
-    color: var(--newblue2);
-    font-weight: 700;
-    font-size: 2.2rem;
+  font-weight: 800;
+  font-size: 2.2rem;
+  color: var(--newblue2);
+  margin-bottom: 1rem;
+  /* Optional: Subtle text gradient for a premium feel */
+  background: linear-gradient(90deg, var(--newblue2), var(--primary-blue));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
 }
 
 .production-data-item p {
-    color: #6c757d;
-    font-size: 1.1rem;
-    line-height: 1.8;
+  color: #5f6c7b; /* Softer gray for better reading */
+  font-size: 1.15rem;
+  line-height: 1.8;
+  font-weight: 400;
 }
 
-
-
-/* --- Responsive adjustments for ordering --- */
-@media (max-width: 991.98px) {
-    .production-data-item .col-lg-6 {
-        order: unset !important;
-        text-align: center;
-    }
-    .production-data-item .col-lg-6:first-child {
-        margin-bottom: 20px;
-    }
-    .production-data-item h3 {
-        font-size: 1.8rem;
-    }
-    .production-data-item p {
-        font-size: 1rem;
-    }
-    .production-strip {
-        padding: 40px 0;
-    }
-    .production-data-section h2.display-4 {
-        font-size: 2.5rem;
-    }
-    .production-data-section p.lead {
-        font-size: 1rem;
-    }
+/* IMAGES: Floating Effect (Modern) */
+.dashboard-image {
+  border-radius: 20px; /* Rounded corners */
+  /* Soft, spread-out shadow for depth */
+  
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
+  
 }
 
-@media (max-width: 767.98px) {
-    .production-data-section h2.display-4 {
-        font-size: 2rem;
-    }
-    .production-data-section .btn {
-        font-size: 0.9rem;
-        padding: 0.6rem 1.2rem;
-    }
+/* Hover Effect: Image lifts up slightly */
+.production-strip:hover .dashboard-image {
+  transform: translateY(-10px);
 }
 
-/* --- Fade-in animation for elements --- */
-.fade-in {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+/* Button Group Container (Centering) */
+.d-flex.gap-2 {
+  gap: 15px !important; /* More breathing room between buttons */
 }
 
-.fade-in.visible {
-    opacity: 1;
-    transform: translateY(0);
+/* Responsive: Ensure spacing is good on mobile */
+@media (max-width: 992px) {
+  .production-strip {
+    padding: 60px 0;
+  }
+  .production-data-item h3 {
+    font-size: 1.8rem;
+  }
 }
 
 /* --- NEW Image Styling for all Dashboard Images --- */
@@ -1016,141 +976,96 @@
 
 
 
-/* Make Informed Decisions Section */
+/* =========================================
+   MODERN "MAKE INFORMED DECISIONS" STYLES
+========================================= */
 .make-informed-section {
-    background: 
-        linear-gradient(135deg, rgba(15, 70, 123, 0.85) 0%, rgba(23, 162, 220, 0.75) 100%),
-        url('<?= base_url('assets_system/images/decisionsbg.jpg') ?>') center/cover no-repeat;
-    padding: 100px 0;
-    color: white;
-    position: relative;
-    overflow: hidden;
+  background: 
+    linear-gradient(135deg, rgba(15, 70, 123, 0.85) 50%, rgba(23, 162, 220, 0.75) 100%),
+    url('<?= base_url('assets_system/images/decisionsbg.jpg') ?>') center/cover fixed no-repeat;
+  padding: 120px 0;
+  color: white;
+  position: relative;
+  overflow: hidden;
+  border: solid rgba(15, 70, 123, 0.85) 1px;
 }
 
+/* Section Title */
 .section-title {
-    font-size: 2.8rem;
-    font-weight: 700;
-    margin-bottom: 15px;
-    text-align: center;
-    color: white;
-    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  font-size: 3rem;
+  font-weight: 800;
+  margin-bottom: 15px;
+  text-align: center;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .title-underline {
-    width: 80px;
-    height: 4px;
-    background: #42B9FF;
-    border-radius: 2px;
-    margin: 0 auto 40px;
+  width: 100px;
+  height: 4px;
+  background: #42B9FF;
+  border-radius: 2px;
+  margin: 0 auto 60px;
+  box-shadow: 0 0 10px rgba(66, 185, 255, 0.5);
 }
 
-/* Feature items without cards */
-.feature-item {
-    text-align: center;
-    padding: 25px 15px;
-    transition: var(--transition);
-    border-radius: 8px;
+/* Modern Horizontal Card */
+.modern-feature-card {
+  display: flex;
+  align-items: flex-start;
+  background: rgba(255, 255, 255, 0.05); /* Glass effect */
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  padding: 25px;
+  margin-bottom: 25px;
+  border-radius: 16px;
+  transition: all 0.3s ease;
 }
 
-.feature-item:hover {
-    transform: translateY(-5px);
+.modern-feature-card:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateX(10px); /* Slide effect on hover */
+  border-color: rgba(255, 255, 255, 0.3);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
 }
 
-.feature-icon {
-    width: 60px;
-    height: 60px;
-    margin: 0 auto 20px;
-    background: rgba(255, 255, 255, 0.15);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-size: 1.5rem;
-    border: 2px solid rgba(255, 255, 255, 0.3);
-    transition: var(--transition);
+/* Icon Styling */
+.feature-icon-box {
+  flex-shrink: 0;
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, #17A2DC, #0d6efd);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  color: white;
+  margin-right: 20px;
+  box-shadow: 0 5px 15px rgba(23, 162, 220, 0.3);
 }
 
-.feature-item:hover .feature-icon {
-   
-    transform: scale(1.1);
+/* Text Styling */
+.feature-content h4 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 5px;
+  color: white;
 }
 
-.feature-title {
-    font-size: 1.3rem;
-    font-weight: 600;
-    margin-bottom: 15px;
-    color: white;
+.feature-content p {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin: 0;
 }
 
-.feature-text {
-    color: rgba(255, 255, 255, 0.9);
-    line-height: 1.6;
-    font-size: 1rem;
-}
-
-/* Divider between rows */
-.feature-divider {
-    height: 1px;
-    background: rgba(255, 255, 255, 0.3);
-    width: 100%;
-    margin: 40px 0;
-}
-
-
-.circle-1 {
-    width: 80px;
-    height: 80px;
-    top: 10%;
-    left: 5%;
-    animation-delay: 0s;
-}
-
-.circle-2 {
-    width: 120px;
-    height: 120px;
-    bottom: 15%;
-    right: 8%;
-    animation-delay: 2s;
-}
-
-@keyframes float {
-    0%, 100% {
-        transform: translateY(0px);
-    }
-    50% {
-        transform: translateY(-20px);
-    }
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-    .make-informed-section {
-        padding: 60px 0;
-    }
-    
-    .section-title {
-        font-size: 2.2rem;
-    }
-    
-    .feature-item {
-        padding: 20px 10px;
-        margin-bottom: 15px;
-    }
-    
-    .feature-icon {
-        width: 50px;
-        height: 50px;
-        font-size: 1.3rem;
-    }
-    
-    .feature-title {
-        font-size: 1.2rem;
-    }
-    
-    .feature-divider {
-        margin: 30px 0;
-    }
+/* Responsive: Stack on mobile */
+@media (max-width: 992px) {
+  .modern-feature-card:hover {
+    transform: translateY(-5px); /* Move up instead of right on tablet */
+  }
 }
 
 /* Hover every images */
@@ -1174,6 +1089,7 @@
   position: relative;
   z-index: 2;
   transition: var(--transition);
+  animation: float-slow 5s ease-in-out infinite;
 }
 
 .dashboard-image:hover{
@@ -1186,6 +1102,104 @@
   z-index: 2;
   transition: var(--transition);
 }
+
+
+/* =========================================
+   MODERN CURVED HEADER & BUTTONS
+========================================= */
+
+/* 1. The New Header Wrapper */
+.production-header-modern {
+  position: relative;
+  /* Deep Tech Gradient */
+  background: linear-gradient(135deg, #0F467B 0%, #0088cc 100%);
+  padding: 100px 0 160px; /* Extra padding at bottom for the curve */
+  color: white;
+  text-align: center;
+  overflow: hidden;
+  /* THE CURVE: Creates a smooth arc at the bottom */
+  border-radius: 0 0 50% 50% / 0 0 50px 50px;
+  box-shadow: 0 10px 30px rgba(15, 70, 123, 0.15);
+  margin-bottom: 60px; /* Push the content down so it doesn't overlap */
+}
+
+/* Background Decoration: Subtle animated circles */
+.production-header-modern::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -10%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 60%);
+  border-radius: 50%;
+  z-index: 0;
+}
+
+.production-header-modern::after {
+  content: '';
+  position: absolute;
+  bottom: -20%;
+  right: -10%;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 60%);
+  border-radius: 50%;
+  z-index: 0;
+}
+
+.production-header-modern .container {
+  position: relative;
+  z-index: 2;
+}
+
+/* 2. Typography inside Header */
+.production-header-modern h2 {
+  font-size: 3.5rem;
+  font-weight: 800;
+  color: white;
+  margin-bottom: 20px;
+  text-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.production-header-modern p.lead {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1.2rem;
+  max-width: 700px;
+  margin: 0 auto 40px; /* Space before buttons */
+}
+
+/* 3. Modern Floating Buttons */
+.btn-modern-pill {
+  background: rgba(255, 255, 255, 0.1); /* Semi-transparent */
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  color: white;
+  padding: 12px 30px;
+  border-radius: 50px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-size: 0.9rem;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.btn-modern-pill:hover {
+  background: white;
+  color: var(--newblue2); /* Blue text on hover */
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+/* Button Container */
+.header-btn-group {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
   </style>
 </head>
 <body>
@@ -1270,30 +1284,40 @@
 </section>
 
 
-<section class="section-white our-solution">
-  <div class="container">
+<section class="our-solution">
+  <div class="container solution-container">
     <div class="row align-items-center">
 
       <div class="col-lg-6 fade-in">
-        <h2 class="solution-title">Our Solution</h2>
-        <div class="solution-underline"></div>
+        
+        <div class="solution-header">
+          <h2 class="solution-title">Our <span>Solution</span></h2>
+          <div class="solution-underline"></div>
+        </div>
 
-        <p class="mt-4">
-          Manual recording and delayed updates make it difficult
-          to see what’s really happening on the shop floor.
-        </p>
+        <div class="problem-box">
+          <p>
+            Manual recording and delayed updates make it difficult
+            to see what’s really happening on the shop floor.
+          </p>
+        </div>
 
-        <p>
-          The GEMBA Reporter Machine Monitoring System helps
-          eliminate blind spots by capturing machine data automatically —
-          so you can identify downtime causes, improve efficiency,
-          and make data-driven decisions faster.
-        </p>
+        <div class="solution-box">
+          <p>
+            The GEMBA Reporter Machine Monitoring System helps
+            eliminate blind spots by capturing machine data automatically —
+            so you can identify downtime causes, improve efficiency,
+            and make data-driven decisions faster.
+          </p>
+        </div>
+
       </div>
 
       <div class="col-lg-6 text-center fade-in delay-1">
-        <img src="<?= base_url('assets_system/images/Machine1.png') ?>" 
-             alt="GEMBA Overview" class="img-fluid solution-img-original">
+        <div class="solution-img-wrapper">
+          <img src="<?= base_url('assets_system/images/Machine1.png') ?>" 
+               alt="GEMBA Overview" class="img-fluid solution-img-original">
+        </div>
       </div>
 
     </div>
@@ -1446,166 +1470,175 @@
 </section>
 
     <section id="production-data" class="production-data-section">
-    <div class="container pt-5">
-        <div class="row text-center mb-5 fade-in">
-            <div class="col-12">
-                <h2 class="display-4 fw-bold text-primary mb-3">Production Data</h2>
-                <p class="lead text-muted mx-auto" style="max-width: 700px;">
-                    The GEMBA dashboard gives you a comprehensive view of your machine status.
-                </p>
-                <div class="d-flex justify-content-center flex-wrap gap-2 mb-4">
-                    <a href="#" class="btn btn-info">Control Page</a>
-                    <a href="#" class="btn btn-secondary">Count Dashboard</a>
-                    <a href="#" class="btn btn-secondary">Duration Dashboard</a>
-                    <a href="#" class="btn btn-secondary">Overview</a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="production-strip light-blue-strip">
+  
+  <div class="production-header-modern">
     <div class="container">
-        <div class="row align-items-center production-data-item fade-in">
-            <div class="col-lg-6 order-lg-1">
-                <h3 class="h2 fw-bold text-dark mb-3">Control Page</h3>
-                <p class="lead text-muted">
-                    Input and monitor essential machine job details in one place.
-                </p>
-            </div>
-            <div class="col-lg-6 order-lg-2 text-center mt-4 mt-lg-0">
-                <img src="<?= base_url('assets_system/images/2xpage-nobg.png') ?>" alt="Control Page Dashboard" class="dashboard-image">
-            </div>
-        </div>
-    </div>
-</div>
+      <div class="row">
+        <div class="col-12">
+          
+          <h2 class="display-4">Production Data</h2>
+          <p class="lead">
+            The GEMBA dashboard gives you a comprehensive view of your machine status.
+          </p>
+          
+          <div class="header-btn-group">
+            <a href="#" class="btn btn-modern-pill">Control Page</a>
+            <a href="#" class="btn btn-modern-pill">Count Dashboard</a>
+            <a href="#" class="btn btn-modern-pill">Duration Dashboard</a>
+            <a href="#" class="btn btn-modern-pill">Overview</a>
+          </div>
 
-    <div class="production-strip white-strip">
-        <div class="container">
-            <div class="row align-items-center production-data-item fade-in">
-                <div class="col-lg-6 order-lg-2">
-                    <h3 class="h2 fw-bold text-dark mb-3">Count Dashboard</h3>
-                    <p class="lead text-muted">
-                        Track actual output versus target quantity for every machine. Easily visualize progress percentages and ensure production goals are being met in real time.
-                    </p>
-                </div>
-                <div class="col-lg-6 order-lg-1 text-center mt-4 mt-lg-0">
-                    <img src="<?= base_url('assets_system/images/countdash.png') ?>" alt="Count Dashboard" class="dashboard-image">
-                </div>
-            </div>
         </div>
+      </div>
     </div>
+  </div>
+  <div class="production-strip white-strip">
+    <div class="container">
+      <div class="row align-items-center production-data-item fade-in">
+        <div class="col-lg-6 order-lg-1">
+          <h3 class="h2 fw-bold text-dark mb-3">Control Page</h3>
+          <p class="lead text-muted">
+            Input and monitor essential machine job details in one place.
+          </p>
+        </div>
+        <div class="col-lg-6 order-lg-2 text-center mt-4 mt-lg-0">
+          <img src="<?= base_url('assets_system/images/2xpage-nobg.png') ?>" alt="Control Page Dashboard" class="dashboard-image">
+        </div>
+      </div>
+    </div>
+  </div>
 
-    <div class="production-strip light-blue-strip">
-        <div class="container">
-            <div class="row align-items-center production-data-item fade-in">
-                <div class="col-lg-6 order-lg-1">
-                    <h3 class="h2 fw-bold text-dark mb-3">Duration Dashboard</h3>
-                    <p class="lead text-muted">
-                        This page shows the running time and downtime of multiple machines. You can easily see how long each machine has been working or idle.
-                    </p>
-                </div>
-                <div class="col-lg-6 order-lg-2 text-center mt-4 mt-lg-0">
-                    <img src="<?= base_url('assets_system/images/duration.png') ?>" alt="Duration Dashboard" class="dashboard-image">
-                </div>
-            </div>
+  <div class="production-strip light-blue-strip">
+    <div class="container">
+      <div class="row align-items-center production-data-item fade-in">
+        <div class="col-lg-6 order-lg-2">
+          <h3 class="h2 fw-bold text-dark mb-3">Count Dashboard</h3>
+          <p class="lead text-muted">
+            Track actual output versus target quantity for every machine. Easily visualize progress percentages and ensure production goals are being met in real time.
+          </p>
         </div>
+        <div class="col-lg-6 order-lg-1 text-center mt-4 mt-lg-0">
+          <img src="<?= base_url('assets_system/images/countdash.png') ?>" alt="Count Dashboard" class="dashboard-image">
+        </div>
+      </div>
     </div>
+  </div>
 
-    <div class="production-strip white-strip">
-        <div class="container">
-            <div class="row align-items-center production-data-item fade-in">
-                <div class="col-lg-6 order-lg-2">
-                    <h3 class="h2 fw-bold text-dark mb-3">Overview</h3>
-                    <p class="lead text-muted">
-                        Gives you a quick snapshot of all machines in one view — making it easy to check the overall production status at a glance.
-                    </p>
-                </div>
-                <div class="col-lg-6 order-lg-1 text-center mt-4 mt-lg-0">
-                    <img src="<?= base_url('assets_system/images/overview.png') ?>" alt="Overview Dashboard" class="dashboard-image">
-                </div>
-            </div>
+  <div class="production-strip light-blue-strip1">
+    <div class="container">
+      <div class="row align-items-center production-data-item fade-in">
+        <div class="col-lg-6 order-lg-1">
+          <h3 class="h2 fw-bold text-dark mb-3">Duration Dashboard</h3>
+          <p class="lead text-muted">
+            This page shows the running time and downtime of multiple machines. You can easily see how long each machine has been working or idle.
+          </p>
         </div>
+        <div class="col-lg-6 order-lg-2 text-center mt-4 mt-lg-0">
+          <img src="<?= base_url('assets_system/images/duration.png') ?>" alt="Duration Dashboard" class="dashboard-image">
+        </div>
+      </div>
     </div>
+  </div>
+
+  <div class="production-strip white-strip">
+    <div class="container">
+      <div class="row align-items-center production-data-item fade-in">
+        <div class="col-lg-6 order-lg-2">
+          <h3 class="h2 fw-bold text-dark mb-3">Overview</h3>
+          <p class="lead text-muted">
+            Gives you a quick snapshot of all machines in one view — making it easy to check the overall production status at a glance.
+          </p>
+        </div>
+        <div class="col-lg-6 order-lg-1 text-center mt-4 mt-lg-0">
+          <img src="<?= base_url('assets_system/images/overview.png') ?>" alt="Overview Dashboard" class="dashboard-image">
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
-
   <!-- Make Informed Decisions Section -->
-<section class="make-informed-section py-5">
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-12 text-center mb-5">
-                <h2 class="section-title">Make Informed Decisions</h2>
-                <div class="title-underline mx-auto"></div>
-            </div>
-        </div>
-        
-        <div class="row g-4">
-            <!-- First Row -->
-            <div class="col-md-4">
-                <div class="feature-item h-100">
-                    <div class="feature-icon mb-3">
-                        <i class="fas fa-eye"></i>
-                    </div>
-                    <h4 class="feature-title">Real-Time Visibility</h4>
-                    <p class="feature-text">Instantly know which machines are running or idle.</p>
-                </div>
-            </div>
-            
-            <div class="col-md-4">
-                <div class="feature-item h-100">
-                    <div class="feature-icon mb-3">
-                        <i class="fas fa-wifi"></i>
-                    </div>
-                    <h4 class="feature-title">Wireless Installation</h4>
-                    <p class="feature-text">Quick setup, minimal disruption to existing machines.</p>
-                </div>
-            </div>
-            
-            <div class="col-md-4">
-                <div class="feature-item h-100">
-                    <div class="feature-icon mb-3">
-                        <i class="fas fa-expand-arrows-alt"></i>
-                    </div>
-                    <h4 class="feature-title">Scalable</h4>
-                    <p class="feature-text">Easily expand your setup by connecting up to 10 Smart Counters per Base Station.</p>
-                </div>
-            </div>
-        </div>
-        
-        
-        
-        <!-- Second Row -->
-        <div class="row g-4">
-            <div class="col-md-4">
-                <div class="feature-item h-100">
-                    <div class="feature-icon mb-3">
-                        <i class="fas fa-file-alt"></i>
-                    </div>
-                    <h4 class="feature-title">Automated Records</h4>
-                    <p class="feature-text">Eliminate paper logs and manual counting.</p>
-                </div>
-            </div>
-            
-            <div class="col-md-4">
-                <div class="feature-item h-100">
-                    <div class="feature-icon mb-3">
-                        <i class="fas fa-dollar-sign"></i>
-                    </div>
-                    <h4 class="feature-title">Cost-Effective</h4>
-                    <p class="feature-text">One-time setup cost — no monthly fees or subscriptions.</p>
-                </div>
-            </div>
-            
-            <div class="col-md-4">
-                <div class="feature-item h-100">
-                    <div class="feature-icon mb-3">
-                        <i class="fas fa-shield-alt"></i>
-                    </div>
-                    <h4 class="feature-title">Reliable</h4>
-                    <p class="feature-text">Line Seiki, a trusted name in precision measurement.</p>
-                </div>
-            </div>
-        </div>
+<section class="make-informed-section">
+  <div class="container">
+    
+    <div class="row justify-content-center">
+      <div class="col-12 text-center fade-in">
+        <h2 class="section-title">Make Informed Decisions</h2>
+        <div class="title-underline"></div>
+      </div>
     </div>
+    
+    <div class="row g-5">
+      
+      <div class="col-lg-6 fade-in delay-1">
+        
+        <div class="modern-feature-card">
+          <div class="feature-icon-box">
+            <i class="fas fa-eye"></i>
+          </div>
+          <div class="feature-content">
+            <h4>Real-Time Visibility</h4>
+            <p>Instantly know which machines are running or idle.</p>
+          </div>
+        </div>
+
+        <div class="modern-feature-card">
+          <div class="feature-icon-box">
+            <i class="fas fa-wifi"></i>
+          </div>
+          <div class="feature-content">
+            <h4>Wireless Installation</h4>
+            <p>Quick setup, minimal disruption to existing machines.</p>
+          </div>
+        </div>
+
+        <div class="modern-feature-card">
+          <div class="feature-icon-box">
+            <i class="fas fa-expand-arrows-alt"></i>
+          </div>
+          <div class="feature-content">
+            <h4>Scalable</h4>
+            <p>Easily expand your setup by connecting up to 10 Smart Counters per Base Station.</p>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="col-lg-6 fade-in delay-2">
+        
+        <div class="modern-feature-card">
+          <div class="feature-icon-box">
+            <i class="fas fa-file-alt"></i>
+          </div>
+          <div class="feature-content">
+            <h4>Automated Records</h4>
+            <p>Eliminate paper logs and manual counting errors.</p>
+          </div>
+        </div>
+
+        <div class="modern-feature-card">
+          <div class="feature-icon-box">
+            <i class="fas fa-dollar-sign"></i>
+          </div>
+          <div class="feature-content">
+            <h4>Cost-Effective</h4>
+            <p>One-time setup cost — no monthly fees or subscriptions.</p>
+          </div>
+        </div>
+
+        <div class="modern-feature-card">
+          <div class="feature-icon-box">
+            <i class="fas fa-shield-alt"></i>
+          </div>
+          <div class="feature-content">
+            <h4>Reliable</h4>
+            <p>Line Seiki, a trusted name in precision measurement.</p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
 </section>
 
   <!-- ✅ Footer -->
