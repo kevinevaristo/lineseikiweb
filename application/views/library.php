@@ -506,50 +506,65 @@
 
           <div class="row g-3" id="resource-grid">
             
-            <div class="col-md-6 mix-item" data-category="video">
-              <div class="compact-card">
-                <div class="compact-thumb" data-tag="5:32">
-                  <i class="fas fa-video"></i>
-                </div>
-                <div class="compact-body">
-                  <h6>Electronic Counters Setup</h6>
-                  <p>Setup guide for G20 Series electronic counters.</p>
-                  <button class="btn btn-lib-video" data-bs-toggle="modal" data-bs-target="#videoModal" data-video-url="https://www.youtube.com/@lineseikichannel7777">
-                    <i class="fas fa-play me-2"></i> Watch Now
-                  </button>
-                </div>
-              </div>
-            </div>
+     <div class="col-md-6 mix-item" data-category="video">
+    <div class="compact-card">
+        <div class="compact-thumb" data-tag="55:32" style="width: 100%; padding-bottom: 56.25%; position: relative; overflow: hidden; border-radius: 5px;">
+            <img 
+                src="<?= base_url('assets_system/images/ep1.png')?>" 
+                alt="Electronic Counters Setup Thumbnail" 
+                class="img-fluid" 
+                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; display: block;"
+            >
+        </div>
+        <div class="compact-body">
+            <h6>Episode 1</h6>
+            <p>Unifying CAD, CAE, & CAM.</p>
+            <button class="btn btn-lib-video" data-bs-toggle="modal" data-bs-target="#videoModal" data-video-url="https://englsp-my.sharepoint.com/personal/ramos_line_com_ph/_layouts/15/stream.aspx?id=%2Fpersonal%2Framos%5Fline%5Fcom%5Fph%2FDocuments%2FRecordings%2FEp%2E1%2Emp4&referrer=StreamWebApp%2EWeb&referrerScenario=AddressBarCopied%2Eview%2E42a17295%2D96c0%2D415e%2Dbdb2%2D4a6fca0b8e89">
+                <i class="fas fa-play me-2"></i> Watch Now
+            </button>
+        </div>
+    </div>
+</div>
 
             <div class="col-md-6 mix-item" data-category="video">
-              <div class="compact-card">
-                <div class="compact-thumb" data-tag="5:38">
-                  <i class="fas fa-cogs"></i>
-                </div>
-                <div class="compact-body">
-                  <h6>Mechanical Installation</h6>
-                  <p>Installation tutorial for heavy-duty counters.</p>
-                  <button class="btn btn-lib-video" data-bs-toggle="modal" data-bs-target="#videoModal" data-video-url="https://www.youtube.com/@lineseikichannel7777">
-                    <i class="fas fa-play me-2"></i> Watch Now
-                  </button>
-                </div>
-              </div>
-            </div>
+    <div class="compact-card">
+        <div class="compact-thumb" data-tag="44:13" style="width: 100%; padding-bottom: 56.25%; position: relative; overflow: hidden; border-radius: 5px;">
+            <img 
+                src="<?= base_url('assets_system/images/ep2.png')?>" 
+                alt="Electronic Counters Setup Thumbnail" 
+                class="img-fluid" 
+                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; display: block;"
+            >
+        </div>
+        <div class="compact-body">
+            <h6>Episode 2</h6>
+            <p>Unifying CAD, CAE, & CAM.</p>
+            <button class="btn btn-lib-video" data-bs-toggle="modal" data-bs-target="#videoModal" data-video-url="https://englsp-my.sharepoint.com/personal/ramos_line_com_ph/_layouts/15/stream.aspx?id=%2Fpersonal%2Framos%5Fline%5Fcom%5Fph%2FDocuments%2FRecordings%2FEp%2E2%2Emp4">
+                <i class="fas fa-play me-2"></i> Watch Now
+            </button>
+        </div>
+    </div>
+</div>
 
-            <div class="col-md-6 mix-item" data-category="video">
-              <div class="compact-card">
-                <div class="compact-thumb" data-tag="5:32">
-                  <i class="fas fa-tachometer-alt"></i>
-                </div>
-                <div class="compact-body">
-                  <h6>Tachometer Usage Guide</h6>
-                  <p>How to use handheld tachometers accurately.</p>
-                  <button class="btn btn-lib-video" data-bs-toggle="modal" data-bs-target="#videoModal" data-video-url="https://www.youtube.com/@lineseikichannel7777">
-                    <i class="fas fa-play me-2"></i> Watch Now
-                  </button>
-                </div>
-              </div>
-            </div>
+             <div class="col-md-6 mix-item" data-category="video">
+    <div class="compact-card">
+        <div class="compact-thumb" data-tag="53:42" style="width: 100%; padding-bottom: 56.25%; position: relative; overflow: hidden; border-radius: 5px;">
+            <img 
+                src="<?= base_url('assets_system/images/ep3.png')?>" 
+                alt="Electronic Counters Setup Thumbnail" 
+                class="img-fluid" 
+                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; display: block;"
+            >
+        </div>
+        <div class="compact-body">
+            <h6>Episode 3</h6>
+            <p>Unifying CAD, CAE, & CAM.</p>
+            <button class="btn btn-lib-video" data-bs-toggle="modal" data-bs-target="#videoModal" data-video-url="https://englsp-my.sharepoint.com/personal/ramos_line_com_ph/_layouts/15/stream.aspx?id=%2Fpersonal%2Framos%5Fline%5Fcom%5Fph%2FDocuments%2FRecordings%2FEp%2E3%2Emp4&referrer=StreamWebApp%2EWeb&referrerScenario=AddressBarCopied%2Eview%2Ec075b700%2D99bd%2D4e3f%2Da33c%2Df4e9d494412a">
+                <i class="fas fa-play me-2"></i> Watch Now
+            </button>
+        </div>
+    </div>
+</div>
 
             <div class="col-md-6 mix-item" data-category="case">
               <div class="compact-card">
@@ -611,65 +626,103 @@
               </div>
             </div>
             
+             <div class="col-md-6 mix-item" data-category="video">
+    <div class="compact-card">
+        <div class="compact-thumb" data-tag="1:04:33" style="width: 100%; padding-bottom: 56.25%; position: relative; overflow: hidden; border-radius: 5px;">
+            <img 
+                src="<?= base_url('assets_system/images/ep4.png')?>" 
+                alt="Electronic Counters Setup Thumbnail" 
+                class="img-fluid" 
+                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; display: block;"
+            >
+        </div>
+        <div class="compact-body">
+            <h6>Episode 4</h6>
+            <p>Unifying CAD, CAE, & CAM.</p>
+            <button class="btn btn-lib-video" data-bs-toggle="modal" data-bs-target="#videoModal" data-video-url="https://englsp-my.sharepoint.com/personal/ramos_line_com_ph/_layouts/15/stream.aspx?id=%2Fpersonal%2Framos%5Fline%5Fcom%5Fph%2FDocuments%2FRecordings%2FEp%2E4%2Emp4&referrer=StreamWebApp%2EWeb&referrerScenario=AddressBarCopied%2Eview%2E816bf08d%2D3dad%2D455b%2D86ab%2Dc4d9b2ffd53d">
+                <i class="fas fa-play me-2"></i> Watch Now
+            </button>
+        </div>
+    </div>
+</div>
             <div class="col-md-6 mix-item" data-category="video">
-              <div class="compact-card">
-                <div class="compact-thumb" data-tag="5:30">
-                  <i class="fas fa-tools"></i>
-                </div>
-                <div class="compact-body">
-                  <h6>Maintenance Tips</h6>
-                  <p>Routine maintenance for long-lasting devices.</p>
-                  <button class="btn btn-lib-video" data-bs-toggle="modal" data-bs-target="#videoModal" data-video-url="https://www.youtube.com/@lineseikichannel7777">
-                    <i class="fas fa-play me-2"></i> Watch Now
-                  </button>
-                </div>
-              </div>
-            </div>
+    <div class="compact-card">
+        <div class="compact-thumb" data-tag="39:47" style="width: 100%; padding-bottom: 56.25%; position: relative; overflow: hidden; border-radius: 5px;">
+            <img 
+                src="<?= base_url('assets_system/images/ep5.png')?>" 
+                alt="Electronic Counters Setup Thumbnail" 
+                class="img-fluid" 
+                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; display: block;"
+            >
+        </div>
+        <div class="compact-body">
+            <h6>Episode 5</h6>
+            <p>Unifying CAD, CAE, & CAM.</p>
+            <button class="btn btn-lib-video" data-bs-toggle="modal" data-bs-target="#videoModal" data-video-url="https://englsp-my.sharepoint.com/personal/ramos_line_com_ph/_layouts/15/stream.aspx?id=%2Fpersonal%2Framos%5Fline%5Fcom%5Fph%2FDocuments%2FRecordings%2FEp%2E5%2Emp4  ">
+                <i class="fas fa-play me-2"></i> Watch Now
+            </button>
+        </div>
+    </div>
+</div>
 
             <div class="col-md-6 mix-item" data-category="video">
-              <div class="compact-card">
-                <div class="compact-thumb" data-tag="4:45">
-                  <i class="fas fa-broadcast-tower"></i>
-                </div>
-                <div class="compact-body">
-                  <h6>Remote Monitoring</h6>
-                  <p>Monitoring production lines from anywhere.</p>
-                  <button class="btn btn-lib-video" data-bs-toggle="modal" data-bs-target="#videoModal" data-video-url="https://www.youtube.com/@lineseikichannel7777">
-                    <i class="fas fa-play me-2"></i> Watch Now
-                  </button>
-                </div>
-              </div>
-            </div>
+    <div class="compact-card">
+        <div class="compact-thumb" data-tag="1:05:25" style="width: 100%; padding-bottom: 56.25%; position: relative; overflow: hidden; border-radius: 5px;">
+            <img 
+                src="<?= base_url('assets_system/images/ep6.png')?>" 
+                alt="Electronic Counters Setup Thumbnail" 
+                class="img-fluid" 
+                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; display: block;"
+            >
+        </div>
+        <div class="compact-body">
+            <h6>Episode 6</h6>
+            <p>Unifying CAD, CAE, & CAM.</p>
+            <button class="btn btn-lib-video" data-bs-toggle="modal" data-bs-target="#videoModal" data-video-url="https://englsp-my.sharepoint.com/personal/ramos_line_com_ph/_layouts/15/stream.aspx?id=%2Fpersonal%2Framos%5Fline%5Fcom%5Fph%2FDocuments%2FRecordings%2FEp%2E6%2Emp4&referrer=StreamWebApp%2EWeb&referrerScenario=AddressBarCopied%2Eview%2E6acdcbc6%2De46e%2D4211%2Da280%2D92456e18f140">
+                <i class="fas fa-play me-2"></i> Watch Now
+            </button>
+        </div>
+    </div>
+</div>
+           <div class="col-md-6 mix-item" data-category="video">
+    <div class="compact-card">
+        <div class="compact-thumb" data-tag="48:32" style="width: 100%; padding-bottom: 56.25%; position: relative; overflow: hidden; border-radius: 5px;">
+            <img 
+                src="<?= base_url('assets_system/images/ep7.png')?>" 
+                alt="Electronic Counters Setup Thumbnail" 
+                class="img-fluid" 
+                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; display: block;"
+            >
+        </div>
+        <div class="compact-body">
+            <h6>Episode 7</h6>
+            <p>Unifying CAD, CAE, & CAM.</p>
+            <button class="btn btn-lib-video" data-bs-toggle="modal" data-bs-target="#videoModal" data-video-url="https://englsp-my.sharepoint.com/personal/ramos_line_com_ph/_layouts/15/stream.aspx?id=%2Fpersonal%2Framos%5Fline%5Fcom%5Fph%2FDocuments%2FRecordings%2FEp%2E7%2Emp4&referrer=StreamWebApp%2EWeb&referrerScenario=AddressBarCopied%2Eview%2E961071f4%2D7d80%2D4d1b%2D8529%2Dd6a993c265b7">
+                <i class="fas fa-play me-2"></i> Watch Now
+            </button>
+        </div>
+    </div>
+</div>
 
-            <div class="col-md-6 mix-item" data-category="video">
-              <div class="compact-card">
-                <div class="compact-thumb" data-tag="6:10">
-                  <i class="fas fa-bolt"></i>
-                </div>
-                <div class="compact-body">
-                  <h6>Power Efficiency</h6>
-                  <p>Optimizing power consumption in counters.</p>
-                  <button class="btn btn-lib-video" data-bs-toggle="modal" data-bs-target="#videoModal" data-video-url="https://www.youtube.com/@lineseikichannel7777">
-                    <i class="fas fa-play me-2"></i> Watch Now
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-md-6 mix-item" data-category="video">
-              <div class="compact-card">
-                <div class="compact-thumb" data-tag="3:20">
-                  <i class="fas fa-sync-alt"></i>
-                </div>
-                <div class="compact-body">
-                  <h6>Firmware Update</h6>
-                  <p>How to safely update your device firmware.</p>
-                  <button class="btn btn-lib-video" data-bs-toggle="modal" data-bs-target="#videoModal" data-video-url="https://www.youtube.com/@lineseikichannel7777">
-                    <i class="fas fa-play me-2"></i> Watch Now
-                  </button>
-                </div>
-              </div>
-            </div>
+<div class="col-md-6 mix-item" data-category="video">
+    <div class="compact-card">
+        <div class="compact-thumb" data-tag="53:28" style="width: 100%; padding-bottom: 56.25%; position: relative; overflow: hidden; border-radius: 5px;">
+            <img 
+                src="<?= base_url('assets_system/images/ep8.png')?>" 
+                alt="Electronic Counters Setup Thumbnail" 
+                class="img-fluid" 
+                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; display: block;"
+            >
+        </div>
+        <div class="compact-body">
+            <h6>Episode 8</h6>
+            <p>Unifying CAD, CAE, & CAM.</p>
+            <button class="btn btn-lib-video" data-bs-toggle="modal" data-bs-target="#videoModal" data-video-url="https://englsp-my.sharepoint.com/personal/ramos_line_com_ph/_layouts/15/stream.aspx?id=%2Fpersonal%2Framos%5Fline%5Fcom%5Fph%2FDocuments%2FRecordings%2F%28Ep%2E08%29%20Computer%2DAided%20Technologies%20Unleashed%20Design%2E%20Simulate%2E%20Manufacture%2E%2D20251126%5F103412%2DMeeting%20Recording%2Emp4&referrer=StreamWebApp%2EWeb&referrerScenario=AddressBarCopied%2Eview%2Ed52a95cb%2D0ec4%2D40ef%2D8e5e%2Dfc7d4f0c58a7">
+                <i class="fas fa-play me-2"></i> Watch Now
+            </button>
+        </div>
+    </div>
+</div>
 
           </div>
         </div>
