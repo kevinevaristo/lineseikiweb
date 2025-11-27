@@ -427,52 +427,61 @@
     }
 
 
-/* MODERN "OUR SOLUTION" SECTION */
+/* ===============================
+   MODERN "OUR SOLUTION" SECTION
+=================================*/
+/* OPTION 3: ANGLED SLASH DESIGN */
 .our-solution {
   padding: 100px 0;
-  background-color: #f8fbff; 
   position: relative;
+  background: white;
   overflow: hidden;
 }
-
 
 .our-solution::before {
   content: '';
   position: absolute;
-  top: 50%;
-  right: -5%;
-  transform: translateY(-50%);
-  width: 600px;
-  height: 600px;
-  background: radial-gradient(circle, rgba(23, 162, 220, 0.1) 0%, transparent 70%);
+  top: 0;
+  right: 0;
+  width: 60%; /* Covers the right side */
+  height: 100%;
+  /* Creates a diagonal blue shape */
+  background: linear-gradient(to bottom, #dff0ff, #bfe0ff);
+  transform: skewX(-50deg) translateX(10%); /* Slants the shape */
   z-index: 0;
+  border-left: 1px solid rgba(13, 110, 253, 0.1);
 }
 
-.solution-container {
-  position: relative;
-  z-index: 2;
-}
-
-.solution-header {
-  margin-bottom: 40px;
-}
-
+/* Styling for the Title */
 .solution-title {
-  font-size: 3rem;
-  font-weight: 800;
+  font-size: 2.8rem;
+  font-weight: 700;
   color: var(--newblue2);
-  margin-bottom: 15px;
+  margin-bottom: 10px;
 }
 
-.solution-title span {
-  color: var(--newblue);
-}
-
+/* Styling for the Underline */
 .solution-underline {
-  width: 80px;
-  height: 5px;
+  width: 70px;
+  height: 4px;
   background: linear-gradient(90deg, var(--newblue), var(--primary-blue));
-  border-radius: 5px;
+  margin-top: 8px;
+  border-radius: 3px;
+  margin-bottom: 30px; /* Added space below title */
+}
+
+/* Image Styling (Optional: Adds a slight hover float) */
+.solution-img-original {
+  max-width: 100%;
+  height: auto;
+  margin-top: 20px;
+  border-radius: 16px;
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
+}
+
+.solution-img-original:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(13, 110, 253, 0.15);
 }
 
 /* --- The Text Cards --- */
@@ -486,7 +495,7 @@
 
 .problem-box p {
   font-size: 1.15rem;
-  color: #6c757d; /* Muted text for the 'problem' */
+  color: black; /* Muted text for the 'problem' */
   font-style: italic;
   line-height: 1.8;
 }
@@ -586,7 +595,10 @@
   animation: waveMove 15s ease-in-out infinite alternate;
 }
 
-/* Floating circles for products showcase */
+
+/* =========================================
+   TECH LINES OVERLAY - THICKER VERSION
+========================================= */
 .our-products-showcase::after {
   content: '';
   position: absolute;
@@ -594,8 +606,18 @@
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: 1;
-  animation: float 20s ease-in-out infinite;
+  z-index: 1; 
+  pointer-events: none;
+  
+  /* UPDATED SVG PATTERN:
+     I have increased the 'stroke-width' values in the code below.
+     Formerly 1.5 -> Now 2.5
+     Formerly 1.0 -> Now 1.5
+  */
+  background-image: url("data:image/svg+xml,%3Csvg width='100%25' height='100%25' viewBox='0 0 1440 600' preserveAspectRatio='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3ClinearGradient id='lineGrad' x1='0%25' y1='0%25' x2='100%25' y2='0%25'%3E%3Cstop offset='0%25' stop-color='%2342B9FF' stop-opacity='0' /%3E%3Cstop offset='50%25' stop-color='%2342B9FF' stop-opacity='0.6' /%3E%3Cstop offset='100%25' stop-color='%2342B9FF' stop-opacity='0' /%3E%3C/linearGradient%3E%3C/defs%3E%3C!-- EXISTING LEFT --%3E%3Cpath d='M-100,400 L200,400 L250,350 L550,350' stroke='url(%23lineGrad)' stroke-width='5' fill='none' /%3E%3Ccircle cx='550' cy='350' r='3' fill='%2342B9FF' opacity='0.8' /%3E%3Cpath d='M-100,500 L150,500 L200,450 L450,450' stroke='rgba(66, 185, 255, 0.3)' stroke-width='4' fill='none' /%3E%3Ccircle cx='450' cy='450' r='2' fill='%2342B9FF' opacity='0.6' /%3E%3C!-- EXISTING RIGHT --%3E%3Cpath d='M1540,250 L1240,250 L1190,300 L890,300' stroke='url(%23lineGrad)' stroke-width='4' fill='none' /%3E%3Ccircle cx='890' cy='300' r='3' fill='%2342B9FF' opacity='0.8' /%3E%3Cpath d='M1540,150 L1290,150 L1240,200 L990,200' stroke='rgba(66, 185, 255, 0.3)' stroke-width='4' fill='none' /%3E%3Ccircle cx='990' cy='200' r='2' fill='%2342B9FF' opacity='0.6' /%3E%3C!-- NEW: TOP LEFT VERTICAL --%3E%3Cpath d='M300,-50 L300,50 L350,100 L500,100' stroke='rgba(66, 185, 255, 0.25)' stroke-width='4' fill='none' /%3E%3Ccircle cx='500' cy='100' r='2' fill='%2342B9FF' opacity='0.5' /%3E%3C!-- NEW: BOTTOM CENTER --%3E%3Cpath d='M700,650 L700,550 L750,500 L850,500' stroke='rgba(66, 185, 255, 0.3)' stroke-width='4' fill='none' /%3E%3Ccircle cx='850' cy='500' r='3' fill='%2342B9FF' opacity='0.7' /%3E%3C!-- NEW: FAR RIGHT VERTICAL --%3E%3Cpath d='M1300,-50 L1300,80 L1200,150' stroke='rgba(66, 185, 255, 0.2)' stroke-width='4' fill='none' /%3E%3Ccircle cx='1200' cy='150' r='2' fill='%2342B9FF' opacity='0.5' /%3E%3C/svg%3E");
+  
+  background-size: cover;
+  background-position: center;
 }
 
 .our-products-showcase .container {
@@ -762,206 +784,358 @@
   }
 }
 
-/* --- System Setup Section --- */
-.system-setup-section {
-  background-color: #f8f9fa; /* Light background for contrast */
-  padding: 80px 0;
-}
+/* 1. Section Background */
+  .system-setup-section {
+    /* Light blue gradient background */
+    background: linear-gradient(to bottom, #f0f8ff, #e6f2ff);
+    padding: 100px 0;
+    position: relative;
+  }
 
+  /* Title Styling */
 .setup-title {
   font-size: 3rem;
-  color: var(--newblue2);
   font-weight: 800;
+  color: #0F467B; /* Dark Blue */
   margin-bottom: 60px;
   text-align: center;
-  position: relative;
+  position: relative; /* Required for the line to stick to the title */
 }
 
+/* The "After" Line */
 .setup-title::after {
   content: '';
   position: absolute;
-  bottom: -15px;
+  bottom: -15px; /* Distance from the text */
   left: 50%;
-  transform: translateX(-50%);
-  width: 80px;
-  height: 4px;
-  background: linear-gradient(90deg, var(--newblue), var(--primary-blue));
+  transform: translateX(-50%); /* Centers the line perfectly */
+  width: 80px; /* Length of the line */
+  height: 4px; /* Thickness */
+  /* Signature Line Seiki Gradient */
+  background: linear-gradient(90deg, #17A2DC, #0d6efd); 
   border-radius: 2px;
 }
+  /* 2. The Vertical Line connecting the numbers */
+  .setup-accordion {
+    position: relative;
+  }
+  
+  .setup-accordion::before {
+    content: '';
+    position: absolute;
+    top: 25px; 
+    bottom: 50px;
+    left: 24px; /* Aligns perfectly center with the 50px circles */
+    width: 3px;
+    background-color: #dbeafe; /* Light blue line */
+    z-index: 0;
+  }
 
-/* Accordion Styling */
-.setup-accordion {
-  border: none;
-}
+  /* 3. Remove Default Bootstrap Accordion Styles */
+  .setup-accordion .accordion-item {
+    border: none;
+    background: transparent;
+    margin-bottom: 30px; /* Space between items */
+  }
 
-.setup-item {
-  border: none;
-  margin-bottom: 10px;
-  border-radius: 10px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-}
+  .setup-accordion .accordion-button {
+    background: transparent !important; /* Remove default white bg */
+    box-shadow: none !important; /* Remove default blue glow */
+    padding: 0;
+    color: #6c757d;
+    font-weight: 600;
+    font-size: 1.3rem;
+    align-items: center;
+  }
+  
+  /* Remove the default arrow icon */
+  .setup-accordion .accordion-button::after {
+    display: none; 
+  }
 
-.accordion-header .accordion-button {
-  background-color: white;
-  color: var(--newblue2);
-  font-size: 1.5rem;
-  font-weight: 600;
-  padding: 1.2rem 1.5rem;
-  border-radius: 10px;
-  transition: var(--transition);
-  border: 1px solid rgba(0, 0, 0, 0.05);
-}
+  /* 4. Style the Number Circles (1, 2, 3...) */
+  .step-number {
+    width: 50px;
+    height: 50px;
+    background: white;
+    color: var(--newblue2);
+    border: 2px solid var(--newblue2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    font-weight: 800;
+    margin-right: 25px;
+    z-index: 2; /* Sits on top of the line */
+    transition: all 0.3s ease;
+  }
 
-.accordion-header .accordion-button:not(.collapsed) {
-  color: var(--primary-blue);
-  background-color: var(--light-blue);
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
-  border-color: var(--primary-blue);
-}
+  /* 5. ACTIVE STATE (When clicked/open) */
+  
+  /* Change circle to blue filled */
+  .accordion-button:not(.collapsed) .step-number {
+    background: var(--primary-blue);
+    color: white;
+    border-color: var(--primary-blue);
+    box-shadow: 0 0 0 6px rgba(13, 110, 253, 0.2); /* Glowing ring effect */
+    transform: scale(1.1);
+  }
 
-.accordion-header .accordion-button:focus {
-  box-shadow: none;
-}
+  /* Change text color */
+  .accordion-button:not(.collapsed) {
+    color: var(--newblue2);
+    font-weight: 800;
+  }
 
-.accordion-body {
-  padding: 1rem 1.5rem;
-  background-color: white;
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
-  border: 1px solid var(--primary-blue);
-  border-top: none;
-  color: #555;
-  font-size: 1rem;
-}
+  /* 6. The Content Card (The expanded part) */
+  .setup-accordion .accordion-collapse {
+    /* Move it to the right of the line */
+    margin-left: 75px; 
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 15px 40px rgba(13, 110, 253, 0.15); /* Soft shadow */
+    margin-top: 15px;
+    border: 1px solid rgba(13, 110, 253, 0.1);
+    position: relative;
+  }
+  
+  /* Little arrow pointing to the number */
+  .setup-accordion .accordion-collapse::before {
+    content: '';
+    position: absolute;
+    top: -8px;
+    left: 20px;
+    width: 15px; 
+    height: 15px;
+    background: white;
+    transform: rotate(45deg);
+    border-top: 1px solid rgba(13, 110, 253, 0.1);
+    border-left: 1px solid rgba(13, 110, 253, 0.1);
+  }
 
-.accordion-body ul, 
-.accordion-body p {
-  margin-bottom: 0;
-  padding-left: 20px;
-}
+  .setup-accordion .accordion-body {
+    padding: 25px;
+    color: #555;
+  }
 
-.step-number {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 30px;
-  height: 30px;
-  background-color: var(--primary-blue);
-  color: white;
-  border-radius: 50%;
-  font-size: 1rem;
-  font-weight: 700;
-  margin-right: 15px;
-  flex-shrink: 0;
-}
+  /* List Styling inside the card */
+  .setup-accordion ul {
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 0;
+  }
 
-.accordion-button.collapsed .step-number {
-  background-color: var(--newblue2);
-}
+  .setup-accordion li {
+    margin-bottom: 8px;
+    position: relative;
+    padding-left: 25px;
+  }
 
-/* Diagram Image Styling */
-.setup-diagram {
-  max-width: 90%;
-  height: auto;
-  padding: 20px;
-  border-radius: 15px;
-  background-color: white;
-  margin-top: 50px; /* Space from title on desktop */
-}
+  /* Custom Checkmark Bullets */
+  .setup-accordion li::before {
+    content: '\f00c'; /* Font Awesome Check */
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    color: var(--primary-blue);
+    position: absolute;
+    left: 0;
+    top: 2px;
+  }
 
-/* Responsive adjustment for image on smaller screens */
-@media (max-width: 991.98px) {
+  /* Diagram Image */
   .setup-diagram {
-    max-width: 100%;
-    margin-top: 30px;
+    border-radius: 20px;
+    
+    transition: transform 0.3s ease;
   }
-  .setup-title {
-    margin-bottom: 30px;
+  .setup-diagram:hover {
+    transform: scale(1.02);
   }
-}
 
 /* =========================================
-   MODERN PRODUCTION DATA STYLES
+   MODERN PRODUCTION DATA STRIPS
 ========================================= */
 
-/* Section Header */
-.production-data-section {
-  background-color: #fff;
-  padding-bottom: 0;
-}
-
-/* THE STRIPS - Modernized Backgrounds */
+/* General Strip Styling */
 .production-strip {
   padding: 100px 0;
   position: relative;
-  transition: background 0.3s ease;
+  transition: all 0.4s ease;
+  overflow: hidden;
 }
 
-/* Strip 1 & 3: Premium Soft Gradient instead of flat blue */
+/* 1. THE "TECH" STRIP (Light Blue Background) */
 .light-blue-strip {
-  background: linear-gradient(to top, #dff0ff, #bfe0ff);
-  border-top: 1px solid rgba(255, 255, 255, 0.5);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+  background: linear-gradient(to bottom, #e0f2ff, #b6dcff);
+  position: relative;
+  border-top: none;
+  padding-top: 20px;
 }
 
-.light-blue-strip1 {
-  background: linear-gradient(to bottom, #dff0ff, #bfe0ff);
-  border-top: 1px solid rgba(255, 255, 255, 0.5);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+/* NETWORK MESH PATTERN FOR LIGHT BLUE STRIP */
+.light-blue-strip::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+
+  /* SVG Contour Lines */
+  background-image: url("data:image/svg+xml,%3Csvg width='100%25' height='100%25' viewBox='0 0 1440 600' preserveAspectRatio='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%230a58ca' stroke-width='1' stroke-opacity='0.5'%3E%3Cpath d='M0,50 C300,150 600,0 900,100 C1200,200 1440,50 1440,50' /%3E%3Cpath d='M0,150 C350,250 650,50 950,150 C1250,250 1440,100 1440,100' /%3E%3Cpath d='M0,250 C400,350 700,100 1000,200 C1300,300 1440,150 1440,150' /%3E%3Cpath d='M0,350 C450,450 750,150 1050,250 C1350,350 1440,200 1440,200' /%3E%3Cpath d='M0,450 C500,550 800,200 1100,300 C1400,400 1440,250 1440,250' /%3E%3C/g%3E%3C/svg%3E");
+  
+  background-size: cover;
+  background-position: center;
 }
 
-/* Strip 2 & 4: Pure White */
+/* 2. THE "CLEAN" STRIP (White Background) */
 .white-strip {
-  background-color: #ffffff;
+  background: linear-gradient(to top, #e0f2ff, #b6dcff);
+  position: relative;
 }
 
-/* Typography: Modern Gradient Headings */
+/* OPTION 2: TOPOGRAPHIC FLOW PATTERN */
+.white-strip::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+
+  /* SVG Contour Lines */
+  background-image: url("data:image/svg+xml,%3Csvg width='100%25' height='100%25' viewBox='0 0 1440 600' preserveAspectRatio='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%230a58ca' stroke-width='1' stroke-opacity='0.5'%3E%3Cpath d='M0,50 C300,150 600,0 900,100 C1200,200 1440,50 1440,50' /%3E%3Cpath d='M0,150 C350,250 650,50 950,150 C1250,250 1440,100 1440,100' /%3E%3Cpath d='M0,250 C400,350 700,100 1000,200 C1300,300 1440,150 1440,150' /%3E%3Cpath d='M0,350 C450,450 750,150 1050,250 C1350,350 1440,200 1440,200' /%3E%3Cpath d='M0,450 C500,550 800,200 1100,300 C1400,400 1440,250 1440,250' /%3E%3C/g%3E%3C/svg%3E");
+  
+  background-size: cover;
+  background-position: center;
+}
+.light-blue-strip1 {
+  background: linear-gradient(to top, #e0f2ff, #b6dcff);
+  position: relative;
+  border-top: none;
+  padding-top: 20px;
+}
+
+
+.light-blue-strip1::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+
+  /* SVG Contour Lines */
+  background-image: url("data:image/svg+xml,%3Csvg width='100%25' height='100%25' viewBox='0 0 1440 600' preserveAspectRatio='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%230a58ca' stroke-width='1' stroke-opacity='0.5'%3E%3Cpath d='M0,50 C300,150 600,0 900,100 C1200,200 1440,50 1440,50' /%3E%3Cpath d='M0,150 C350,250 650,50 950,150 C1250,250 1440,100 1440,100' /%3E%3Cpath d='M0,250 C400,350 700,100 1000,200 C1300,300 1440,150 1440,150' /%3E%3Cpath d='M0,350 C450,450 750,150 1050,250 C1350,350 1440,200 1440,200' /%3E%3Cpath d='M0,450 C500,550 800,200 1100,300 C1400,400 1440,250 1440,250' /%3E%3C/g%3E%3C/svg%3E");
+  
+  background-size: cover;
+  background-position: center;
+}
+
+.white-strip1 {
+  background: linear-gradient(to bottom, #e0f2ff, #b6dcff);
+  position: relative;
+}
+
+
+.white-strip1::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+
+  /* SVG Contour Lines */
+  background-image: url("data:image/svg+xml,%3Csvg width='100%25' height='100%25' viewBox='0 0 1440 600' preserveAspectRatio='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%230a58ca' stroke-width='1' stroke-opacity='0.5'%3E%3Cpath d='M0,50 C300,150 600,0 900,100 C1200,200 1440,50 1440,50' /%3E%3Cpath d='M0,150 C350,250 650,50 950,150 C1250,250 1440,100 1440,100' /%3E%3Cpath d='M0,250 C400,350 700,100 1000,200 C1300,300 1440,150 1440,150' /%3E%3Cpath d='M0,350 C450,450 750,150 1050,250 C1350,350 1440,200 1440,200' /%3E%3Cpath d='M0,450 C500,550 800,200 1100,300 C1400,400 1440,250 1440,250' /%3E%3C/g%3E%3C/svg%3E");
+  
+  background-size: cover;
+  background-position: center;
+}
+
+
+/* ✅ FIX: Lifts the text/image container above the mesh pattern */
+/* Lifts the text/image container above the mesh pattern */
+.light-blue-strip .container,
+.white-strip .container 
+.white-strip1 .container
+.light-blue-strip1 .container{
+  position: relative;
+  z-index: 2; 
+}
+
+
+/* HOVER EFFECT: Image lifts up and shadow glows more */
+.production-strip:hover .dashboard-image {
+  transform: translateY(-15px) scale(1);
+}
+
+/* =========================================
+   H3 AS MODERN GLASS FEATURE CARDS
+========================================= */
+
 .production-data-item h3 {
-  font-weight: 800;
-  font-size: 2.2rem;
-  color: var(--newblue2);
-  margin-bottom: 1rem;
-  /* Optional: Subtle text gradient for a premium feel */
-  background: linear-gradient(90deg, var(--newblue2), var(--primary-blue));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  /* 1. Layout: Make it sit like a box */
   display: inline-block;
+  padding: 18px 35px;
+  margin-bottom: 25px;
+  border-radius: 16px; /* Smooth rounded corners */
+
+  /* 2. The Glass Effect */
+  background: rgba(255, 255, 255, 0.6); /* Semi-transparent white */
+  backdrop-filter: blur(12px); /* Blurs what's behind it */
+  -webkit-backdrop-filter: blur(12px);
+  
+  /* 3. Borders & Shadows for Depth */
+  border: 1px solid rgba(255, 255, 255, 0.8); /* White rim */
+  border-left: 6px solid #0F467B; /* The "Feature" Accent Line on the left */
+  border-right: 6px solid #0F467B;
+  box-shadow: 
+    0 10px 30px rgba(15, 70, 123, 0.08), /* Drop shadow */
+    inset 0 0 20px rgba(255, 255, 255, 0.5); /* Inner glass glow */
+
+  /* 4. Typography */
+  font-weight: 800;
+  font-size: 1.8rem; /* Adjusted size to fit inside card */
+  color: #0F467B; /* Deep Blue Text */
+  letter-spacing: -0.5px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover Effect: The card lifts up slightly */
+.production-data-item h3:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(15, 70, 123, 0.15);
+}
+
+/* Remove the old underline (The left border replaces it) */
+.production-data-item h3::after {
+  display: none;
 }
 
 .production-data-item p {
-  color: #5f6c7b; /* Softer gray for better reading */
+  color: black;
   font-size: 1.15rem;
   line-height: 1.8;
   font-weight: 400;
 }
 
-/* IMAGES: Floating Effect (Modern) */
-.dashboard-image {
-  border-radius: 20px; /* Rounded corners */
-  /* Soft, spread-out shadow for depth */
-  
-  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
-  
-}
-
-/* Hover Effect: Image lifts up slightly */
-.production-strip:hover .dashboard-image {
-  transform: translateY(-10px);
-}
-
-/* Button Group Container (Centering) */
-.d-flex.gap-2 {
-  gap: 15px !important; /* More breathing room between buttons */
-}
-
-/* Responsive: Ensure spacing is good on mobile */
+/* Responsive Fixes */
 @media (max-width: 992px) {
   .production-strip {
     padding: 60px 0;
   }
   .production-data-item h3 {
-    font-size: 1.8rem;
+    font-size: 2rem;
   }
 }
 
@@ -981,7 +1155,7 @@
 ========================================= */
 .make-informed-section {
   background: 
-    linear-gradient(135deg, rgba(15, 70, 123, 0.85) 50%, rgba(23, 162, 220, 0.75) 100%),
+    linear-gradient(135deg, rgba(15, 70, 123, 0.25) 50%, rgba(23, 162, 220, 0.20) 100%),
     url('<?= base_url('assets_system/images/decisionsbg.jpg') ?>') center/cover fixed no-repeat;
   padding: 120px 0;
   color: white;
@@ -1105,99 +1279,101 @@
 
 
 /* =========================================
-   MODERN CURVED HEADER & BUTTONS
+   MODERN HEADER (Light Blue + Network Pattern)
 ========================================= */
 
-/* 1. The New Header Wrapper */
 .production-header-modern {
   position: relative;
-  /* Deep Tech Gradient */
-  background: linear-gradient(135deg, #0F467B 0%, #0088cc 100%);
-  padding: 100px 0 160px; /* Extra padding at bottom for the curve */
-  color: white;
+  /* Soft Light Blue Gradient matching your image */
+  background: linear-gradient(to bottom, #e0f2ff, #b6dcff);
+  padding: 50px 0 50px;
   text-align: center;
   overflow: hidden;
-  /* THE CURVE: Creates a smooth arc at the bottom */
-  border-radius: 0 0 50% 50% / 0 0 50px 50px;
-  box-shadow: 0 10px 30px rgba(15, 70, 123, 0.15);
-  margin-bottom: 60px; /* Push the content down so it doesn't overlap */
 }
 
-/* Background Decoration: Subtle animated circles */
+/* NETWORK PATTERN - FULL CONNECTED MESH */
 .production-header-modern::before {
   content: '';
   position: absolute;
-  top: -50%;
-  left: -10%;
-  width: 600px;
-  height: 600px;
-  background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 60%);
-  border-radius: 50%;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
   z-index: 0;
+  
+  /* ONE GIANT CONNECTED NETWORK SVG
+     - Color: %230d6efd (Line Seiki Blue)
+     - 15+ Nodes connected by lines
+  */
+  background-image: url("data:image/svg+xml,%3Csvg width='100%25' height='100%25' viewBox='0 0 1440 600' preserveAspectRatio='xMidYMid slice' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%230d6efd' stroke-width='1.5' stroke-opacity='0.25'%3E%3C!-- Connecting Lines --%3E%3Cpath d='M-50,100 L150,150 L350,50 L600,150 L950,80 L1250,200 L1500,150' /%3E%3Cpath d='M150,150 L100,400 L450,350 L600,150' /%3E%3Cpath d='M450,350 L750,450 L1100,350 L950,80' /%3E%3Cpath d='M-50,450 L100,400' /%3E%3Cpath d='M1100,350 L1350,450 L1500,350' /%3E%3Cpath d='M1250,200 L1100,350' /%3E%3Cpath d='M350,50 L450,350' /%3E%3C!-- Nodes (Dots) --%3E%3Ccircle cx='150' cy='150' r='4' fill='%230d6efd' fill-opacity='0.4' stroke='none'/%3E%3Ccircle cx='350' cy='50' r='3' fill='%230d6efd' fill-opacity='0.4' stroke='none'/%3E%3Ccircle cx='600' cy='150' r='4' fill='%230d6efd' fill-opacity='0.5' stroke='none'/%3E%3Ccircle cx='950' cy='80' r='5' fill='%230d6efd' fill-opacity='0.4' stroke='none'/%3E%3Ccircle cx='1250' cy='200' r='3' fill='%230d6efd' fill-opacity='0.4' stroke='none'/%3E%3Ccircle cx='100' cy='400' r='3' fill='%230d6efd' fill-opacity='0.4' stroke='none'/%3E%3Ccircle cx='450' cy='350' r='5' fill='%230d6efd' fill-opacity='0.4' stroke='none'/%3E%3Ccircle cx='750' cy='450' r='3' fill='%230d6efd' fill-opacity='0.4' stroke='none'/%3E%3Ccircle cx='1100' cy='350' r='4' fill='%230d6efd' fill-opacity='0.4' stroke='none'/%3E%3Ccircle cx='1350' cy='450' r='3' fill='%230d6efd' fill-opacity='0.4' stroke='none'/%3E%3C/g%3E%3C/svg%3E");
+  
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover; /* Stretches the network to fill the whole header */
+  
+  opacity: 0.8; /* Overall intensity */
 }
-
-.production-header-modern::after {
-  content: '';
-  position: absolute;
-  bottom: -20%;
-  right: -10%;
-  width: 400px;
-  height: 400px;
-  background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 60%);
-  border-radius: 50%;
-  z-index: 0;
-}
-
-.production-header-modern .container {
-  position: relative;
-  z-index: 2;
-}
-
-/* 2. Typography inside Header */
+/* Typography - Dark Blue to contrast with light bg */
 .production-header-modern h2 {
   font-size: 3.5rem;
   font-weight: 800;
-  color: white;
-  margin-bottom: 20px;
-  text-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  color: #0F467B; /* Deep Blue */
+  margin-bottom: 15px;
+  position: relative;
+  display: inline-block;
+}
+
+/* Blue Underline under Title */
+.production-header-modern h2::after {
+  content: '';
+  display: block;
+  width: 80px;
+  height: 4px;
+  background: #42B9FF;
+  margin: 10px auto 0;
+  border-radius: 2px;
 }
 
 .production-header-modern p.lead {
-  color: rgba(255, 255, 255, 0.9);
-  font-size: 1.2rem;
+  color: #555;
+  font-size: 1.15rem;
   max-width: 700px;
-  margin: 0 auto 40px; /* Space before buttons */
+  margin: 0 auto 40px;
+  position: relative;
+  z-index: 1;
 }
 
-/* 3. Modern Floating Buttons */
+/* 3. Modern White Pill Buttons */
 .btn-modern-pill {
-  background: rgba(255, 255, 255, 0.1); /* Semi-transparent */
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  color: white;
-  padding: 12px 30px;
-  border-radius: 50px;
-  font-weight: 600;
-  transition: all 0.3s ease;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  font-size: 0.9rem;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-}
-
-.btn-modern-pill:hover {
   background: white;
-  color: var(--newblue2); /* Blue text on hover */
-  transform: translateY(-3px);
-  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  color: #333; 
+  border: 1px solid var(--primary-blue);
+  padding: 12px 35px;
+  border-radius: 50px; /* Pill Shape */
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  min-width: 160px;
 }
 
-/* Button Container */
+/* Hover State: Border turns blue, text turns blue, lifts up */
+.btn-modern-pill:hover {
+  border-color: #42B9FF;
+  color: #0F467B;
+  background: white;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(66, 185, 255, 0.2);
+}
+
 .header-btn-group {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 15px;
+  gap: 20px;
+  position: relative;
+  z-index: 2;
 }
 
   </style>
@@ -1359,16 +1535,16 @@
 
 <section class="system-setup-section">
   <div class="container">
+    
     <div class="row align-items-center">
-
-      <div class="col-12 text-center fade-in">
+      <div class="col-12 text-center fade-in mb-5">
         <h2 class="setup-title">System Set-Up</h2>
       </div>
 
-      <div class="col-lg-6 col-md-12 fade-in delay-1">
+      <div class="col-lg-5 col-md-12 fade-in delay-1">
         <div class="accordion setup-accordion" id="systemSetupAccordion">
 
-          <div class="accordion-item setup-item">
+          <div class="accordion-item">
             <h2 class="accordion-header">
               <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                 <span class="step-number">1</span> Smart Counter
@@ -1386,7 +1562,7 @@
             </div>
           </div>
 
-          <div class="accordion-item setup-item">
+          <div class="accordion-item">
             <h2 class="accordion-header">
               <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                 <span class="step-number">2</span> Base Station
@@ -1395,16 +1571,16 @@
             <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#systemSetupAccordion">
               <div class="accordion-body">
                 <ul>
-                  <li> Connects with up to 10 machines</li>
-                  <li> Receives data wirelessly</li>
-                  <li>Sends data to the Data Server through LAN</li>
-                  <li> Acts as the “hub” for a group of machines</li>
+                  <li>Connects with up to 10 machines</li>
+                  <li>Receives data wirelessly</li>
+                  <li>Sends data to Data Server via LAN</li>
+                  <li>Acts as the “hub” for a group of machines</li>
                 </ul>
               </div>
             </div>
           </div>
 
-          <div class="accordion-item setup-item">
+          <div class="accordion-item">
             <h2 class="accordion-header">
               <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
                 <span class="step-number">3</span> Factory Network
@@ -1412,16 +1588,16 @@
             </h2>
             <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#systemSetupAccordion">
               <div class="accordion-body">
-               <ul>
-                  <li> Router/switch connects everything</li>
+                <ul>
+                  <li>Router/switch connects everything</li>
                   <li>Data Server + Base Stations must use LAN cables</li>
-                  <li>Your PC or tablet just needs to be on the same network as GEMBA system (access via network) OR in the wifi range of Dataserver (if accessing wirelessly).</li>
+                  <li>Access via PC or tablet on the same network</li>
                 </ul>
               </div>
             </div>
           </div>
           
-          <div class="accordion-item setup-item">
+          <div class="accordion-item">
             <h2 class="accordion-header">
               <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
                 <span class="step-number">4</span> Data Server
@@ -1429,17 +1605,17 @@
             </h2>
             <div id="collapseFour" class="accordion-collapse collapse" data-bs-parent="#systemSetupAccordion">
               <div class="accordion-body">
-               <ul>
+                <ul>
                   <li>Saves all production data</li>
                   <li>Shows real-time dashboards</li>
                   <li>Runs the GEMBA Reporter software</li>
-                  <li> Supports up to 12 Base Stations (120 machines)</li>
+                  <li>Supports up to 12 Base Stations (120 machines)</li>
                 </ul>
               </div>
             </div>
           </div>
           
-          <div class="accordion-item setup-item">
+          <div class="accordion-item">
             <h2 class="accordion-header">
               <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
                 <span class="step-number">5</span> User Device
@@ -1448,10 +1624,10 @@
             <div id="collapseFive" class="accordion-collapse collapse" data-bs-parent="#systemSetupAccordion">
               <div class="accordion-body">
                 <ul>
-                  <li> No software installation</li>
+                  <li>No software installation</li>
                   <li>Works on PC, laptop, or tablet</li>
-                  <li> View machine status, downtime, records, and reports</li>
-                  <li> Export data to Excel with one click</li>
+                  <li>View machine status, downtime, records, and reports</li>
+                  <li>Export data to Excel with one click</li>
                 </ul>
               </div>
             </div>
@@ -1460,9 +1636,11 @@
         </div>
       </div>
 
-      <div class="col-lg-6 col-md-12 text-center fade-in delay-2">
-        <img src="<?= base_url('assets_system/images/system-setupnobg.png') ?>" 
-             alt="GEMBA System Setup Diagram" class="img-fluid setup-diagram">
+      <div class="col-lg-7 col-md-12 text-center fade-in delay-2">
+        <div class="p-3">
+            <img src="<?= base_url('assets_system/images/system-setupnobg.png') ?>" 
+                 alt="GEMBA System Setup Diagram" class="img-fluid setup-diagram">
+        </div>
       </div>
 
     </div>
@@ -1497,7 +1675,7 @@
       <div class="row align-items-center production-data-item fade-in">
         <div class="col-lg-6 order-lg-1">
           <h3 class="h2 fw-bold text-dark mb-3">Control Page</h3>
-          <p class="lead text-muted">
+          <p class="">
             Input and monitor essential machine job details in one place.
           </p>
         </div>
@@ -1513,7 +1691,7 @@
       <div class="row align-items-center production-data-item fade-in">
         <div class="col-lg-6 order-lg-2">
           <h3 class="h2 fw-bold text-dark mb-3">Count Dashboard</h3>
-          <p class="lead text-muted">
+          <p class="">
             Track actual output versus target quantity for every machine. Easily visualize progress percentages and ensure production goals are being met in real time.
           </p>
         </div>
@@ -1529,7 +1707,7 @@
       <div class="row align-items-center production-data-item fade-in">
         <div class="col-lg-6 order-lg-1">
           <h3 class="h2 fw-bold text-dark mb-3">Duration Dashboard</h3>
-          <p class="lead text-muted">
+          <p class="">
             This page shows the running time and downtime of multiple machines. You can easily see how long each machine has been working or idle.
           </p>
         </div>
@@ -1540,12 +1718,12 @@
     </div>
   </div>
 
-  <div class="production-strip white-strip">
+  <div class="production-strip white-strip1">
     <div class="container">
       <div class="row align-items-center production-data-item fade-in">
         <div class="col-lg-6 order-lg-2">
           <h3 class="h2 fw-bold text-dark mb-3">Overview</h3>
-          <p class="lead text-muted">
+          <p class="">
             Gives you a quick snapshot of all machines in one view — making it easy to check the overall production status at a glance.
           </p>
         </div>
