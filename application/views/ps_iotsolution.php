@@ -787,7 +787,7 @@
 /* 1. Section Background */
   .system-setup-section {
     /* Light blue gradient background */
-    background: linear-gradient(to bottom, #f0f8ff, #e6f2ff);
+    background: linear-gradient(to top, #e0f2ff, #b6dcff);
     padding: 100px 0;
     position: relative;
   }
@@ -827,7 +827,7 @@
     bottom: 50px;
     left: 24px; /* Aligns perfectly center with the 50px circles */
     width: 3px;
-    background-color: #dbeafe; /* Light blue line */
+    background-color: #17A2DC; /* Light blue line */
     z-index: 0;
   }
 
@@ -1044,7 +1044,6 @@
   position: relative;
 }
 
-
 .white-strip1::before {
   content: '';
   position: absolute;
@@ -1077,49 +1076,6 @@
 /* HOVER EFFECT: Image lifts up and shadow glows more */
 .production-strip:hover .dashboard-image {
   transform: translateY(-15px) scale(1);
-}
-
-/* =========================================
-   H3 AS MODERN GLASS FEATURE CARDS
-========================================= */
-
-.production-data-item h3 {
-  /* 1. Layout: Make it sit like a box */
-  display: inline-block;
-  padding: 18px 35px;
-  margin-bottom: 25px;
-  border-radius: 16px; /* Smooth rounded corners */
-
-  /* 2. The Glass Effect */
-  background: rgba(255, 255, 255, 0.6); /* Semi-transparent white */
-  backdrop-filter: blur(12px); /* Blurs what's behind it */
-  -webkit-backdrop-filter: blur(12px);
-  
-  /* 3. Borders & Shadows for Depth */
-  border: 1px solid rgba(255, 255, 255, 0.8); /* White rim */
-  border-left: 6px solid #0F467B; /* The "Feature" Accent Line on the left */
-  border-right: 6px solid #0F467B;
-  box-shadow: 
-    0 10px 30px rgba(15, 70, 123, 0.08), /* Drop shadow */
-    inset 0 0 20px rgba(255, 255, 255, 0.5); /* Inner glass glow */
-
-  /* 4. Typography */
-  font-weight: 800;
-  font-size: 1.8rem; /* Adjusted size to fit inside card */
-  color: #0F467B; /* Deep Blue Text */
-  letter-spacing: -0.5px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-/* Hover Effect: The card lifts up slightly */
-.production-data-item h3:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 15px 35px rgba(15, 70, 123, 0.15);
-}
-
-/* Remove the old underline (The left border replaces it) */
-.production-data-item h3::after {
-  display: none;
 }
 
 .production-data-item p {
@@ -1289,9 +1245,11 @@
   padding: 50px 0 50px;
   text-align: center;
   overflow: hidden;
+  
+  
 }
 
-/* NETWORK PATTERN - FULL CONNECTED MESH */
+/* NETWORK PATTERN - LEFT & RIGHT ONLY */
 .production-header-modern::before {
   content: '';
   position: absolute;
@@ -1302,17 +1260,21 @@
   pointer-events: none;
   z-index: 0;
   
-  /* ONE GIANT CONNECTED NETWORK SVG
-     - Color: %230d6efd (Line Seiki Blue)
-     - 15+ Nodes connected by lines
-  */
-  background-image: url("data:image/svg+xml,%3Csvg width='100%25' height='100%25' viewBox='0 0 1440 600' preserveAspectRatio='xMidYMid slice' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%230d6efd' stroke-width='1.5' stroke-opacity='0.25'%3E%3C!-- Connecting Lines --%3E%3Cpath d='M-50,100 L150,150 L350,50 L600,150 L950,80 L1250,200 L1500,150' /%3E%3Cpath d='M150,150 L100,400 L450,350 L600,150' /%3E%3Cpath d='M450,350 L750,450 L1100,350 L950,80' /%3E%3Cpath d='M-50,450 L100,400' /%3E%3Cpath d='M1100,350 L1350,450 L1500,350' /%3E%3Cpath d='M1250,200 L1100,350' /%3E%3Cpath d='M350,50 L450,350' /%3E%3C!-- Nodes (Dots) --%3E%3Ccircle cx='150' cy='150' r='4' fill='%230d6efd' fill-opacity='0.4' stroke='none'/%3E%3Ccircle cx='350' cy='50' r='3' fill='%230d6efd' fill-opacity='0.4' stroke='none'/%3E%3Ccircle cx='600' cy='150' r='4' fill='%230d6efd' fill-opacity='0.5' stroke='none'/%3E%3Ccircle cx='950' cy='80' r='5' fill='%230d6efd' fill-opacity='0.4' stroke='none'/%3E%3Ccircle cx='1250' cy='200' r='3' fill='%230d6efd' fill-opacity='0.4' stroke='none'/%3E%3Ccircle cx='100' cy='400' r='3' fill='%230d6efd' fill-opacity='0.4' stroke='none'/%3E%3Ccircle cx='450' cy='350' r='5' fill='%230d6efd' fill-opacity='0.4' stroke='none'/%3E%3Ccircle cx='750' cy='450' r='3' fill='%230d6efd' fill-opacity='0.4' stroke='none'/%3E%3Ccircle cx='1100' cy='350' r='4' fill='%230d6efd' fill-opacity='0.4' stroke='none'/%3E%3Ccircle cx='1350' cy='450' r='3' fill='%230d6efd' fill-opacity='0.4' stroke='none'/%3E%3C/g%3E%3C/svg%3E");
+  /* 1. WE LIST THE IMAGE URL TWICE (Comma separated) */
+  background-image: 
+    url("data:image/svg+xml,%3Csvg width='100%25' height='100%25' viewBox='0 0 1440 600' preserveAspectRatio='xMidYMid slice' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%230d6efd' stroke-width='5' stroke-opacity='0.25'%3E%3C!-- Connecting Lines --%3E%3Cpath d='M-50,100 L150,150 L350,50 L600,150 L950,80 L1250,200 L1500,150' /%3E%3Cpath d='M150,150 L100,400 L450,350 L600,150' /%3E%3Cpath d='M450,350 L750,450 L1100,350 L950,80' /%3E%3Cpath d='M-50,450 L100,400' /%3E%3Cpath d='M1100,350 L1350,450 L1500,350' /%3E%3Cpath d='M1250,200 L1100,350' /%3E%3Cpath d='M350,50 L450,350' /%3E%3C!-- Nodes (Dots) --%3E%3Ccircle cx='150' cy='150' r='4' fill='%230d6efd' fill-opacity='0.4' stroke='none'/%3E%3Ccircle cx='350' cy='50' r='3' fill='%230d6efd' fill-opacity='0.4' stroke='none'/%3E%3Ccircle cx='600' cy='150' r='4' fill='%230d6efd' fill-opacity='0.4' stroke='none'/%3E%3Ccircle cx='950' cy='80' r='5' fill='%230d6efd' fill-opacity='0.4' stroke='none'/%3E%3Ccircle cx='1250' cy='200' r='3' fill='%230d6efd' fill-opacity='0.4' stroke='none'/%3E%3Ccircle cx='100' cy='400' r='3' fill='%230d6efd' fill-opacity='0.4' stroke='none'/%3E%3Ccircle cx='450' cy='350' r='5' fill='%230d6efd' fill-opacity='0.4' stroke='none'/%3E%3Ccircle cx='750' cy='450' r='3' fill='%230d6efd' fill-opacity='0.4' stroke='none'/%3E%3Ccircle cx='1100' cy='350' r='4' fill='%230d6efd' fill-opacity='0.4' stroke='none'/%3E%3Ccircle cx='1350' cy='450' r='3' fill='%230d6efd' fill-opacity='0.4' stroke='none'/%3E%3C/g%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg width='100%25' height='100%25' viewBox='0 0 1440 600' preserveAspectRatio='xMidYMid slice' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%230d6efd' stroke-width='5' stroke-opacity='0.25'%3E%3C!-- Connecting Lines --%3E%3Cpath d='M-50,100 L150,150 L350,50 L600,150 L950,80 L1250,200 L1500,150' /%3E%3Cpath d='M150,150 L100,400 L450,350 L600,150' /%3E%3Cpath d='M450,350 L750,450 L1100,350 L950,80' /%3E%3Cpath d='M-50,450 L100,400' /%3E%3Cpath d='M1100,350 L1350,450 L1500,350' /%3E%3Cpath d='M1250,200 L1100,350' /%3E%3Cpath d='M350,50 L450,350' /%3E%3C!-- Nodes (Dots) --%3E%3Ccircle cx='150' cy='150' r='4' fill='%230d6efd' fill-opacity='0.4' stroke='none'/%3E%3Ccircle cx='350' cy='50' r='3' fill='%230d6efd' fill-opacity='0.4' stroke='none'/%3E%3Ccircle cx='600' cy='150' r='4' fill='%230d6efd' fill-opacity='0.4' stroke='none'/%3E%3Ccircle cx='950' cy='80' r='5' fill='%230d6efd' fill-opacity='0.4' stroke='none'/%3E%3Ccircle cx='1250' cy='200' r='3' fill='%230d6efd' fill-opacity='0.4' stroke='none'/%3E%3Ccircle cx='100' cy='400' r='3' fill='%230d6efd' fill-opacity='0.4' stroke='none'/%3E%3Ccircle cx='450' cy='350' r='5' fill='%230d6efd' fill-opacity='0.4' stroke='none'/%3E%3Ccircle cx='750' cy='450' r='3' fill='%230d6efd' fill-opacity='0.4' stroke='none'/%3E%3Ccircle cx='1100' cy='350' r='4' fill='%230d6efd' fill-opacity='0.4' stroke='none'/%3E%3Ccircle cx='1350' cy='450' r='3' fill='%230d6efd' fill-opacity='0.4' stroke='none'/%3E%3C/g%3E%3C/svg%3E");
   
-  background-position: center;
+  /* 2. POSITION ONE LEFT, ONE RIGHT */
+  background-position: left center, right center;
+  
+  /* 3. SET NO REPEAT */
   background-repeat: no-repeat;
-  background-size: cover; /* Stretches the network to fill the whole header */
   
-  opacity: 0.8; /* Overall intensity */
+  /* 4. SIZE THEM (Adjust height to fit nicely on sides, e.g. 50% width) */
+  background-size: 50% 100%; 
+  
+  opacity: 0.8; 
 }
 /* Typography - Dark Blue to contrast with light bg */
 .production-header-modern h2 {
@@ -1361,8 +1323,8 @@
 /* Hover State: Border turns blue, text turns blue, lifts up */
 .btn-modern-pill:hover {
   border-color: #42B9FF;
-  color: #0F467B;
-  background: white;
+  color: white;
+  background: #0F467B;
   transform: translateY(-3px);
   box-shadow: 0 8px 20px rgba(66, 185, 255, 0.2);
 }
