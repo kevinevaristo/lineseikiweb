@@ -1846,25 +1846,10 @@
 ========================================= */
 .project-gallery-upgraded {
     padding: 100px 5%;
-    background: linear-gradient(135deg, #0F467B 0%, #174a85 50%, #0b3a67 100%);
+    background: linear-gradient(135deg, #0F467B 0%, #174a85 50%, #2473bdff 100%);
     color: white;
     position: relative;
     overflow: hidden;
-}
-
-/* Grid pattern overlay */
-.project-gallery-upgraded::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: 
-        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-    background-size: 40px 40px;
-    pointer-events: none;
 }
 
 /* Header Styles */
@@ -2323,6 +2308,86 @@
         max-width: 200px;
       }
     }
+/* =========================================
+   MODERN CAROUSEL STYLES (Smooth)
+   ========================================= */
+.modern-carousel-wrapper {
+    position: relative;
+    width: 100%;
+    padding: 0 15px;
+}
+
+.modern-carousel {
+    display: flex;
+    overflow-x: auto;
+    
+    /* This creates the smooth sliding effect */
+    scroll-behavior: smooth; 
+    
+    /* Optional: Snaps to cards when scrolling stops */
+    scroll-snap-type: x mandatory; 
+    
+    gap: 30px;
+    padding-bottom: 30px;
+    padding-top: 10px;
+    
+    /* Hide Scrollbars */
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.modern-carousel::-webkit-scrollbar {
+    display: none;
+}
+
+.carousel-item-card {
+    flex: 0 0 350px;
+    width: 350px;
+    scroll-snap-align: start; /* Aligns card to left */
+}
+
+/* Nav Buttons */
+.carousel-nav-btn {
+    position: absolute;
+    top: 45%;
+    transform: translateY(-50%);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: white;
+    border: 1px solid rgba(13, 110, 253, 0.1);
+    color: var(--primary-blue);
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+}
+
+.carousel-nav-btn:hover {
+    background: var(--primary-blue);
+    color: white;
+    box-shadow: 0 8px 25px rgba(13, 110, 253, 0.3);
+}
+
+.carousel-nav-btn.prev { left: -20px; }
+.carousel-nav-btn.next { right: -20px; }
+
+@media (max-width: 768px) {
+    .carousel-item-card {
+        flex: 0 0 280px;
+        width: 280px;
+    }
+    .carousel-nav-btn {
+        width: 40px;
+        height: 40px;
+    }
+    .carousel-nav-btn.prev { left: -10px; }
+    .carousel-nav-btn.next { right: -10px; }
+}
   </style>
 </head>
 <body>
@@ -2546,208 +2611,338 @@ low-volume runs.
 <!-- ✅ UPGRADED PROJECT GALLERY SECTION -->
 <section class="project-gallery-upgraded">
     <div class="container">
-        <!-- Header Section -->
         <div class="gallery-header text-center mb-5 fade-in">
             <h1 class="gallery-main-title">Project Gallery</h1>
-            <p class="gallery-subtitle">See how we've applied silicone molding and urethane casting across a wide variety of product types—from prototype enclosures to functional end-use parts.</p>
+            <p class="gallery-subtitle">Swipe or click to explore our silicone molding and urethane casting projects.</p>
         </div>
 
-        <!-- Gallery Navigation Tabs -->
         <div class="gallery-tabs mb-5 fade-in delay-1">
             <div class="nav nav-pills justify-content-center" id="galleryTab" role="tablist">
                 <button class="nav-link active" id="urethane-parts-tab" data-bs-toggle="pill" data-bs-target="#urethane-parts" type="button" role="tab">
-                    <i class="fas fa-cube me-2"></i>Urethane Parts
+                    <i class="fas fa-cube me-2"></i>Urethane Casted Parts
                 </button>
                 <button class="nav-link" id="overmolding-tab" data-bs-toggle="pill" data-bs-target="#overmolding" type="button" role="tab">
                     <i class="fas fa-layer-group me-2"></i>Urethane Casted Overmolding
                 </button>
-                <button class="nav-link" id="silicone-molds-tab" data-bs-toggle="pill" data-bs-target="#silicone-molds" type="button" role="tab">
-                    <i class="fas fa-flask me-2"></i>Silicone Molds
-                </button>
             </div>
         </div>
 
-        <!-- Gallery Content -->
-        <div class="tab-content" id="galleryTabContent">
+        <div class="tab-content fade-in delay-2" id="galleryTabContent">
             
-            <!-- Urethane Parts Gallery -->
             <div class="tab-pane fade show active" id="urethane-parts" role="tabpanel">
-                <div class="gallery-grid">
-                    <div class="gallery-item fade-in delay-2">
-                        <div class="gallery-card">
-                            <div class="gallery-image-container">
-                                <img src="<?= base_url('assets_system/images/wheel1.jpg') ?>" alt="Urethane Casted Part" class="gallery-image">
-                                <div class="gallery-overlay">
-                                    <div class="gallery-actions">
-                                        <button class="gallery-btn" onclick="openLightbox('<?= base_url('assets_system/images/wheel1.jpg') ?>', 'Urethane Casted Part')">
-                                            <i class="fas fa-expand"></i>
-                                        </button>
-                                        <button class="gallery-btn" onclick="downloadImage('<?= base_url('assets_system/images/wheel1.jpg') ?>')">
-                                            <i class="fas fa-download"></i>
-                                        </button>
+                <div class="modern-carousel-wrapper">
+                    <button class="carousel-nav-btn prev" onclick="scrollCarousel('urethane-slider', -1)"><i class="fas fa-chevron-left"></i></button>
+                    <button class="carousel-nav-btn next" onclick="scrollCarousel('urethane-slider', 1)"><i class="fas fa-chevron-right"></i></button>
+                    
+                    <div class="modern-carousel" id="urethane-slider">
+                        
+                        <div class="carousel-item-card">
+                            <div class="gallery-card">
+                                <div class="gallery-image-container">
+                                    <img src="<?= base_url('assets_system/images/DK1.jpg') ?>" alt="Precision Gear" class="gallery-image">
+                                    <div class="gallery-overlay">
+                                        <div class="gallery-actions">
+                                            <button class="gallery-btn" onclick="openLightbox('<?= base_url('assets_system/images/DK1.jpg') ?>', 'Precision Gear Component')"><i class="fas fa-expand"></i></button>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="gallery-info">
-                                <h4>Precision Gear Component</h4>
-                                <p>High-detail urethane casting with tight tolerances</p>
-                                <div class="gallery-tags">
-                                    <span class="gallery-tag">Automotive</span>
-                                    <span class="gallery-tag">±0.1mm</span>
+                                <div class="gallery-info">
+                                    <h4>Precision Gear</h4>
+                                    <p>High-detail urethane casting.</p>
+                                    <div class="gallery-tags"><span class="gallery-tag">Automotive</span></div>
                                 </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="gallery-item fade-in delay-3">
-                        <div class="gallery-card">
-                            <div class="gallery-image-container">
-                                <img src="<?= base_url('assets_system/images/wheel2.jpg') ?>" alt="Urethane Casted Part" class="gallery-image">
-                                <div class="gallery-overlay">
-                                    <div class="gallery-actions">
-                                        <button class="gallery-btn" onclick="openLightbox('<?= base_url('assets_system/images/wheel2.jpg') ?>', 'Urethane Casted Part')">
-                                            <i class="fas fa-expand"></i>
-                                        </button>
-                                        <button class="gallery-btn" onclick="downloadImage('<?= base_url('assets_system/images/wheel2.jpg') ?>')">
-                                            <i class="fas fa-download"></i>
-                                        </button>
+                        <div class="carousel-item-card">
+                            <div class="gallery-card">
+                                <div class="gallery-image-container">
+                                    <img src="<?= base_url('assets_system/images/DK2.jpg') ?>" alt="Housing" class="gallery-image">
+                                    <div class="gallery-overlay">
+                                        <div class="gallery-actions">
+                                            <button class="gallery-btn" onclick="openLightbox('<?= base_url('assets_system/images/DK2.jpg') ?>', 'Industrial Housing')"><i class="fas fa-expand"></i></button>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="gallery-info">
-                                <h4>Industrial Housing</h4>
-                                <p>Durable enclosure with complex geometry</p>
-                                <div class="gallery-tags">
-                                    <span class="gallery-tag">Industrial</span>
-                                    <span class="gallery-tag">Weatherproof</span>
+                                <div class="gallery-info">
+                                    <h4>Industrial Housing</h4>
+                                    <p>Durable enclosure geometry.</p>
+                                    <div class="gallery-tags"><span class="gallery-tag">Industrial</span></div>
                                 </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="gallery-item fade-in delay-4">
-                        <div class="gallery-card">
-                            <div class="gallery-image-container">
-                                <img src="<?= base_url('assets_system/images/wheel3.jpg') ?>" alt="Urethane Casted Part" class="gallery-image">
-                                <div class="gallery-overlay">
-                                    <div class="gallery-actions">
-                                        <button class="gallery-btn" onclick="openLightbox('<?= base_url('assets_system/images/wheel3.jpg') ?>', 'Urethane Casted Part')">
-                                            <i class="fas fa-expand"></i>
-                                        </button>
-                                        <button class="gallery-btn" onclick="downloadImage('<?= base_url('assets_system/images/wheel3.jpg') ?>')">
-                                            <i class="fas fa-download"></i>
-                                        </button>
+                        <div class="carousel-item-card">
+                            <div class="gallery-card">
+                                <div class="gallery-image-container">
+                                    <img src="<?= base_url('assets_system/images/DK3.jpg') ?>" alt="Medical" class="gallery-image">
+                                    <div class="gallery-overlay">
+                                        <div class="gallery-actions">
+                                            <button class="gallery-btn" onclick="openLightbox('<?= base_url('assets_system/images/DK3.jpg') ?>', 'Medical Device')"><i class="fas fa-expand"></i></button>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="gallery-info">
-                                <h4>Medical Device Component</h4>
-                                <p>Biocompatible material with smooth finish</p>
-                                <div class="gallery-tags">
-                                    <span class="gallery-tag">Medical</span>
-                                    <span class="gallery-tag">Class A</span>
+                                <div class="gallery-info">
+                                    <h4>Medical Device</h4>
+                                    <p>Biocompatible material.</p>
+                                    <div class="gallery-tags"><span class="gallery-tag">Medical</span></div>
                                 </div>
                             </div>
                         </div>
+
+                        <div class="carousel-item-card">
+                            <div class="gallery-card">
+                                <div class="gallery-image-container">
+                                    <img src="<?= base_url('assets_system/images/DK4.jpg') ?>" alt="Robotics" class="gallery-image">
+                                    <div class="gallery-overlay">
+                                        <div class="gallery-actions">
+                                            <button class="gallery-btn" onclick="openLightbox('<?= base_url('assets_system/images/DK4.jpg') ?>', 'Robotic Gripper')"><i class="fas fa-expand"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="gallery-info">
+                                    <h4>Robotic Gripper</h4>
+                                    <p>Flexible Shore A 40 urethane.</p>
+                                    <div class="gallery-tags"><span class="gallery-tag">Robotics</span></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item-card">
+                            <div class="gallery-card">
+                                <div class="gallery-image-container">
+                                    <img src="<?= base_url('assets_system/images/DK5.jpg') ?>" alt="Precision Gear" class="gallery-image">
+                                    <div class="gallery-overlay">
+                                        <div class="gallery-actions">
+                                            <button class="gallery-btn" onclick="openLightbox('<?= base_url('assets_system/images/DK5.jpg') ?>', 'Precision Gear Component')"><i class="fas fa-expand"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="gallery-info">
+                                    <h4>Precision Gear</h4>
+                                    <p>High-detail urethane casting.</p>
+                                    <div class="gallery-tags"><span class="gallery-tag">Automotive</span></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item-card">
+                            <div class="gallery-card">
+                                <div class="gallery-image-container">
+                                    <img src="<?= base_url('assets_system/images/DK6.jpg') ?>" alt="Precision Gear" class="gallery-image">
+                                    <div class="gallery-overlay">
+                                        <div class="gallery-actions">
+                                            <button class="gallery-btn" onclick="openLightbox('<?= base_url('assets_system/images/DK6.jpg') ?>', 'Precision Gear Component')"><i class="fas fa-expand"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="gallery-info">
+                                    <h4>Precision Gear</h4>
+                                    <p>High-detail urethane casting.</p>
+                                    <div class="gallery-tags"><span class="gallery-tag">Automotive</span></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item-card">
+                            <div class="gallery-card">
+                                <div class="gallery-image-container">
+                                    <img src="<?= base_url('assets_system/images/DK7.jpg') ?>" alt="Precision Gear" class="gallery-image">
+                                    <div class="gallery-overlay">
+                                        <div class="gallery-actions">
+                                            <button class="gallery-btn" onclick="openLightbox('<?= base_url('assets_system/images/DK7.jpg') ?>', 'Precision Gear Component')"><i class="fas fa-expand"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="gallery-info">
+                                    <h4>Precision Gear</h4>
+                                    <p>High-detail urethane casting.</p>
+                                    <div class="gallery-tags"><span class="gallery-tag">Automotive</span></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item-card">
+                            <div class="gallery-card">
+                                <div class="gallery-image-container">
+                                    <img src="<?= base_url('assets_system/images/DK8.jpg') ?>" alt="Precision Gear" class="gallery-image">
+                                    <div class="gallery-overlay">
+                                        <div class="gallery-actions">
+                                            <button class="gallery-btn" onclick="openLightbox('<?= base_url('assets_system/images/DK8.jpg') ?>', 'Precision Gear Component')"><i class="fas fa-expand"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="gallery-info">
+                                    <h4>Precision Gear</h4>
+                                    <p>High-detail urethane casting.</p>
+                                    <div class="gallery-tags"><span class="gallery-tag">Automotive</span></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item-card">
+                            <div class="gallery-card">
+                                <div class="gallery-image-container">
+                                    <img src="<?= base_url('assets_system/images/DK9.jpg') ?>" alt="Precision Gear" class="gallery-image">
+                                    <div class="gallery-overlay">
+                                        <div class="gallery-actions">
+                                            <button class="gallery-btn" onclick="openLightbox('<?= base_url('assets_system/images/DK9.jpg') ?>', 'Precision Gear Component')"><i class="fas fa-expand"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="gallery-info">
+                                    <h4>Precision Gear</h4>
+                                    <p>High-detail urethane casting.</p>
+                                    <div class="gallery-tags"><span class="gallery-tag">Automotive</span></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item-card">
+                            <div class="gallery-card">
+                                <div class="gallery-image-container">
+                                    <img src="<?= base_url('assets_system/images/DK10.jpg') ?>" alt="Precision Gear" class="gallery-image">
+                                    <div class="gallery-overlay">
+                                        <div class="gallery-actions">
+                                            <button class="gallery-btn" onclick="openLightbox('<?= base_url('assets_system/images/DK10.jpg') ?>', 'Precision Gear Component')"><i class="fas fa-expand"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="gallery-info">
+                                    <h4>Precision Gear</h4>
+                                    <p>High-detail urethane casting.</p>
+                                    <div class="gallery-tags"><span class="gallery-tag">Automotive</span></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item-card">
+                            <div class="gallery-card">
+                                <div class="gallery-image-container">
+                                    <img src="<?= base_url('assets_system/images/DK11.jpg') ?>" alt="Precision Gear" class="gallery-image">
+                                    <div class="gallery-overlay">
+                                        <div class="gallery-actions">
+                                            <button class="gallery-btn" onclick="openLightbox('<?= base_url('assets_system/images/DK11.jpg') ?>', 'Precision Gear Component')"><i class="fas fa-expand"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="gallery-info">
+                                    <h4>Precision Gear</h4>
+                                    <p>High-detail urethane casting.</p>
+                                    <div class="gallery-tags"><span class="gallery-tag">Automotive</span></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="carousel-item-card">
+                            <div class="gallery-card">
+                                <div class="gallery-image-container">
+                                    <img src="<?= base_url('assets_system/images/DK12.jpg') ?>" alt="Aerospace" class="gallery-image">
+                                    <div class="gallery-overlay">
+                                        <div class="gallery-actions">
+                                            <button class="gallery-btn" onclick="openLightbox('<?= base_url('assets_system/images/DK12.jpg') ?>', 'Drone Mount')"><i class="fas fa-expand"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="gallery-info">
+                                    <h4>Drone Mount</h4>
+                                    <p>High-impact rigid urethane.</p>
+                                    <div class="gallery-tags"><span class="gallery-tag">Aerospace</span></div>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>
 
-            <!-- Overmolding Gallery -->
-            <div class="tab-pane fade" id="overmolding" role="tabpanel">
-                <div class="gallery-grid">
-                    <div class="gallery-item">
-                        <div class="gallery-card">
-                            <div class="gallery-image-container">
-                                <img src="<?= base_url('assets_system/images/wheel3.jpg') ?>" alt="Overmolding Example" class="gallery-image">
-                                <div class="gallery-overlay">
-                                    <div class="gallery-actions">
-                                        <button class="gallery-btn" onclick="openLightbox('<?= base_url('assets_system/images/wheel3.jpg') ?>', 'Overmolding Example')">
-                                            <i class="fas fa-expand"></i>
-                                        </button>
-                                        <button class="gallery-btn" onclick="downloadImage('<?= base_url('assets_system/images/wheel3.jpg') ?>')">
-                                            <i class="fas fa-download"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="gallery-info">
-                                <h4>Tool Handle Overmold</h4>
-                                <p>Soft-grip urethane over rigid core</p>
-                                <div class="gallery-tags">
-                                    <span class="gallery-tag">Ergonomic</span>
-                                    <span class="gallery-tag">Dual-material</span>
-                                </div>
+           <div class="tab-pane fade" id="overmolding" role="tabpanel">
+    <div class="modern-carousel-wrapper">
+        <button class="carousel-nav-btn prev" onclick="scrollCarousel('overmold-slider', -1)"><i class="fas fa-chevron-left"></i></button>
+        <button class="carousel-nav-btn next" onclick="scrollCarousel('overmold-slider', 1)"><i class="fas fa-chevron-right"></i></button>
+        
+        <div class="modern-carousel" id="overmold-slider">
+            
+            <div class="carousel-item-card">
+                <div class="gallery-card">
+                    <div class="gallery-image-container">
+                        <img src="<?= base_url('assets_system/images/wheel3.jpg') ?>" alt="Handle" class="gallery-image">
+                        <div class="gallery-overlay">
+                            <div class="gallery-actions">
+                                <button class="gallery-btn" onclick="openLightbox('<?= base_url('assets_system/images/wheel3.jpg') ?>', 'Soft Grip Handle')"><i class="fas fa-expand"></i></button>
                             </div>
                         </div>
                     </div>
-
-                    <!-- Add more overmolding items as needed -->
+                    <div class="gallery-info">
+                        <h4>Soft Grip Handle</h4>
+                        <p>Rubber over rigid core.</p>
+                        <div class="gallery-tags"><span class="gallery-tag">Ergonomic</span><span class="gallery-tag">Consumer</span></div>
+                    </div>
                 </div>
             </div>
 
-            <!-- Silicone Molds Gallery -->
-            <div class="tab-pane fade" id="silicone-molds" role="tabpanel">
-                <div class="gallery-grid">
-                    <div class="gallery-item">
-                        <div class="gallery-card">
-                            <div class="gallery-image-container">
-                                <img src="<?= base_url('assets_system/images/wheel2.jpg') ?>" alt="Silicone Mold" class="gallery-image">
-                                <div class="gallery-overlay">
-                                    <div class="gallery-actions">
-                                        <button class="gallery-btn" onclick="openLightbox('<?= base_url('assets_system/images/wheel2.jpg') ?>', 'Silicone Mold')">
-                                            <i class="fas fa-expand"></i>
-                                        </button>
-                                        <button class="gallery-btn" onclick="downloadImage('<?= base_url('assets_system/images/wheel2.jpg') ?>')">
-                                            <i class="fas fa-download"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="gallery-info">
-                                <h4>High-Detail Silicone Mold</h4>
-                                <p>Capturing intricate surface textures</p>
-                                <div class="gallery-tags">
-                                    <span class="gallery-tag">Fine Detail</span>
-                                    <span class="gallery-tag">50+ Parts</span>
-                                </div>
+            <div class="carousel-item-card">
+                <div class="gallery-card">
+                    <div class="gallery-image-container">
+                        <img src="<?= base_url('assets_system/images/wheel1.jpg') ?>" alt="Industrial Roller" class="gallery-image">
+                        <div class="gallery-overlay">
+                            <div class="gallery-actions">
+                                <button class="gallery-btn" onclick="openLightbox('<?= base_url('assets_system/images/wheel1.jpg') ?>', 'High-Friction Roller')"><i class="fas fa-expand"></i></button>
                             </div>
                         </div>
                     </div>
-
-                    <!-- Add more silicone mold items as needed -->
+                    <div class="gallery-info">
+                        <h4>High-Friction Roller</h4>
+                        <p>Urethane bonded to steel core.</p>
+                        <div class="gallery-tags"><span class="gallery-tag">Industrial</span><span class="gallery-tag">Bonded</span></div>
+                    </div>
                 </div>
             </div>
+
+            <div class="carousel-item-card">
+                <div class="gallery-card">
+                    <div class="gallery-image-container">
+                        <img src="<?= base_url('assets_system/images/wheel2.jpg') ?>" alt="Sealed Enclosure" class="gallery-image">
+                        <div class="gallery-overlay">
+                            <div class="gallery-actions">
+                                <button class="gallery-btn" onclick="openLightbox('<?= base_url('assets_system/images/wheel2.jpg') ?>', 'IP67 Enclosure')"><i class="fas fa-expand"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="gallery-info">
+                        <h4>IP67 Enclosure</h4>
+                        <p>Integrated gasket overmolding.</p>
+                        <div class="gallery-tags"><span class="gallery-tag">Waterproof</span><span class="gallery-tag">Electronics</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="carousel-item-card">
+                <div class="gallery-card">
+                    <div class="gallery-image-container">
+                        <img src="<?= base_url('assets_system/images/DK1.jpg') ?>" alt="Shock Absorber" class="gallery-image">
+                        <div class="gallery-overlay">
+                            <div class="gallery-actions">
+                                <button class="gallery-btn" onclick="openLightbox('<?= base_url('assets_system/images/DK1.jpg') ?>', 'Shock Absorber')"><i class="fas fa-expand"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="gallery-info">
+                        <h4>Shock Absorber</h4>
+                        <p>Vibration dampening over metal.</p>
+                        <div class="gallery-tags"><span class="gallery-tag">Safety</span><span class="gallery-tag">Damping</span></div>
+                    </div>
+                </div>
+            </div>
+
         </div>
+    </div>
+</div>
 
-        <!-- View More Button -->
-        <div class="text-center mt-5 fade-in delay-4">
-            <button class="btn btn-outline-light gallery-view-more">
-                <i class="fas fa-images me-2"></i>View Complete Portfolio
-            </button>
         </div>
     </div>
 
-    <!-- Lightbox Modal -->
     <div class="lightbox-modal" id="lightboxModal">
         <div class="lightbox-content">
-            <button class="lightbox-close" onclick="closeLightbox()">
-                <i class="fas fa-times"></i>
-            </button>
-            <button class="lightbox-nav lightbox-prev" onclick="changeLightboxImage(-1)">
-                <i class="fas fa-chevron-left"></i>
-            </button>
-            <button class="lightbox-nav lightbox-next" onclick="changeLightboxImage(1)">
-                <i class="fas fa-chevron-right"></i>
-            </button>
+            <button class="lightbox-close" onclick="closeLightbox()"><i class="fas fa-times"></i></button>
             <img id="lightboxImage" src="" alt="">
-            <div class="lightbox-caption">
-                <h4 id="lightboxTitle"></h4>
-            </div>
+            <div class="lightbox-caption"><h4 id="lightboxTitle"></h4></div>
         </div>
     </div>
 </section>
-
 <section class="why-choose-us-section">
     <div class="wcu-container">
         
@@ -2956,118 +3151,152 @@ traditional tooling.</p>
   </div>
 </footer>
 
-<!-- Bootstrap 5 JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
 <script>
-    // Navbar scroll effect
+    // 1. Standard Navbar & UI Logic
     const navbar = document.querySelector('.navbar');
     window.addEventListener('scroll', function() {
-      if (window.scrollY > 50) {
-        navbar.classList.add('scrolled');
-      } else {
-        navbar.classList.remove('scrolled');
-      }
+        if (window.scrollY > 50) navbar.classList.add('scrolled');
+        else navbar.classList.remove('scrolled');
     });
-    
-    // Fade-in animation on scroll
+
     const fadeElements = document.querySelectorAll('.fade-in');
-    
     const fadeObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
-    }, { threshold: 0.15 });
-    
-    fadeElements.forEach(el => {
-      fadeObserver.observe(el);
-    });
-
-    // Submenu functionality
-    document.querySelectorAll('.dropdown-submenu > a').forEach(function(element){
-      element.addEventListener('click', function(e){
-        e.preventDefault();
-        e.stopPropagation();
-
-        let submenu = this.nextElementSibling;
-
-        if(submenu){
-          submenu.classList.toggle('show');
-        }
-
-        // close other open submenus
-        this.closest('.dropdown-menu').querySelectorAll('.show').forEach(function(openMenu){
-          if(openMenu !== submenu){
-            openMenu.classList.remove('show');
-          }
+        entries.forEach(entry => {
+            if (entry.isIntersecting) entry.target.classList.add('visible');
         });
-      });
+    }, { threshold: 0.15 });
+    fadeElements.forEach(el => fadeObserver.observe(el));
+
+    document.querySelectorAll('.dropdown-submenu > a').forEach(function(element) {
+        element.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            let submenu = this.nextElementSibling;
+            if (submenu) submenu.classList.toggle('show');
+        });
     });
 
-    // close all on click outside
-    document.addEventListener('click', function(){
-      document.querySelectorAll('.dropdown-menu .show').forEach(function(openMenu){
-        openMenu.classList.remove('show');
-      });
+    document.addEventListener('click', function() {
+        document.querySelectorAll('.dropdown-menu .show').forEach(function(openMenu) {
+            openMenu.classList.remove('show');
+        });
     });
-    
-    // File upload functionality
+
     document.getElementById('file-upload').addEventListener('change', function() {
-      const fileName = this.files.length > 0 ? this.files[0].name : 'No file selected';
-      document.getElementById('file-name').textContent = fileName;
+        const fileName = this.files.length > 0 ? this.files[0].name : 'No file selected';
+        document.getElementById('file-name').textContent = fileName;
     });
 
-    // Carousel functionality
-let currentIndex = {
-  'carousel-track-1': 0,
-  'carousel-track-2': 0
-};
+    // ==========================================
+    // 5. CAROUSEL LOGIC (AUTO + MANUAL + SMOOTH)
+    // ==========================================
+    
+    // Config
+    const SCROLL_GAP = 30;
+    const CARD_WIDTH = 350; // Must match CSS width
+    const SCROLL_STEP = CARD_WIDTH + SCROLL_GAP;
+    const AUTO_SLIDE_DELAY = 3000; // 3 Seconds
 
-function moveSlide(trackId, direction) {
-  const track = document.getElementById(trackId);
-  const slides = track.querySelectorAll('.carousel-slide');
-  const totalSlides = slides.length / 2; // Original slides (excluding duplicates)
-  
-  currentIndex[trackId] += direction;
-  
-  // Handle looping
-  if (currentIndex[trackId] >= totalSlides) {
-    currentIndex[trackId] = 0;
-    // Reset position instantly without animation
-    track.style.transition = 'none';
-    track.style.transform = `translateX(0)`;
-    // Force reflow
-    track.offsetHeight;
-    // Re-enable transition
-    track.style.transition = 'transform 0.5s ease-in-out';
-  } else if (currentIndex[trackId] < 0) {
-    currentIndex[trackId] = totalSlides - 1;
-    track.style.transition = 'none';
-    track.style.transform = `translateX(-${(totalSlides - 1) * 100}%)`;
-    track.offsetHeight;
-    track.style.transition = 'transform 0.5s ease-in-out';
-  }
-  
-  // Move the track
-  const slideWidth = 100 / (slides.length / 2); // Calculate percentage based on original slides
-  track.style.transform = `translateX(-${currentIndex[trackId] * slideWidth}%)`;
-}
+    let autoSlideIntervals = {}; // Store intervals to stop/start them
 
-// Auto-advance carousels
-function startAutoCarousel() {
-  setInterval(() => {
-    moveSlide('carousel-track-1', 1);
-  }, 4000);
-  
-  setInterval(() => {
-    moveSlide('carousel-track-2', 1);
-  }, 4500);
-}
+    // Function to scroll (used by Buttons AND Auto Slide)
+    function scrollCarousel(containerId, direction) {
+        const container = document.getElementById(containerId);
+        if(!container) return;
 
-// Start auto-advance when page loads
-document.addEventListener('DOMContentLoaded', startAutoCarousel);
+        // Determine current position
+        const currentScroll = container.scrollLeft;
+        const maxScroll = container.scrollWidth - container.clientWidth;
+
+        let targetScroll;
+
+        if (direction === 1) {
+            // Moving Right
+            if (currentScroll >= maxScroll - 10) {
+                // If at end, loop back to start smoothly
+                targetScroll = 0;
+                container.scrollTo({ left: 0, behavior: 'smooth' });
+                return;
+            } else {
+                targetScroll = SCROLL_STEP;
+            }
+        } else {
+            // Moving Left
+            targetScroll = -SCROLL_STEP;
+        }
+
+        // Execute Smooth Scroll
+        container.scrollBy({
+            left: targetScroll,
+            behavior: 'smooth'
+        });
+    }
+
+    // Initialize Auto Slide
+    function startAutoSlide(id) {
+        if (autoSlideIntervals[id]) clearInterval(autoSlideIntervals[id]);
+        
+        autoSlideIntervals[id] = setInterval(() => {
+            scrollCarousel(id, 1); // 1 = Next
+        }, AUTO_SLIDE_DELAY);
+    }
+
+    function stopAutoSlide(id) {
+        if (autoSlideIntervals[id]) clearInterval(autoSlideIntervals[id]);
+    }
+
+    // Setup Event Listeners for Pause on Hover
+    function setupCarouselListeners(id) {
+        const container = document.getElementById(id);
+        if(!container) return;
+        const wrapper = container.parentElement;
+
+        // Start initially
+        startAutoSlide(id);
+
+        // Pause on mouse enter / touch
+        wrapper.addEventListener('mouseenter', () => stopAutoSlide(id));
+        wrapper.addEventListener('touchstart', () => stopAutoSlide(id));
+
+        // Resume on mouse leave / touch end
+        wrapper.addEventListener('mouseleave', () => startAutoSlide(id));
+        wrapper.addEventListener('touchend', () => startAutoSlide(id));
+    }
+
+    // Initialize all sliders on load
+    document.addEventListener('DOMContentLoaded', () => {
+        const sliderIds = ['urethane-slider', 'overmold-slider', 'silicone-slider'];
+        sliderIds.forEach(id => setupCarouselListeners(id));
+    });
+
+    // ==========================================
+    // 6. LIGHTBOX LOGIC
+    // ==========================================
+    const lightboxModal = document.getElementById('lightboxModal');
+    const lightboxImage = document.getElementById('lightboxImage');
+    const lightboxTitle = document.getElementById('lightboxTitle');
+
+    function openLightbox(src, title) {
+        lightboxImage.src = src;
+        lightboxTitle.textContent = title;
+        lightboxModal.classList.add('active');
+        // Stop all sliders when lightbox is open
+        Object.keys(autoSlideIntervals).forEach(stopAutoSlide);
+    }
+
+    function closeLightbox() {
+        lightboxModal.classList.remove('active');
+        // Restart sliders
+        const sliderIds = ['urethane-slider', 'overmold-slider', 'silicone-slider'];
+        sliderIds.forEach(id => startAutoSlide(id));
+    }
+
+    lightboxModal.addEventListener('click', (e) => {
+        if (e.target === lightboxModal) closeLightbox();
+    });
+
 </script>
 </body>
 </html>
