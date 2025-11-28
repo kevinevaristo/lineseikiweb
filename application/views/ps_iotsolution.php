@@ -788,7 +788,7 @@
   .system-setup-section {
     /* Light blue gradient background */
     background: linear-gradient(to top, #e0f2ff, #b6dcff);
-    padding: 100px 0;
+    padding: 60px 0;
     position: relative;
   }
 
@@ -892,14 +892,13 @@
   .setup-accordion .accordion-collapse {
     /* Move it to the right of the line */
     margin-left: 75px; 
-    background: white;
+    background: linear-gradient(to top, #8bd3ff, #ffffff);
     border-radius: 16px;
-    box-shadow: 0 15px 40px rgba(13, 110, 253, 0.15); /* Soft shadow */
+    box-shadow: 0 15px 40px rgba(13, 110, 253, 0.15); / Soft shadow */
     margin-top: 15px;
     border: 1px solid rgba(13, 110, 253, 0.1);
     position: relative;
   }
-  
   /* Little arrow pointing to the number */
   .setup-accordion .accordion-collapse::before {
     content: '';
@@ -967,7 +966,8 @@
 
 /* 1. THE "TECH" STRIP (Light Blue Background) */
 .light-blue-strip {
-  background: linear-gradient(to bottom, #e0f2ff, #b6dcff);
+ background: linear-gradient(135deg, rgba(200, 225, 255, 5), rgba(150, 200, 255, 5));
+  backdrop-filter: blur(12px);
   position: relative;
   border-top: none;
   padding-top: 20px;
@@ -993,9 +993,11 @@
 
 /* 2. THE "CLEAN" STRIP (White Background) */
 .white-strip {
-  background: linear-gradient(to top, #e0f2ff, #b6dcff);
+  background: #264573;
   position: relative;
 }
+
+
 
 /* OPTION 2: TOPOGRAPHIC FLOW PATTERN */
 .white-strip::before {
@@ -1008,17 +1010,48 @@
   z-index: 0;
   pointer-events: none;
 
-  /* SVG Contour Lines */
-  background-image: url("data:image/svg+xml,%3Csvg width='100%25' height='100%25' viewBox='0 0 1440 600' preserveAspectRatio='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%230a58ca' stroke-width='1' stroke-opacity='0.5'%3E%3Cpath d='M0,50 C300,150 600,0 900,100 C1200,200 1440,50 1440,50' /%3E%3Cpath d='M0,150 C350,250 650,50 950,150 C1250,250 1440,100 1440,100' /%3E%3Cpath d='M0,250 C400,350 700,100 1000,200 C1300,300 1440,150 1440,150' /%3E%3Cpath d='M0,350 C450,450 750,150 1050,250 C1350,350 1440,200 1440,200' /%3E%3Cpath d='M0,450 C500,550 800,200 1100,300 C1400,400 1440,250 1440,250' /%3E%3C/g%3E%3C/svg%3E");
+  /* CHANGED COLOR HERE: %2342B9FF */
+  background-image: url("data:image/svg+xml,%3Csvg width='100%25' height='100%25' viewBox='0 0 1440 600' preserveAspectRatio='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%2342B9FF' stroke-width='1' stroke-opacity='0.5'%3E%3Cpath d='M0,50 C300,150 600,0 900,100 C1200,200 1440,50 1440,50' /%3E%3Cpath d='M0,150 C350,250 650,50 950,150 C1250,250 1440,100 1440,100' /%3E%3Cpath d='M0,250 C400,350 700,100 1000,200 C1300,300 1440,150 1440,150' /%3E%3Cpath d='M0,350 C450,450 750,150 1050,250 C1350,350 1440,200 1440,200' /%3E%3Cpath d='M0,450 C500,550 800,200 1100,300 C1400,400 1440,250 1440,250' /%3E%3C/g%3E%3C/svg%3E");
   
   background-size: cover;
   background-position: center;
 }
+    
 .light-blue-strip1 {
-  background: linear-gradient(to top, #e0f2ff, #b6dcff);
+  background: #264573;  
   position: relative;
   border-top: none;
   padding-top: 20px;
+}
+
+/* =========================================
+   ALTERNATING TEXT COLORS
+========================================= */
+
+/* 1. Control Page: BLACK TEXT */
+.white-strip .production-data-item h3,
+.white-strip .production-data-item p {
+    color:  #ffffff !important;
+}
+
+/* 2. Count Dashboard: WHITE TEXT */
+/* (Make sure this section has a dark background so text is visible) */
+.light-blue-strip .production-data-item h3,
+.light-blue-strip .production-data-item p {
+    color: #212529 !important;
+}
+
+/* 3. Duration Dashboard: BLACK TEXT */
+.light-blue-strip1 .production-data-item h3,
+.light-blue-strip1 .production-data-item p {
+    color: #ffffff !important;
+}
+
+/* 4. Overview: WHITE TEXT */
+/* (Make sure this section has a dark background so text is visible) */
+.white-strip1 .production-data-item h3,
+.white-strip1 .production-data-item p {
+    color: #212529 !important;
 }
 
 
@@ -1032,15 +1065,16 @@
   z-index: 0;
   pointer-events: none;
 
-  /* SVG Contour Lines */
-  background-image: url("data:image/svg+xml,%3Csvg width='100%25' height='100%25' viewBox='0 0 1440 600' preserveAspectRatio='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%230a58ca' stroke-width='1' stroke-opacity='0.5'%3E%3Cpath d='M0,50 C300,150 600,0 900,100 C1200,200 1440,50 1440,50' /%3E%3Cpath d='M0,150 C350,250 650,50 950,150 C1250,250 1440,100 1440,100' /%3E%3Cpath d='M0,250 C400,350 700,100 1000,200 C1300,300 1440,150 1440,150' /%3E%3Cpath d='M0,350 C450,450 750,150 1050,250 C1350,350 1440,200 1440,200' /%3E%3Cpath d='M0,450 C500,550 800,200 1100,300 C1400,400 1440,250 1440,250' /%3E%3C/g%3E%3C/svg%3E");
+  /* CHANGED COLOR HERE: %2342B9FF */
+  background-image: url("data:image/svg+xml,%3Csvg width='100%25' height='100%25' viewBox='0 0 1440 600' preserveAspectRatio='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%2342B9FF' stroke-width='1' stroke-opacity='0.5'%3E%3Cpath d='M0,50 C300,150 600,0 900,100 C1200,200 1440,50 1440,50' /%3E%3Cpath d='M0,150 C350,250 650,50 950,150 C1250,250 1440,100 1440,100' /%3E%3Cpath d='M0,250 C400,350 700,100 1000,200 C1300,300 1440,150 1440,150' /%3E%3Cpath d='M0,350 C450,450 750,150 1050,250 C1350,350 1440,200 1440,200' /%3E%3Cpath d='M0,450 C500,550 800,200 1100,300 C1400,400 1440,250 1440,250' /%3E%3C/g%3E%3C/svg%3E");
   
   background-size: cover;
   background-position: center;
 }
 
 .white-strip1 {
-  background: linear-gradient(to bottom, #e0f2ff, #b6dcff);
+  background: linear-gradient(135deg, rgba(200, 225, 255, 5), rgba(150, 200, 255, 5));
+  backdrop-filter: blur(12px);
   position: relative;
 }
 
@@ -1079,16 +1113,23 @@
 }
 
 .production-data-item p {
-  color: black;
+  color: white;
   font-size: 1.15rem;
   line-height: 1.8;
   font-weight: 400;
+}
+.production-data-item h3{
+  color: white !important;
+}
+
+.text.dark{
+  color: white;
 }
 
 /* Responsive Fixes */
 @media (max-width: 992px) {
   .production-strip {
-    padding: 60px 0;
+    padding: 40px 0;
   }
   .production-data-item h3 {
     font-size: 2rem;
@@ -1102,6 +1143,7 @@
     max-width: 100%; 
     height: auto;
     display: block;
+    filter: brightness(1) saturate(2.0);
     }
 
 
