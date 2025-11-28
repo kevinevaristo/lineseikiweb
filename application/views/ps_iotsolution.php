@@ -1283,7 +1283,7 @@
 .production-header-modern {
   position: relative;
   /* Soft Light Blue Gradient matching your image */
-  background: linear-gradient(to bottom, #e0f2ff, #b6dcff);
+  background: linear-gradient(to bottom, #1b97f0e1, #689ae6ff);
   padding: 50px 0 50px;
   text-align: center;
   overflow: hidden;
