@@ -787,7 +787,7 @@
 /* 1. Section Background */
   .system-setup-section {
     /* Light blue gradient background */
-    background: linear-gradient(to top, #e0f2ff, #b6dcff);
+    background: #264573;
     padding: 60px 0;
     position: relative;
   }
@@ -796,7 +796,7 @@
 .setup-title {
   font-size: 3rem;
   font-weight: 800;
-  color: #0F467B; /* Dark Blue */
+  color: white; /* Dark Blue */
   margin-bottom: 60px;
   text-align: center;
   position: relative; /* Required for the line to stick to the title */
@@ -812,7 +812,7 @@
   width: 80px; /* Length of the line */
   height: 4px; /* Thickness */
   /* Signature Line Seiki Gradient */
-  background: linear-gradient(90deg, #17A2DC, #0d6efd); 
+  background: white; 
   border-radius: 2px;
 }
   /* 2. The Vertical Line connecting the numbers */
@@ -842,7 +842,7 @@
     background: transparent !important; /* Remove default white bg */
     box-shadow: none !important; /* Remove default blue glow */
     padding: 0;
-    color: #6c757d;
+    color: white;
     font-weight: 600;
     font-size: 1.3rem;
     align-items: center;
