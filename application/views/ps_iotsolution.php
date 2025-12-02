@@ -985,8 +985,7 @@
   pointer-events: none;
 
   /* SVG Contour Lines */
-  background-image: url("data:image/svg+xml,%3Csvg width='100%25' height='100%25' viewBox='0 0 1440 600' preserveAspectRatio='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%230a58ca' stroke-width='1' stroke-opacity='0.5'%3E%3Cpath d='M0,50 C300,150 600,0 900,100 C1200,200 1440,50 1440,50' /%3E%3Cpath d='M0,150 C350,250 650,50 950,150 C1250,250 1440,100 1440,100' /%3E%3Cpath d='M0,250 C400,350 700,100 1000,200 C1300,300 1440,150 1440,150' /%3E%3Cpath d='M0,350 C450,450 750,150 1050,250 C1350,350 1440,200 1440,200' /%3E%3Cpath d='M0,450 C500,550 800,200 1100,300 C1400,400 1440,250 1440,250' /%3E%3C/g%3E%3C/svg%3E");
-  
+ 
   background-size: cover;
   background-position: center;
 }
@@ -1011,7 +1010,6 @@
   pointer-events: none;
 
   /* CHANGED COLOR HERE: %2342B9FF */
-  background-image: url("data:image/svg+xml,%3Csvg width='100%25' height='100%25' viewBox='0 0 1440 600' preserveAspectRatio='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%2342B9FF' stroke-width='1' stroke-opacity='0.5'%3E%3Cpath d='M0,50 C300,150 600,0 900,100 C1200,200 1440,50 1440,50' /%3E%3Cpath d='M0,150 C350,250 650,50 950,150 C1250,250 1440,100 1440,100' /%3E%3Cpath d='M0,250 C400,350 700,100 1000,200 C1300,300 1440,150 1440,150' /%3E%3Cpath d='M0,350 C450,450 750,150 1050,250 C1350,350 1440,200 1440,200' /%3E%3Cpath d='M0,450 C500,550 800,200 1100,300 C1400,400 1440,250 1440,250' /%3E%3C/g%3E%3C/svg%3E");
   
   background-size: cover;
   background-position: center;
@@ -1066,8 +1064,7 @@
   pointer-events: none;
 
   /* CHANGED COLOR HERE: %2342B9FF */
-  background-image: url("data:image/svg+xml,%3Csvg width='100%25' height='100%25' viewBox='0 0 1440 600' preserveAspectRatio='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%2342B9FF' stroke-width='1' stroke-opacity='0.5'%3E%3Cpath d='M0,50 C300,150 600,0 900,100 C1200,200 1440,50 1440,50' /%3E%3Cpath d='M0,150 C350,250 650,50 950,150 C1250,250 1440,100 1440,100' /%3E%3Cpath d='M0,250 C400,350 700,100 1000,200 C1300,300 1440,150 1440,150' /%3E%3Cpath d='M0,350 C450,450 750,150 1050,250 C1350,350 1440,200 1440,200' /%3E%3Cpath d='M0,450 C500,550 800,200 1100,300 C1400,400 1440,250 1440,250' /%3E%3C/g%3E%3C/svg%3E");
-  
+ 
   background-size: cover;
   background-position: center;
 }
@@ -1089,7 +1086,6 @@
   pointer-events: none;
 
   /* SVG Contour Lines */
-  background-image: url("data:image/svg+xml,%3Csvg width='100%25' height='100%25' viewBox='0 0 1440 600' preserveAspectRatio='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%230a58ca' stroke-width='1' stroke-opacity='0.5'%3E%3Cpath d='M0,50 C300,150 600,0 900,100 C1200,200 1440,50 1440,50' /%3E%3Cpath d='M0,150 C350,250 650,50 950,150 C1250,250 1440,100 1440,100' /%3E%3Cpath d='M0,250 C400,350 700,100 1000,200 C1300,300 1440,150 1440,150' /%3E%3Cpath d='M0,350 C450,450 750,150 1050,250 C1350,350 1440,200 1440,200' /%3E%3Cpath d='M0,450 C500,550 800,200 1100,300 C1400,400 1440,250 1440,250' /%3E%3C/g%3E%3C/svg%3E");
   
   background-size: cover;
   background-position: center;
@@ -1283,7 +1279,7 @@
 .production-header-modern {
   position: relative;
   /* Soft Light Blue Gradient matching your image */
-  background: linear-gradient(to bottom, #e0f2ff, #b6dcff);
+  background: linear-gradient(to bottom, #84c4f1a8, #689ae6ff);
   padding: 50px 0 50px;
   text-align: center;
   overflow: hidden;
@@ -1303,10 +1299,7 @@
   z-index: 0;
   
   /* 1. WE LIST THE IMAGE URL TWICE (Comma separated) */
-  background-image: 
-    url("data:image/svg+xml,%3Csvg width='100%25' height='100%25' viewBox='0 0 1440 600' preserveAspectRatio='xMidYMid slice' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%230d6efd' stroke-width='5' stroke-opacity='0.25'%3E%3C!-- Connecting Lines --%3E%3Cpath d='M-50,100 L150,150 L350,50 L600,150 L950,80 L1250,200 L1500,150' /%3E%3Cpath d='M150,150 L100,400 L450,350 L600,150' /%3E%3Cpath d='M450,350 L750,450 L1100,350 L950,80' /%3E%3Cpath d='M-50,450 L100,400' /%3E%3Cpath d='M1100,350 L1350,450 L1500,350' /%3E%3Cpath d='M1250,200 L1100,350' /%3E%3Cpath d='M350,50 L450,350' /%3E%3C!-- Nodes (Dots) --%3E%3Ccircle cx='150' cy='150' r='4' fill='%230d6efd' fill-opacity='0.4' stroke='none'/%3E%3Ccircle cx='350' cy='50' r='3' fill='%230d6efd' fill-opacity='0.4' stroke='none'/%3E%3Ccircle cx='600' cy='150' r='4' fill='%230d6efd' fill-opacity='0.4' stroke='none'/%3E%3Ccircle cx='950' cy='80' r='5' fill='%230d6efd' fill-opacity='0.4' stroke='none'/%3E%3Ccircle cx='1250' cy='200' r='3' fill='%230d6efd' fill-opacity='0.4' stroke='none'/%3E%3Ccircle cx='100' cy='400' r='3' fill='%230d6efd' fill-opacity='0.4' stroke='none'/%3E%3Ccircle cx='450' cy='350' r='5' fill='%230d6efd' fill-opacity='0.4' stroke='none'/%3E%3Ccircle cx='750' cy='450' r='3' fill='%230d6efd' fill-opacity='0.4' stroke='none'/%3E%3Ccircle cx='1100' cy='350' r='4' fill='%230d6efd' fill-opacity='0.4' stroke='none'/%3E%3Ccircle cx='1350' cy='450' r='3' fill='%230d6efd' fill-opacity='0.4' stroke='none'/%3E%3C/g%3E%3C/svg%3E"),
-    url("data:image/svg+xml,%3Csvg width='100%25' height='100%25' viewBox='0 0 1440 600' preserveAspectRatio='xMidYMid slice' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%230d6efd' stroke-width='5' stroke-opacity='0.25'%3E%3C!-- Connecting Lines --%3E%3Cpath d='M-50,100 L150,150 L350,50 L600,150 L950,80 L1250,200 L1500,150' /%3E%3Cpath d='M150,150 L100,400 L450,350 L600,150' /%3E%3Cpath d='M450,350 L750,450 L1100,350 L950,80' /%3E%3Cpath d='M-50,450 L100,400' /%3E%3Cpath d='M1100,350 L1350,450 L1500,350' /%3E%3Cpath d='M1250,200 L1100,350' /%3E%3Cpath d='M350,50 L450,350' /%3E%3C!-- Nodes (Dots) --%3E%3Ccircle cx='150' cy='150' r='4' fill='%230d6efd' fill-opacity='0.4' stroke='none'/%3E%3Ccircle cx='350' cy='50' r='3' fill='%230d6efd' fill-opacity='0.4' stroke='none'/%3E%3Ccircle cx='600' cy='150' r='4' fill='%230d6efd' fill-opacity='0.4' stroke='none'/%3E%3Ccircle cx='950' cy='80' r='5' fill='%230d6efd' fill-opacity='0.4' stroke='none'/%3E%3Ccircle cx='1250' cy='200' r='3' fill='%230d6efd' fill-opacity='0.4' stroke='none'/%3E%3Ccircle cx='100' cy='400' r='3' fill='%230d6efd' fill-opacity='0.4' stroke='none'/%3E%3Ccircle cx='450' cy='350' r='5' fill='%230d6efd' fill-opacity='0.4' stroke='none'/%3E%3Ccircle cx='750' cy='450' r='3' fill='%230d6efd' fill-opacity='0.4' stroke='none'/%3E%3Ccircle cx='1100' cy='350' r='4' fill='%230d6efd' fill-opacity='0.4' stroke='none'/%3E%3Ccircle cx='1350' cy='450' r='3' fill='%230d6efd' fill-opacity='0.4' stroke='none'/%3E%3C/g%3E%3C/svg%3E");
-  
+ 
   /* 2. POSITION ONE LEFT, ONE RIGHT */
   background-position: left center, right center;
   
@@ -1326,6 +1319,55 @@
   margin-bottom: 15px;
   position: relative;
   display: inline-block;
+}
+
+.text-card {
+        /* Existing semi-transparent dark background (from previous step) */
+        background-color: rgba(44, 62, 80, 0.85); /* Tinaasan ko pa ang opacity */
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px); 
+        border-radius: 15px; 
+        border: 1px solid rgba(255, 255, 255, 0.1); 
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4); 
+        color: #ffffff;
+        
+        /* KEY: Negative Margin to create the overlap effect */
+        margin-right: -100px; /* Itutulak nito ang card papasok sa space ng image ng 100px */
+        
+        /* Optional: Para mas malaki pa, dagdagan ang width */
+        width: calc(100% + 100px); /* Gawin ang width na 100% + 100px ng overlap */
+        padding: 50px 70px;
+       
+    }
+
+/* Also, ensure your headings and paragraphs inside text-card are white */
+.text-card h3,
+.text-card p {
+    color: #ffffff !important; /* Use !important to override Bootstrap's text-dark */
+}
+
+.text-card1 {
+        /* Existing semi-transparent dark background (from previous step) */
+        background-color: rgba(141, 194, 247, 0.85); /* Tinaasan ko pa ang opacity */
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px); 
+        border-radius: 15px; 
+        border: 1px solid rgba(255, 255, 255, 0.1); 
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4); 
+        color: #ffffff;
+        
+        /* KEY: Negative Margin to create the overlap effect */
+        margin-right: -100px; /* Itutulak nito ang card papasok sa space ng image ng 100px */
+        
+        /* Optional: Para mas malaki pa, dagdagan ang width */
+        width: calc(100% + 100px); /* Gawin ang width na 100% + 100px ng overlap */
+        padding: 50px 70px; /* Dagdagan ang padding para lumaki pa */
+    }
+
+/* Also, ensure your headings and paragraphs inside text-card are white */
+.text-card1 h3,
+.text-card1 p {
+    color: #ffffff !important; /* Use !important to override Bootstrap's text-dark */
 }
 
 /* Blue Underline under Title */
@@ -1643,7 +1685,9 @@
       <div class="col-lg-7 col-md-12 text-center fade-in delay-2">
         <div class="p-3">
             <img src="<?= base_url('assets_system/images/system-setupnobg.png') ?>" 
-                 alt="GEMBA System Setup Diagram" class="img-fluid setup-diagram">
+     alt="GEMBA System Setup Diagram" 
+     class="img-fluid setup-diagram"
+      style="filter: saturate(3.5);">
         </div>
       </div>
 
@@ -1659,7 +1703,7 @@
         <div class="col-12">
           
           <h2 class="display-4">Production Data</h2>
-          <p class="lead">
+          <p class="lead" style="color: black;">
             The GEMBA dashboard gives you a comprehensive view of your machine status.
           </p>
           
@@ -1678,10 +1722,12 @@
     <div class="container">
       <div class="row align-items-center production-data-item fade-in">
         <div class="col-lg-6 order-lg-1">
-          <h3 class="h2 fw-bold text-dark mb-3">Control Page</h3>
-          <p class="">
-            Input and monitor essential machine job details in one place.
-          </p>
+          <div class="text-card p-4 p-md-5"> 
+            <h3 class="h2 fw-bold text-dark mb-3">Control Page</h3>
+            <p class="">
+              Input and monitor essential machine job details in one place.
+            </p>
+          </div>
         </div>
         <div class="col-lg-6 order-lg-2 text-center mt-4 mt-lg-0">
           <img src="<?= base_url('assets_system/images/2xpage-nobg.png') ?>" alt="Control Page Dashboard" class="dashboard-image">
@@ -1694,10 +1740,12 @@
     <div class="container">
       <div class="row align-items-center production-data-item fade-in">
         <div class="col-lg-6 order-lg-2">
-          <h3 class="h2 fw-bold text-dark mb-3">Count Dashboard</h3>
-          <p class="">
-            Track actual output versus target quantity for every machine. Easily visualize progress percentages and ensure production goals are being met in real time.
-          </p>
+          <div class="text-card1 p-4 p-md-5"> 
+            <h3 class="h2 fw-bold text-dark mb-3">Count Dashboard</h3>
+            <p class="">
+              Track actual output versus target quantity for every machine. Easily visualize progress percentages and ensure production goals are being met in real time.
+            </p>
+          </div>
         </div>
         <div class="col-lg-6 order-lg-1 text-center mt-4 mt-lg-0">
           <img src="<?= base_url('assets_system/images/countdash.png') ?>" alt="Count Dashboard" class="dashboard-image">
@@ -1710,10 +1758,12 @@
     <div class="container">
       <div class="row align-items-center production-data-item fade-in">
         <div class="col-lg-6 order-lg-1">
-          <h3 class="h2 fw-bold text-dark mb-3">Duration Dashboard</h3>
-          <p class="">
-            This page shows the running time and downtime of multiple machines. You can easily see how long each machine has been working or idle.
-          </p>
+          <div class="text-card p-4 p-md-5"> 
+            <h3 class="h2 fw-bold text-dark mb-3">Duration Dashboard</h3>
+            <p class="">
+              This page shows the running time and downtime of multiple machines. You can easily see how long each machine has been working or idle.
+            </p>
+          </div>
         </div>
         <div class="col-lg-6 order-lg-2 text-center mt-4 mt-lg-0">
           <img src="<?= base_url('assets_system/images/duration.png') ?>" alt="Duration Dashboard" class="dashboard-image">
@@ -1726,10 +1776,12 @@
     <div class="container">
       <div class="row align-items-center production-data-item fade-in">
         <div class="col-lg-6 order-lg-2">
-          <h3 class="h2 fw-bold text-dark mb-3">Overview</h3>
-          <p class="">
-            Gives you a quick snapshot of all machines in one view — making it easy to check the overall production status at a glance.
-          </p>
+          <div class="text-card1 p-4 p-md-5"> 
+            <h3 class="h2 fw-bold text-dark mb-3">Overview</h3>
+            <p class="">
+              Gives you a quick snapshot of all machines in one view — making it easy to check the overall production status at a glance.
+            </p>
+          </div>
         </div>
         <div class="col-lg-6 order-lg-1 text-center mt-4 mt-lg-0">
           <img src="<?= base_url('assets_system/images/overview.png') ?>" alt="Overview Dashboard" class="dashboard-image">
