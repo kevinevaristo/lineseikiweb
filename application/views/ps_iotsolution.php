@@ -884,7 +884,7 @@
 
   /* Change text color */
   .accordion-button:not(.collapsed) {
-    color: var(--newblue2);
+    color: white;
     font-weight: 800;
   }
 
