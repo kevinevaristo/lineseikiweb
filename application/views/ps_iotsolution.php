@@ -146,12 +146,13 @@
     linear-gradient(135deg, rgba(15, 70, 123, 0.85) 50%, rgba(23, 162, 220, 0.75) 100%),
     url('<?= base_url('assets_system/images/Hero-gemba.jpg') ?>') center/cover no-repeat;
   color: white;
-  padding: 200px 0 120px;
+  padding: 150px 0 120px;
   position: relative;
   overflow: hidden;
   min-height: 85vh;
   display: flex;
   align-items: center;
+  margin-top: -20px;
 }
 
 /* Keeps overlay ready for future animations */
@@ -892,7 +893,7 @@
   .setup-accordion .accordion-collapse {
     /* Move it to the right of the line */
     margin-left: 75px; 
-    background: linear-gradient(to top, #8bd3ff, #ffffff);
+    background: rgba(85, 115, 150, 1);
     border-radius: 16px;
     box-shadow: 0 15px 40px rgba(13, 110, 253, 0.15); / Soft shadow */
     margin-top: 15px;
@@ -907,7 +908,7 @@
     left: 20px;
     width: 15px; 
     height: 15px;
-    background: white;
+    background: rgba(85, 115, 150, 1);
     transform: rotate(45deg);
     border-top: 1px solid rgba(13, 110, 253, 0.1);
     border-left: 1px solid rgba(13, 110, 253, 0.1);
@@ -929,6 +930,7 @@
     margin-bottom: 8px;
     position: relative;
     padding-left: 25px;
+    color: white;
   }
 
   /* Custom Checkmark Bullets */
@@ -936,7 +938,7 @@
     content: '\f00c'; /* Font Awesome Check */
     font-family: 'Font Awesome 6 Free';
     font-weight: 900;
-    color: var(--primary-blue);
+    color: white;
     position: absolute;
     left: 0;
     top: 2px;
