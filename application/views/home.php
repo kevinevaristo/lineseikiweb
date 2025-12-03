@@ -5,30 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Line Seiki Asia Pacific</title>
 
-  <!-- Bootstrap 5 CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
-  <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Line Seiki Asia Pacific</title>
-
-  <!-- Bootstrap 5 CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
-  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -317,18 +297,18 @@ section p {
   align-items: center;
   justify-content: space-between;
   gap: 50px;
-  color: white; /* Change text to white for better contrast */
+  color: white;
   position: relative;
   z-index: 2;
 }
 
 .hero-text {
-  flex: 1;
-  max-width: 50%;
+  flex: 0.8; /* UPDATED: Reduced from 1 to give image more room */
+  max-width: 40%; /* UPDATED: Reduced from 50% */
 }
 
 .hero-text h1 {
-  background: white; /* Light gradient for white text */
+  background: white;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   font-weight: 700;
@@ -346,7 +326,7 @@ section p {
 }
 
 .hero-text p {
-  color: #f0f8ff; /* Light blue-white for better readability */
+  color: #f0f8ff;
   font-size: 1.1rem;
   margin-top: 15px;
   line-height: 1.6;
@@ -354,7 +334,7 @@ section p {
 }
 
 .hero-image {
-  flex: 1;
+  flex: 1.1; /* UPDATED: Increased from 1 */
   display: flex;
   justify-content: flex-end;
 }
@@ -363,7 +343,8 @@ section p {
   max-width: 100%;
   height: auto;
   border-radius: 12px;
-  transform: scale(1.1); 
+  /* UPDATED: scale(1.35) and added translateX(40px) to move right */
+  transform: scale(1.35) translateX(100px); 
   object-fit: cover;
   transition: transform 0.5s ease;
 }
@@ -395,11 +376,17 @@ section p {
   .hero-text,
   .hero-image {
     max-width: 100%;
+    flex: 1;
   }
 
   .hero-image {
     justify-content: center;
     margin-top: 30px;
+  }
+  
+  /* Reset scale on mobile so it doesn't overflow */
+  .hero-image img {
+      transform: scale(1.1);
   }
 
   .hero-text h1 {
@@ -409,7 +396,7 @@ section p {
 
 /* ===============================
    CAROUSEL INDICATORS (BLUE)
-==================================*
+==================================*/
 
 
 /* Fade effect */
@@ -429,28 +416,6 @@ section p {
 #heroCarousel .carousel-control-prev,
 #heroCarousel .carousel-control-next {
   display: none !important;
-}
-
-/* Responsive layout */
-@media (max-width: 992px) {
-  .hero-slide {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  .hero-text,
-  .hero-image {
-    max-width: 100%;
-  }
-
-  .hero-image {
-    justify-content: center;
-    margin-top: 30px;
-  }
-
-  .hero-text h1 {
-    font-size: 2rem;
-  }
 }
 
 
@@ -1729,33 +1694,63 @@ body > div[style*="margin-top:90px"] { display: none !important; }
 .services-cta-section::before {
   background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='50' cy='50' r='1' fill='%23FFFFFF' opacity='0.2'/%3E%3C/svg%3E");
 }
+/* ===============================
+   SPECIFIC CAROUSEL IMAGE SIZES
+==================================*/
+/* Make the image inside the 'hero-image-big' container extra large on desktop */
+.hero-image.hero-image-big img {
+  /* Increased scale from the standard 1.35 to 1.75 */
+  /* Increased translateX slightly to compensate for the extra width */
+  transform: scale(1.75) translateX(60px); 
+}
+
+/* Ensure it resets correctly on smaller screens so it doesn't overflow */
+@media (max-width: 992px) {
+  .hero-image.hero-image-big img {
+    transform: scale(1.1);
+    /* Adding a little top margin on mobile for this specific big image */
+    margin-top: 20px; 
+  }
+}/* ===============================
+   SPECIFIC CAROUSEL IMAGE SIZES
+==================================*/
+/* Make the image inside the 'hero-image-big' container extra large on desktop */
+.hero-image.hero-image-big img {
+  /* Increased scale from the standard 1.35 to 1.75 */
+  /* Increased translateX slightly to compensate for the extra width */
+  transform: scale(1.75) translateX(60px); 
+}
+
+/* Ensure it resets correctly on smaller screens so it doesn't overflow */
+@media (max-width: 992px) {
+  .hero-image.hero-image-big img {
+    transform: scale(1.1);
+    /* Adding a little top margin on mobile for this specific big image */
+    margin-top: 20px; 
+  }
+}
 </style>
 
 </head>
 
 <body>
 
- <!-- ✅ Fixed Navbar -->
-<nav class="navbar navbar-expand-lg navbar-light fixed-top">
+ <nav class="navbar navbar-expand-lg navbar-light fixed-top">
   <div class="container-fluid">
-    <!-- Logo on the LEFT -->
     <a class="navbar-brand" href="#">
       <img src=<?= base_url('assets_system/images/header_logo.png') ?> alt="Line Seiki Logo">
     </a>
 
-    <!-- Toggler for mobile -->
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
       aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <!-- Navigation items -->
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ms-auto">
         <li class="nav-item"><a class="nav-link active" href="<?= base_url() ?>">Home</a></li>
         <li class="nav-item"><a class="nav-link" href="<?= base_url('index/about_us') ?>">About Us</a></li>
 
-        <!-- Dropdown -->
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
             Product and Services
@@ -1763,7 +1758,6 @@ body > div[style*="margin-top:90px"] { display: none !important; }
           <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="<?= base_url('index/ps_prod') ?>">Products</a></li>
 
-            <!-- Submenu -->
             <li class="dropdown-submenu">
               <a class="dropdown-item dropdown-toggle" href="#">Services</a>
               <ul class="dropdown-menu">
@@ -1784,13 +1778,10 @@ body > div[style*="margin-top:90px"] { display: none !important; }
   </div>
 </nav>
 
-  <!-- Offset for fixed navbar -->
   <div style="margin-top:90px"></div>
 
-<!-- ✅ Carousel (fixed) -->
 <div id="heroCarousel" class="carousel slide carousel-fade fade-in" data-bs-ride="carousel" data-bs-interval="3000">
 
-  <!-- Indicators -->
   <div class="carousel-indicators">
     <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active"></button>
     <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1"></button>
@@ -1798,28 +1789,25 @@ body > div[style*="margin-top:90px"] { display: none !important; }
     <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="3"></button>
   </div>
 
-  <!-- Slides -->
   <div class="carousel-inner">
 
-    <!-- Slide 1 -->
     <div class="carousel-item active">
       <div class="container hero-slide d-flex align-items-center justify-content-between">
         <div class="hero-text">
           <h1>Precision You Can Trust</h1>
           <p>
-             From counting devices to digital manufacturing
+              From counting devices to digital manufacturing
             solutions, we continue to deliver reliable instruments and
             technologies that help industries move with accuracy
             and efficiency
           </p>
         </div>
         <div class="hero-image">
-          <img src=<?= base_url('assets_system/images/Legacy2new.png') ?> alt="Slide 1">
+          <img src=<?= base_url('assets_system/images/img1.png') ?> alt="Slide 1">
         </div>
       </div>
     </div>
 
-    <!-- Slide 2 -->
     <div class="carousel-item">
       <div class="container hero-slide d-flex align-items-center justify-content-between">
         <div class="hero-text">
@@ -1831,50 +1819,47 @@ body > div[style*="margin-top:90px"] { display: none !important; }
             and efficiency
           </p>
         </div>
-        <div class="hero-image">
+        <div class="hero-image hero-image-big">
           <img src=<?= base_url('assets_system/images/simul1bg.png') ?> alt="Slide 2">
         </div>
       </div>
     </div>
 
-    <!-- Slide 3 -->
     <div class="carousel-item">
-      <div class="container hero-slide d-flex align-items-center justify-content-between">
-        <div class="hero-text">
-          <h1>Precision You Can Trust</h1>
-          <p>
-             From counting devices to digital manufacturing
-            solutions, we continue to deliver reliable instruments and
-            technologies that help industries move with accuracy
-            and efficiency
-          </p>
-        </div>
-        <div class="hero-image">
-          <img src=<?= base_url('assets_system/images/Gemba-hero2new.png') ?> alt="Slide 3">
-        </div>
-      </div>
+  <div class="container hero-slide d-flex align-items-center justify-content-between">
+    <div class="hero-text">
+      <h1>Precision You Can Trust</h1>
+      <p>
+          From counting devices to digital manufacturing
+        solutions, we continue to deliver reliable instruments and
+        technologies that help industries move with accuracy
+        and efficiency
+      </p>
     </div>
+    <div class="hero-image hero-image-big">
+      <img src=<?= base_url('assets_system/images/img3.png') ?> alt="Slide 3">
+    </div>
+  </div>
+</div>
 
-    <!-- Slide 4 -->
     <div class="carousel-item">
       <div class="container hero-slide d-flex align-items-center justify-content-between">
         <div class="hero-text">
           <h1>Precision You Can Trust</h1>
           <p>
-             From counting devices to digital manufacturing
+              From counting devices to digital manufacturing
             solutions, we continue to deliver reliable instruments and
             technologies that help industries move with accuracy
             and efficiency
           </p>
         </div>
-        <div class="hero-image">
+        <div class="hero-image hero-image-big">
           <img src=<?= base_url('assets_system/images/Asc-hero.png') ?> alt="Slide 4">
         </div>
       </div>
     </div>
   </div>
 
-  <!-- Controls -->
   <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
     <span class="carousel-control-prev-icon"></span>
   </button>
@@ -1885,10 +1870,8 @@ body > div[style*="margin-top:90px"] { display: none !important; }
 
 
 
-   <!-- Enhanced Legacy Products Section -->
-<section class="section-white legacy-products">
+   <section class="section-white legacy-products">
   <div class="container">
-    <!-- Header Section -->
     <div class="legacy-header fade-in">
       <div class="legacy-badge">Trusted Since 1953</div>
       <h2 class="fw-bold">Our Proven Line of Counting and Measuring Instruments</h2>
@@ -1899,7 +1882,6 @@ body > div[style*="margin-top:90px"] { display: none !important; }
       </p>
     </div>
 
-    <!-- Timeline Element -->
     <div class="legacy-timeline fade-in delay-2">
       <div class="timeline-content">
         <div class="timeline-years">70+</div>
@@ -1907,7 +1889,6 @@ body > div[style*="margin-top:90px"] { display: none !important; }
       </div>
     </div>
 
-    <!-- Product Categories -->
     <div class="product-categories fade-in delay-3">
       <div class="category-card">
         <div class="category-icon">
@@ -1942,7 +1923,6 @@ body > div[style*="margin-top:90px"] { display: none !important; }
       </div>
     </div>
 
-    <!-- Statistics -->
     <div class="legacy-stats fade-in delay-4">
       <div class="stat-item">
         <div class="stat-number">50K+</div>
@@ -1962,7 +1942,6 @@ body > div[style*="margin-top:90px"] { display: none !important; }
       </div>
     </div>
 
-    <!-- Trust Badges -->
     <div class="trust-badges fade-in delay-4">
       <div class="trust-badge">
         <i class="fas fa-award"></i>
@@ -1982,7 +1961,6 @@ body > div[style*="margin-top:90px"] { display: none !important; }
       </div>
     </div>
 
-    <!-- Call to Action -->
     <div class="legacy-cta fade-in delay-5">
       <a href="<?= base_url('index/ps_prod') ?>" class="legacy-btn">
         <i class="fas fa-chart-line"></i>
@@ -1991,18 +1969,14 @@ body > div[style*="margin-top:90px"] { display: none !important; }
     </div>
   </div>
 </section>
-     <!-- Enhanced Our Services Section -->
-<section class="section-white services-section">
+     <section class="section-white services-section">
   <div class="container">
-    <!-- Header -->
     <div class="services-header fade-in">
       <h2 class="fw-bold">Our Services</h2>
        <span class="services-tagline">Beyond Measurement — We Engineer Possibilities</span>
     </div>
 
-    <!-- Services Grid -->
     <div class="services-grid">
-      <!-- Simulation Analysis Service -->
       <div class="service-card-enhanced fade-in delay-1 featured">
         <div class="featured-badge">Most Popular</div>
         <div class="service-header">
@@ -2034,7 +2008,6 @@ body > div[style*="margin-top:90px"] { display: none !important; }
         </div>
       </div>
 
-      <!-- Silicone Molding Service -->
       <div class="service-card-enhanced fade-in delay-2">
         <div class="service-header">
           <div class="service-icon-wrapper">
@@ -2065,7 +2038,6 @@ body > div[style*="margin-top:90px"] { display: none !important; }
         </div>
       </div>
 
-      <!-- GEMBA Monitoring System -->
       <div class="service-card-enhanced fade-in delay-3">
         <div class="service-header">
           <div class="service-icon-wrapper">
@@ -2097,7 +2069,6 @@ body > div[style*="margin-top:90px"] { display: none !important; }
       </div>
     </div>  
 
-    <!-- CTA Section -->
     <div class="services-cta-section fade-in delay-5">
       <h3>Ready to Transform Your Operations?</h3>
       <p>Let's discuss how our services can drive efficiency and innovation in your business</p>
@@ -2113,15 +2084,12 @@ body > div[style*="margin-top:90px"] { display: none !important; }
   </div>
 </section>
 
-<!-- Enhanced New Products Section -->
 <section class="section-white new-products">
   <div class="container">
-    <!-- Decorative Elements -->
     <div class="feature-decoration feature-decoration-1"></div>
     <div class="feature-decoration feature-decoration-2"></div>
     
     <div class="row align-items-center">
-      <!-- Left text content -->
       <div class="col-lg-6 fade-in">
         <span class="new-badge">NEW ARRIVAL</span>
         <h2 class="fw-bold">New Products</h2>
@@ -2136,13 +2104,11 @@ body > div[style*="margin-top:90px"] { display: none !important; }
         </div>
       </div>
       
-      <!-- Right image content -->
       <div class="col-lg-6 text-center fade-in delay-1">
         <img src="<?= base_url('assets_system/images/new_prod.png') ?>" alt="Safety Switches and Relays" class="img-fluid rounded shadow">
       </div>
     </div>
 
-    <!-- Enhanced Feature Boxes -->
     <div class="row text-center mt-5 fade-in delay-2">
       <div class="col-md-3 col-6 mb-4">
         <div class="new-prod-feature">
@@ -2183,7 +2149,6 @@ body > div[style*="margin-top:90px"] { display: none !important; }
   
 
 
-  <!-- Footer -->
   <footer>
     <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap">
       <h2>Get in Touch with Us</h2>
@@ -2220,7 +2185,6 @@ body > div[style*="margin-top:90px"] { display: none !important; }
     </div>
   </footer>
 
-  <!-- Bootstrap 5 JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
   <script>
