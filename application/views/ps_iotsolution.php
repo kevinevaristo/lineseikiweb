@@ -968,7 +968,7 @@
 
 /* 1. THE "TECH" STRIP (Light Blue Background) */
 .light-blue-strip {
- background: linear-gradient(135deg, rgba(200, 225, 255, 5), rgba(150, 200, 255, 5));
+  background: white
   backdrop-filter: blur(12px);
   position: relative;
   border-top: none;
@@ -994,7 +994,7 @@
 
 /* 2. THE "CLEAN" STRIP (White Background) */
 .white-strip {
-  background: #264573;
+  background: linear-gradient(135deg, rgba(200, 225, 255, 5), rgba(150, 200, 255, 5));
   position: relative;
 }
 
@@ -1018,7 +1018,7 @@
 }
     
 .light-blue-strip1 {
-  background: #264573;  
+  background: linear-gradient(135deg, rgba(200, 225, 255, 5), rgba(150, 200, 255, 5));
   position: relative;
   border-top: none;
   padding-top: 20px;
@@ -1028,32 +1028,30 @@
    ALTERNATING TEXT COLORS
 ========================================= */
 
-/* 1. Control Page: BLACK TEXT */
+/*
 .white-strip .production-data-item h3,
 .white-strip .production-data-item p {
     color:  #ffffff !important;
 }
 
-/* 2. Count Dashboard: WHITE TEXT */
-/* (Make sure this section has a dark background so text is visible) */
+
 .light-blue-strip .production-data-item h3,
 .light-blue-strip .production-data-item p {
     color: #212529 !important;
 }
 
-/* 3. Duration Dashboard: BLACK TEXT */
+
 .light-blue-strip1 .production-data-item h3,
 .light-blue-strip1 .production-data-item p {
     color: #ffffff !important;
 }
 
-/* 4. Overview: WHITE TEXT */
-/* (Make sure this section has a dark background so text is visible) */
+
 .white-strip1 .production-data-item h3,
 .white-strip1 .production-data-item p {
     color: #212529 !important;
 }
-
+*/
 
 .light-blue-strip1::before {
   content: '';
@@ -1072,7 +1070,7 @@
 }
 
 .white-strip1 {
-  background: linear-gradient(135deg, rgba(200, 225, 255, 5), rgba(150, 200, 255, 5));
+  background: white
   backdrop-filter: blur(12px);
   position: relative;
 }
@@ -1138,7 +1136,7 @@
 .dashboard-image, 
 .production-data-item img { 
     /* Ensures image is responsive and fits the column width (equivalent to img-fluid) */
-    max-width: 100%; 
+    max-width: 110%; 
     height: auto;
     display: block;
     filter: brightness(1) saturate(2.0);
@@ -1325,7 +1323,7 @@
 
 .text-card {
         /* Existing semi-transparent dark background (from previous step) */
-        background-color: rgba(44, 62, 80, 0.85); /* Tinaasan ko pa ang opacity */
+        background: rgba(85, 115, 150, 1); /* Tinaasan ko pa ang opacity */
         backdrop-filter: blur(8px);
         -webkit-backdrop-filter: blur(8px); 
         border-radius: 15px; 
@@ -1345,12 +1343,12 @@
 /* Also, ensure your headings and paragraphs inside text-card are white */
 .text-card h3,
 .text-card p {
-    color: #ffffff !important; /* Use !important to override Bootstrap's text-dark */
+    color: white !important; /* Use !important to override Bootstrap's text-dark */
 }
 
 .text-card1 {
         /* Existing semi-transparent dark background (from previous step) */
-        background-color: rgba(141, 194, 247, 0.85); /* Tinaasan ko pa ang opacity */
+        background-color: rgba(85, 115, 150, 1); /* Tinaasan ko pa ang opacity */
         backdrop-filter: blur(8px);
         -webkit-backdrop-filter: blur(8px); 
         border-radius: 15px; 
@@ -1369,7 +1367,7 @@
 /* Also, ensure your headings and paragraphs inside text-card are white */
 .text-card1 h3,
 .text-card1 p {
-    color: #ffffff !important; /* Use !important to override Bootstrap's text-dark */
+    color: white !important; /* Use !important to override Bootstrap's text-dark */
 }
 
 /* Blue Underline under Title */
