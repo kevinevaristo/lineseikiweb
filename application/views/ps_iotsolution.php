@@ -1323,7 +1323,7 @@
 
 .text-card {
         /* Existing semi-transparent dark background (from previous step) */
-        background: rgba(85, 115, 150, 1); /* Tinaasan ko pa ang opacity */
+        background: rgba(162, 200, 243, 1); /* Tinaasan ko pa ang opacity */
         backdrop-filter: blur(8px);
         -webkit-backdrop-filter: blur(8px); 
         border-radius: 15px; 
@@ -1343,12 +1343,12 @@
 /* Also, ensure your headings and paragraphs inside text-card are white */
 .text-card h3,
 .text-card p {
-    color: white !important; /* Use !important to override Bootstrap's text-dark */
+    color: black !important; /* Use !important to override Bootstrap's text-dark */
 }
 
 .text-card1 {
         /* Existing semi-transparent dark background (from previous step) */
-        background-color: rgba(85, 115, 150, 1); /* Tinaasan ko pa ang opacity */
+        background-color: rgba(162, 200, 243, 1); /* Tinaasan ko pa ang opacity */
         backdrop-filter: blur(8px);
         -webkit-backdrop-filter: blur(8px); 
         border-radius: 15px; 
@@ -1367,7 +1367,7 @@
 /* Also, ensure your headings and paragraphs inside text-card are white */
 .text-card1 h3,
 .text-card1 p {
-    color: white !important; /* Use !important to override Bootstrap's text-dark */
+    color: black !important; /* Use !important to override Bootstrap's text-dark */
 }
 
 /* Blue Underline under Title */
@@ -1784,7 +1784,7 @@
           </div>
         </div>
         <div class="col-lg-6 order-lg-1 text-center mt-4 mt-lg-0">
-          <img src="<?= base_url('assets_system/images/overview.png') ?>" alt="Overview Dashboard" class="dashboard-image">
+          <img src="<?= base_url('assets_system/images/overview.png') ?>" alt="Overview Dashboard" class="dashboard-image" style="margin-left: -20px;">
         </div>
       </div>
     </div>
