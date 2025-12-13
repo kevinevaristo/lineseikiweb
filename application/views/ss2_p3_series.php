@@ -429,80 +429,204 @@
       transform: translateY(-3px);
     }
 
-    /* =========================
-       🎯 MODERN PRODUCT DETAILS
-    ========================= */
+/* MAIN LAYOUT */
+.product-container {
+  width: 100%;
+  padding: 50px;
+  background: #ffffff;
+  display: flex;
+  justify-content: center;
+}
+
+.product-wrapper {
+  max-width: 1200px;
+  width: 100%;
+  display: flex;
+  gap: 50px;
+}
+
+/* LEFT IMAGE */
+.product-image-section {
+  width: 50%;
+}
+
+.big-image-card {
+  width: 100%;
+  height: 450px;
+  border: 2px solid #dfe6f2;
+  border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #fafcff;
+}
+
+.big-image-card img {
+  width: 85%;
+  height: 85%;
+  object-fit: contain;
+}
+
+/* RIGHT INFO AREA */
+.product-info-section {
+  width: 50%;
+}
+
+.product-category {
+  text-transform: uppercase;
+  font-size: 15px;
+  font-weight: 600;
+  color: #3d4c63;
+  margin-bottom: 5px;
+}
+
+.product-title {
+  font-size: 48px;
+  font-weight: 800;
+  color: #0d2a5c;
+  margin-bottom: 15px;
+}
+
+/* Tags */
+.product-tags span {
+  display: inline-block;
+  background: #f0f4f8;
+  color: #0b264e;
+  padding: 5px 12px;
+  border-radius: 15px;
+  font-size: 13px;
+  margin-right: 10px;
+  margin-bottom: 15px;
+}
+
+/* FEATURE BOX */
+.product-feature-box {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  border-top: 3px solid #000000ff;
+  border-bottom: 3px solid #000000ff;
+  padding: 20px 0;
+  margin-bottom: 35px;
+}
+
+.feature-label {
+  background: #eef2f9;
+  padding: 15px;
+  font-weight: 700;
+  color: #0b264e;
+  display: flex;
+  align-items: center; /* vertical center */
+  justify-content: center; /* horizontal center */
+  height: 100%;
+  margin-right: 10px;
+}
+
+.feature-content p {
+  margin: 0 0 10px 0;
+  color: #24344f;
+  line-height: 1.6;
+}
+
+/* BUTTONS */
+.product-buttons {
+  display: flex;
+  gap: 20px;
+}
+
+.btn1 {
+  padding: 14px 25px;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 600;
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.btn1.navy {
+  background: #0d2a5c;
+  color: white;
+  border: 1px solid #0d2a5c;
+}
+
+.btn1.navy:hover {
+  background: #061b3a;
+}
+
+/* ICONS */
+.icon-mail::before {
+  content: "✉️";
+}
+
+.icon-list::before {
+  content: "📄";
+}
+
+/* Container to organize the rows and center the content */
+.dropdown-container {
+    padding: 30px; /* Dagdagan ang space */
+    font-family: Arial, sans-serif;
+    display: flex; /* Gawing flex container */
+    flex-direction: column; /* Ayusin ang rows pababa */
+    align-items: center; /* I-center ang rows horizontally */
+    width: 100%; /* Gamitin ang buong lapad para sa centering */
+    box-sizing: border-box;
+}
+
+/* Style for the row containing multiple dropdowns */
+.dropdown-row {
+    display: flex; 
+    gap: 20px; /* Dagdagan ang space between buttons */
+    margin-bottom: 20px; /* Dagdagan ang space between the two rows */
+}
+
+/* Base style for all dropdown buttons */
+.dropdown-button {
+    /* Dimensions and Appearance - Pinalaki */
+    height: 50px; /* Ginamit ang 50px na taas */
+    padding: 0 100px; /* Dagdagan ang horizontal padding */
+    border-radius: 15px; /* Dinagdagan din ang rounding */
+    font-size: 16px; /* Gawing mas malaki ang font */
     
-    /* Modern Top Details Section */
-    .top-details {
-    position: relative;
-    padding: 180px 0;
-    color: white;
-    overflow: hidden;
+    /* Text and Layout (same as before) */
+    display: flex;
+    align-items: center; 
+    justify-content: space-between; 
+    white-space: nowrap;
+    cursor: pointer;
     
-    /* 1. Add Background Image */
-    background: 
-    url("<?= base_url('assets_system/images/home_main.jpg') ?>") center center/cover no-repeat;
-    }
-    .top-details::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 1;
-    }
+    /* Colors - Standard Dropdown */
+    background-color: white;
+    border: 2px solid #4012bdff;
+    color: #404040;
+    transition: all 0.2s ease-in-out;
+}
 
-    .top-details h1 {
-      position: relative;
-      z-index: 2;
-      color: white;
-      font-size: 3.5rem;
-      font-weight: 800;
-      letter-spacing: -0.5px;
-      text-transform: uppercase;
-      text-align: center;
-    }
+/* Style for the currently active/selected button (same as before) */
+.dropdown-button.active {
+    background-color: #eef1f6;
+    border-color: #eef1f6;
+    color: #2c2c3e;
+}
 
-    /* Modern Product Details Section */
-    .product-details {
-      background: linear-gradient(135deg, var(--light-blue) 0%, #fff 100%);
-      padding: 100px 0;
-      position: relative;
-      overflow: hidden;
-    }
+/* Style for the down arrow icon (same as before) */
+.dropdown-arrow {
+    font-size: 12px; /* Bahagyang pinalaki */
+    margin-left: 12px;
+    line-height: 1;
+}
 
-    .product-details::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2317A2DC' fill-opacity='0.03'%3E%3Ccircle cx='30' cy='30' r='4'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-      z-index: 0;
-    }
+/* Hover effect */
+.dropdown-button:hover {
+    border: 1px solid #000000ff; /* Darker blue/purple border */
+    transform: translateY(-1px); /* Bahagyang umakyat para sa 3D effect */
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
+}
 
-    .product-details-container {
-      position: relative;
-      z-index: 1;
-    }
-
-    /* Modern Product Card */
-    .product-card {
-      background: #fff;
-      border-radius: 20px;
-      padding: 50px 40px;
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
-      transition: var(--transition);
-      border: none;
-      position: relative;
-      overflow: hidden;
-    }
-
-   .title-header {
-    margin-top: 20px;
+.title-header {
+    margin-top: 70px;
+    margin-bottom: 20px;
     padding: 15px 20px;
     background: #e6f1ff; /* light blue background */
     border-left: 4px solid #007bff; /* accent blue bar */
@@ -547,273 +671,149 @@
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1); /* subtle lift */
 }
 
-
-
-    .badge {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    background: #ff4757;    /* red badge */
-    color: white;
-    padding: 5px 12px;
-    font-size: 11px;
-    font-weight: 700;
-    border-radius: 20px;
-    letter-spacing: 0.5px;
-    z-index: 5;
-    }
-
-   .image-grid {
-    margin-top: 20px;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 25px;
+.video-container {
+    margin: 20px auto; /* Para i-center ang video */
+    max-width: 560px; /* Para hindi lumaki ang container base sa width ng iframe */
 }
 
-/* Card container */
-.image-grid .item {
-   position: relative; 
-    background: #ffffff;
-    padding: 20px;
-    border-radius: 12px;
-    border: 1px solid #cfe2ff; /* light blue border */
-    transition: 0.3s ease;
+#movie-section {
+    scroll-margin-top: 80px; 
+    /* Maaari mo ring idagdag ang scroll-padding-top sa <body> o <html> kung gusto mo, 
+       pero mas specific ang scroll-margin-top sa target element. */
 }
 
-.image-grid .item:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 0 15px rgba(0, 123, 255, 0.5); /* blue glow */
-    border-color: #007bff; /* change border on hover */
+/* 1. Container Styling (Wrapper) */
+.modern-table-container {
+    max-width: 950px; 
+    margin: 50px auto; /* Para i-center at bigyan ng space */
+    padding: 0;
+    
+    /* Modern Look: Soft Shadow at Rounded Corners */
+    background: #fff;
+    border-radius: 12px; 
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); 
+    overflow: hidden; /* Mahalaga para maganda ang corners sa header */
 }
 
-/* Image */
-.image-grid img {
+/* 2. Base Table Styling */
+#modern-product-table {
+    border-collapse: collapse;
     width: 100%;
-    height: 180px;
-    object-fit: contain;
-    border-radius: 8px;
-    border: 1px solid #d6e6ff; /* softer light blue */
-    padding: 10px;
-    background: #f6faff; /* very light blue background */
+    font-family: 'Segoe UI', Roboto, Arial, sans-serif; /* Modern Font Stack */
+    color: #333;
+    /* Alisin ang lahat ng border sa buong table */
+    border: none; 
 }
 
-/* Product Title */
-.product-title1 {
-    font-size: 20px;
-    font-weight: 600;
-    color: #0056b3; /* main light blue theme */
-    margin-top: 15px;
-    margin-bottom: 10px;
+/* 3. Header Styling (Dark, Flat) */
+#modern-product-table thead th {
+    background-color: #1772ccff; /* Very Dark Gray/Black for modern feel */
+    color: white;
+    padding: 18px 20px; 
+    text-align: left;
+    font-size: 15px;
+    font-weight: 600; /* Semi-bold */
+    border-right: 2px solid rgba(255, 255, 255, 0.2);
 }
 
-/* Tags container */
-.tags {
-    margin-bottom: 10px;
-}
-
-/* Light blue rounded tags */
-.tag {
-    display: inline-block;
-    background: #e8f1ff;     /* very light blue */
-    color: #00509e;          /* darker blue text */
-    padding: 6px 12px;
-    border-radius: 20px;
+/* 4. Body Cells Styling (Clean Look) */
+#modern-product-table tbody td {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-right: 70px;
+    padding-left: 50px;
+    border-bottom: 2px solid rgba(29, 6, 236, 0.2); 
+    border-right: 2px solid rgba(29, 6, 236, 0.2);
+    border-left: none;
     font-size: 14px;
-    border: 1px solid #c7dbff; /* light blue border */
-    margin-right: 6px;
-    margin-bottom: 6px;
+    vertical-align: middle; 
 }
 
-/* Description text */
-.desc {
-    font-size: 14px;
-    color: #2e4765; /* subtle blue-gray text */
-    margin-top: 5px;
-    line-height: 1.4;
+/* 5. Centering Content for Rowspan Cells (Relay & Polyamide) */
+#modern-product-table td[rowspan="3"] {
+    text-align: center;
+    background-color: #f8f9fa; /* Very subtle light gray background for emphasis */
+    font-weight: 500;
+}
+
+/* 6. Last row styling (no border sa dulo) */
+#modern-product-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* 7. Special Alignment para sa Models Column (Kung gusto mong i-align sa gitna ang Models) */
+#modern-product-table tbody tr td:first-child {
+    text-align: center;
+    background-color: #fcfcfc;
+}
+
+/* Container: Limitahan ang lapad at i-center */
+/* Table container — PALAPAD */
+.spec-table-container {
+    max-width: 1200px; 
+    margin: 30px auto;
+    border: 1px solid #1000f1ff;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+/* Base Table */
+.spec-table {
+    width: 100%;
+    border-collapse: collapse;
+    color: #333;
+    font-family: Arial, sans-serif;
+    font-size: 16px; /* Slightly increased font size to match large padding */
+    table-layout: fixed;
+}
+
+/* Row Borders */
+.spec-table tr {
+    border-bottom: 1px solid #1000f1ff;
+}
+
+/* Cell Spacing and Text - Increased Padding for Large Spacing */
+.spec-table td,
+.spec-table th {
+    padding: 30px 50px; /* ***LARGE PADDING APPLIED HERE*** */
+    line-height: 1.5;
+    text-align: left; 
+}
+
+/* Header cell */
+.spec-table .feature-header {
+    width: 30%;
+    background: #f7f9fd;
+    font-weight: bold;
+    color: #213955;
+    border-right: 1px solid #1000f1ff;
+}
+
+/* Value cells */
+.spec-table .feature-value {
+    background: #fff;
+    /* Add a border to ALL feature-value cells */
+    border-right: 1px solid #1000f1ff;
+}
+
+/* Remove the border from the value cell that spans all columns (the consolidated rows) */
+.spec-table .feature-value[colspan="3"] {
+    width: 70%;
+    border-right: none; 
+}
+
+/* Remove the border from the last feature-value cell in any row (for 3-column rows) */
+.spec-table tr:not(:last-child) .feature-value:last-child {
+    border-right: none;
+}
+
+/* Last row no bottom border */
+.spec-table tbody tr:last-child {
+    border-bottom: none;
 }
 
 
-
-   
-    .product-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 5px;
-      background: linear-gradient(90deg, var(--newblue), var(--primary-blue));
-    }
-
-    .product-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.12);
-    }
-
-    .product-title {
-      font-size: 2.5rem;
-      font-weight: 800;
-      color: var(--newblue2);
-      margin-bottom: 20px;
-      position: relative;
-    }
-
-    .product-title::after {
-      content: '';
-      position: absolute;
-      bottom: -10px;
-      left: 0;
-      width: 60px;
-      height: 4px;
-      background: linear-gradient(90deg, var(--newblue), var(--primary-blue));
-      border-radius: 2px;
-    }
-
-    .product-description {
-      font-size: 1.1rem;
-      line-height: 1.8;
-      color: #495057;
-      margin-bottom: 30px;
-    }
-
-    .product-features {
-      background: var(--light-blue);
-      border-radius: 15px;
-      padding: 30px;
-      margin: 30px 0;
-    }
-
-    .feature-list {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-
-    .feature-list li {
-      padding: 12px 0;
-      border-bottom: 1px solid rgba(13, 110, 253, 0.1);
-      position: relative;
-      padding-left: 30px;
-      font-weight: 500;
-      color: var(--newblue2);
-    }
-
-    .feature-list li:last-child {
-      border-bottom: none;
-    }
-
-    .feature-list li::before {
-      content: '✓';
-      position: absolute;
-      left: 0;
-      color: var(--newblue);
-      font-weight: bold;
-    }
-
-    /* Modern Product Image */
-    .product-image-container {
-      position: relative;
-      text-align: center;
-    }
-
-    .product-image {
-      max-width: 100%;
-      height: auto;
-      border-radius: 20px;
-      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
-      transition: var(--transition);
-    }
-
-    .product-image:hover {
-      transform: scale(1.02);
-    }
-
-    .title-highlight {
-    margin-top: 20px;
-    position: relative;
-    padding-left: 12px;
-    }
-
-    .title-highlight::before {
-        content: "";
-        position: absolute;
-        left: 0;
-        top: 0;
-        width: 5px;
-        height: 100%;
-        background-color: #ff9800; /* Orange bar */
-        border-radius: 3px;
-    }
-
-    .title-highlight h2 {
-        margin: 0;
-        font-size: 26px;
-        font-weight: 700;
-        color: #444;
-    }
-
-
-    .image-caption {
-      margin-top: 20px;
-      font-style: italic;
-      color: #666;
-      font-size: 0.9rem;
-    }
-
-    /* Modern Action Buttons */
-    .action-buttons {
-      margin-top: 40px;
-    }
-
-    .btn-inquiry {
-      background: linear-gradient(135deg, var(--newblue), var(--primary-blue));
-      color: white;
-      border: none;
-      padding: 15px 30px;
-      border-radius: 10px;
-      font-weight: 600;
-      transition: var(--transition);
-      box-shadow: 0 5px 15px rgba(23, 162, 220, 0.3);
-    }
-
-    .btn-inquiry:hover {
-      background: linear-gradient(135deg, var(--primary-blue), var(--newblue));
-      transform: translateY(-3px);
-      box-shadow: 0 8px 25px rgba(23, 162, 220, 0.4);
-      color: white;
-    }
-
-    .btn-inquiry i {
-      margin-right: 8px;
-    }
-
-    /* Modern Divider */
-    .modern-divider {
-      height: 2px;
-      background: linear-gradient(90deg, transparent, var(--newblue), transparent);
-      margin: 40px 0;
-      border: none;
-    }
-
-    /* Responsive adjustments for product details */
-    @media (max-width: 768px) {
-      .top-details {
-        padding: 120px 0;
-      }
-      
-      .top-details h1 {
-        font-size: 2.5rem;
-      }
-      
-      .product-card {
-        padding: 30px 25px;
-      }
-      
-      .product-title {
-        font-size: 2rem;
-      }
-    }
-  </style>
+    </style>
 </head>
 <body>
 
@@ -860,187 +860,213 @@
   <!-- Spacer for fixed navbar -->
   <div style="height: 90px;"></div>
 
-  <!-- Modern Top Details Section -->
-  <section class="top-details">
-    <div class="container">
-      <h1 class="fade-in">Product Details</h1>
-    </div>
-  </section>
+<!-- MAIN PRODUCT SECTION -->
+<div class="product-container">
+  <div class="product-wrapper">
 
-  <!-- Modern Product Details Section -->
-  <section class="product-details">
-    <div class="container product-details-container">
-      <div class="product-card fade-in">
-        <div class="row align-items-center">
-          
-          <!-- Left: Text Content -->
-          <div class="col-lg-6 order-2 order-lg-1">
-            <h2 class="product-title">Safety Switches</h2>
-            
-            <hr class="modern-divider">
-
-            <!-- Product Description -->
-            <div class="product-description">
-              <p>
-                Mounted on opening/closing parts, safety switches detect the position of safety guards or doors as a mean of safeguarding. It's a sensor whose safety function cannot be disabled. All switches are of non-contact type.
-              </p>
-              
-              <div class="product-features">
-                <h5 class="mb-3" style="color: var(--newblue2); font-weight: 600;">Key Features:</h5>
-                <ul class="feature-list">
-                  <li>Non-contact safety switches</li>
-                  <li>Safety function cannot be disabled</li>
-                  <li>Detects position of safety guards or doors</li>
-                  <li>Reliable safeguarding solution</li>
-                </ul>
-              </div>
-
-              <div class="note-box p-3 rounded" style="background: rgba(253, 126, 20, 0.1); border-left: 4px solid var(--primary-orange);">
-                <p class="mb-0" style="color: var(--primary-orange-dark); font-weight: 500;">
-                  <strong>Note:</strong> We kindly ask our valued customers to evaluate Performance Level of entire system for the use of safety relay unit of third party.
-                </p>
-              </div>
-            </div>
-
-            <!-- Action Buttons -->
-            <div class="action-buttons">
-              <a href="#" class="btn btn-inquiry">
-                <i class="fas fa-envelope"></i> Send Inquiry
-              </a>
-            </div>
-          </div>
-          
-          <!-- Right: Product Image -->
-          <div class="col-lg-6 order-1 order-lg-2">
-            <div class="product-image-container">
-              <img src="<?= base_url('assets_system/images/safetyswitches.png')?>"
-                alt="Safety Switches Product Image"
-                class="product-image">
-              <p class="image-caption">Advanced Safety Switches for Industrial Applications</p>
-            </div>
-          </div>
-
-          <!-- Right: Product Image -->
-          
-
-        </div>
-        <div class="title-header">
-        <h2>Non-contact Safety Switch</h2>
-        </div>
-        <div class="image-grid">
-          <a href="<?= base_url('index/ss2_p3_series') ?>" class="product-link">
-     <div class="item">
-      <div class="badge">NEW</div>
-         <img src="<?= base_url('assets_system/images/safetyswitches.png')?>">
-
-        <h3 class="product-title1">SS2-P-3 series</h3>
-
-        <div class="tags">
-            <span class="tag">Plastic</span>
-            <span class="tag">Stand-alone</span>
-            <span class="tag">Safety Relay Combinable per Condition</span>
-        </div>
-    </div>
-  </a>
-      <div class="item">
-         <img src="<?= base_url('assets_system/images/safetyswitches.png')?>">
-
-        <h3 class="product-title1">SS2-P-3 series</h3>
-
-        <div class="tags">
-            <span class="tag">Plastic</span>
-            <span class="tag">Stand-alone</span>
-            <span class="tag">Safety Relay Combinable per Condition</span>
-        </div>
-    </div>
-      <div class="item">
-         <img src="<?= base_url('assets_system/images/safetyswitches.png')?>">
-
-        <h3 class="product-title1">SS2-P-3 series</h3>
-
-        <div class="tags">
-            <span class="tag">Plastic</span>
-            <span class="tag">Stand-alone</span>
-            <span class="tag">Safety Relay Combinable per Condition</span>
-        </div>
-    </div>
-      <div class="item">
-         <img src="<?= base_url('assets_system/images/safetyswitches.png')?>">
-
-        <h3 class="product-title1">SS2-P-3 series</h3>
-
-        <div class="tags">
-            <span class="tag">Plastic</span>
-            <span class="tag">Stand-alone</span>
-            <span class="tag">Safety Relay Combinable per Condition</span>
-        </div>
-    </div>
-
-   <div class="item">
-         <img src="<?= base_url('assets_system/images/safetyswitches.png')?>">
-
-        <h3 class="product-title1">SS2-P-3 series</h3>
-
-        <div class="tags">
-            <span class="tag">Plastic</span>
-            <span class="tag">Stand-alone</span>
-            <span class="tag">Safety Relay Combinable per Condition</span>
-        </div>
-    </div>
-      <div class="item">
-         <img src="<?= base_url('assets_system/images/safetyswitches.png')?>">
-
-        <h3 class="product-title1">SS2-P-3 series</h3>
-
-        <div class="tags">
-            <span class="tag">Plastic</span>
-            <span class="tag">Stand-alone</span>
-            <span class="tag">Safety Relay Combinable per Condition</span>
-        </div>
-    </div>
-      <div class="item">
-         <img src="<?= base_url('assets_system/images/safetyswitches.png')?>">
-
-        <h3 class="product-title1">SS2-P-3 series</h3>
-
-        <div class="tags">
-            <span class="tag">Plastic</span>
-            <span class="tag">Stand-alone</span>
-            <span class="tag">Safety Relay Combinable per Condition</span>
-        </div>
-    </div>
-      <div class="item">
-         <img src="<?= base_url('assets_system/images/safetyswitches.png')?>">
-
-        <h3 class="product-title1">SS2-P-3 series</h3>
-
-        <div class="tags">
-            <span class="tag">Plastic</span>
-            <span class="tag">Stand-alone</span>
-            <span class="tag">Safety Relay Combinable per Condition</span>
-        </div>
-    </div>
-</div>
-<div class="title-header">
-        <h2>Safety Relay Unit</h2>
-        </div>
- <div class="image-grid">
-     <div class="item">
-      <div class="badge">NEW</div>
-         <img src="<?= base_url('assets_system/images/safetyswitches.png')?>">
-
-        <h3 class="product-title1">SS2-P-3 series</h3>
-
-        <div class="tags">
-            <span class="tag">Plastic</span>
-            <span class="tag">Stand-alone</span>
-            <span class="tag">Safety Relay Combinable per Condition</span>
-        </div>
-    </div>
-  </div>
+    <!-- LEFT IMAGE AREA -->
+    <div class="product-image-section">
+      <div class="big-image-card">
+        <img src="<?= base_url('assets_system/images/safetyswitches.png')?>">
       </div>
     </div>
-  </section>
+
+    <!-- RIGHT INFO AREA -->
+    <div class="product-info-section">
+
+      <!-- Category / Tags -->
+      <div class="product-category">Non-contact Safety Switch</div>
+      <h1 class="product-title">SS2-P-1 series</h1>
+
+      <!-- Tags -->
+      <div class="product-tags">
+        <span>Plastic</span>
+        <span>Stand-alone</span>
+      </div>
+
+      <!-- Feature Box -->
+      <div class="product-feature-box">
+        <div class="feature-label">Features</div>
+        <div class="feature-content">
+          <p>PLd per ISO 13849-1 in stand-alone applications</p>
+          <p>Cross monitoring between two channels</p>
+          <p>Multiple units can be connected to one safety relay unit</p>
+        </div>
+      </div>
+
+      <!-- Buttons -->
+      <div class="product-buttons">
+        <a href="<?= base_url('index/products_details') ?>" class="btn1 navy"><span class="icon-mail"></span>Back to Products</a>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<div class="dropdown-container">
+    <div class="dropdown-row">
+        <button class="dropdown-button" id="scroll-to-movie">
+            Movie
+            <span class="dropdown-arrow">&#9662;</span>
+        </button>
+
+        <button class="dropdown-button">
+            Models
+            <span class="dropdown-arrow">&#9662;</span>
+        </button>
+        <button class="dropdown-button">
+            Specifications
+            <span class="dropdown-arrow">&#9662;</span>
+        </button>
+        <button class="dropdown-button">
+            Download
+            <span class="dropdown-arrow">&#9662;</span>
+        </button>
+    </div>
+    
+    <div class="dropdown-row single-button">
+        <button class="dropdown-button">
+            Applications
+            <span class="dropdown-arrow">&#9662;</span>
+        </button>
+    </div>
+    <div class="title-header" id="movie-section">
+        <h2>Movie</h2>
+        </div>
+        <div class="video-container">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/nNI2By9m0hI?si=62oO771ZGd6Ma9LC" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+        <div class="title-header" id="movie-section">
+        <h2>Models</h2>
+        </div>
+       <div class="modern-table-container">
+    <table id="modern-product-table">
+        <thead>
+            <tr>
+                <th>Models</th>
+                <th colspan="2">Safety Output</th>
+                <th>Auxiliary Output</th>
+                <th>Enclosure Material</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>SS2-P-110</td>
+                <td rowspan="3">Relay</td>
+                <td rowspan="3">N.O. Contact x 1</td>
+                <td>N.C. (SSR Output) x 1</td>
+                <td rowspan="3">Polyamide 66 (PA66)</td>
+            </tr>
+            <tr>
+                <td>SS2-P-120</td>
+                <td>N.C. (PNP Open Collector Output) x 1</td>
+            </tr>
+            <tr>
+                <td>SS2-P-130</td>
+                <td>N.C. (NPN Open Collector Output) x 1</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="title-header" id="movie-section">
+        <h2>Specifications</h2>
+        </div>
+        <div class="spec-table-container">
+    <table class="spec-table">
+        <tbody>
+            <tr>
+                <td class="feature-header">Power Supply Voltage</td>
+                <td class="feature-value">DC24V (-15%/+10%)</td>
+            </tr>
+            
+            <tr>
+                <td class="feature-header">Operating Distances</td>
+                <td class="feature-value">
+                    Rated Operating Distance: 12mm<br>
+                    Assured Switch ON Distance: 10mm<br>
+                    Assured Switch OFF Distance: 15mm<br>
+                    Hysteresis: 2mm Repeat Accuracy: < 5%
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="feature-header">Safety Output Protection</td>
+                <td class="feature-value">Internal Fuse 2A</td>
+            </tr>
+            
+            <tr>
+                <td class="feature-header">Operating Temperature</td>
+                <td class="feature-value">-25 ~ +60°C</td>
+            </tr>
+
+            <tr>
+                <td class="feature-header">Type Coding Level (ISO 14119)</td>
+                <td class="feature-value">4 / Low</td>
+            </tr>
+
+            <tr>
+                <td class="feature-header">MTTFd</td>
+                <td class="feature-value">＞100 years</td>
+            </tr>
+
+            <tr>
+                <td class="feature-header">Complied Standards</td>
+                <td class="feature-value">ISO 13849-1, ISO 14119, IEC 60204-1, IEC 61508-1, IEC 61508-2, IEC 62061, IEC 60947-5-3, UL 60947-1, UL 60947-5-2, CSA C22.2 No. 60947-1, CSA C22.2 No. 60947-5-2, CE, RoHS</td>
+            </tr>
+            
+            </tbody>
+    </table>
+</div>
+
+
+<div class="spec-table-container">
+    <table class="spec-table">
+        <tbody>
+            <tr>
+                <td class="feature-header">Models</td>
+                <td class="feature-value">SS2-P-210</td>
+                <td class="feature-value">SS2-P-210</td>
+                <td class="feature-value">SS2-P-210</td>
+            </tr>
+            
+            <tr>
+                <td class="feature-header">Safety Output</td>
+                <td class="feature-value">N.O. Contact x 2 (AC48V 2A (AC General Use) / DC30V 2A (DC Resistive) / DC5V 10mA Min.)</td>
+            </tr>
+            
+            <tr>
+                <td class="feature-header">Auxiliary Output (x1)</td>
+                <td class="feature-value">N.C. x 1 (SSR Output)</td>
+                <td class="feature-value">N.C. x 1 (PNP Open Collector Output)</td>
+                <td class="feature-value">N.C. x 1 (NPN Open Collector Output)</td>
+            </tr>
+            
+            <tr>
+                <td class="feature-header">Operating Temperature</td>
+                <td class="feature-value">-25 ~ +60°C</td>
+            </tr>
+
+            <tr>
+                <td class="feature-header">Type Coding Level (ISO 14119)</td>
+                <td class="feature-value">4 / Low</td>
+            </tr>
+
+            <tr>
+                <td class="feature-header">MTTFd</td>
+                <td class="feature-value">＞100 years</td>
+            </tr>
+
+            <tr>
+                <td class="feature-header">Complied Standards</td>
+                <td class="feature-value">ISO 13849-1, ISO 14119, IEC 60204-1, IEC 61508-1, IEC 61508-2, IEC 62061, IEC 60947-5-3, UL 60947-1, UL 60947-5-2, CSA C22.2 No. 60947-1, CSA C22.2 No. 60947-5-2, CE, RoHS</td>
+            </tr>
+            
+            </tbody>
+    </table>
+</div>
+        </div>
+  
 
   <!-- CTA Section -->
   <section class="cta">
@@ -1090,6 +1116,16 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
   <script>
+    document.getElementById('scroll-to-movie').addEventListener('click', function() {
+    // Kukunin ang target element (ang div na may ID na 'movie-section')
+    const targetElement = document.getElementById('movie-section');
+    
+    // I-scroll ang view papunta sa target element
+        targetElement.scrollIntoView({
+            behavior: 'smooth' // Ito ang nagbibigay ng smooth scrolling effect
+        });
+    });
+
     document.addEventListener("DOMContentLoaded", function(){
       // Navbar scroll effect
       const navbar = document.querySelector('.navbar');

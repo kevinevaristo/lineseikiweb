@@ -135,5 +135,9 @@ class index extends CI_Controller
   {
    $this->load->view('tally_counters_details');
   }
+  function ss2_p3_series()
+  {
+   $this->load->view('ss2_p3_series');
+  }
 
 }
