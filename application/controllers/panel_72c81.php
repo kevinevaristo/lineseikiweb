@@ -1,0 +1,319 @@
+<?php defined('BASEPATH') or exit('No direct script access allowed');
+ob_start();
+
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
+class panel_72c81 extends CI_Controller
+{
+  function __construct()
+  {
+    parent::__construct();
+    $this->load->model('admin/login/login_model');
+    $this->load->model('admin/templates/header_model');
+    $this->load->helper(array('form', 'url'));
+    $this->load->library('form_validation');
+    $this->load->library('session');
+    $this->load->driver('cache');
+    $this->no_cache();
+    
+  }
+
+  function index()
+  {
+    // Removed tbl_system_setup dependency
+    // $data['DISP_LOGO'] = $this->header_model->get_logo();
+    $this->session->unset_userdata('SESS_USER_ID');
+    $this->session->unset_userdata('SESS_ADMIN');
+    // Removed tbl_system_setup dependency
+    // $data['forgot_pass_disable_enable'] = $this->login_model->get_system_setup_by_setting2('forgot_pass_disable_enable', '0');
+    delete_cookie('username');
+    delete_cookie('password');
+    delete_cookie('cookie_search');
+    $this->load->view('admin/login/login_views');
+  }
+
+  function maintenance()
+  {
+    $this->session->unset_userdata('SESS_USER_ID');
+    $this->session->unset_userdata('SESS_ADMIN');
+    delete_cookie('username');
+    delete_cookie('password');
+    delete_cookie('cookie_search');
+
+    $this->load->view('admin/login/maintenance_views');
+  }
+
+  function session_expired()
+  {
+    $this->session->unset_userdata('SESS_USER_ID');
+    $this->session->unset_userdata('SESS_ADMIN');
+    delete_cookie('username');
+    delete_cookie('password');
+    delete_cookie('cookie_search');
+
+    $this->load->view('admin/login/session_expired_views');
+  }
+
+  function forgot_password()
+  {
+    // Removed tbl_system_setup dependency - forgot password is now always enabled
+    // $data['forgot_pass_disable_enable'] = $this->login_model->get_system_setup_by_setting2('forgot_pass_disable_enable', '0');
+    // if ($data['forgot_pass_disable_enable'] != 1) {
+    //   redirect('index');
+    // }
+    // Removed tbl_system_setup dependency
+    // $data['DISP_LOGO'] = $this->login_model->GET_LOGO();
+    $this->load->view('admin/login/forgot_pass_views');
+  }
+
+  function change_password()
+  {
+    $this->load->view('admin/login/change_pass_views');
+  }
+
+  function ip_address()
+  {
+    $ipaddress = '';
+    if (isset($_SERVER['HTTP_CLIENT_IP']))
+      $ipaddress                                                = $_SERVER['HTTP_CLIENT_IP'];
+    else if (isset($_SERVER['HTTP_X_FORWARDED_FOR']))
+      $ipaddress                                                = $_SERVER['HTTP_X_FORWARDED_FOR'];
+    else if (isset($_SERVER['HTTP_X_FORWARDED']))
+      $ipaddress                                                = $_SERVER['HTTP_X_FORWARDED'];
+    else if (isset($_SERVER['HTTP_FORWARDED_FOR']))
+      $ipaddress                                                = $_SERVER['HTTP_FORWARDED_FOR'];
+    else if (isset($_SERVER['HTTP_FORWARDED']))
+      $ipaddress                                                = $_SERVER['HTTP_FORWARDED'];
+    else if (isset($_SERVER['REMOTE_ADDR']))
+      $ipaddress                                                = $_SERVER['REMOTE_ADDR'];
+    else
+      $ipaddress                                                = 'UNKNOWN';
+    return $ipaddress;
+  }
+
+  function sign_in()
+  {
+    // Removed tbl_system_setup dependency
+    // $activate_ip_address = $this->login_model->GET_SYSTEM_IP_ADDRESS();
+    // $maintenance = $this->login_model->GET_MAINTENANCE();
+    // $activation = $this->login_model->GET_ACTIVATION();
+    // System is now always active and not in maintenance mode
+    
+    // Start of login logic
+
+      $empl_id                                                      = htmlentities($this->input->post('CALC_INPF_EMPL_ID'));
+      $password                                                     = htmlentities($this->input->post('CALC_INPF_PASS'));
+      $remember                                                     = htmlentities($this->input->post('remember'));
+      $input_password                                               = $this->input->post('CALC_INPF_PASS');
+      if ($empl_id && $password) {
+        if (count($this->login_model->VALIDATE_USER($empl_id))) {
+          $user = $this->login_model->GET_USER_ID($empl_id);
+          $disabled = $this->login_model->GET_DISABLED($empl_id);
+          if ($user) {
+            $this->session->set_userdata('SESS_USER_ID', $user->id);
+          }
+          if ($user->password_attempt >= 10) {
+            // $this->system_functions->log_access('Unable to login-Account Locked', 'login action');
+            $this->session->set_userdata('SESS_ERR_MSG_INVALID1', '[E103] Account Locked');
+            redirect('panel_72c81');
+          }
+
+          if ($disabled > 0) {
+            // $this->system_functions->log_access('Unable to login-Disabled Account', 'login action');
+            $this->session->set_userdata('SESS_ERR_MSG_INVALID1', '[E102] Account Disabled');
+            redirect('panel_72c81');
+            return;
+          }
+
+          $user_access_id     = $this->login_model->GET_USER_ACCESS_ID($user->id);
+          //   $user_id                                                = $this->login_model->LOGIN_USER($empl_id, $password, $user->col_salt_key);
+          $user_id            = '';
+          if (password_verify($input_password . $user->col_salt_key, $user->col_user_pass)) {
+            // Password is correct
+            $user_id = $user->id;
+          } else {
+            // $this->system_functions->log_access('Unable to login-Wrong password', 'login action');
+            $this->session->set_userdata('SESS_ERR_MSG_INVALID1', '[E101] Incorrect Password');
+            redirect('panel_72c81');
+          }
+          //   if (!$user_id) {
+          //     $this->session->set_userdata('SESS_ERR_MSG_INVALID1', '[E101] Incorrect Password');
+          //     $this->login_model->UPDATE_ATTEMPT($user->id, TRUE);
+          //     redirect('panel_72c81');
+          //   }
+          // Removed tbl_system_setup dependency - IP address checking disabled
+          // if ($activate_ip_address == 1) {
+          //   $this->session->set_userdata('SESS_ERR_MSG_INVALID1', '[E104] IP Address Blocked..');
+          //   $this->system_functions->log_access('Unable to login-IP Block', 'login action');
+          //   redirect('index');
+          //   return;
+          // }
+
+          $this->login_model->UPDATE_ATTEMPT($user->id, FALSE);
+          $check_status         = $this->login_model->GET_USER_STATUS($user_id);
+          $this->session->set_userdata('SESS_USER_ACCESS_ID', $user_access_id);
+          $this->session->set_userdata('SESS_USER_ID', $user_id);
+
+          if ($remember) {
+            set_cookie("username", $empl_id, 2 * 60);
+            set_cookie("password", $password, 2 * 60);
+          }
+
+          if ($check_status == 0) {
+            redirect('panel_72c81/change_password');
+          } else {
+            $this->session->set_userdata('SESS_SUCC_MSG_LOGIN', 'Login Successfully!');
+
+            $this->login_model->RECORD_SUCCESSFUL_LOGIN($user->id);
+            $this->session->set_userdata('SESS_ADMIN', '0');
+            // $this->system_functions->log_access('Successfully login', 'login action');
+            redirect('home');
+          }
+        } else {
+          $this->session->set_userdata('SESS_ERR_MSG_INVALID1', '[E100] Account does not exist');
+          redirect('panel_72c81');
+        }
+      }
+  }
+
+  function submit_new_password()
+  {
+    $user_id                                                    = $this->input->post('user_id');
+    $new_password                                               = $this->input->post('new_password');
+    $retype_password                                            = $this->input->post('retype_password');
+
+    if ($new_password == $retype_password) {
+
+      if (preg_match('/[\^£$%&*()}{#~?><>,|=+¬-]/', $new_password)) {
+        $this->session->set_userdata("SESS_ERR_PASSWORD", "Invalid Password only '@','_', and '.' are permitted");
+        $this->system_functions->log_access('Unable to change password', 'change password');
+        redirect('panel_72c81/change_password');
+      } else {
+
+        $this->login_model->MOD_CHANGE_PASSWORD($new_password, $user_id);
+        $this->session->set_userdata('SESS_SUCC_MSG_LOGIN', 'Login Successfully!');
+        $this->system_functions->log_access('Successfully change password', 'change password');
+        $this->system_functions->log_access('Successfully login', 'login action');
+        redirect('home');
+      }
+    } else {
+      $this->session->set_userdata("SESS_ERR_PASSWORD", "Password does not match");
+      $this->system_functions->log_access('Unable to change password', 'change password');
+      redirect('panel_72c81/change_password');
+    }
+  }
+  function submit_user_new_password()
+  {
+    $user_id                                                    = $this->input->post('user_id');
+    $new_password                                               = $this->input->post('new_password');
+    $retype_password                                            = $this->input->post('retype_password');
+
+    if ($new_password == $retype_password) {
+
+      if (preg_match('/[\^£$%&*()}{#~?><>,|=+¬-]/', $new_password)) {
+        $this->session->set_userdata("SESS_ERR_PASSWORD", "Invalid Password only '@','_', and '.' are permitted");
+        $this->system_functions->log_access('Unable to change password', 'change password');
+        redirect('panel_72c81/change_password');
+      } else {
+
+        $res = $this->login_model->MOD_CHANGE_PASSWORD($new_password, $user_id);
+        $this->login_model->DELETE_SESS_PASS($user_id);
+        //   $this->session->set_userdata('SESS_SUCC_MSG_LOGIN','Login Successfully!');
+        $this->system_functions->log_access('Successfully change password', 'change password');
+        $this->system_functions->log_access('Successfully login', 'login action');
+        redirect('home');
+      }
+    } else {
+      $this->session->set_userdata("SESS_ERR_PASSWORD", "Password does not match");
+      $this->system_functions->log_access('Unable to change password', 'change password');
+      redirect('panel_72c81/change_password');
+    }
+  }
+
+  function send_email()
+  {
+
+    $user_name = $this->input->post('user_name');
+
+    $res = $this->login_model->GET_USER_EMAIL($user_name);
+    $salt = bin2hex(openssl_random_pseudo_bytes(22));
+    $res->sess = $salt;
+    // $user_email='';
+    // if($res){
+    //     $user_email=$res->col_empl_emai;
+    //     $salt=bin2hex(openssl_random_pseudo_bytes(22));
+    //     $res['sess']=$salt;
+    // }
+    echo json_encode($res);
+  }
+
+  function new_password()
+  {
+    $empl_id                                                      = $this->input->get('id');
+    $this->session->set_userdata('SESS_USER_ID', $empl_id);
+    $this->login_model->MOD_UPDT_REAL_PASS($empl_id);
+
+    $this->load->view('admin/login/new_password_views');
+  }
+  function user_new_password()
+  {
+    $empl_id      = $this->input->get('user');
+    $sess         = $this->input->get('sess');
+    $current_date = date('Y-m-d H:i:s');
+    $res          = $this->login_model->GET_SESS_PASS($empl_id, $sess, $current_date);
+    if (!$res) {
+      redirect('panel_72c81');
+    }
+    if (!$sess || !$empl_id) {
+      redirect('panel_72c81');
+    }
+    $this->session->set_userdata('SESS_USER_ID', $empl_id);
+
+    $this->load->view('admin/login/user_new_password_views');
+  }
+  function add_session()
+  {
+    $input_data                 = $this->input->post();
+    $input_data['create_date']  = date('Y-m-d H:i:s');
+    $input_data['edit_date']    = date('Y-m-d H:i:s');
+
+    $currentDate = new DateTime(); // Get the current date and time
+    $currentDate->add(new DateInterval('PT30M')); // Add 30 minutes
+    $input_data['expiration'] = $currentDate->format('Y-m-d H:i:s');
+    $this->login_model->ADD_SESS_PASS($input_data);
+    echo json_encode($input_data);
+  }
+  function sign_out()
+  {
+
+    $this->system_functions->log_access('User Logout', 'logout action');
+    // $this->session->sess_destroy(); // Destroy the session first
+
+    if ($this->session->userdata('SESS_ADMIN')) {
+      redirect('admin/user_select');
+      return;
+    }
+
+    if ($this->session->userdata('SESS_SPE_ACCOUNT')) {
+      redirect('payrollaccount');
+      return;
+    }
+    $this->session->unset_userdata('SESS_USER_ID');
+    // $this->session->sess_destroy();
+    $this->cache->clean();
+    ob_clean();
+    redirect('panel_72c81');
+  }
+
+  function no_cache()
+  {
+    $this->output->set_header('Last-Modified:' . gmdate('D, d M Y H:i:s') . 'GMT');
+    $this->output->set_header('Cache-Control: no-store, no-cache, must-revalidate');
+    $this->output->set_header('Cache-Control: post-check=0, pre-check=0', false);
+    $this->output->set_header('Pragma: no-cache');
+  }
+
+ 
+
+}

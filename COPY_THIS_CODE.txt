@@ -1,0 +1,68 @@
+/*******************************************************************************
+ * COPY THIS CODE AND REPLACE THE footer_save_all() METHOD IN cms.php
+ * 
+ * File Location: application/controllers/cms.php
+ * Find: public function footer_save_all()
+ * Replace: The entire method with the code below
+ ******************************************************************************/
+
+    // AJAX: Save all footer content changes
+    public function footer_save_all() {
+        // Set JSON header
+        header('Content-Type: application/json');
+        
+        // Initialize response
+        $response = [
+            'success' => false,
+            'message' => '',
+            'updated_count' => 0
+        ];
+        
+        try {
+            // Get all POST data
+            $post_data = $this->input->post();
+            
+            // Extract items to update (format: item_[id] = content)
+            $items_to_update = [];
+            
+            foreach ($post_data as $key => $value) {
+                // Check if this is an item field (starts with 'item_')
+                if (strpos($key, 'item_') === 0) {
+                    // Extract the ID
+                    $id = str_replace('item_', '', $key);
+                    
+                    // Only process if ID is valid and not empty
+                    if (!empty($id) && is_numeric($id)) {
+                        $items_to_update[$id] = $value;
+                    }
+                }
+            }
+            
+            // Check if we have items to update
+            if (empty($items_to_update)) {
+                $response['message'] = 'No changes to save.';
+                echo json_encode($response);
+                return;
+            }
+            
+            // Use the bulk update method from model
+            $result = $this->footer_model->bulk_update_items($items_to_update);
+            
+            if ($result['success']) {
+                $response['success'] = true;
+                $response['message'] = "{$result['count']} item(s) updated successfully!";
+                $response['updated_count'] = $result['count'];
+            } else {
+                $response['message'] = 'Failed to save changes. Please try again.';
+            }
+            
+        } catch (Exception $e) {
+            // Log error
+            log_message('error', 'Footer save all error: ' . $e->getMessage());
+            
+            $response['message'] = 'An error occurred while saving. Please try again.';
+        }
+        
+        // Return JSON response
+        echo json_encode($response);
+    }

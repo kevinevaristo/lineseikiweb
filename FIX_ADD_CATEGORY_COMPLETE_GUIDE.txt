@@ -1,0 +1,280 @@
+==================================================
+COMPLETE FIX FOR ADD CATEGORY FEATURE
+==================================================
+
+PROBLEMA:
+- Hindi gumagana ang add category sa admin products page
+- May error sa image upload function
+
+SOLUSYON:
+Replace ang add_category() function sa cms.php controller
+
+LOCATION: application/controllers/cms.php
+LINYA: Around line 627-671
+
+==================================================
+STEP 1: I-BACKUP ANG EXISTING FILE
+==================================================
+1. Go to: C:\xampp\htdocs\lineseiki.systems-test.com\application\controllers\
+2. Copy cms.php to cms.php.backup
+
+==================================================
+STEP 2: REPLACE ANG ADD_CATEGORY FUNCTION
+==================================================
+
+Hanapin ang function na ito sa cms.php:
+
+```php
+public function add_category() {
+    // Set JSON header
+    header('Content-Type: application/json');
+    
+    // Load form validation
+    $this->load->library('form_validation');
+    $this->form_validation->set_rules('category_name', 'Category Name', 'required|trim');
+    
+    if ($this->form_validation->run() === FALSE) {
+        echo json_encode([
+            'success' => false,
+            'message' => strip_tags(validation_errors())
+        ]);
+        return;
+    }
+    
+    $data = [
+        'category_name' => $this->input->post('category_name'),
+        'product_image' => '',
+        'created_at' => date('Y-m-d H:i:s'),
+        'updated_at' => date('Y-m-d H:i:s')
+    ];
+    
+    // Handle image upload
+    if (!empty($_FILES['category_image']['name'])) {
+        $upload_result = $this->category_upload_image();
+        
+        if ($upload_result['success']) {
+            $data['product_image'] = $upload_result['file_name'];
+        } else {
+            echo json_encode([
+                'success' => false,
+                'message' => 'Image upload failed: ' . $upload_result['error']
+            ]);
+            return;
+        }
+    }
+    
+    $new_id = $this->products_model->add_product($data);
+    
+    if ($new_id) {
+        echo json_encode([
+            'success' => true,
+            'message' => 'Category added successfully!',
+            'id' => $new_id,
+            'category_name' => $data['category_name'],
+            'product_image' => $data['product_image']
+        ]);
+    } else {
+        echo json_encode([
+            'success' => false,
+            'message' => 'Failed to add category to database.'
+        ]);
+    }
+}
+```
+
+PALITAN NG:
+
+```php
+public function add_category() {
+    // Set JSON header
+    header('Content-Type: application/json');
+    
+    // Start output buffering to catch any unexpected output
+    ob_start();
+    
+    try {
+        // Load form validation
+        $this->load->library('form_validation');
+        $this->form_validation->set_rules('category_name', 'Category Name', 'required|trim');
+        
+        if ($this->form_validation->run() === FALSE) {
+            ob_end_clean();
+            echo json_encode([
+                'success' => false,
+                'message' => strip_tags(validation_errors())
+            ]);
+            return;
+        }
+        
+        // Prepare data
+        $data = [
+            'category_name' => $this->input->post('category_name'),
+            'product_image' => '',
+            'created_at' => date('Y-m-d H:i:s'),
+            'updated_at' => date('Y-m-d H:i:s')
+        ];
+        
+        // Handle image upload if file is provided
+        if (!empty($_FILES['category_image']['name'])) {
+            // Configure upload settings
+            $config['upload_path'] = FCPATH . 'assets_system/images/';
+            $config['allowed_types'] = 'jpg|jpeg|png|gif|webp|svg';
+            $config['max_size'] = 2048; // 2MB max
+            $config['encrypt_name'] = TRUE; // Encrypt filename for security
+            $config['remove_spaces'] = TRUE;
+            
+            // Make sure upload directory exists
+            if (!is_dir($config['upload_path'])) {
+                mkdir($config['upload_path'], 0777, TRUE);
+            }
+            
+            // Initialize upload library
+            $this->load->library('upload', $config);
+            
+            // Attempt upload
+            if ($this->upload->do_upload('category_image')) {
+                $upload_data = $this->upload->data();
+                $data['product_image'] = $upload_data['file_name'];
+            } else {
+                // Upload failed - get error
+                $error = strip_tags($this->upload->display_errors());
+                ob_end_clean();
+                echo json_encode([
+                    'success' => false,
+                    'message' => 'Image upload failed: ' . $error
+                ]);
+                return;
+            }
+        }
+        
+        // Insert into database using products_model
+        $new_id = $this->products_model->add_product($data);
+        
+        if ($new_id) {
+            ob_end_clean();
+            echo json_encode([
+                'success' => true,
+                'message' => 'Category added successfully!',
+                'id' => $new_id,
+                'category_name' => $data['category_name'],
+                'product_image' => $data['product_image']
+            ]);
+        } else {
+            ob_end_clean();
+            echo json_encode([
+                'success' => false,
+                'message' => 'Failed to add category to database.'
+            ]);
+        }
+        
+    } catch (Exception $e) {
+        // Catch any unexpected errors
+        ob_end_clean();
+        echo json_encode([
+            'success' => false,
+            'message' => 'Error: ' . $e->getMessage()
+        ]);
+    }
+}
+```
+
+==================================================
+STEP 3: VERIFY ANG MODEL FUNCTION
+==================================================
+
+Check if meron nang add_product() function sa products_model.php
+Location: application/models/admin/products_model.php
+
+Dapat may ganito:
+```php
+public function add_product($data) {
+    // Set default values if not provided
+    if (!isset($data['created_at'])) {
+        $data['created_at'] = date('Y-m-d H:i:s');
+    }
+    if (!isset($data['updated_at'])) {
+        $data['updated_at'] = date('Y-m-d H:i:s');
+    }
+    if (!isset($data['is_active'])) {
+        $data['is_active'] = 1;
+    }
+    if (!isset($data['display_order'])) {
+        // Get max display_order and add 1
+        $this->db->select_max('display_order');
+        $max = $this->db->get($this->category_table)->row();
+        $data['display_order'] = ($max->display_order ?? 0) + 1;
+    }
+    
+    // Generate slug if not provided
+    if (!isset($data['slug']) || empty($data['slug'])) {
+        $data['slug'] = $this->generate_slug($data['category_name']);
+    }
+    
+    $this->db->insert($this->category_table, $data);
+    return $this->db->insert_id();
+}
+```
+
+==================================================
+STEP 4: TEST ANG FIX
+==================================================
+
+1. Open browser
+2. Go to: http://localhost/lineseiki.systems-test.com/cms/products
+3. Click "Add New Category" button
+4. Fill in:
+   - Category Name: "Test Category"
+   - Upload an image (JPG, PNG, etc.)
+5. Click "Add Category"
+6. Should show success message and reload page
+
+==================================================
+DEBUGGING TIPS
+==================================================
+
+If still not working:
+
+1. CHECK ERROR LOG:
+   Location: C:\xampp\htdocs\lineseiki.systems-test.com\application\logs\
+   Look for error messages
+
+2. CHECK BROWSER CONSOLE:
+   - Press F12
+   - Go to Console tab
+   - Look for JavaScript errors
+   - Go to Network tab
+   - Check the response from add_category request
+
+3. CHECK DATABASE:
+   - Open phpMyAdmin
+   - Check if tbl_product_category table exists
+   - Verify columns: id, category_name, product_image, created_at, updated_at
+
+4. CHECK FILE PERMISSIONS:
+   - Make sure assets_system/images/ folder is writable
+   - Permissions should be 777 or 755
+
+5. ENABLE PHP ERROR REPORTING:
+   Add this sa top ng cms.php:
+   ```php
+   error_reporting(E_ALL);
+   ini_set('display_errors', 1);
+   ```
+
+==================================================
+COMMON ERRORS AND SOLUTIONS
+==================================================
+
+ERROR: "Failed to upload image"
+SOLUTION: Check if assets_system/images/ folder exists and is writable
+
+ERROR: "Category name is required"
+SOLUTION: Make sure form is submitting category_name field
+
+ERROR: "Failed to add category to database"
+SOLUTION: Check database connection and table structure
+
+ERROR: No error but not saving
+SOLUTION: Check browser network tab for actual response
+
+==================================================
