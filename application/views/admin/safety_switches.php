@@ -531,9 +531,9 @@
 </main>
 
 <!-- Separate JavaScript includes -->
-<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js"></script>
+<script src="<?php echo base_url('assets_system/vendor/jquery/jquery-3.7.1.min.js'); ?>"></script>
+<script src="<?php echo base_url('assets_system/vendor/sweetalert2/sweetalert2.all.min.js'); ?>"></script>
+<script src="<?php echo base_url('assets_system/vendor/fontawesome-6.0.0/js/all.min.js'); ?>"></script>
 
 <script>
 $(document).ready(function() {

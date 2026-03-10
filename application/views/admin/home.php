@@ -963,8 +963,8 @@ main {
     </div>
 </main>
 
-<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="<?php echo base_url('assets_system/vendor/jquery/jquery-3.7.1.min.js'); ?>"></script>
+<script src="<?php echo base_url('assets_system/vendor/sweetalert2/sweetalert2.all.min.js'); ?>"></script>
 
 <script>
 // ============ ACHIEVEMENTS MANAGEMENT ============

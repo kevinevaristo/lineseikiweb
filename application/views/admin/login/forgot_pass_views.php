@@ -14,7 +14,7 @@
 
     <!-- Google Font: Source Sans Pro -->
 
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <link rel="stylesheet" href="<?php echo base_url('assets_system/vendor/google-fonts/source-sans-pro/source-sans-pro.css'); ?>">
 
     <!-- Font Awesome -->
 
@@ -109,7 +109,7 @@
     <!--<script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>-->
 
     <!-- AdminLTE App -->
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="<?php echo base_url('assets_system/vendor/sweetalert2/sweetalert2.all.min.js'); ?>"></script>
    
     <script>
        <?php if( $this->session->flashdata('success')){ ?>
@@ -122,9 +122,9 @@
     <?php } ?>
     </script>
     
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+    <script src="<?php echo base_url('assets_system/vendor/jquery/jquery-3.7.0.min.js'); ?>"></script>
     <script type="text/javascript"
-        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js">
+        src="<?php echo base_url('assets_system/vendor/emailjs/email.min.js'); ?>">
     </script>
     <script>
         $(document).ready(function(){

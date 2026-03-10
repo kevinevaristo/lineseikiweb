@@ -6,15 +6,13 @@
   <title>Line Seiki Asia Pacific Service</title>
 
   <!-- Bootstrap 5 CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="<?php echo base_url('assets_system/vendor/bootstrap-5.3.3/css/bootstrap.min.css'); ?>" rel="stylesheet">
 
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="<?php echo base_url('assets_system/vendor/fontawesome-6.5.0/css/all.min.css'); ?>">
 
   <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="<?php echo base_url('assets_system/vendor/google-fonts/inter/inter-extended.css'); ?>" rel="stylesheet">
 
   <style>
       :root {
@@ -38,12 +36,10 @@
        overflow-x: hidden;
      }
 
-     /* Smooth scrolling */
      html {
        scroll-behavior: smooth;
      }
 
-     /* Modernized Navbar */
      .navbar {
        background: rgba(255, 255, 255, 0.98);
        backdrop-filter: blur(10px);
@@ -135,7 +131,6 @@
        margin-top: -0.8rem;
      }
 
-     /* Hero Slider */
      .section-one {
        width: 100%;
        height: 100vh;
@@ -203,7 +198,6 @@
        opacity: 0.9;
      }
      
-     /* Buttons */
      .btn {
        padding: 0.8rem 1.8rem;
        border-radius: 8px;
@@ -293,8 +287,6 @@
        width: 100%;
      }
 
-     
-     /* Sections */
      section {
        padding: 100px 0;
        position: relative;
@@ -319,13 +311,13 @@
      section h1::after, section h2::after {
     content: '';
     position: absolute;
-    left: 50%; /* Moves the start of the line to the center */
+    left: 50%;
     bottom: -10px;
     width: 60px;
     height: 4px;
     background: linear-gradient(135deg, var(--newblue2), var(--newblue));
     border-radius: 2px;
-    transform: translateX(-50%); /* Shifts the line back by half its width to perfectly center it */
+    transform: translateX(-50%);
 }
      
      section p {
@@ -334,7 +326,6 @@
        color: #495057;
      }
 
-     /* Color schemes */
      .section-white {
        background: var(--light-blue);
        color: #333;
@@ -354,7 +345,6 @@
        overflow: hidden;
      }
 
-     /* Products Section */
      .products {
        padding: 100px 5% 80px;
        text-align: center;
@@ -386,7 +376,6 @@
        gap: 25px;
      }
      
-     /* Individual Product Cards */
     .category {
      border-radius: 16px;
      overflow: hidden;
@@ -400,7 +389,6 @@
      transform: translateY(-8px);
     }
 
-    /* Product image styling */
     .category img {
      width: 100%;
      height: 220px;
@@ -409,12 +397,10 @@
      transition: opacity 0.4s ease;
     }
 
-    /* Slight transparent effect on hover */
     .category:hover img {
      opacity: 0.7;
     }
 
-    /* Category title below image (no hover color) */
     .category-title {
      padding: 15px 10px;
      background: transparent;
@@ -439,7 +425,6 @@
        max-width: 250px;
      }
 
-     /* Case Studies */
      .case-studies {
        padding: 80px 0;
      }
@@ -549,7 +534,6 @@
        transform: translateX(3px);
      }
 
-     /* News Section */
      .news-section {
        padding: 80px 5%;
        background: white;
@@ -638,7 +622,6 @@
        color: var(--newblue);
      }
 
-     /* Project Submission */
      .project-submission {
        padding: 100px 5%;
        background: var(--light-blue);
@@ -750,7 +733,6 @@
        border: 1px solid #f5c6cb;
      }
 
-     /* Footer */
      footer {
        background: linear-gradient(135deg, var(--newblue2), var(--newblue));
        color: white;
@@ -840,7 +822,6 @@
        height: 1px;
      }
      
-     /* Animations */
      @keyframes fadeUp {
        from {
          opacity: 0;
@@ -868,86 +849,43 @@
      .delay-3 { transition-delay: 0.3s; }
      .delay-4 { transition-delay: 0.4s; }
      
-     /* Responsive adjustments */
      @media (max-width: 992px) {
-       section {
-         padding: 80px 0;
-       }
-       
-       section h1 {
-         font-size: 2.4rem;
-       }
-       
-       section h2 {
-         font-size: 2rem;
-       }
-       
-       .hero-content h1 {
-         font-size: 2.5rem;
-       }
-       
-       .dropdown-submenu > .dropdown-menu {
-         left: 0;
-         margin-top: 0;
-       }
-       
-       footer .links a {
-         display: inline-block;
-         margin-bottom: 12px;
-       }
-       
-       .categories {
-         grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-       }
-       
-       .case-grid {
-         grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-       }
+       section { padding: 80px 0; }
+       section h1 { font-size: 2.4rem; }
+       section h2 { font-size: 2rem; }
+       .hero-content h1 { font-size: 2.5rem; }
+       .dropdown-submenu > .dropdown-menu { left: 0; margin-top: 0; }
+       footer .links a { display: inline-block; margin-bottom: 12px; }
+       .categories { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
+       .case-grid { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
      }
      
      @media (max-width: 768px) {
-       section h1 {
-         font-size: 2rem;
-       }
-       
-       section h2 {
-         font-size: 1.8rem;
-       }
-       
-       .hero-content {
-         left: 5%;
-         text-align: center;
-         width: 90%;
-       }
-       
-       .hero-content h1 {
-         font-size: 2rem;
-       }
-       
-       footer .links a {
-         display: block;
-         margin-bottom: 12px;
-       }
+       section h1 { font-size: 2rem; }
+       section h2 { font-size: 1.8rem; }
+       .hero-content { left: 5%; text-align: center; width: 90%; }
+       .hero-content h1 { font-size: 2rem; }
+       footer .links a { display: block; margin-bottom: 12px; }
      }
-     /* Remove all shadows globally */
+
     * {
      box-shadow: none !important;
      text-shadow: none !important;
     }
-    /* 3. Callout Row (Mobile-first: Column Layout) */
+
         .callout-row {
             position: relative;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            gap: 3rem; /* space-y-12 */
+            gap: 3rem;
         }
         
         .callout-box {
             width: 100%;
             text-align: left;
-            order: 2; /* order-2 */
+            order: 2;
         }
         
         .callout-box h2 {
@@ -961,17 +899,16 @@
             color: var(--gray-700);
         }
 
-        /* 4. Illustration Center */
         .illustration-center {
             width: 100%;
-            max-width: 36rem; /* max-w-xl */
+            max-width: 36rem;
             margin: 0 auto;
-            height: 24rem; /* h-[24rem] */
+            height: 24rem;
             position: relative;
             display: flex;
             justify-content: center;
             align-items: center;
-            order: 1; /* order-1 */
+            order: 1;
         }
 
         .illustration-image {
@@ -983,47 +920,39 @@
             transform: translateX(-50%);
         }
         
-        .illustration-image:nth-child(1) { z-index: 10; top: 0rem; } /* Top Mold */
-        .illustration-image:nth-child(2) { z-index: 20; top: 10rem; } /* Internal Part */
-        .illustration-image:nth-child(3) { z-index: 0; top: 17rem; } /* Bottom Mold */
+        .illustration-image:nth-child(1) { z-index: 10; top: 0rem; }
+        .illustration-image:nth-child(2) { z-index: 20; top: 10rem; }
+        .illustration-image:nth-child(3) { z-index: 0; top: 17rem; }
 
-
-        /* 5. Callout Lines (Desktop Only) */
         .rotated-line {
             position: absolute;
             transform-origin: 0 0;
         }
 
-        /* Left Line (Silicone Mold) */
         .rotated-line-left {
-            width: 9rem; /* w-36 */
+            width: 9rem;
             height: 1px;
             background-color: var(--primary-blue);
-            /* These styles are applied via media query below */
         }
 
-        /* Right Line (Urethane Part) */
         .rotated-line-right {
-            width: 12rem; /* w-48 */
+            width: 12rem;
             height: 1px;
             background-color: var(--primary-blue);
-            /* These styles are applied via media query below */
         }
 
         .rotated-dot {
-            width: 0.5rem; /* w-2 */
-            height: 0.5rem; /* h-2 */
-            border-radius: 50%; /* rounded-full */
+            width: 0.5rem;
+            height: 0.5rem;
+            border-radius: 50%;
             background-color: var(--primary-blue);
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
         }
         
-/* Progressive Animation for Illustration */
 .illustration-center {
-    --close-amount: 0; /* 0 = fully open, 1 = fully closed */
-    
+    --close-amount: 0;
     position: relative;
     display: flex;
     flex-direction: column;
@@ -1044,16 +973,10 @@
     will-change: transform, top, opacity;
 }
 
-/* Calculate positions based on --close-amount (0 to 1) */
 .illustration-image:nth-child(1) { 
     z-index: 30;
-    /* Start: 0rem, End: 2rem */
     top: calc(0rem + (2rem - 0rem) * var(--close-amount));
-    /* Scale: 1 to 0.7 */
-    transform: translateX(-50%) scale(calc(1 - 0.5 * var(--close-amount)));
-    /* Opacity: 1 to 0.4 */
     opacity: calc(1 - 0.6 * var(--close-amount));
-    /* Add slight rotation when closing */
     transform: translateX(-50%) 
                scale(calc(1 - 0.3 * var(--close-amount))) 
                rotate(calc(-3deg * var(--close-amount)));
@@ -1061,11 +984,7 @@
 
 .illustration-image:nth-child(2) { 
     z-index: 20;
-    /* Start: 10rem, End: 6rem */
     top: calc(10rem + (6rem - 10rem) * var(--close-amount));
-    /* Scale: 1 to 0.85 */
-    transform: translateX(-50%) scale(calc(1 - 0.15 * var(--close-amount)));
-    /* Opacity: 1 to 0.7 */
     opacity: calc(1 - 0.3 * var(--close-amount));
     transform: translateX(-50%) 
                scale(calc(1 - 0.15 * var(--close-amount))) 
@@ -1074,18 +993,13 @@
 
 .illustration-image:nth-child(3) { 
     z-index: 10;
-    /* Start: 17rem, End: 10rem */
     top: calc(17rem + (10rem - 17rem) * var(--close-amount));
-    /* Scale: 1 to 0.95 */
-    transform: translateX(-50%) scale(calc(1 - 0.05 * var(--close-amount)));
-    /* Opacity stays at 1 */
     opacity: calc(1 - 0 * var(--close-amount));
     transform: translateX(-50%) 
                scale(calc(1 - 0.05 * var(--close-amount))) 
                rotate(calc(3deg * var(--close-amount)));
 }
 
-/* Adjust callout lines based on close amount */
 .callout-lines-container {
     opacity: calc(1 - var(--close-amount));
     visibility: visible;
@@ -1096,38 +1010,33 @@
     visibility: hidden;
 }
 
-        /* 6. Desktop Styles (md: Breakpoint) */
         @media (min-width: 768px) {
             .callout-row {
-                flex-direction: row; /* md:flex-row */
-                gap: 3rem; /* md:space-x-12 (approx) */
+                flex-direction: row;
+                gap: 3rem;
             }
 
             .left-callout-box {
-                width: 33.3333%; /* md:w-1/3 */
-                order: 1; /* md:order-1 */
-                align-self: flex-start; /* self-start */
-                margin-top: 4rem; /* Custom alignment to match the line's top position */
-                text-align: right; /* md:text-right */
-                padding-right: 3rem; /* md:pr-12 */
+                width: 33.3333%;
+                order: 1;
+                align-self: flex-start;
+                margin-top: 4rem;
+                text-align: right;
+                padding-right: 3rem;
             }
 
             .right-callout-box {
-                width: 33.3333%; /* md:w-1/3 */
-                order: 3; /* order-3 */
-                align-self: flex-start; /* self-start */
-                margin-top: 10rem; /* Custom alignment to match the line's top position */
-                padding-left: 3rem; /* md:pl-12 */
+                width: 33.3333%;
+                order: 3;
+                align-self: flex-start;
+                margin-top: 10rem;
+                padding-left: 3rem;
             }
 
-           
-
-            /* Show callout lines */
             .callout-lines-container {
                 display: block !important;
             }
 
-            /* Left Line Position */
             .rotated-line-left {
                 top: 13rem;
                 left: -4rem;
@@ -1138,9 +1047,8 @@
                 transform: translate(50%, -50%);
             }
 
-            /* Right Line Position - FIX APPLIED HERE */
             .rotated-line-right {
-                top: 21rem; /* Adjusted from 11rem to 10.5rem for better visual alignment with the text and image */
+                top: 21rem;
                 right: -3.5rem;
                 transform: rotate(5deg);
             }
@@ -1150,11 +1058,10 @@
             }
         }
          .main-wrapper {
-            max-width: 80rem; /* max-w-5xl (approx) */
-            margin: 0 auto; /* mx-auto */
+            max-width: 80rem;
+            margin: 0 auto;
         }
 
-        /* Center the headings and remove blue line */
         .main-heading {
             text-align: center;
             font-size: 3rem;
@@ -1170,12 +1077,10 @@
             margin-bottom: 2rem;
         }
 
-        /* Remove the blue underline from the main heading */
         .main-heading::after {
             display: none;
         }
         
-        /* Add this CSS to make the callout headings match the main heading style */
     #callout-left h3, 
     #callout-right h3 {
      font-size: 2rem !important;
@@ -1274,7 +1179,7 @@
     }
 
     .delay-1 { transition-delay: 0.1s; }
-    /* Make Section 3 background match Section 5 */
+
     .case-studies.section-white {
      background: var(--light-blue) !important;
     }
@@ -1282,7 +1187,7 @@
     .case-studies.section-white::before {
      display: none !important;
     }
-    /* ===== Molding & Casting Section ===== */
+
     #molding-casting-section {
      background-color: #f2f7fc;
      padding: 5rem 0;
@@ -1302,23 +1207,20 @@
      background: transparent;
     }
 
-    /* ===== Title (Silicone / Urethane) ===== */
     .process-box h2 {
-     font-size: 2.5rem;          /* same as image */
+     font-size: 2.5rem;
      color: var(--primary-blue);
      margin-bottom: 1.25rem;
     }
 
-    /* ===== Paragraph ===== */
     .process-box p {
-     font-size: 1.2rem;          /* matches image text */
+     font-size: 1.2rem;
      color: var(--gray-700);
      line-height: 1.75;
      margin-bottom: 1.75rem;
      max-width: 95%;
     }
 
-    /* ===== Subheading ===== */
     .process-box h3 {
      font-size: 1.2rem;
      font-weight: 700;
@@ -1326,7 +1228,6 @@
      margin-bottom: 0.75rem;
     }
 
-    /* ===== Bullet List ===== */
     .process-box ul {
      list-style-type: disc;
      padding-left: 1.5rem;
@@ -1340,7 +1241,6 @@
      line-height: 1.7;
     }
 
-    /* ===== Responsive Layout ===== */
     @media (min-width: 992px) {
      .molding-casting {
        grid-template-columns: repeat(2, 1fr);
@@ -1405,7 +1305,6 @@
      max-width: 90%;
     }
 
-    /* Connector line between steps */
     .process-line {
      flex: 0 0 60px;
      height: 3px;
@@ -1414,7 +1313,6 @@
      margin: 2.5rem 0;
     }
 
-    /* Responsive layout */
     @media (max-width: 992px) {
      .process-flow {
        flex-direction: column;
@@ -1466,7 +1364,6 @@
      width: 100%;
     }
 
-    /* Carousel Styles */
     .carousel-container {
      position: relative;
      max-width: 1200px;
@@ -1505,7 +1402,6 @@
      transform: scale(1.03);
     }
 
-    /* Carousel Navigation Buttons */
     .carousel-btn {
      position: absolute;
      top: 50%;
@@ -1533,61 +1429,30 @@
      transform: translateY(-50%) scale(0.95);
     }
 
-    .carousel-prev {
-     left: 15px;
-    }
-
-    .carousel-next {
-     right: 15px;
-    }
+    .carousel-prev { left: 15px; }
+    .carousel-next { right: 15px; }
 
     .carousel-btn i {
      font-size: 1.2rem;
      color: #0b3a67;
     }
 
-    /* Responsive adjustments */
     @media (max-width: 992px) {
-     .carousel-slide {
-       flex: 0 0 50%;
-     }
-     
-     .carousel-slide img {
-       height: 250px;
-     }
+     .carousel-slide { flex: 0 0 50%; }
+     .carousel-slide img { height: 250px; }
     }
 
     @media (max-width: 768px) {
-     .carousel-slide {
-       flex: 0 0 100%;
-     }
-     
-     .carousel-slide img {
-       height: 200px;
-     }
-     
-     .carousel-btn {
-       width: 40px;
-       height: 40px;
-     }
-     
-     .gallery-title {
-       font-size: 1.3rem !important;
-     }
-     
-     .project-gallery h1 {
-       font-size: 2.5rem;
-     }
+     .carousel-slide { flex: 0 0 100%; }
+     .carousel-slide img { height: 200px; }
+     .carousel-btn { width: 40px; height: 40px; }
+     .gallery-title { font-size: 1.3rem !important; }
+     .project-gallery h1 { font-size: 2.5rem; }
     }
 
-    /* =========================================
-       UPGRADED "WHY CHOOSE US" SECTION
-       Style: Clean, Grid-based, Technical
-    ========================================= */
     .why-choose-us-section {
         padding: 100px 5%;
         background-color: #f8faff;
-        /* Technical dot pattern background */
         background-image: radial-gradient(#dbeafe 1.5px, transparent 1.5px);
         background-size: 24px 24px;
         position: relative;
@@ -1617,7 +1482,6 @@
         display: inline-block;
     }
     
-    /* Underline effect for title */
     .wcu-header .highlight::after {
         content: '';
         position: absolute;
@@ -1630,7 +1494,6 @@
         transform: skewX(-15deg);
     }
 
-    /* Grid Layout for Features */
     .wcu-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -1649,14 +1512,12 @@
         box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
     }
 
-    /* Hover Effect: Lift and Glow */
     .wcu-card:hover {
         transform: translateY(-8px);
         box-shadow: 0 15px 35px rgba(13, 110, 253, 0.12);
         border-color: rgba(13, 110, 253, 0.3);
     }
 
-    /* Decorative Circle on hover */
     .wcu-card::before {
         content: '';
         position: absolute;
@@ -1709,7 +1570,6 @@
         line-height: 1.6;
     }
 
-    /* Visual Side (Image/Video) */
     .wcu-visual-container {
         position: relative;
         border-radius: 24px;
@@ -1768,14 +1628,9 @@
     .play-button-wrapper i {
         font-size: 1.8rem;
         color: white;
-        margin-left: 5px; /* Visual alignment fix for play icon */
+        margin-left: 5px;
     }
 
-
-    /* =========================================
-       UPGRADED "BENEFITS OF SMUC" SECTION
-       Style: Dark, Glassmorphism, Numbered
-    ========================================= */
     .benefits-section {
         padding: 100px 5%;
         background: radial-gradient(circle at top right, #174a85, #0F467B);
@@ -1784,7 +1639,6 @@
         overflow: hidden;
     }
 
-    /* Grid lines overlay */
     .benefits-section::after {
         content: '';
         position: absolute;
@@ -1834,7 +1688,6 @@
         height: 100%;
     }
 
-    /* Hover Glow Effect */
     .benefit-card-new:hover {
         background: rgba(255, 255, 255, 0.08);
         border-color: rgba(255, 255, 255, 0.3);
@@ -1842,7 +1695,6 @@
         box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
     }
     
-    /* Blue accent line on left */
     .benefit-card-new::before {
         content: '';
         position: absolute;
@@ -1859,7 +1711,6 @@
         opacity: 1;
     }
 
-    /* Background Large Number (01, 02) */
     .benefit-number {
         position: absolute;
         top: -20px;
@@ -1916,14 +1767,9 @@
         line-height: 1.6;
     }
 
-    /* Responsive */
     @media (max-width: 992px) {
-        .wcu-grid {
-            grid-template-columns: 1fr;
-        }
-        .wcu-header h2 {
-            font-size: 2.2rem;
-        }
+        .wcu-grid { grid-template-columns: 1fr; }
+        .wcu-header h2 { font-size: 2.2rem; }
     }
 
     @media (max-width: 768px) {
@@ -1932,24 +1778,11 @@
             text-align: center;
             padding: 40px 20px;
         }
-        .benefit-img-box {
-            margin-bottom: 15px;
-            width: 120px;
-            height: 120px;
-        }
-        .benefit-number {
-            font-size: 4rem;
-            top: 10px;
-            right: 20px;
-        }
-        .wcu-header h2 {
-            font-size: 2rem;
-        }
+        .benefit-img-box { margin-bottom: 15px; width: 120px; height: 120px; }
+        .benefit-number { font-size: 4rem; top: 10px; right: 20px; }
+        .wcu-header h2 { font-size: 2rem; }
     }
-    /* =========================================
-   UPGRADED PROJECT GALLERY SECTION
-   Style: Modern, Interactive, Dark Theme
-========================================= */
+
 .project-gallery-upgraded {
     padding: 100px 5%;
     background: linear-gradient(135deg, #0F467B 0%, #174a85 50%, #2473bdff 100%);
@@ -1958,7 +1791,6 @@
     overflow: hidden;
 }
 
-/* Header Styles */
 .gallery-header {
     position: relative;
     z-index: 2;
@@ -1981,7 +1813,6 @@
     line-height: 1.6;
 }
 
-/* Gallery Tabs */
 .gallery-tabs .nav-pills {
     background: rgba(255, 255, 255, 0.08);
     border-radius: 50px;
@@ -2012,7 +1843,6 @@
     box-shadow: 0 4px 15px rgba(23, 162, 220, 0.3);
 }
 
-/* Gallery Grid Layout */
 .gallery-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -2020,7 +1850,6 @@
     margin-top: 40px;
 }
 
-/* Gallery Card */
 .gallery-card {
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.1);
@@ -2038,7 +1867,6 @@
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
 }
 
-/* Image Container */
 .gallery-image-container {
     position: relative;
     overflow: hidden;
@@ -2056,7 +1884,6 @@
     transform: scale(1.05);
 }
 
-/* Overlay with Actions */
 .gallery-overlay {
     position: absolute;
     top: 0;
@@ -2103,7 +1930,6 @@
     color: var(--newblue);
 }
 
-/* Gallery Info */
 .gallery-info {
     padding: 25px;
 }
@@ -2126,10 +1952,9 @@
     max-width: 85%;
     height: auto;
     display: block;
-    margin-left: auto; /* Optional: push to right */
+    margin-left: auto;
 }
 
-/* Tags */
 .gallery-tags {
     display: flex;
     flex-wrap: wrap;
@@ -2146,7 +1971,6 @@
     border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-/* View More Button */
 .gallery-view-more {
     border: 2px solid rgba(255, 255, 255, 0.3);
     color: white;
@@ -2164,7 +1988,6 @@
     transform: translateY(-2px);
 }
 
-/* Lightbox Styles */
 .lightbox-modal {
     position: fixed;
     top: 0;
@@ -2239,13 +2062,8 @@
     background: rgba(255, 255, 255, 0.2);
 }
 
-.lightbox-prev {
-    left: -70px;
-}
-
-.lightbox-next {
-    right: -70px;
-}
+.lightbox-prev { left: -70px; }
+.lightbox-next { right: -70px; }
 
 .lightbox-caption {
     position: absolute;
@@ -2256,86 +2074,69 @@
     color: white;
 }
 
-/* Responsive Design */
 @media (max-width: 992px) {
-    .gallery-grid {
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 20px;
-    }
-    
-    .gallery-main-title {
-        font-size: 2.5rem;
-    }
-    
-    .lightbox-nav {
-        width: 40px;
-        height: 40px;
-    }
-    
-    .lightbox-prev {
-        left: 10px;
-    }
-    
-    .lightbox-next {
-        right: 10px;
-    }
+    .gallery-grid { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+    .gallery-main-title { font-size: 2.5rem; }
+    .lightbox-nav { width: 40px; height: 40px; }
+    .lightbox-prev { left: 10px; }
+    .lightbox-next { right: 10px; }
 }
 
 @media (max-width: 768px) {
-    .gallery-grid {
-        grid-template-columns: 1fr;
-    }
-    
-    .gallery-main-title {
-        font-size: 2rem;
-    }
-    
-    .gallery-tabs .nav-link {
-        padding: 10px 16px;
-        font-size: 0.9rem;
-    }
-    
-    .project-gallery-upgraded {
-        padding: 60px 5%;
-    }
+    .gallery-grid { grid-template-columns: 1fr; }
+    .gallery-main-title { font-size: 2rem; }
+    .gallery-tabs .nav-link { padding: 10px 16px; font-size: 0.9rem; }
+    .project-gallery-upgraded { padding: 60px 5%; }
 }
-/* =========================================
-       NEW ISO CERTIFICATION SECTION
-       Style: Professional, Trustworthy, Blue
-    ========================================= */
-  /* =========================================
-       NEW ISO CERTIFICATION SECTION
-       Style: Professional, Trustworthy, Blue Wavy Gradient
+
+    /* =========================================
+       ISO CERTIFICATION SECTION — REDESIGNED
+       Style: Premium White, Gold Spotlight, Logo Hero
+       Replaces old dark navy background to make
+       the ISO logo truly stand out as a centrepiece
     ========================================= */
     .iso-section {
-      padding: 100px 5%;
+      padding: 120px 5%;
       position: relative;
       overflow: hidden;
-      /* Dark Blue Base */
-      background-color: #0b2545;
-      /* Wavy Gradient Background */
-      background-image: 
-          radial-gradient(circle at 0% 0%, rgba(23, 162, 220, 0.2) 0%, transparent 50%),
-          radial-gradient(circle at 100% 100%, rgba(13, 110, 253, 0.15) 0%, transparent 50%),
-          linear-gradient(135deg, #0F467B 0%, #071e3d 100%);
-      color: white;
+      /* Clean pearl-white base */
+      background-color: #fafbff;
+      /* Layered soft radial gradients: blue brand corners + warm gold center spotlight */
+      background-image:
+          radial-gradient(ellipse 80% 60% at 0% 0%,    rgba(23, 162, 220, 0.08) 0%, transparent 60%),
+          radial-gradient(ellipse 60% 70% at 50% 55%,  rgba(255, 200, 80, 0.12)  0%, transparent 65%),
+          radial-gradient(ellipse 70% 50% at 100% 100%, rgba(15, 70, 123, 0.06) 0%, transparent 60%);
       text-align: center;
     }
 
-    /* Subtle Wave Pattern Overlay - Makes the gradient feel "wavy" */
+    /* Precision dot-grid texture — signals quality & engineering */
     .iso-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(circle, rgba(15, 70, 123, 0.065) 1px, transparent 1px);
+      background-size: 28px 28px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Brand-coloured gradient rule at very top of section */
+    .iso-section::after {
       content: '';
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
-      height: 100%;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%2317A2DC' fill-opacity='0.05' d='M0,224L48,213.3C96,203,192,181,288,181.3C384,181,480,203,576,224C672,245,768,267,864,261.3C960,256,1056,224,1152,213.3C1248,203,1344,213,1392,218.7L1440,224L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3Cpath fill='%230d6efd' fill-opacity='0.05' d='M0,96L48,112C96,128,192,160,288,186.7C384,213,480,235,576,213.3C672,192,768,128,864,128C960,128,1056,192,1152,213.3C1248,235,1344,213,1392,202.7L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E");
-      background-repeat: no-repeat;
-      background-size: cover;
-      background-position: center bottom;
-      opacity: 1;
-      pointer-events: none;
+      height: 5px;
+      background: linear-gradient(
+        90deg,
+        transparent 0%,
+        var(--newblue2) 20%,
+        var(--newblue) 50%,
+        var(--newblue2) 80%,
+        transparent 100%
+      );
+      z-index: 1;
     }
 
     .iso-container {
@@ -2345,85 +2146,105 @@
       z-index: 2;
     }
 
+    /* Heading now uses brand navy so it reads clearly on white */
     .iso-header h2 {
       font-size: 2.8rem;
       font-weight: 800;
-      color: white;
-      margin-bottom: 1rem;
+      color: var(--newblue2);
+      margin-bottom: 0.75rem;
     }
-    
+
     .iso-header h3 {
-      font-size: 1.5rem;
+      font-size: 1.4rem;
       font-weight: 600;
       color: var(--newblue);
       margin-bottom: 3rem;
+      letter-spacing: 0.02em;
     }
 
+    /* =============================================
+       ISO LOGO — FULLY TRANSPARENT, NO CARD
+       ============================================= */
     .iso-logo-container {
-      margin-bottom: 40px;
+      margin-bottom: 44px;
       display: inline-block;
-      padding: 20px;
-      background: rgba(255, 255, 255, 0.1);
-      border-radius: 50%;
-      box-shadow: 0 0 30px rgba(23, 162, 220, 0.5);
-      transition: transform 0.3s ease;
+      padding: 0;
+      background: transparent;
+      border-radius: 0;
+      border: none;
+      box-shadow: none !important;
+      transition: transform 0.35s ease;
+      position: relative;
     }
-    
+
+    /* No pseudo-elements needed */
+    .iso-logo-container::before,
+    .iso-logo-container::after {
+      display: none;
+    }
+
+    /* Hover: gentle lift only */
     .iso-logo-container:hover {
-      transform: scale(1.05);
+      transform: translateY(-6px) scale(1.04);
+      box-shadow: none !important;
     }
 
     .iso-logo {
-      max-width: 250px;
+      max-width: 240px;
       height: auto;
-      filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.3));
+      opacity: 1;
+      filter: none;
+      display: block;
     }
 
+    /* Thin gradient divider between logo card and description text */
+    .iso-divider {
+      width: 60px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--newblue2), var(--newblue));
+      border-radius: 2px;
+      margin: 0 auto 28px;
+    }
+
+    /* Description text switches from white to dark for readability on light bg */
     .iso-description {
       font-size: 1.1rem;
-      color: rgba(255, 255, 255, 0.85);
-      line-height: 1.8;
+      color: #4a5568;
+      line-height: 1.85;
       margin-bottom: 40px;
+      max-width: 680px;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     .iso-btn {
       display: inline-block;
       padding: 15px 35px;
-      background: var(--newblue);
+      background: linear-gradient(135deg, var(--newblue2), var(--newblue));
       color: white;
       font-weight: 600;
       border-radius: 12px;
       text-decoration: none;
       transition: all 0.3s ease;
       border: none;
-      box-shadow: 0 5px 15px rgba(23, 162, 220, 0.4);
+      box-shadow: 0 5px 20px rgba(15, 70, 123, 0.30) !important;
     }
 
     .iso-btn:hover {
-      background: var(--newblue2);
+      background: linear-gradient(135deg, var(--newblue), var(--newblue2));
       transform: translateY(-3px);
-      box-shadow: 0 8px 20px rgba(15, 70, 123, 0.5);
+      box-shadow: 0 10px 28px rgba(15, 70, 123, 0.40) !important;
       color: white;
     }
 
     @media (max-width: 768px) {
-      .iso-section {
-        padding: 80px 5%;
-      }
-      .iso-header h2 {
-        font-size: 2.2rem;
-      }
-      .iso-header h3 {
-        font-size: 1.3rem;
-        margin-bottom: 2rem;
-      }
-      .iso-logo {
-        max-width: 200px;
-      }
+      .iso-section { padding: 80px 5%; }
+      .iso-header h2 { font-size: 2.2rem; }
+      .iso-header h3 { font-size: 1.3rem; margin-bottom: 2rem; }
+      .iso-logo { max-width: 200px; }
+      .iso-logo-container { padding: 20px 28px; }
     }
-/* =========================================
-   MODERN CAROUSEL STYLES (Smooth)
-   ========================================= */
+
 .modern-carousel-wrapper {
     position: relative;
     width: 100%;
@@ -2433,18 +2254,11 @@
 .modern-carousel {
     display: flex;
     overflow-x: auto;
-    
-    /* This creates the smooth sliding effect */
     scroll-behavior: smooth; 
-    
-    /* Optional: Snaps to cards when scrolling stops */
     scroll-snap-type: x mandatory; 
-    
     gap: 30px;
     padding-bottom: 30px;
     padding-top: 10px;
-    
-    /* Hide Scrollbars */
     scrollbar-width: none;
     -ms-overflow-style: none;
 }
@@ -2456,10 +2270,9 @@
 .carousel-item-card {
     flex: 0 0 350px;
     width: 350px;
-    scroll-snap-align: start; /* Aligns card to left */
+    scroll-snap-align: start;
 }
 
-/* Nav Buttons */
 .carousel-nav-btn {
     position: absolute;
     top: 45%;
@@ -2490,14 +2303,8 @@
 .carousel-nav-btn.next { right: -20px; }
 
 @media (max-width: 768px) {
-    .carousel-item-card {
-        flex: 0 0 280px;
-        width: 280px;
-    }
-    .carousel-nav-btn {
-        width: 40px;
-        height: 40px;
-    }
+    .carousel-item-card { flex: 0 0 280px; width: 280px; }
+    .carousel-nav-btn { width: 40px; height: 40px; }
     .carousel-nav-btn.prev { left: -10px; }
     .carousel-nav-btn.next { right: -10px; }
 }
@@ -2508,24 +2315,20 @@
  <!-- ✅ Fixed Navbar -->
 <nav class="navbar navbar-expand-lg navbar-light fixed-top">
   <div class="container-fluid">
-    <!-- Logo on the LEFT -->
     <a class="navbar-brand" href="<?= base_url() ?>">
       <img src="<?= base_url('assets_system/images/header_logo.png') ?>" alt="Line Seiki Logo">
     </a>
 
-    <!-- Toggler for mobile -->
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
       aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <!-- Navigation items -->
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ms-auto">
         <li class="nav-item"><a class="nav-link" href="<?= base_url() ?>">Home</a></li>
         <li class="nav-item"><a class="nav-link" href="<?= base_url('index/about_us') ?>">About Us</a></li>
 
-        <!-- Dropdown -->
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
             Product and Services
@@ -2533,7 +2336,6 @@
           <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="<?= base_url('index/ps_prod') ?>">Products</a></li>
 
-            <!-- Submenu -->
             <li class="dropdown-submenu">
               <a class="dropdown-item dropdown-toggle active" href="#">Services</a>
               <ul class="dropdown-menu">
@@ -2555,7 +2357,6 @@
 </nav>
 
 <br><br><br>
-<!-- Hero Section -->
 
 <section class="section-white">
     <div class="container">
@@ -2566,7 +2367,7 @@
                 <a href="#consultation" class="consultation-btn"><?= isset($content['hero_button']['content']) ? htmlspecialchars($content['hero_button']['content']) : 'Request a Quote' ?></a>
             </div>
             <div class="col-lg-6 fade-in delay-1 d-flex align-items-center justify-content-center">
-    <div style="width: 130%;">  <!-- Container to control size -->
+    <div style="width: 130%;">
         <img src="<?= base_url('assets_system/images/' . (isset($content['hero_image']['image']) ? $content['hero_image']['image'] : 'sm4.png')) ?>" 
              alt="Simulation Analysis"
              style="width: 100%; height: auto;">
@@ -2578,7 +2379,6 @@
 
 <div class="main-wrapper">
  <section id="our-process-section">
-        <!-- Header Section -->
         <div class="text-center">
             <h1 class="main-heading">
                 <?= isset($content['what_we_do_title']['content']) ? htmlspecialchars($content['what_we_do_title']['content']) : 'WHAT DO WE DO' ?>
@@ -2588,10 +2388,8 @@
             </p>
         </div>
 
-        <!-- Main Illustration and Callout Container -->
         <div class="callout-row">
             
-            <!-- Left Callout Box (Silicone Mold) -->
             <div class="callout-box left-callout-box">
                 <div id="callout-left">
                     <br><br><br><h3><?= isset($content['silicone_mold_title']['content']) ? htmlspecialchars($content['silicone_mold_title']['content']) : 'Silicone Mold' ?></h3>
@@ -2599,34 +2397,26 @@
                 </div>
             </div>
 
-            <!-- Central Illustration Stack -->
             <div id="illustration-center" class="illustration-center">
                 
-                <!-- 1. Top Mold Image -->
                 <img src="<?= base_url('assets_system/images/' . (isset($content['illustration_top_mold']['image']) ? $content['illustration_top_mold']['image'] : 'sm1.png')) ?>" 
                      alt="Top half of the silicone mold" 
                      class="illustration-image">
 
-                <!-- 2. Internal Urethane Part Image -->
                 <img src="<?= base_url('assets_system/images/' . (isset($content['illustration_internal_part']['image']) ? $content['illustration_internal_part']['image'] : 'sm2.png')) ?>" 
                      alt="The finished urethane part" 
                      class="illustration-image">
 
-                <!-- 3. Bottom Mold Image -->
                 <img src="<?= base_url('assets_system/images/' . (isset($content['illustration_bottom_mold']['image']) ? $content['illustration_bottom_mold']['image'] : 'sm3.png')) ?>" 
                      alt="Bottom half of the silicone mold" 
                      class="illustration-image">
 
-
-                <!-- The Visual Callout Lines (Desktop Only) -->
                 <div class="callout-lines-container hidden">
                     
-                    <!-- Line 1: Left Callout to TOP MOLD -->
                     <div class="rotated-line rotated-line-left">
                         <div class="rotated-dot"></div>
                     </div>
 
-                    <!-- Line 2: Right Callout to INTERNAL PART -->
                     <div class="rotated-line rotated-line-right">
                         <div class="rotated-dot"></div>
                     </div>
@@ -2634,7 +2424,6 @@
 
             </div>
             
-            <!-- Right Callout Box (Urethane Part) -->
             <div class="callout-box right-callout-box">
                 <div id="callout-right">
                     <br><br><br><br><br><br><h3><?= isset($content['urethane_part_title']['content']) ? htmlspecialchars($content['urethane_part_title']['content']) : 'Urethane Part' ?></h3>
@@ -2658,20 +2447,14 @@
       <?php endif; ?>
       <ul>
         <?php 
-        // Get all silicone molding features dynamically
         $silicone_features = [];
         foreach ($content as $key => $item) {
             if (strpos($key, 'silicone_molding_feature_') === 0 && isset($item['content']) && !empty(trim($item['content']))) {
-                // Extract the number from the key
                 $number = intval(str_replace('silicone_molding_feature_', '', $key));
                 $silicone_features[$number] = $item['content'];
             }
         }
-        
-        // Sort by number to maintain order
         ksort($silicone_features);
-        
-        // Display features
         if (!empty($silicone_features)):
             foreach ($silicone_features as $feature_content):
         ?>
@@ -2679,7 +2462,6 @@
         <?php 
             endforeach;
         else:
-            // Fallback to default features if none exist
             for ($i = 1; $i <= 5; $i++):
                 if (isset($content['silicone_molding_feature_' . $i]['content']) && !empty(trim($content['silicone_molding_feature_' . $i]['content']))):
         ?>
@@ -2702,20 +2484,14 @@
       <?php endif; ?>
       <ul>
         <?php 
-        // Get all urethane casting features dynamically
         $urethane_features = [];
         foreach ($content as $key => $item) {
             if (strpos($key, 'urethane_casting_feature_') === 0 && isset($item['content']) && !empty(trim($item['content']))) {
-                // Extract the number from the key
                 $number = intval(str_replace('urethane_casting_feature_', '', $key));
                 $urethane_features[$number] = $item['content'];
             }
         }
-        
-        // Sort by number to maintain order
         ksort($urethane_features);
-        
-        // Display features
         if (!empty($urethane_features)):
             foreach ($urethane_features as $feature_content):
         ?>
@@ -2723,7 +2499,6 @@
         <?php 
             endforeach;
         else:
-            // Fallback to default features if none exist
             for ($i = 1; $i <= 8; $i++):
                 if (isset($content['urethane_casting_feature_' . $i]['content']) && !empty(trim($content['urethane_casting_feature_' . $i]['content']))):
         ?>
@@ -2778,7 +2553,6 @@
 
         <div class="tab-content fade-in delay-2" id="galleryTabContent">
             
-            <!-- Urethane Parts Gallery -->
             <div class="tab-pane fade show active" id="urethane-parts" role="tabpanel">
                 <?php if (!empty($gallery_urethane)): ?>
                 <div class="modern-carousel-wrapper">
@@ -2841,7 +2615,6 @@
                 <?php endif; ?>
             </div>
 
-            <!-- Overmolding Gallery -->
             <div class="tab-pane fade" id="overmolding" role="tabpanel">
                 <?php if (!empty($gallery_overmolding)): ?>
                 <div class="modern-carousel-wrapper">
@@ -2907,7 +2680,6 @@
         </div>
     </div>
 
-    <!-- Lightbox Modal -->
     <div class="lightbox-modal" id="lightboxModal">
         <div class="lightbox-content">
             <button class="lightbox-close" onclick="closeLightbox()"><i class="fas fa-times"></i></button>
@@ -2973,6 +2745,7 @@
         </div>
     </div>
 </section>
+
 <section class="benefits-section">
     <div class="container">
         <div class="benefits-header fade-in">
@@ -3001,25 +2774,35 @@
         </div>
     </div>
 </section>
+
+<!-- ✅ ISO CERTIFICATION SECTION — REDESIGNED
+     Background: Pearl white + warm gold spotlight center
+     The ISO logo is now the clear hero of this section.
+-->
 <section class="iso-section">
   <div class="iso-container">
     <div class="iso-header">
       <h2><?= isset($content['iso_title']['content']) ? htmlspecialchars($content['iso_title']['content']) : 'Our Commitment to Quality' ?></h2>
       <h3><?= isset($content['iso_subtitle']['content']) ? htmlspecialchars($content['iso_subtitle']['content']) : 'ISO 9001:2015 Certified for Excellence' ?></h3>
     </div>
-    
+
+    <!-- Gold spotlight card wrapping the logo -->
     <div class="iso-logo-container delay-1">
-      <img src="<?= base_url('assets_system/images/' . (isset($content['iso_image']['image']) ? $content['iso_image']['image'] : 'ISO-06.png')) ?>" 
+      <img src="<?= base_url('assets_system/images/' . (isset($content['iso_image']['image']) ? $content['iso_image']['image'] : 'ISO-06.png')) ?>"
            alt="ISO 9001:2015 Certified" class="iso-logo">
     </div>
-    
+
+    <!-- Gradient divider -->
+    <div class="iso-divider"></div>
+
     <p class="iso-description fade-in delay-2">
       <?= isset($content['iso_description']['content']) ? $content['iso_description']['content'] : 'At Line Seiki Asia Pacific, quality is at the heart of everything we do. Our ISO 9001:2015 certification demonstrates our unwavering commitment to providing products and services that consistently meet customer and regulatory requirements. We are dedicated to continuous improvement, ensuring that our processes are efficient, reliable, and focused on delivering the highest level of satisfaction.' ?>
     </p>
-    
+
     <!--<a href="#" class="iso-btn fade-in delay-3"><?= isset($content['iso_button']['content']) ? htmlspecialchars($content['iso_button']['content']) : 'Learn More About Our Quality Standards' ?></a>-->
   </div>
 </section>
+
 <!-- ✅ Project Submission Section -->
 <section class="project-submission">
   <div class="project-card fade-in">
@@ -3029,7 +2812,6 @@
     <h4><?= isset($content['project_submission_title']['content']) ? htmlspecialchars($content['project_submission_title']['content']) : 'Project Submission' ?></h4>
     <p><?= isset($content['project_submission_description']['content']) ? $content['project_submission_description']['content'] : 'Upload your CAD models or design drawings to receive a detailed quote.' ?></p>
     
-    <!-- Request Quote Form -->
     <form id="quote-form" method="post" enctype="multipart/form-data" action="<?= base_url('index/submit_quote_request') ?>">
       <div class="mb-3">
         <input type="text" class="form-control" name="name" placeholder="Full Name" required>
@@ -3051,7 +2833,6 @@
       <button type="submit" class="btn btn-success"><?= isset($content['project_submission_button']['content']) ? htmlspecialchars($content['project_submission_button']['content']) : 'Request Quote' ?></button>
     </form>
     
-    <!-- Success/Error Messages -->
     <div id="form-message" class="mt-3" style="display: none;"></div>
   </div>
 </section>
@@ -3091,7 +2872,6 @@
 </section>
 
 <style>
-/* Testimonial Section Styles */
 .testimonial-section {
     padding: 80px 0;
     background: var(--light-blue);
@@ -3130,19 +2910,19 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 30px;
-    align-items: stretch; /* This makes all cards equal height */
+    align-items: stretch;
 }
 
 .testimonial-card {
     background: white;
     border-radius: 20px;
-    padding: 0; /* Remove padding, will be handled by inner content */
+    padding: 0;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
     transition: var(--transition);
     border: 1px solid rgba(13, 110, 253, 0.1);
     position: relative;
     display: flex;
-    height: 100%; /* Take full height of grid cell */
+    height: 100%;
 }
 
 .testimonial-card-content {
@@ -3175,8 +2955,8 @@
     color: #495057;
     margin-bottom: 25px;
     font-style: italic;
-    flex: 1; /* This makes text area grow to fill available space */
-    min-height: 100px; /* Minimum height to maintain consistency */
+    flex: 1;
+    min-height: 100px;
     position: relative;
     z-index: 2;
 }
@@ -3185,14 +2965,13 @@
     display: flex;
     align-items: center;
     gap: 20px;
-    margin-top: auto; /* Pushes author section to bottom */
+    margin-top: auto;
     padding-top: 15px;
     border-top: 1px solid rgba(13, 110, 253, 0.1);
     position: relative;
     z-index: 2;
 }
 
-/* Larger Avatar Styles */
 .author-avatar-large {
     width: 100px;
     height: 100px;
@@ -3231,7 +3010,7 @@
 
 .author-info {
     flex: 1;
-    min-width: 0; /* Prevents text overflow */
+    min-width: 0;
 }
 
 .author-info h6 {
@@ -3253,135 +3032,58 @@
     text-overflow: ellipsis;
 }
 
-/* Responsive adjustments */
 @media (max-width: 991px) {
-    .testimonial-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-    
-    .testimonial-card-content {
-        padding: 30px 25px;
-    }
-    
-    .author-avatar-large {
-        width: 90px;
-        height: 90px;
-        font-size: 2.2rem;
-    }
-    
-    .initials-large {
-        font-size: 2.2rem;
-    }
+    .testimonial-grid { grid-template-columns: repeat(2, 1fr); }
+    .testimonial-card-content { padding: 30px 25px; }
+    .author-avatar-large { width: 90px; height: 90px; font-size: 2.2rem; }
+    .initials-large { font-size: 2.2rem; }
 }
 
 @media (max-width: 767px) {
-    .testimonial-grid {
-        grid-template-columns: 1fr;
-        gap: 25px;
-    }
-    
-    .testimonial-card-content {
-        padding: 25px 20px;
-    }
-    
-    .author-avatar-large {
-        width: 80px;
-        height: 80px;
-        font-size: 2rem;
-    }
-    
-    .initials-large {
-        font-size: 2rem;
-    }
-    
-    .testimonial-author {
-        gap: 15px;
-    }
-    
-    .author-info h6 {
-        font-size: 1.1rem;
-    }
-    
-    .author-info p {
-        font-size: 0.9rem;
-    }
+    .testimonial-grid { grid-template-columns: 1fr; gap: 25px; }
+    .testimonial-card-content { padding: 25px 20px; }
+    .author-avatar-large { width: 80px; height: 80px; font-size: 2rem; }
+    .initials-large { font-size: 2rem; }
+    .testimonial-author { gap: 15px; }
+    .author-info h6 { font-size: 1.1rem; }
+    .author-info p { font-size: 0.9rem; }
 }
 
 @media (max-width: 575px) {
-    .testimonial-section {
-        padding: 60px 0;
-    }
-    
-    .testimonial-title {
-        font-size: 2rem;
-        margin-bottom: 40px;
-    }
-    
-    .testimonial-card-content {
-        padding: 20px 15px;
-    }
-    
-    .author-avatar-large {
-        width: 70px;
-        height: 70px;
-        font-size: 1.8rem;
-    }
-    
-    .initials-large {
-        font-size: 1.8rem;
-    }
-    
-    .testimonial-author {
-        gap: 12px;
-    }
-    
-    .quote-icon {
-        font-size: 2rem;
-        top: 15px;
-        right: 20px;
-    }
-    
-    .testimonial-text {
-        font-size: 0.95rem;
-        min-height: 80px;
-    }
+    .testimonial-section { padding: 60px 0; }
+    .testimonial-title { font-size: 2rem; margin-bottom: 40px; }
+    .testimonial-card-content { padding: 20px 15px; }
+    .author-avatar-large { width: 70px; height: 70px; font-size: 1.8rem; }
+    .initials-large { font-size: 1.8rem; }
+    .testimonial-author { gap: 12px; }
+    .quote-icon { font-size: 2rem; top: 15px; right: 20px; }
+    .testimonial-text { font-size: 0.95rem; min-height: 80px; }
 }
 </style>
 <?php endif; ?>
 
 <script>
-// ==========================================
-// SECTION-BASED PROGRESSIVE ILLUSTRATION
-// ==========================================
-
 class SectionIllustrationScroll {
     constructor() {
         this.illustrationCenter = document.getElementById('illustration-center');
         if (!this.illustrationCenter) return;
         
-        // Get the section where illustration is located
         this.section = document.getElementById('our-process-section');
         if (!this.section) {
-            // Fallback: find parent section
             this.section = this.illustrationCenter.closest('section');
         }
         
         this.isAnimating = false;
         this.currentProgress = 0;
-        this.animationDistance = 400; // How many pixels within the section
+        this.animationDistance = 400;
         this.ticking = false;
         
         this.init();
     }
     
     init() {
-        // Set initial state
         this.illustrationCenter.style.setProperty('--close-amount', '0');
-        
-        // Listen to scroll
         window.addEventListener('scroll', () => this.requestTick());
-        
-        // Add visual marker for debugging (optional)
         this.addSectionMarker();
     }
     
@@ -3398,58 +3100,35 @@ class SectionIllustrationScroll {
         const sectionRect = this.section.getBoundingClientRect();
         const windowHeight = window.innerHeight;
         
-        // Check if section is in view
         const sectionTop = sectionRect.top;
         const sectionBottom = sectionRect.bottom;
         
-        // Start animation when section enters viewport
-        // End when section leaves viewport
         if (sectionTop < windowHeight && sectionBottom > 0) {
             this.isAnimating = true;
-            
-            // Calculate progress within section (0 to 1)
-            // 0 = section top at screen top
-            // 1 = section bottom at screen top
             let progress = (-sectionTop) / this.animationDistance;
             progress = Math.max(0, Math.min(1, progress));
-            
             this.currentProgress = progress;
-            
         } else {
-            // Section not in view
             if (this.isAnimating) {
-                // If just left viewport, keep at last state
                 this.isAnimating = false;
             }
         }
         
-        // Apply animation
         this.updateAnimation(this.currentProgress);
-        
         this.ticking = false;
     }
     
     updateAnimation(progress) {
-        // Apply the progress to CSS custom property
         this.illustrationCenter.style.setProperty('--close-amount', progress);
         
-        // Update callout lines
         const calloutLines = this.illustrationCenter.querySelector('.callout-lines-container');
         if (calloutLines) {
             calloutLines.style.opacity = 1 - progress;
             calloutLines.style.visibility = progress > 0.9 ? 'hidden' : 'visible';
         }
-        
-        // Optional: Log progress for debugging
-        if (progress === 0) {
-            console.log('Illustration: Start of section');
-        } else if (progress === 1) {
-            console.log('Illustration: End of section');
-        }
     }
     
     addSectionMarker() {
-        // For debugging - shows where animation starts/stops
         const marker = document.createElement('div');
         marker.id = 'section-marker';
         marker.style.cssText = `
@@ -3469,7 +3148,6 @@ class SectionIllustrationScroll {
         marker.textContent = 'Scroll in this section';
         document.body.appendChild(marker);
         
-        // Show/hide based on section visibility
         const checkMarker = () => {
             if (!this.section) return;
             
@@ -3491,29 +3169,24 @@ class SectionIllustrationScroll {
     }
 }
 
-// Initialize when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
     new SectionIllustrationScroll();
 });
 
-// Add this to your existing DOMContentLoaded event listener
 document.addEventListener('DOMContentLoaded', () => {
     const sliderIds = ['urethane-slider', 'overmold-slider', 'silicone-slider'];
     sliderIds.forEach(id => setupCarouselListeners(id));
     
-    // Initialize illustration animation
     new IllustrationScrollAnimator();
 });
 
 
-// Carousel scrolling function
 function scrollCarousel(sliderId, direction) {
     const slider = document.getElementById(sliderId);
     const scrollAmount = 300;
     slider.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
 }
 
-// Lightbox functionality
 function openLightbox(imageSrc, title) {
     const lightbox = document.getElementById('lightboxModal');
     const lightboxImage = document.getElementById('lightboxImage');
@@ -3531,21 +3204,18 @@ function closeLightbox() {
     document.body.style.overflow = 'auto';
 }
 
-// Close lightbox on ESC key
 document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape') {
         closeLightbox();
     }
 });
 
-// Close lightbox when clicking outside
 document.getElementById('lightboxModal').addEventListener('click', function(e) {
     if (e.target === this) {
         closeLightbox();
     }
 });
 
-// File upload display
 document.getElementById('file-upload').addEventListener('change', function(e) {
     const fileName = e.target.files[0] ? e.target.files[0].name : 'No file selected';
     document.getElementById('file-name').textContent = fileName;
@@ -3556,10 +3226,9 @@ document.getElementById('file-upload').addEventListener('change', function(e) {
 <!-- ✅ Footer -->
 <?php $this->load->view('web/footer'); ?>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="<?php echo base_url('assets_system/vendor/bootstrap-5.3.3/js/bootstrap.bundle.min.js'); ?>"></script>
 
 <script>
-    // 1. Standard Navbar & UI Logic
     const navbar = document.querySelector('.navbar');
     window.addEventListener('scroll', function() {
         if (window.scrollY > 50) navbar.classList.add('scrolled');
@@ -3594,7 +3263,6 @@ document.getElementById('file-upload').addEventListener('change', function(e) {
         document.getElementById('file-name').textContent = fileName;
     });
     
-    // Form submission with AJAX (optional enhancement)
     const quoteForm = document.getElementById('quote-form');
     if (quoteForm) {
         quoteForm.addEventListener('submit', function(e) {
@@ -3611,25 +3279,35 @@ document.getElementById('file-upload').addEventListener('change', function(e) {
                 method: 'POST',
                 body: formData
             })
-            .then(response => response.json())
-            .then(data => {
-                const messageDiv = document.getElementById('form-message');
-                messageDiv.style.display = 'block';
-                
-                if (data.success) {
-                    messageDiv.className = 'success';
-                    messageDiv.textContent = data.message;
-                    quoteForm.reset();
-                    document.getElementById('file-name').textContent = 'No file selected';
-                } else {
-                    messageDiv.className = 'error';
-                    messageDiv.textContent = data.message;
-                }
-                
-                submitBtn.innerHTML = originalText;
-                submitBtn.disabled = false;
-            })
+            .then(response => {
+    return response.text(); // ✅ text muna para makita yung raw output
+})
+.then(text => {
+    console.log('Raw response:', text); // ✅ makikita yung exact PHP output
+    if (!text) {
+        console.log('Empty response!');
+        return;
+    }
+    const data = JSON.parse(text);
+    
+    const messageDiv = document.getElementById('form-message');
+    messageDiv.style.display = 'block';
+    
+    if (data.success) {
+        messageDiv.className = 'success';
+        messageDiv.textContent = data.message;
+        quoteForm.reset();
+        document.getElementById('file-name').textContent = 'No file selected';
+    } else {
+        messageDiv.className = 'error';
+        messageDiv.textContent = data.message;
+    }
+    
+    submitBtn.innerHTML = originalText;
+    submitBtn.disabled = false;
+})
             .catch(error => {
+                console.log('Fetch error:', error); // ✅ idagdag
                 const messageDiv = document.getElementById('form-message');
                 messageDiv.style.display = 'block';
                 messageDiv.className = 'error';
@@ -3640,33 +3318,24 @@ document.getElementById('file-upload').addEventListener('change', function(e) {
         });
     }
 
-    // ==========================================
-    // 5. CAROUSEL LOGIC (AUTO + MANUAL + SMOOTH)
-    // ==========================================
-    
-    // Config
     const SCROLL_GAP = 30;
-    const CARD_WIDTH = 350; // Must match CSS width
+    const CARD_WIDTH = 350;
     const SCROLL_STEP = CARD_WIDTH + SCROLL_GAP;
-    const AUTO_SLIDE_DELAY = 3000; // 3 Seconds
+    const AUTO_SLIDE_DELAY = 3000;
 
-    let autoSlideIntervals = {}; // Store intervals to stop/start them
+    let autoSlideIntervals = {};
 
-    // Function to scroll (used by Buttons AND Auto Slide)
     function scrollCarousel(containerId, direction) {
         const container = document.getElementById(containerId);
         if(!container) return;
 
-        // Determine current position
         const currentScroll = container.scrollLeft;
         const maxScroll = container.scrollWidth - container.clientWidth;
 
         let targetScroll;
 
         if (direction === 1) {
-            // Moving Right
             if (currentScroll >= maxScroll - 10) {
-                // If at end, loop back to start smoothly
                 targetScroll = 0;
                 container.scrollTo({ left: 0, behavior: 'smooth' });
                 return;
@@ -3674,23 +3343,20 @@ document.getElementById('file-upload').addEventListener('change', function(e) {
                 targetScroll = SCROLL_STEP;
             }
         } else {
-            // Moving Left
             targetScroll = -SCROLL_STEP;
         }
 
-        // Execute Smooth Scroll
         container.scrollBy({
             left: targetScroll,
             behavior: 'smooth'
         });
     }
 
-    // Initialize Auto Slide
     function startAutoSlide(id) {
         if (autoSlideIntervals[id]) clearInterval(autoSlideIntervals[id]);
         
         autoSlideIntervals[id] = setInterval(() => {
-            scrollCarousel(id, 1); // 1 = Next
+            scrollCarousel(id, 1);
         }, AUTO_SLIDE_DELAY);
     }
 
@@ -3698,33 +3364,24 @@ document.getElementById('file-upload').addEventListener('change', function(e) {
         if (autoSlideIntervals[id]) clearInterval(autoSlideIntervals[id]);
     }
 
-    // Setup Event Listeners for Pause on Hover
     function setupCarouselListeners(id) {
         const container = document.getElementById(id);
         if(!container) return;
         const wrapper = container.parentElement;
 
-        // Start initially
         startAutoSlide(id);
 
-        // Pause on mouse enter / touch
         wrapper.addEventListener('mouseenter', () => stopAutoSlide(id));
         wrapper.addEventListener('touchstart', () => stopAutoSlide(id));
-
-        // Resume on mouse leave / touch end
         wrapper.addEventListener('mouseleave', () => startAutoSlide(id));
         wrapper.addEventListener('touchend', () => startAutoSlide(id));
     }
 
-    // Initialize all sliders on load
     document.addEventListener('DOMContentLoaded', () => {
         const sliderIds = ['urethane-slider', 'overmold-slider', 'silicone-slider'];
         sliderIds.forEach(id => setupCarouselListeners(id));
     });
 
-    // ==========================================
-    // 6. LIGHTBOX LOGIC
-    // ==========================================
     const lightboxModal = document.getElementById('lightboxModal');
     const lightboxImage = document.getElementById('lightboxImage');
     const lightboxTitle = document.getElementById('lightboxTitle');
@@ -3733,13 +3390,11 @@ document.getElementById('file-upload').addEventListener('change', function(e) {
         lightboxImage.src = src;
         lightboxTitle.textContent = title;
         lightboxModal.classList.add('active');
-        // Stop all sliders when lightbox is open
         Object.keys(autoSlideIntervals).forEach(stopAutoSlide);
     }
 
     function closeLightbox() {
         lightboxModal.classList.remove('active');
-        // Restart sliders
         const sliderIds = ['urethane-slider', 'overmold-slider', 'silicone-slider'];
         sliderIds.forEach(id => startAutoSlide(id));
     }

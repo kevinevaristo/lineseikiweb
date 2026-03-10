@@ -7,7 +7,7 @@
     
     <style>
         /* 1. Base Setup */
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+        @import url('<?php echo base_url('assets_system/vendor/google-fonts/inter/inter-variable.css'); ?>');
         
         :root {
             --primary-blue: #1e40af;

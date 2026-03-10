@@ -1,5 +1,5 @@
 <!-- TinyMCE Editor -->
-<script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+<script src="<?php echo base_url('assets_system/vendor/tinymce/tinymce.min.js'); ?>" referrerpolicy="origin"></script>
 
 <main class="ml-64 p-8">
     <div class="max-w-6xl mx-auto">

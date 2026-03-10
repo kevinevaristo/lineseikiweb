@@ -1,0 +1,28 @@
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: italic;
+  font-weight: 400;
+  font-display: fallback;
+  src: url(../fonts/6de4eec3bee7482b4511a5e79ad6103c.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 300;
+  font-display: fallback;
+  src: url(../fonts/a256241a06d14f344535564c2fb8a5ad.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 400;
+  font-display: fallback;
+  src: url(../fonts/8182dd7f47fdf7395578b602aea1b09d.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 700;
+  font-display: fallback;
+  src: url(../fonts/460ce07456f638395ce1cab3af357237.ttf) format('truetype');
+}

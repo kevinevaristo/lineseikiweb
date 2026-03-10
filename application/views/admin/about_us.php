@@ -428,8 +428,8 @@ main {
     <input type="hidden" name="csrf_token" value="<?php echo $this->security->get_csrf_hash(); ?>">
 </form>
 <?php endforeach; ?>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<link rel="stylesheet" href="<?php echo base_url('assets_system/vendor/sweetalert2/sweetalert2.min.css'); ?>">
+<script src="<?php echo base_url('assets_system/vendor/sweetalert2/sweetalert2.all.min.js'); ?>"></script>
 
 <script>
 // SweetAlert Functions

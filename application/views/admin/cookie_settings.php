@@ -113,12 +113,12 @@
 </main>
 
 <!-- Quill Rich Text Editor -->
-<link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
-<script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+<link href="<?php echo base_url('assets_system/vendor/quill/quill.snow.css'); ?>" rel="stylesheet">
+<script src="<?php echo base_url('assets_system/vendor/quill/quill.js'); ?>"></script>
 
 <!-- SweetAlert -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<link rel="stylesheet" href="<?php echo base_url('assets_system/vendor/sweetalert2/sweetalert2.min.css'); ?>">
+<script src="<?php echo base_url('assets_system/vendor/sweetalert2/sweetalert2.all.min.js'); ?>"></script>
 
 <script>
 // Initialize Quill Editor
@@ -257,8 +257,8 @@ function previewPage() {
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <title>Cookie Settings - Preview</title>
-            <script src="https://cdn.tailwindcss.com"><\/script>
-            <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+            <script src="<?php echo base_url('assets_system/vendor/tailwindcss/tailwind.min.js'); ?>"><\/script>
+            <link href="<?php echo base_url('assets_system/vendor/quill/quill.snow.css'); ?>" rel="stylesheet">
             <style>
                 body { 
                     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; 

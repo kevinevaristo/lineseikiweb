@@ -549,9 +549,9 @@ Each specification should be on a new line with a colon separating key and value
 </main>
 
 <!-- Include SweetAlert -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/js/all.min.js"></script>
+<link rel="stylesheet" href="<?php echo base_url('assets_system/vendor/sweetalert2/sweetalert2.min.css'); ?>">
+<script src="<?php echo base_url('assets_system/vendor/sweetalert2/sweetalert2.all.min.js'); ?>"></script>
+<script src="<?php echo base_url('assets_system/vendor/fontawesome-6.5.0/js/all.min.js'); ?>"></script>
 
 <script>
 // Product Image Upload Functions

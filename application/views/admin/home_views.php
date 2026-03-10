@@ -190,7 +190,7 @@
 </main>
 
 <!-- Chart.js -->
-<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<script src="<?php echo base_url('assets_system/vendor/chartjs/chart.umd.min.js'); ?>"></script>
 
 <script>
 // Initialize visitor data (you'll need to fetch this from your backend)

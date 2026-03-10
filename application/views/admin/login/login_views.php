@@ -5,8 +5,8 @@
   <title>Line Seiki Admin</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="shortcut icon" href="<?= base_url() ?>assets_system/images/favicon.ico" type="image/x-icon">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="<?php echo base_url('assets_system/vendor/bootstrap-5.3.3/css/bootstrap.min.css'); ?>" rel="stylesheet">
+  <link href="<?php echo base_url('assets_system/vendor/google-fonts/quicksand/quicksand.css'); ?>" rel="stylesheet">
 
   <style>
     :root {
@@ -230,7 +230,7 @@
     </p>
   </footer>
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+  <script src="<?php echo base_url('assets_system/vendor/jquery/jquery-3.7.0.min.js'); ?>"></script>
   <script>
     function validateForm() {
       const username = document.getElementById('username').value.trim();

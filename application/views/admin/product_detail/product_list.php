@@ -9,13 +9,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <title>Product Management | Admin Panel</title>
     
     <!-- Bootstrap 5 -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="<?php echo base_url('assets_system/vendor/bootstrap-5.3.0/css/bootstrap.min.css'); ?>" rel="stylesheet">
     
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="<?php echo base_url('assets_system/vendor/fontawesome-6.4.0/css/all.min.css'); ?>">
     
     <!-- DataTables -->
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css">
+    <link rel="stylesheet" href="<?php echo base_url('assets_system/vendor/datatables/css/dataTables.bootstrap5.min.css'); ?>">
     
     <style>
         :root {
@@ -475,11 +475,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     </div>
 
     <!-- Scripts -->
-    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="<?php echo base_url('assets_system/vendor/jquery/jquery-3.7.0.min.js'); ?>"></script>
+    <script src="<?php echo base_url('assets_system/vendor/bootstrap-5.3.0/js/bootstrap.bundle.min.js'); ?>"></script>
+    <script src="<?php echo base_url('assets_system/vendor/datatables/js/jquery.dataTables.min.js'); ?>"></script>
+    <script src="<?php echo base_url('assets_system/vendor/datatables/js/dataTables.bootstrap5.min.js'); ?>"></script>
+    <script src="<?php echo base_url('assets_system/vendor/sweetalert2/sweetalert2.all.min.js'); ?>"></script>
 
     <script>
         $(document).ready(function() {

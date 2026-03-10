@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width">
 <title>Eyebox HRMS Admin</title>
 <link rel="shortcut icon" href="<?= base_url() ?>assets_system/images/favicon.ico" type="image/x-icon">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+<link rel="stylesheet" href="<?php echo base_url('assets_system/vendor/google-fonts/material-symbols/material-symbols.css'); ?>" />
 <?php $this->load->view('templates/css_link'); ?>
 
 <style>

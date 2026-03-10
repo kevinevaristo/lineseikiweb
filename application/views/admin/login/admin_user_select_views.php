@@ -6,8 +6,8 @@ $data['DISP_NAME'] = $this->admin_model->get_name();
 <meta name="viewport" content="width=device-width">
 <title>Eyebox HRMS Admin</title>
 <link rel="shortcut icon" href="<?= base_url() ?>assets_system/images/favicon.ico" type="image/x-icon">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/css/selectize.bootstrap3.min.css" integrity="sha256-ze/OEYGcFbPRmvCnrSeKbRTtjG4vGLHXgOqsyLFTRjg=" crossorigin="anonymous" />
+<link rel="stylesheet" href="<?php echo base_url('assets_system/vendor/google-fonts/material-symbols/material-symbols.css'); ?>" />
+<link rel="stylesheet" href="<?php echo base_url('assets_system/vendor/selectize/css/selectize.bootstrap3.min.css'); ?>" integrity="sha256-ze/OEYGcFbPRmvCnrSeKbRTtjG4vGLHXgOqsyLFTRjg=" crossorigin="anonymous" />
 <?php $this->load->view('templates/css_link'); ?>
 
 <style>
@@ -127,8 +127,8 @@ $data['DISP_NAME'] = $this->admin_model->get_name();
   <script src="../../plugins/jquery/jquery.min.js"></script>
   <script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="../../dist/js/adminlte.min.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/js/standalone/selectize.min.js" integrity="sha256-+C0A5Ilqmu4QcSPxrlGpaZxJ04VjsRjKu+G82kl5UJk=" crossorigin="anonymous"></script>
+  <script src="<?php echo base_url('assets_system/vendor/jquery/jquery-3.4.1.min.js'); ?>"></script>
+  <script src="<?php echo base_url('assets_system/vendor/selectize/js/selectize.min.js'); ?>" integrity="sha256-+C0A5Ilqmu4QcSPxrlGpaZxJ04VjsRjKu+G82kl5UJk=" crossorigin="anonymous"></script>
 
   <script>
     $(document).ready(function() {

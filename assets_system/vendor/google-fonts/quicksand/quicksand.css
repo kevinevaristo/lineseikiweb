@@ -1,0 +1,21 @@
+@font-face {
+  font-family: 'Quicksand';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(../fonts/d67d6ac2d81f142985afa6dc32ed661e.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Quicksand';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(../fonts/8f1392185a7289f062b39d3b24f1a59a.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Quicksand';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(../fonts/0b0332576803387af2f4ed5d10374ff8.ttf) format('truetype');
+}
