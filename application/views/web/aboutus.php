@@ -1258,54 +1258,8 @@ section h2.text-center::after {
 </head>
 <body>
 
-<!-- ✅ Fixed Navbar -->
-<nav class="navbar navbar-expand-lg navbar-light fixed-top">
-  <div class="container">
-    <!-- Logo on the LEFT -->
-    <a class="navbar-brand" href="<?= base_url('index') ?>">
-      <img src="<?= base_url('assets_system/images/header_logo.png') ?>" alt="Line Seiki Logo">
-    </a>
-
-    <!-- Toggler for mobile -->
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <!-- Navigation items -->
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ms-auto">
-        <li class="nav-item"><a class="nav-link" href="<?= base_url() ?>">Home</a></li>
-        <li class="nav-item"><a class="nav-link active" href="<?= base_url('index/about_us') ?>">About Us</a></li>
-
-        <!-- Dropdown -->
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href=" " id="navbarDropdown" role="button" data-bs-toggle="dropdown">
-            Product and Services
-          </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="<?= base_url('index/ps_prod') ?>">Products</a></li>
-
-            <!-- Submenu -->
-            <li class="dropdown-submenu">
-              <a class="dropdown-item dropdown-toggle" href="#">Services</a>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="<?= base_url('index/ps_serv_simulation') ?>">Simulation Analysis</a></li>
-                <li><a class="dropdown-item" href="<?= base_url('index/ps_serv_silicone') ?>">Silicone Molding & Urethane Casting</a></li>
-              </ul>
-            </li>
-
-            <li><a class="dropdown-item" href="<?= base_url('index/ps_iotsolution') ?>">IoT Solution</a></li>
-          </ul>
-        </li>
-
-        <li class="nav-item"><a class="nav-link" href="<?= base_url('index/news_event') ?>">News and Events</a></li>
-        <li class="nav-item"><a class="nav-link" href="<?= base_url('index/library') ?>">Library</a></li>
-        <li class="nav-item"><a class="nav-link" href="<?= base_url('index/contact_us') ?>">Contact Us</a></li>
-      </ul>
-    </div>
-  </div>
-</nav>
+<!-- NAVBAR -->
+<?php $this->load->view('web/header'); ?>
 
 <!-- Spacer for fixed navbar -->
 <div style="height: 90px;"></div>

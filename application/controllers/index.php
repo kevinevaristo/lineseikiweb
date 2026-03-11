@@ -26,6 +26,7 @@ class index extends CI_Controller
     $this->load->model('web/visit_tracker_model');
     $this->load->model('web/email_model');
     $this->load->model('web/testimonial_model');
+    $this->load->model('web/search_model');
   }
 
   function index()
@@ -1251,5 +1252,16 @@ public function save_download_info() {
     
     echo json_encode(['status' => 'success', 'filename' => $filename]);
 }
+
+  function search()
+  {
+    $keyword = $this->input->get('q', TRUE);
+    $page = max(1, (int) $this->input->get('page'));
+
+    $data = $this->search_model->search($keyword, $page);
+    $data['keyword'] = $keyword;
+
+    $this->load->view('web/search_results', $data);
+  }
 
 }

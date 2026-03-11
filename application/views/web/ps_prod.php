@@ -474,45 +474,8 @@
 </head>
 <body>
 
-  <!-- ✅ Fixed Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-light fixed-top">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="<?= base_url() ?>">
-        <img src=<?= base_url('assets_system/images/header_logo.png') ?> alt="Line Seiki Logo">
-      </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item"><a class="nav-link" href="<?= base_url() ?>">Home</a></li>
-          <li class="nav-item"><a class="nav-link" href="<?= base_url('index/about_us') ?>">About Us</a></li>
-
-          <!-- Dropdown -->
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown">
-              Product and Services
-            </a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item active" href="<?= base_url('index/ps_prod') ?>">Products</a></li>
-              <li class="dropdown-submenu">
-                <a class="dropdown-item dropdown-toggle" href="#">Services</a>
-                <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="<?= base_url('index/ps_serv_simulation') ?>">Simulation Analysis</a></li>
-                  <li><a class="dropdown-item" href="<?= base_url('index/ps_serv_silicone') ?>">Silicone Molding & Urethane Casting</a></li>
-                </ul>
-              </li>
-              <li><a class="dropdown-item" href="<?= base_url('index/ps_iotsolution') ?>">IoT Solution</a></li>
-            </ul>
-          </li>
-
-          <li class="nav-item"><a class="nav-link" href="<?= base_url('index/news_event') ?>">News and Events</a></li>
-          <li class="nav-item"><a class="nav-link" href="<?= base_url('index/library') ?>">Library</a></li>
-          <li class="nav-item"><a class="nav-link" href="<?= base_url('index/contact_us') ?>">Contact Us</a></li>
-        </ul>
-      </div>
-    </div>
-  </nav>
+<!-- NAVBAR -->
+<?php $this->load->view('web/header'); ?>
 
   <!-- Spacer for fixed navbar -->
   <div style="height: 90px;"></div>
