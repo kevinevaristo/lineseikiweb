@@ -191,6 +191,7 @@ class index extends CI_Controller
         $data['contact_form_title'] = $this->get_content('Contact Form Section Title');
         $data['map_section_title'] = $this->get_content('Map Section Title');
         $data['map_section_desc'] = $this->get_content('Map Section Description');
+        $data['map_embed_url'] = $this->get_content('Map Embed URL');
         $data['cta_title'] = $this->get_content('CTA Section Title');
         $data['cta_desc'] = $this->get_content('CTA Section Description');
         

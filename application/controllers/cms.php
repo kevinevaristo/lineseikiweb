@@ -4735,22 +4735,77 @@ private function process_gallery_type($type, $filenames) {
     // 9. Contact Us
     function contact_us()
     {
-        if ($this->input->post()) {
-            $this->handle_form_submission();
-        }
-
         // Get all content for display
         $data['content_items'] = $this->contact_us_admin_model->get_all_content();
 
-        // Get item for editing if ID is provided
-        $edit_id = $this->input->get('edit');
-        if ($edit_id) {
-            $data['edit_item'] = $this->contact_us_admin_model->get_by_id($edit_id);
-        } else {
-            $data['edit_item'] = null;
-        }
         $this->load->view('admin/header');
         $this->load->view('admin/contact_us', $data);
+    }
+
+    /**
+     * AJAX: Save all contact us content at once
+     */
+    public function contact_us_save_all()
+    {
+        $this->output->set_content_type('application/json');
+
+        $items = $this->input->post('items');
+        if (empty($items) || !is_array($items)) {
+            echo json_encode(['success' => false, 'message' => 'No data received.']);
+            return;
+        }
+
+        $updated = 0;
+        $errors = array();
+
+        foreach ($items as $item) {
+            $id = isset($item['id']) ? (int)$item['id'] : 0;
+            if ($id <= 0) continue;
+
+            $data = array(
+                'content' => isset($item['content']) ? $item['content'] : '',
+                'edited_by' => $this->session->userdata('user_id')
+            );
+
+            // Handle image upload for this item
+            $file_key = 'image_file_' . $id;
+            if (!empty($_FILES[$file_key]['name'])) {
+                $config = array(
+                    'upload_path'   => FCPATH . 'assets_system/images/',
+                    'allowed_types' => 'jpg|jpeg|png|gif|webp',
+                    'max_size'      => 2048,
+                    'encrypt_name'  => true
+                );
+                $this->load->library('upload');
+                $this->upload->initialize($config);
+
+                if ($this->upload->do_upload($file_key)) {
+                    $upload_data = $this->upload->data();
+
+                    // Delete old image
+                    $old = $this->contact_us_admin_model->get_by_id($id);
+                    if ($old && !empty($old['image'])) {
+                        $old_path = FCPATH . 'assets_system/images/' . $old['image'];
+                        if (file_exists($old_path)) {
+                            unlink($old_path);
+                        }
+                    }
+                    $data['image'] = $upload_data['file_name'];
+                } else {
+                    $errors[] = 'Image upload failed for item #' . $id . ': ' . $this->upload->display_errors('', '');
+                }
+            }
+
+            if ($this->contact_us_admin_model->save($data, $id)) {
+                $updated++;
+            }
+        }
+
+        if (!empty($errors)) {
+            echo json_encode(['success' => true, 'message' => $updated . ' items updated. Warnings: ' . implode('; ', $errors)]);
+        } else {
+            echo json_encode(['success' => true, 'message' => $updated . ' items updated successfully!']);
+        }
     }
 
     public function delete_contact($id)

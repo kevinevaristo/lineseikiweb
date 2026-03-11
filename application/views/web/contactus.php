@@ -1158,8 +1158,8 @@ body > div[style*="margin-top: 90px"] { display: none !important; }
                     </p>
                     <div class="map-wrapper">
                         <div class="ratio ratio-16x9">
-                            <iframe 
-                                src="https://www.google.com/maps?q=Line+Seiki+Philippines+Inc+Cavite+Economic+Zone&hl=en&z=18&output=embed"
+                            <iframe
+                                src="<?= !empty($map_embed_url) ? htmlspecialchars($map_embed_url) : 'https://www.google.com/maps?q=Line+Seiki+Philippines+Inc+Cavite+Economic+Zone&hl=en&z=18&output=embed' ?>"
                                 width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy">
                             </iframe>
                         </div>
