@@ -4785,7 +4785,8 @@ private function process_gallery_type($type, $filenames) {
         $config['max_size'] = 2048; // 2MB
         $config['encrypt_name'] = true; // Encrypt file name for security
 
-        $this->load->library('upload', $config);
+        $this->load->library('upload');
+        $this->upload->initialize($config);
 
         if ($this->upload->do_upload('image')) {
             $upload_data = $this->upload->data();
@@ -4866,7 +4867,8 @@ private function process_gallery_type($type, $filenames) {
         $config['max_size'] = 2048; // 2MB
         $config['encrypt_name'] = true; // Encrypt file name for security
 
-        $this->load->library('upload', $config);
+        $this->load->library('upload');
+        $this->upload->initialize($config);
 
         if ($this->upload->do_upload('image_file')) {
             $upload_data = $this->upload->data();
