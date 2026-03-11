@@ -120,10 +120,10 @@
                 </div>
             </div>
 
-            <!-- Top Pages -->
+            <!-- Referrer -->
             <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-6">
-                <h3 class="text-lg font-bold text-slate-800 mb-4">Top Pages</h3>
-                <div id="topPages" class="space-y-3">
+                <h3 class="text-lg font-bold text-slate-800 mb-4">Referrer</h3>
+                <div id="referrerStats" class="space-y-3">
                     <div class="flex items-center justify-center h-32 text-slate-400">
                         <svg class="animate-spin h-8 w-8" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                             <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
@@ -246,9 +246,9 @@ function fetchAdditionalAnalytics() {
                     renderBrowserStats(data.browser_stats);
                 }
                 
-                // Render top pages
-                if (data.top_pages) {
-                    renderTopPages(data.top_pages);
+                // Render referrer statistics
+                if (data.referrer_stats) {
+                    renderReferrerStats(data.referrer_stats);
                 }
                 
                 // Render visitor locations
@@ -346,33 +346,90 @@ function renderBrowserStats(browsers) {
     container.innerHTML = html;
 }
 
-function renderTopPages(pages) {
-    const container = document.getElementById('topPages');
-    
-    if (!pages || pages.length === 0) {
-        container.innerHTML = '<p class="text-sm text-slate-400 text-center py-8">No page data available</p>';
+function getReferrerInfo(referrer) {
+    const r = referrer.toLowerCase();
+    const knownSources = [
+        { keywords: ['facebook', 'fb.com', 'fbcdn'],    name: 'Facebook',  icon: 'fab fa-facebook-f',    color: '#1877F2' },
+        { keywords: ['instagram', 'ig.com'],             name: 'Instagram', icon: 'fab fa-instagram',     color: '#E4405F' },
+        { keywords: ['twitter', 't.co', 'x.com'],        name: 'X (Twitter)', icon: 'fab fa-x-twitter',  color: '#000000' },
+        { keywords: ['linkedin'],                         name: 'LinkedIn',  icon: 'fab fa-linkedin-in',  color: '#0A66C2' },
+        { keywords: ['youtube', 'youtu.be'],              name: 'YouTube',   icon: 'fab fa-youtube',      color: '#FF0000' },
+        { keywords: ['tiktok'],                            name: 'TikTok',    icon: 'fab fa-tiktok',       color: '#000000' },
+        { keywords: ['pinterest'],                         name: 'Pinterest', icon: 'fab fa-pinterest-p',  color: '#E60023' },
+        { keywords: ['reddit'],                            name: 'Reddit',    icon: 'fab fa-reddit-alien', color: '#FF4500' },
+        { keywords: ['whatsapp'],                          name: 'WhatsApp',  icon: 'fab fa-whatsapp',     color: '#25D366' },
+        { keywords: ['telegram', 't.me'],                  name: 'Telegram',  icon: 'fab fa-telegram-plane', color: '#26A5E4' },
+        { keywords: ['google'],                            name: 'Google',    icon: 'fab fa-google',       color: '#4285F4' },
+        { keywords: ['bing'],                              name: 'Bing',      icon: 'fab fa-microsoft',    color: '#008373' },
+        { keywords: ['yahoo'],                             name: 'Yahoo',     icon: 'fab fa-yahoo',        color: '#6001D2' },
+        { keywords: ['baidu'],                             name: 'Baidu',     icon: 'fas fa-search',       color: '#2319DC' },
+        { keywords: ['github'],                            name: 'GitHub',    icon: 'fab fa-github',       color: '#181717' },
+    ];
+
+    for (const source of knownSources) {
+        if (source.keywords.some(kw => r.includes(kw))) {
+            return { name: source.name, icon: source.icon, color: source.color };
+        }
+    }
+
+    // Fallback: extract clean domain name
+    let domain = referrer;
+    try {
+        const url = new URL(referrer);
+        domain = url.hostname.replace('www.', '').replace(/\.(com|net|org|io|co|me)$/i, '');
+        domain = domain.charAt(0).toUpperCase() + domain.slice(1);
+    } catch(e) {
+        domain = referrer;
+    }
+    return { name: domain, icon: 'fas fa-globe', color: '#64748b' };
+}
+
+function renderReferrerStats(referrers) {
+    const container = document.getElementById('referrerStats');
+
+    if (!referrers || referrers.length === 0) {
+        container.innerHTML = '<p class="text-sm text-slate-400 text-center py-8">No referrer data available</p>';
         return;
     }
-    
+
+    // Group referrers by detected name (merge same sources)
+    const grouped = {};
+    referrers.forEach(ref => {
+        const info = getReferrerInfo(ref.referrer);
+        if (!grouped[info.name]) {
+            grouped[info.name] = { count: 0, icon: info.icon, color: info.color, urls: [] };
+        }
+        grouped[info.name].count += parseInt(ref.count);
+        grouped[info.name].urls.push(ref.referrer);
+    });
+
+    // Sort by count descending
+    const sorted = Object.entries(grouped)
+        .sort((a, b) => b[1].count - a[1].count)
+        .slice(0, 5);
+
+    const total = sorted.reduce((sum, item) => sum + item[1].count, 0);
+
     let html = '';
-    pages.slice(0, 5).forEach(page => {
-        // Extract page name from URL
-        const url = new URL(page.page_url);
-        const pageName = url.pathname === '/' ? 'Home' : url.pathname.split('/').filter(Boolean).pop() || 'Unknown';
-        
+    sorted.forEach(([name, data]) => {
+        const percentage = ((data.count / total) * 100).toFixed(1);
+
         html += `
             <div class="flex items-center justify-between py-2 border-b border-slate-100 last:border-0">
                 <div class="flex items-center gap-2 flex-1 min-w-0">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-slate-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                    </svg>
-                    <span class="text-sm text-slate-700 truncate capitalize" title="${page.page_url}">${pageName}</span>
+                    <i class="${data.icon} flex-shrink-0" style="color: ${data.color}; font-size: 1rem; width: 18px; text-align: center;"></i>
+                    <span class="text-sm text-slate-700 truncate" style="max-width: 120px;" title="${data.urls.join('\n')}">${name}</span>
                 </div>
-                <span class="text-sm font-semibold text-slate-900 ml-2">${page.visit_count}</span>
+                <div class="flex items-center gap-2">
+                    <div class="w-16 bg-slate-100 rounded-full h-1.5">
+                        <div class="h-1.5 rounded-full" style="width: ${percentage}%; background-color: ${data.color};"></div>
+                    </div>
+                    <span class="text-xs font-semibold text-slate-600 w-8 text-right">${data.count.toLocaleString()}</span>
+                </div>
             </div>
         `;
     });
-    
+
     container.innerHTML = html;
 }
 

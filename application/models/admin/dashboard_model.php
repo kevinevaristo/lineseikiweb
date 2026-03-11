@@ -151,6 +151,7 @@ public function get_browser_statistics($limit = 5)
         $this->db->from('tbl_website_visits');
         $this->db->where('referrer IS NOT NULL');
         $this->db->where('referrer !=', '');
+        $this->db->not_like('referrer', 'lineseiki');
         $this->db->group_by('referrer');
         $this->db->order_by('count', 'DESC');
         $this->db->limit($limit);

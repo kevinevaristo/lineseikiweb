@@ -6,6 +6,7 @@
     <title>CMS Admin | Light Edition</title>
     <script src="<?php echo base_url('assets_system/vendor/tailwindcss/tailwind.min.js'); ?>"></script>
     <link href="<?php echo base_url('assets_system/vendor/google-fonts/inter/inter.css'); ?>" rel="stylesheet">
+    <link rel="stylesheet" href="<?php echo base_url('assets_system/vendor/fontawesome-6.5.0/css/all.min.css'); ?>">
     <style>
         body {
             font-family: 'Inter', sans-serif;
