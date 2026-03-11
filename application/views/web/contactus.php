@@ -152,11 +152,11 @@ hr {
 
 /* Modern Header Section with Background Image */
 .contact-hero {
-  background: 
+  background:
     /* Blue overlay */
     linear-gradient(135deg, rgba(15, 70, 123, 0.85) 50%, rgba(23, 162, 220, 0.75) 100%),
-    /* Background image */
-    url('<?= base_url('assets_system/images/newlaunch4.jpg') ?>') center/cover no-repeat;
+    /* Background image - dynamic from CMS */
+    url('<?= !empty($contact_hero_image) ? base_url('assets_system/images/' . $contact_hero_image) : base_url('assets_system/images/newlaunch4.jpg') ?>') center/cover no-repeat;
   color: white;
   padding: 150px 0 100px;
   position: relative;
@@ -1041,7 +1041,7 @@ body > div[style*="margin-top: 90px"] { display: none !important; }
   <!-- ✅ Modern Contact Sections -->
      <main>
         <!-- 1. Modern Header with Background Image -->
-        <section class="contact-hero" <?php echo !empty($contact_hero_title['image']) ? 'style="background-image: url(/assets_system/images/' . $contact_hero_title['image'] . ')"' : ''; ?>>
+        <section class="contact-hero">
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-lg-8 mx-auto text-center fade-in contact-hero-content">

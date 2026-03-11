@@ -183,6 +183,10 @@ class index extends CI_Controller
         // Get specific content for easier access in view
         $data['contact_hero_title'] = $this->get_content('Contact Hero Title');
         $data['contact_hero_desc'] = $this->get_content('Contact Hero Description');
+
+        // Get hero image from Contact Hero Title row
+        $hero_row = $this->contact_us_model->get_by_title('Contact Hero Title');
+        $data['contact_hero_image'] = ($hero_row && !empty($hero_row['image'])) ? $hero_row['image'] : '';
         $data['contact_info_title'] = $this->get_content('Contact Information Section Title');
         $data['contact_form_title'] = $this->get_content('Contact Form Section Title');
         $data['map_section_title'] = $this->get_content('Map Section Title');
