@@ -80,6 +80,60 @@ class admin_library_model extends CI_Model {
         return $this->db->delete('tbl_library');
     }
     
+    // ==================== WEBINAR METHODS ====================
+
+    /**
+     * Get all webinars
+     */
+    public function get_all_webinars() {
+        $this->db->order_by('id', 'ASC');
+        $query = $this->db->get('tbl_webinar');
+        return $query->result_array();
+    }
+
+    /**
+     * Get webinar by ID
+     */
+    public function get_webinar($id) {
+        $query = $this->db->get_where('tbl_webinar', array('id' => $id));
+        return $query->row_array();
+    }
+
+    /**
+     * Create new webinar
+     */
+    public function create_webinar($data) {
+        $this->db->insert('tbl_webinar', $data);
+        return $this->db->insert_id();
+    }
+
+    /**
+     * Update webinar
+     */
+    public function update_webinar($id, $data) {
+        $this->db->where('id', $id);
+        return $this->db->update('tbl_webinar', $data);
+    }
+
+    /**
+     * Delete webinar
+     */
+    public function delete_webinar($id) {
+        // First remove webinar_id from all library items linked to this webinar
+        $this->db->where('webinar_id', $id);
+        $this->db->update('tbl_library', array('webinar_id' => NULL));
+        // Then delete the webinar
+        $this->db->where('id', $id);
+        return $this->db->delete('tbl_webinar');
+    }
+
+    /**
+     * Count webinars
+     */
+    public function count_webinars() {
+        return $this->db->count_all('tbl_webinar');
+    }
+
     /**
      * Search resources
      */

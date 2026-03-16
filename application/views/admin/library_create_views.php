@@ -102,6 +102,25 @@
                             </div>
                         </div>
                         
+                        <!-- Webinar Assignment -->
+                        <div>
+                            <label class="block text-sm font-medium text-slate-700 mb-2">Assign to Webinar <span class="text-slate-400 font-normal">(optional)</span></label>
+                            <div class="flex gap-3">
+                                <select name="webinar_id" id="webinar_id" class="flex-1 px-4 py-2.5 border border-slate-300 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-sky-500">
+                                    <option value="0">— No Webinar —</option>
+                                    <?php if(isset($webinars) && !empty($webinars)): ?>
+                                        <?php foreach($webinars as $w): ?>
+                                            <option value="<?= $w['id'] ?>"><?= htmlspecialchars($w['webinar_title']) ?></option>
+                                        <?php endforeach; ?>
+                                    <?php endif; ?>
+                                </select>
+                                <a href="<?= site_url('cms/webinar_create') ?>" class="px-4 py-2.5 bg-emerald-600 text-white rounded-lg font-medium hover:bg-emerald-700 transition-colors flex items-center whitespace-nowrap">
+                                    <i class="fas fa-plus mr-2"></i> New Webinar
+                                </a>
+                            </div>
+                            <p class="text-xs text-slate-500 mt-2">Link this resource to a webinar series so it appears when users filter by that webinar.</p>
+                        </div>
+
                         <!-- Dynamic File Upload Sections -->
                         <div id="uploadSections">
                             <!-- Video External Section (Default) -->

@@ -47,6 +47,55 @@
                     </div>
                 </div>
 
+                <!-- Webinar Management Section (moved here for visibility) -->
+                <div class="bg-white rounded-2xl border border-slate-200 p-5 shadow-sm">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="text-xs font-bold text-slate-400 uppercase tracking-widest">Webinar Series</h3>
+                        <a href="<?= site_url('cms/webinar_create') ?>" class="text-xs bg-emerald-600 text-white px-3 py-1.5 rounded-lg font-semibold hover:bg-emerald-700 transition-colors">
+                            <i class="fas fa-plus mr-1"></i> Add
+                        </a>
+                    </div>
+                    <?php
+                    $webinars_list = isset($webinars) ? $webinars : $this->db->order_by('id', 'ASC')->get('tbl_webinar')->result_array();
+                    if (!empty($webinars_list)):
+                    ?>
+                    <div class="space-y-2">
+                        <?php foreach($webinars_list as $wb): ?>
+                        <div class="flex items-center justify-between p-3 bg-slate-50 rounded-lg border border-slate-100 hover:bg-slate-100 transition-colors group">
+                            <div class="flex items-center gap-3 min-w-0">
+                                <?php if(!empty($wb['main_image'])): ?>
+                                <img src="<?= base_url('assets_system/images/' . $wb['main_image']) ?>" class="w-10 h-10 rounded-lg object-cover border border-slate-200 flex-shrink-0" alt="">
+                                <?php else: ?>
+                                <div class="w-10 h-10 rounded-lg bg-emerald-100 flex items-center justify-center flex-shrink-0">
+                                    <i class="fas fa-video text-emerald-600 text-xs"></i>
+                                </div>
+                                <?php endif; ?>
+                                <div class="min-w-0">
+                                    <p class="text-xs font-bold text-slate-700 truncate"><?= htmlspecialchars($wb['webinar_title']) ?></p>
+                                    <p class="text-[10px] text-slate-400">ID: <?= $wb['id'] ?></p>
+                                </div>
+                            </div>
+                            <div class="flex gap-1">
+                                <a href="<?= site_url('cms/webinar_edit/' . $wb['id']) ?>" class="w-7 h-7 flex items-center justify-center rounded-lg bg-indigo-100 text-indigo-600 hover:bg-indigo-200 transition-colors" title="Edit">
+                                    <i class="fas fa-pen text-[10px]"></i>
+                                </a>
+                                <a href="<?= site_url('cms/webinar_delete/' . $wb['id']) ?>"
+                                   onclick="return confirm('Delete this webinar? Resources linked to it will be unlinked.')"
+                                   class="w-7 h-7 flex items-center justify-center rounded-lg bg-red-100 text-red-600 hover:bg-red-200 transition-colors" title="Delete">
+                                    <i class="fas fa-trash text-[10px]"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <?php endforeach; ?>
+                    </div>
+                    <?php else: ?>
+                    <div class="text-center py-6">
+                        <i class="fas fa-video text-slate-300 text-2xl mb-2"></i>
+                        <p class="text-xs text-slate-400">No webinars yet</p>
+                    </div>
+                    <?php endif; ?>
+                </div>
+
                 <div class="bg-slate-900 rounded-2xl p-5 shadow-xl text-white">
                     <h3 class="text-xs font-bold text-sky-400 uppercase mb-4">Featured Resource</h3>
                     <div class="p-3 bg-white/5 rounded-xl border border-white/10">
@@ -105,7 +154,7 @@
                         </div>
                     </a>
                 </div>
-                
+
             </div>
 <?php
 $current_type = $this->input->get('type') ?: 'all';
@@ -189,12 +238,20 @@ $current_type = $this->input->get('type') ?: 'all';
                                         <td class="px-6 py-4">
                                             <div class="text-sm font-bold text-slate-800"><?php echo $resource['title']; ?></div>
                                             <div class="text-[10px] text-slate-500">
-                                                <?php 
-                                                echo strlen($resource['content']) > 100 ? 
-                                                    substr($resource['content'], 0, 100) . '...' : 
-                                                    $resource['content']; 
+                                                <?php
+                                                echo strlen($resource['content']) > 100 ?
+                                                    substr($resource['content'], 0, 100) . '...' :
+                                                    $resource['content'];
                                                 ?>
                                             </div>
+                                            <?php if(!empty($resource['webinar_id'])):
+                                                $wb_title = $this->db->select('webinar_title')->where('id', $resource['webinar_id'])->get('tbl_webinar')->row();
+                                            ?>
+                                            <span class="inline-flex items-center gap-1 mt-1 px-2 py-0.5 bg-emerald-50 border border-emerald-200 text-emerald-700 rounded text-[9px] font-bold">
+                                                <i class="fas fa-video text-[8px]"></i>
+                                                <?= $wb_title ? htmlspecialchars($wb_title->webinar_title) : 'Webinar #' . $resource['webinar_id'] ?>
+                                            </span>
+                                            <?php endif; ?>
                                         </td>
                                         <td class="px-6 py-4">
                                             <span class="px-2 py-1 <?php echo $type_class; ?> rounded text-[9px] font-bold">

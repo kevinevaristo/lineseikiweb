@@ -4399,6 +4399,7 @@ private function process_gallery_type($type, $filenames) {
 
         // Get all resources
         $data['resources'] = $this->admin_library_model->get_all_items();
+        $data['webinars'] = $this->admin_library_model->get_all_webinars();
         $this->load->view('admin/library', $data);
     }
 
@@ -4460,12 +4461,14 @@ private function process_gallery_type($type, $filenames) {
                 // Note: video_file type is hidden in your form, so we're not handling it
     
                 // Prepare data for database
+                $webinar_id = $this->input->post('webinar_id');
                 $data = array(
                     'title' => $this->input->post('title'),
                     'content' => $this->input->post('content'),
                     'resource_type' => $resource_type, // 'Videos' or 'brochure'
+                    'webinar_id' => (!empty($webinar_id) && $webinar_id != '0') ? intval($webinar_id) : NULL,
                     'edited_by' => $this->session->userdata('admin_id'),
-                    'is_gated' => $this->input->post('is_gated') ? 1 : 0, 
+                    'is_gated' => $this->input->post('is_gated') ? 1 : 0,
                     'created_at' => date('Y-m-d H:i:s'),
                     'updated_at' => date('Y-m-d H:i:s')
                 );
@@ -4491,6 +4494,7 @@ private function process_gallery_type($type, $filenames) {
             }
         }
     
+        $data['webinars'] = $this->admin_library_model->get_all_webinars();
         $this->load->view('admin/header');
         $this->load->view('admin/library_create_views', $data);
     }
@@ -4650,12 +4654,14 @@ private function process_gallery_type($type, $filenames) {
                 }
                 
                 // ==================== PREPARE UPDATE DATA ====================
+                $webinar_id = $this->input->post('webinar_id');
                 $update_data = array(
                     'title' => $this->input->post('title'),
                     'content' => $content,
                     'image' => $image_name,
                     'pdf_file' => $pdf_file_name,
-                    'is_gated' => $this->input->post('is_gated') ? 1 : 0, // Add PDF file field
+                    'webinar_id' => (!empty($webinar_id) && $webinar_id != '0') ? intval($webinar_id) : NULL,
+                    'is_gated' => $this->input->post('is_gated') ? 1 : 0,
                     'video_url' => $video_url,
                     'edited_by' => $this->session->userdata('admin_id'),
                     'updated_at' => date('Y-m-d H:i:s')
@@ -4670,7 +4676,8 @@ private function process_gallery_type($type, $filenames) {
             }
         }
     
-        
+
+        $data['webinars'] = $this->admin_library_model->get_all_webinars();
         $this->load->view('admin/library_edit_views', $data);
     }
 
@@ -4730,6 +4737,158 @@ private function process_gallery_type($type, $filenames) {
 
         $this->load->view('admin/header');
         $this->load->view('admin/library', $data);
+    }
+
+    // ==================== WEBINAR MANAGEMENT ====================
+
+    /**
+     * Create a new webinar
+     */
+    public function webinar_create()
+    {
+        if ($_POST) {
+            $this->form_validation->set_rules('webinar_title', 'Webinar Title', 'required');
+
+            if ($this->form_validation->run() !== FALSE) {
+                $image_name = '';
+
+                // Handle main image upload
+                if (!empty($_FILES['main_image']['name'])) {
+                    $config['upload_path'] = FCPATH . 'assets_system/images/';
+                    $config['allowed_types'] = 'jpg|jpeg|png|gif|webp';
+                    $config['max_size'] = 2048;
+                    $config['encrypt_name'] = TRUE;
+
+                    $this->load->library('upload');
+                    $this->upload->initialize($config);
+
+                    if ($this->upload->do_upload('main_image')) {
+                        $upload_data = $this->upload->data();
+                        $image_name = $upload_data['file_name'];
+                    } else {
+                        $this->session->set_flashdata('error', 'Image upload failed: ' . $this->upload->display_errors('', ''));
+                        redirect('cms/webinar_create');
+                        return;
+                    }
+                } elseif ($this->input->post('main_image_url')) {
+                    $image_name = $this->input->post('main_image_url');
+                }
+
+                $data = array(
+                    'webinar_title' => $this->input->post('webinar_title'),
+                    'main_image' => $image_name,
+                    'description_1' => $this->input->post('description_1'),
+                    'description_2' => $this->input->post('description_2')
+                );
+
+                if ($this->admin_library_model->create_webinar($data)) {
+                    $this->session->set_flashdata('success', 'Webinar created successfully!');
+                    redirect('cms/library');
+                } else {
+                    $this->session->set_flashdata('error', 'Failed to create webinar.');
+                }
+            }
+        }
+
+        $data = array();
+        $this->load->view('admin/header');
+        $this->load->view('admin/webinar_create_views', $data);
+    }
+
+    /**
+     * Edit an existing webinar
+     */
+    public function webinar_edit($id)
+    {
+        $data['webinar'] = $this->admin_library_model->get_webinar($id);
+
+        if (!$data['webinar']) {
+            show_404();
+        }
+
+        if ($_POST) {
+            $this->form_validation->set_rules('webinar_title', 'Webinar Title', 'required');
+
+            if ($this->form_validation->run() !== FALSE) {
+                $image_name = $this->input->post('current_image');
+
+                // Handle image removal
+                if ($this->input->post('remove_image') == '1') {
+                    $image_name = '';
+                    if (!empty($data['webinar']['main_image']) && file_exists(FCPATH . 'assets_system/images/' . $data['webinar']['main_image'])) {
+                        unlink(FCPATH . 'assets_system/images/' . $data['webinar']['main_image']);
+                    }
+                }
+
+                // Handle new image upload
+                if (!empty($_FILES['main_image']['name'])) {
+                    $config['upload_path'] = FCPATH . 'assets_system/images/';
+                    $config['allowed_types'] = 'jpg|jpeg|png|gif|webp';
+                    $config['max_size'] = 2048;
+                    $config['encrypt_name'] = TRUE;
+
+                    $this->load->library('upload');
+                    $this->upload->initialize($config);
+
+                    if ($this->upload->do_upload('main_image')) {
+                        $upload_data = $this->upload->data();
+                        $image_name = $upload_data['file_name'];
+                        // Delete old image
+                        if (!empty($data['webinar']['main_image']) && file_exists(FCPATH . 'assets_system/images/' . $data['webinar']['main_image'])) {
+                            unlink(FCPATH . 'assets_system/images/' . $data['webinar']['main_image']);
+                        }
+                    } else {
+                        $this->session->set_flashdata('error', 'Image upload failed: ' . $this->upload->display_errors('', ''));
+                        redirect('cms/webinar_edit/' . $id);
+                        return;
+                    }
+                } elseif ($this->input->post('main_image_url')) {
+                    $image_name = $this->input->post('main_image_url');
+                }
+
+                $update_data = array(
+                    'webinar_title' => $this->input->post('webinar_title'),
+                    'main_image' => $image_name,
+                    'description_1' => $this->input->post('description_1'),
+                    'description_2' => $this->input->post('description_2')
+                );
+
+                if ($this->admin_library_model->update_webinar($id, $update_data)) {
+                    $this->session->set_flashdata('success', 'Webinar updated successfully!');
+                    redirect('cms/library');
+                } else {
+                    $this->session->set_flashdata('error', 'Failed to update webinar.');
+                }
+            }
+        }
+
+        $this->load->view('admin/header');
+        $this->load->view('admin/webinar_edit_views', $data);
+    }
+
+    /**
+     * Delete a webinar
+     */
+    public function webinar_delete($id)
+    {
+        $webinar = $this->admin_library_model->get_webinar($id);
+
+        if ($webinar) {
+            // Delete webinar image if exists
+            if (!empty($webinar['main_image']) && file_exists(FCPATH . 'assets_system/images/' . $webinar['main_image'])) {
+                unlink(FCPATH . 'assets_system/images/' . $webinar['main_image']);
+            }
+
+            if ($this->admin_library_model->delete_webinar($id)) {
+                $this->session->set_flashdata('success', 'Webinar deleted successfully!');
+            } else {
+                $this->session->set_flashdata('error', 'Failed to delete webinar.');
+            }
+        } else {
+            $this->session->set_flashdata('error', 'Webinar not found.');
+        }
+
+        redirect('cms/library');
     }
 
     // 9. Contact Us
