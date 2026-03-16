@@ -899,58 +899,161 @@ section img:hover {
 
 /* ===== WEBINAR SECTION ===== */
 .webinar-section {
-  padding: 100px 0 0;
+  padding: 100px 0;
   background: #fff;
+  position: relative;
+  overflow: visible;
 }
 
-.webinar-header {
-  display: flex;
-  align-items: flex-start;
-  justify-content: flex-start;
-  gap: 50px;
-  flex-wrap: wrap;
-  margin-bottom: 40px;
+.webinar-inner {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 48px;
+  margin: 0 auto;
 }
 
-.webinar-header-left small {
-  display: block;
-  color: var(--primary-blue);
-  font-size: 0.85rem;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  margin-bottom: 5px;
+.webinar-content {
+  position: relative;
+  text-align: center;
 }
 
-.webinar-header-left h1 {
-  color: var(--primary-blue);
+.webinar-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(15, 70, 123, 0.08);
+  padding: 7px 18px;
+  border-radius: 50px;
+  font-size: 0.7rem;
   font-weight: 700;
-  font-size: 3rem;
-  line-height: 1.1;
-  margin: 0;
-  max-width: 200px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 24px;
+  color: var(--newblue2);
 }
 
-.webinar-header-right {
-  flex: 1;
-  max-width: 700px;
+.webinar-badge i {
+  font-size: 0.4rem;
+  color: var(--newblue);
+  animation: webinar-pulse 2s ease-in-out infinite;
+}
+
+@keyframes webinar-pulse {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 1; }
+}
+
+.webinar-content h2 {
+  font-size: 2.6rem;
+  font-weight: 800;
+  line-height: 1.15;
+  margin: 0 0 0;
+  color: var(--newblue2);
+}
+
+.webinar-content h2::after {
+  display: none;
+}
+
+.webinar-accent {
+  display: block;
+  width: 50px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--newblue), var(--newblue2));
+  border-radius: 2px;
+  margin: 20px auto;
+}
+
+.webinar-content p {
   font-size: 1rem;
-  line-height: 1.6;
+  line-height: 1.8;
+  margin-bottom: 32px;
+  color: #555;
 }
 
-.webinar-header-right p {
-  margin-bottom: 8px;
-}
-
-.webinar-header-right strong {
+.webinar-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--newblue2);
+  color: #fff;
+  padding: 14px 32px;
+  border-radius: 12px;
   font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: var(--transition);
+  border: none;
 }
 
-.webinar-section img {
+.webinar-cta:hover {
+  background: var(--newblue);
+  color: #fff;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(15, 70, 123, 0.25);
+}
+
+.webinar-cta i {
+  transition: transform 0.3s ease;
+  font-size: 0.85rem;
+}
+
+.webinar-cta:hover i {
+  transform: translateX(5px);
+}
+
+.webinar-cta-wrap {
+  text-align: center;
+}
+
+/* Framed image */
+.webinar-img-wrap {
+  position: relative;
+  padding: 14px;
+  background: #fff;
+  border: 2px solid #e2e8f0;
+  border-radius: 20px;
+  box-shadow: 0 20px 60px rgba(15, 70, 123, 0.1), 0 4px 12px rgba(0, 0, 0, 0.04);
+  transition: var(--transition);
+}
+
+.webinar-img-wrap:hover {
+  box-shadow: 0 25px 70px rgba(15, 70, 123, 0.15), 0 6px 16px rgba(0, 0, 0, 0.06);
+  transform: translateY(-4px);
+}
+
+.webinar-img-wrap img {
   width: 100%;
-  max-width: 100%;
   height: auto;
-  border-radius: 10px;
-  margin-top: 20px;
+  display: block;
+  border-radius: 12px;
+  transition: transform 0.6s ease;
+}
+
+.webinar-img-wrap:hover img {
+  transform: scale(1.02);
+}
+
+/* Corner accent dots on frame */
+.webinar-img-wrap::before,
+.webinar-img-wrap::after {
+  content: '';
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--newblue);
+  opacity: 0.4;
+}
+
+.webinar-img-wrap::before {
+  top: -4px;
+  left: -4px;
+}
+
+.webinar-img-wrap::after {
+  bottom: -4px;
+  right: -4px;
 }
 
 /* ===== NEW TESTIMONIAL SECTION ===== */
@@ -1224,9 +1327,14 @@ footer .bottom a:hover {
     font-size: 2.4rem;
   }
   
-  .webinar-header-left h1 {
-    font-size: 2.5rem;
+  .webinar-content h2 {
+    font-size: 2.2rem;
   }
+
+  .webinar-inner {
+    gap: 40px;
+  }
+
   
   .capabilities-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -1353,16 +1461,17 @@ footer .bottom a:hover {
   }
   
   .webinar-section {
-    padding: 70px 0 0;
+    padding: 80px 0;
   }
-  
-  .webinar-header {
-    gap: 30px;
+
+  .webinar-inner {
+    gap: 36px;
   }
-  
-  .webinar-header-left h1 {
-    font-size: 2.2rem;
+
+  .webinar-content h2 {
+    font-size: 2rem;
   }
+
   
   .dropdown-submenu > .dropdown-menu {
     left: 0;
@@ -1538,23 +1647,26 @@ footer .bottom a:hover {
   }
   
   .webinar-section {
-    padding: 60px 0 0;
+    padding: 60px 0;
   }
-  
-  .webinar-header {
-    flex-direction: column;
-    gap: 20px;
+
+  .webinar-inner {
+    gap: 30px;
   }
-  
-  .webinar-header-left,
-  .webinar-header-right {
-    max-width: 100%;
+
+  .webinar-content h2 {
+    font-size: 1.8rem;
   }
-  
-  .webinar-header-left h1 {
-    font-size: 2rem;
-    max-width: 100%;
+
+  .webinar-content p {
+    font-size: 0.95rem;
   }
+
+  .webinar-cta {
+    padding: 13px 28px;
+    font-size: 0.9rem;
+  }
+
   
   .navbar-nav .nav-link {
     padding: 0.5rem 0.8rem;
@@ -1764,16 +1876,33 @@ footer .bottom a:hover {
   }
   
   .webinar-section {
-    padding: 50px 0 0;
+    padding: 50px 0;
   }
-  
-  .webinar-header-left h1 {
-    font-size: 1.8rem;
+
+  .webinar-content h2 {
+    font-size: 1.5rem;
   }
-  
-  .webinar-header-right p {
-    font-size: 0.95rem;
+
+  .webinar-content p {
+    font-size: 0.9rem;
+    margin-bottom: 24px;
   }
+
+  .webinar-badge {
+    font-size: 0.62rem;
+    padding: 5px 12px;
+    margin-bottom: 18px;
+  }
+
+  .webinar-cta {
+    padding: 12px 24px;
+    font-size: 0.85rem;
+  }
+
+  .webinar-img-wrap {
+    padding: 10px;
+  }
+
   
   .btn {
     padding: 0.7rem 1.5rem;
@@ -2085,30 +2214,42 @@ footer .bottom a:hover {
     </div>
 </section>
 
-<section class="container webinar-section">
-    <!-- HEADER TEXT -->
-    <div class="webinar-header">
-        <div class="webinar-header-left">
-            <small><?php echo isset($content['webinar_small_text']['content']) ? htmlspecialchars($content['webinar_small_text']['content']) : 'LATEST'; ?></small>
-            <h1 style="max-width: 200px;">
-                <?php 
-                if (isset($content['webinar_title']['content'])) {
-                    $title = $content['webinar_title']['content'];
-                    echo str_replace('<br>', '<br>', $title);
-                } else {
-                    echo 'Webinar Series';
-                }
+<section class="webinar-section">
+    <div class="container">
+        <div class="webinar-inner">
+            <div class="webinar-content">
+                <span class="webinar-badge">
+                    <i class="fas fa-circle"></i>
+                    <?php echo isset($content['webinar_small_text']['content']) ? htmlspecialchars($content['webinar_small_text']['content']) : 'FEATURED'; ?>
+                </span>
+                <h2>
+                    <?php
+                    if (isset($content['webinar_title']['content'])) {
+                        $title = $content['webinar_title']['content'];
+                        echo str_replace('<br>', ' ', $title);
+                    } else {
+                        echo 'Webinar Series';
+                    }
+                    ?>
+                </h2>
+                <span class="webinar-accent"></span>
+                <p><?php echo isset($content['webinar_description_1']['content']) ? htmlspecialchars($content['webinar_description_1']['content']) : 'Real-world engineering topics in Computer-Aided Design, Simulation, and Manufacturing — helping professionals understand how virtual testing improves reliability and accelerates product development.'; ?></p>
+            </div>
+            <div class="webinar-img-wrap">
+                <img src="<?php echo base_url('assets_system/images/' . (isset($content['webinar_image']['image']) ? $content['webinar_image']['image'] : 'newsim4.png')); ?>"
+                     alt="Webinar Image">
+            </div>
+            <div class="webinar-cta-wrap">
+                <?php
+                $wid = isset($featured_webinar['id']) ? $featured_webinar['id'] : 1;
+                $wname = isset($featured_webinar['webinar_title']) ? urlencode($featured_webinar['webinar_title']) : '';
                 ?>
-            </h1>
-        </div>
-        <div class="webinar-header-right">
-            <p><strong>Line Seiki</strong> <?php echo isset($content['webinar_description_1']['content']) ? htmlspecialchars($content['webinar_description_1']['content']) : 'hosts a regular webinar series featuring real-world engineering topics in Computer-Aided Design, Simulation, and Manufacturing.'; ?></p>
-            <p><?php echo isset($content['webinar_description_2']['content']) ? htmlspecialchars($content['webinar_description_2']['content']) : 'These sessions aim to help professionals and students understand how virtual testing improves reliability, reduces prototyping cost, and accelerates product development.'; ?></p>
+                <a href="<?php echo base_url('index/library?filter=webinars&wid=' . $wid . '&wname=' . $wname); ?>" class="webinar-cta">
+                    Browse Webinar Series <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
         </div>
     </div>
-    <img src="<?php echo base_url('assets_system/images/' . (isset($content['webinar_image']['image']) ? $content['webinar_image']['image'] : 'newsim4.png')); ?>" 
-         alt="Webinar Image" 
-         class="img-fluid">
 </section>
 
 <!-- ===== NEW TESTIMONIAL SECTION (with images from DB) ===== -->

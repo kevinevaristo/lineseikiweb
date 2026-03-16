@@ -828,6 +828,34 @@ document.addEventListener('DOMContentLoaded', function() {
     applyFilters();
   });
 
+  // Auto-activate webinars tab if ?filter=webinars in URL
+  const urlParams = new URLSearchParams(window.location.search);
+  if (urlParams.get('filter') === 'webinars' && webinarBtn) {
+    const wid = urlParams.get('wid');
+    const wname = urlParams.get('wname');
+    if (wid && wname) {
+      // Go directly to filtered resources for this webinar
+      filterByWebinar(parseInt(wid), decodeURIComponent(wname));
+      setTimeout(() => {
+        const grid = document.getElementById('resource-grid');
+        if (grid) grid.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 300);
+    } else if (urlParams.get('show') === 'all') {
+      // Show all resources directly (skip webinar list)
+      resourcesSection.style.display = 'block';
+      webinarsSection.classList.add('hidden-section');
+      document.querySelectorAll('.pill-btn').forEach(b => b.classList.remove('active'));
+      document.querySelector('.pill-btn[data-filter="all"]').classList.add('active');
+      applyFilters();
+      setTimeout(() => {
+        const grid = document.getElementById('resource-grid');
+        if (grid) grid.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 300);
+    } else {
+      webinarBtn.click();
+    }
+  }
+
   // ---------- modal data transfer ----------
   const downloadModal = document.getElementById('downloadModal');
   if(downloadModal) {

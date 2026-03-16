@@ -985,6 +985,9 @@ public function save_download_info() {
     $data['testimonials'] = $this->testimonial_model->get_all_testimonials();
     $data['capabilities'] = $this->simulation_model->get_all_capabilities();
     $data['benefits'] = $this->simulation_model->get_all_benefits();
+    // Get first webinar for featured CTA link
+    $first_webinar = $this->db->order_by('id', 'ASC')->limit(1)->get('tbl_webinar')->row_array();
+    $data['featured_webinar'] = $first_webinar;
     $this->load->view('web/ps_serv_simulation', $data);
   }
 
