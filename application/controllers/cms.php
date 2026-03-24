@@ -1642,6 +1642,14 @@ private function send_to_website_api($file_path, $filename)
         }
     }
 
+    // 5b. Handle CTA / Brochure Section
+    $cta_fields = ['cta_heading', 'cta_subtitle', 'cta_btn_primary', 'cta_btn_brochure', 'cta_brochure'];
+    foreach ($cta_fields as $field) {
+        $value = $this->input->post($field) ?: '';
+        $update = $this->cms_model->update_content($field, ['content' => $value]);
+        if (!$update) $success = false;
+    }
+
     // 6. Handle New Products Section
     $new_product_fields = [
         'new_badge' => 'new_badge',
@@ -3014,10 +3022,13 @@ public function upload_image_simul() {
                     'process_description' => $this->input->post('process_description'),
                     'process_step_1_title' => $this->input->post('process_step_1_title'),
                     'process_step_1_description' => $this->input->post('process_step_1_description'),
+                    'process_step_1_icon' => $this->input->post('process_step_1_icon'),
                     'process_step_2_title' => $this->input->post('process_step_2_title'),
                     'process_step_2_description' => $this->input->post('process_step_2_description'),
+                    'process_step_2_icon' => $this->input->post('process_step_2_icon'),
                     'process_step_3_title' => $this->input->post('process_step_3_title'),
                     'process_step_3_description' => $this->input->post('process_step_3_description'),
+                    'process_step_3_icon' => $this->input->post('process_step_3_icon'),
                     
                     // Benefits section
                     'benefit_1_title' => $this->input->post('benefit_1_title'),
@@ -4869,6 +4880,26 @@ private function process_gallery_type($type, $filenames) {
     /**
      * Delete a webinar
      */
+    /**
+     * Set a webinar as featured
+     */
+    public function webinar_set_featured($id)
+    {
+        $webinar = $this->admin_library_model->get_webinar($id);
+        if ($webinar) {
+            $this->admin_library_model->toggle_featured_webinar($id);
+            $is_now_featured = (isset($webinar['is_featured']) && $webinar['is_featured'] == 1) ? false : true;
+            if ($is_now_featured) {
+                $this->session->set_flashdata('success', '"' . $webinar['webinar_title'] . '" is now featured!');
+            } else {
+                $this->session->set_flashdata('success', '"' . $webinar['webinar_title'] . '" has been removed from featured.');
+            }
+        } else {
+            $this->session->set_flashdata('error', 'Webinar not found.');
+        }
+        redirect('cms/library');
+    }
+
     public function webinar_delete($id)
     {
         $webinar = $this->admin_library_model->get_webinar($id);
@@ -6505,6 +6536,61 @@ public function update_product_item($id) {
     }
 }
     
+    /**
+     * Upload a downloadable file (AJAX endpoint)
+     */
+    public function upload_download_file()
+    {
+        header('Content-Type: application/json');
+
+        if (!isset($_FILES['download_file']) || $_FILES['download_file']['error'] !== 0) {
+            echo json_encode(array('success' => false, 'message' => 'No file uploaded.'));
+            return;
+        }
+
+        $upload_path = FCPATH . 'assets_system/documents/';
+        if (!is_dir($upload_path)) {
+            mkdir($upload_path, 0755, true);
+        }
+
+        $config = array(
+            'upload_path'   => $upload_path,
+            'allowed_types' => 'pdf|doc|docx|xls|xlsx|zip|rar|jpg|jpeg|png|gif|webp',
+            'max_size'      => 10240, // 10MB
+            'encrypt_name'  => TRUE
+        );
+
+        $this->load->library('upload');
+        $this->upload->initialize($config);
+
+        if ($this->upload->do_upload('download_file')) {
+            $data = $this->upload->data();
+            $original_name = $_FILES['download_file']['name'];
+
+            // Format file size
+            $size = $data['file_size']; // in KB
+            if ($size >= 1024) {
+                $file_size = round($size / 1024, 1) . ' MB';
+            } else {
+                $file_size = round($size, 0) . ' KB';
+            }
+
+            echo json_encode(array(
+                'success'       => true,
+                'file_url'      => 'assets_system/documents/' . $data['file_name'],
+                'file_name'     => $data['file_name'],
+                'original_name' => $original_name,
+                'file_size'     => $file_size,
+                'file_type'     => $data['file_ext']
+            ));
+        } else {
+            echo json_encode(array(
+                'success' => false,
+                'message' => strip_tags($this->upload->display_errors())
+            ));
+        }
+    }
+
     /**
      * Process application image uploads from the form
      */

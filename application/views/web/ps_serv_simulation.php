@@ -1004,6 +1004,41 @@ section img:hover {
 
 .webinar-cta-wrap {
   text-align: center;
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.webinar-cta-register {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: #fff;
+  color: var(--newblue2);
+  border: 2px solid var(--newblue2);
+  padding: 12px 32px;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.webinar-cta-register:hover {
+  background: var(--newblue2);
+  color: #fff;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(15, 70, 123, 0.25);
+}
+
+.webinar-cta-register i {
+  transition: transform 0.3s ease;
+  font-size: 0.85rem;
+}
+
+.webinar-cta-register:hover i {
+  transform: translateX(5px);
 }
 
 /* Framed image */
@@ -2141,8 +2176,14 @@ footer .bottom a:hover {
                             <?php foreach ($slide_items as $item): ?>
                             <div class="col-md-6">
                                 <div class="simulation-card h-100 shadow-sm">
-                                    <img src="<?php echo base_url('assets_system/images/' . $item->main_image); ?>" 
-                                         class="card-img-top" alt="Simulation">
+                                    <?php if(!empty($item->main_image)): ?>
+                                    <img src="<?php echo base_url('assets_system/images/' . $item->main_image); ?>"
+                                         class="card-img-top" alt="<?php echo htmlspecialchars($item->title); ?>"
+                                         onerror="this.src='<?php echo base_url('assets_system/images/no-image.png'); ?>'">
+                                    <?php else: ?>
+                                    <img src="<?php echo base_url('assets_system/images/no-image.png'); ?>"
+                                         class="card-img-top" alt="<?php echo htmlspecialchars($item->title); ?>">
+                                    <?php endif; ?>
                                     <div class="card-body">
                                         <h5 class="fw-bold"><?php echo htmlspecialchars($item->title); ?></h5>
                                         <p class="text-light small">
@@ -2184,14 +2225,17 @@ footer .bottom a:hover {
 
         <div class="d-flex justify-content-center align-items-stretch flex-wrap">
             <?php
-            $process_icons = ['bi-diagram-3', 'bi-graph-up', 'bi-person-check'];
+            $default_icons = array(1 => 'bi-diagram-3', 2 => 'bi-graph-up', 3 => 'bi-person-check');
             for ($i = 1; $i <= 3; $i++):
+                $step_icon = isset($content["process_step_{$i}_icon"]['content']) && !empty($content["process_step_{$i}_icon"]['content'])
+                    ? $content["process_step_{$i}_icon"]['content']
+                    : $default_icons[$i];
             ?>
             <!-- Step <?php echo $i; ?> -->
             <div class="col-12 col-md-3 d-flex flex-column px-3 mb-4">
                 <div class="process-step-card h-100 d-flex flex-column">
                     <div class="process-icon bg-primary text-white mx-auto mb-3">
-                        <i class="<?php echo $process_icons[$i-1]; ?> fs-1"></i>
+                        <i class="<?php echo htmlspecialchars($step_icon); ?> fs-1"></i>
                     </div>
                     <h5 class="fw-bold">
                         <?php echo isset($content["process_step_{$i}_title"]['content']) ? htmlspecialchars($content["process_step_{$i}_title"]['content']) : 'Step ' . $i; ?>
@@ -2214,6 +2258,17 @@ footer .bottom a:hover {
     </div>
 </section>
 
+<?php
+// Support both old single and new multiple featured webinars
+$featured_list = array();
+if (isset($featured_webinars) && !empty($featured_webinars)) {
+    $featured_list = $featured_webinars;
+} elseif (isset($featured_webinar) && !empty($featured_webinar)) {
+    $featured_list = array($featured_webinar);
+}
+?>
+<?php if(!empty($featured_list)): ?>
+<?php foreach($featured_list as $fw): ?>
 <section class="webinar-section">
     <div class="container">
         <div class="webinar-inner">
@@ -2222,35 +2277,35 @@ footer .bottom a:hover {
                     <i class="fas fa-circle"></i>
                     <?php echo isset($content['webinar_small_text']['content']) ? htmlspecialchars($content['webinar_small_text']['content']) : 'FEATURED'; ?>
                 </span>
-                <h2>
-                    <?php
-                    if (isset($content['webinar_title']['content'])) {
-                        $title = $content['webinar_title']['content'];
-                        echo str_replace('<br>', ' ', $title);
-                    } else {
-                        echo 'Webinar Series';
-                    }
-                    ?>
-                </h2>
+                <h2><?php echo htmlspecialchars($fw['webinar_title']); ?></h2>
                 <span class="webinar-accent"></span>
-                <p><?php echo isset($content['webinar_description_1']['content']) ? htmlspecialchars($content['webinar_description_1']['content']) : 'Real-world engineering topics in Computer-Aided Design, Simulation, and Manufacturing — helping professionals understand how virtual testing improves reliability and accelerates product development.'; ?></p>
+                <?php if(isset($fw['description_1']) && !empty($fw['description_1'])): ?>
+                <p><?php echo htmlspecialchars($fw['description_1']); ?></p>
+                <?php endif; ?>
+                <?php if(isset($fw['description_2']) && !empty($fw['description_2'])): ?>
+                <p><?php echo htmlspecialchars($fw['description_2']); ?></p>
+                <?php endif; ?>
             </div>
             <div class="webinar-img-wrap">
-                <img src="<?php echo base_url('assets_system/images/' . (isset($content['webinar_image']['image']) ? $content['webinar_image']['image'] : 'newsim4.png')); ?>"
-                     alt="Webinar Image">
+                <?php if(!empty($fw['main_image'])): ?>
+                <img src="<?php echo base_url('assets_system/images/' . $fw['main_image']); ?>" alt="<?php echo htmlspecialchars($fw['webinar_title']); ?>">
+                <?php else: ?>
+                <img src="<?php echo base_url('assets_system/images/' . (isset($content['webinar_image']['image']) ? $content['webinar_image']['image'] : 'newsim4.png')); ?>" alt="Webinar Image">
+                <?php endif; ?>
             </div>
             <div class="webinar-cta-wrap">
-                <?php
-                $wid = isset($featured_webinar['id']) ? $featured_webinar['id'] : 1;
-                $wname = isset($featured_webinar['webinar_title']) ? urlencode($featured_webinar['webinar_title']) : '';
-                ?>
-                <a href="<?php echo base_url('index/library?filter=webinars&wid=' . $wid . '&wname=' . $wname); ?>" class="webinar-cta">
+                <a href="<?php echo base_url('index/library?filter=webinars&wid=' . $fw['id'] . '&wname=' . urlencode($fw['webinar_title'])); ?>" class="webinar-cta">
                     Browse Webinar Series <i class="fas fa-arrow-right"></i>
+                </a>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSf8yEyeQa9vCQuV9o40frTqXtjT-o6OcCw9-UJFBG7805VicA/viewform" target="_blank" rel="noopener noreferrer" class="webinar-cta-register">
+                    Register <i class="fas fa-external-link-alt"></i>
                 </a>
             </div>
         </div>
     </div>
 </section>
+<?php endforeach; ?>
+<?php endif; ?>
 
 <!-- ===== NEW TESTIMONIAL SECTION (with images from DB) ===== -->
 <?php

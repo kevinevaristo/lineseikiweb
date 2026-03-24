@@ -535,6 +535,7 @@
         <span class="pill-btn active" data-filter="all">All</span>
         <span class="pill-btn" data-filter="video">Videos</span>
         <span class="pill-btn" data-filter="brochure">PDFs</span>
+        <span class="pill-btn" data-filter="case_study"><i class="fas fa-flask me-1"></i> Case Studies</span>
         <span class="pill-btn" id="webinarsFilterBtn" data-filter="webinars"><i class="fas fa-video me-1"></i> Webinars</span>
       </div>
 
@@ -669,6 +670,34 @@
           </div>
           <?php endforeach; endif; ?>
 
+          <!-- CASE STUDY ITEMS (from simulation content) -->
+          <?php if(isset($case_study_items) && !empty($case_study_items)):
+            foreach($case_study_items as $item):
+              $cs_description = !empty($item['abstract']) ? $item['abstract'] : '';
+          ?>
+          <div class="video-card case-study-card mix-item" data-category="case_study" data-webinar-id="0">
+            <div class="video-thumb">
+              <?php if(!empty($item['main_image'])): ?>
+                <img src="<?= base_url('assets_system/images/'.$item['main_image']) ?>" alt="<?= htmlspecialchars($item['title']) ?>"
+                     onerror="this.src='<?= base_url('assets_system/images/no-image.png') ?>'">
+              <?php else: ?>
+                <div style="width:100%;height:100%; background:var(--navy-soft); display:flex; align-items:center; justify-content:center; color:var(--navy);"><i class="fas fa-microscope fa-3x"></i></div>
+              <?php endif; ?>
+              <span class="thumb-duration" style="background: linear-gradient(135deg, #10b981, #059669);">Case Study</span>
+            </div>
+            <div class="video-info">
+              <div class="video-avatar" style="background: linear-gradient(135deg, #10b981, #059669);"><i class="fas fa-flask"></i></div>
+              <div class="video-details">
+                <h6><?= htmlspecialchars($item['title']) ?></h6>
+                <div class="video-meta"><?= htmlspecialchars(substr($cs_description, 0, 80)) ?>…</div>
+              </div>
+            </div>
+            <a href="<?= base_url('index/ps_contents/' . $item['id']) ?>" class="btn btn-sm mt-2 w-100" style="background:var(--navy); color:white; border-radius:30px;">
+              <i class="fas fa-book-open me-2"></i>Read Case Study
+            </a>
+          </div>
+          <?php endforeach; endif; ?>
+
         </div> <!-- end video-grid -->
       </div> <!-- end resourcesSection -->
 
@@ -695,7 +724,18 @@
           <div class="col-6 mb-3"><label class="form-label">Company</label><input class="form-control adv-form-control" required></div>
           <div class="col-6 mb-3"><label class="form-label">Position</label><input class="form-control adv-form-control" required></div>
         </div>
-        <button type="submit" class="btn w-100" style="background:var(--navy); color:white;">Submit & download</button>
+        <div class="mb-3">
+          <p class="small text-muted mb-2" style="font-size: 0.8rem; line-height: 1.4;">
+            By submitting this form, you consent to the collection and processing of your personal data in accordance with our privacy policy. Your information will be used solely for the purpose of providing the requested resource and will not be shared with third parties without your consent.
+          </p>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="privacyCheckDownload" required>
+            <label class="form-check-label small" for="privacyCheckDownload">
+              I have read and agree to the <a href="<?php echo base_url('privacy-policy'); ?>" target="_blank" style="color:var(--navy); text-decoration:underline;">Data Privacy Notice</a>.
+            </label>
+          </div>
+        </div>
+        <button type="submit" class="btn w-100" id="btnSubmitDownload" style="background:var(--navy); color:white;" disabled>Submit & download</button>
       </div>
     </form>
   </div>
@@ -720,7 +760,18 @@
           <div class="col-6 mb-3"><label class="form-label">Company</label><input class="form-control adv-form-control" required></div>
           <div class="col-6 mb-3"><label class="form-label">Position</label><input class="form-control adv-form-control" required></div>
         </div>
-        <button type="submit" class="btn w-100" style="background:var(--navy); color:white;">Submit & watch</button>
+        <div class="mb-3">
+          <p class="small text-muted mb-2" style="font-size: 0.8rem; line-height: 1.4;">
+            By submitting this form, you consent to the collection and processing of your personal data in accordance with our privacy policy. Your information will be used solely for the purpose of providing the requested resource and will not be shared with third parties without your consent.
+          </p>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="privacyCheckVideo" required>
+            <label class="form-check-label small" for="privacyCheckVideo">
+              I have read and agree to the <a href="<?php echo base_url('privacy-policy'); ?>" target="_blank" style="color:var(--navy); text-decoration:underline;">Data Privacy Notice</a>.
+            </label>
+          </div>
+        </div>
+        <button type="submit" class="btn w-100" id="btnSubmitVideo" style="background:var(--navy); color:white;" disabled>Submit & watch</button>
       </div>
     </form>
   </div>
@@ -855,6 +906,26 @@ document.addEventListener('DOMContentLoaded', function() {
       webinarBtn.click();
     }
   }
+
+  // ---------- privacy checkbox toggle ----------
+  document.getElementById('privacyCheckDownload')?.addEventListener('change', function() {
+    document.getElementById('btnSubmitDownload').disabled = !this.checked;
+  });
+  document.getElementById('privacyCheckVideo')?.addEventListener('change', function() {
+    document.getElementById('btnSubmitVideo').disabled = !this.checked;
+  });
+
+  // Reset checkbox & disable button when modals close
+  document.getElementById('downloadModal')?.addEventListener('hidden.bs.modal', function() {
+    const cb = document.getElementById('privacyCheckDownload');
+    cb.checked = false;
+    document.getElementById('btnSubmitDownload').disabled = true;
+  });
+  document.getElementById('videoModal')?.addEventListener('hidden.bs.modal', function() {
+    const cb = document.getElementById('privacyCheckVideo');
+    cb.checked = false;
+    document.getElementById('btnSubmitVideo').disabled = true;
+  });
 
   // ---------- modal data transfer ----------
   const downloadModal = document.getElementById('downloadModal');

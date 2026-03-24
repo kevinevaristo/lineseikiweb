@@ -427,29 +427,79 @@ Each specification should be on a new line with a colon separating key and value
                         <div class="download-item border border-slate-300 rounded-lg p-4 bg-slate-50">
                             <div class="flex justify-between items-center mb-3">
                                 <h4 class="font-medium text-slate-800">Download <span class="dl-number">1</span></h4>
-                                <button type="button" onclick="removeDownload(this)" 
+                                <button type="button" onclick="removeDownload(this)"
                                         class="text-red-600 hover:text-red-800">
                                     <i class="fas fa-trash"></i>
                                 </button>
                             </div>
-                            
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+                            <div class="space-y-4">
                                 <div>
                                     <label class="block text-sm font-medium text-slate-700 mb-1">Label *</label>
-                                    <input type="text" 
+                                    <input type="text"
                                         class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none download-label"
                                         placeholder="Catalog(EN)" required>
                                 </div>
-                                
+
+                                <!-- Upload or URL toggle -->
                                 <div>
-                                    <label class="block text-sm font-medium text-slate-700 mb-1">URL *</label>
-                                    <input type="url" 
-                                        class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none download-url"
-                                        placeholder="https://example.com/catalog.pdf" required>
+                                    <label class="block text-sm font-medium text-slate-700 mb-2">File Source</label>
+                                    <div class="flex gap-2 mb-3">
+                                        <button type="button" onclick="toggleDownloadMode(this, 'upload')"
+                                                class="dl-mode-btn dl-mode-upload px-3 py-1.5 text-sm rounded-lg border font-medium transition-colors bg-indigo-600 text-white border-indigo-600">
+                                            <i class="fas fa-upload mr-1"></i> Upload File
+                                        </button>
+                                        <button type="button" onclick="toggleDownloadMode(this, 'url')"
+                                                class="dl-mode-btn dl-mode-url px-3 py-1.5 text-sm rounded-lg border font-medium transition-colors bg-white text-slate-600 border-slate-300 hover:bg-slate-50">
+                                            <i class="fas fa-link mr-1"></i> Enter URL
+                                        </button>
+                                    </div>
+
+                                    <!-- File Upload Area -->
+                                    <div class="dl-upload-area">
+                                        <div class="border-2 border-dashed border-slate-300 rounded-lg p-4 text-center hover:border-indigo-400 transition-colors cursor-pointer dl-dropzone"
+                                             onclick="this.querySelector('.dl-file-input').click()">
+                                            <i class="fas fa-cloud-upload-alt text-slate-400 text-2xl mb-2"></i>
+                                            <p class="text-sm text-slate-600">Click to upload or drag & drop</p>
+                                            <p class="text-xs text-slate-400 mt-1">PDF, DOC, DOCX, XLS, XLSX, ZIP, JPG, PNG (Max 10MB)</p>
+                                            <input type="file" class="hidden dl-file-input" accept=".pdf,.doc,.docx,.xls,.xlsx,.zip,.rar,.jpg,.jpeg,.png,.gif,.webp"
+                                                   onchange="handleDownloadFileSelect(this)">
+                                        </div>
+                                        <!-- Upload progress -->
+                                        <div class="dl-upload-progress hidden mt-2">
+                                            <div class="flex items-center gap-2">
+                                                <div class="flex-1 bg-slate-200 rounded-full h-2">
+                                                    <div class="bg-indigo-600 h-2 rounded-full transition-all dl-progress-bar" style="width: 0%"></div>
+                                                </div>
+                                                <span class="text-xs text-slate-500 dl-progress-text">0%</span>
+                                            </div>
+                                        </div>
+                                        <!-- Uploaded file info -->
+                                        <div class="dl-file-info hidden mt-2 p-3 bg-green-50 border border-green-200 rounded-lg">
+                                            <div class="flex items-center justify-between">
+                                                <div class="flex items-center gap-2">
+                                                    <i class="fas fa-file-alt text-green-600"></i>
+                                                    <span class="text-sm text-green-700 dl-file-name font-medium"></span>
+                                                    <span class="text-xs text-green-500 dl-file-size"></span>
+                                                </div>
+                                                <button type="button" onclick="removeUploadedFile(this)" class="text-red-500 hover:text-red-700 text-xs">
+                                                    <i class="fas fa-times mr-1"></i>Remove
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- URL Input Area (hidden by default) -->
+                                    <div class="dl-url-area hidden">
+                                        <input type="url"
+                                            class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none download-url"
+                                            placeholder="https://example.com/catalog.pdf">
+                                    </div>
                                 </div>
-                                
-                                <!-- Hidden icon input -->
+
+                                <!-- Hidden fields -->
                                 <input type="hidden" class="download-icon" value="fas fa-file-pdf">
+                                <input type="hidden" class="download-url-final" value="">
                             </div>
                         </div>
                     </template>
@@ -782,28 +832,50 @@ let dlCount = 0;
 function addDownload(dl = null, isManualAdd = false) {
     const template = document.getElementById('downloadTemplate');
     const container = document.getElementById('downloadsContainer');
-    
+
     if (!template || !container) {
         console.error('Download template or container not found');
         return;
     }
-    
+
     const clone = template.content.cloneNode(true);
     dlCount++;
     const dlItem = clone.querySelector('.download-item');
     dlItem.querySelector('.dl-number').textContent = dlCount;
-    
+
     // Set values if provided
     if (dl) {
         const labelInput = dlItem.querySelector('.download-label');
-        const urlInput = dlItem.querySelector('.download-url');
+        const urlFinal = dlItem.querySelector('.download-url-final');
         const iconInput = dlItem.querySelector('.download-icon');
-        
+
         if (labelInput && dl.label) labelInput.value = dl.label;
-        if (urlInput && dl.url) urlInput.value = dl.url;
+        if (urlFinal && dl.url) urlFinal.value = dl.url;
         if (iconInput && dl.icon) iconInput.value = dl.icon;
+
+        // If existing download has a URL, show it in URL mode with file info
+        if (dl.url) {
+            const fileName = dl.url.split('/').pop();
+            const isLocalFile = dl.url.startsWith('assets_system/') || dl.url.includes('/assets_system/');
+            if (isLocalFile) {
+                // Show as uploaded file
+                const fileInfo = dlItem.querySelector('.dl-file-info');
+                const dropzone = dlItem.querySelector('.dl-dropzone');
+                if (fileInfo) {
+                    fileInfo.querySelector('.dl-file-name').textContent = fileName;
+                    fileInfo.querySelector('.dl-file-size').textContent = '(uploaded)';
+                    fileInfo.classList.remove('hidden');
+                }
+                if (dropzone) dropzone.classList.add('hidden');
+            } else {
+                // Show in URL mode
+                toggleDownloadMode(dlItem.querySelector('.dl-mode-url'), 'url');
+                const urlInput = dlItem.querySelector('.download-url');
+                if (urlInput) urlInput.value = dl.url;
+            }
+        }
     }
-    
+
     container.appendChild(dlItem);
     return dlItem;
 }
@@ -811,15 +883,130 @@ function addDownload(dl = null, isManualAdd = false) {
 function removeDownload(button) {
     const item = button.closest('.download-item');
     if (!item) return;
-    
+
     item.remove();
     dlCount--;
-    
+
     // Re-number downloads
     const items = document.querySelectorAll('#downloadsContainer .download-item');
     items.forEach((item, index) => {
         item.querySelector('.dl-number').textContent = index + 1;
     });
+}
+
+// Toggle between Upload and URL mode
+function toggleDownloadMode(btn, mode) {
+    const item = btn.closest('.download-item');
+    const uploadArea = item.querySelector('.dl-upload-area');
+    const urlArea = item.querySelector('.dl-url-area');
+    const uploadBtn = item.querySelector('.dl-mode-upload');
+    const urlBtn = item.querySelector('.dl-mode-url');
+
+    if (mode === 'upload') {
+        uploadArea.classList.remove('hidden');
+        urlArea.classList.add('hidden');
+        uploadBtn.className = 'dl-mode-btn dl-mode-upload px-3 py-1.5 text-sm rounded-lg border font-medium transition-colors bg-indigo-600 text-white border-indigo-600';
+        urlBtn.className = 'dl-mode-btn dl-mode-url px-3 py-1.5 text-sm rounded-lg border font-medium transition-colors bg-white text-slate-600 border-slate-300 hover:bg-slate-50';
+    } else {
+        uploadArea.classList.add('hidden');
+        urlArea.classList.remove('hidden');
+        urlBtn.className = 'dl-mode-btn dl-mode-url px-3 py-1.5 text-sm rounded-lg border font-medium transition-colors bg-indigo-600 text-white border-indigo-600';
+        uploadBtn.className = 'dl-mode-btn dl-mode-upload px-3 py-1.5 text-sm rounded-lg border font-medium transition-colors bg-white text-slate-600 border-slate-300 hover:bg-slate-50';
+    }
+}
+
+// Handle file selection and upload
+function handleDownloadFileSelect(input) {
+    const file = input.files[0];
+    if (!file) return;
+
+    const item = input.closest('.download-item');
+    const maxSize = 10 * 1024 * 1024; // 10MB
+
+    if (file.size > maxSize) {
+        alert('File size must be less than 10MB');
+        input.value = '';
+        return;
+    }
+
+    // Show progress
+    const progressWrap = item.querySelector('.dl-upload-progress');
+    const progressBar = item.querySelector('.dl-progress-bar');
+    const progressText = item.querySelector('.dl-progress-text');
+    const dropzone = item.querySelector('.dl-dropzone');
+    const fileInfo = item.querySelector('.dl-file-info');
+
+    progressWrap.classList.remove('hidden');
+    dropzone.classList.add('hidden');
+
+    // Upload via AJAX
+    const formData = new FormData();
+    formData.append('download_file', file);
+
+    const xhr = new XMLHttpRequest();
+    xhr.open('POST', '<?= site_url("cms/upload_download_file") ?>', true);
+
+    xhr.upload.onprogress = function(e) {
+        if (e.lengthComputable) {
+            const pct = Math.round((e.loaded / e.total) * 100);
+            progressBar.style.width = pct + '%';
+            progressText.textContent = pct + '%';
+        }
+    };
+
+    xhr.onload = function() {
+        progressWrap.classList.add('hidden');
+        try {
+            const res = JSON.parse(xhr.responseText);
+            if (res.success) {
+                // Show file info
+                fileInfo.querySelector('.dl-file-name').textContent = res.original_name;
+                fileInfo.querySelector('.dl-file-size').textContent = '(' + res.file_size + ')';
+                fileInfo.classList.remove('hidden');
+
+                // Set the URL to the uploaded file path
+                item.querySelector('.download-url-final').value = res.file_url;
+
+                // Auto-detect icon
+                const ext = res.original_name.split('.').pop().toLowerCase();
+                const iconMap = {pdf:'fas fa-file-pdf', doc:'fas fa-file-word', docx:'fas fa-file-word', xls:'fas fa-file-excel', xlsx:'fas fa-file-excel', zip:'fas fa-file-archive', rar:'fas fa-file-archive'};
+                item.querySelector('.download-icon').value = iconMap[ext] || 'fas fa-file-alt';
+
+                // Auto-fill label if empty
+                const labelInput = item.querySelector('.download-label');
+                if (!labelInput.value.trim()) {
+                    labelInput.value = res.original_name;
+                }
+            } else {
+                alert('Upload failed: ' + (res.message || 'Unknown error'));
+                dropzone.classList.remove('hidden');
+            }
+        } catch(e) {
+            alert('Upload failed. Please try again.');
+            dropzone.classList.remove('hidden');
+        }
+    };
+
+    xhr.onerror = function() {
+        progressWrap.classList.add('hidden');
+        dropzone.classList.remove('hidden');
+        alert('Upload failed. Please check your connection.');
+    };
+
+    xhr.send(formData);
+}
+
+// Remove uploaded file and reset
+function removeUploadedFile(btn) {
+    const item = btn.closest('.download-item');
+    const dropzone = item.querySelector('.dl-dropzone');
+    const fileInfo = item.querySelector('.dl-file-info');
+    const fileInput = item.querySelector('.dl-file-input');
+
+    fileInfo.classList.add('hidden');
+    dropzone.classList.remove('hidden');
+    fileInput.value = '';
+    item.querySelector('.download-url-final').value = '';
 }
 
 // Image Upload Functions
@@ -1085,9 +1272,12 @@ async function saveProduct() {
         const downloads = [];
         document.querySelectorAll('#downloadsContainer .download-item').forEach((item, index) => {
             const label = item.querySelector('.download-label')?.value.trim() || '';
-            const url = item.querySelector('.download-url')?.value.trim() || '';
+            // Get URL from either the uploaded file or the manual URL input
+            const urlFinal = item.querySelector('.download-url-final')?.value.trim() || '';
+            const urlManual = item.querySelector('.download-url')?.value.trim() || '';
+            const url = urlFinal || urlManual;
             const icon = item.querySelector('.download-icon')?.value || 'fas fa-file-pdf';
-            
+
             if (label && url) {
                 downloads.push({
                     label: label,
@@ -1096,7 +1286,7 @@ async function saveProduct() {
                 });
             }
         });
-        
+
         // Add downloads JSON to FormData
         formData.append('downloads_data', JSON.stringify(downloads));
         

@@ -111,6 +111,35 @@
                             </ul>
                         </div>
 
+                        <!-- Featured Toggle -->
+                        <?php if(!empty($webinar['is_featured']) && $webinar['is_featured'] == 1): ?>
+                        <div class="bg-amber-50 border border-amber-200 rounded-xl p-5">
+                            <div class="flex items-center gap-2 mb-2">
+                                <i class="fas fa-star text-amber-500"></i>
+                                <h3 class="text-sm font-bold text-amber-700">Featured Webinar</h3>
+                            </div>
+                            <p class="text-xs text-amber-600 mb-3">This webinar is currently displayed on the Simulation page.</p>
+                            <a href="<?= site_url('cms/webinar_set_featured/' . $webinar['id']) ?>"
+                               onclick="return confirm('Remove this webinar from featured?')"
+                               class="w-full px-4 py-2 bg-amber-100 text-amber-700 border border-amber-300 rounded-lg font-medium hover:bg-amber-200 transition-colors flex items-center justify-center text-sm">
+                                <i class="fas fa-star mr-2"></i> Remove from Featured
+                            </a>
+                        </div>
+                        <?php else: ?>
+                        <div class="bg-slate-50 border border-slate-200 rounded-xl p-5">
+                            <div class="flex items-center gap-2 mb-2">
+                                <i class="far fa-star text-slate-400"></i>
+                                <h3 class="text-sm font-bold text-slate-600">Not Featured</h3>
+                            </div>
+                            <p class="text-xs text-slate-500 mb-3">Set this webinar as featured on the Simulation page.</p>
+                            <a href="<?= site_url('cms/webinar_set_featured/' . $webinar['id']) ?>"
+                               onclick="return confirm('Set this webinar as featured?')"
+                               class="w-full px-4 py-2 bg-amber-500 text-white rounded-lg font-medium hover:bg-amber-600 transition-colors flex items-center justify-center text-sm">
+                                <i class="fas fa-star mr-2"></i> Set as Featured
+                            </a>
+                        </div>
+                        <?php endif; ?>
+
                         <div class="bg-red-50 border border-red-200 rounded-xl p-5">
                             <h3 class="text-sm font-bold text-red-700 mb-3"><i class="fas fa-exclamation-triangle mr-2"></i>Danger Zone</h3>
                             <p class="text-xs text-red-600 mb-3">Deleting this webinar will unlink all associated resources.</p>

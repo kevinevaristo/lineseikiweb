@@ -626,7 +626,7 @@ main {
                         <div class="flex justify-between items-center">
                             <label class="text-xs font-bold text-slate-500 uppercase tracking-wider">Carousel Items</label>
                             <div class="flex gap-2">
-                                <button onclick="window.location.href='/cms/add_main_content'" class="px-4 py-2 bg-blue-500 text-white text-sm rounded-lg hover:bg-blue-600 transition-colors flex items-center">
+                                <button onclick="window.location.href='<?= site_url('cms/add_main_content') ?>'" class="px-4 py-2 bg-blue-500 text-white text-sm rounded-lg hover:bg-blue-600 transition-colors flex items-center">
                                     <span class="mr-2">+</span> Add Item
                                 </button>
                                 <button onclick="saveCarousel()" class="px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 transition-colors flex items-center">
@@ -684,7 +684,7 @@ main {
                                                    placeholder="e.g., index/ps_contents">
                                         </div>
                                         <div>
-                                             <button onclick="window.location.href='/cms/edit_main_content/<?php echo $item->id; ?>'" class="px-4 py-2 bg-blue-500 text-white text-sm rounded-lg hover:bg-blue-600 transition-colors flex items-center">
+                                             <button onclick="window.location.href='<?= site_url('cms/edit_main_content/' . $item->id) ?>'" class="px-4 py-2 bg-blue-500 text-white text-sm rounded-lg hover:bg-blue-600 transition-colors flex items-center">
                                                  Edit Main Content
                                             </button>
                                         </div>
@@ -735,42 +735,93 @@ main {
                         <label class="text-xs font-bold text-slate-500 uppercase tracking-wider">Description</label>
                         <textarea id="process_description" class="w-full mt-1 p-3 border border-slate-200 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition" rows="2"><?= isset($content['process_description']['content']) ? htmlspecialchars($content['process_description']['content']) : '' ?></textarea>
                     </div>
+                    <?php
+                    $step_defaults = array(
+                        1 => array('title' => 'Model Development', 'icon' => 'bi-diagram-3'),
+                        2 => array('title' => 'Solving (Simulation)', 'icon' => 'bi-graph-up'),
+                        3 => array('title' => 'Results', 'icon' => 'bi-person-check')
+                    );
+                    $icon_options = array(
+                        'bi-diagram-3' => 'Diagram / Workflow',
+                        'bi-graph-up' => 'Graph Up / Analytics',
+                        'bi-person-check' => 'Person Check / Results',
+                        'bi-gear' => 'Gear / Settings',
+                        'bi-cpu' => 'CPU / Processing',
+                        'bi-bar-chart' => 'Bar Chart',
+                        'bi-pie-chart' => 'Pie Chart',
+                        'bi-clipboard-data' => 'Clipboard Data',
+                        'bi-lightbulb' => 'Lightbulb / Ideas',
+                        'bi-tools' => 'Tools',
+                        'bi-wrench' => 'Wrench',
+                        'bi-speedometer2' => 'Speedometer',
+                        'bi-layers' => 'Layers',
+                        'bi-box' => 'Box / 3D Model',
+                        'bi-grid-3x3' => 'Grid / Mesh',
+                        'bi-calculator' => 'Calculator',
+                        'bi-file-earmark-text' => 'Document',
+                        'bi-file-earmark-check' => 'Document Check',
+                        'bi-check-circle' => 'Checkmark Circle',
+                        'bi-award' => 'Award / Badge',
+                        'bi-bullseye' => 'Bullseye / Target',
+                        'bi-rocket' => 'Rocket',
+                        'bi-shield-check' => 'Shield Check',
+                        'bi-sliders' => 'Sliders / Controls',
+                        'bi-funnel' => 'Funnel',
+                        'bi-puzzle' => 'Puzzle',
+                        'bi-lightning' => 'Lightning / Fast',
+                        'bi-eye' => 'Eye / View',
+                        'bi-cloud-upload' => 'Cloud Upload',
+                        'bi-download' => 'Download',
+                        'bi-pencil-square' => 'Pencil / Edit',
+                        'bi-search' => 'Search',
+                        'bi-hdd' => 'Hard Drive / Data',
+                        'bi-activity' => 'Activity / Pulse',
+                        'bi-thermometer-half' => 'Thermometer',
+                        'bi-droplet' => 'Droplet / Fluid',
+                        'bi-wind' => 'Wind / Airflow',
+                        'bi-compass' => 'Compass'
+                    );
+                    ?>
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                        <!-- Step 1 -->
+                        <?php for($s = 1; $s <= 3; $s++): ?>
+                        <?php
+                        $current_icon = isset($content["process_step_{$s}_icon"]['content']) ? $content["process_step_{$s}_icon"]['content'] : $step_defaults[$s]['icon'];
+                        $current_title = isset($content["process_step_{$s}_title"]['content']) ? htmlspecialchars($content["process_step_{$s}_title"]['content']) : $step_defaults[$s]['title'];
+                        ?>
+                        <!-- Step <?= $s ?> -->
                         <div class="p-4 border rounded-xl border-slate-100 bg-slate-50/50 hover:bg-white transition-colors">
+                            <!-- Icon Preview & Picker -->
+                            <div class="mb-4">
+                                <label class="text-xs font-bold text-slate-400 uppercase mb-2 block">Step <?= $s ?> Icon</label>
+                                <div class="flex items-center gap-3">
+                                    <div class="w-12 h-12 rounded-xl bg-blue-500 text-white flex items-center justify-center flex-shrink-0" id="icon_preview_<?= $s ?>">
+                                        <i class="<?= htmlspecialchars($current_icon) ?> text-xl"></i>
+                                    </div>
+                                    <select id="process_step_<?= $s ?>_icon" onchange="updateIconPreview(<?= $s ?>, this.value)" class="w-full text-sm p-2.5 border border-slate-200 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 bg-white">
+                                        <?php foreach($icon_options as $icon_class => $icon_label): ?>
+                                        <option value="<?= $icon_class ?>" <?= ($current_icon == $icon_class) ? 'selected' : '' ?>>
+                                            <?= $icon_label ?>
+                                        </option>
+                                        <?php endforeach; ?>
+                                        <option value="custom" <?= (!array_key_exists($current_icon, $icon_options)) ? 'selected' : '' ?>>Custom icon class...</option>
+                                    </select>
+                                </div>
+                                <input type="text" id="process_step_<?= $s ?>_icon_custom"
+                                       class="w-full mt-2 text-sm p-2 border border-slate-200 rounded-lg focus:ring-1 focus:ring-indigo-500 <?= array_key_exists($current_icon, $icon_options) ? 'hidden' : '' ?>"
+                                       placeholder="e.g., bi-cpu or fas fa-cog"
+                                       value="<?= (!array_key_exists($current_icon, $icon_options)) ? htmlspecialchars($current_icon) : '' ?>"
+                                       onkeyup="updateIconFromCustom(<?= $s ?>, this.value)">
+                            </div>
                             <div class="mb-3">
-                                <label class="text-xs font-bold text-slate-400 uppercase">Step 1 Title</label>
-                                <input type="text" id="process_step_1_title" class="font-bold text-slate-700 border-none bg-transparent w-full" value="<?= isset($content['process_step_1_title']['content']) ? htmlspecialchars($content['process_step_1_title']['content']) : 'Model Development' ?>">
+                                <label class="text-xs font-bold text-slate-400 uppercase">Step <?= $s ?> Title</label>
+                                <input type="text" id="process_step_<?= $s ?>_title" class="font-bold text-slate-700 border-none bg-transparent w-full" value="<?= $current_title ?>">
                             </div>
                             <div>
                                 <label class="text-xs font-bold text-slate-400 uppercase">Description</label>
-                                <textarea id="process_step_1_description" class="w-full text-sm p-2 border border-slate-100 rounded-lg focus:ring-1 focus:ring-slate-500 resize-none" rows="3"><?= isset($content['process_step_1_description']['content']) ? htmlspecialchars($content['process_step_1_description']['content']) : '' ?></textarea>
+                                <textarea id="process_step_<?= $s ?>_description" class="w-full text-sm p-2 border border-slate-100 rounded-lg focus:ring-1 focus:ring-slate-500 resize-none" rows="3"><?= isset($content["process_step_{$s}_description"]['content']) ? htmlspecialchars($content["process_step_{$s}_description"]['content']) : '' ?></textarea>
                             </div>
                         </div>
-
-                        <!-- Step 2 -->
-                        <div class="p-4 border rounded-xl border-slate-100 bg-slate-50/50 hover:bg-white transition-colors">
-                            <div class="mb-3">
-                                <label class="text-xs font-bold text-slate-400 uppercase">Step 2 Title</label>
-                                <input type="text" id="process_step_2_title" class="font-bold text-slate-700 border-none bg-transparent w-full" value="<?= isset($content['process_step_2_title']['content']) ? htmlspecialchars($content['process_step_2_title']['content']) : 'Solving (Simulation)' ?>">
-                            </div>
-                            <div>
-                                <label class="text-xs font-bold text-slate-400 uppercase">Description</label>
-                                <textarea id="process_step_2_description" class="w-full text-sm p-2 border border-slate-100 rounded-lg focus:ring-1 focus:ring-slate-500 resize-none" rows="3"><?= isset($content['process_step_2_description']['content']) ? htmlspecialchars($content['process_step_2_description']['content']) : '' ?></textarea>
-                            </div>
-                        </div>
-
-                        <!-- Step 3 -->
-                        <div class="p-4 border rounded-xl border-slate-100 bg-slate-50/50 hover:bg-white transition-colors">
-                            <div class="mb-3">
-                                <label class="text-xs font-bold text-slate-400 uppercase">Step 3 Title</label>
-                                <input type="text" id="process_step_3_title" class="font-bold text-slate-700 border-none bg-transparent w-full" value="<?= isset($content['process_step_3_title']['content']) ? htmlspecialchars($content['process_step_3_title']['content']) : 'Results' ?>">
-                            </div>
-                            <div>
-                                <label class="text-xs font-bold text-slate-400 uppercase">Description</label>
-                                <textarea id="process_step_3_description" class="w-full text-sm p-2 border border-slate-100 rounded-lg focus:ring-1 focus:ring-slate-500 resize-none" rows="3"><?= isset($content['process_step_3_description']['content']) ? htmlspecialchars($content['process_step_3_description']['content']) : '' ?></textarea>
-                            </div>
-                        </div>
+                        <?php endfor; ?>
                     </div>
                 </div>
             </section>
@@ -831,6 +882,34 @@ main {
 <?php endif; ?>
 
 <script>
+// ==================== PROCESS ICON FUNCTIONS ====================
+function updateIconPreview(step, value) {
+    const preview = document.getElementById('icon_preview_' + step);
+    const customInput = document.getElementById('process_step_' + step + '_icon_custom');
+    if (value === 'custom') {
+        customInput.classList.remove('hidden');
+        customInput.focus();
+    } else {
+        customInput.classList.add('hidden');
+        preview.innerHTML = '<i class="' + value + ' text-xl"></i>';
+    }
+}
+
+function updateIconFromCustom(step, value) {
+    const preview = document.getElementById('icon_preview_' + step);
+    if (value.trim()) {
+        preview.innerHTML = '<i class="' + value.trim() + ' text-xl"></i>';
+    }
+}
+
+function getProcessIconValue(step) {
+    const select = document.getElementById('process_step_' + step + '_icon');
+    if (select.value === 'custom') {
+        return document.getElementById('process_step_' + step + '_icon_custom').value.trim();
+    }
+    return select.value;
+}
+
 // Global variables
 let uploadProgress = document.getElementById('upload-progress');
 let draggedElement = null;
@@ -2068,10 +2147,13 @@ function saveAllChanges() {
     formData.append('process_description', document.getElementById('process_description').value);
     formData.append('process_step_1_title', document.getElementById('process_step_1_title').value);
     formData.append('process_step_1_description', document.getElementById('process_step_1_description').value);
+    formData.append('process_step_1_icon', getProcessIconValue(1));
     formData.append('process_step_2_title', document.getElementById('process_step_2_title').value);
     formData.append('process_step_2_description', document.getElementById('process_step_2_description').value);
+    formData.append('process_step_2_icon', getProcessIconValue(2));
     formData.append('process_step_3_title', document.getElementById('process_step_3_title').value);
     formData.append('process_step_3_description', document.getElementById('process_step_3_description').value);
+    formData.append('process_step_3_icon', getProcessIconValue(3));
     
     // Webinar Section
     formData.append('webinar_title', document.getElementById('webinar_title').value);

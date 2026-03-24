@@ -265,6 +265,7 @@
       overflow: hidden;
       position: relative;
       flex-shrink: 0;
+      background: #f0f4f8;
     }
     
     .news-image img {
@@ -1244,7 +1245,12 @@
         ?>
         <div class="news-card fade-in <?= $delay_class ?>" data-category="<?= $event['category'] ?>">
           <div class="news-image">
-            <img src="<?= base_url('assets_system/images/' . $event['image']) ?>" alt="<?= htmlspecialchars($event['title']) ?>">
+            <?php if (!empty($event['image'])): ?>
+            <img src="<?= base_url('assets_system/images/' . $event['image']) ?>" alt="<?= htmlspecialchars($event['title']) ?>"
+                 onerror="this.src='<?= base_url('assets_system/images/no-image.png') ?>'">
+            <?php else: ?>
+            <img src="<?= base_url('assets_system/images/no-image.png') ?>" alt="<?= htmlspecialchars($event['title']) ?>">
+            <?php endif; ?>
             <?php if ($event['badge_text']): ?>
             <span class="news-badge <?= $event['category'] ?> <?= $event['is_featured'] ? 'featured' : '' ?>">
               <?= $event['badge_text'] ?>

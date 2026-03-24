@@ -1856,11 +1856,20 @@ li.nav-item.dropdown > a.nav-link.dropdown-toggle[href="#"]::after {
     </div>  
 
     <div class="services-cta-section fade-in delay-5">
-      <h3>Ready to Transform Your Operations?</h3>
-      <p>Let's discuss how our services can drive efficiency and innovation in your business</p>
+      <h3><?php echo isset($cms_data['cta_heading']['content']) && !empty($cms_data['cta_heading']['content']) ? htmlspecialchars($cms_data['cta_heading']['content']) : 'Ready to Transform Your Operations?'; ?></h3>
+      <p><?php echo isset($cms_data['cta_subtitle']['content']) && !empty($cms_data['cta_subtitle']['content']) ? htmlspecialchars($cms_data['cta_subtitle']['content']) : 'Let\'s discuss how our services can drive efficiency and innovation in your business'; ?></p>
       <div class="cta-button-group">
-        <a href="<?php echo base_url('index/contact_us'); ?>" class="cta-btn-primary"><i class="fas fa-calendar-check me-2"></i>Schedule Consultation</a>
-        <a href="<?php echo base_url('index/ps_prod'); ?>" class="cta-btn-secondary"><i class="fas fa-download me-2"></i>Download Brochure</a>
+        <a href="<?php echo base_url('index/contact_us'); ?>" class="cta-btn-primary"><i class="fas fa-calendar-check me-2"></i><?php echo isset($cms_data['cta_btn_primary']['content']) && !empty($cms_data['cta_btn_primary']['content']) ? htmlspecialchars($cms_data['cta_btn_primary']['content']) : 'Schedule Consultation'; ?></a>
+        <?php
+        $brochure_url = isset($cms_data['cta_brochure']['content']) && !empty($cms_data['cta_brochure']['content'])
+            ? base_url($cms_data['cta_brochure']['content'])
+            : base_url('index/ps_prod');
+        $brochure_is_file = isset($cms_data['cta_brochure']['content']) && !empty($cms_data['cta_brochure']['content']);
+        $brochure_label = isset($cms_data['cta_btn_brochure']['content']) && !empty($cms_data['cta_btn_brochure']['content'])
+            ? htmlspecialchars($cms_data['cta_btn_brochure']['content'])
+            : 'Download Brochure';
+        ?>
+        <a href="<?php echo $brochure_url; ?>" class="cta-btn-secondary" <?php echo $brochure_is_file ? 'target="_blank" download' : ''; ?>><i class="fas fa-download me-2"></i><?php echo $brochure_label; ?></a>
       </div>
     </div>
   </div>

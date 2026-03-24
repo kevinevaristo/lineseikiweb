@@ -45,6 +45,7 @@ class index extends CI_Controller
   $data['dynamic_categories'] = $this->home_page_model->get_categories();
    $data['dynamic_stats'] = $this->home_page_model->get_stats();
    $data['new_item'] = $this->home_page_model->get_new_product();
+   $data['cms_data'] = $this->home_page_model->get_home_content();
    $this->db->where('is_active', 1);
         $this->db->order_by('sort_order', 'ASC');
         $this->db->order_by('year', 'DESC');
@@ -270,9 +271,12 @@ class index extends CI_Controller
         // Get video items with images (Episodes 1-8 and video tutorials)
         $data['video_items'] = $this->library_model->get_items_with_images();
         
-        // Get PDF items without images (Case studies, brochures, etc.)
+        // Get PDF items without images (brochures, etc.)
         $data['pdf_items'] = $this->library_model->get_items_without_images();
-        
+
+        // Get case studies from simulation content
+        $data['case_study_items'] = $this->library_model->get_case_studies();
+
         // Get all webinars
     $data['webinars'] = $this->db->order_by('id', 'ASC')->get('tbl_webinar')->result_array();
     
@@ -985,9 +989,9 @@ public function save_download_info() {
     $data['testimonials'] = $this->testimonial_model->get_all_testimonials();
     $data['capabilities'] = $this->simulation_model->get_all_capabilities();
     $data['benefits'] = $this->simulation_model->get_all_benefits();
-    // Get first webinar for featured CTA link
-    $first_webinar = $this->db->order_by('id', 'ASC')->limit(1)->get('tbl_webinar')->row_array();
-    $data['featured_webinar'] = $first_webinar;
+    // Get featured webinars for CTA links
+    $this->load->model('admin/admin_library_model');
+    $data['featured_webinars'] = $this->admin_library_model->get_featured_webinars();
     $this->load->view('web/ps_serv_simulation', $data);
   }
 

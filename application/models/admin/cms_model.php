@@ -131,10 +131,17 @@ class cms_model extends CI_Model {
 
     }
 
-    // Existing update for general content
+    // Existing update for general content (upsert - insert if not exists)
     public function update_content($title, $data) {
-        $this->db->where('title', $title);
-        return $this->db->update('tbl_home_page', $data);
+        // Check if the row exists
+        $exists = $this->db->where('title', $title)->count_all_results('tbl_home_page');
+        if ($exists > 0) {
+            $this->db->where('title', $title);
+            return $this->db->update('tbl_home_page', $data);
+        } else {
+            $data['title'] = $title;
+            return $this->db->insert('tbl_home_page', $data);
+        }
     }
 
     // NEW: Sync Carousel (Delete all and Re-insert)

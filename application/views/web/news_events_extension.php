@@ -745,9 +745,9 @@ footer .bottom a:hover {
         <?php endif; ?>
       </div>
       <?php if (!empty($event['image'])): ?>
-        <img src="<?= base_url('uploads/events/' . htmlspecialchars($event['image'])) ?>" 
+        <img src="<?= base_url('assets_system/images/' . htmlspecialchars($event['image'])) ?>"
              alt="<?= htmlspecialchars($event['title']) ?>"
-             onerror="this.src='https://placehold.co/600x400/002060/ffffff?text=<?= urlencode($event['title']) ?>'">
+             onerror="this.src='<?= base_url('assets_system/images/no-image.png') ?>'">
       <?php endif; ?>
     </div>
     <?php endif; ?>

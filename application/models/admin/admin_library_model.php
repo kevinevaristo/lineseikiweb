@@ -5,6 +5,18 @@ class admin_library_model extends CI_Model {
     
     public function __construct() {
         parent::__construct();
+        // Auto-add is_featured column if it doesn't exist
+        if (!$this->db->field_exists('is_featured', 'tbl_webinar')) {
+            $this->load->dbforge();
+            $this->dbforge->add_column('tbl_webinar', array(
+                'is_featured' => array('type' => 'TINYINT', 'constraint' => 1, 'default' => 0, 'after' => 'description_2')
+            ));
+            // Set the first webinar as featured by default
+            $first = $this->db->order_by('id', 'ASC')->limit(1)->get('tbl_webinar')->row();
+            if ($first) {
+                $this->db->where('id', $first->id)->update('tbl_webinar', array('is_featured' => 1));
+            }
+        }
     }
     
     /**
@@ -132,6 +144,37 @@ class admin_library_model extends CI_Model {
      */
     public function count_webinars() {
         return $this->db->count_all('tbl_webinar');
+    }
+
+    /**
+     * Get all featured webinars (returns array of webinars)
+     */
+    public function get_featured_webinars() {
+        $this->db->where('is_featured', 1);
+        $this->db->order_by('id', 'ASC');
+        $query = $this->db->get('tbl_webinar');
+        $result = $query->result_array();
+        // Fallback to first webinar if none is featured
+        if (empty($result)) {
+            $first = $this->db->order_by('id', 'ASC')->limit(1)->get('tbl_webinar')->row_array();
+            if ($first) {
+                $result = array($first);
+            }
+        }
+        return $result;
+    }
+
+    /**
+     * Toggle featured status of a webinar (on/off)
+     */
+    public function toggle_featured_webinar($id) {
+        $webinar = $this->get_webinar($id);
+        if ($webinar) {
+            $new_status = (isset($webinar['is_featured']) && $webinar['is_featured'] == 1) ? 0 : 1;
+            $this->db->where('id', $id);
+            return $this->db->update('tbl_webinar', array('is_featured' => $new_status));
+        }
+        return false;
     }
 
     /**

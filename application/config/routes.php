@@ -46,6 +46,9 @@ $route['404_override'] = 'Errors/custom_404';
 $route['promotions/(:num)'] = 'promotions';
 $route['payroll/(:num)'] = 'payroll';
 
+// Privacy policy
+$route['privacy-policy'] = 'index/privacy_policy';
+
 // Product routes
 $route['product/(:any)'] = 'cms/product_detail/$1';
 $route['category/(:num)'] = 'index/category_products/$1';

@@ -803,6 +803,112 @@ main {
                     </div>
                 </section>
 
+                <!-- CTA / Brochure Section -->
+                <section class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+                    <div class="p-6 border-b border-slate-100 bg-slate-50/50">
+                        <h3 class="font-bold text-slate-800 flex items-center">📥 CTA Section & Brochure</h3>
+                    </div>
+                    <div class="p-6 space-y-6">
+                        <!-- CTA Title -->
+                        <div>
+                            <label class="text-xs font-bold text-slate-500 uppercase">CTA Heading</label>
+                            <input type="text" name="cta_heading" id="cta_heading"
+                                   class="w-full mt-1 p-2 border rounded-lg"
+                                   value="<?php echo isset($cms_data['cta_heading']['content']) ? htmlspecialchars($cms_data['cta_heading']['content']) : 'Ready to Transform Your Operations?'; ?>"
+                                   placeholder="Ready to Transform Your Operations?">
+                        </div>
+
+                        <!-- CTA Subtitle -->
+                        <div>
+                            <label class="text-xs font-bold text-slate-500 uppercase">CTA Subtitle</label>
+                            <input type="text" name="cta_subtitle" id="cta_subtitle"
+                                   class="w-full mt-1 p-2 border rounded-lg"
+                                   value="<?php echo isset($cms_data['cta_subtitle']['content']) ? htmlspecialchars($cms_data['cta_subtitle']['content']) : 'Let\'s discuss how our services can drive efficiency and innovation in your business'; ?>"
+                                   placeholder="Let's discuss how our services can drive efficiency and innovation in your business">
+                        </div>
+
+                        <!-- Brochure Upload -->
+                        <div>
+                            <label class="text-xs font-bold text-slate-500 uppercase mb-2 block">Brochure File (PDF)</label>
+                            <p class="text-xs text-slate-400 mb-3">Upload a brochure file for the "Download Brochure" button. If no file is uploaded, the button will link to the Products page.</p>
+
+                            <?php
+                            $current_brochure = isset($cms_data['cta_brochure']['content']) ? $cms_data['cta_brochure']['content'] : '';
+                            ?>
+
+                            <!-- Current brochure display -->
+                            <div id="currentBrochureInfo" class="<?= empty($current_brochure) ? 'hidden' : '' ?> mb-4 p-4 bg-green-50 border border-green-200 rounded-lg">
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-10 h-10 rounded-lg bg-red-100 flex items-center justify-center">
+                                            <i class="fas fa-file-pdf text-red-600 text-lg"></i>
+                                        </div>
+                                        <div>
+                                            <p class="text-sm font-medium text-green-700" id="currentBrochureName"><?= !empty($current_brochure) ? htmlspecialchars(basename($current_brochure)) : '' ?></p>
+                                            <a href="<?= !empty($current_brochure) ? base_url($current_brochure) : '#' ?>" target="_blank" class="text-xs text-green-600 hover:underline" id="currentBrochureLink">
+                                                <i class="fas fa-external-link-alt mr-1"></i>View file
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <button type="button" onclick="removeBrochure()" class="text-red-500 hover:text-red-700 text-sm">
+                                        <i class="fas fa-times mr-1"></i>Remove
+                                    </button>
+                                </div>
+                            </div>
+                            <input type="hidden" name="cta_brochure" id="cta_brochure_value" value="<?= htmlspecialchars($current_brochure) ?>">
+
+                            <!-- Upload area -->
+                            <div id="brochureUploadArea" class="<?= !empty($current_brochure) ? 'hidden' : '' ?>">
+                                <div class="border-2 border-dashed border-slate-300 rounded-lg p-6 text-center hover:border-indigo-400 transition-colors cursor-pointer"
+                                     onclick="document.getElementById('brochureFileInput').click()">
+                                    <i class="fas fa-cloud-upload-alt text-slate-400 text-3xl mb-2"></i>
+                                    <p class="text-sm text-slate-600">Click to upload brochure</p>
+                                    <p class="text-xs text-slate-400 mt-1">PDF, DOC, DOCX, XLS, XLSX (Max 10MB)</p>
+                                    <input type="file" id="brochureFileInput" class="hidden" accept=".pdf,.doc,.docx,.xls,.xlsx"
+                                           onchange="uploadBrochureFile(this)">
+                                </div>
+                                <!-- Upload progress -->
+                                <div id="brochureUploadProgress" class="hidden mt-2">
+                                    <div class="flex items-center gap-2">
+                                        <div class="flex-1 bg-slate-200 rounded-full h-2">
+                                            <div id="brochureProgressBar" class="bg-indigo-600 h-2 rounded-full transition-all" style="width: 0%"></div>
+                                        </div>
+                                        <span id="brochureProgressText" class="text-xs text-slate-500">0%</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Or enter URL manually -->
+                            <div class="mt-3">
+                                <p class="text-xs text-slate-500 mb-1">Or enter a URL directly:</p>
+                                <input type="text" id="cta_brochure_url"
+                                       class="w-full p-2 border rounded-lg text-sm"
+                                       placeholder="e.g., assets_system/documents/company-brochure.pdf"
+                                       value="<?= htmlspecialchars($current_brochure) ?>"
+                                       onchange="document.getElementById('cta_brochure_value').value = this.value">
+                            </div>
+                        </div>
+
+                        <!-- Button Labels -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="text-xs font-bold text-slate-500 uppercase">Primary Button Label</label>
+                                <input type="text" name="cta_btn_primary" id="cta_btn_primary"
+                                       class="w-full mt-1 p-2 border rounded-lg"
+                                       value="<?php echo isset($cms_data['cta_btn_primary']['content']) ? htmlspecialchars($cms_data['cta_btn_primary']['content']) : 'Schedule Consultation'; ?>"
+                                       placeholder="Schedule Consultation">
+                            </div>
+                            <div>
+                                <label class="text-xs font-bold text-slate-500 uppercase">Brochure Button Label</label>
+                                <input type="text" name="cta_btn_brochure" id="cta_btn_brochure"
+                                       class="w-full mt-1 p-2 border rounded-lg"
+                                       value="<?php echo isset($cms_data['cta_btn_brochure']['content']) ? htmlspecialchars($cms_data['cta_btn_brochure']['content']) : 'Download Brochure'; ?>"
+                                       placeholder="Download Brochure">
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
                 <!-- New Products Section (MOVED TO BOTTOM) -->
                 <section class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
                     <div class="p-6 border-b border-slate-100 bg-slate-50/50">
@@ -967,6 +1073,71 @@ main {
 <script src="<?php echo base_url('assets_system/vendor/sweetalert2/sweetalert2.all.min.js'); ?>"></script>
 
 <script>
+// ============ BROCHURE UPLOAD ============
+function uploadBrochureFile(input) {
+    const file = input.files[0];
+    if (!file) return;
+
+    if (file.size > 10 * 1024 * 1024) {
+        alert('File must be less than 10MB');
+        input.value = '';
+        return;
+    }
+
+    const progress = document.getElementById('brochureUploadProgress');
+    const progressBar = document.getElementById('brochureProgressBar');
+    const progressText = document.getElementById('brochureProgressText');
+    progress.classList.remove('hidden');
+
+    const formData = new FormData();
+    formData.append('download_file', file);
+
+    const xhr = new XMLHttpRequest();
+    xhr.open('POST', '<?= site_url("cms/upload_download_file") ?>', true);
+
+    xhr.upload.onprogress = function(e) {
+        if (e.lengthComputable) {
+            const pct = Math.round((e.loaded / e.total) * 100);
+            progressBar.style.width = pct + '%';
+            progressText.textContent = pct + '%';
+        }
+    };
+
+    xhr.onload = function() {
+        progress.classList.add('hidden');
+        try {
+            const res = JSON.parse(xhr.responseText);
+            if (res.success) {
+                document.getElementById('cta_brochure_value').value = res.file_url;
+                document.getElementById('cta_brochure_url').value = res.file_url;
+                document.getElementById('currentBrochureName').textContent = res.original_name;
+                document.getElementById('currentBrochureLink').href = '<?= base_url() ?>' + res.file_url;
+                document.getElementById('currentBrochureInfo').classList.remove('hidden');
+                document.getElementById('brochureUploadArea').classList.add('hidden');
+            } else {
+                alert('Upload failed: ' + (res.message || 'Unknown error'));
+            }
+        } catch(e) {
+            alert('Upload failed. Please try again.');
+        }
+    };
+
+    xhr.onerror = function() {
+        progress.classList.add('hidden');
+        alert('Upload failed. Please check your connection.');
+    };
+
+    xhr.send(formData);
+}
+
+function removeBrochure() {
+    document.getElementById('cta_brochure_value').value = '';
+    document.getElementById('cta_brochure_url').value = '';
+    document.getElementById('currentBrochureInfo').classList.add('hidden');
+    document.getElementById('brochureUploadArea').classList.remove('hidden');
+    document.getElementById('brochureFileInput').value = '';
+}
+
 // ============ ACHIEVEMENTS MANAGEMENT ============
 
 // Add new achievement
@@ -1711,6 +1882,15 @@ function saveAllChanges() {
         console.log(`Service ${i} features sent:`, featuresTextarea.val());
     }
     
+    // Add CTA / Brochure data
+    const ctaFields = ['cta_heading', 'cta_subtitle', 'cta_btn_primary', 'cta_btn_brochure'];
+    ctaFields.forEach(field => {
+        if ($(`#${field}`).length) {
+            formData.append(field, $(`#${field}`).val() || '');
+        }
+    });
+    formData.append('cta_brochure', $('#cta_brochure_value').val() || '');
+
     // Add new products data
     const newProductFields = ['new_badge', 'new_product_header', 'new_product_text', 'new_product_button'];
     newProductFields.forEach(field => {

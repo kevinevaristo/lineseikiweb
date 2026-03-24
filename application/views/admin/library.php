@@ -61,7 +61,7 @@
                     ?>
                     <div class="space-y-2">
                         <?php foreach($webinars_list as $wb): ?>
-                        <div class="flex items-center justify-between p-3 bg-slate-50 rounded-lg border border-slate-100 hover:bg-slate-100 transition-colors group">
+                        <div class="flex items-center justify-between p-3 <?= (!empty($wb['is_featured']) && $wb['is_featured'] == 1) ? 'bg-amber-50 border-amber-200' : 'bg-slate-50 border-slate-100' ?> rounded-lg border hover:bg-slate-100 transition-colors group">
                             <div class="flex items-center gap-3 min-w-0">
                                 <?php if(!empty($wb['main_image'])): ?>
                                 <img src="<?= base_url('assets_system/images/' . $wb['main_image']) ?>" class="w-10 h-10 rounded-lg object-cover border border-slate-200 flex-shrink-0" alt="">
@@ -72,10 +72,30 @@
                                 <?php endif; ?>
                                 <div class="min-w-0">
                                     <p class="text-xs font-bold text-slate-700 truncate"><?= htmlspecialchars($wb['webinar_title']) ?></p>
-                                    <p class="text-[10px] text-slate-400">ID: <?= $wb['id'] ?></p>
+                                    <div class="flex items-center gap-2">
+                                        <span class="text-[10px] text-slate-400">ID: <?= $wb['id'] ?></span>
+                                        <?php if(!empty($wb['is_featured']) && $wb['is_featured'] == 1): ?>
+                                        <span class="inline-flex items-center gap-0.5 px-1.5 py-0.5 bg-amber-100 text-amber-700 rounded text-[9px] font-bold">
+                                            <i class="fas fa-star text-[8px]"></i> Featured
+                                        </span>
+                                        <?php endif; ?>
+                                    </div>
                                 </div>
                             </div>
                             <div class="flex gap-1">
+                                <?php if(empty($wb['is_featured']) || $wb['is_featured'] != 1): ?>
+                                <a href="<?= site_url('cms/webinar_set_featured/' . $wb['id']) ?>"
+                                   onclick="return confirm('Set this webinar as featured on the Simulation page?')"
+                                   class="w-7 h-7 flex items-center justify-center rounded-lg bg-slate-100 text-slate-400 hover:bg-amber-100 hover:text-amber-600 transition-colors" title="Set as Featured">
+                                    <i class="far fa-star text-[10px]"></i>
+                                </a>
+                                <?php else: ?>
+                                <a href="<?= site_url('cms/webinar_set_featured/' . $wb['id']) ?>"
+                                   onclick="return confirm('Remove this webinar from featured?')"
+                                   class="w-7 h-7 flex items-center justify-center rounded-lg bg-amber-400 text-white hover:bg-amber-500 transition-colors" title="Remove from Featured">
+                                    <i class="fas fa-star text-[10px]"></i>
+                                </a>
+                                <?php endif; ?>
                                 <a href="<?= site_url('cms/webinar_edit/' . $wb['id']) ?>" class="w-7 h-7 flex items-center justify-center rounded-lg bg-indigo-100 text-indigo-600 hover:bg-indigo-200 transition-colors" title="Edit">
                                     <i class="fas fa-pen text-[10px]"></i>
                                 </a>

@@ -82,6 +82,15 @@ class library_model extends CI_Model {
     }
     
     /**
+     * Get case studies from simulation content
+     */
+    public function get_case_studies() {
+        $this->db->order_by('id', 'ASC');
+        $query = $this->db->get('tbl_simulation_content');
+        return $query->result_array();
+    }
+
+    /**
      * Get watch statistics
      */
     public function get_watch_statistics() {
