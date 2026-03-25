@@ -14,7 +14,8 @@
       background-color: #fff;
       color: #000;
       line-height: 1.6;
-      padding: 40px 0;
+      padding: 0;
+      margin: 0;
     }
 
     .case-study {
@@ -111,8 +112,91 @@
       margin: 0;
     }
 
+    /* Hero Section */
+    .hero-section {
+      position: relative;
+      width: 100%;
+      height: 400px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 40px;
+    }
+
+    .hero-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(15, 70, 123, 0.85) 50%, rgba(23, 162, 220, 0.75) 100%),
+                  url('<?= base_url("assets_system/images/simulation3.jpg") ?>');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      z-index: 0;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      color: #fff;
+      max-width: 800px;
+      padding: 0 20px;
+    }
+
+    .hero-content h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 15px;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    }
+
+    .hero-content p {
+      font-size: 1.15rem;
+      opacity: 0.95;
+      line-height: 1.7;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .hero-back-btn {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      z-index: 1;
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.3);
+      color: #fff;
+      backdrop-filter: blur(5px);
+      transition: all 0.3s ease;
+    }
+
+    .hero-back-btn:hover {
+      background: rgba(255,255,255,0.3);
+      color: #fff;
+      border-color: rgba(255,255,255,0.5);
+    }
+
     .back-button {
       margin-bottom: 20px;
+    }
+
+    @media (max-width: 768px) {
+      .hero-section {
+        height: 300px;
+      }
+
+      .hero-content h1 {
+        font-size: 1.75rem;
+      }
+
+      .hero-content p {
+        font-size: 1rem;
+      }
     }
 
     @media (max-width: 992px) {
@@ -135,14 +219,19 @@
   </style>
 </head>
 <body>
-  <div class="container">
-    <div class="back-button">
-      <button type="button" onclick="history.back();" class="btn btn-outline-primary btn-sm">
+    <?php if (!empty($simulation)): ?>
+    <!-- Hero Section -->
+    <div class="hero-section">
+      <button type="button" onclick="history.back();" class="btn btn-sm hero-back-btn">
         ← Back
       </button>
+      <div class="hero-content">
+        <h1><?= htmlspecialchars($simulation->title) ?></h1>
+        <p><?= htmlspecialchars($simulation->analysis_type) ?></p>
+      </div>
     </div>
 
-    <?php if (!empty($simulation)): ?>
+  <div class="container">
     <div class="container case-study">
       <h5 class="fw-bold">Case Study Details</h5>
 
@@ -229,8 +318,15 @@
       </div>
     </div>
     <?php else: ?>
-    <div class="alert alert-danger">
-      Case study not found.
+    <div class="container mt-4">
+      <div class="back-button">
+        <button type="button" onclick="history.back();" class="btn btn-outline-primary btn-sm">
+          ← Back
+        </button>
+      </div>
+      <div class="alert alert-danger">
+        Case study not found.
+      </div>
     </div>
     <?php endif; ?>
   </div>
