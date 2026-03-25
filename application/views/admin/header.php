@@ -126,7 +126,8 @@
                 'news_and_events'     => ['News & Events', '📰'],
                 'library'             => ['Library', '📚'],
                 'contact_us'          => ['Contact Us', '📞'],
-                'subscribers'   => ['Email Subscribers', '📧']
+                'subscribers'         => ['Email Subscribers', '📧'],
+                'testimonial'        => ['Testimonials', '💬']
             ];
 
             foreach ($pages as $function_name => $meta):

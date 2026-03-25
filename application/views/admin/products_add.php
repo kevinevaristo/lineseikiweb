@@ -127,6 +127,111 @@
     padding: 40px;
 }
 
+/* Spec Builder Styles */
+.spec-row {
+    display: flex;
+    gap: 8px;
+    align-items: flex-start;
+    padding: 10px;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+}
+.spec-row .spec-key {
+    width: 200px;
+    min-width: 200px;
+}
+.spec-row .spec-values {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+.spec-value-row {
+    display: flex;
+    gap: 6px;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+.spec-value-row .spec-value-text {
+    flex: 1;
+    min-width: 150px;
+}
+.spec-value-row input[type="text"] {
+    width: 100%;
+}
+.spec-img-area {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+.spec-img-btn {
+    padding: 4px 10px;
+    background: #f0fdf4;
+    color: #16a34a;
+    border: 1px dashed #86efac;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 12px;
+    white-space: nowrap;
+}
+.spec-img-btn:hover {
+    background: #dcfce7;
+}
+.spec-img-preview {
+    position: relative;
+    display: inline-block;
+}
+.spec-img-preview img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 6px;
+    border: 1px solid #e2e8f0;
+}
+.spec-img-preview .spec-img-remove {
+    position: absolute;
+    top: -6px;
+    right: -6px;
+    width: 18px;
+    height: 18px;
+    background: #ef4444;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    font-size: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+}
+.spec-value-row .remove-value-btn {
+    padding: 4px 8px;
+    background: #fee2e2;
+    color: #dc2626;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 12px;
+}
+.spec-value-row .remove-value-btn:hover {
+    background: #fecaca;
+}
+.add-value-btn {
+    padding: 2px 10px;
+    background: #e0f2fe;
+    color: #0284c7;
+    border: 1px dashed #7dd3fc;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 12px;
+    align-self: flex-start;
+}
+.add-value-btn:hover {
+    background: #bae6fd;
+}
+
 .no-data {
     padding: 40px;
     text-align: center;
@@ -137,7 +242,7 @@
 <main class="ml-64 p-8">
     <div class="max-w-7xl mx-auto">
         <!-- Header -->
-        <div class="flex justify-between items-center mb-8">
+        <div class="flex justify-between items-center mb-8 sticky top-0 z-40 bg-gray-50 py-4 -mt-4 -mx-8 px-8 border-b border-slate-200 shadow-sm">
             <div>
                 <div class="flex items-center gap-3 mb-2">
                     <a href="<?php echo base_url('cms/product_items/' . $category_id); ?>" class="text-slate-500 hover:text-indigo-600 transition-colors">
@@ -370,25 +475,28 @@
                             </div>
                         </div>
                         
-                        <textarea name="specifications" rows="10"
-                                class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none font-mono text-sm"
-                                placeholder="Enter specifications in format:
-Key 1: Value 1
-Key 2: Value 2
-Key 3: Value 3
+                        <!-- Hidden textarea for form submission -->
+                        <textarea name="specifications" id="specificationsTextarea" class="hidden"></textarea>
 
-Each specification should be on a new line with a colon separating key and value."></textarea>
-                        
+                        <!-- Dynamic Spec Builder -->
+                        <div id="specBuilder" class="space-y-3">
+                            <!-- Spec rows will be added here -->
+                        </div>
+
+                        <button type="button" onclick="addSpecRow()"
+                                class="mt-3 px-4 py-2 bg-indigo-50 text-indigo-600 border border-dashed border-indigo-300 rounded-lg hover:bg-indigo-100 transition-colors text-sm">
+                            <i class="fas fa-plus mr-1"></i> Add Specification
+                        </button>
+
                         <div class="mt-3 p-3 bg-blue-50 border border-blue-100 rounded-lg">
                             <div class="flex items-start gap-2">
                                 <i class="fas fa-info-circle text-blue-600 mt-0.5"></i>
                                 <div>
-                                    <p class="text-sm text-slate-700 font-medium">Format Guide:</p>
+                                    <p class="text-sm text-slate-700 font-medium">Guide:</p>
                                     <ul class="text-xs text-slate-600 mt-1 space-y-1">
-                                        <li>• Each line should have a key and value separated by a colon (e.g., <code>Power Supply Voltage: DC24V (-15%/+10%)</code>)</li>
-                                        <li>• Empty lines will be ignored</li>
-                                        <li>• Use the "Format" button to auto-format your specifications</li>
-                                        <li>• The "Clear" button will empty the textarea</li>
+                                        <li>• Each specification has a key and one or more values</li>
+                                        <li>• Click "+ Add Value" to add multiple values to a single key</li>
+                                        <li>• Use the "Format" button to auto-organize from pasted text</li>
                                     </ul>
                                 </div>
                             </div>
@@ -1147,45 +1255,243 @@ function removeApplicationImage(button) {
     }
 }
 
-// Specifications formatting
-function formatSpecs() {
-    const textarea = document.querySelector('textarea[name="specifications"]');
-    if (!textarea) return;
-    
-    const lines = textarea.value.split('\n');
-    const formattedLines = [];
-    
-    lines.forEach(line => {
-        const trimmedLine = line.trim();
-        if (!trimmedLine) return;
-        
-        if (trimmedLine.includes(':')) {
-            const parts = trimmedLine.split(':').map(part => part.trim());
-            if (parts.length >= 2) {
-                formattedLines.push(`${parts[0]}: ${parts.slice(1).join(': ')}`);
-            } else {
-                formattedLines.push(trimmedLine);
+// Specifications Builder — helpers
+function parseSpecValue(raw) {
+    // Extract image marker {{img:filename}} from value text
+    const match = raw.match(/\{\{img:(.+?)\}\}/);
+    if (match) {
+        return { text: raw.replace(match[0], '').trim(), image: match[1] };
+    }
+    return { text: raw.trim(), image: '' };
+}
+
+function escapeHtml(str) {
+    const div = document.createElement('div');
+    div.textContent = str;
+    return div.innerHTML;
+}
+
+function buildValueRowHtml(text, image, showRemove) {
+    const baseImgUrl = '<?= base_url("assets_system/images/") ?>';
+    const imgArea = image
+        ? `<div class="spec-img-preview">
+               <img src="${baseImgUrl}${image}" onerror="this.style.display='none'">
+               <button type="button" class="spec-img-remove" onclick="removeSpecImage(this)"><i class="fas fa-times"></i></button>
+           </div>
+           <input type="hidden" class="spec-img-filename" value="${escapeHtml(image)}">`
+        : `<button type="button" class="spec-img-btn" onclick="triggerSpecImageUpload(this)"><i class="fas fa-image mr-1"></i>Image</button>
+           <input type="hidden" class="spec-img-filename" value="">`;
+
+    return `<div class="spec-value-row">
+        <div class="spec-value-text">
+            <input type="text" class="spec-value-input px-3 py-1.5 border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none text-sm"
+                   value="${escapeHtml(text)}" placeholder="Value" onchange="syncSpecsToTextarea()">
+        </div>
+        <div class="spec-img-area">${imgArea}</div>
+        ${showRemove ? '<button type="button" class="remove-value-btn" onclick="removeSpecValue(this)"><i class="fas fa-times"></i></button>' : ''}
+    </div>`;
+}
+
+// Core spec builder functions
+function addSpecRow(key = '', valuesRaw = ['']) {
+    const builder = document.getElementById('specBuilder');
+    const row = document.createElement('div');
+    row.className = 'spec-row';
+
+    const parsed = valuesRaw.map(v => parseSpecValue(v));
+    let valuesHtml = parsed.map((p, i) =>
+        buildValueRowHtml(p.text, p.image, valuesRaw.length > 1)
+    ).join('');
+
+    row.innerHTML = `
+        <div class="spec-key">
+            <input type="text" class="spec-key-input w-full px-3 py-1.5 border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none text-sm font-medium"
+                   value="${escapeHtml(key)}" placeholder="Key (e.g. Power Supply)" onchange="syncSpecsToTextarea()">
+        </div>
+        <div class="spec-values">
+            ${valuesHtml}
+            <button type="button" class="add-value-btn" onclick="addSpecValue(this)">
+                <i class="fas fa-plus mr-1"></i> Add Value
+            </button>
+        </div>
+        <button type="button" class="px-2 py-1.5 text-red-500 hover:text-red-700 hover:bg-red-50 rounded-lg transition-colors" onclick="removeSpecRow(this)">
+            <i class="fas fa-trash"></i>
+        </button>
+    `;
+
+    builder.appendChild(row);
+    syncSpecsToTextarea();
+}
+
+function addSpecValue(btn) {
+    const valuesContainer = btn.parentElement;
+    const newRow = document.createElement('div');
+    newRow.className = 'spec-value-row';
+    newRow.innerHTML = `
+        <div class="spec-value-text">
+            <input type="text" class="spec-value-input px-3 py-1.5 border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none text-sm"
+                   value="" placeholder="Value" onchange="syncSpecsToTextarea()">
+        </div>
+        <div class="spec-img-area">
+            <button type="button" class="spec-img-btn" onclick="triggerSpecImageUpload(this)"><i class="fas fa-image mr-1"></i>Image</button>
+            <input type="hidden" class="spec-img-filename" value="">
+        </div>
+        <button type="button" class="remove-value-btn" onclick="removeSpecValue(this)"><i class="fas fa-times"></i></button>
+    `;
+    valuesContainer.insertBefore(newRow, btn);
+
+    // Ensure all rows have remove button when >1
+    const valueRows = valuesContainer.querySelectorAll('.spec-value-row');
+    if (valueRows.length > 1) {
+        valueRows.forEach(vr => {
+            if (!vr.querySelector('.remove-value-btn')) {
+                const removeBtn = document.createElement('button');
+                removeBtn.type = 'button';
+                removeBtn.className = 'remove-value-btn';
+                removeBtn.onclick = function() { removeSpecValue(this); };
+                removeBtn.innerHTML = '<i class="fas fa-times"></i>';
+                vr.appendChild(removeBtn);
             }
-        } else {
-            formattedLines.push(trimmedLine);
+        });
+    }
+    syncSpecsToTextarea();
+}
+
+function removeSpecValue(btn) {
+    const valueRow = btn.closest('.spec-value-row');
+    const valuesContainer = valueRow.parentElement;
+    valueRow.remove();
+    const remaining = valuesContainer.querySelectorAll('.spec-value-row');
+    if (remaining.length === 1) {
+        const rmBtn = remaining[0].querySelector('.remove-value-btn');
+        if (rmBtn) rmBtn.remove();
+    }
+    syncSpecsToTextarea();
+}
+
+function removeSpecRow(btn) {
+    btn.closest('.spec-row').remove();
+    syncSpecsToTextarea();
+}
+
+// Image upload for spec values
+function triggerSpecImageUpload(btn) {
+    const fileInput = document.createElement('input');
+    fileInput.type = 'file';
+    fileInput.accept = 'image/*';
+    fileInput.onchange = function() {
+        if (this.files && this.files[0]) {
+            uploadSpecImage(this.files[0], btn);
+        }
+    };
+    fileInput.click();
+}
+
+function uploadSpecImage(file, btn) {
+    if (file.size > 2 * 1024 * 1024) {
+        Swal.fire({ title: 'File too large', text: 'Max 2MB', icon: 'error', timer: 2000, showConfirmButton: false });
+        return;
+    }
+
+    const formData = new FormData();
+    formData.append('spec_image', file);
+
+    const imgArea = btn.closest('.spec-img-area');
+    btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
+    btn.disabled = true;
+
+    fetch('<?= site_url("cms/upload_spec_image") ?>', { method: 'POST', body: formData, credentials: 'same-origin' })
+        .then(r => r.json())
+        .then(data => {
+            if (data.success && data.file_name) {
+                const imgUrl = '<?= base_url("assets_system/images/") ?>' + data.file_name;
+                imgArea.innerHTML = `
+                    <div class="spec-img-preview">
+                        <img src="${imgUrl}">
+                        <button type="button" class="spec-img-remove" onclick="removeSpecImage(this)"><i class="fas fa-times"></i></button>
+                    </div>
+                    <input type="hidden" class="spec-img-filename" value="${data.file_name}">`;
+                syncSpecsToTextarea();
+            } else {
+                Swal.fire({ title: 'Upload failed', text: data.message || 'Unknown error', icon: 'error', timer: 2000, showConfirmButton: false });
+                btn.innerHTML = '<i class="fas fa-image mr-1"></i>Image';
+                btn.disabled = false;
+            }
+        })
+        .catch(err => {
+            Swal.fire({ title: 'Upload error', text: err.message, icon: 'error', timer: 2000, showConfirmButton: false });
+            btn.innerHTML = '<i class="fas fa-image mr-1"></i>Image';
+            btn.disabled = false;
+        });
+}
+
+function removeSpecImage(btn) {
+    const imgArea = btn.closest('.spec-img-area');
+    imgArea.innerHTML = `
+        <button type="button" class="spec-img-btn" onclick="triggerSpecImageUpload(this)"><i class="fas fa-image mr-1"></i>Image</button>
+        <input type="hidden" class="spec-img-filename" value="">`;
+    syncSpecsToTextarea();
+}
+
+// Sync builder state to hidden textarea
+function syncSpecsToTextarea() {
+    const rows = document.querySelectorAll('#specBuilder .spec-row');
+    const lines = [];
+    rows.forEach(row => {
+        const key = row.querySelector('.spec-key-input').value.trim();
+        if (!key) return;
+        const valueRows = row.querySelectorAll('.spec-value-row');
+        const vals = [];
+        valueRows.forEach(vr => {
+            const text = vr.querySelector('.spec-value-input').value.trim();
+            const img = vr.querySelector('.spec-img-filename')?.value || '';
+            if (!text && !img) return;
+            let val = text;
+            if (img) val += '{{img:' + img + '}}';
+            vals.push(val);
+        });
+        if (vals.length > 0) {
+            lines.push(key + ': ' + vals.join(' | '));
         }
     });
-    
-    textarea.value = formattedLines.join('\n');
-    
-    Swal.fire({
-        title: 'Formatted!',
-        text: 'Specifications have been formatted successfully.',
-        icon: 'success',
-        timer: 1500,
-        showConfirmButton: false
+    document.getElementById('specificationsTextarea').value = lines.join('\n');
+}
+
+// Format: parse pasted text into the spec builder
+function formatSpecs() {
+    const builder = document.getElementById('specBuilder');
+    const textarea = document.getElementById('specificationsTextarea');
+    syncSpecsToTextarea();
+    const text = textarea.value.trim();
+
+    if (!text) {
+        Swal.fire({ title: 'Nothing to format', icon: 'info', timer: 1500, showConfirmButton: false });
+        return;
+    }
+
+    builder.innerHTML = '';
+    const lines = text.split('\n');
+    lines.forEach(line => {
+        const trimmed = line.trim();
+        if (!trimmed) return;
+        if (trimmed.includes(':')) {
+            const colonIdx = trimmed.indexOf(':');
+            const key = trimmed.substring(0, colonIdx).trim();
+            const valPart = trimmed.substring(colonIdx + 1).trim();
+            const values = valPart.split('|').map(v => v.trim()).filter(v => v);
+            addSpecRow(key, values.length > 0 ? values : ['']);
+        } else {
+            addSpecRow(trimmed, ['']);
+        }
     });
+
+    Swal.fire({ title: 'Formatted!', text: 'Specifications have been organized.', icon: 'success', timer: 1500, showConfirmButton: false });
 }
 
 function clearSpecs() {
     Swal.fire({
         title: 'Clear Specifications?',
-        text: 'This will remove all specifications from the textarea.',
+        text: 'This will remove all specifications.',
         icon: 'warning',
         showCancelButton: true,
         confirmButtonText: 'Yes, Clear All',
@@ -1193,22 +1499,17 @@ function clearSpecs() {
         confirmButtonColor: '#ef4444',
     }).then((result) => {
         if (result.isConfirmed) {
-            const textarea = document.querySelector('textarea[name="specifications"]');
-            if (textarea) {
-                textarea.value = '';
-                textarea.focus();
-                
-                Swal.fire({
-                    title: 'Cleared!',
-                    text: 'Specifications have been cleared.',
-                    icon: 'success',
-                    timer: 1500,
-                    showConfirmButton: false
-                });
-            }
+            document.getElementById('specBuilder').innerHTML = '';
+            document.getElementById('specificationsTextarea').value = '';
+            Swal.fire({ title: 'Cleared!', icon: 'success', timer: 1500, showConfirmButton: false });
         }
     });
 }
+
+// Initialize with one empty row
+document.addEventListener('DOMContentLoaded', function() {
+    addSpecRow();
+});
 
 // Save Product Function
 async function saveProduct() {

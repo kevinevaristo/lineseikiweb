@@ -1946,7 +1946,57 @@ function saveAllChanges() {
             formData.append(`existing_feat_image_${i}`, existingFeatImage);
         }
     }
-    
+
+    // Add achievements data
+    const achievements = [];
+    $('.achievement-item').each(function(index) {
+        const $item = $(this);
+        const achievementId = $item.data('id');
+
+        const achievementData = {
+            id: achievementId,
+            title: $(`.achievement-title`, $item).val() || '',
+            year: $(`.achievement-year`, $item).val() || '',
+            content: $(`.achievement-content`, $item).val() || '',
+            sort_order: $(`.achievement-sort`, $item).val() || 0,
+            is_active: $(`.achievement-active`, $item).is(':checked') ? 1 : 0
+        };
+
+        achievements.push(achievementData);
+
+        formData.append(`achievements[${index}][id]`, achievementId);
+        formData.append(`achievements[${index}][title]`, achievementData.title);
+        formData.append(`achievements[${index}][year]`, achievementData.year);
+        formData.append(`achievements[${index}][content]`, achievementData.content);
+        formData.append(`achievements[${index}][sort_order]`, achievementData.sort_order);
+        formData.append(`achievements[${index}][is_active]`, achievementData.is_active);
+
+        // Add achievement image file
+        const imageFileInput = $item.find(`input[name="achievement_image_file_${achievementId}"]`)[0];
+        if (imageFileInput && imageFileInput.files[0]) {
+            formData.append(`achievement_image_${achievementId}`, imageFileInput.files[0]);
+        }
+
+        // Add achievement icon file
+        const iconFileInput = $item.find(`input[name="achievement_icon_file_${achievementId}"]`)[0];
+        if (iconFileInput && iconFileInput.files[0]) {
+            formData.append(`achievement_icon_${achievementId}`, iconFileInput.files[0]);
+        }
+
+        // Add existing image/icon filenames
+        const existingImage = $item.find(`input[name="existing_achievement_image_${achievementId}"]`).val();
+        if (existingImage) {
+            formData.append(`existing_achievement_image_${achievementId}`, existingImage);
+        }
+
+        const existingIcon = $item.find(`input[name="existing_achievement_icon_${achievementId}"]`).val();
+        if (existingIcon) {
+            formData.append(`existing_achievement_icon_${achievementId}`, existingIcon);
+        }
+    });
+
+    formData.append('achievements_json', JSON.stringify(achievements));
+
     // Debug: Log what's being sent
     console.log('Sending FormData with entries:');
     for (let pair of formData.entries()) {

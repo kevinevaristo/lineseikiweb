@@ -236,7 +236,7 @@
 
     <div class="max-w-7xl mx-auto">
         <!-- Header -->
-        <div class="flex justify-between items-center mb-8">
+        <div class="flex justify-between items-center mb-8 sticky top-0 z-40 bg-gray-50 py-4 -mt-4 -mx-8 px-8 border-b border-slate-200 shadow-sm">
             <div>
                 <div class="flex items-center gap-3 mb-2">
                     <button type="button" onclick="history.back();" class="text-slate-500 hover:text-indigo-600 transition-colors">

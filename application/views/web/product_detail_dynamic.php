@@ -34,14 +34,24 @@ if (!empty($features_list)) {
     $features_array = array_filter(array_map('trim', explode("\n", $features_list)));
 }
 
-// Parse specifications
+// Parse specifications (supports multiple values per key separated by |, and optional {{img:filename}})
 $specs_array = [];
 if (!empty($specifications)) {
     $lines = array_filter(array_map('trim', explode("\n", $specifications)));
     foreach ($lines as $line) {
         if (strpos($line, ':') !== false) {
             list($key, $value) = array_map('trim', explode(':', $line, 2));
-            $specs_array[] = ['key' => $key, 'value' => $value];
+            $raw_values = array_map('trim', explode('|', $value));
+            $parsed_values = [];
+            foreach ($raw_values as $rv) {
+                $img = '';
+                if (preg_match('/\{\{img:(.+?)\}\}/', $rv, $m)) {
+                    $img = $m[1];
+                    $rv = trim(str_replace($m[0], '', $rv));
+                }
+                $parsed_values[] = ['text' => $rv, 'image' => $img];
+            }
+            $specs_array[] = ['key' => $key, 'values' => $parsed_values];
         }
     }
 }
@@ -919,13 +929,30 @@ if (!empty($product->applications_data)) {
           <?php if (!empty($specs_array)): ?>
           <div class="l-block__margin-large" id="block03">
             <h2 class="c-heading is-xs">Specifications</h2>
+            <?php $max_vals = max(array_map(function($s) { return count($s['values']); }, $specs_array)); ?>
             <div class="c-block-product-page__table">
-              <table class="c-table-sm">
+              <table class="c-table-sm" style="table-layout:fixed; width:100%;">
+                <colgroup>
+                  <col style="width:200px;">
+                  <?php for ($i = 0; $i < $max_vals; $i++): ?>
+                    <col>
+                  <?php endfor; ?>
+                </colgroup>
                 <tbody>
                   <?php foreach ($specs_array as $spec): ?>
                   <tr>
                     <th><?= htmlspecialchars($spec['key']) ?></th>
-                    <td><?= htmlspecialchars($spec['value']) ?></td>
+                    <?php for ($i = 0; $i < $max_vals; $i++): ?>
+                      <td>
+                        <?php if (isset($spec['values'][$i])): ?>
+                          <?php $sv = $spec['values'][$i]; ?>
+                          <?php if ($sv['text']): ?><?= htmlspecialchars($sv['text']) ?><?php endif; ?>
+                          <?php if ($sv['image']): ?>
+                            <div style="margin-top:6px;"><img src="<?= base_url('assets_system/images/' . $sv['image']) ?>" alt="" style="max-width:120px; max-height:80px; border-radius:4px;"></div>
+                          <?php endif; ?>
+                        <?php endif; ?>
+                      </td>
+                    <?php endfor; ?>
                   </tr>
                   <?php endforeach; ?>
                 </tbody>

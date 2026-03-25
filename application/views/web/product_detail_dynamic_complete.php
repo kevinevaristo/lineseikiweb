@@ -30,14 +30,24 @@ if (!empty($features_list)) {
     $features_array = array_filter(array_map('trim', explode("\n", $features_list)));
 }
 
-// Parse specifications
+// Parse specifications (supports multiple values per key separated by |, and optional {{img:filename}})
 $specs_array = [];
 if (!empty($product->specifications)) {
     $lines = array_filter(array_map('trim', explode("\n", $product->specifications)));
     foreach ($lines as $line) {
         if (strpos($line, ':') !== false) {
             list($key, $value) = array_map('trim', explode(':', $line, 2));
-            $specs_array[] = ['key' => $key, 'value' => $value];
+            $raw_values = array_map('trim', explode('|', $value));
+            $parsed_values = [];
+            foreach ($raw_values as $rv) {
+                $img = '';
+                if (preg_match('/\{\{img:(.+?)\}\}/', $rv, $m)) {
+                    $img = $m[1];
+                    $rv = trim(str_replace($m[0], '', $rv));
+                }
+                $parsed_values[] = ['text' => $rv, 'image' => $img];
+            }
+            $specs_array[] = ['key' => $key, 'values' => $parsed_values];
         }
     }
 }

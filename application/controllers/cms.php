@@ -1181,8 +1181,9 @@ public function save_achievements() {
                 $config['max_size'] = 2048;
                 $config['encrypt_name'] = TRUE;
                 
-                $this->load->library('upload', $config);
-                
+                $this->load->library('upload');
+                $this->upload->initialize($config);
+
                 if ($this->upload->do_upload('achievement_image_' . $achievement_id)) {
                     $upload_data = $this->upload->data();
                     $data['image'] = $upload_data['file_name'];
@@ -1721,8 +1722,84 @@ private function send_to_website_api($file_path, $filename)
         }
     }
 
+    // 7. Handle Achievements Section
+    $achievements_json = $this->input->post('achievements_json');
+    $achievements = json_decode($achievements_json, true);
+
+    if (!empty($achievements)) {
+        $this->load->library('upload');
+
+        foreach ($achievements as $achievement) {
+            $data = [
+                'title' => $achievement['title'],
+                'content' => $achievement['content'],
+                'year' => $achievement['year'],
+                'sort_order' => $achievement['sort_order'],
+                'is_active' => $achievement['is_active'],
+                'edited_by' => $this->session->userdata('user_id'),
+                'updated_at' => date('Y-m-d H:i:s')
+            ];
+
+            $achievement_id = $achievement['id'];
+
+            // Handle image upload
+            if (isset($_FILES['achievement_image_' . $achievement_id]) && $_FILES['achievement_image_' . $achievement_id]['error'] == 0) {
+                $config = [
+                    'upload_path' => './assets_system/images/',
+                    'allowed_types' => 'jpg|jpeg|png|gif',
+                    'max_size' => 2048,
+                    'encrypt_name' => TRUE
+                ];
+
+                $this->upload->initialize($config);
+
+                if ($this->upload->do_upload('achievement_image_' . $achievement_id)) {
+                    $upload_data = $this->upload->data();
+                    $data['image'] = $upload_data['file_name'];
+                }
+            } else {
+                $existing_image = $this->input->post('existing_achievement_image_' . $achievement_id);
+                if ($existing_image) {
+                    $data['image'] = $existing_image;
+                }
+            }
+
+            // Handle icon upload
+            if (isset($_FILES['achievement_icon_' . $achievement_id]) && $_FILES['achievement_icon_' . $achievement_id]['error'] == 0) {
+                $config = [
+                    'upload_path' => './assets_system/images/',
+                    'allowed_types' => 'jpg|jpeg|png|gif|svg',
+                    'max_size' => 1024,
+                    'encrypt_name' => TRUE
+                ];
+
+                $this->upload->initialize($config);
+
+                if ($this->upload->do_upload('achievement_icon_' . $achievement_id)) {
+                    $upload_data = $this->upload->data();
+                    $data['icon'] = $upload_data['file_name'];
+                }
+            } else {
+                $existing_icon = $this->input->post('existing_achievement_icon_' . $achievement_id);
+                if ($existing_icon) {
+                    $data['icon'] = $existing_icon;
+                }
+            }
+
+            if (strpos($achievement_id, 'new_') === 0) {
+                $data['created_at'] = date('Y-m-d H:i:s');
+                $insert = $this->db->insert('tbl_achievements', $data);
+                if (!$insert) $success = false;
+            } else {
+                $this->db->where('id', $achievement_id);
+                $update = $this->db->update('tbl_achievements', $data);
+                if (!$update) $success = false;
+            }
+        }
+    }
+
     echo json_encode([
-        'status' => ($success ? 'success' : 'error'), 
+        'status' => ($success ? 'success' : 'error'),
         'message' => ($success ? 'All changes saved successfully!' : 'Error saving changes.'),
         'slide_ids' => $slide_ids
     ]);
@@ -6582,6 +6659,47 @@ public function update_product_item($id) {
                 'original_name' => $original_name,
                 'file_size'     => $file_size,
                 'file_type'     => $data['file_ext']
+            ));
+        } else {
+            echo json_encode(array(
+                'success' => false,
+                'message' => strip_tags($this->upload->display_errors())
+            ));
+        }
+    }
+
+    /**
+     * Upload a specification value image via AJAX
+     */
+    public function upload_spec_image()
+    {
+        header('Content-Type: application/json');
+
+        if (!isset($_FILES['spec_image']) || $_FILES['spec_image']['error'] !== 0) {
+            echo json_encode(array('success' => false, 'message' => 'No file uploaded.'));
+            return;
+        }
+
+        $upload_path = FCPATH . 'assets_system/images/';
+        if (!is_dir($upload_path)) {
+            mkdir($upload_path, 0755, true);
+        }
+
+        $config = array(
+            'upload_path'   => $upload_path,
+            'allowed_types' => 'jpg|jpeg|png|gif|webp',
+            'max_size'      => 2048,
+            'encrypt_name'  => TRUE
+        );
+
+        $this->load->library('upload', $config);
+        $this->upload->initialize($config);
+
+        if ($this->upload->do_upload('spec_image')) {
+            $data = $this->upload->data();
+            echo json_encode(array(
+                'success'   => true,
+                'file_name' => $data['file_name']
             ));
         } else {
             echo json_encode(array(
