@@ -311,6 +311,11 @@ if (!empty($product->applications_data)) {
       font-size: 0.95rem;
     }
 
+    .c-table-sm tr.has-multi-values th,
+    .c-table-sm tr.has-multi-values td {
+      border: 1px solid var(--border-color);
+    }
+
     /* Action Buttons */
     .c-block-product-page__blocks {
       display: flex;
@@ -940,7 +945,7 @@ if (!empty($product->applications_data)) {
                 </colgroup>
                 <tbody>
                   <?php foreach ($specs_array as $spec): ?>
-                  <tr>
+                  <tr<?= count($spec['values']) >= 2 ? ' class="has-multi-values"' : '' ?>>
                     <th><?= htmlspecialchars($spec['key']) ?></th>
                     <?php for ($i = 0; $i < $max_vals; $i++): ?>
                       <td>
