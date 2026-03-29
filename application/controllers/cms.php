@@ -9,7 +9,7 @@ class Cms extends CI_Controller
         $this->load->model('admin/cms_model');
         // Loading URL helper for base_url() functionality
         $this->load->helper('url');
-         $this->load->library('upload'); 
+        $this->load->library('upload');
         $this->load->model('admin/simulation_model');
         $this->load->model('admin/smuc_model');
         $this->load->model('admin/iotsolution_model');
@@ -114,6 +114,7 @@ class Cms extends CI_Controller
                 $config['encrypt_name'] = true;
                 
                 $this->load->library('upload', $config);
+                $this->upload->initialize($config);
                 
                 if ($this->upload->do_upload('image')) {
                     $upload_data = $this->upload->data();
@@ -167,6 +168,7 @@ class Cms extends CI_Controller
                 $config['encrypt_name'] = true;
                 
                 $this->load->library('upload', $config);
+                $this->upload->initialize($config);
                 
                 if ($this->upload->do_upload('image')) {
                     $upload_data = $this->upload->data();
@@ -1281,6 +1283,7 @@ public function save_new_products()
     $config['encrypt_name'] = true;
     
     $this->load->library('upload', $config);
+                $this->upload->initialize($config);
     
     // Prepare data array
     $data = [
@@ -1396,6 +1399,7 @@ public function delete_carousel_slide()
     $config['encrypt_name'] = TRUE;
     
     $this->load->library('upload', $config);
+                $this->upload->initialize($config);
     
     if ($this->upload->do_upload('image')) {
         $data = $this->upload->data();
@@ -1625,6 +1629,7 @@ private function send_to_website_api($file_path, $filename)
             $config['encrypt_name'] = TRUE;
             
             $this->load->library('upload', $config);
+                $this->upload->initialize($config);
             
             if ($this->upload->do_upload('service_image_file_' . $i)) {
                 $upload_data = $this->upload->data();
@@ -1680,6 +1685,7 @@ private function send_to_website_api($file_path, $filename)
         $config['encrypt_name'] = TRUE;
         
         $this->load->library('upload', $config);
+                $this->upload->initialize($config);
         
         if ($this->upload->do_upload('new_product_image_file')) {
             $upload_data = $this->upload->data();
@@ -1990,6 +1996,7 @@ public function save_categories() {
         $config['encrypt_name'] = true;
         
         $this->load->library('upload', $config);
+                $this->upload->initialize($config);
         
         if ($this->upload->do_upload('logo')) {
             $upload_data = $this->upload->data();
@@ -2265,8 +2272,8 @@ private function upload_image_to_website($filename, $website_url, $api_endpoint,
     
     // Handle image upload
     if (!empty($_FILES['product_image']['name'])) {
-        $upload_result = $this->upload_image();
-        
+        $upload_result = $this->category_upload_image();
+
         if ($upload_result['success']) {
             $new_image = $upload_result['file_name'];
             
@@ -2329,9 +2336,10 @@ private function upload_image_to_website($filename, $website_url, $api_endpoint,
                 $config['max_size'] = 2048; // 2MB
                 $config['encrypt_name'] = TRUE;
                 $config['remove_spaces'] = TRUE;
-                
+
                 $this->load->library('upload', $config);
-                
+                $this->upload->initialize($config);
+
                 if ($this->upload->do_upload('category_image')) {
                     $upload_data = $this->upload->data();
                     $data['product_image'] = $upload_data['file_name'];
@@ -2341,7 +2349,7 @@ private function upload_image_to_website($filename, $website_url, $api_endpoint,
                     return;
                 }
             }
-            
+
             $category_id = $this->products_model->insert_category($data);
             
             if ($category_id) {
@@ -2381,9 +2389,10 @@ private function upload_image_to_website($filename, $website_url, $api_endpoint,
                 $config['max_size'] = 2048; // 2MB
                 $config['encrypt_name'] = TRUE;
                 $config['remove_spaces'] = TRUE;
-                
+
                 $this->load->library('upload', $config);
-                
+                $this->upload->initialize($config);
+
                 if ($this->upload->do_upload('category_image')) {
                     $upload_data = $this->upload->data();
                     $data['product_image'] = $upload_data['file_name'];
@@ -2393,7 +2402,7 @@ private function upload_image_to_website($filename, $website_url, $api_endpoint,
                     return;
                 }
             }
-            
+
             $result = $this->products_model->update_product($id, $data);
             
             if ($result) {
@@ -2772,6 +2781,7 @@ private function upload_image_to_website($filename, $website_url, $api_endpoint,
         }
 
         $this->load->library('upload', $config);
+                $this->upload->initialize($config);
 
         if ($this->upload->do_upload('icon_file')) {
             $upload_data = $this->upload->data();
@@ -2917,6 +2927,7 @@ private function upload_image_to_website($filename, $website_url, $api_endpoint,
     ];
     
     $this->load->library('upload', $config);
+                $this->upload->initialize($config);
     
     if ($this->upload->do_upload('icon_file')) {
         echo json_encode([
@@ -3034,6 +3045,7 @@ public function upload_image_simul() {
         $config['encrypt_name'] = true;
         
         $this->load->library('upload', $config);
+                $this->upload->initialize($config);
         
         if ($this->upload->do_upload('image')) {
             $upload_data = $this->upload->data();
@@ -4412,7 +4424,8 @@ private function process_gallery_type($type, $filenames) {
         $config['encrypt_name'] = TRUE;
         $config['remove_spaces'] = TRUE;
 
-        $this->load->library('upload', $config);
+        $this->load->library('upload');
+        $this->upload->initialize($config);
 
         if (!$this->upload->do_upload('image_file')) {
             return array(
@@ -4435,7 +4448,8 @@ private function process_gallery_type($type, $filenames) {
         $config['encrypt_name'] = TRUE;
         $config['remove_spaces'] = TRUE;
 
-        $this->load->library('upload', $config);
+        $this->load->library('upload');
+        $this->upload->initialize($config);
 
         if (!$this->upload->do_upload('product_image')) {
             return array(
@@ -4595,6 +4609,7 @@ private function process_gallery_type($type, $filenames) {
         $config['encrypt_name'] = TRUE;
 
         $this->load->library('upload', $config);
+                $this->upload->initialize($config);
 
         if (!$this->upload->do_upload($file_input_name)) {
             return array('error' => $this->upload->display_errors());
@@ -5449,6 +5464,7 @@ private function process_gallery_type($type, $filenames) {
         $config['encrypt_name'] = TRUE;
         
         $this->load->library('upload', $config);
+                $this->upload->initialize($config);
         
         if ($this->upload->do_upload('image')) {
             $data = $this->upload->data();
@@ -5841,6 +5857,7 @@ private function process_gallery_type($type, $filenames) {
         $config['remove_spaces'] = TRUE;
         
         $this->load->library('upload', $config);
+                $this->upload->initialize($config);
         
         if (!$this->upload->do_upload('product_image')) {
             return [
@@ -6036,6 +6053,7 @@ private function process_gallery_type($type, $filenames) {
         $config['remove_spaces'] = TRUE;
         
         $this->load->library('upload', $config);
+                $this->upload->initialize($config);
         
         if ($this->upload->do_upload('file')) {
             $upload_data = $this->upload->data();
@@ -6509,6 +6527,7 @@ public function update_product_item($id) {
             ];
             
             $this->load->library('upload', $config);
+                $this->upload->initialize($config);
             
             // Use filename from post or generate one
             $new_filename = $this->input->post('product_image') ?: 'product_' . time() . '_' . rand(1000, 9999);
