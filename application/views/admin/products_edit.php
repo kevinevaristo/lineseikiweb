@@ -157,8 +157,17 @@
     flex: 1;
     min-width: 150px;
 }
-.spec-value-row input[type="text"] {
+.spec-value-row input[type="text"],
+.spec-value-row textarea.spec-value-input {
     width: 100%;
+}
+.spec-value-row textarea.spec-value-input {
+    resize: vertical;
+    min-height: 34px;
+    height: 34px;
+    line-height: 1.4;
+    font-family: inherit;
+    font-size: inherit;
 }
 .spec-img-area {
     display: flex;
@@ -1248,10 +1257,21 @@ function removeApplicationImage(button) {
 // Specifications Builder — helpers
 function parseSpecValue(raw) {
     const match = raw.match(/\{\{img:(.+?)\}\}/);
+    let text, image = '';
     if (match) {
-        return { text: raw.replace(match[0], '').trim(), image: match[1] };
+        text = raw.replace(match[0], '').trim();
+        image = match[1];
+    } else {
+        text = raw.trim();
     }
-    return { text: raw.trim(), image: '' };
+    // Decode encoded newlines back to real newlines for the textarea
+    text = text.replace(/\\n/g, '\n');
+    return { text, image };
+}
+
+function autoResizeTextarea(el) {
+    el.style.height = 'auto';
+    el.style.height = el.scrollHeight + 'px';
 }
 
 function escapeHtml(str) {
@@ -1273,8 +1293,8 @@ function buildValueRowHtml(text, image, showRemove) {
 
     return `<div class="spec-value-row">
         <div class="spec-value-text">
-            <input type="text" class="spec-value-input px-3 py-1.5 border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none text-sm"
-                   value="${escapeHtml(text)}" placeholder="Value" onchange="syncSpecsToTextarea()">
+            <textarea class="spec-value-input px-3 py-1.5 border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none text-sm"
+                   placeholder="Value" oninput="autoResizeTextarea(this); syncSpecsToTextarea()" rows="1">${escapeHtml(text)}</textarea>
         </div>
         <div class="spec-img-area">${imgArea}</div>
         ${showRemove ? '<button type="button" class="remove-value-btn" onclick="removeSpecValue(this)"><i class="fas fa-times"></i></button>' : ''}
@@ -1318,8 +1338,8 @@ function addSpecValue(btn) {
     newRow.className = 'spec-value-row';
     newRow.innerHTML = `
         <div class="spec-value-text">
-            <input type="text" class="spec-value-input px-3 py-1.5 border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none text-sm"
-                   value="" placeholder="Value" onchange="syncSpecsToTextarea()">
+            <textarea class="spec-value-input px-3 py-1.5 border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none text-sm"
+                   placeholder="Value" oninput="autoResizeTextarea(this); syncSpecsToTextarea()" rows="1"></textarea>
         </div>
         <div class="spec-img-area">
             <button type="button" class="spec-img-btn" onclick="triggerSpecImageUpload(this)"><i class="fas fa-image mr-1"></i>Image</button>
@@ -1431,10 +1451,11 @@ function syncSpecsToTextarea() {
         const valueRows = row.querySelectorAll('.spec-value-row');
         const vals = [];
         valueRows.forEach(vr => {
-            const text = vr.querySelector('.spec-value-input').value.trim();
+            const rawText = vr.querySelector('.spec-value-input').value.trim();
             const img = vr.querySelector('.spec-img-filename')?.value || '';
-            if (!text && !img) return;
-            let val = text;
+            if (!rawText && !img) return;
+            // Encode real newlines as \\n so they don't break the line-based storage format
+            let val = rawText.replace(/\n/g, '\\n');
             if (img) val += '{{img:' + img + '}}';
             vals.push(val);
         });
@@ -1517,6 +1538,10 @@ document.addEventListener('DOMContentLoaded', function() {
     } else {
         addSpecRow();
     }
+    // Auto-resize all textareas after loading existing specs
+    setTimeout(function() {
+        document.querySelectorAll('#specBuilder textarea.spec-value-input').forEach(autoResizeTextarea);
+    }, 50);
 });
 
 // Update the saveProduct function to ensure product image is properly added

@@ -951,7 +951,7 @@ if (!empty($product->applications_data)) {
                       <td>
                         <?php if (isset($spec['values'][$i])): ?>
                           <?php $sv = $spec['values'][$i]; ?>
-                          <?php if ($sv['text']): ?><?= htmlspecialchars($sv['text']) ?><?php endif; ?>
+                          <?php if ($sv['text']): ?><?= nl2br(htmlspecialchars(str_replace('\\n', "\n", $sv['text']))) ?><?php endif; ?>
                           <?php if ($sv['image']): ?>
                             <div style="margin-top:6px;"><img src="<?= base_url('assets_system/images/' . $sv['image']) ?>" alt="" style="max-width:120px; max-height:80px; border-radius:4px;"></div>
                           <?php endif; ?>
