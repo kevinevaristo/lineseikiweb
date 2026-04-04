@@ -1906,7 +1906,7 @@
 
 .illustration-center {
 
-    --close-amount: 0;
+    --close-amount: 1;
 
     position: relative;
 
@@ -1948,56 +1948,28 @@
 
 
 
-.illustration-image:nth-child(1) { 
+/* Open (--close-amount:0): exploded view, spread apart */
+/* Closed (--close-amount:1): assembled, stacked together, uniform scale */
 
+.illustration-image:nth-child(1) {
     z-index: 30;
-
-    top: calc(0rem + (2rem - 0rem) * var(--close-amount));
-
-    opacity: calc(1 - 0.6 * var(--close-amount));
-
-    transform: translateX(-50%) 
-
-               scale(calc(1 - 0.3 * var(--close-amount))) 
-
-               rotate(calc(-3deg * var(--close-amount)));
-
+    top: calc(0rem + 5rem * var(--close-amount));
+    opacity: 1;
+    transform: translateX(-50%) scale(1);
 }
 
-
-
-.illustration-image:nth-child(2) { 
-
+.illustration-image:nth-child(2) {
     z-index: 20;
-
-    top: calc(10rem + (6rem - 10rem) * var(--close-amount));
-
-    opacity: calc(1 - 0.3 * var(--close-amount));
-
-    transform: translateX(-50%) 
-
-               scale(calc(1 - 0.15 * var(--close-amount))) 
-
-               rotate(calc(0deg * var(--close-amount)));
-
+    top: calc(10rem - 3rem * var(--close-amount));
+    opacity: 1;
+    transform: translateX(-50%) scale(1);
 }
 
-
-
-.illustration-image:nth-child(3) { 
-
+.illustration-image:nth-child(3) {
     z-index: 10;
-
-    top: calc(17rem + (10rem - 17rem) * var(--close-amount));
-
-    opacity: calc(1 - 0 * var(--close-amount));
-
-    transform: translateX(-50%) 
-
-               scale(calc(1 - 0.05 * var(--close-amount))) 
-
-               rotate(calc(3deg * var(--close-amount)));
-
+    top: calc(17rem - 8rem * var(--close-amount));
+    opacity: 1;
+    transform: translateX(-50%) scale(1);
 }
 
 
@@ -2036,7 +2008,7 @@
 
             .left-callout-box {
 
-                width: 33.3333%;
+                width: 25%;
 
                 order: 1;
 
@@ -2054,7 +2026,7 @@
 
             .right-callout-box {
 
-                width: 33.3333%;
+                width: 25%;
 
                 order: 3;
 
@@ -2066,7 +2038,13 @@
 
             }
 
+            .illustration-center {
 
+                width: 50%;
+
+                order: 2;
+
+            }
 
             .callout-lines-container {
 
@@ -2121,6 +2099,24 @@
             max-width: 80rem;
 
             margin: 0 auto;
+
+        }
+
+        #our-process-section {
+
+            min-height: 200vh;
+
+            position: relative;
+
+        }
+
+        .our-process-sticky {
+
+            position: sticky;
+
+            top: 80px;
+
+            z-index: 10;
 
         }
 
@@ -4693,7 +4689,7 @@
 
         </div>
 
-
+      <div class="our-process-sticky">
 
         <div class="callout-row">
 
@@ -4782,6 +4778,8 @@
 
 
         </div>
+
+      </div>
 
      </section>
 
@@ -6067,7 +6065,7 @@ class SectionIllustrationScroll {
 
         this.isAnimating = false;
 
-        this.currentProgress = 0;
+        this.currentProgress = 1;
 
         this.animationDistance = 400;
 
@@ -6083,7 +6081,7 @@ class SectionIllustrationScroll {
 
     init() {
 
-        this.illustrationCenter.style.setProperty('--close-amount', '0');
+        this.illustrationCenter.style.setProperty('--close-amount', '1');
 
         window.addEventListener('scroll', () => this.requestTick());
 
@@ -6133,7 +6131,7 @@ class SectionIllustrationScroll {
 
             progress = Math.max(0, Math.min(1, progress));
 
-            this.currentProgress = progress;
+            this.currentProgress = 1 - progress;
 
         } else {
 
@@ -6165,9 +6163,9 @@ class SectionIllustrationScroll {
 
         if (calloutLines) {
 
-            calloutLines.style.opacity = 1 - progress;
+            calloutLines.style.opacity = progress;
 
-            calloutLines.style.visibility = progress > 0.9 ? 'hidden' : 'visible';
+            calloutLines.style.visibility = progress < 0.1 ? 'hidden' : 'visible';
 
         }
 

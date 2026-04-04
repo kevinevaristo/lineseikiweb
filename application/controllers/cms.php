@@ -6,6 +6,11 @@ class Cms extends CI_Controller
     function __construct()
     {
         parent::__construct();
+
+        if ($this->session->userdata('SESS_USER_ID') == '') {
+            redirect('panel_72c81/session_expired');
+        }
+
         $this->load->model('admin/cms_model');
         // Loading URL helper for base_url() functionality
         $this->load->helper('url');
@@ -40,6 +45,9 @@ class Cms extends CI_Controller
     }
     
     public function subscribers() {
+        // Mark all subscribers as seen (clears the notification badge)
+        $this->email_model->mark_all_seen();
+
         // Get statistics
         $data['statistics'] = [
             'total' => $this->email_model->count_all(),
@@ -932,7 +940,7 @@ class Cms extends CI_Controller
     {
         // Turn off error display but log them
         ini_set('display_errors', 0);
-        error_reporting(E_ALL);
+        error_reporting(E_ALL & ~E_DEPRECATED & ~E_NOTICE);
         
         // Start output buffering to catch any stray output
         ob_start();
@@ -2620,7 +2628,9 @@ private function upload_image_to_website($filename, $website_url, $api_endpoint,
         $data['capabilities'] = $this->simulation_model->get_all_capabilities();
         $data['carousel_items'] = $this->simulation_model->get_carousel_items_content();
         $data['benefits'] = $this->simulation_model->get_all_benefits();
-        $data['colors'] = $this->get_color_classes(); 
+        $data['colors'] = $this->get_color_classes();
+        $data['other_capabilities'] = $this->simulation_model->get_all_other_capabilities();
+        $data['other_capability_categories'] = $this->simulation_model->get_other_capability_categories();
         $this->load->view('admin/simulation_analysis', $data);
     }
     
@@ -3258,8 +3268,7 @@ public function upload_image_simul() {
                     $insert_data = array(
                         'title' => $benefit['title'] ?? '',
                         'description' => $benefit['description'] ?? '',
-                        'icon' => $benefit['icon'] ?? '',
-                        'sort_order' => $this->simulation_model->get_next_benefit_sort_order()
+                        'icon' => $benefit['icon'] ?? ''
                     );
                     
                     if ($this->simulation_model->insert_benefit($insert_data)) {
@@ -3348,7 +3357,7 @@ public function upload_image_simul() {
     public function save_carousel()
 {
     // Enable debugging
-    error_reporting(E_ALL);
+    error_reporting(E_ALL & ~E_DEPRECATED & ~E_NOTICE);
     ini_set('display_errors', 1);
     
     if (!$this->input->is_ajax_request()) {
@@ -4909,10 +4918,12 @@ private function process_gallery_type($type, $filenames) {
             show_404();
         }
 
-        if ($_POST) {
+        if ($this->input->post() || !empty($_FILES['main_image']['name'])) {
             $this->form_validation->set_rules('webinar_title', 'Webinar Title', 'required');
 
-            if ($this->form_validation->run() !== FALSE) {
+            if ($this->form_validation->run() === FALSE) {
+                $this->session->set_flashdata('error', 'Validation failed: ' . validation_errors('', ''));
+            } else {
                 $image_name = $this->input->post('current_image');
 
                 // Handle image removal
@@ -4924,14 +4935,18 @@ private function process_gallery_type($type, $filenames) {
                 }
 
                 // Handle new image upload
-                if (!empty($_FILES['main_image']['name'])) {
-                    $config['upload_path'] = FCPATH . 'assets_system/images/';
-                    $config['allowed_types'] = 'jpg|jpeg|png|gif|webp';
-                    $config['max_size'] = 2048;
-                    $config['encrypt_name'] = TRUE;
+                $has_file = isset($_FILES['main_image']) && !empty($_FILES['main_image']['name']) && $_FILES['main_image']['error'] == 0;
+
+                if ($has_file) {
+                    $upload_config = array(
+                        'upload_path'   => FCPATH . 'assets_system/images/',
+                        'allowed_types' => 'jpg|jpeg|jfif|png|gif|webp',
+                        'max_size'      => 5120,
+                        'encrypt_name'  => TRUE
+                    );
 
                     $this->load->library('upload');
-                    $this->upload->initialize($config);
+                    $this->upload->initialize($upload_config);
 
                     if ($this->upload->do_upload('main_image')) {
                         $upload_data = $this->upload->data();
@@ -6433,19 +6448,19 @@ private function process_gallery_type($type, $filenames) {
         }
         
         // Decode JSON data fields if they exist
-        if (!empty($product->models_data)) {
+        if (!empty($product->models_data) && is_string($product->models_data)) {
             $product->models_data = json_decode($product->models_data, true);
         }
-        
-        if (!empty($product->specifications_data)) {
+
+        if (!empty($product->specifications_data) && is_string($product->specifications_data)) {
             $product->specifications_data = json_decode($product->specifications_data, true);
         }
-        
-        if (!empty($product->downloads_data)) {
+
+        if (!empty($product->downloads_data) && is_string($product->downloads_data)) {
             $product->downloads_data = json_decode($product->downloads_data, true);
         }
-        
-        if (!empty($product->applications_data)) {
+
+        if (!empty($product->applications_data) && is_string($product->applications_data)) {
             $product->applications_data = json_decode($product->applications_data, true);
         }
         
@@ -7253,11 +7268,184 @@ public function get_quote_request_details() {
     }
     
     $request = $this->Quote_requests_model->get_request($id);
-    
+
     if ($request) {
         echo json_encode(['success' => true, 'request' => $request]);
     } else {
         echo json_encode(['success' => false, 'message' => 'Request not found']);
+    }
+}
+
+// ===== OTHER CAPABILITIES CRUD =====
+public function add_other_capability()
+{
+    if (!$this->input->is_ajax_request()) {
+        show_404();
+    }
+
+    $data = [
+        'category'   => $this->input->post('category'),
+        'item_name'  => $this->input->post('item_name'),
+        'icon'       => $this->input->post('icon'),
+        'is_active'  => 1
+    ];
+
+    if (empty($data['category']) || empty($data['item_name'])) {
+        echo json_encode(['success' => false, 'message' => 'Category and item name are required']);
+        return;
+    }
+
+    // Auto-assign sort_order to last position
+    $max = $this->db->select_max('sort_order')->get('tbl_other_capabilities')->row()->sort_order;
+    $data['sort_order'] = ($max ? (int)$max : 0) + 1;
+
+    // Auto-create category setting if it doesn't exist
+    $existing_cat = $this->db->get_where('tbl_other_capability_categories', ['category' => $data['category']])->row();
+    if (!$existing_cat) {
+        $max_cat_order = $this->db->select_max('sort_order')->get('tbl_other_capability_categories')->row()->sort_order;
+        $this->db->insert('tbl_other_capability_categories', [
+            'category'   => $data['category'],
+            'icon'       => 'bi-folder',
+            'color'      => '#0d6efd',
+            'sort_order' => ($max_cat_order ? (int)$max_cat_order : 0) + 1
+        ]);
+    }
+
+    $id = $this->simulation_model->add_other_capability($data);
+    if ($id) {
+        $item = $this->simulation_model->get_other_capability($id);
+        echo json_encode(['success' => true, 'message' => 'Capability added', 'item' => $item]);
+    } else {
+        echo json_encode(['success' => false, 'message' => 'Failed to add capability']);
+    }
+}
+
+public function update_other_capability()
+{
+    if (!$this->input->is_ajax_request()) {
+        show_404();
+    }
+
+    $id = $this->input->post('id');
+    $data = [
+        'category'   => $this->input->post('category'),
+        'item_name'  => $this->input->post('item_name'),
+        'icon'       => $this->input->post('icon'),
+        'is_active'  => (int) $this->input->post('is_active')
+    ];
+
+    if (empty($id) || empty($data['category']) || empty($data['item_name'])) {
+        echo json_encode(['success' => false, 'message' => 'ID, category and item name are required']);
+        return;
+    }
+
+    if ($this->simulation_model->update_other_capability($id, $data)) {
+        $item = $this->simulation_model->get_other_capability($id);
+        echo json_encode(['success' => true, 'message' => 'Capability updated', 'item' => $item]);
+    } else {
+        echo json_encode(['success' => false, 'message' => 'Failed to update capability']);
+    }
+}
+
+public function delete_other_capability()
+{
+    if (!$this->input->is_ajax_request()) {
+        show_404();
+    }
+
+    $id = $this->input->post('id');
+    if (empty($id)) {
+        echo json_encode(['success' => false, 'message' => 'ID is required']);
+        return;
+    }
+
+    if ($this->simulation_model->delete_other_capability($id)) {
+        echo json_encode(['success' => true, 'message' => 'Capability deleted']);
+    } else {
+        echo json_encode(['success' => false, 'message' => 'Failed to delete capability']);
+    }
+}
+
+public function get_other_capability()
+{
+    if (!$this->input->is_ajax_request()) {
+        show_404();
+    }
+
+    $id = $this->input->post('id');
+    $item = $this->simulation_model->get_other_capability($id);
+    if ($item) {
+        echo json_encode(['success' => true, 'item' => $item]);
+    } else {
+        echo json_encode(['success' => false, 'message' => 'Not found']);
+    }
+}
+
+public function update_capability_category()
+{
+    if (!$this->input->is_ajax_request()) {
+        show_404();
+    }
+
+    $id = $this->input->post('id');
+    $data = [
+        'icon'  => $this->input->post('icon'),
+        'color' => $this->input->post('color')
+    ];
+
+    if (empty($id)) {
+        echo json_encode(['success' => false, 'message' => 'ID is required']);
+        return;
+    }
+
+    if ($this->simulation_model->update_capability_category($id, $data)) {
+        $item = $this->simulation_model->get_capability_category($id);
+        echo json_encode(['success' => true, 'message' => 'Category updated', 'item' => $item]);
+    } else {
+        echo json_encode(['success' => false, 'message' => 'Failed to update category']);
+    }
+}
+
+public function get_capability_category()
+{
+    if (!$this->input->is_ajax_request()) {
+        show_404();
+    }
+
+    $id = $this->input->post('id');
+    $item = $this->simulation_model->get_capability_category($id);
+    if ($item) {
+        echo json_encode(['success' => true, 'item' => $item]);
+    } else {
+        echo json_encode(['success' => false, 'message' => 'Not found']);
+    }
+}
+
+public function delete_capability_category()
+{
+    if (!$this->input->is_ajax_request()) {
+        show_404();
+    }
+
+    $id = $this->input->post('id');
+    if (empty($id)) {
+        echo json_encode(['success' => false, 'message' => 'ID is required']);
+        return;
+    }
+
+    $cat = $this->simulation_model->get_capability_category($id);
+    if (!$cat) {
+        echo json_encode(['success' => false, 'message' => 'Category not found']);
+        return;
+    }
+
+    // Count items that will be deleted
+    $count = $this->db->where('category', $cat->category)->count_all_results('tbl_other_capabilities');
+
+    if ($this->simulation_model->delete_capability_category($id)) {
+        echo json_encode(['success' => true, 'message' => "Category \"{$cat->category}\" and {$count} item(s) deleted"]);
+    } else {
+        echo json_encode(['success' => false, 'message' => 'Failed to delete category']);
     }
 }
 

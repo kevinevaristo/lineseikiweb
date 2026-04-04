@@ -803,6 +803,14 @@ section img:hover {
   color: #d9e4f5;
   margin-bottom: 10px;
   flex-grow: 1;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.carousel-item .row {
+  align-items: stretch;
 }
 
 .simulation-card .read-more {
@@ -2295,7 +2303,7 @@ if (isset($featured_webinars) && !empty($featured_webinars)) {
             </div>
             <div class="webinar-cta-wrap">
                 <a href="<?php echo base_url('index/library?filter=webinars&wid=' . $fw['id'] . '&wname=' . urlencode($fw['webinar_title'])); ?>" class="webinar-cta">
-                    Browse Webinar Series <i class="fas fa-arrow-right"></i>
+                    Watch Recorded Webinars <i class="fas fa-arrow-right"></i>
                 </a>
                 <a href="https://docs.google.com/forms/d/e/1FAIpQLSf8yEyeQa9vCQuV9o40frTqXtjT-o6OcCw9-UJFBG7805VicA/viewform" target="_blank" rel="noopener noreferrer" class="webinar-cta-register">
                     Register <i class="fas fa-external-link-alt"></i>
@@ -2305,6 +2313,194 @@ if (isset($featured_webinars) && !empty($featured_webinars)) {
     </div>
 </section>
 <?php endforeach; ?>
+<?php endif; ?>
+
+<!-- ===== OTHER ENGINEERING CAPABILITIES SECTION ===== -->
+<?php if (isset($other_capabilities) && !empty($other_capabilities)): ?>
+<section class="other-capabilities-section">
+    <div class="oc-container">
+        <h2 class="oc-title fade-in">Other Engineering Capabilities</h2>
+        <p class="oc-subtitle fade-in">Comprehensive engineering solutions across <?php
+            $cat_names = array_keys($other_capabilities);
+            $count = count($cat_names);
+            if ($count === 1) {
+                echo strtolower($cat_names[0]);
+            } elseif ($count === 2) {
+                echo strtolower($cat_names[0]) . ' and ' . strtolower($cat_names[1]);
+            } else {
+                for ($i = 0; $i < $count; $i++) {
+                    echo strtolower($cat_names[$i]);
+                    if ($i < $count - 2) echo ', ';
+                    elseif ($i === $count - 2) echo ', and ';
+                }
+            }
+        ?></p>
+        <div class="oc-categories">
+            <?php
+            $cat_index = 0;
+            foreach ($other_capabilities as $category => $items):
+                $cat_icon = isset($category_settings[$category]) ? $category_settings[$category]->icon : 'bi-folder';
+                $cat_color = isset($category_settings[$category]) ? $category_settings[$category]->color : '#0d6efd';
+            ?>
+            <div class="oc-category-card fade-in <?= $cat_index > 0 ? 'delay-' . $cat_index : '' ?>">
+                <div class="oc-category-header" style="border-left: 4px solid <?= $cat_color ?>;">
+                    <div class="oc-category-icon" style="background: <?= $cat_color ?>;">
+                        <i class="bi <?= $cat_icon ?>"></i>
+                    </div>
+                    <h3 class="oc-category-name"><?= htmlspecialchars($category) ?></h3>
+                    <span class="oc-category-count"><?= count($items) ?> services</span>
+                </div>
+                <ul class="oc-items-list">
+                    <?php foreach ($items as $item): ?>
+                    <li class="oc-item">
+                        <i class="bi <?= htmlspecialchars($item->icon) ?> oc-item-icon" style="color: <?= $cat_color ?>;"></i>
+                        <span><?= htmlspecialchars($item->item_name) ?></span>
+                    </li>
+                    <?php endforeach; ?>
+                </ul>
+            </div>
+            <?php $cat_index++; endforeach; ?>
+        </div>
+    </div>
+</section>
+
+<style>
+/* ===== Other Engineering Capabilities ===== */
+.other-capabilities-section {
+    padding: 80px 0;
+    background: #f8fafc;
+    position: relative;
+}
+
+.oc-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.oc-title {
+    text-align: center;
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--newblue2);
+    margin-bottom: 10px;
+}
+
+.oc-subtitle {
+    text-align: center;
+    font-size: 1.05rem;
+    color: #6c757d;
+    margin-bottom: 50px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.oc-categories {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+}
+
+.oc-category-card {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+    overflow: hidden;
+    transition: var(--transition);
+}
+
+.oc-category-card:hover {
+    box-shadow: 0 8px 30px rgba(0,0,0,0.10);
+    transform: translateY(-3px);
+}
+
+.oc-category-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 20px 24px;
+    background: #fafbfc;
+    border-bottom: 1px solid #eef1f5;
+}
+
+.oc-category-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.oc-category-icon i {
+    font-size: 1.2rem;
+    color: #fff;
+}
+
+.oc-category-name {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--dark);
+    margin: 0;
+    flex: 1;
+}
+
+.oc-category-count {
+    font-size: 0.8rem;
+    color: #fff;
+    background: #adb5bd;
+    border-radius: 20px;
+    padding: 3px 12px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.oc-items-list {
+    list-style: none;
+    padding: 16px 24px 20px;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.oc-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 12px;
+    border-radius: 8px;
+    transition: background 0.2s;
+    font-size: 0.95rem;
+    color: #444;
+}
+
+.oc-item:hover {
+    background: #f0f4f8;
+}
+
+.oc-item-icon {
+    font-size: 1rem;
+    width: 20px;
+    text-align: center;
+    flex-shrink: 0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .oc-categories {
+        grid-template-columns: 1fr;
+    }
+    .oc-title {
+        font-size: 1.6rem;
+    }
+    .other-capabilities-section {
+        padding: 50px 0;
+    }
+}
+</style>
 <?php endif; ?>
 
 <!-- ===== NEW TESTIMONIAL SECTION (with images from DB) ===== -->

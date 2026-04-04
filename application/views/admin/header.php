@@ -115,6 +115,11 @@
             $new_messages_count = $this->db->where('status', 'new')
                                           ->from('tbl_send_us_message')
                                           ->count_all_results();
+
+            // Get new (unseen) email subscribers count for badge
+            $new_subscribers_count = $this->db->where('is_seen', 0)
+                                              ->from('tbl_emails')
+                                              ->count_all_results();
             
             $pages = [
                 'home'                => ['Home', '🏠'],
@@ -139,13 +144,22 @@
                     $show_badge = true;
                     $badge_count = $pending_count;
                 }
+                if ($function_name == 'subscribers' && $new_subscribers_count > 0) {
+                    $show_badge = true;
+                    $badge_count = $new_subscribers_count;
+                }
             ?>
                 <a href="<?= base_url('cms/' . $function_name); ?>"
                     class="flex items-center px-3 py-1.5 text-xs font-medium rounded-md transition-all <?= $isActive ? 'active-link' : 'text-slate-600 hover:bg-slate-50 hover:text-indigo-600' ?> <?= $show_badge ? 'nav-item-with-badge' : '' ?>">
                     <span class="mr-2.5 text-base"><?= $meta[1]; ?></span>
                     <?= $meta[0]; ?>
                     <?php if ($show_badge): ?>
-                        <span class="notification-badge" title="<?= $badge_count ?> pending quote request<?= $badge_count > 1 ? 's' : '' ?>">
+                        <?php
+                            $badge_title = $function_name == 'subscribers'
+                                ? $badge_count . ' new subscriber' . ($badge_count > 1 ? 's' : '')
+                                : $badge_count . ' pending quote request' . ($badge_count > 1 ? 's' : '');
+                        ?>
+                        <span class="notification-badge" title="<?= $badge_title ?>">
                             <?= $badge_count > 99 ? '99+' : $badge_count ?>
                         </span>
                     <?php endif; ?>

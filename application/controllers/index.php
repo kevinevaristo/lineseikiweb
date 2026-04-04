@@ -1,7 +1,7 @@
 <?php defined('BASEPATH') or exit('No direct script access allowed');
 ob_start();
 
-error_reporting(E_ALL);
+error_reporting(E_ALL & ~E_DEPRECATED & ~E_NOTICE);
 ini_set('display_errors', 1);
 
 class index extends CI_Controller
@@ -295,6 +295,7 @@ public function save_download_info() {
         $data = array(
             'full_name' => $this->input->post('full_name', true),
             'email' => $this->input->post('email', true),
+            'contact_number' => $this->input->post('contact_number', true),
             'company' => $this->input->post('company', true),
             'position' => $this->input->post('position', true),
             'file_name' => $this->input->post('file_name', true),
@@ -318,7 +319,30 @@ public function save_download_info() {
     
     echo json_encode($response);
 }
-  
+
+  /**
+   * Download a PDF file from the documents folder
+   */
+  public function download_file($filename = '') {
+      if (empty($filename)) {
+          show_404();
+          return;
+      }
+
+      $filename = basename($filename); // prevent directory traversal
+      $filepath = FCPATH . 'assets_system/documents/' . $filename;
+
+      if (!file_exists($filepath)) {
+          $this->session->set_flashdata('error', 'The requested file was not found.');
+          redirect('index/library');
+          return;
+      }
+
+      $this->load->helper('download');
+      $data = file_get_contents($filepath);
+      force_download($filename, $data);
+  }
+
   /**
    * Save video watch information
    */
@@ -992,6 +1016,8 @@ public function save_download_info() {
     // Get featured webinars for CTA links
     $this->load->model('admin/admin_library_model');
     $data['featured_webinars'] = $this->admin_library_model->get_featured_webinars();
+    $data['other_capabilities'] = $this->simulation_model->get_other_capabilities();
+    $data['category_settings'] = $this->simulation_model->get_capability_category_settings();
     $this->load->view('web/ps_serv_simulation', $data);
   }
 

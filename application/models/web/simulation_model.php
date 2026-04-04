@@ -73,4 +73,28 @@ class simulation_model extends CI_Model
     {
         return $this->db->get_where('tbl_simulation_carousel', ['id' => $id])->row();
     }
+
+    public function get_other_capabilities()
+    {
+        $this->db->where('is_active', 1);
+        $this->db->order_by('sort_order', 'ASC');
+        $results = $this->db->get('tbl_other_capabilities')->result();
+
+        $grouped = [];
+        foreach ($results as $row) {
+            $grouped[$row->category][] = $row;
+        }
+        return $grouped;
+    }
+
+    public function get_capability_category_settings()
+    {
+        $this->db->order_by('sort_order', 'ASC');
+        $results = $this->db->get('tbl_other_capability_categories')->result();
+        $settings = [];
+        foreach ($results as $row) {
+            $settings[$row->category] = $row;
+        }
+        return $settings;
+    }
 }

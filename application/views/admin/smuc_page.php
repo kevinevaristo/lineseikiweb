@@ -2298,16 +2298,6 @@ function viewRequest(id) {
                     </div>
                     ` : '<p class="text-slate-500">No file attached</p>'}
 
-                    <!-- Status Management -->
-                    <div>
-                        <h3 class="text-lg font-semibold text-slate-900 mb-4">Status Management</h3>
-                        <select id="requestStatus" class="w-full px-4 py-2 border border-slate-300 rounded-lg" onchange="updateStatus(${request.id}, this.value)">
-                            <option value="new" ${request.status == 'new' || !request.status ? 'selected' : ''}>New</option>
-                            
-                            <option value="reviewed" ${request.status == 'reviewed' ? 'selected' : ''}>Reviewed</option>
-                        </select>
-                    </div>
-
                     <!-- Notes -->
                     <div>
                         <h3 class="text-lg font-semibold text-slate-900 mb-4">Internal Notes</h3>
@@ -2326,7 +2316,36 @@ function viewRequest(id) {
             `;
             
             document.getElementById('modalContent').innerHTML = content;
-            document.getElementById('viewModal').classList.add('active');
+
+            // Auto-update status to 'reviewed' if currently 'new', then show modal
+            if (!request.status || request.status === 'new') {
+                fetch('<?= base_url() ?>cms/update_quote_status', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                    body: 'id=' + request.id + '&status=reviewed'
+                })
+                .then(res => res.json())
+                .then(statusData => {
+                    if (statusData.success) {
+                        // Update badge in table
+                        const row = document.getElementById('request-' + request.id);
+                        if (row) {
+                            const badge = row.querySelector('.status-badge');
+                            if (badge) {
+                                badge.classList.remove('status-new', 'status-pending', 'status-reviewed', 'status-contacted', 'status-completed');
+                                badge.classList.add('status-reviewed');
+                                badge.textContent = 'Reviewed';
+                            }
+                        }
+                    }
+                    document.getElementById('viewModal').classList.add('active');
+                })
+                .catch(() => {
+                    document.getElementById('viewModal').classList.add('active');
+                });
+            } else {
+                document.getElementById('viewModal').classList.add('active');
+            }
         } else {
             alert('Failed to load request details');
         }

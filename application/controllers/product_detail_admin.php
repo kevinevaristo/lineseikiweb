@@ -18,7 +18,7 @@ class Product_detail_admin extends CI_Controller
         
         // Check admin session (adjust based on your auth system)
         if (!$this->session->userdata('SESS_USER_ID')) {
-            redirect('panel_72c81');
+            redirect('panel_72c81/session_expired');
         }
     }
 

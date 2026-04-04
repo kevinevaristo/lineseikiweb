@@ -570,7 +570,7 @@
 
       <!-- FEATURED VIDEO (youtube hero) -->
       <?php if(isset($featured_video) && !empty($featured_video)): ?>
-      <div class="featured-vid-card fade-in-up">
+      <div class="featured-vid-card fade-in-up" id="featuredVideoCard">
         <div class="featured-thumb" style="background-image: url('<?= base_url('assets_system/images/'.$featured_video['image']) ?>');">
           <span class="play-badge"><i class="fas fa-play me-1"></i> featured</span>
         </div>
@@ -628,6 +628,8 @@
               <?php else: ?>
                 <a href="<?= htmlspecialchars($item['video_url']) ?>" target="_blank" class="btn btn-sm mt-2 w-100" style="background:var(--navy); color:white; border-radius:30px;"><i class="fas fa-play me-2"></i>Watch</a>
               <?php endif; ?>
+            <?php else: ?>
+              <div class="btn btn-sm mt-2 w-100" style="background:#f1f5f9; color:#94a3b8; border-radius:30px; cursor:default;"><i class="fas fa-exclamation-circle me-2"></i>No video uploaded</div>
             <?php endif; ?>
           </div>
           <?php endforeach; endif; ?>
@@ -644,8 +646,13 @@
               $webinar_id = $item['webinar_id'] ?? 0;
           ?>
           <div class="video-card pdf-card mix-item" data-category="brochure" data-webinar-id="<?= $webinar_id ?>">
-            <div class="video-thumb">
-              <i class="fas fa-file-pdf" style="font-size:3.5rem; color:var(--navy);"></i>
+            <div class="video-thumb" style="display:flex; align-items:center; justify-content:center; background:var(--navy-soft, #e8edf3);">
+              <svg xmlns="http://www.w3.org/2000/svg" width="60" height="70" viewBox="0 0 56 64" fill="none">
+                <path d="M36 0H8C3.6 0 0 3.6 0 8v48c0 4.4 3.6 8 8 8h40c4.4 0 8-3.6 8-8V16L36 0z" fill="#E53E3E"/>
+                <path d="M36 0v12c0 2.2 1.8 4 4 4h16L36 0z" fill="#FC8181" opacity=".8"/>
+                <text x="28" y="44" text-anchor="middle" font-family="Arial,sans-serif" font-weight="bold" font-size="14" fill="white">PDF</text>
+              </svg>
+              <span class="thumb-duration" style="background: linear-gradient(135deg, #E53E3E, #C53030);">PDF</span>
               <?php if($webinar_id > 0): ?><span class="pdf-badge"><i class="fas fa-video me-1"></i>webinar</span><?php endif; ?>
             </div>
             <div class="video-info">
@@ -664,7 +671,7 @@
                   <i class="fas fa-lock me-2"></i>Download (gated)
                 </button>
               <?php else: ?>
-                <a href="<?= base_url('assets_system/documents/'.$pdf_filename) ?>" download class="btn btn-sm mt-2 w-100" style="background:var(--navy); color:white; border-radius:30px;"><i class="fas fa-download me-2"></i>Download</a>
+                <a href="<?= base_url('index/download_file/'.$pdf_filename) ?>" class="btn btn-sm mt-2 w-100" style="background:var(--navy); color:white; border-radius:30px;"><i class="fas fa-download me-2"></i>Download</a>
               <?php endif; ?>
             <?php endif; ?>
           </div>
@@ -714,15 +721,15 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
       </div>
       <div class="modal-body">
-        <input type="hidden" id="fileToDownload">
-        <input type="hidden" id="fileTitle">
-        <div class="mb-3"><label class="form-label">Full name</label><input type="text" class="form-control adv-form-control" required></div>
-        <div class="mb-3"><label class="form-label">Email</label><input type="email" class="form-control adv-form-control" required></div>
+        <input type="hidden" id="fileToDownload" name="file_name">
+        <input type="hidden" id="fileTitle" name="file_title">
+        <div class="mb-3"><label class="form-label">Full name</label><input type="text" name="full_name" class="form-control adv-form-control" required></div>
+        <div class="mb-3"><label class="form-label">Email</label><input type="email" name="email" class="form-control adv-form-control" required></div>
         <!-- CONTACT NUMBER FIELD -->
-        <div class="mb-3"><label class="form-label">Contact number</label><input type="tel" class="form-control adv-form-control" required></div>
+        <div class="mb-3"><label class="form-label">Contact number</label><input type="tel" name="contact_number" class="form-control adv-form-control" required></div>
         <div class="row">
-          <div class="col-6 mb-3"><label class="form-label">Company</label><input class="form-control adv-form-control" required></div>
-          <div class="col-6 mb-3"><label class="form-label">Position</label><input class="form-control adv-form-control" required></div>
+          <div class="col-6 mb-3"><label class="form-label">Company</label><input name="company" class="form-control adv-form-control" required></div>
+          <div class="col-6 mb-3"><label class="form-label">Position</label><input name="position" class="form-control adv-form-control" required></div>
         </div>
         <div class="mb-3">
           <p class="small text-muted mb-2" style="font-size: 0.8rem; line-height: 1.4;">
@@ -837,9 +844,17 @@ document.addEventListener('DOMContentLoaded', function() {
     applyFilters();
   };
 
+  const featuredCard = document.getElementById('featuredVideoCard');
+
   function applyFilters() {
     const active = document.querySelector('.pill-btn.active')?.getAttribute('data-filter') || 'all';
     const search = document.getElementById('resourceSearch').value.toLowerCase();
+
+    // Show featured video only when filter is "all" or "video" and no specific webinar is selected
+    if (featuredCard) {
+      featuredCard.style.display = ((active === 'all' || active === 'video') && currentWebinar === 0) ? '' : 'none';
+    }
+
     gridItems.forEach(item => {
       const cat = item.dataset.category;
       const webinar = parseInt(item.dataset.webinarId || '0');
@@ -870,6 +885,7 @@ document.addEventListener('DOMContentLoaded', function() {
     webinarsSection.classList.remove('hidden-section');
     currentWebinar = 0;
     indicator.classList.add('d-none');
+    if (featuredCard) featuredCard.style.display = 'none';
   });
 
   document.getElementById('resourceSearch').addEventListener('keyup', applyFilters);
@@ -937,9 +953,26 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     document.querySelector('#downloadModal form').addEventListener('submit', function(e) {
       e.preventDefault();
-      bootstrap.Modal.getInstance(downloadModal).hide();
-      this.reset();
-      alert('Thank you! Your download will start shortly. (Demo)');
+      const form = this;
+      const fileToDownload = document.getElementById('fileToDownload').value;
+      const formData = new FormData(form);
+
+      // Save download info via AJAX
+      fetch('<?= base_url("index/save_download_info") ?>', {
+        method: 'POST',
+        body: formData
+      })
+      .then(res => res.json())
+      .then(data => {
+        bootstrap.Modal.getInstance(downloadModal).hide();
+        form.reset();
+        document.getElementById('btnSubmitDownload').disabled = true;
+        // Trigger the actual file download
+        window.location.href = '<?= base_url("index/download_file/") ?>' + fileToDownload;
+      })
+      .catch(err => {
+        alert('Something went wrong. Please try again.');
+      });
     });
   }
 

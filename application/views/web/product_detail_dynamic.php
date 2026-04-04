@@ -767,29 +767,8 @@ if (!empty($product->applications_data)) {
 </head>
 <body>
 
-  <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="<?= base_url() ?>">
-        <img src="<?= base_url('assets_system/images/header_logo.png') ?>" alt="Line Seiki Logo">
-      </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item"><a class="nav-link" href="<?= base_url() ?>">Home</a></li>
-          <li class="nav-item"><a class="nav-link" href="<?= base_url('index/about_us') ?>">About Us</a></li>
-          <li class="nav-item">
-            <a class="nav-link active" href="<?= base_url('index/ps_prod') ?>">Products & Services</a>
-          </li>
-          <li class="nav-item"><a class="nav-link" href="<?= base_url('index/news_event') ?>">News & Events</a></li>
-          <li class="nav-item"><a class="nav-link" href="<?= base_url('index/library') ?>">Library</a></li>
-          <li class="nav-item"><a class="nav-link" href="<?= base_url('index/contact_us') ?>">Contact Us</a></li>
-        </ul>
-      </div>
-    </div>
-  </nav>
+  <!-- NAVBAR -->
+  <?php $this->load->view('web/header'); ?>
 
   <!-- Breadcrumb -->
   <div class="c-breadcrumb is-relative">

@@ -871,9 +871,275 @@ main {
                 </div>
             </section>
 
+            <!-- Bootstrap Icons CSS for icon previews -->
+            <link href="<?= base_url('assets_system/vendor/bootstrap-icons/bootstrap-icons.css') ?>" rel="stylesheet">
+            <!-- Other Engineering Capabilities Section -->
+            <section class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+                <div class="p-6 border-b border-slate-100 bg-slate-50/50 flex items-center justify-between">
+                    <h3 class="font-bold text-slate-800 flex items-center"><span class="mr-2">⚙️</span> Other Engineering Capabilities</h3>
+                    <button onclick="openOcModal()" class="px-4 py-2 bg-indigo-600 text-white text-sm font-semibold rounded-lg hover:bg-indigo-700 transition-colors flex items-center gap-2">
+                        <i class="fas fa-plus"></i> Add Capability
+                    </button>
+                </div>
+                <div class="p-6">
+                    <!-- Category Settings -->
+                    <div class="mb-6">
+                        <label class="text-xs font-bold text-slate-500 uppercase tracking-wider mb-3 block">Category Icons & Colors</label>
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+                            <?php foreach ($other_capability_categories as $cat): ?>
+                            <div class="border border-slate-200 rounded-xl p-3 flex items-center gap-3 hover:border-slate-300 transition-colors cat-setting-card" data-cat-id="<?= $cat->id ?>">
+                                <div class="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0 cat-icon-box" style="background: <?= htmlspecialchars($cat->color) ?>;">
+                                    <i class="bi <?= htmlspecialchars($cat->icon) ?> text-white text-lg cat-icon-display"></i>
+                                </div>
+                                <div class="flex-1 min-w-0">
+                                    <div class="text-sm font-semibold text-slate-700"><?= htmlspecialchars($cat->category) ?></div>
+                                    <div class="text-[10px] text-slate-400 truncate"><?= htmlspecialchars($cat->icon) ?></div>
+                                </div>
+                                <div class="flex items-center gap-0.5">
+                                    <button onclick="editCategorySettings(<?= $cat->id ?>)" class="p-1.5 text-slate-400 hover:text-indigo-500 hover:bg-indigo-50 rounded-lg transition-colors" title="Edit">
+                                        <i class="fas fa-pen text-xs"></i>
+                                    </button>
+                                    <button onclick="deleteCategoryCard(<?= $cat->id ?>, '<?= htmlspecialchars(addslashes($cat->category)) ?>')" class="p-1.5 text-slate-400 hover:text-red-500 hover:bg-red-50 rounded-lg transition-colors" title="Delete">
+                                        <i class="fas fa-trash-alt text-xs"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <?php endforeach; ?>
+                        </div>
+                    </div>
+
+                    <!-- Filter by category -->
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <button onclick="filterOcCategory('all')" class="oc-filter-btn active px-3 py-1.5 text-xs font-semibold rounded-full border transition-colors" data-cat="all">All</button>
+                        <?php
+                        $unique_cats = [];
+                        foreach ($other_capabilities as $oc) {
+                            if (!in_array($oc->category, $unique_cats)) {
+                                $unique_cats[] = $oc->category;
+                            }
+                        }
+                        foreach ($unique_cats as $cat): ?>
+                        <button onclick="filterOcCategory('<?= htmlspecialchars($cat) ?>')" class="oc-filter-btn px-3 py-1.5 text-xs font-semibold rounded-full border transition-colors" data-cat="<?= htmlspecialchars($cat) ?>"><?= htmlspecialchars($cat) ?></button>
+                        <?php endforeach; ?>
+                    </div>
+
+                    <!-- Capabilities Table -->
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-sm" id="ocTable">
+                            <thead>
+                                <tr class="border-b border-slate-200 text-left">
+                                    <th class="py-3 px-4 text-xs font-bold text-slate-500 uppercase w-10">#</th>
+                                    <th class="py-3 px-4 text-xs font-bold text-slate-500 uppercase">Category</th>
+                                    <th class="py-3 px-4 text-xs font-bold text-slate-500 uppercase">Item Name</th>
+                                    <th class="py-3 px-4 text-xs font-bold text-slate-500 uppercase w-16">Icon</th>
+                                    <th class="py-3 px-4 text-xs font-bold text-slate-500 uppercase w-20">Status</th>
+                                    <th class="py-3 px-4 text-xs font-bold text-slate-500 uppercase w-28 text-center">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="ocTableBody">
+                                <?php foreach ($other_capabilities as $oc): ?>
+                                <tr class="border-b border-slate-100 hover:bg-slate-50/50 transition-colors oc-row" data-id="<?= $oc->id ?>" data-category="<?= htmlspecialchars($oc->category) ?>">
+                                    <td class="py-3 px-4 text-slate-400"><?= $oc->id ?></td>
+                                    <td class="py-3 px-4">
+                                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold
+                                            <?php
+                                            switch ($oc->category) {
+                                                case 'Design': echo 'bg-blue-100 text-blue-700'; break;
+                                                case 'Analysis': echo 'bg-cyan-100 text-cyan-700'; break;
+                                                case 'Testing': echo 'bg-green-100 text-green-700'; break;
+                                                case 'Development': echo 'bg-orange-100 text-orange-700'; break;
+                                                default: echo 'bg-slate-100 text-slate-700';
+                                            }
+                                            ?>">
+                                            <?= htmlspecialchars($oc->category) ?>
+                                        </span>
+                                    </td>
+                                    <td class="py-3 px-4 text-slate-700 font-medium"><?= htmlspecialchars($oc->item_name) ?></td>
+                                    <td class="py-3 px-4"><i class="bi <?= htmlspecialchars($oc->icon) ?> text-lg text-slate-600"></i></td>
+                                    <td class="py-3 px-4">
+                                        <?php if ($oc->is_active): ?>
+                                            <span class="inline-flex items-center gap-1 text-xs font-semibold text-green-600"><span class="w-1.5 h-1.5 rounded-full bg-green-500"></span> Active</span>
+                                        <?php else: ?>
+                                            <span class="inline-flex items-center gap-1 text-xs font-semibold text-slate-400"><span class="w-1.5 h-1.5 rounded-full bg-slate-300"></span> Inactive</span>
+                                        <?php endif; ?>
+                                    </td>
+                                    <td class="py-3 px-4 text-center">
+                                        <div class="flex items-center justify-center gap-1">
+                                            <button onclick="editOcItem(<?= $oc->id ?>)" class="p-1.5 text-indigo-500 hover:bg-indigo-50 rounded-lg transition-colors" title="Edit">
+                                                <i class="fas fa-pen"></i>
+                                            </button>
+                                            <button onclick="deleteOcItem(<?= $oc->id ?>, '<?= htmlspecialchars(addslashes($oc->item_name)) ?>')" class="p-1.5 text-red-500 hover:bg-red-50 rounded-lg transition-colors" title="Delete">
+                                                <i class="fas fa-trash-alt"></i>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <?php endforeach; ?>
+                            </tbody>
+                        </table>
+                    </div>
+                    <?php if (empty($other_capabilities)): ?>
+                    <div class="text-center py-10 text-slate-400">
+                        <i class="fas fa-inbox text-4xl"></i>
+                        <p class="mt-2">No capabilities added yet. Click "Add Capability" to get started.</p>
+                    </div>
+                    <?php endif; ?>
+                </div>
+            </section>
+
         </div>
     </div>
 </main>
+
+<!-- Other Capabilities Modal -->
+<div id="ocModal" class="fixed inset-0 bg-black/50 z-50 hidden items-center justify-center" style="display:none;">
+    <div class="bg-white rounded-2xl shadow-2xl w-full max-w-lg mx-4 overflow-hidden max-h-[90vh] overflow-y-auto">
+        <div class="p-5 border-b border-slate-100 bg-slate-50/50 flex items-center justify-between">
+            <h4 class="font-bold text-slate-800" id="ocModalTitle">Add Capability</h4>
+            <button onclick="closeOcModal()" class="text-slate-400 hover:text-slate-600 transition-colors">
+                <i class="fas fa-times text-lg"></i>
+            </button>
+        </div>
+        <div class="p-6 space-y-4">
+            <input type="hidden" id="oc_edit_id" value="">
+            <div>
+                <label class="text-xs font-bold text-slate-500 uppercase tracking-wider">Category *</label>
+                <div class="flex gap-2 mt-1">
+                    <select id="oc_category_select" class="flex-1 p-2.5 border border-slate-200 rounded-xl text-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none" onchange="toggleOcCustomCategory()">
+                        <option value="">Select category...</option>
+                        <?php foreach ($unique_cats as $cat): ?>
+                        <option value="<?= htmlspecialchars($cat) ?>"><?= htmlspecialchars($cat) ?></option>
+                        <?php endforeach; ?>
+                        <option value="__custom__">+ New Category</option>
+                    </select>
+                    <input type="text" id="oc_category_custom" class="flex-1 p-2.5 border border-slate-200 rounded-xl text-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none hidden" placeholder="New category name">
+                </div>
+            </div>
+            <div>
+                <label class="text-xs font-bold text-slate-500 uppercase tracking-wider">Item Name *</label>
+                <input type="text" id="oc_item_name" class="w-full mt-1 p-2.5 border border-slate-200 rounded-xl text-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none" placeholder="e.g. CNC Machining">
+            </div>
+            <div>
+                <label class="text-xs font-bold text-slate-500 uppercase tracking-wider">Icon</label>
+                <input type="hidden" id="oc_icon" value="">
+                <div class="mt-1 relative">
+                    <button type="button" id="ocIconDropdownBtn" onclick="toggleOcIconDropdown()" class="w-full p-2.5 border border-slate-200 rounded-xl text-sm text-left flex items-center justify-between hover:border-slate-300 transition-colors outline-none focus:ring-2 focus:ring-indigo-500">
+                        <span class="flex items-center gap-2" id="ocIconSelected">
+                            <span class="text-slate-400">Select an icon...</span>
+                        </span>
+                        <i class="fas fa-chevron-down text-xs text-slate-400"></i>
+                    </button>
+                    <div id="ocIconDropdown" class="hidden absolute z-50 mt-1 w-full bg-white border border-slate-200 rounded-xl shadow-lg max-h-[450px] overflow-y-auto">
+                        <div class="p-2 border-b border-slate-100 sticky top-0 bg-white">
+                            <input type="text" id="ocIconSearch" class="w-full p-2 border border-slate-200 rounded-lg text-sm outline-none focus:ring-1 focus:ring-indigo-500" placeholder="Search icons..." oninput="filterOcIcons(this.value)">
+                        </div>
+                        <div class="p-2 grid grid-cols-4 gap-1" id="ocIconGrid">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <label class="text-xs font-bold text-slate-500 uppercase tracking-wider">Status</label>
+                <select id="oc_is_active" class="w-full mt-1 p-2.5 border border-slate-200 rounded-xl text-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none">
+                    <option value="1">Active</option>
+                    <option value="0">Inactive</option>
+                </select>
+            </div>
+        </div>
+        <div class="p-5 border-t border-slate-100 bg-slate-50/30 flex justify-end gap-3">
+            <button onclick="closeOcModal()" class="px-4 py-2 text-sm font-semibold text-slate-600 bg-slate-100 rounded-lg hover:bg-slate-200 transition-colors">Cancel</button>
+            <button onclick="saveOcItem()" id="ocSaveBtn" class="px-5 py-2 text-sm font-semibold text-white bg-indigo-600 rounded-lg hover:bg-indigo-700 transition-colors flex items-center gap-2">
+                <i class="fas fa-check"></i> <span>Save</span>
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- Delete Confirmation Modal -->
+<div id="ocDeleteModal" class="fixed inset-0 bg-black/50 z-50 hidden items-center justify-center" style="display:none;">
+    <div class="bg-white rounded-2xl shadow-2xl w-full max-w-sm mx-4 overflow-hidden">
+        <div class="p-6 text-center">
+            <div class="w-14 h-14 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <i class="fas fa-exclamation-triangle text-2xl text-red-500"></i>
+            </div>
+            <h4 class="font-bold text-slate-800 text-lg">Delete Capability?</h4>
+            <p class="text-sm text-slate-500 mt-2">Are you sure you want to delete "<span id="ocDeleteName" class="font-semibold text-slate-700"></span>"? This action cannot be undone.</p>
+            <input type="hidden" id="oc_delete_id" value="">
+        </div>
+        <div class="p-4 border-t border-slate-100 flex justify-center gap-3">
+            <button onclick="closeOcDeleteModal()" class="px-5 py-2 text-sm font-semibold text-slate-600 bg-slate-100 rounded-lg hover:bg-slate-200 transition-colors">Cancel</button>
+            <button onclick="confirmDeleteOcItem()" class="px-5 py-2 text-sm font-semibold text-white bg-red-600 rounded-lg hover:bg-red-700 transition-colors">Delete</button>
+        </div>
+    </div>
+</div>
+
+<style>
+.oc-filter-btn { background: white; border-color: #e2e8f0; color: #64748b; }
+.oc-filter-btn:hover { background: #f1f5f9; }
+.oc-filter-btn.active { background: #4f46e5; color: white; border-color: #4f46e5; }
+</style>
+
+<!-- Category Edit Modal -->
+<div id="catEditModal" class="fixed inset-0 bg-black/50 z-50 hidden items-center justify-center" style="display:none;">
+    <div class="bg-white rounded-2xl shadow-2xl w-full max-w-md mx-4 overflow-hidden">
+        <div class="p-5 border-b border-slate-100 bg-slate-50/50 flex items-center justify-between">
+            <h4 class="font-bold text-slate-800" id="catEditModalTitle">Edit Category</h4>
+            <button onclick="closeCatEditModal()" class="text-slate-400 hover:text-slate-600 transition-colors">
+                <i class="fas fa-times text-lg"></i>
+            </button>
+        </div>
+        <div class="p-6 space-y-4">
+            <input type="hidden" id="cat_edit_id" value="">
+            <div class="flex items-center gap-4 p-4 bg-slate-50 rounded-xl">
+                <div class="w-14 h-14 rounded-xl flex items-center justify-center flex-shrink-0" id="catPreviewBox" style="background:#0d6efd;">
+                    <i class="bi bi-folder text-white text-2xl" id="catPreviewIcon"></i>
+                </div>
+                <div>
+                    <div class="font-bold text-slate-700 text-lg" id="catPreviewName">Category</div>
+                    <div class="text-xs text-slate-400">Live preview</div>
+                </div>
+            </div>
+            <div>
+                <label class="text-xs font-bold text-slate-500 uppercase tracking-wider">Icon</label>
+                <input type="hidden" id="cat_icon" value="">
+                <div class="mt-1 relative">
+                    <button type="button" id="catIconDropdownBtn" onclick="toggleCatIconDropdown()" class="w-full p-2.5 border border-slate-200 rounded-xl text-sm text-left flex items-center justify-between hover:border-slate-300 transition-colors outline-none focus:ring-2 focus:ring-indigo-500">
+                        <span class="flex items-center gap-2" id="catIconSelected">
+                            <span class="text-slate-400">Select an icon...</span>
+                        </span>
+                        <i class="fas fa-chevron-down text-xs text-slate-400"></i>
+                    </button>
+                    <div id="catIconDropdown" class="hidden absolute z-50 mt-1 w-full bg-white border border-slate-200 rounded-xl shadow-lg max-h-[350px] overflow-y-auto">
+                        <div class="p-2 border-b border-slate-100 sticky top-0 bg-white">
+                            <input type="text" id="catIconSearch" class="w-full p-2 border border-slate-200 rounded-lg text-sm outline-none focus:ring-1 focus:ring-indigo-500" placeholder="Search icons..." oninput="filterCatIcons(this.value)">
+                        </div>
+                        <div class="p-2 grid grid-cols-5 gap-1" id="catIconGrid"></div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <label class="text-xs font-bold text-slate-500 uppercase tracking-wider">Color</label>
+                <div class="flex items-center gap-3 mt-1">
+                    <input type="color" id="cat_color" class="w-10 h-10 rounded-lg border border-slate-200 cursor-pointer p-0.5" value="#0d6efd" oninput="updateCatPreviewColor(this.value)">
+                    <input type="text" id="cat_color_text" class="flex-1 p-2.5 border border-slate-200 rounded-xl text-sm font-mono focus:ring-2 focus:ring-indigo-500 outline-none" placeholder="#0d6efd" oninput="syncCatColor(this.value)">
+                </div>
+                <div class="flex gap-2 mt-2">
+                    <?php
+                    $preset_colors = ['#0F467B','#17A2DC','#28a745','#e67e22','#e74c3c','#8e44ad','#2c3e50','#1abc9c'];
+                    foreach ($preset_colors as $pc): ?>
+                    <button type="button" onclick="pickCatColor('<?= $pc ?>')" class="w-7 h-7 rounded-full border-2 border-white shadow-sm hover:scale-110 transition-transform" style="background:<?= $pc ?>;"></button>
+                    <?php endforeach; ?>
+                </div>
+            </div>
+        </div>
+        <div class="p-5 border-t border-slate-100 bg-slate-50/30 flex justify-end gap-3">
+            <button onclick="closeCatEditModal()" class="px-4 py-2 text-sm font-semibold text-slate-600 bg-slate-100 rounded-lg hover:bg-slate-200 transition-colors">Cancel</button>
+            <button onclick="saveCategorySettings()" id="catSaveBtn" class="px-5 py-2 text-sm font-semibold text-white bg-indigo-600 rounded-lg hover:bg-indigo-700 transition-colors flex items-center gap-2">
+                <i class="fas fa-check"></i> <span>Save</span>
+            </button>
+        </div>
+    </div>
+</div>
 
 <!-- CSRF Token (if enabled) -->
 <?php if (function_exists('csrf_token')): ?>
@@ -2487,6 +2753,624 @@ if (uploadProgress) {
         });
     }
 });
+
+// ==================== OTHER CAPABILITIES CRUD ====================
+const BASE_URL = '<?= base_url() ?>';
+
+function filterOcCategory(cat) {
+    document.querySelectorAll('.oc-filter-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.getAttribute('data-cat') === cat);
+    });
+    document.querySelectorAll('.oc-row').forEach(row => {
+        row.style.display = (cat === 'all' || row.getAttribute('data-category') === cat) ? '' : 'none';
+    });
+}
+
+function openOcModal(isEdit = false) {
+    document.getElementById('ocModal').style.display = 'flex';
+    document.getElementById('ocModalTitle').textContent = isEdit ? 'Edit Capability' : 'Add Capability';
+    document.getElementById('ocSaveBtn').querySelector('span').textContent = isEdit ? 'Update' : 'Save';
+    if (!isEdit) {
+        document.getElementById('oc_edit_id').value = '';
+        document.getElementById('oc_category_select').value = '';
+        document.getElementById('oc_category_custom').value = '';
+        document.getElementById('oc_category_custom').classList.add('hidden');
+        document.getElementById('oc_item_name').value = '';
+        document.getElementById('oc_is_active').value = '1';
+        resetOcIconPicker();
+    }
+}
+
+function closeOcModal() {
+    document.getElementById('ocModal').style.display = 'none';
+}
+
+function toggleOcCustomCategory() {
+    const sel = document.getElementById('oc_category_select');
+    const custom = document.getElementById('oc_category_custom');
+    if (sel.value === '__custom__') {
+        custom.classList.remove('hidden');
+        custom.focus();
+    } else {
+        custom.classList.add('hidden');
+        custom.value = '';
+    }
+}
+
+// ===== ICON PICKER =====
+const OC_ICONS = [
+    // Engineering & Mechanical
+    { value: 'bi-gear', label: 'Gear' },
+    { value: 'bi-gear-fill', label: 'Gear Fill' },
+    { value: 'bi-gear-wide-connected', label: 'Gear Connected' },
+    { value: 'bi-gears', label: 'Gears' },
+    { value: 'bi-tools', label: 'Tools' },
+    { value: 'bi-wrench', label: 'Wrench' },
+    { value: 'bi-wrench-adjustable', label: 'Wrench Adjust' },
+    { value: 'bi-hammer', label: 'Hammer' },
+    { value: 'bi-nut', label: 'Nut' },
+    { value: 'bi-nut-fill', label: 'Nut Fill' },
+    { value: 'bi-screwdriver', label: 'Screwdriver' },
+    { value: 'bi-fan', label: 'Fan' },
+    { value: 'bi-valve', label: 'Valve' },
+    // Electronics & Circuit
+    { value: 'bi-cpu', label: 'CPU' },
+    { value: 'bi-cpu-fill', label: 'CPU Fill' },
+    { value: 'bi-motherboard', label: 'Motherboard' },
+    { value: 'bi-motherboard-fill', label: 'Motherboard Fill' },
+    { value: 'bi-lightning', label: 'Lightning' },
+    { value: 'bi-lightning-fill', label: 'Lightning Fill' },
+    { value: 'bi-lightning-charge', label: 'Lightning Charge' },
+    { value: 'bi-lightning-charge-fill', label: 'Charge Fill' },
+    { value: 'bi-plug', label: 'Plug' },
+    { value: 'bi-plug-fill', label: 'Plug Fill' },
+    { value: 'bi-power', label: 'Power' },
+    { value: 'bi-battery-charging', label: 'Battery' },
+    { value: 'bi-battery-full', label: 'Battery Full' },
+    { value: 'bi-usb-symbol', label: 'USB' },
+    { value: 'bi-usb-plug', label: 'USB Plug' },
+    { value: 'bi-ethernet', label: 'Ethernet' },
+    { value: 'bi-pci-card', label: 'PCI Card' },
+    { value: 'bi-device-ssd', label: 'SSD' },
+    { value: 'bi-memory', label: 'Memory' },
+    // Design & Creative
+    { value: 'bi-pencil-square', label: 'Pencil' },
+    { value: 'bi-pencil', label: 'Pencil Simple' },
+    { value: 'bi-pen', label: 'Pen' },
+    { value: 'bi-pen-fill', label: 'Pen Fill' },
+    { value: 'bi-vector-pen', label: 'Vector Pen' },
+    { value: 'bi-bezier', label: 'Bezier' },
+    { value: 'bi-bezier2', label: 'Bezier 2' },
+    { value: 'bi-palette', label: 'Palette' },
+    { value: 'bi-palette-fill', label: 'Palette Fill' },
+    { value: 'bi-brush', label: 'Brush' },
+    { value: 'bi-brush-fill', label: 'Brush Fill' },
+    { value: 'bi-rulers', label: 'Rulers' },
+    { value: 'bi-bounding-box', label: 'Bounding Box' },
+    { value: 'bi-bounding-box-circles', label: 'Bound Circles' },
+    { value: 'bi-crop', label: 'Crop' },
+    { value: 'bi-lightbulb', label: 'Lightbulb' },
+    { value: 'bi-lightbulb-fill', label: 'Lightbulb Fill' },
+    { value: 'bi-easel', label: 'Easel' },
+    { value: 'bi-symmetry-vertical', label: 'Symmetry' },
+    // Analysis & Data
+    { value: 'bi-graph-up', label: 'Graph Up' },
+    { value: 'bi-graph-up-arrow', label: 'Graph Arrow' },
+    { value: 'bi-graph-down', label: 'Graph Down' },
+    { value: 'bi-bar-chart-line', label: 'Bar Chart' },
+    { value: 'bi-bar-chart-line-fill', label: 'Bar Chart Fill' },
+    { value: 'bi-bar-chart-steps', label: 'Bar Steps' },
+    { value: 'bi-pie-chart', label: 'Pie Chart' },
+    { value: 'bi-pie-chart-fill', label: 'Pie Chart Fill' },
+    { value: 'bi-activity', label: 'Activity' },
+    { value: 'bi-speedometer', label: 'Speedometer' },
+    { value: 'bi-speedometer2', label: 'Speedometer 2' },
+    { value: 'bi-clipboard-data', label: 'Clipboard Data' },
+    { value: 'bi-clipboard-check', label: 'Clipboard Check' },
+    { value: 'bi-clipboard2-pulse', label: 'Clipboard Pulse' },
+    { value: 'bi-funnel', label: 'Funnel' },
+    { value: 'bi-funnel-fill', label: 'Funnel Fill' },
+    { value: 'bi-calculator', label: 'Calculator' },
+    // Testing & Validation
+    { value: 'bi-check2-circle', label: 'Check Circle' },
+    { value: 'bi-check-circle-fill', label: 'Check Fill' },
+    { value: 'bi-check-lg', label: 'Check Large' },
+    { value: 'bi-shield-check', label: 'Shield Check' },
+    { value: 'bi-shield-fill-check', label: 'Shield Fill' },
+    { value: 'bi-shield-lock', label: 'Shield Lock' },
+    { value: 'bi-shield-exclamation', label: 'Shield Alert' },
+    { value: 'bi-patch-check', label: 'Patch Check' },
+    { value: 'bi-patch-check-fill', label: 'Patch Fill' },
+    { value: 'bi-award', label: 'Award' },
+    { value: 'bi-award-fill', label: 'Award Fill' },
+    { value: 'bi-trophy', label: 'Trophy' },
+    { value: 'bi-trophy-fill', label: 'Trophy Fill' },
+    { value: 'bi-exclamation-triangle', label: 'Warning' },
+    { value: 'bi-exclamation-circle', label: 'Exclamation' },
+    { value: 'bi-bug', label: 'Bug' },
+    { value: 'bi-bug-fill', label: 'Bug Fill' },
+    // Science & Environment
+    { value: 'bi-thermometer-half', label: 'Thermometer' },
+    { value: 'bi-thermometer-high', label: 'Thermo High' },
+    { value: 'bi-thermometer-low', label: 'Thermo Low' },
+    { value: 'bi-droplet-half', label: 'Droplet' },
+    { value: 'bi-droplet-fill', label: 'Droplet Fill' },
+    { value: 'bi-moisture', label: 'Moisture' },
+    { value: 'bi-snow', label: 'Snow / Cold' },
+    { value: 'bi-snow2', label: 'Snow 2' },
+    { value: 'bi-fire', label: 'Fire / Heat' },
+    { value: 'bi-wind', label: 'Wind' },
+    { value: 'bi-tsunami', label: 'Wave' },
+    { value: 'bi-globe-americas', label: 'Globe' },
+    { value: 'bi-globe2', label: 'Globe 2' },
+    { value: 'bi-tree', label: 'Tree' },
+    { value: 'bi-sun', label: 'Sun' },
+    { value: 'bi-moon', label: 'Moon' },
+    { value: 'bi-radioactive', label: 'Radioactive' },
+    { value: 'bi-binoculars', label: 'Binoculars' },
+    // Manufacturing & Production
+    { value: 'bi-box', label: 'Box' },
+    { value: 'bi-box-fill', label: 'Box Fill' },
+    { value: 'bi-box-seam', label: 'Box Seam' },
+    { value: 'bi-box-seam-fill', label: 'Box Seam Fill' },
+    { value: 'bi-boxes', label: 'Boxes' },
+    { value: 'bi-layers', label: 'Layers' },
+    { value: 'bi-layers-fill', label: 'Layers Fill' },
+    { value: 'bi-layers-half', label: 'Layers Half' },
+    { value: 'bi-stack', label: 'Stack' },
+    { value: 'bi-grid-3x3', label: 'Grid 3x3' },
+    { value: 'bi-grid-3x3-gap', label: 'Grid Gap' },
+    { value: 'bi-grid-1x2', label: 'Grid 1x2' },
+    { value: 'bi-columns-gap', label: 'Columns' },
+    { value: 'bi-printer', label: 'Printer / 3D' },
+    { value: 'bi-printer-fill', label: 'Printer Fill' },
+    { value: 'bi-diamond', label: 'Diamond' },
+    { value: 'bi-diamond-fill', label: 'Diamond Fill' },
+    { value: 'bi-hexagon', label: 'Hexagon' },
+    { value: 'bi-hexagon-fill', label: 'Hexagon Fill' },
+    { value: 'bi-pentagon', label: 'Pentagon' },
+    { value: 'bi-octagon', label: 'Octagon' },
+    { value: 'bi-triangle', label: 'Triangle' },
+    { value: 'bi-circle', label: 'Circle' },
+    { value: 'bi-square', label: 'Square' },
+    // Technology & Software
+    { value: 'bi-code-slash', label: 'Code' },
+    { value: 'bi-code-square', label: 'Code Square' },
+    { value: 'bi-terminal', label: 'Terminal' },
+    { value: 'bi-terminal-fill', label: 'Terminal Fill' },
+    { value: 'bi-display', label: 'Display' },
+    { value: 'bi-display-fill', label: 'Display Fill' },
+    { value: 'bi-laptop', label: 'Laptop' },
+    { value: 'bi-laptop-fill', label: 'Laptop Fill' },
+    { value: 'bi-phone', label: 'Phone' },
+    { value: 'bi-tablet', label: 'Tablet' },
+    { value: 'bi-robot', label: 'Robot' },
+    { value: 'bi-wifi', label: 'WiFi' },
+    { value: 'bi-hdd-network', label: 'Network' },
+    { value: 'bi-hdd-network-fill', label: 'Network Fill' },
+    { value: 'bi-cloud-upload', label: 'Cloud Upload' },
+    { value: 'bi-cloud-download', label: 'Cloud Download' },
+    { value: 'bi-cloud-check', label: 'Cloud Check' },
+    { value: 'bi-database', label: 'Database' },
+    { value: 'bi-database-fill', label: 'Database Fill' },
+    { value: 'bi-qr-code', label: 'QR Code' },
+    { value: 'bi-bluetooth', label: 'Bluetooth' },
+    { value: 'bi-broadcast', label: 'Broadcast' },
+    // Navigation & Location
+    { value: 'bi-pin-map', label: 'Pin Map' },
+    { value: 'bi-pin-map-fill', label: 'Pin Map Fill' },
+    { value: 'bi-geo-alt', label: 'Geo Pin' },
+    { value: 'bi-geo-alt-fill', label: 'Geo Pin Fill' },
+    { value: 'bi-compass', label: 'Compass' },
+    { value: 'bi-compass-fill', label: 'Compass Fill' },
+    { value: 'bi-signpost', label: 'Signpost' },
+    { value: 'bi-map', label: 'Map' },
+    // Symbols & General
+    { value: 'bi-rocket-takeoff', label: 'Rocket' },
+    { value: 'bi-rocket-takeoff-fill', label: 'Rocket Fill' },
+    { value: 'bi-building-gear', label: 'Building Gear' },
+    { value: 'bi-building', label: 'Building' },
+    { value: 'bi-buildings', label: 'Buildings' },
+    { value: 'bi-house-gear', label: 'House Gear' },
+    { value: 'bi-arrow-repeat', label: 'Repeat' },
+    { value: 'bi-arrow-clockwise', label: 'Clockwise' },
+    { value: 'bi-recycle', label: 'Recycle' },
+    { value: 'bi-volume-up', label: 'Volume' },
+    { value: 'bi-volume-mute', label: 'Mute' },
+    { value: 'bi-eye', label: 'Eye' },
+    { value: 'bi-eye-fill', label: 'Eye Fill' },
+    { value: 'bi-search', label: 'Search' },
+    { value: 'bi-zoom-in', label: 'Zoom In' },
+    { value: 'bi-bullseye', label: 'Bullseye' },
+    { value: 'bi-crosshair', label: 'Crosshair' },
+    { value: 'bi-stars', label: 'Stars' },
+    { value: 'bi-star-fill', label: 'Star Fill' },
+    { value: 'bi-heart-pulse', label: 'Heart Pulse' },
+    { value: 'bi-heart-fill', label: 'Heart Fill' },
+    { value: 'bi-stopwatch', label: 'Stopwatch' },
+    { value: 'bi-stopwatch-fill', label: 'Stopwatch Fill' },
+    { value: 'bi-alarm', label: 'Alarm' },
+    { value: 'bi-clock', label: 'Clock' },
+    { value: 'bi-hourglass-split', label: 'Hourglass' },
+    { value: 'bi-lock', label: 'Lock' },
+    { value: 'bi-lock-fill', label: 'Lock Fill' },
+    { value: 'bi-unlock', label: 'Unlock' },
+    { value: 'bi-key', label: 'Key' },
+    { value: 'bi-key-fill', label: 'Key Fill' },
+    { value: 'bi-link-45deg', label: 'Link' },
+    { value: 'bi-flag', label: 'Flag' },
+    { value: 'bi-flag-fill', label: 'Flag Fill' },
+    { value: 'bi-bookmark-star', label: 'Bookmark Star' },
+    { value: 'bi-bookmark-check', label: 'Bookmark Check' },
+    { value: 'bi-tag', label: 'Tag' },
+    { value: 'bi-tags', label: 'Tags' },
+    { value: 'bi-megaphone', label: 'Megaphone' },
+    { value: 'bi-bell', label: 'Bell' },
+    { value: 'bi-chat-dots', label: 'Chat' },
+    { value: 'bi-envelope', label: 'Envelope' },
+    { value: 'bi-folder', label: 'Folder' },
+    { value: 'bi-folder-fill', label: 'Folder Fill' },
+    { value: 'bi-file-earmark', label: 'File' },
+    { value: 'bi-file-earmark-check', label: 'File Check' },
+    { value: 'bi-camera', label: 'Camera' },
+    { value: 'bi-image', label: 'Image' },
+    { value: 'bi-people', label: 'People' },
+    { value: 'bi-person-gear', label: 'Person Gear' },
+];
+
+function buildOcIconGrid(filter = '') {
+    const grid = document.getElementById('ocIconGrid');
+    const filterLower = filter.toLowerCase();
+    grid.innerHTML = '';
+    OC_ICONS.forEach(icon => {
+        if (filterLower && !icon.label.toLowerCase().includes(filterLower) && !icon.value.toLowerCase().includes(filterLower)) return;
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'flex flex-col items-center gap-1 p-2 rounded-lg hover:bg-indigo-50 transition-colors text-center oc-icon-option';
+        btn.setAttribute('data-value', icon.value);
+        btn.innerHTML = '<i class="bi ' + icon.value + ' text-xl text-slate-700"></i><span class="text-[10px] text-slate-400 leading-tight truncate w-full">' + icon.label + '</span>';
+        btn.onclick = function() { selectOcIcon(icon.value, icon.label); };
+        grid.appendChild(btn);
+    });
+    if (!grid.children.length) {
+        grid.innerHTML = '<div class="col-span-4 text-center text-xs text-slate-400 py-4">No icons found</div>';
+    }
+}
+
+function toggleOcIconDropdown() {
+    const dd = document.getElementById('ocIconDropdown');
+    if (dd.classList.contains('hidden')) {
+        dd.classList.remove('hidden');
+        document.getElementById('ocIconSearch').value = '';
+        buildOcIconGrid();
+        highlightSelectedIcon();
+        document.getElementById('ocIconSearch').focus();
+    } else {
+        dd.classList.add('hidden');
+    }
+}
+
+function filterOcIcons(val) {
+    buildOcIconGrid(val);
+    highlightSelectedIcon();
+}
+
+function selectOcIcon(value, label) {
+    document.getElementById('oc_icon').value = value;
+    document.getElementById('ocIconSelected').innerHTML = '<i class="bi ' + value + ' text-lg text-slate-700"></i><span class="text-sm text-slate-700">' + label + '</span>';
+    document.getElementById('ocIconDropdown').classList.add('hidden');
+}
+
+function highlightSelectedIcon() {
+    const current = document.getElementById('oc_icon').value;
+    document.querySelectorAll('.oc-icon-option').forEach(btn => {
+        btn.classList.toggle('bg-indigo-100', btn.getAttribute('data-value') === current);
+        btn.classList.toggle('ring-2', btn.getAttribute('data-value') === current);
+        btn.classList.toggle('ring-indigo-400', btn.getAttribute('data-value') === current);
+    });
+}
+
+function resetOcIconPicker() {
+    document.getElementById('oc_icon').value = '';
+    document.getElementById('ocIconSelected').innerHTML = '<span class="text-slate-400">Select an icon...</span>';
+}
+
+// Close dropdowns when clicking outside
+document.addEventListener('click', function(e) {
+    const dd = document.getElementById('ocIconDropdown');
+    const btn = document.getElementById('ocIconDropdownBtn');
+    if (dd && btn && !dd.contains(e.target) && !btn.contains(e.target)) {
+        dd.classList.add('hidden');
+    }
+    const catDd = document.getElementById('catIconDropdown');
+    const catBtn = document.getElementById('catIconDropdownBtn');
+    if (catDd && catBtn && !catDd.contains(e.target) && !catBtn.contains(e.target)) {
+        catDd.classList.add('hidden');
+    }
+});
+
+// ==================== CATEGORY SETTINGS ====================
+function editCategorySettings(id) {
+    fetch(BASE_URL + 'cms/get_capability_category', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded', 'X-Requested-With': 'XMLHttpRequest' },
+        body: 'id=' + id
+    })
+    .then(r => r.json())
+    .then(data => {
+        if (data.success) {
+            const item = data.item;
+            document.getElementById('cat_edit_id').value = item.id;
+            document.getElementById('catEditModalTitle').textContent = 'Edit "' + item.category + '" Category';
+            document.getElementById('catPreviewName').textContent = item.category;
+            // Set icon
+            document.getElementById('cat_icon').value = item.icon || '';
+            if (item.icon) {
+                const found = OC_ICONS.find(i => i.value === item.icon);
+                const label = found ? found.label : item.icon;
+                document.getElementById('catIconSelected').innerHTML = '<i class="bi ' + item.icon + ' text-lg text-slate-700"></i><span class="text-sm text-slate-700">' + label + '</span>';
+                document.getElementById('catPreviewIcon').className = 'bi ' + item.icon + ' text-white text-2xl';
+            }
+            // Set color
+            document.getElementById('cat_color').value = item.color || '#0d6efd';
+            document.getElementById('cat_color_text').value = item.color || '#0d6efd';
+            document.getElementById('catPreviewBox').style.background = item.color || '#0d6efd';
+            // Show modal
+            document.getElementById('catEditModal').style.display = 'flex';
+        } else {
+            showNotification(data.message, 'error');
+        }
+    })
+    .catch(() => showNotification('Failed to load category', 'error'));
+}
+
+function closeCatEditModal() {
+    document.getElementById('catEditModal').style.display = 'none';
+    document.getElementById('catIconDropdown').classList.add('hidden');
+}
+
+function toggleCatIconDropdown() {
+    const dd = document.getElementById('catIconDropdown');
+    if (dd.classList.contains('hidden')) {
+        dd.classList.remove('hidden');
+        document.getElementById('catIconSearch').value = '';
+        buildCatIconGrid();
+        document.getElementById('catIconSearch').focus();
+    } else {
+        dd.classList.add('hidden');
+    }
+}
+
+function buildCatIconGrid(filter = '') {
+    const grid = document.getElementById('catIconGrid');
+    const filterLower = filter.toLowerCase();
+    grid.innerHTML = '';
+    const currentVal = document.getElementById('cat_icon').value;
+    OC_ICONS.forEach(icon => {
+        if (filterLower && !icon.label.toLowerCase().includes(filterLower) && !icon.value.toLowerCase().includes(filterLower)) return;
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        const isSelected = icon.value === currentVal;
+        btn.className = 'flex flex-col items-center gap-1 p-2 rounded-lg hover:bg-indigo-50 transition-colors text-center' + (isSelected ? ' bg-indigo-100 ring-2 ring-indigo-400' : '');
+        btn.innerHTML = '<i class="bi ' + icon.value + ' text-xl text-slate-700"></i><span class="text-[10px] text-slate-400 leading-tight truncate w-full">' + icon.label + '</span>';
+        btn.onclick = function() { selectCatIcon(icon.value, icon.label); };
+        grid.appendChild(btn);
+    });
+}
+
+function filterCatIcons(val) {
+    buildCatIconGrid(val);
+}
+
+function selectCatIcon(value, label) {
+    document.getElementById('cat_icon').value = value;
+    document.getElementById('catIconSelected').innerHTML = '<i class="bi ' + value + ' text-lg text-slate-700"></i><span class="text-sm text-slate-700">' + label + '</span>';
+    document.getElementById('catPreviewIcon').className = 'bi ' + value + ' text-white text-2xl';
+    document.getElementById('catIconDropdown').classList.add('hidden');
+}
+
+function updateCatPreviewColor(color) {
+    document.getElementById('catPreviewBox').style.background = color;
+    document.getElementById('cat_color_text').value = color;
+}
+
+function syncCatColor(val) {
+    if (/^#[0-9a-fA-F]{6}$/.test(val)) {
+        document.getElementById('cat_color').value = val;
+        document.getElementById('catPreviewBox').style.background = val;
+    }
+}
+
+function pickCatColor(color) {
+    document.getElementById('cat_color').value = color;
+    document.getElementById('cat_color_text').value = color;
+    document.getElementById('catPreviewBox').style.background = color;
+}
+
+function saveCategorySettings() {
+    const id = document.getElementById('cat_edit_id').value;
+    const icon = document.getElementById('cat_icon').value;
+    const color = document.getElementById('cat_color').value;
+
+    const btn = document.getElementById('catSaveBtn');
+    btn.disabled = true;
+    btn.querySelector('span').textContent = 'Saving...';
+
+    fetch(BASE_URL + 'cms/update_capability_category', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded', 'X-Requested-With': 'XMLHttpRequest' },
+        body: new URLSearchParams({ id, icon, color }).toString()
+    })
+    .then(r => r.json())
+    .then(data => {
+        btn.disabled = false;
+        btn.querySelector('span').textContent = 'Save';
+        if (data.success) {
+            showNotification(data.message, 'success');
+            closeCatEditModal();
+            // Update the card in-place
+            const card = document.querySelector('.cat-setting-card[data-cat-id="' + id + '"]');
+            if (card) {
+                card.querySelector('.cat-icon-box').style.background = color;
+                card.querySelector('.cat-icon-display').className = 'bi ' + icon + ' text-white text-lg cat-icon-display';
+                card.querySelector('.text-\\[10px\\]').textContent = icon;
+            }
+        } else {
+            showNotification(data.message, 'error');
+        }
+    })
+    .catch(() => {
+        btn.disabled = false;
+        btn.querySelector('span').textContent = 'Save';
+        showNotification('Request failed', 'error');
+    });
+}
+
+function deleteCategoryCard(id, name) {
+    if (!confirm('Delete "' + name + '" category and ALL its items? This cannot be undone.')) return;
+
+    fetch(BASE_URL + 'cms/delete_capability_category', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded', 'X-Requested-With': 'XMLHttpRequest' },
+        body: 'id=' + id
+    })
+    .then(r => r.json())
+    .then(data => {
+        if (data.success) {
+            showNotification(data.message, 'success');
+            setTimeout(() => location.reload(), 600);
+        } else {
+            showNotification(data.message, 'error');
+        }
+    })
+    .catch(() => showNotification('Delete failed', 'error'));
+}
+
+function getOcCategory() {
+    const sel = document.getElementById('oc_category_select');
+    if (sel.value === '__custom__') {
+        return document.getElementById('oc_category_custom').value.trim();
+    }
+    return sel.value;
+}
+
+function editOcItem(id) {
+    fetch(BASE_URL + 'cms/get_other_capability', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded', 'X-Requested-With': 'XMLHttpRequest' },
+        body: 'id=' + id
+    })
+    .then(r => r.json())
+    .then(data => {
+        if (data.success) {
+            const item = data.item;
+            document.getElementById('oc_edit_id').value = item.id;
+            // Set category
+            const sel = document.getElementById('oc_category_select');
+            let found = false;
+            for (let opt of sel.options) {
+                if (opt.value === item.category) { sel.value = item.category; found = true; break; }
+            }
+            if (!found) {
+                sel.value = '__custom__';
+                document.getElementById('oc_category_custom').value = item.category;
+                document.getElementById('oc_category_custom').classList.remove('hidden');
+            } else {
+                document.getElementById('oc_category_custom').classList.add('hidden');
+            }
+            document.getElementById('oc_item_name').value = item.item_name;
+            document.getElementById('oc_is_active').value = item.is_active;
+            // Set icon picker
+            if (item.icon) {
+                document.getElementById('oc_icon').value = item.icon;
+                const found = OC_ICONS.find(i => i.value === item.icon);
+                const label = found ? found.label : item.icon;
+                document.getElementById('ocIconSelected').innerHTML = '<i class="bi ' + item.icon + ' text-lg text-slate-700"></i><span class="text-sm text-slate-700">' + label + '</span>';
+            } else {
+                resetOcIconPicker();
+            }
+            openOcModal(true);
+        } else {
+            showNotification(data.message, 'error');
+        }
+    })
+    .catch(() => showNotification('Failed to load item', 'error'));
+}
+
+function saveOcItem() {
+    const id = document.getElementById('oc_edit_id').value;
+    const category = getOcCategory();
+    const item_name = document.getElementById('oc_item_name').value.trim();
+    const icon = document.getElementById('oc_icon').value.trim();
+    const is_active = document.getElementById('oc_is_active').value;
+
+    if (!category || !item_name) {
+        showNotification('Category and item name are required', 'error');
+        return;
+    }
+
+    const url = id ? BASE_URL + 'cms/update_other_capability' : BASE_URL + 'cms/add_other_capability';
+    const body = new URLSearchParams({ category, item_name, icon, is_active });
+    if (id) body.append('id', id);
+
+    const btn = document.getElementById('ocSaveBtn');
+    btn.disabled = true;
+    btn.querySelector('span').textContent = 'Saving...';
+
+    fetch(url, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded', 'X-Requested-With': 'XMLHttpRequest' },
+        body: body.toString()
+    })
+    .then(r => r.json())
+    .then(data => {
+        btn.disabled = false;
+        btn.querySelector('span').textContent = id ? 'Update' : 'Save';
+        if (data.success) {
+            showNotification(data.message, 'success');
+            closeOcModal();
+            setTimeout(() => location.reload(), 600);
+        } else {
+            showNotification(data.message, 'error');
+        }
+    })
+    .catch(() => {
+        btn.disabled = false;
+        btn.querySelector('span').textContent = id ? 'Update' : 'Save';
+        showNotification('Request failed', 'error');
+    });
+}
+
+function deleteOcItem(id, name) {
+    document.getElementById('oc_delete_id').value = id;
+    document.getElementById('ocDeleteName').textContent = name;
+    document.getElementById('ocDeleteModal').style.display = 'flex';
+}
+
+function closeOcDeleteModal() {
+    document.getElementById('ocDeleteModal').style.display = 'none';
+}
+
+function confirmDeleteOcItem() {
+    const id = document.getElementById('oc_delete_id').value;
+    fetch(BASE_URL + 'cms/delete_other_capability', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded', 'X-Requested-With': 'XMLHttpRequest' },
+        body: 'id=' + id
+    })
+    .then(r => r.json())
+    .then(data => {
+        if (data.success) {
+            showNotification(data.message, 'success');
+            closeOcDeleteModal();
+            const row = document.querySelector('.oc-row[data-id="' + id + '"]');
+            if (row) row.remove();
+        } else {
+            showNotification(data.message, 'error');
+        }
+    })
+    .catch(() => showNotification('Delete failed', 'error'));
+}
 </script>
 </body>
 </html>

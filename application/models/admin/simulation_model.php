@@ -476,6 +476,67 @@ public function delete_benefit($id)
             ->set_output(json_encode($response));
     }
     
+    // ===== OTHER CAPABILITIES CRUD =====
+    public function get_all_other_capabilities()
+    {
+        $query = $this->db->query("SELECT * FROM tbl_other_capabilities ORDER BY FIELD(category, 'Design', 'Analysis', 'Testing', 'Development') ASC, sort_order ASC");
+        return $query->result();
+    }
+
+    public function get_other_capability($id)
+    {
+        return $this->db->get_where('tbl_other_capabilities', ['id' => $id])->row();
+    }
+
+    public function get_other_capability_categories()
+    {
+        $this->db->order_by('sort_order', 'ASC');
+        return $this->db->get('tbl_other_capability_categories')->result();
+    }
+
+    public function get_capability_category($id)
+    {
+        return $this->db->get_where('tbl_other_capability_categories', ['id' => $id])->row();
+    }
+
+    public function update_capability_category($id, $data)
+    {
+        $this->db->where('id', $id);
+        return $this->db->update('tbl_other_capability_categories', $data);
+    }
+
+    public function delete_capability_category($id)
+    {
+        $cat = $this->get_capability_category($id);
+        if ($cat) {
+            // Delete all items in this category
+            $this->db->where('category', $cat->category);
+            $this->db->delete('tbl_other_capabilities');
+            // Delete the category itself
+            $this->db->where('id', $id);
+            return $this->db->delete('tbl_other_capability_categories');
+        }
+        return false;
+    }
+
+    public function add_other_capability($data)
+    {
+        $this->db->insert('tbl_other_capabilities', $data);
+        return $this->db->insert_id();
+    }
+
+    public function update_other_capability($id, $data)
+    {
+        $this->db->where('id', $id);
+        return $this->db->update('tbl_other_capabilities', $data);
+    }
+
+    public function delete_other_capability($id)
+    {
+        $this->db->where('id', $id);
+        return $this->db->delete('tbl_other_capabilities');
+    }
+
     // Remove carousel from main content
     public function get_simulation_content()
     {

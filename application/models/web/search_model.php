@@ -29,7 +29,7 @@ class Search_model extends CI_Model
             $all_results[] = array(
                 'page_name' => 'Product: ' . $row['product_name'],
                 'snippet'   => $this->generate_snippet($row['short_description'] ? $row['short_description'] : $row['description'], $keyword),
-                'url'       => 'product/' . $row['slug']
+                'url'       => 'index/product/' . $row['slug']
             );
         }
 

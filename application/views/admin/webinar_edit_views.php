@@ -72,8 +72,8 @@
                                 <div class="border-2 border-dashed border-slate-300 rounded-lg p-6 text-center hover:border-indigo-400 transition-colors cursor-pointer" id="imageUploadArea">
                                     <i class="fas fa-image text-slate-400 text-3xl mb-3"></i>
                                     <p class="text-sm text-slate-600">Click to upload new cover image</p>
-                                    <p class="text-xs text-slate-400 mt-1">JPG, PNG, GIF, WEBP (Max 2MB)</p>
-                                    <input type="file" name="main_image" id="imageFile" class="hidden" accept="image/*">
+                                    <p class="text-xs text-slate-400 mt-1">JPG, PNG, GIF, WEBP (Max 5MB)</p>
+                                    <input type="file" name="main_image" id="imageFile" class="hidden" accept="image/jpeg,image/png,image/gif,image/webp">
                                 </div>
                                 <div id="imagePreview" class="mt-2 hidden">
                                     <div class="flex items-center space-x-3">
@@ -177,8 +177,8 @@
                 this.value = '';
                 return;
             }
-            if (file.size > 2 * 1024 * 1024) {
-                alert('Image must be less than 2MB');
+            if (file.size > 5 * 1024 * 1024) {
+                alert('Image must be less than 5MB');
                 this.value = '';
                 return;
             }
@@ -197,4 +197,16 @@
         imagePreview.classList.add('hidden');
         imagePreview.querySelector('img').src = '';
     }
+
+    // Show flash messages
+    document.addEventListener('DOMContentLoaded', function() {
+        var successEl = document.getElementById('successMessage');
+        var errorEl = document.getElementById('errorMessage');
+        if (successEl) {
+            Swal.fire({icon: 'success', title: 'Success', text: successEl.dataset.message, timer: 3000, showConfirmButton: false});
+        }
+        if (errorEl) {
+            Swal.fire({icon: 'error', title: 'Error', text: errorEl.dataset.message});
+        }
+    });
 </script>

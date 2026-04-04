@@ -1538,7 +1538,7 @@ footer .bottom a:hover {
     margin-bottom: 90px;
 }
 
-li.nav-item.dropdown > a.nav-link.dropdown-toggle[href="#"]::after {
+.navbar-nav .nav-link.dropdown-toggle::after {
     display: none !important;
 }
 
