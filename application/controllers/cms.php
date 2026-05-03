@@ -5722,12 +5722,19 @@ private function process_gallery_type($type, $filenames) {
         } else {
             $product->downloads_data = [];
         }
-        
+
+        if (!empty($product->dynamic_tables ?? null)) {
+            $decoded_dt = json_decode($product->dynamic_tables, true);
+            $product->dynamic_tables = is_array($decoded_dt) ? $decoded_dt : [];
+        } else {
+            $product->dynamic_tables = [];
+        }
+
         $data = [
             'product' => $product,
             'types' => $types
         ];
-        
+
         $this->load->view('admin/products_edit', $data);
     }
 
@@ -6257,7 +6264,10 @@ private function process_gallery_type($type, $filenames) {
             
             // Handle downloads JSON
             $data['downloads_data'] = $this->input->post('downloads_data') ?: '[]';
-            
+
+            // Handle dynamic tables JSON
+            $data['dynamic_tables'] = $this->input->post('dynamic_tables_data') ?: '[]';
+
             // Insert product
             $new_id = $this->Product_page_model->insert_product($data);
             
@@ -6619,7 +6629,10 @@ public function update_product_item($id) {
         // Handle downloads data
         $downloads_json = $this->input->post('downloads_data');
         $data['downloads_data'] = $downloads_json ?: '[]';
-        
+
+        // Handle dynamic tables data
+        $data['dynamic_tables'] = $this->input->post('dynamic_tables_data') ?: '[]';
+
         // Update product
         $result = $this->Product_page_model->update_product($id, $data);
         

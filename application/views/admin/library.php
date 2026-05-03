@@ -324,8 +324,8 @@ $current_type = $this->input->get('type') ?: 'all';
         <p class="text-sm text-slate-600 mb-4">Select a video resource to feature on the main page:</p>
         
         <div class="space-y-3 max-h-60 overflow-y-auto">
-            <?php foreach($resources as $resource): 
-                if($resource['resource_type'] != "videos") continue;
+            <?php foreach($resources as $resource):
+                if(stripos($resource['resource_type'], 'video') === false) continue;
                 if($resource['id'] == 2) continue;
             ?>
             <div class="flex items-center justify-between p-3 border border-slate-200 rounded-lg">

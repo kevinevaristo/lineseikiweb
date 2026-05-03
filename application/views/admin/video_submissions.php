@@ -171,15 +171,18 @@
                                 Email <span class="sort-indicator">↕</span>
                             </th>
                             <th class="text-left py-3 px-6 text-xs font-bold text-slate-600 uppercase tracking-wider cursor-pointer" onclick="sortTable(3)">
-                                Position <span class="sort-indicator">↕</span>
+                                Contact No. <span class="sort-indicator">↕</span>
                             </th>
                             <th class="text-left py-3 px-6 text-xs font-bold text-slate-600 uppercase tracking-wider cursor-pointer" onclick="sortTable(4)">
-                                Company <span class="sort-indicator">↕</span>
+                                Position <span class="sort-indicator">↕</span>
                             </th>
                             <th class="text-left py-3 px-6 text-xs font-bold text-slate-600 uppercase tracking-wider cursor-pointer" onclick="sortTable(5)">
-                                Video Title <span class="sort-indicator">↕</span>
+                                Company <span class="sort-indicator">↕</span>
                             </th>
                             <th class="text-left py-3 px-6 text-xs font-bold text-slate-600 uppercase tracking-wider cursor-pointer" onclick="sortTable(6)">
+                                Video Title <span class="sort-indicator">↕</span>
+                            </th>
+                            <th class="text-left py-3 px-6 text-xs font-bold text-slate-600 uppercase tracking-wider cursor-pointer" onclick="sortTable(7)">
                                 Submitted At <span class="sort-indicator">↕</span>
                             </th>
                         </tr>
@@ -187,7 +190,7 @@
                     <tbody class="divide-y divide-slate-200" id="tableBody">
                         <?php if (empty($videos)): ?>
                             <tr>
-                                <td colspan="7" class="text-center py-12 text-slate-500">
+                                <td colspan="8" class="text-center py-12 text-slate-500">
                                     <svg class="w-16 h-16 mx-auto mb-4 text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
                                     </svg>
@@ -205,10 +208,19 @@
                                     <?= htmlspecialchars($video->full_name) ?>
                                 </td>
                                 <td class="py-4 px-6 text-sm text-slate-600">
-                                    <a href="mailto:<?= htmlspecialchars($video->email) ?>" 
+                                    <a href="mailto:<?= htmlspecialchars($video->email) ?>"
                                        class="text-indigo-600 hover:text-indigo-800 hover:underline">
                                         <?= htmlspecialchars($video->email) ?>
                                     </a>
+                                </td>
+                                <td class="py-4 px-6 text-sm text-slate-700">
+                                    <?php if (!empty($video->contact_number)): ?>
+                                        <a href="tel:<?= htmlspecialchars($video->contact_number) ?>" class="text-indigo-600 hover:text-indigo-800 hover:underline">
+                                            <?= htmlspecialchars($video->contact_number) ?>
+                                        </a>
+                                    <?php else: ?>
+                                        <span class="text-slate-400">—</span>
+                                    <?php endif; ?>
                                 </td>
                                 <td class="py-4 px-6 text-sm text-slate-700">
                                     <?= htmlspecialchars($video->position) ?>
@@ -351,7 +363,7 @@ function exportToCSV() {
     const csv = [];
     
     // Add headers
-    csv.push(['ID', 'Full Name', 'Email', 'Position', 'Company', 'Video Title', 'Submitted At'].join(','));
+    csv.push(['ID', 'Full Name', 'Email', 'Contact No.', 'Position', 'Company', 'Video Title', 'Submitted At'].join(','));
     
     // Add data rows
     rows.forEach(row => {

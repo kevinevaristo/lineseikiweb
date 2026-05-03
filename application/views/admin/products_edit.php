@@ -247,6 +247,160 @@
     color: #6b7280;
     background: #f9fafb;
 }
+
+/* Dynamic Tables Builder */
+.dt-table {
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    background: #f8fafc;
+    padding: 14px;
+    margin-bottom: 14px;
+}
+.dt-table-header {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.dt-table-header input.dt-title {
+    flex: 1;
+    padding: 8px 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    font-weight: 600;
+    background: #fff;
+}
+.dt-grid-wrap {
+    overflow-x: auto;
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+}
+.dt-grid {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 100%;
+}
+.dt-grid th, .dt-grid td {
+    border: 1px solid #e2e8f0;
+    padding: 0;
+    vertical-align: top;
+    min-width: 140px;
+}
+.dt-grid th {
+    background: #eef2ff;
+}
+.dt-grid input.dt-cell, .dt-grid input.dt-col-name {
+    width: 100%;
+    border: 0;
+    padding: 8px 10px;
+    background: transparent;
+    outline: none;
+    font-size: 13px;
+}
+.dt-grid input.dt-col-name { font-weight: 600; color: #1e293b; }
+.dt-grid input.dt-cell:focus, .dt-grid input.dt-col-name:focus {
+    background: #eff6ff;
+}
+.dt-cell-wrap {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    padding: 0 4px;
+}
+.dt-cell-wrap input.dt-cell {
+    flex: 1;
+    min-width: 0;
+    padding: 8px 6px;
+}
+.dt-cell-img-area {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+}
+.dt-cell-img-btn {
+    padding: 4px 8px;
+    background: #f0fdf4;
+    color: #16a34a;
+    border: 1px dashed #86efac;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 11px;
+}
+.dt-cell-img-btn:hover { background: #dcfce7; }
+.dt-cell-img-preview {
+    position: relative;
+    display: inline-block;
+}
+.dt-cell-img-preview img {
+    width: 44px;
+    height: 44px;
+    object-fit: cover;
+    border-radius: 4px;
+    border: 1px solid #e2e8f0;
+    display: block;
+}
+.dt-cell-img-remove {
+    position: absolute;
+    top: -4px;
+    right: -4px;
+    width: 16px;
+    height: 16px;
+    background: #ef4444;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    font-size: 9px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+}
+.dt-row-actions, .dt-col-actions {
+    background: #f1f5f9;
+    text-align: center;
+    width: 38px;
+    min-width: 38px;
+}
+.dt-icon-btn {
+    background: transparent;
+    border: 0;
+    padding: 6px 8px;
+    color: #64748b;
+    cursor: pointer;
+    font-size: 12px;
+    border-radius: 4px;
+}
+.dt-icon-btn:hover { background: #fee2e2; color: #dc2626; }
+.dt-add-row, .dt-add-col {
+    padding: 6px 12px;
+    background: #e0f2fe;
+    color: #0284c7;
+    border: 1px dashed #7dd3fc;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 500;
+}
+.dt-add-row:hover, .dt-add-col:hover { background: #bae6fd; }
+.dt-table-footer {
+    display: flex;
+    gap: 8px;
+    margin-top: 10px;
+    flex-wrap: wrap;
+}
+.dt-remove-table {
+    margin-left: auto;
+    padding: 6px 12px;
+    background: #fee2e2;
+    color: #dc2626;
+    border: 1px solid #fecaca;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 12px;
+}
+.dt-remove-table:hover { background: #fecaca; }
 </style>
 <main class="ml-64 p-8">
     <div class="max-w-7xl mx-auto">
@@ -532,7 +686,47 @@
                     <input type="hidden" name="complied_standards" value="<?php echo htmlspecialchars($product->complied_standards ?? ''); ?>">
                 </div>
             </div>
-        
+
+            <!-- Dynamic Tables Section -->
+            <div class="section-card bg-white rounded-2xl border border-slate-200 shadow-sm">
+                <div class="section-header" onclick="toggleSection(this)">
+                    <div class="flex justify-between items-center">
+                        <div class="flex items-center gap-3">
+                            <i class="fas fa-table text-indigo-600 section-icon"></i>
+                            <h3 class="text-lg font-bold text-slate-800">Dynamic Tables</h3>
+                        </div>
+                        <span class="text-sm text-slate-500">Click to expand/collapse</span>
+                    </div>
+                </div>
+                <div class="section-content">
+                    <div class="flex justify-between items-center mb-4">
+                        <h4 class="font-medium text-slate-700">Build custom tables (rows &amp; columns)</h4>
+                        <button type="button" onclick="addDynamicTable()"
+                                class="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors">
+                            <i class="fas fa-plus mr-2"></i>Add Table
+                        </button>
+                    </div>
+
+                    <div id="dynamicTablesContainer" class="space-y-3">
+                        <!-- Existing dynamic tables initialized by JS -->
+                    </div>
+
+                    <div class="mt-3 p-3 bg-blue-50 border border-blue-100 rounded-lg">
+                        <div class="flex items-start gap-2">
+                            <i class="fas fa-info-circle text-blue-600 mt-0.5"></i>
+                            <div>
+                                <p class="text-sm text-slate-700 font-medium">Guide:</p>
+                                <ul class="text-xs text-slate-600 mt-1 space-y-1">
+                                    <li>• Click "Add Table" to create a table, then "+ Row" / "+ Column" to expand it</li>
+                                    <li>• The first row holds the column headers</li>
+                                    <li>• Tables render on the product detail page in the order shown here</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <!-- Downloads Section -->
             <div class="section-card bg-white rounded-2xl border border-slate-200 shadow-sm">
                 <div class="section-header" onclick="toggleSection(this)">
@@ -641,7 +835,7 @@
                     </template>
                 </div>
             </div>
-        
+
             <!-- Applications Section -->
             <div class="section-card bg-white rounded-2xl border border-slate-200 shadow-sm">
                 <div class="section-header" onclick="toggleSection(this)">
@@ -1515,6 +1709,263 @@ function clearSpecs() {
     });
 }
 
+/* ============================================================
+ * Dynamic Tables Builder
+ * Data shape: [{ title, columns: [string], rows: [[string,...]] }]
+ * ============================================================ */
+function dtEscape(s) {
+    const div = document.createElement('div');
+    div.textContent = s == null ? '' : String(s);
+    return div.innerHTML;
+}
+
+function addDynamicTable(table) {
+    const container = document.getElementById('dynamicTablesContainer');
+    if (!container) return;
+
+    const data = table || { title: '', columns: ['Column 1', 'Column 2'], rows: [['', '']] };
+
+    const wrap = document.createElement('div');
+    wrap.className = 'dt-table';
+    wrap.innerHTML = `
+        <div class="dt-table-header">
+            <input type="text" class="dt-title" placeholder="Table title (e.g. Operating Distance)" value="${dtEscape(data.title)}">
+        </div>
+        <div class="dt-grid-wrap">
+            <table class="dt-grid">
+                <thead><tr class="dt-header-row"></tr></thead>
+                <tbody class="dt-body"></tbody>
+            </table>
+        </div>
+        <div class="dt-table-footer">
+            <button type="button" class="dt-add-row" onclick="dtAddRow(this)"><i class="fas fa-plus mr-1"></i>Row</button>
+            <button type="button" class="dt-add-col" onclick="dtAddCol(this)"><i class="fas fa-plus mr-1"></i>Column</button>
+            <button type="button" class="dt-remove-table" onclick="dtRemoveTable(this)"><i class="fas fa-trash mr-1"></i>Remove Table</button>
+        </div>
+    `;
+    container.appendChild(wrap);
+
+    const headerRow = wrap.querySelector('.dt-header-row');
+    data.columns.forEach(col => headerRow.appendChild(dtBuildHeaderCell(col)));
+    const headerActions = document.createElement('th');
+    headerActions.className = 'dt-col-actions';
+    headerActions.innerHTML = '';
+    headerRow.appendChild(headerActions);
+
+    const colActionRow = document.createElement('tr');
+    colActionRow.className = 'dt-col-action-row';
+    data.columns.forEach(() => {
+        const td = document.createElement('td');
+        td.className = 'dt-col-actions';
+        td.innerHTML = `<button type="button" class="dt-icon-btn" onclick="dtRemoveCol(this)" title="Remove column"><i class="fas fa-times"></i></button>`;
+        colActionRow.appendChild(td);
+    });
+    const spacer = document.createElement('td');
+    spacer.className = 'dt-col-actions';
+    colActionRow.appendChild(spacer);
+    wrap.querySelector('.dt-body').appendChild(colActionRow);
+
+    data.rows.forEach(row => {
+        wrap.querySelector('.dt-body').appendChild(dtBuildRow(row, data.columns.length));
+    });
+}
+
+function dtBuildHeaderCell(value) {
+    const th = document.createElement('th');
+    th.innerHTML = `<input type="text" class="dt-col-name" value="${dtEscape(value)}" placeholder="Column">`;
+    return th;
+}
+
+function dtBuildRow(rowValues, colCount) {
+    const tr = document.createElement('tr');
+    tr.className = 'dt-data-row';
+    for (let i = 0; i < colCount; i++) {
+        const td = document.createElement('td');
+        const cellData = rowValues && rowValues[i] != null ? rowValues[i] : '';
+        const text = (cellData && typeof cellData === 'object') ? (cellData.text || '') : (typeof cellData === 'string' ? cellData : '');
+        const image = (cellData && typeof cellData === 'object') ? (cellData.image || '') : '';
+        td.appendChild(dtBuildCell(text, image));
+        tr.appendChild(td);
+    }
+    const actions = document.createElement('td');
+    actions.className = 'dt-row-actions';
+    actions.innerHTML = `<button type="button" class="dt-icon-btn" onclick="dtRemoveRow(this)" title="Remove row"><i class="fas fa-times"></i></button>`;
+    tr.appendChild(actions);
+    return tr;
+}
+
+function dtBuildCell(text, image) {
+    const wrap = document.createElement('div');
+    wrap.className = 'dt-cell-wrap';
+    wrap.innerHTML = `
+        <input type="text" class="dt-cell" value="${dtEscape(text)}" placeholder="">
+        <div class="dt-cell-img-area">${image ? dtCellImageHtml(image) : dtCellImageButtonHtml()}</div>
+    `;
+    return wrap;
+}
+
+function dtCellImageButtonHtml() {
+    return `
+        <button type="button" class="dt-cell-img-btn" onclick="dtTriggerImageUpload(this)" title="Add image"><i class="fas fa-image"></i></button>
+        <input type="hidden" class="dt-cell-img" value="">
+    `;
+}
+
+function dtCellImageHtml(filename) {
+    const baseImgUrl = '<?= base_url("assets_system/images/") ?>';
+    return `
+        <div class="dt-cell-img-preview">
+            <img src="${baseImgUrl}${dtEscape(filename)}" onerror="this.style.display='none'">
+            <button type="button" class="dt-cell-img-remove" onclick="dtRemoveImage(this)"><i class="fas fa-times"></i></button>
+        </div>
+        <input type="hidden" class="dt-cell-img" value="${dtEscape(filename)}">
+    `;
+}
+
+function dtTriggerImageUpload(btn) {
+    const fileInput = document.createElement('input');
+    fileInput.type = 'file';
+    fileInput.accept = 'image/*';
+    fileInput.onchange = function() {
+        if (this.files && this.files[0]) {
+            dtUploadImage(this.files[0], btn);
+        }
+    };
+    fileInput.click();
+}
+
+function dtUploadImage(file, btn) {
+    if (file.size > 2 * 1024 * 1024) {
+        Swal.fire({ title: 'File too large', text: 'Max 2MB', icon: 'error', timer: 2000, showConfirmButton: false });
+        return;
+    }
+    const formData = new FormData();
+    formData.append('spec_image', file);
+
+    const imgArea = btn.closest('.dt-cell-img-area');
+    btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
+    btn.disabled = true;
+
+    fetch('<?= site_url("cms/upload_spec_image") ?>', { method: 'POST', body: formData, credentials: 'same-origin' })
+        .then(r => r.json())
+        .then(data => {
+            if (data.success && data.file_name) {
+                imgArea.innerHTML = dtCellImageHtml(data.file_name);
+            } else {
+                Swal.fire({ title: 'Upload failed', text: data.message || 'Unknown error', icon: 'error', timer: 2000, showConfirmButton: false });
+                btn.innerHTML = '<i class="fas fa-image"></i>';
+                btn.disabled = false;
+            }
+        })
+        .catch(err => {
+            Swal.fire({ title: 'Upload error', text: err.message, icon: 'error', timer: 2000, showConfirmButton: false });
+            btn.innerHTML = '<i class="fas fa-image"></i>';
+            btn.disabled = false;
+        });
+}
+
+function dtRemoveImage(btn) {
+    const imgArea = btn.closest('.dt-cell-img-area');
+    imgArea.innerHTML = dtCellImageButtonHtml();
+}
+
+function dtAddRow(btn) {
+    const wrap = btn.closest('.dt-table');
+    const colCount = wrap.querySelectorAll('.dt-header-row .dt-col-name').length;
+    wrap.querySelector('.dt-body').appendChild(dtBuildRow([], colCount));
+}
+
+function dtAddCol(btn) {
+    const wrap = btn.closest('.dt-table');
+    const headerRow = wrap.querySelector('.dt-header-row');
+    const colActionRow = wrap.querySelector('.dt-col-action-row');
+    const dataRows = wrap.querySelectorAll('.dt-data-row');
+
+    const trailingTh = headerRow.querySelector('th.dt-col-actions');
+    headerRow.insertBefore(dtBuildHeaderCell(''), trailingTh);
+
+    const trailingSpacer = colActionRow.querySelector('td.dt-col-actions:last-child');
+    const newActionTd = document.createElement('td');
+    newActionTd.className = 'dt-col-actions';
+    newActionTd.innerHTML = `<button type="button" class="dt-icon-btn" onclick="dtRemoveCol(this)" title="Remove column"><i class="fas fa-times"></i></button>`;
+    colActionRow.insertBefore(newActionTd, trailingSpacer);
+
+    dataRows.forEach(tr => {
+        const rowActions = tr.querySelector('td.dt-row-actions');
+        const td = document.createElement('td');
+        td.appendChild(dtBuildCell('', ''));
+        tr.insertBefore(td, rowActions);
+    });
+}
+
+function dtRemoveRow(btn) {
+    const tr = btn.closest('tr.dt-data-row');
+    if (tr) tr.remove();
+}
+
+function dtRemoveCol(btn) {
+    const wrap = btn.closest('.dt-table');
+    const colActionTd = btn.closest('td.dt-col-actions');
+    const colActionRow = colActionTd.parentElement;
+    const actionTds = Array.from(colActionRow.querySelectorAll('td.dt-col-actions'));
+    const idx = actionTds.indexOf(colActionTd);
+    if (idx === -1) return;
+
+    const headerCells = wrap.querySelectorAll('.dt-header-row .dt-col-name');
+    if (headerCells.length <= 1) {
+        Swal.fire({ title: 'At least 1 column required', icon: 'info', timer: 1500, showConfirmButton: false });
+        return;
+    }
+
+    const headerThs = wrap.querySelectorAll('.dt-header-row > th');
+    if (headerThs[idx]) headerThs[idx].remove();
+    colActionTd.remove();
+
+    wrap.querySelectorAll('.dt-data-row').forEach(tr => {
+        const cells = tr.querySelectorAll('td');
+        if (cells[idx]) cells[idx].remove();
+    });
+}
+
+function dtRemoveTable(btn) {
+    Swal.fire({
+        title: 'Remove this table?',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Yes, remove',
+        confirmButtonColor: '#ef4444',
+    }).then(r => {
+        if (r.isConfirmed) btn.closest('.dt-table').remove();
+    });
+}
+
+function collectDynamicTables() {
+    const result = [];
+    document.querySelectorAll('#dynamicTablesContainer .dt-table').forEach(wrap => {
+        const title = wrap.querySelector('.dt-title')?.value.trim() || '';
+        const columns = Array.from(wrap.querySelectorAll('.dt-header-row .dt-col-name')).map(i => i.value.trim());
+        const rows = [];
+        wrap.querySelectorAll('.dt-data-row').forEach(tr => {
+            const cells = [];
+            tr.querySelectorAll(':scope > td').forEach(td => {
+                if (td.classList.contains('dt-row-actions')) return;
+                const textInput = td.querySelector('input.dt-cell');
+                const imgInput = td.querySelector('input.dt-cell-img');
+                cells.push({
+                    text: textInput ? textInput.value : '',
+                    image: imgInput ? imgInput.value : ''
+                });
+            });
+            rows.push(cells);
+        });
+        const hasContent = title || columns.some(c => c) || rows.some(r => r.some(c => c.text || c.image));
+        if (hasContent) {
+            result.push({ title, columns, rows });
+        }
+    });
+    return result;
+}
+
 // Load existing specs into the builder on page load
 document.addEventListener('DOMContentLoaded', function() {
     const textarea = document.getElementById('specificationsTextarea');
@@ -1636,6 +2087,9 @@ async function saveProduct() {
 
         // Add downloads JSON to FormData
         formData.append('downloads_data', JSON.stringify(downloads));
+
+        // Collect dynamic tables
+        formData.append('dynamic_tables_data', JSON.stringify(collectDynamicTables()));
         
         // Debug: Log what's being sent
         console.log('Sending FormData with files:');
@@ -1732,6 +2186,23 @@ document.addEventListener('DOMContentLoaded', function() {
                 
                 addDownload(dl, false);
             });
+        }
+
+        // Initialize dynamic tables
+        const dynamicTablesRaw = <?php
+            $dt_raw = $product->dynamic_tables ?? '';
+            if (is_array($dt_raw) || is_object($dt_raw)) {
+                echo json_encode($dt_raw);
+            } else {
+                echo $dt_raw ? json_encode($dt_raw) : '"[]"';
+            }
+        ?>;
+        let dynamicTables = [];
+        try {
+            dynamicTables = typeof dynamicTablesRaw === 'string' ? JSON.parse(dynamicTablesRaw || '[]') : (dynamicTablesRaw || []);
+        } catch (e) { dynamicTables = []; }
+        if (Array.isArray(dynamicTables)) {
+            dynamicTables.forEach(t => addDynamicTable(t));
         }
     } catch (error) {
         console.error('Error initializing form:', error);

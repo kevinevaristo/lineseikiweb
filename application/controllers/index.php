@@ -354,6 +354,7 @@ public function save_download_info() {
     // Validate required fields
     $full_name = trim($this->input->post('full_name'));
     $email = trim($this->input->post('email'));
+    $contact_number = trim($this->input->post('contact_number'));
     $company = trim($this->input->post('company'));
     $position = trim($this->input->post('position'));
     $video_title = trim($this->input->post('video_title'));
@@ -380,6 +381,7 @@ public function save_download_info() {
     $data = array(
       'full_name' => $full_name,
       'email' => $email,
+      'contact_number' => $contact_number,
       'company' => $company,
       'position' => $position,
       'video_title' => $video_title,

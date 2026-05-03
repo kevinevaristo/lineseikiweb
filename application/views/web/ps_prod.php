@@ -39,7 +39,7 @@
     /* Blue overlay */
     linear-gradient(135deg, rgba(15, 70, 123, 0.85) 50%, rgba(23, 162, 220, 0.75) 100%),
     /* Background image */
-    url('<?= base_url('assets_system/images/stockroom.jpg') ?>') center/cover no-repeat;
+    url('<?= base_url('assets_system/images/' . (!empty($bg_image) ? $bg_image : 'stockroom.jpg')) ?>') center/cover no-repeat;
   background-size: cover;
   background-position: center;
 }
@@ -170,7 +170,7 @@
 .categories {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 25px;
+  gap: 60px 50px;
 }
 
 /* Individual Product Cards */
@@ -191,6 +191,7 @@
   width: 100%;
   height: 250px;
   display: block;
+  object-fit: cover;
   transition: opacity 0.4s ease;
 }
 

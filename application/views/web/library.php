@@ -757,15 +757,15 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
       </div>
       <div class="modal-body">
-        <input type="hidden" id="videoUrlToWatch">
-        <input type="hidden" id="videoTitle">
-        <div class="mb-3"><label class="form-label">Full name</label><input type="text" class="form-control adv-form-control" required></div>
-        <div class="mb-3"><label class="form-label">Email</label><input type="email" class="form-control adv-form-control" required></div>
+        <input type="hidden" id="videoUrlToWatch" name="video_url">
+        <input type="hidden" id="videoTitle" name="video_title">
+        <div class="mb-3"><label class="form-label">Full name</label><input type="text" name="full_name" class="form-control adv-form-control" required></div>
+        <div class="mb-3"><label class="form-label">Email</label><input type="email" name="email" class="form-control adv-form-control" required></div>
         <!-- CONTACT NUMBER FIELD -->
-        <div class="mb-3"><label class="form-label">Contact number</label><input type="tel" class="form-control adv-form-control" required></div>
+        <div class="mb-3"><label class="form-label">Contact number</label><input type="tel" name="contact_number" class="form-control adv-form-control" required></div>
         <div class="row">
-          <div class="col-6 mb-3"><label class="form-label">Company</label><input class="form-control adv-form-control" required></div>
-          <div class="col-6 mb-3"><label class="form-label">Position</label><input class="form-control adv-form-control" required></div>
+          <div class="col-6 mb-3"><label class="form-label">Company</label><input name="company" class="form-control adv-form-control" required></div>
+          <div class="col-6 mb-3"><label class="form-label">Position</label><input name="position" class="form-control adv-form-control" required></div>
         </div>
         <div class="mb-3">
           <p class="small text-muted mb-2" style="font-size: 0.8rem; line-height: 1.4;">
@@ -784,10 +784,56 @@
   </div>
 </div>
 
+<!-- THANK YOU MODAL (shown after gated submission — video or download) -->
+<div class="modal fade" id="thankYouModal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-body text-center p-4">
+        <div class="mb-3">
+          <i class="fas fa-check-circle" style="font-size: 3.5rem; color: #16a34a;"></i>
+        </div>
+        <h4 class="mb-2" style="color: var(--navy);">Thank you for signing up!</h4>
+        <p id="thankYouMessage" class="text-muted mb-4" style="font-size: 0.95rem;">
+          We appreciate your interest. The video will open in a new tab so you can start watching right away.
+        </p>
+        <button type="button" id="btnThankYouContinue" class="btn w-100" style="background:var(--navy); color:white;">
+          <i class="fas fa-play me-2"></i>Continue to video
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <?php $this->load->view('web/footer'); ?>
 
 <script src="<?php echo base_url('assets_system/vendor/bootstrap-5.3.3/js/bootstrap.bundle.min.js'); ?>"></script>
 <script>
+// Reusable Thank You modal helper
+function showThankYouModal(opts) {
+  const el = document.getElementById('thankYouModal');
+  if (!el) {
+    if (opts && typeof opts.onContinue === 'function') opts.onContinue();
+    return;
+  }
+  const messageEl = document.getElementById('thankYouMessage');
+  const continueBtn = document.getElementById('btnThankYouContinue');
+  if (messageEl && opts.message) messageEl.textContent = opts.message;
+  if (continueBtn && opts.buttonHtml) continueBtn.innerHTML = opts.buttonHtml;
+
+  const modal = bootstrap.Modal.getOrCreateInstance(el);
+
+  // Detach previous handler by cloning the button (clean reset)
+  const newBtn = continueBtn.cloneNode(true);
+  continueBtn.parentNode.replaceChild(newBtn, continueBtn);
+
+  newBtn.addEventListener('click', function() {
+    modal.hide();
+    if (typeof opts.onContinue === 'function') opts.onContinue();
+  });
+
+  modal.show();
+}
+
 document.addEventListener('DOMContentLoaded', function() {
   // Original navbar submenu functionality (from first code)
   document.querySelectorAll('.dropdown-submenu > a').forEach(function(element){
@@ -967,8 +1013,14 @@ document.addEventListener('DOMContentLoaded', function() {
         bootstrap.Modal.getInstance(downloadModal).hide();
         form.reset();
         document.getElementById('btnSubmitDownload').disabled = true;
-        // Trigger the actual file download
-        window.location.href = '<?= base_url("index/download_file/") ?>' + fileToDownload;
+
+        showThankYouModal({
+          message: 'We appreciate your interest. Click the button below to start downloading your file.',
+          buttonHtml: '<i class="fas fa-download me-2"></i>Continue to download',
+          onContinue: function() {
+            window.location.href = '<?= base_url("index/download_file/") ?>' + fileToDownload;
+          }
+        });
       })
       .catch(err => {
         alert('Something went wrong. Please try again.');
@@ -985,9 +1037,31 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     document.querySelector('#videoModal form').addEventListener('submit', function(e) {
       e.preventDefault();
-      bootstrap.Modal.getInstance(videoModal).hide();
-      this.reset();
-      alert('Thank you! The video will open in a new tab. (Demo)');
+      const form = this;
+      const videoUrl = document.getElementById('videoUrlToWatch').value;
+      const formData = new FormData(form);
+
+      // Save submission to tbl_watch_info, then show Thank You modal
+      fetch('<?= base_url("index/save_watch_info") ?>', {
+        method: 'POST',
+        body: formData
+      })
+      .catch(() => { /* fail silently — still let user watch the video */ })
+      .finally(() => {
+        bootstrap.Modal.getInstance(videoModal).hide();
+        form.reset();
+        document.getElementById('btnSubmitVideo').disabled = true;
+
+        showThankYouModal({
+          message: 'We appreciate your interest. The video will open in a new tab so you can start watching right away.',
+          buttonHtml: '<i class="fas fa-play me-2"></i>Continue to video',
+          onContinue: function() {
+            if (videoUrl) {
+              window.open(videoUrl, '_blank', 'noopener,noreferrer');
+            }
+          }
+        });
+      });
     });
   }
 });

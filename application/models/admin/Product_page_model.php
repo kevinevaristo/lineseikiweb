@@ -107,10 +107,11 @@ class Product_page_model extends CI_Model {
      * Encodes JSON fields automatically
      */
     public function insert_product($data) {
+        $this->ensure_dynamic_tables_column();
         $data = $this->encode_json_fields($data);
         $data['created_at'] = date('Y-m-d H:i:s');
         $data['updated_at'] = date('Y-m-d H:i:s');
-        
+
         return $this->db->insert('tbl_product_items', $data);
     }
 
@@ -119,8 +120,16 @@ class Product_page_model extends CI_Model {
      * Encodes JSON fields automatically
      */
     public function update_product($id, $data) {
+        $this->ensure_dynamic_tables_column();
+        $data = $this->encode_json_fields($data);
         $this->db->where('id', $id);
         return $this->db->update('tbl_product_items', $data);
+    }
+
+    private function ensure_dynamic_tables_column() {
+        if (!$this->db->field_exists('dynamic_tables', 'tbl_product_items')) {
+            $this->db->query("ALTER TABLE `tbl_product_items` ADD COLUMN `dynamic_tables` TEXT NULL DEFAULT NULL COMMENT 'JSON array of admin-defined tables' AFTER `downloads_data`");
+        }
     }
     /**
      * Delete product
@@ -256,7 +265,7 @@ class Product_page_model extends CI_Model {
      * Decode JSON fields for display
      */
     private function decode_json_fields($product) {
-        $json_fields = ['models_data', 'specifications_data', 'downloads_data', 'applications_data', 'gallery_images'];
+        $json_fields = ['models_data', 'specifications_data', 'downloads_data', 'applications_data', 'dynamic_tables', 'gallery_images'];
         
         foreach ($json_fields as $field) {
             if (isset($product->$field) && !empty($product->$field)) {
@@ -288,7 +297,7 @@ class Product_page_model extends CI_Model {
      * Encode JSON fields for storage
      */
     private function encode_json_fields($data) {
-        $json_fields = ['models_data', 'specifications_data', 'downloads_data', 'applications_data', 'gallery_images'];
+        $json_fields = ['models_data', 'specifications_data', 'downloads_data', 'applications_data', 'dynamic_tables', 'gallery_images'];
         
         foreach ($json_fields as $field) {
             if (isset($data[$field])) {

@@ -714,6 +714,7 @@ CREATE TABLE `tbl_watch_info` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `full_name` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
+  `contact_number` varchar(50) DEFAULT NULL,
   `company` varchar(255) NOT NULL,
   `position` varchar(255) NOT NULL,
   `video_title` varchar(500) DEFAULT NULL,

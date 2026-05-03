@@ -755,7 +755,14 @@ footer .bottom a:hover {
     <!-- Event Content -->
     <?php if (!empty($event['content'])): ?>
     <div class="event-content">
-      <?= $event['content'] ?>
+      <?php
+        $paragraphs = preg_split('/(\r\n|\r|\n){2,}/', trim($event['content']));
+        foreach ($paragraphs as $paragraph) {
+          $paragraph = trim($paragraph);
+          if ($paragraph === '') continue;
+          echo '<p>' . nl2br(htmlspecialchars($paragraph)) . '</p>';
+        }
+      ?>
     </div>
     <?php endif; ?>
 

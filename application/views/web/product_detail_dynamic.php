@@ -80,6 +80,22 @@ if (!empty($product->applications_data)) {
         $applications = $decoded;
     }
 }
+
+$dynamic_tables = [];
+if (!empty($product->dynamic_tables)) {
+    $dt_raw = $product->dynamic_tables;
+    $decoded = is_string($dt_raw) ? json_decode($dt_raw, true) : $dt_raw;
+    if (is_array($decoded)) {
+        foreach ($decoded as $t) {
+            if (!is_array($t)) continue;
+            $dynamic_tables[] = [
+                'title'   => isset($t['title']) ? (string)$t['title'] : '',
+                'columns' => isset($t['columns']) && is_array($t['columns']) ? array_values($t['columns']) : [],
+                'rows'    => isset($t['rows']) && is_array($t['rows']) ? array_values($t['rows']) : [],
+            ];
+        }
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -867,6 +883,11 @@ if (!empty($product->applications_data)) {
                 <a class="c-button is-nav js-anchor" href="#block03">Specifications</a>
               </div>
               <?php endif; ?>
+              <?php if (!empty($dynamic_tables)): ?>
+              <div class="c-anchor-nav__button">
+                <a class="c-button is-nav js-anchor" href="#block03b">Tables</a>
+              </div>
+              <?php endif; ?>
               <?php if (!empty($downloads)): ?>
               <div class="c-anchor-nav__button">
                 <a class="c-button is-nav js-anchor" href="#block04">Download</a>
@@ -942,6 +963,81 @@ if (!empty($product->applications_data)) {
                 </tbody>
               </table>
             </div>
+          </div>
+          <?php endif; ?>
+
+          <!-- Dynamic Tables Section -->
+          <?php if (!empty($dynamic_tables)): ?>
+          <div class="l-block__margin-large dynamic-tables" id="block03b">
+            <style>
+              .dynamic-tables table { width: 100%; border-collapse: collapse; table-layout: auto; border: 1px solid var(--border-color); }
+              .dynamic-tables th,
+              .dynamic-tables td {
+                padding: 14px 16px;
+                vertical-align: middle;
+                text-align: center;
+                border: 1px solid var(--border-color);
+              }
+              .dynamic-tables td.has-img {
+                white-space: nowrap;
+              }
+              .dynamic-tables td .dt-cell-img {
+                display: inline-block;
+                margin: 0;
+                max-width: 400px;
+                max-height: 400px;
+                border-radius: 4px;
+                object-fit: contain;
+                vertical-align: middle;
+              }
+              .dynamic-tables td .dt-cell-img.has-text { margin-top: 8px; }
+            </style>
+            <?php foreach ($dynamic_tables as $dt): ?>
+              <?php if (!empty($dt['title'])): ?>
+                <h2 class="c-heading is-xs"><?= htmlspecialchars($dt['title']) ?></h2>
+              <?php endif; ?>
+              <div class="c-block-product-page__table" style="margin-bottom:24px;">
+                <table class="c-table-sm">
+                  <?php if (!empty($dt['columns']) && array_filter($dt['columns'], 'strlen')): ?>
+                  <thead>
+                    <tr>
+                      <?php foreach ($dt['columns'] as $col): ?>
+                        <th><?= nl2br(htmlspecialchars((string)$col)) ?></th>
+                      <?php endforeach; ?>
+                    </tr>
+                  </thead>
+                  <?php endif; ?>
+                  <tbody>
+                    <?php foreach ($dt['rows'] as $row): ?>
+                    <tr>
+                      <?php foreach ($dt['columns'] as $i => $col): ?>
+                        <?php
+                          $cell = $row[$i] ?? null;
+                          $cell_text = '';
+                          $cell_image = '';
+                          if (is_array($cell)) {
+                              $cell_text  = (string)($cell['text']  ?? '');
+                              $cell_image = (string)($cell['image'] ?? '');
+                          } elseif (is_object($cell)) {
+                              $cell_text  = (string)($cell->text  ?? '');
+                              $cell_image = (string)($cell->image ?? '');
+                          } elseif (is_string($cell)) {
+                              $cell_text = $cell;
+                          }
+                        ?>
+                        <td<?= $cell_image ? ' class="has-img"' : '' ?>>
+                          <?php if ($cell_text !== ''): ?><?= nl2br(htmlspecialchars($cell_text)) ?><?php endif; ?>
+                          <?php if ($cell_image): ?>
+                            <img src="<?= base_url('assets_system/images/' . htmlspecialchars($cell_image)) ?>" alt="" class="dt-cell-img<?= $cell_text !== '' ? ' has-text' : '' ?>">
+                          <?php endif; ?>
+                        </td>
+                      <?php endforeach; ?>
+                    </tr>
+                    <?php endforeach; ?>
+                  </tbody>
+                </table>
+              </div>
+            <?php endforeach; ?>
           </div>
           <?php endif; ?>
 
