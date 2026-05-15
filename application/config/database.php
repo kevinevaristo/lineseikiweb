@@ -48,9 +48,9 @@
 $active_group = 'default';
 $active_record = TRUE;
 
-$db['default']['hostname'] = 'localhost';        //localhost       online-184.168.102.202
-$db['default']['username'] = 'root';            //root                 online-maiya_hrms
-$db['default']['password'] = '';                //                   online-maiya_hrms
+$db['default']['hostname'] = '184.168.102.202';        //localhost       online-184.168.102.202
+$db['default']['username'] = 'lineseiki_db2';            //root                 online-maiya_hrms
+$db['default']['password'] = 'lineseiki_db2';                //                   online-maiya_hrms
 $db['default']['database'] = 'lineseiki_db';      // eagle_db   maiya_hrms
 $db['default']['dbdriver'] = 'mysqli';
 $db['default']['dbprefix'] = '';

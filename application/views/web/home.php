@@ -1665,36 +1665,6 @@ footer .bottom a:hover {
           </div>
         </div>
         <?php endforeach; ?>
-      <?php else: ?>
-        <!-- Default fallback achievements if no data in database -->
-        <div class="legacy-photo-card">
-          <img src="https://via.placeholder.com/80x80/0F467B/ffffff?text=1953" alt="1953 Founding" class="legacy-photo-thumb">
-          <div class="legacy-photo-info">
-            <h5><span class="achievement-year">1953 – </span>Foundation</h5>
-            <p>Line Seiki established in Tokyo, introducing first mechanical counter.</p>
-          </div>
-        </div>
-        <div class="legacy-photo-card">
-          <img src="https://via.placeholder.com/80x80/17A2DC/ffffff?text=1975" alt="1975 Expansion" class="legacy-photo-thumb">
-          <div class="legacy-photo-info">
-            <h5><span class="achievement-year">1975 – </span>Asia Pacific HQ</h5>
-            <p>Regional headquarters opened in Singapore, expanding global reach.</p>
-          </div>
-        </div>
-        <div class="legacy-photo-card">
-          <img src="https://via.placeholder.com/80x80/0d6efd/ffffff?text=ISO" alt="2000 ISO" class="legacy-photo-thumb">
-          <div class="legacy-photo-info">
-            <h5><span class="achievement-year">2000 – </span>ISO 9001</h5>
-            <p>Attained ISO 9001 certification for quality management systems.</p>
-          </div>
-        </div>
-        <div class="legacy-photo-card">
-          <img src="https://via.placeholder.com/80x80/0F467B/ffffff?text=2020" alt="2020 Digital" class="legacy-photo-thumb">
-          <div class="legacy-photo-info">
-            <h5><span class="achievement-year">2020 – </span>Industry 4.0</h5>
-            <p>Launched GEMBA IoT monitoring system for smart manufacturing.</p>
-          </div>
-        </div>
       <?php endif; ?>
     </div>
 

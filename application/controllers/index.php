@@ -459,6 +459,7 @@ public function save_download_info() {
         $data['solution'] = isset($grouped_data['solution']) ? $grouped_data['solution'] : array();
         $data['products'] = isset($grouped_data['products']) ? $grouped_data['products'] : array();
         $data['system_setup'] = isset($grouped_data['system_setup']) ? $grouped_data['system_setup'] : array();
+        $data['setup_diagram'] = $this->iotsolution_model->get_by_title('System Setup Diagram') ?: array('image' => 'system-setupnobg.png', 'id' => '');
         $data['production_data'] = isset($grouped_data['production_data']) ? $grouped_data['production_data'] : array();
         $data['features'] = isset($grouped_data['features']) ? $grouped_data['features'] : array();
         $data['section_background'] = $this->iotsolution_model->get_by_title('Section Background') ?: array('image' => 'decisionsbg.jpg', 'id' => '');
@@ -1163,37 +1164,22 @@ public function save_download_info() {
   public function product_detail($category_id, $item_id)
   {
     $this->load->database();
-    $this->load->model('admin/Product_items_model');
-    
-    // Get product item details
-    $data['item'] = $this->Product_items_model->get_item($item_id);
-    
-    if (!$data['item']) {
+    $this->load->model('web/Product_page_model');
+
+    $data['product'] = $this->Product_page_model->get_product_by_id($item_id);
+
+    if (!$data['product']) {
         show_404();
         return;
     }
-    
-    // Get category info from tbl_product_category
-    $category_query = $this->db->where('id', $category_id)->get('tbl_product_category');
-    $data['category'] = $category_query->row();
-    
-    if (!$data['category']) {
-        show_404();
-        return;
-    }
-    
-    // Get related products from same type
-    $data['related_items'] = $this->Product_items_model->get_all_items($category_id, $data['item']->product_type);
-    
-    // Remove current item from related
-    $data['related_items'] = array_filter($data['related_items'], function($item) use ($item_id) {
-        return $item->id != $item_id;
-    });
-    
-    // Limit to 3 related items
-    $data['related_items'] = array_slice($data['related_items'], 0, 3);
-    
-    $this->load->view('web/product_detail', $data);
+
+    $data['related_products'] = $this->Product_page_model->get_related_products(
+        $data['product']->id,
+        $data['product']->product_category,
+        3
+    );
+
+    $this->load->view('web/product_detail_dynamic', $data);
   }
   
   /**

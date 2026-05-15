@@ -1511,17 +1511,11 @@
           
           <div class="col-lg-7 col-md-12 text-center fade-in delay-2">
             <div class="p-3">
-              <?php if (!empty($system_setup['Smart Counter']['image'])): ?>
-                <img src="<?= base_url('assets_system/images/' . $system_setup['Smart Counter']['image']) ?>" 
-                     alt="GEMBA System Setup Diagram" 
-                     class="img-fluid setup-diagram"
-                     style="filter: saturate(3.5);">
-              <?php else: ?>
-                <img src="<?= base_url('assets_system/images/system-setupnobg.png') ?>" 
-                     alt="GEMBA System Setup Diagram" 
-                     class="img-fluid setup-diagram"
-                     style="filter: saturate(3.5);">
-              <?php endif; ?>
+              <?php $diagram_image = !empty($setup_diagram['image']) ? $setup_diagram['image'] : 'system-setupnobg.png'; ?>
+              <img src="<?= base_url('assets_system/images/' . $diagram_image) ?>"
+                   alt="GEMBA System Setup Diagram"
+                   class="img-fluid setup-diagram"
+                   style="filter: saturate(3.5);">
             </div>
           </div>
         </div>
