@@ -624,11 +624,13 @@ if (!empty($product->dynamic_tables)) {
     .c-card__image .bg-img {
         width: 100%;
         height: 100%;
-        background-size: cover;
+        min-height: 0;
+        background-size: contain;
         background-position: center;
         background-repeat: no-repeat;
+        background-color: #ffffff;
         transition: var(--transition);
-        padding: 0;
+        padding: 16px;
         border-radius: 0;
         box-shadow: none;
         border: none;
@@ -970,7 +972,24 @@ if (!empty($product->dynamic_tables)) {
           <?php if (!empty($dynamic_tables)): ?>
           <div class="l-block__margin-large dynamic-tables" id="block03b">
             <style>
-              .dynamic-tables table { width: 100%; border-collapse: collapse; table-layout: auto; border: 1px solid var(--border-color); }
+              .dynamic-tables .dt-scroll {
+                overflow-x: auto !important;
+                overflow-y: hidden !important;
+                -webkit-overflow-scrolling: touch;
+                background: #ffffff;
+                border-radius: 12px;
+                border: 1px solid var(--border-color);
+                margin-bottom: 24px;
+                max-width: 100%;
+              }
+              .dynamic-tables .dt-scroll::-webkit-scrollbar {
+                height: 8px;
+              }
+              .dynamic-tables .dt-scroll::-webkit-scrollbar-thumb {
+                background: var(--newblue);
+                border-radius: 4px;
+              }
+              .dynamic-tables table { width: 100%; min-width: 900px; border-collapse: collapse; table-layout: auto; border: 1px solid var(--border-color); }
               .dynamic-tables th,
               .dynamic-tables td {
                 padding: 14px 16px;
@@ -984,8 +1003,8 @@ if (!empty($product->dynamic_tables)) {
               .dynamic-tables td .dt-cell-img {
                 display: inline-block;
                 margin: 0;
-                max-width: 400px;
-                max-height: 400px;
+                max-width: 200px;
+                max-height: 160px;
                 border-radius: 4px;
                 object-fit: contain;
                 vertical-align: middle;
@@ -996,7 +1015,7 @@ if (!empty($product->dynamic_tables)) {
               <?php if (!empty($dt['title'])): ?>
                 <h2 class="c-heading is-xs"><?= htmlspecialchars($dt['title']) ?></h2>
               <?php endif; ?>
-              <div class="c-block-product-page__table" style="margin-bottom:24px;">
+              <div class="dt-scroll">
                 <table class="c-table-sm">
                   <?php if (!empty($dt['columns']) && array_filter($dt['columns'], 'strlen')): ?>
                   <thead>
