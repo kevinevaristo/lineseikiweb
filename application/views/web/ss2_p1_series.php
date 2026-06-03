@@ -1039,6 +1039,75 @@
   }
 }
 
+    /* === Mobile responsive enhancements (added) === */
+    @media (max-width: 768px) {
+      .product-container {
+        padding: 30px 18px;
+      }
+      .product-wrapper {
+        flex-direction: column;
+        gap: 30px;
+      }
+      .product-image-section,
+      .product-info-section {
+        width: 100%;
+      }
+      .big-image-card {
+        height: 320px;
+      }
+      .product-title {
+        font-size: 2rem;
+      }
+      .top-details {
+        padding: 110px 0;
+      }
+      .top-details h1 {
+        font-size: 2.2rem;
+      }
+      .dropdown-row {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      .dropdown-button {
+        padding: 0 28px;
+        font-size: 14px;
+      }
+      .video-container iframe {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 16 / 9;
+      }
+      .cases-header {
+        flex-direction: column;
+        gap: 12px;
+      }
+      .cases-header h2 {
+        font-size: 26px;
+      }
+      .title-header h2 {
+        font-size: 20px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .product-title {
+        font-size: 1.7rem;
+      }
+      .top-details {
+        padding: 90px 0;
+      }
+      .top-details h1 {
+        font-size: 1.9rem;
+      }
+      .big-image-card {
+        height: 240px;
+      }
+      .dropdown-button {
+        width: 100%;
+        padding: 0 20px;
+      }
+    }
+
 
     </style>
 </head>
@@ -1168,6 +1237,7 @@
         <h2>Models</h2>
         </div>
        <div class="modern-table-container">
+    <div class="table-responsive">
     <table id="modern-product-table">
         <thead>
             <tr>
@@ -1195,11 +1265,13 @@
             </tr>
         </tbody>
     </table>
+    </div>
 </div>
 <div class="title-header" id="spec-section">
         <h2>Specifications</h2>
         </div>
         <div class="spec-table-container">
+    <div class="table-responsive">
     <table class="spec-table">
         <tbody>
             <tr>
@@ -1244,10 +1316,12 @@
             
             </tbody>
     </table>
+    </div>
 </div>
 
 
 <div class="spec-table-container">
+    <div class="table-responsive">
     <table class="spec-table">
         <tbody>
             <tr>
@@ -1318,6 +1392,7 @@
             
             </tbody>
     </table>
+    </div>
 </div>
 <div class="title-header" id="download-section">
         <h2>Download</h2>

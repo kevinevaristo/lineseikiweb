@@ -461,6 +461,33 @@
         grid-template-columns: 1fr;
       }
     }
+
+    /* === Mobile responsive enhancements (added) === */
+    @media (max-width: 480px) {
+      .product-hero,
+      .content-section {
+        padding: 40px 5%;
+      }
+      .related-products,
+      .cta-section {
+        padding: 50px 5%;
+      }
+      .product-info-section h1 {
+        font-size: 1.7rem;
+      }
+      .related-title {
+        font-size: 1.6rem;
+      }
+      .section-title {
+        font-size: 1.6rem;
+      }
+      .cta-section h2 {
+        font-size: 1.6rem;
+      }
+      .breadcrumb-custom {
+        flex-wrap: wrap;
+      }
+    }
   </style>
 </head>
 <body>

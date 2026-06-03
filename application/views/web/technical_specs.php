@@ -488,7 +488,47 @@ section img:hover {
   transform: none;
 }
 
+/* === Mobile responsive enhancements (added) === */
+@media (max-width: 768px) {
+  section {
+    padding: 60px 0;
+  }
+  section h1 {
+    font-size: 2rem;
+  }
+  section h2 {
+    font-size: 1.6rem;
+  }
+  /* Tall hero with background image: reduce padding and heading on mobile */
+  .top-details {
+    padding: 90px 0;
+  }
+  .top-details h1 {
+    font-size: 1.9rem;
+  }
+  /* Image is capped at 50% on desktop; let it fill on mobile */
+  .product-image {
+    max-width: 100%;
+  }
+  .cta {
+    padding: 60px 6%;
+  }
+  .cta h1 {
+    font-size: 1.7rem;
+  }
+}
 
+@media (max-width: 480px) {
+  .top-details {
+    padding: 70px 0;
+  }
+  .top-details h1 {
+    font-size: 1.6rem;
+  }
+  section h1 {
+    font-size: 1.7rem;
+  }
+}
 
 
 

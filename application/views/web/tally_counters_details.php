@@ -652,6 +652,31 @@
         font-size: 2rem;
       }
     }
+
+    /* === Mobile responsive enhancements (added) === */
+    @media (max-width: 480px) {
+      .top-details {
+        padding: 90px 0;
+      }
+      .top-details h1 {
+        font-size: 2rem;
+      }
+      .product-card {
+        padding: 24px 18px;
+      }
+      .product-title {
+        font-size: 1.7rem;
+      }
+      .product-features {
+        padding: 20px;
+      }
+      .cta {
+        padding: 60px 6%;
+      }
+      .cta h1 {
+        font-size: 1.6rem;
+      }
+    }
   </style>
 </head>
 <body>

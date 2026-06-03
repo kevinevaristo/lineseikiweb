@@ -159,6 +159,7 @@
         <p><strong>Solution :</strong> Simulation optimized heatsink design and placement virtually, enabling quick iteration and avoiding PCB re-spins.</p>
 
         <!-- Table below text -->
+        <div class="table-responsive">
         <table>
           <thead>
             <tr>
@@ -189,6 +190,7 @@
             </tr>
           </tbody>
         </table>
+        </div>
 
         <div class="benefits mt-3">
           <p><strong>Qualitative Benefits:</strong></p>

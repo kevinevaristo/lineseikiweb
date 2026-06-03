@@ -599,9 +599,9 @@ public function save_download_info() {
         // LIVE SERVER - cPanel SMTP
         $config = array(
         'protocol'    => 'smtp',
-        'smtp_host'   => 'lineseiki.systems-test.com',
-        'smtp_user'   => 'noreply@lineseiki.systems-test.com',
-        'smtp_pass'   => 'Technos@2025',
+        'smtp_host'   => 'lineseikiasiapacific.com',
+        'smtp_user'   => 'noreply@lineseikiasiapacific.com',
+        'smtp_pass'   => '?P@55w0rd123?',
         'smtp_port'   => 465,
         'smtp_crypto' => 'ssl',
         'mailtype'    => 'html',
@@ -620,16 +620,14 @@ public function save_download_info() {
     $this->email->initialize($config);
 
     // From
-    $from_email = $is_local 
-        ? 'traballojeffrey3@gmail.com' 
-        : 'admin@lineseiki.systems-test.com';
+    $from_email = 'traballojeffrey3@gmail.com';
 
     $from_name = 'Line Seiki Asia Pacific - SMUC';
 
-    $this->email->from('noreply@lineseiki.systems-test.com', $from_name);
+    $this->email->from('noreply@lineseikiasiapacific.com', $from_name);
 
     // Send TO ADMIN (not customer)
-    $this->email->to('traballo.j.bsinfotech@gmail.com');
+    $this->email->to('traballojeffrey3@gmail.com');
 
     // Reply-To Customer
     $this->email->reply_to($quote_data['email'], $quote_data['name']);
@@ -659,6 +657,139 @@ public function save_download_info() {
         return false;
     }
 }
+
+
+  private function send_contact_notification($contact_data)
+  {
+    // Detect local or live server
+    $is_local = (
+        strpos($_SERVER['HTTP_HOST'], 'localhost') !== false ||
+        strpos($_SERVER['HTTP_HOST'], '127.0.0.1') !== false
+    );
+
+    if ($is_local) {
+        // LOCAL XAMPP - Gmail SMTP
+        $config = array(
+            'protocol'    => 'smtp',
+            'smtp_host'   => 'smtp.gmail.com',
+            'smtp_port'   => 587,
+            'smtp_user'   => 'traballojeffrey3@gmail.com',
+            'smtp_pass'   => 'YOUR_GMAIL_APP_PASSWORD', // ⚠️ move to env/config
+            'smtp_crypto' => 'tls',
+            'mailtype'    => 'html',
+            'charset'     => 'utf-8',
+            'newline'     => "\r\n",
+            'wordwrap'    => TRUE,
+            'smtp_timeout'=> 10
+        );
+    } else {
+        // LIVE SERVER - cPanel SMTP
+        $config = array(
+            'protocol'    => 'smtp',
+            'smtp_host'   => 'lineseikiasiapacific.com',
+            'smtp_user'   => 'noreply@lineseikiasiapacific.com',
+            'smtp_pass'   => '?P@55w0rd123?',
+            'smtp_port'   => 465,
+            'smtp_crypto' => 'ssl',
+            'mailtype'    => 'html',
+            'charset'     => 'utf-8',
+            'newline'     => "\r\n",
+            'crlf'        => "\r\n",
+            'smtp_timeout'=> 15,
+            'wordwrap'    => TRUE
+        );
+    }
+
+    $this->load->library('email');
+    $this->email->initialize($config);
+
+    $from_name = 'Line Seiki Asia Pacific - Contact';
+
+    $this->email->from('noreply@lineseikiasiapacific.com', $from_name);
+    $this->email->to('traballojeffrey3@gmail.com');
+    $this->email->reply_to($contact_data['email'], $contact_data['name']);
+    $this->email->subject('New Contact Message: ' . $contact_data['subject']);
+    $this->email->message($this->get_contact_email_template($contact_data));
+
+    if ($this->email->send()) {
+        log_message('info', 'Contact notification email sent successfully');
+        return true;
+    } else {
+        log_message('error', 'Contact email failed: ' . $this->email->print_debugger());
+        return false;
+    }
+  }
+
+
+  private function get_contact_email_template($data)
+  {
+    $html = '
+    <!DOCTYPE html>
+    <html>
+    <head>
+      <meta charset="UTF-8">
+      <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
+        .container { max-width: 600px; margin: 0 auto; padding: 20px; }
+        .header { background: linear-gradient(135deg, #0F467B, #17A2DC); color: white; padding: 30px; text-align: center; border-radius: 10px 10px 0 0; }
+        .header h1 { margin: 0; font-size: 24px; }
+        .content { background: #f8f9fa; padding: 30px; }
+        .info-row { margin-bottom: 20px; padding: 15px; background: white; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .label { font-weight: bold; color: #0F467B; margin-bottom: 5px; }
+        .value { color: #333; white-space: pre-wrap; }
+        .footer { background: #0F467B; color: white; padding: 20px; text-align: center; border-radius: 0 0 10px 10px; }
+        .badge { background: #28a745; color: white; padding: 5px 10px; border-radius: 4px; font-size: 12px; }
+      </style>
+    </head>
+    <body>
+      <div class="container">
+        <div class="header">
+          <h1>📩 New Contact Message</h1>
+          <p style="margin: 10px 0 0 0;">Line Seiki Asia Pacific Website</p>
+        </div>
+
+        <div class="content">
+          <p style="text-align: center; margin-bottom: 30px;">
+            <span class="badge">NEW MESSAGE</span>
+          </p>
+
+          <div class="info-row">
+            <div class="label">👤 Name:</div>
+            <div class="value">' . htmlspecialchars($data['name']) . '</div>
+          </div>
+
+          <div class="info-row">
+            <div class="label">📧 Email Address:</div>
+            <div class="value">' . htmlspecialchars($data['email']) . '</div>
+          </div>
+
+          <div class="info-row">
+            <div class="label">📝 Subject:</div>
+            <div class="value">' . htmlspecialchars($data['subject']) . '</div>
+          </div>
+
+          <div class="info-row">
+            <div class="label">💬 Message:</div>
+            <div class="value">' . htmlspecialchars($data['message']) . '</div>
+          </div>
+
+          <div class="info-row">
+            <div class="label">📅 Received:</div>
+            <div class="value">' . date('F j, Y g:i A') . '</div>
+          </div>
+        </div>
+
+        <div class="footer">
+          <p style="margin: 0;">Line Seiki Asia Pacific</p>
+          <p style="margin: 5px 0 0 0; font-size: 14px; opacity: 0.8;">Automated Contact Form Notification</p>
+        </div>
+      </div>
+    </body>
+    </html>
+    ';
+
+    return $html;
+  }
 
 
   private function get_email_template($data)
@@ -789,10 +920,19 @@ public function save_download_info() {
       exit;
     }
     
+    // File is required
+    if (empty($_FILES['project_file']['name'])) {
+      echo json_encode([
+        'success' => false,
+        'message' => 'Please attach a file before submitting your request.'
+      ]);
+      exit;
+    }
+
     // Handle file upload
     $file_name = null;
     $file_path = null;
-    
+
     if (!empty($_FILES['project_file']['name'])) {
       $upload_path = FCPATH . 'uploads/quote_requests/';
       
@@ -947,9 +1087,9 @@ public function save_download_info() {
       if ($insert_id) {
         log_message('info', 'Contact message submitted: ID ' . $insert_id . ' from ' . $email);
         
-        // Optional: Send email notification to admin
-        // $this->send_contact_notification($data);
-        
+        // Send email notification to admin
+        $this->send_contact_notification($data);
+
         echo json_encode([
           'success' => true,
           'message' => 'Thank you for your message! We will get back to you soon.'

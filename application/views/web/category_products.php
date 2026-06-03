@@ -541,6 +541,31 @@
         justify-content: flex-start;
       }
     }
+
+    /* === Mobile responsive enhancements (added) === */
+    @media (max-width: 480px) {
+      .category-hero {
+        padding: 100px 5% 50px;
+      }
+      .category-hero h1 {
+        font-size: 1.7rem;
+      }
+      .category-hero p {
+        font-size: 1rem;
+      }
+      .content-section {
+        padding: 50px 5%;
+      }
+      .cta-section {
+        padding: 60px 5%;
+      }
+      .cta-section h2 {
+        font-size: 1.6rem;
+      }
+      .type-header h2 {
+        font-size: 1.4rem;
+      }
+    }
   </style>
 </head>
 <body>

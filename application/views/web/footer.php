@@ -102,7 +102,26 @@
        box-shadow: 0 8px 20px rgba(253, 126, 20, 0.4);
        color: white;
      }
-       
+
+/* === Mobile responsive enhancements (added) === */
+@media (max-width: 768px) {
+  footer { padding: 50px 6% 30px; }
+  footer h2 { font-size: 1.4rem; }
+  footer .links { margin: 16px 0; }
+  footer .links a { margin-right: 18px; }
+  footer .bottom {
+    justify-content: flex-start;
+    gap: 14px;
+    text-align: left;
+  }
+}
+
+@media (max-width: 480px) {
+  footer { padding: 40px 5% 24px; }
+  footer .links a { margin-right: 14px; font-size: 0.95rem; }
+  footer .socials a { margin-right: 14px; }
+}
+
 </style>
 <?php
 // application/views/footer.php

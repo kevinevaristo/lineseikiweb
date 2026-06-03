@@ -4614,6 +4614,35 @@
 
 }
 
+    /* === Mobile responsive enhancements (added) === */
+    @media (max-width: 768px) {
+      /* Scale custom headings not covered by section h1/h2 rules */
+      .main-heading { font-size: 2rem; }
+      .sub-heading { font-size: 1rem; }
+      .section-white .col-lg-6:first-child h1 { font-size: 2.2rem; }
+      .section-white .col-lg-6:first-child p { font-size: 1.05rem; }
+      .section-white .col-lg-6:first-child { padding-right: 0; }
+      .section-white .col-lg-6:last-child img[src*="sm4.png"] {
+        max-width: 100% !important;
+        margin: 0 auto;
+      }
+      .process-box h2 { font-size: 1.9rem; }
+      .wcu-header h2 { font-size: 2rem; }
+      .benefits-header h2 { font-size: 2rem; }
+      .gallery-main-title { font-size: 2.2rem; }
+      .project-gallery h1 { font-size: 2.2rem; }
+    }
+
+    @media (max-width: 480px) {
+      .main-heading { font-size: 1.7rem; }
+      .section-white .col-lg-6:first-child h1 { font-size: 1.9rem; }
+      .process-box h2 { font-size: 1.6rem; }
+      .wcu-header h2 { font-size: 1.7rem; }
+      .benefits-header h2 { font-size: 1.7rem; }
+      .gallery-main-title { font-size: 1.9rem; }
+      .project-gallery h1 { font-size: 1.9rem; }
+    }
+
   </style>
 
 </head>
@@ -6451,7 +6480,25 @@ document.getElementById('file-upload').addEventListener('change', function(e) {
 
             e.preventDefault();
 
-            
+
+
+            const fileInput = document.getElementById('file-upload');
+
+            if (!fileInput.files || fileInput.files.length === 0) {
+
+                const messageDiv = document.getElementById('form-message');
+
+                messageDiv.style.display = 'block';
+
+                messageDiv.className = 'error';
+
+                messageDiv.textContent = 'Please attach a file before submitting your request.';
+
+                return;
+
+            }
+
+
 
             const formData = new FormData(this);
 

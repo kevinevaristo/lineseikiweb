@@ -159,6 +159,7 @@ simulation identified zones of excessive local stress, guiding jig redesign and 
         <p><strong>Solution :</strong> Simulation identified the high contact stress zones, guiding jig redesign and cutting repeated fabrications.</p>
 
         <!-- Table below text -->
+        <div class="table-responsive">
         <table>
           <thead>
             <tr>
@@ -189,6 +190,7 @@ simulation identified zones of excessive local stress, guiding jig redesign and 
             </tr>
           </tbody>
         </table>
+        </div>
 
         <div class="benefits mt-3">
           <p><strong>Qualitative Benefits:</strong></p>

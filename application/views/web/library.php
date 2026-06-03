@@ -469,6 +469,24 @@
       .library-yt .webinar-thumb { width: 100%; height: 200px; }
     }
 
+    /* === Mobile responsive enhancements (added) === */
+    @media (max-width: 768px) {
+      .library-yt .tech-bg { padding: 24px 4% 40px; }
+      .library-yt .page-header h1 { font-size: 2rem; }
+      .library-yt .page-header p { font-size: 1rem; }
+      .library-yt .featured-content { padding: 22px 20px; }
+      .library-yt .featured-content h2 { font-size: 1.5rem; }
+      .library-yt .featured-actions { flex-direction: column; gap: 10px; }
+      .library-yt .featured-actions .btn { width: 100%; }
+    }
+
+    @media (max-width: 480px) {
+      .library-yt .page-header h1 { font-size: 1.7rem; }
+      .library-yt .video-grid { grid-template-columns: 1fr; }
+      .library-yt .filter-pills { gap: 8px; }
+      .library-yt .pill-btn { padding: 7px 14px; font-size: 0.85rem; }
+    }
+
     /* =========================
        ⬇️ ORIGINAL FOOTER (unchanged)
     ========================= */
@@ -506,6 +524,14 @@
     }
     footer .bottom a { color: #ccc; text-decoration: none; transition: var(--transition); }
     footer .bottom a:hover { color: var(--newblue2); }
+
+    @media (max-width: 768px) {
+      footer { padding: 50px 6% 30px; }
+      footer .links a { display: inline-block; margin-bottom: 12px; }
+    }
+    @media (max-width: 480px) {
+      footer { padding: 40px 5% 24px; }
+    }
 
     /* Small fix for body padding (already set) */
   </style>

@@ -471,6 +471,27 @@
   transform: translateY(-3px);
 }
 
+    /* === Mobile responsive enhancements (added) === */
+    @media (max-width: 480px) {
+      .products {
+        padding: 90px 5% 50px;
+      }
+      .products h1 {
+        font-size: 1.7rem;
+      }
+      .categories {
+        gap: 30px 0;
+      }
+      .category img {
+        height: 200px;
+      }
+      .cta {
+        padding: 60px 6%;
+      }
+      .cta h1 {
+        font-size: 1.6rem;
+      }
+    }
   </style>
 </head>
 <body>

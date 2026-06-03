@@ -441,16 +441,29 @@
       section h1 {
         font-size: 2rem;
       }
-      
+
       section h2 {
         font-size: 1.8rem;
       }
-      
+
       footer .links a {
         display: block;
         margin-bottom: 12px;
       }
 
+    }
+
+    /* === Mobile responsive enhancements (added) === */
+    @media (max-width: 768px) {
+      section { padding: 60px 0; }
+      section p, section li { font-size: 1rem; }
+      footer { padding: 50px 6% 30px; }
+      footer h2 { font-size: 1.4rem; }
+    }
+    @media (max-width: 480px) {
+      section h1 { font-size: 1.7rem; }
+      section h5 { font-size: 1.05rem; }
+      footer { padding: 40px 5% 24px; }
     }
     /*Center all heading underlines */
     section h1::after,

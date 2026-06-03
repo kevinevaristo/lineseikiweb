@@ -1277,6 +1277,47 @@
     li.nav-item.dropdown > a.nav-link.dropdown-toggle[href="#"]::after {
       display: none !important;
     }
+
+    /* === Mobile responsive enhancements (added) === */
+    @media (max-width: 768px) {
+      /* Scale down oversized headings */
+      .iot-hero h2 { font-size: 2rem; }
+      .iot-hero p { font-size: 1.05rem; }
+      .iot-hero { padding: 90px 0 70px; min-height: auto; }
+      .solution-title { font-size: 2rem; }
+      .setup-title { font-size: 2rem; margin-bottom: 40px; }
+      .section-title { font-size: 2rem; }
+      .production-header-modern h2 { font-size: 2.2rem; }
+      .product-item-title { font-size: 1.5rem; }
+      .make-informed-section { padding: 70px 0; }
+      .our-solution { padding: 70px 0; }
+      .production-strip { padding: 50px 0; }
+      /* Remove negative-margin overlap that overflows when columns stack */
+      .text-card,
+      .text-card1 {
+        margin-right: 0;
+        width: 100%;
+        padding: 30px 25px;
+      }
+      /* Keep oversized images contained */
+      .iot-hero .img-hover img,
+      .dashboard-image,
+      .production-data-item img,
+      .products-main-img {
+        max-width: 100%;
+        height: auto;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .iot-hero h2 { font-size: 1.6rem; }
+      .solution-title { font-size: 1.7rem; }
+      .setup-title { font-size: 1.7rem; }
+      .section-title { font-size: 1.7rem; }
+      .production-header-modern h2 { font-size: 1.8rem; }
+      .text-card,
+      .text-card1 { padding: 22px 18px; }
+    }
   </style>
 </head>
 <body>

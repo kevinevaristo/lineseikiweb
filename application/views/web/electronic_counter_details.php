@@ -652,6 +652,42 @@
         font-size: 2rem;
       }
     }
+
+    /* === Mobile responsive enhancements (added) === */
+    @media (max-width: 768px) {
+      section,
+      .product-details {
+        padding: 60px 0;
+      }
+      .cta {
+        padding: 60px 8%;
+      }
+      section h1 { font-size: 2rem; }
+      section h2 { font-size: 1.6rem; }
+      .cta h1 { font-size: 1.8rem; }
+      .product-features { padding: 20px; }
+      .product-image { max-width: 100%; height: auto; }
+    }
+
+    @media (max-width: 480px) {
+      section,
+      .product-details {
+        padding: 48px 0;
+      }
+      .top-details {
+        padding: 90px 0;
+      }
+      .top-details h1 { font-size: 1.9rem; }
+      .product-card { padding: 24px 18px; }
+      .product-title { font-size: 1.7rem; }
+      .cta { padding: 48px 6%; }
+      .cta h1 { font-size: 1.6rem; }
+      section h1 { font-size: 1.8rem; }
+      section h2 { font-size: 1.5rem; }
+      .product-description,
+      section p,
+      .cta p { font-size: 1rem; }
+    }
   </style>
 </head>
 <body>

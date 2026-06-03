@@ -611,6 +611,23 @@ footer .links a:hover::after {
   }
 }
 
+/* === Mobile responsive enhancements (added) === */
+@media (max-width: 768px) {
+  .news-detail { margin: 50px auto; }
+  /* Allow content tables (from CMS) to scroll instead of overflowing */
+  .event-content { overflow-x: auto; }
+  .event-content table,
+  .news-detail > table { display: block; overflow-x: auto; white-space: nowrap; }
+  table td:first-child { width: auto; }
+  footer { padding: 50px 6% 30px; }
+}
+
+@media (max-width: 480px) {
+  .news-detail h1 { font-size: 1.6rem; }
+  table td { padding: 8px 10px; font-size: 0.9rem; }
+  footer { padding: 40px 5% 24px; }
+}
+
 /* =========================================================
    🧹 CLEANUP
 ========================================================= */

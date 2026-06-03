@@ -728,6 +728,24 @@ if (!empty($product->applications_data)) {
         font-size: 0.85rem;
       }
     }
+
+    /* === Mobile responsive enhancements (added) === */
+    @media (max-width: 768px) {
+      /* Allow the specifications/features tables to scroll horizontally */
+      .c-block-product-page__table {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+      }
+      .c-block-product-page__table .c-table-sm {
+        min-width: 480px;
+      }
+      .c-card__head {
+        font-size: 1.7rem;
+      }
+      .c-card__head .is-eng {
+        font-size: 1.9rem;
+      }
+    }
   </style>
 </head>
 <body>

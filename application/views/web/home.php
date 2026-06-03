@@ -1558,6 +1558,74 @@ footer .bottom a:hover {
     justify-content: center;
   }
 }
+
+/* === Mobile responsive enhancements (added) === */
+@media (max-width: 991px) {
+  /* Hero: stack text above image so text isn't crammed into 50% width */
+  .hero-slide {
+    flex-direction: column;
+    text-align: center;
+    gap: 24px;
+  }
+  .hero-text {
+    max-width: 100%;
+  }
+  .hero-text h1 {
+    font-size: 2rem;
+  }
+  .hero-text h1::after {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  #heroCarousel .carousel-item {
+    min-height: auto;
+    height: auto;
+    padding: 110px 0;
+  }
+}
+
+@media (max-width: 768px) {
+  section {
+    padding: 60px 0;
+  }
+  section h1 { font-size: 2rem; }
+  section h2 { font-size: 1.7rem; }
+
+  #heroCarousel { margin-top: 70px; }
+  #heroCarousel .carousel-item { padding: 80px 0; }
+  .hero-text h1 { font-size: 1.8rem; }
+  .hero-text p { font-size: 1rem; }
+
+  .legacy-header { margin-bottom: 2.5rem; }
+  .legacy-products h2 { font-size: 1.8rem; }
+  .legacy-intro { font-size: 1.05rem; }
+  .legacy-stats { padding: 2rem 1.25rem; }
+  .product-categories { gap: 1.25rem; margin: 2.5rem 0; }
+
+  .services-section h2 { font-size: 2rem; }
+  .services-tagline { font-size: 1.15rem; }
+  .services-header { margin-bottom: 2.5rem; }
+  .service-card-enhanced { padding: 2rem 1.5rem; min-height: auto; }
+  .services-cta-section { padding: 2rem 1.25rem; }
+  .services-cta-section h3 { font-size: 1.5rem; }
+  .cta-button-group { flex-direction: column; align-items: stretch; }
+
+  .new-products h2 { font-size: 1.8rem; }
+  .new-products p.lead { font-size: 1.05rem; }
+  .margin-bottom-20 { margin-bottom: 40px; }
+
+  .timeline-years { font-size: 2.4rem; }
+  .stat-number { font-size: 2.4rem; }
+}
+
+@media (max-width: 480px) {
+  #heroCarousel .carousel-item { padding: 60px 0; }
+  .hero-text h1 { font-size: 1.6rem; }
+  section h1 { font-size: 1.7rem; }
+  section h2 { font-size: 1.5rem; }
+  .legacy-btn { padding: 1rem 2rem; font-size: 1.05rem; }
+  .trust-badges { gap: 1.5rem; }
+}
   </style>
   <style>
 <?php foreach ($hero['slides'] as $index => $slide): ?>

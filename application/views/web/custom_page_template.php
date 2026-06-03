@@ -314,6 +314,38 @@
       color: #dee2e6;
       margin-bottom: 20px;
     }
+
+    /* === Mobile responsive enhancements (added) === */
+    @media (max-width: 768px) {
+      /* Make any tables inside Quill content scroll horizontally */
+      .ql-editor {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+      }
+      .ql-editor table {
+        display: block;
+        width: 100%;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        white-space: nowrap;
+      }
+      .ql-editor img {
+        max-width: 100%;
+        height: auto;
+      }
+      .page-content {
+        padding: 30px 16px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      section {
+        padding: 60px 0;
+      }
+      section h1 {
+        font-size: 1.6rem;
+      }
+    }
   </style>
 </head>
 <body>

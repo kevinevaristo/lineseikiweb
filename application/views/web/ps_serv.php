@@ -169,6 +169,16 @@
                 transform: translate(-50%, -50%);
             }
         }
+
+        /* === Mobile responsive enhancements (added) === */
+        @media (max-width: 768px) {
+            .illustration-center {
+                max-width: 100%;
+            }
+            .illustration-image {
+                max-width: 90%;
+            }
+        }
     </style>
 </head>
 <body>

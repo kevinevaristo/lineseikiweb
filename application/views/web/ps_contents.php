@@ -255,6 +255,7 @@
           <p><strong>Solution :</strong> <?= htmlspecialchars($simulation->solution) ?></p>
 
           <!-- Table below text -->
+          <div class="table-responsive">
           <table>
             <thead>
               <tr>
@@ -285,6 +286,7 @@
               </tr>
             </tbody>
           </table>
+          </div>
 
           <div class="benefits mt-3">
             <p><strong>Qualitative Benefits:</strong></p>
