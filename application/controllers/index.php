@@ -627,7 +627,7 @@ public function save_download_info() {
     $this->email->from('noreply@lineseikiasiapacific.com', $from_name);
 
     // Send TO ADMIN (not customer)
-    $this->email->to('traballojeffrey3@gmail.com');
+    $this->email->to('info@sales.line.com.ph');
 
     // Reply-To Customer
     $this->email->reply_to($quote_data['email'], $quote_data['name']);
@@ -706,7 +706,7 @@ public function save_download_info() {
     $from_name = 'Line Seiki Asia Pacific - Contact';
 
     $this->email->from('noreply@lineseikiasiapacific.com', $from_name);
-    $this->email->to('traballojeffrey3@gmail.com');
+    $this->email->to('info@sales.line.com.ph');
     $this->email->reply_to($contact_data['email'], $contact_data['name']);
     $this->email->subject('New Contact Message: ' . $contact_data['subject']);
     $this->email->message($this->get_contact_email_template($contact_data));

@@ -22,6 +22,7 @@ class iotsolution_model extends CI_Model {
      */
     public function get_by_title($title) {
         $this->db->where('title', $title);
+        $this->db->order_by('id', 'ASC'); // deterministic: always the original row
         $query = $this->db->get('tbl_iotsolution');
         $result = $query->row_array();
         return $result ? $result : null;

@@ -583,6 +583,7 @@ main {
                                         <span class="text-sm text-slate-500"><?php echo $products_main_image['image'] ?? 'Gemba-repo.png'; ?></span>
                                     </div>
                                     <input type="file" id="productsImageUpload" class="hidden" accept="image/*" onchange="handleImageUpload(this, 'productsImagePreview', 'products_main_image')">
+                                    <input type="hidden" id="products_main_image_id" name="products_main_image_id" value="<?php echo $products_main_image['id'] ?? ''; ?>">
                                     <input type="hidden" id="products_main_image" name="products_main_image" value="<?php echo $products_main_image['image'] ?? 'Gemba-repo.png'; ?>">
                                     <button type="button" onclick="document.getElementById('productsImageUpload').click()" class="upload-btn">
                                         Upload New Image
@@ -663,6 +664,7 @@ main {
                                         <span class="text-sm text-slate-500"><?php echo $setup_diagram['image'] ?? 'system-setupnobg.png'; ?></span>
                                     </div>
                                     <input type="file" id="setupDiagramUpload" class="hidden" accept="image/*" onchange="handleImageUpload(this, 'setupDiagramPreview', 'setup_diagram_image')">
+                                    <input type="hidden" id="setup_diagram_id" name="setup_diagram_id" value="<?php echo $setup_diagram['id'] ?? ''; ?>">
                                     <input type="hidden" id="setup_diagram_image" name="setup_diagram_image" value="<?php echo $setup_diagram['image'] ?? 'system-setupnobg.png'; ?>">
                                     <button type="button" onclick="document.getElementById('setupDiagramUpload').click()" class="upload-btn">
                                         Upload New Image
@@ -1032,9 +1034,9 @@ function handleImageUpload(input, previewId, hiddenInputId) {
         if (preview) {
             preview.src = e.target.result;
         }
-        if (hiddenInput) {
-            hiddenInput.value = file.name;
-        }
+        // Note: the hidden field keeps the existing saved filename. The actual
+        // file is uploaded in saveAllChanges(); the server rewrites the filename
+        // only after the file is successfully moved to disk.
     };
     reader.readAsDataURL(file);
 }
@@ -1116,9 +1118,9 @@ function handleProductionImageUpload(input, index) {
         if (preview) {
             preview.src = e.target.result;
         }
-        if (hiddenInput) {
-            hiddenInput.value = file.name;
-        }
+        // Note: the hidden field keeps the existing saved filename. The actual
+        // file is uploaded in saveAllChanges(); the server rewrites the filename
+        // only after the file is successfully moved to disk.
     };
     reader.readAsDataURL(file);
 }
@@ -1317,7 +1319,29 @@ function saveAllChanges() {
     if (bgFileInput && bgFileInput.files.length > 0) {
         formData.append('features_background_file', bgFileInput.files[0]);
     }
-    
+
+    // Add section image files if newly selected (server moves them to disk)
+    const sectionImageInputs = {
+        'hero_image_file': 'heroImageUpload',
+        'solution_image_file': 'solutionImageUpload',
+        'products_main_image_file': 'productsImageUpload',
+        'setup_diagram_image_file': 'setupDiagramUpload'
+    };
+    Object.keys(sectionImageInputs).forEach(function(fieldName) {
+        const fi = document.getElementById(sectionImageInputs[fieldName]);
+        if (fi && fi.files.length > 0) {
+            formData.append(fieldName, fi.files[0]);
+        }
+    });
+
+    // Add production image files if newly selected
+    for (let i = 0; i < 4; i++) {
+        const prodFile = document.getElementById(`production_image_${i}_upload`);
+        if (prodFile && prodFile.files.length > 0) {
+            formData.append(`production_image_file_${i}`, prodFile.files[0]);
+        }
+    }
+
     fetch('<?php echo base_url("cms/save_iotsolution"); ?>', {
         method: 'POST',
         body: formData,

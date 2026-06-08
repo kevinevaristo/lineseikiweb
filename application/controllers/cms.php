@@ -4011,7 +4011,18 @@ private function process_gallery_type($type, $filenames) {
             } else {
                 $features_background_image = $this->input->post('features_background_image');
             }
-    
+
+            // Move any newly uploaded section images to disk and point the
+            // matching POST field at the saved filename (so save_item / the
+            // production loop store a filename that actually exists).
+            $this->process_image_upload('hero_image_file', 'hero_image', 'hero');
+            $this->process_image_upload('solution_image_file', 'solution_image', 'solution');
+            $this->process_image_upload('products_main_image_file', 'products_main_image', 'products');
+            $this->process_image_upload('setup_diagram_image_file', 'setup_diagram_image', 'setup_diagram');
+            for ($i = 0; $i < 4; $i++) {
+                $this->process_image_upload('production_image_file_' . $i, 'production_image_' . $i, 'production_' . $i);
+            }
+
             // Hero Section
             $this->save_item('hero_title_id', 'hero_title', 'hero_image');
             $this->save_item('hero_content_id', 'hero_description');
@@ -4246,6 +4257,38 @@ private function process_gallery_type($type, $filenames) {
                 $this->session->set_flashdata('success', 'IoT Solution content updated successfully!');
                 redirect('cms/iot_solution');
             }
+        }
+    }
+
+    /**
+     * Move an uploaded image to assets_system/images and rewrite the matching
+     * POST field with the saved filename. Only overrides the POST value when the
+     * file is moved successfully, so a failed upload keeps the existing filename
+     * (preventing broken image links).
+     */
+    private function process_image_upload($file_key, $post_field, $prefix)
+    {
+        if (!isset($_FILES[$file_key]) || $_FILES[$file_key]['error'] !== UPLOAD_ERR_OK) {
+            return;
+        }
+
+        $upload_path = './assets_system/images/';
+        if (!is_dir($upload_path)) {
+            mkdir($upload_path, 0777, true);
+        }
+
+        $ext = strtolower(pathinfo($_FILES[$file_key]['name'], PATHINFO_EXTENSION));
+        $allowed = array('jpg', 'jpeg', 'png', 'gif', 'webp');
+        if (!in_array($ext, $allowed)) {
+            return;
+        }
+
+        $new_filename = $prefix . '_' . time() . '.' . $ext;
+        $destination = $upload_path . $new_filename;
+
+        if (move_uploaded_file($_FILES[$file_key]['tmp_name'], $destination)) {
+            // save_item() and the production loop read this via input->post()
+            $_POST[$post_field] = $new_filename;
         }
     }
 

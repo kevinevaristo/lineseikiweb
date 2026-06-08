@@ -1552,7 +1552,14 @@
           
           <div class="col-lg-7 col-md-12 text-center fade-in delay-2">
             <div class="p-3">
-              <?php $diagram_image = !empty($setup_diagram['image']) ? $setup_diagram['image'] : 'system-setupnobg.png'; ?>
+              <?php
+                $diagram_image = !empty($setup_diagram['image']) ? $setup_diagram['image'] : 'system-setupnobg.png';
+                // Fall back to the default diagram if the referenced file is missing on disk
+                // (the CMS records a filename without always saving the file, leaving broken links)
+                if (!file_exists(FCPATH . 'assets_system/images/' . $diagram_image)) {
+                  $diagram_image = 'system-setupnobg.png';
+                }
+              ?>
               <img src="<?= base_url('assets_system/images/' . $diagram_image) ?>"
                    alt="GEMBA System Setup Diagram"
                    class="img-fluid setup-diagram"
