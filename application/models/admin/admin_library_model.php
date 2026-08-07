@@ -199,13 +199,19 @@ class admin_library_model extends CI_Model {
         return $query->result_array();
     }
      public function upload_image($file_input_name) {
-        $config['upload_path'] = './assets_system/images/';
+        $upload_path = FCPATH . 'assets_system/images/';
+        if (!is_dir($upload_path)) {
+            mkdir($upload_path, 0755, true);
+        }
+
+        $config['upload_path'] = $upload_path;
         $config['allowed_types'] = 'jpg|jpeg|png|gif|webp';
         $config['max_size'] = 2048; // 2MB
         $config['encrypt_name'] = TRUE;
-        
-        $this->load->library('upload', $config);
-        
+
+        $this->load->library('upload');
+        $this->upload->initialize($config);
+
         if (!$this->upload->do_upload($file_input_name)) {
             return array('error' => $this->upload->display_errors());
         } else {
@@ -217,14 +223,20 @@ class admin_library_model extends CI_Model {
      * Upload PDF file
      */
     public function upload_pdf($file_input_name) {
-        $config['upload_path'] = './assets_system/documents/';
+        $upload_path = FCPATH . 'assets_system/documents/';
+        if (!is_dir($upload_path)) {
+            mkdir($upload_path, 0755, true);
+        }
+
+        $config['upload_path'] = $upload_path;
         $config['allowed_types'] = 'pdf';
         $config['max_size'] = 5120; // 5MB
         $config['encrypt_name'] = FALSE; // Keep original name for easy reference
         $config['file_name'] = $this->generate_pdf_filename();
-        
-        $this->load->library('upload', $config);
-        
+
+        $this->load->library('upload');
+        $this->upload->initialize($config);
+
         if (!$this->upload->do_upload($file_input_name)) {
             return array('error' => $this->upload->display_errors());
         } else {

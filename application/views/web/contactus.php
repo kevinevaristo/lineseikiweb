@@ -1086,7 +1086,7 @@ body > div[style*="margin-top: 90px"] { display: none !important; }
         </section>
 
         <!-- 3. Modern Contact Form -->
-        <section class="contact-form-section">
+        <section class="contact-form-section" id="contact-form">
             <div class="contact-form-container">
                 <div class="container fade-in">
                     <div class="row">

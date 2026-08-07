@@ -231,7 +231,7 @@
             System / <span class="text-slate-900 capitalize"><?= str_replace('_', ' ', $this->uri->segment(2) ?? 'Dashboard'); ?></span>
         </div>
 
-        <div class="flex items-center gap-4">
+        <div class="flex items-center gap-4" id="header-actions">
             <!--<?php if ($new_messages_count > 0): ?>-->
             <!--<div class="relative">-->
             <!--    <a href="<?= base_url('cms/messages'); ?>" class="flex items-center text-xs font-semibold px-4 py-2 rounded-lg bg-indigo-100 text-indigo-700 hover:bg-indigo-200 transition-all">-->
@@ -273,7 +273,7 @@
     
     function updateBadge(count) {
         // Update sidebar badge
-        let $messageLink = $('a[href="<?= base_url("messages"); ?>"]');
+        let $messageLink = $('a[href="<?= base_url("cms/messages"); ?>"]');
         let $badge = $messageLink.find('.notification-badge');
         
         if (count > 0) {
@@ -293,7 +293,7 @@
                     '<span class="ml-2 bg-red-500 text-white text-xs font-bold px-1.5 py-0.5 rounded-full">' + (count > 99 ? '99+' : count) + '</span>' +
                     '</a></div>');
                 
-                $('.flex.items-center.gap-4').prepend($headerBtn);
+                $('#header-actions').prepend($headerBtn);
             } else {
                 $('.header-messages-btn span.ml-2').text(count > 99 ? '99+' : count);
             }

@@ -4856,6 +4856,11 @@ private function process_gallery_type($type, $filenames) {
                 'title' => $resource['title'],
                 'content' => $resource['content'],
                 'image' => $resource['image'],
+                'video_url' => $resource['video_url'],
+                'resource_type' => $resource['resource_type'],
+                'pdf_file' => $resource['pdf_file'],
+                'is_gated' => $resource['is_gated'],
+                'webinar_id' => $resource['webinar_id'],
                 'edited_by' => $this->session->userdata('admin_id')
             );
 

@@ -1345,7 +1345,7 @@
             <?php endif; ?>
             
             <!-- ✅ Request Demo Button -->
-            <a href="#contact" class="btn btn-primary iot-demo-btn">
+            <a href="<?= base_url('index/contact_us') ?>#contact-form" class="btn btn-primary iot-demo-btn">
               Request Demo
             </a>
           </div>
