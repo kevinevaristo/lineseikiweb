@@ -658,6 +658,123 @@ public function save_download_info() {
     }
 }
 
+  private function send_quote_confirmation($quote_data)
+  {
+    // Detect local or live server
+    $is_local = (
+        strpos($_SERVER['HTTP_HOST'], 'localhost') !== false ||
+        strpos($_SERVER['HTTP_HOST'], '127.0.0.1') !== false
+    );
+
+    if ($is_local) {
+        // LOCAL XAMPP - Gmail SMTP
+        $config = array(
+            'protocol'    => 'smtp',
+            'smtp_host'   => 'smtp.gmail.com',
+            'smtp_port'   => 587,
+            'smtp_user'   => 'traballojeffrey3@gmail.com',
+            'smtp_pass'   => 'YOUR_GMAIL_APP_PASSWORD', // ⚠️ move to env/config
+            'smtp_crypto' => 'tls',
+            'mailtype'    => 'html',
+            'charset'     => 'utf-8',
+            'newline'     => "\r\n",
+            'wordwrap'    => TRUE,
+            'smtp_timeout'=> 10
+        );
+    } else {
+        // LIVE SERVER - cPanel SMTP
+        $config = array(
+            'protocol'    => 'smtp',
+            'smtp_host'   => 'lineseikiasiapacific.com',
+            'smtp_user'   => 'noreply@lineseikiasiapacific.com',
+            'smtp_pass'   => '?P@55w0rd123?',
+            'smtp_port'   => 465,
+            'smtp_crypto' => 'ssl',
+            'mailtype'    => 'html',
+            'charset'     => 'utf-8',
+            'newline'     => "\r\n",
+            'crlf'        => "\r\n",
+            'smtp_timeout'=> 15,
+            'wordwrap'    => TRUE
+        );
+    }
+
+    $this->load->library('email');
+    $this->email->clear(TRUE);
+    $this->email->initialize($config);
+
+    $from_name = 'Line Seiki Asia Pacific, Inc.';
+
+    $this->email->from('noreply@lineseikiasiapacific.com', $from_name);
+    $this->email->to($quote_data['email']);
+    $this->email->reply_to('info@sales.line.com.ph', $from_name);
+    $this->email->subject("We've Received Your Quote Request");
+    $this->email->message($this->get_quote_confirmation_template($quote_data));
+
+    if ($this->email->send()) {
+        log_message('info', 'Quote confirmation email sent to ' . $quote_data['email']);
+        return true;
+    } else {
+        log_message('error', 'Quote confirmation email failed: ' . $this->email->print_debugger());
+        return false;
+    }
+  }
+
+  private function get_quote_confirmation_template($data)
+  {
+    $name = htmlspecialchars($data['name']);
+
+    $html = '
+    <!DOCTYPE html>
+    <html>
+    <head>
+      <meta charset="UTF-8">
+      <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
+        .container { max-width: 600px; margin: 0 auto; padding: 20px; }
+        .header { background: linear-gradient(135deg, #0F467B, #17A2DC); color: white; padding: 30px; text-align: center; border-radius: 10px 10px 0 0; }
+        .header h1 { margin: 0; font-size: 22px; }
+        .content { background: #f8f9fa; padding: 30px; color: #333; }
+        .content p { margin: 0 0 16px 0; }
+        .highlight { background: white; padding: 15px 20px; border-left: 4px solid #17A2DC; border-radius: 6px; margin: 20px 0; }
+        .footer { background: #0F467B; color: white; padding: 20px; text-align: center; border-radius: 0 0 10px 10px; }
+      </style>
+    </head>
+    <body>
+      <div class="container">
+        <div class="header">
+          <h1>We\'ve Received Your Quote Request</h1>
+        </div>
+
+        <div class="content">
+          <p>Hi ' . $name . ',</p>
+
+          <p>Thank you for submitting your project to Line Seiki Asia Pacific, Inc.</p>
+
+          <p>We have received your quote request along with your uploaded file and appreciate your interest in our products and services. Our team will review your submission and prepare a detailed quote for you as soon as possible.</p>
+
+          <div class="highlight">
+            <p style="margin: 0;">If your request is urgent, please feel free to contact us at <strong>(046) 437-2001, Local 18 or 36</strong>, or simply reply to this email.</p>
+          </div>
+
+          <p>Thank you. We look forward to assisting you.</p>
+
+          <p style="margin: 0;">Best regards,<br>
+          <strong>Line Seiki Asia Pacific, Inc.</strong></p>
+        </div>
+
+        <div class="footer">
+          <p style="margin: 0;">Line Seiki Asia Pacific, Inc.</p>
+          <p style="margin: 5px 0 0 0; font-size: 13px; opacity: 0.8;">This is an automated acknowledgement of your quote request.</p>
+        </div>
+      </div>
+    </body>
+    </html>
+    ';
+
+    return $html;
+  }
+
 
   private function send_contact_notification($contact_data)
   {
@@ -782,6 +899,125 @@ public function save_download_info() {
         <div class="footer">
           <p style="margin: 0;">Line Seiki Asia Pacific</p>
           <p style="margin: 5px 0 0 0; font-size: 14px; opacity: 0.8;">Automated Contact Form Notification</p>
+        </div>
+      </div>
+    </body>
+    </html>
+    ';
+
+    return $html;
+  }
+
+
+  private function send_contact_confirmation($contact_data)
+  {
+    // Detect local or live server
+    $is_local = (
+        strpos($_SERVER['HTTP_HOST'], 'localhost') !== false ||
+        strpos($_SERVER['HTTP_HOST'], '127.0.0.1') !== false
+    );
+
+    if ($is_local) {
+        // LOCAL XAMPP - Gmail SMTP
+        $config = array(
+            'protocol'    => 'smtp',
+            'smtp_host'   => 'smtp.gmail.com',
+            'smtp_port'   => 587,
+            'smtp_user'   => 'traballojeffrey3@gmail.com',
+            'smtp_pass'   => 'YOUR_GMAIL_APP_PASSWORD', // ⚠️ move to env/config
+            'smtp_crypto' => 'tls',
+            'mailtype'    => 'html',
+            'charset'     => 'utf-8',
+            'newline'     => "\r\n",
+            'wordwrap'    => TRUE,
+            'smtp_timeout'=> 10
+        );
+    } else {
+        // LIVE SERVER - cPanel SMTP
+        $config = array(
+            'protocol'    => 'smtp',
+            'smtp_host'   => 'lineseikiasiapacific.com',
+            'smtp_user'   => 'noreply@lineseikiasiapacific.com',
+            'smtp_pass'   => '?P@55w0rd123?',
+            'smtp_port'   => 465,
+            'smtp_crypto' => 'ssl',
+            'mailtype'    => 'html',
+            'charset'     => 'utf-8',
+            'newline'     => "\r\n",
+            'crlf'        => "\r\n",
+            'smtp_timeout'=> 15,
+            'wordwrap'    => TRUE
+        );
+    }
+
+    $this->load->library('email');
+    $this->email->clear(TRUE);
+    $this->email->initialize($config);
+
+    $from_name = 'Line Seiki Asia Pacific, Inc.';
+
+    $this->email->from('noreply@lineseikiasiapacific.com', $from_name);
+    $this->email->to($contact_data['email']);
+    $this->email->reply_to('info@sales.line.com.ph', $from_name);
+    $this->email->subject("We've Received Your Inquiry");
+    $this->email->message($this->get_contact_confirmation_template($contact_data));
+
+    if ($this->email->send()) {
+        log_message('info', 'Contact confirmation email sent to ' . $contact_data['email']);
+        return true;
+    } else {
+        log_message('error', 'Contact confirmation email failed: ' . $this->email->print_debugger());
+        return false;
+    }
+  }
+
+
+  private function get_contact_confirmation_template($data)
+  {
+    $name = htmlspecialchars($data['name']);
+
+    $html = '
+    <!DOCTYPE html>
+    <html>
+    <head>
+      <meta charset="UTF-8">
+      <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
+        .container { max-width: 600px; margin: 0 auto; padding: 20px; }
+        .header { background: linear-gradient(135deg, #0F467B, #17A2DC); color: white; padding: 30px; text-align: center; border-radius: 10px 10px 0 0; }
+        .header h1 { margin: 0; font-size: 22px; }
+        .content { background: #f8f9fa; padding: 30px; color: #333; }
+        .content p { margin: 0 0 16px 0; }
+        .highlight { background: white; padding: 15px 20px; border-left: 4px solid #17A2DC; border-radius: 6px; margin: 20px 0; }
+        .footer { background: #0F467B; color: white; padding: 20px; text-align: center; border-radius: 0 0 10px 10px; }
+      </style>
+    </head>
+    <body>
+      <div class="container">
+        <div class="header">
+          <h1>We\'ve Received Your Inquiry</h1>
+        </div>
+
+        <div class="content">
+          <p>Hi ' . $name . ',</p>
+
+          <p>Thank you for contacting Line Seiki Asia Pacific, Inc.</p>
+
+          <p>We have received your inquiry and appreciate your interest in our products and services. Our team will review your message and respond as soon as possible.</p>
+
+          <div class="highlight">
+            <p style="margin: 0;">If your inquiry is urgent, please feel free to contact us at <strong>(046) 437-2001, Local 18 or 36</strong>, or simply reply to this email.</p>
+          </div>
+
+          <p>Thank you. We look forward to assisting you.</p>
+
+          <p style="margin: 0;">Best regards,<br>
+          <strong>Line Seiki Asia Pacific, Inc.</strong></p>
+        </div>
+
+        <div class="footer">
+          <p style="margin: 0;">Line Seiki Asia Pacific, Inc.</p>
+          <p style="margin: 5px 0 0 0; font-size: 13px; opacity: 0.8;">This is an automated acknowledgement of your inquiry.</p>
         </div>
       </div>
     </body>
@@ -996,9 +1232,12 @@ public function save_download_info() {
       if ($this->db->affected_rows() > 0) {
         log_message('info', 'Quote request submitted for: ' . $email);
         
-        // Send email notification
+        // Send email notification to admin
         $email_sent = $this->send_quote_email($data);
-        
+
+        // Send confirmation/acknowledgement email to the customer
+        $this->send_quote_confirmation($data);
+
         if ($email_sent) {
           echo json_encode([
             'success' => true,
@@ -1089,6 +1328,9 @@ public function save_download_info() {
         
         // Send email notification to admin
         $this->send_contact_notification($data);
+
+        // Send confirmation/acknowledgement email to the user
+        $this->send_contact_confirmation($data);
 
         echo json_encode([
           'success' => true,
